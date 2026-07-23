@@ -1,0 +1,44 @@
+=== STDOUT ===
+============================================
+  ALG1 Standard (Structural MCE)
+  mine | sink <file> | log <file> | quit
+============================================
+Dataset: dataset/dataset/WN18RR_edges.txt (ID=8)
+Loaded chunk: dataset/vectors/WN18RR_vectors.json.chunk.0.bin (40943 vertices)
+Loaded vectors from 40943 vertices across multiple chunks
+Vector dimension: 384
+Normalizing vectors...
+Vectors normalized successfully
+Graph: V=40943  E=75762
+Load: 150 ms
+
+
+>> 
+=== ALG1 Standard MCE ===
+[Stage1] Building adjacency...
+  [Stage1] Done: 22 ms  (V=40943, E=75762)
+[Stage2] Degeneracy ordering...
+  [Stage2] Done: 3 ms
+[Stage3] Tomita Pivot BK search...
+  threads=128  timeout=600s
+  [Stage3] Done: 12 ms  cliques=68685
+
+=== TOTAL: 39 ms,  68685 maximal cliques ===
+
+--- Phase timing summary ---
+  Adj build          :     22 ms  ( 56.4%)
+  Degeneracy ordering:      3 ms  (  7.7%)
+  BK search          :     12 ms  ( 30.8%)
+----------------------------
+
+--- Clique size distribution ---
+  size   2: 63753 (92.82%)
+  size   3: 4873 (7.09%)
+  size   4: 59 (0.09%)
+  Average clique size: 2.07
+--------------------------------
+>> Bye.
+
+=== STDERR ===
+
+=== Exit Code: 0 ===

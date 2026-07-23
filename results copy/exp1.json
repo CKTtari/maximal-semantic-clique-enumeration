@@ -1,0 +1,466 @@
+{
+  "10th_alg1_ds1": {
+    "time_avg": 1.068,
+    "time_min": 1.068,
+    "time_max": 1.068,
+    "count": 274770,
+    "status": "success"
+  },
+  "10th_alg2_ds1": {
+    "time_avg": "\u8fd0\u884c\u8d85\u65f6(>600s)",
+    "count": null,
+    "status": "failed",
+    "error_type": "TLE",
+    "elapsed": 1217.2586815357208,
+    "error": "\u8fd0\u884c\u8d85\u65f6(>600s)",
+    "output_preview": "============================================\n  ALG4 Standard (Semantic BK)\n  mine <tau> | sink <file> | log <file> | quit\n============================================\nDataset: dataset/dataset/sc-ldoor.txt (ID=1)\nLoaded binary vectors from dataset/vectors-256/sc-ldoor_vectors.bin\nVector dimension: 256\nNormalizing vectors...\nVectors normalized successfully\nGraph: V=909537  E=20770807\nLoad: 14276 ms\n\n\n=== Building VectorDB ===\n  Float32VectorStore: 909537x256\n=== DB ready ===\n\n\n>> \n=== ALG4 MCE  ta",
+    "stderr_preview": ""
+  },
+  "10th_alg3_ds1": {
+    "time_avg": 5.618,
+    "time_min": 5.618,
+    "time_max": 5.618,
+    "count": 274750,
+    "status": "success"
+  },
+  "10th_alg4_ds1": {
+    "time_avg": "\u5185\u5b58\u4e0d\u8db3(OOM) - \u7a0b\u5e8f\u88ab\u7cfb\u7edf\u7ec8\u6b62",
+    "count": null,
+    "status": "failed",
+    "error_type": "OOM",
+    "elapsed": 22.524969577789307,
+    "error": "\u5185\u5b58\u4e0d\u8db3(OOM) - \u7a0b\u5e8f\u88ab\u7cfb\u7edf\u7ec8\u6b62",
+    "output_preview": "============================================\n  alg6_v2_standard (Clique Size-Layered MCE)\n  mine <tau> | sink <file> | log <file> | quit\n============================================\nDataset: dataset/dataset/sc-ldoor.txt (ID=1)\nLoaded binary vectors from dataset/vectors-256/sc-ldoor_vectors.bin\nVector dimension: 256\nNormalizing vectors...\nVectors normalized successfully\nGraph: V=909537  E=20770807\nLoad: 13450 ms\n\n\n=== Building VectorDB ===\n  Float32VectorStore: 909537x256\n=== DB ready ===\n\n\n>> ",
+    "stderr_preview": "terminate called after throwing an instance of 'std::bad_alloc'\n  what():  std::bad_alloc\ntimeout: the monitored command dumped core\n"
+  },
+  "90th_alg1_ds1": {
+    "time_avg": 1.246,
+    "time_min": 1.246,
+    "time_max": 1.246,
+    "count": 274770,
+    "status": "success"
+  },
+  "90th_alg2_ds1": {
+    "time_avg": "\u8fd0\u884c\u8d85\u65f6(>600s)",
+    "count": null,
+    "status": "failed",
+    "error_type": "TLE",
+    "elapsed": 600.8539800643921,
+    "error": "\u8fd0\u884c\u8d85\u65f6(>600s)",
+    "output_preview": "============================================\n  ALG4 Standard (Semantic BK)\n  mine <tau> | sink <file> | log <file> | quit\n============================================\nDataset: dataset/dataset/sc-ldoor.txt (ID=1)\nLoaded binary vectors from dataset/vectors-256/sc-ldoor_vectors.bin\nVector dimension: 256\nNormalizing vectors...\nVectors normalized successfully\nGraph: V=909537  E=20770807\nLoad: 14084 ms\n\n\n=== Building VectorDB ===\n  Float32VectorStore: 909537x256\n=== DB ready ===\n\n\n>> \n=== ALG4 MCE  ta",
+    "stderr_preview": ""
+  },
+  "90th_alg3_ds1": {
+    "time_avg": 168.454,
+    "time_min": 168.454,
+    "time_max": 168.454,
+    "count": 2463604,
+    "status": "success"
+  },
+  "90th_alg4_ds1": {
+    "time_avg": 15.265,
+    "time_min": 15.265,
+    "time_max": 15.265,
+    "count": 2463603,
+    "status": "success"
+  },
+  "10th_alg1_ds2": {
+    "time_avg": 0.128,
+    "time_min": 0.128,
+    "time_max": 0.128,
+    "count": 28154,
+    "status": "success"
+  },
+  "10th_alg2_ds2": {
+    "time_avg": "\u8fd0\u884c\u8d85\u65f6(>600s)",
+    "count": null,
+    "status": "failed",
+    "error_type": "TLE",
+    "elapsed": 600.2629873752594,
+    "error": "\u8fd0\u884c\u8d85\u65f6(>600s)",
+    "output_preview": "============================================\n  ALG4 Standard (Semantic BK)\n  mine <tau> | sink <file> | log <file> | quit\n============================================\nDataset: dataset/dataset/sc-nasasrb.txt (ID=2)\nLoaded binary vectors from dataset/vectors-256/sc-nasasrb_vectors.bin\nVector dimension: 256\nNormalizing vectors...\nVectors normalized successfully\nGraph: V=54870  E=1311227\nLoad: 1058 ms\n\n\n=== Building VectorDB ===\n  Float32VectorStore: 54870x256\n=== DB ready ===\n\n\n>> \n=== ALG4 MCE  ta",
+    "stderr_preview": ""
+  },
+  "10th_alg3_ds2": {
+    "time_avg": 0.393,
+    "time_min": 0.393,
+    "time_max": 0.393,
+    "count": 28154,
+    "status": "success"
+  },
+  "10th_alg4_ds2": {
+    "time_avg": "\u5185\u5b58\u4e0d\u8db3(OOM) - \u7a0b\u5e8f\u88ab\u7cfb\u7edf\u7ec8\u6b62",
+    "count": null,
+    "status": "failed",
+    "error_type": "OOM",
+    "elapsed": 31.189250230789185,
+    "error": "\u5185\u5b58\u4e0d\u8db3(OOM) - \u7a0b\u5e8f\u88ab\u7cfb\u7edf\u7ec8\u6b62",
+    "output_preview": "============================================\n  alg6_v2_standard (Clique Size-Layered MCE)\n  mine <tau> | sink <file> | log <file> | quit\n============================================\nDataset: dataset/dataset/sc-nasasrb.txt (ID=2)\nLoaded binary vectors from dataset/vectors-256/sc-nasasrb_vectors.bin\nVector dimension: 256\nNormalizing vectors...\nVectors normalized successfully\nGraph: V=54870  E=1311227\nLoad: 918 ms\n\n\n=== Building VectorDB ===\n  Float32VectorStore: 54870x256\n=== DB ready ===\n\n\n>> ",
+    "stderr_preview": "terminate called after throwing an instance of 'std::bad_alloc'\n  what():  std::bad_alloc\ntimeout: the monitored command dumped core\n"
+  },
+  "90th_alg1_ds2": {
+    "time_avg": 0.107,
+    "time_min": 0.107,
+    "time_max": 0.107,
+    "count": 28154,
+    "status": "success"
+  },
+  "90th_alg2_ds2": {
+    "time_avg": "\u8fd0\u884c\u8d85\u65f6(>600s)",
+    "count": null,
+    "status": "failed",
+    "error_type": "TLE",
+    "elapsed": 600.301974773407,
+    "error": "\u8fd0\u884c\u8d85\u65f6(>600s)",
+    "output_preview": "============================================\n  ALG4 Standard (Semantic BK)\n  mine <tau> | sink <file> | log <file> | quit\n============================================\nDataset: dataset/dataset/sc-nasasrb.txt (ID=2)\nLoaded binary vectors from dataset/vectors-256/sc-nasasrb_vectors.bin\nVector dimension: 256\nNormalizing vectors...\nVectors normalized successfully\nGraph: V=54870  E=1311227\nLoad: 961 ms\n\n\n=== Building VectorDB ===\n  Float32VectorStore: 54870x256\n=== DB ready ===\n\n\n>> \n=== ALG4 MCE  tau",
+    "stderr_preview": ""
+  },
+  "90th_alg3_ds2": {
+    "time_avg": 30.496,
+    "time_min": 30.496,
+    "time_max": 30.496,
+    "count": 156691,
+    "status": "success"
+  },
+  "90th_alg4_ds2": {
+    "time_avg": 1.33,
+    "time_min": 1.33,
+    "time_max": 1.33,
+    "count": 156691,
+    "status": "success"
+  },
+  "10th_alg1_ds3": {
+    "time_avg": 0.38,
+    "time_min": 0.38,
+    "time_max": 0.38,
+    "count": 22612,
+    "status": "success"
+  },
+  "10th_alg2_ds3": {
+    "time_avg": "\u8fd0\u884c\u8d85\u65f6(>600s)",
+    "count": null,
+    "status": "failed",
+    "error_type": "TLE",
+    "elapsed": 600.3463671207428,
+    "error": "\u8fd0\u884c\u8d85\u65f6(>600s)",
+    "output_preview": "============================================\n  ALG4 Standard (Semantic BK)\n  mine <tau> | sink <file> | log <file> | quit\n============================================\nDataset: dataset/dataset/sc-pkustk11.txt (ID=3)\nLoaded binary vectors from dataset/vectors-256/sc-pkustk11_vectors.bin\nVector dimension: 256\nNormalizing vectors...\nVectors normalized successfully\nGraph: V=87804  E=2565054\nLoad: 1970 ms\n\n\n=== Building VectorDB ===\n  Float32VectorStore: 87804x256\n=== DB ready ===\n\n\n>> \n=== ALG4 MCE  ",
+    "stderr_preview": ""
+  },
+  "10th_alg3_ds3": {
+    "time_avg": 0.662,
+    "time_min": 0.662,
+    "time_max": 0.662,
+    "count": 22612,
+    "status": "success"
+  },
+  "10th_alg4_ds3": {
+    "time_avg": "\u5185\u5b58\u4e0d\u8db3(OOM) - \u7a0b\u5e8f\u88ab\u7cfb\u7edf\u7ec8\u6b62",
+    "count": null,
+    "status": "failed",
+    "error_type": "OOM",
+    "elapsed": 14.579729557037354,
+    "error": "\u5185\u5b58\u4e0d\u8db3(OOM) - \u7a0b\u5e8f\u88ab\u7cfb\u7edf\u7ec8\u6b62",
+    "output_preview": "============================================\n  alg6_v2_standard (Clique Size-Layered MCE)\n  mine <tau> | sink <file> | log <file> | quit\n============================================\nDataset: dataset/dataset/sc-pkustk11.txt (ID=3)\nLoaded binary vectors from dataset/vectors-256/sc-pkustk11_vectors.bin\nVector dimension: 256\nNormalizing vectors...\nVectors normalized successfully\nGraph: V=87804  E=2565054\nLoad: 1505 ms\n\n\n=== Building VectorDB ===\n  Float32VectorStore: 87804x256\n=== DB ready ===\n\n\n>> ",
+    "stderr_preview": "terminate called after throwing an instance of 'std::bad_alloc'\n  what():  std::bad_alloc\ntimeout: the monitored command dumped core\n"
+  },
+  "90th_alg1_ds3": {
+    "time_avg": 0.127,
+    "time_min": 0.127,
+    "time_max": 0.127,
+    "count": 22612,
+    "status": "success"
+  },
+  "90th_alg2_ds3": {
+    "time_avg": "\u8fd0\u884c\u8d85\u65f6(>600s)",
+    "count": null,
+    "status": "failed",
+    "error_type": "TLE",
+    "elapsed": 600.3100447654724,
+    "error": "\u8fd0\u884c\u8d85\u65f6(>600s)",
+    "output_preview": "============================================\n  ALG4 Standard (Semantic BK)\n  mine <tau> | sink <file> | log <file> | quit\n============================================\nDataset: dataset/dataset/sc-pkustk11.txt (ID=3)\nLoaded binary vectors from dataset/vectors-256/sc-pkustk11_vectors.bin\nVector dimension: 256\nNormalizing vectors...\nVectors normalized successfully\nGraph: V=87804  E=2565054\nLoad: 1399 ms\n\n\n=== Building VectorDB ===\n  Float32VectorStore: 87804x256\n=== DB ready ===\n\n\n>> \n=== ALG4 MCE  ",
+    "stderr_preview": ""
+  },
+  "90th_alg3_ds3": {
+    "time_avg": "\u8fd0\u884c\u8d85\u65f6(>600s)",
+    "count": null,
+    "status": "failed",
+    "error_type": "TLE",
+    "elapsed": 600.3313586711884,
+    "error": "\u8fd0\u884c\u8d85\u65f6(>600s)",
+    "output_preview": "============================================\n  ALG5_standard (Struct+Semantic MCE)\n  mine <tau> | sink <file> | log <file> | quit\n============================================\nDataset: dataset/dataset/sc-pkustk11.txt (ID=3)\nLoaded binary vectors from dataset/vectors-256/sc-pkustk11_vectors.bin\nVector dimension: 256\nNormalizing vectors...\nVectors normalized successfully\nGraph: V=87804  E=2565054\nLoad: 1257 ms\n\n\n=== Building VectorDB ===\n  Float32VectorStore: 87804x256\n=== DB ready ===\n\n\n>> ",
+    "stderr_preview": ""
+  },
+  "90th_alg4_ds3": {
+    "time_avg": 1.564,
+    "time_min": 1.564,
+    "time_max": 1.564,
+    "count": 344861,
+    "status": "success"
+  },
+  "10th_alg1_ds4": {
+    "time_avg": 63.062,
+    "time_min": 63.062,
+    "time_max": 63.062,
+    "count": 390020762,
+    "status": "success"
+  },
+  "10th_alg2_ds4": {
+    "time_avg": "\u8fd0\u884c\u8d85\u65f6(>600s)",
+    "count": null,
+    "status": "failed",
+    "error_type": "TLE",
+    "elapsed": 600.3273348808289,
+    "error": "\u8fd0\u884c\u8d85\u65f6(>600s)",
+    "output_preview": "============================================\n  ALG4 Standard (Semantic BK)\n  mine <tau> | sink <file> | log <file> | quit\n============================================\nDataset: dataset/dataset/soc-buzznet.txt (ID=4)\nLoaded binary vectors from dataset/vectors-256/soc-buzznet_vectors.bin\nVector dimension: 256\nNormalizing vectors...\nVectors normalized successfully\nGraph: V=101163  E=2763066\nLoad: 2664 ms\n\n\n=== Building VectorDB ===\n  Float32VectorStore: 101163x256\n=== DB ready ===\n\n\n>> \n=== ALG4 MCE",
+    "stderr_preview": ""
+  },
+  "10th_alg3_ds4": {
+    "time_avg": "\u5185\u5b58\u4e0d\u8db3(OOM) - \u7a0b\u5e8f\u88ab\u7cfb\u7edf\u7ec8\u6b62",
+    "count": null,
+    "status": "failed",
+    "error_type": "OOM",
+    "elapsed": 55.48793125152588,
+    "error": "\u5185\u5b58\u4e0d\u8db3(OOM) - \u7a0b\u5e8f\u88ab\u7cfb\u7edf\u7ec8\u6b62",
+    "output_preview": "============================================\n  ALG5_standard (Struct+Semantic MCE)\n  mine <tau> | sink <file> | log <file> | quit\n============================================\nDataset: dataset/dataset/soc-buzznet.txt (ID=4)\nLoaded binary vectors from dataset/vectors-256/soc-buzznet_vectors.bin\nVector dimension: 256\nNormalizing vectors...\nVectors normalized successfully\nGraph: V=101163  E=2763066\nLoad: 2660 ms\n\n\n=== Building VectorDB ===\n  Float32VectorStore: 101163x256\n=== DB ready ===\n\n\n>> ",
+    "stderr_preview": "terminate called after throwing an instance of 'std::bad_alloc'\n  what():  std::bad_alloc\ntimeout: the monitored command dumped core\n"
+  },
+  "10th_alg4_ds4": {
+    "time_avg": "\u5185\u5b58\u4e0d\u8db3(OOM) - \u7a0b\u5e8f\u88ab\u7cfb\u7edf\u7ec8\u6b62",
+    "count": null,
+    "status": "failed",
+    "error_type": "OOM",
+    "elapsed": 31.0086612701416,
+    "error": "\u5185\u5b58\u4e0d\u8db3(OOM) - \u7a0b\u5e8f\u88ab\u7cfb\u7edf\u7ec8\u6b62",
+    "output_preview": "============================================\n  alg6_v2_standard (Clique Size-Layered MCE)\n  mine <tau> | sink <file> | log <file> | quit\n============================================\nDataset: dataset/dataset/soc-buzznet.txt (ID=4)\nLoaded binary vectors from dataset/vectors-256/soc-buzznet_vectors.bin\nVector dimension: 256\nNormalizing vectors...\nVectors normalized successfully\nGraph: V=101163  E=2763066\nLoad: 2997 ms\n\n\n=== Building VectorDB ===\n  Float32VectorStore: 101163x256\n=== DB ready ===\n\n\n>",
+    "stderr_preview": "terminate called after throwing an instance of 'std::bad_alloc'\n  what():  std::bad_alloc\ntimeout: the monitored command dumped core\n"
+  },
+  "90th_alg1_ds4": {
+    "time_avg": 44.62,
+    "time_min": 44.62,
+    "time_max": 44.62,
+    "count": 390020762,
+    "status": "success"
+  },
+  "90th_alg2_ds4": {
+    "time_avg": "\u8fd0\u884c\u8d85\u65f6(>600s)",
+    "count": null,
+    "status": "failed",
+    "error_type": "TLE",
+    "elapsed": 600.455322265625,
+    "error": "\u8fd0\u884c\u8d85\u65f6(>600s)",
+    "output_preview": "============================================\n  ALG4 Standard (Semantic BK)\n  mine <tau> | sink <file> | log <file> | quit\n============================================\nDataset: dataset/dataset/soc-buzznet.txt (ID=4)\nLoaded binary vectors from dataset/vectors-256/soc-buzznet_vectors.bin\nVector dimension: 256\nNormalizing vectors...\nVectors normalized successfully\nGraph: V=101163  E=2763066\nLoad: 2729 ms\n\n\n=== Building VectorDB ===\n  Float32VectorStore: 101163x256\n=== DB ready ===\n\n\n>> \n=== ALG4 MCE",
+    "stderr_preview": ""
+  },
+  "90th_alg3_ds4": {
+    "time_avg": "\u5185\u5b58\u4e0d\u8db3(OOM) - \u7a0b\u5e8f\u88ab\u7cfb\u7edf\u7ec8\u6b62",
+    "count": null,
+    "status": "failed",
+    "error_type": "OOM",
+    "elapsed": 300.80413699150085,
+    "error": "\u5185\u5b58\u4e0d\u8db3(OOM) - \u7a0b\u5e8f\u88ab\u7cfb\u7edf\u7ec8\u6b62",
+    "output_preview": "============================================\n  ALG5_standard (Struct+Semantic MCE)\n  mine <tau> | sink <file> | log <file> | quit\n============================================\nDataset: dataset/dataset/soc-buzznet.txt (ID=4)\nLoaded binary vectors from dataset/vectors-256/soc-buzznet_vectors.bin\nVector dimension: 256\nNormalizing vectors...\nVectors normalized successfully\nGraph: V=101163  E=2763066\nLoad: 2788 ms\n\n\n=== Building VectorDB ===\n  Float32VectorStore: 101163x256\n=== DB ready ===\n\n\n>> ",
+    "stderr_preview": "terminate called after throwing an instance of 'std::bad_alloc'\n  what():  std::bad_alloc\ntimeout: the monitored command dumped core\n"
+  },
+  "90th_alg4_ds4": {
+    "time_avg": 4.393,
+    "time_min": 4.393,
+    "time_max": 4.393,
+    "count": 556594,
+    "status": "success"
+  },
+  "10th_alg1_ds5": {
+    "time_avg": 114.933,
+    "time_min": 114.933,
+    "time_max": 114.933,
+    "count": 1073605654,
+    "status": "success"
+  },
+  "10th_alg2_ds5": {
+    "time_avg": "\u8fd0\u884c\u8d85\u65f6(>600s)",
+    "count": null,
+    "status": "failed",
+    "error_type": "TLE",
+    "elapsed": 600.5479989051819,
+    "error": "\u8fd0\u884c\u8d85\u65f6(>600s)",
+    "output_preview": "============================================\n  ALG4 Standard (Semantic BK)\n  mine <tau> | sink <file> | log <file> | quit\n============================================\nDataset: dataset/dataset/soc-digg.txt (ID=5)\nLoaded binary vectors from dataset/vectors-256/soc-digg_vectors.bin\nVector dimension: 256\nNormalizing vectors...\nVectors normalized successfully\nGraph: V=770799  E=5907132\nLoad: 7268 ms\n\n\n=== Building VectorDB ===\n  Float32VectorStore: 770799x256\n=== DB ready ===\n\n\n>> \n=== ALG4 MCE  tau=",
+    "stderr_preview": ""
+  },
+  "10th_alg3_ds5": {
+    "time_avg": "\u5185\u5b58\u4e0d\u8db3(OOM) - \u7a0b\u5e8f\u88ab\u7cfb\u7edf\u7ec8\u6b62",
+    "count": null,
+    "status": "failed",
+    "error_type": "OOM",
+    "elapsed": 31.822221755981445,
+    "error": "\u5185\u5b58\u4e0d\u8db3(OOM) - \u7a0b\u5e8f\u88ab\u7cfb\u7edf\u7ec8\u6b62",
+    "output_preview": "============================================\n  ALG5_standard (Struct+Semantic MCE)\n  mine <tau> | sink <file> | log <file> | quit\n============================================\nDataset: dataset/dataset/soc-digg.txt (ID=5)\nLoaded binary vectors from dataset/vectors-256/soc-digg_vectors.bin\nVector dimension: 256\nNormalizing vectors...\nVectors normalized successfully\nGraph: V=770799  E=5907132\nLoad: 5808 ms\n\n\n=== Building VectorDB ===\n  Float32VectorStore: 770799x256\n=== DB ready ===\n\n\n>> ",
+    "stderr_preview": "terminate called after throwing an instance of 'std::bad_alloc'\n  what():  std::bad_alloc\ntimeout: the monitored command dumped core\n"
+  },
+  "10th_alg4_ds5": {
+    "time_avg": "\u5185\u5b58\u4e0d\u8db3(OOM) - \u7a0b\u5e8f\u88ab\u7cfb\u7edf\u7ec8\u6b62",
+    "count": null,
+    "status": "failed",
+    "error_type": "OOM",
+    "elapsed": 24.794018030166626,
+    "error": "\u5185\u5b58\u4e0d\u8db3(OOM) - \u7a0b\u5e8f\u88ab\u7cfb\u7edf\u7ec8\u6b62",
+    "output_preview": "============================================\n  alg6_v2_standard (Clique Size-Layered MCE)\n  mine <tau> | sink <file> | log <file> | quit\n============================================\nDataset: dataset/dataset/soc-digg.txt (ID=5)\nLoaded binary vectors from dataset/vectors-256/soc-digg_vectors.bin\nVector dimension: 256\nNormalizing vectors...\nVectors normalized successfully\nGraph: V=770799  E=5907132\nLoad: 5666 ms\n\n\n=== Building VectorDB ===\n  Float32VectorStore: 770799x256\n=== DB ready ===\n\n\n>> ",
+    "stderr_preview": "terminate called after throwing an instance of 'std::bad_alloc'\nterminate called recursively\ntimeout: the monitored command dumped core\n"
+  },
+  "90th_alg1_ds5": {
+    "time_avg": 70.384,
+    "time_min": 70.384,
+    "time_max": 70.384,
+    "count": 1073605654,
+    "status": "success"
+  },
+  "90th_alg2_ds5": {
+    "time_avg": "\u8fd0\u884c\u8d85\u65f6(>600s)",
+    "count": null,
+    "status": "failed",
+    "error_type": "TLE",
+    "elapsed": 600.5863070487976,
+    "error": "\u8fd0\u884c\u8d85\u65f6(>600s)",
+    "output_preview": "============================================\n  ALG4 Standard (Semantic BK)\n  mine <tau> | sink <file> | log <file> | quit\n============================================\nDataset: dataset/dataset/soc-digg.txt (ID=5)\nLoaded binary vectors from dataset/vectors-256/soc-digg_vectors.bin\nVector dimension: 256\nNormalizing vectors...\nVectors normalized successfully\nGraph: V=770799  E=5907132\nLoad: 5655 ms\n\n\n=== Building VectorDB ===\n  Float32VectorStore: 770799x256\n=== DB ready ===\n\n\n>> ",
+    "stderr_preview": ""
+  },
+  "90th_alg3_ds5": {
+    "time_avg": "\u8fd0\u884c\u8d85\u65f6(>600s)",
+    "count": null,
+    "status": "failed",
+    "error_type": "TLE",
+    "elapsed": 600.7464120388031,
+    "error": "\u8fd0\u884c\u8d85\u65f6(>600s)",
+    "output_preview": "============================================\n  ALG5_standard (Struct+Semantic MCE)\n  mine <tau> | sink <file> | log <file> | quit\n============================================\nDataset: dataset/dataset/soc-digg.txt (ID=5)\nLoaded binary vectors from dataset/vectors-256/soc-digg_vectors.bin\nVector dimension: 256\nNormalizing vectors...\nVectors normalized successfully\nGraph: V=770799  E=5907132\nLoad: 5953 ms\n\n\n=== Building VectorDB ===\n  Float32VectorStore: 770799x256\n=== DB ready ===\n\n\n>> ",
+    "stderr_preview": ""
+  },
+  "90th_alg4_ds5": {
+    "time_avg": 8.168,
+    "time_min": 8.168,
+    "time_max": 8.168,
+    "count": 1263080,
+    "status": "success"
+  },
+  "10th_alg1_ds7": {
+    "time_avg": 0.045,
+    "time_min": 0.045,
+    "time_max": 0.045,
+    "count": 155111,
+    "status": "success"
+  },
+  "10th_alg2_ds7": {
+    "time_avg": "\u8fd0\u884c\u8d85\u65f6(>600s)",
+    "count": null,
+    "status": "failed",
+    "error_type": "TLE",
+    "elapsed": 600.2241151332855,
+    "error": "\u8fd0\u884c\u8d85\u65f6(>600s)",
+    "output_preview": "============================================\n  ALG4 Standard (Semantic BK)\n  mine <tau> | sink <file> | log <file> | quit\n============================================\nDataset: dataset/dataset/FB15K-237_edges.txt (ID=7)\nLoaded chunk: dataset/vectors/FB15K-237_vectors.json.chunk.0.bin (14541 vertices)\nLoaded vectors from 14541 vertices across multiple chunks\nVector dimension: 384\nNormalizing vectors...\nVectors normalized successfully\nGraph: V=14541  E=248611\nLoad: 175 ms\n\n\n=== Building VectorDB ==",
+    "stderr_preview": ""
+  },
+  "10th_alg3_ds7": {
+    "time_avg": 0.264,
+    "time_min": 0.264,
+    "time_max": 0.264,
+    "count": 216425,
+    "status": "success"
+  },
+  "10th_alg4_ds7": {
+    "time_avg": "\u5185\u5b58\u4e0d\u8db3(OOM) - \u7a0b\u5e8f\u88ab\u7cfb\u7edf\u7ec8\u6b62",
+    "count": null,
+    "status": "failed",
+    "error_type": "OOM",
+    "elapsed": 18.182777881622314,
+    "error": "\u5185\u5b58\u4e0d\u8db3(OOM) - \u7a0b\u5e8f\u88ab\u7cfb\u7edf\u7ec8\u6b62",
+    "output_preview": "============================================\n  alg6_v2_standard (Clique Size-Layered MCE)\n  mine <tau> | sink <file> | log <file> | quit\n============================================\nDataset: dataset/dataset/FB15K-237_edges.txt (ID=7)\nLoaded chunk: dataset/vectors/FB15K-237_vectors.json.chunk.0.bin (14541 vertices)\nLoaded vectors from 14541 vertices across multiple chunks\nVector dimension: 384\nNormalizing vectors...\nVectors normalized successfully\nGraph: V=14541  E=248611\nLoad: 161 ms\n\n\n=== Build",
+    "stderr_preview": "terminate called after throwing an instance of 'std::bad_alloc'\n  what():  std::bad_alloc\ntimeout: the monitored command dumped core\n"
+  },
+  "90th_alg1_ds7": {
+    "time_avg": 0.047,
+    "time_min": 0.047,
+    "time_max": 0.047,
+    "count": 155111,
+    "status": "success"
+  },
+  "90th_alg2_ds7": {
+    "time_avg": "\u8fd0\u884c\u8d85\u65f6(>600s)",
+    "count": null,
+    "status": "failed",
+    "error_type": "TLE",
+    "elapsed": 600.2541999816895,
+    "error": "\u8fd0\u884c\u8d85\u65f6(>600s)",
+    "output_preview": "============================================\n  ALG4 Standard (Semantic BK)\n  mine <tau> | sink <file> | log <file> | quit\n============================================\nDataset: dataset/dataset/FB15K-237_edges.txt (ID=7)\nLoaded chunk: dataset/vectors/FB15K-237_vectors.json.chunk.0.bin (14541 vertices)\nLoaded vectors from 14541 vertices across multiple chunks\nVector dimension: 384\nNormalizing vectors...\nVectors normalized successfully\nGraph: V=14541  E=248611\nLoad: 161 ms\n\n\n=== Building VectorDB ==",
+    "stderr_preview": ""
+  },
+  "90th_alg3_ds7": {
+    "time_avg": 47.217,
+    "time_min": 47.217,
+    "time_max": 47.217,
+    "count": 49311,
+    "status": "success"
+  },
+  "90th_alg4_ds7": {
+    "time_avg": "\u5185\u5b58\u4e0d\u8db3(OOM) - \u7a0b\u5e8f\u88ab\u7cfb\u7edf\u7ec8\u6b62",
+    "count": null,
+    "status": "failed",
+    "error_type": "OOM",
+    "elapsed": 25.038447856903076,
+    "error": "\u5185\u5b58\u4e0d\u8db3(OOM) - \u7a0b\u5e8f\u88ab\u7cfb\u7edf\u7ec8\u6b62",
+    "output_preview": "============================================\n  alg6_v2_standard (Clique Size-Layered MCE)\n  mine <tau> | sink <file> | log <file> | quit\n============================================\nDataset: dataset/dataset/FB15K-237_edges.txt (ID=7)\nLoaded chunk: dataset/vectors/FB15K-237_vectors.json.chunk.0.bin (14541 vertices)\nLoaded vectors from 14541 vertices across multiple chunks\nVector dimension: 384\nNormalizing vectors...\nVectors normalized successfully\nGraph: V=14541  E=248611\nLoad: 158 ms\n\n\n=== Build",
+    "stderr_preview": "terminate called after throwing an instance of 'std::bad_alloc'\n  what():  std::bad_alloc\ntimeout: the monitored command dumped core\n"
+  },
+  "10th_alg1_ds8": {
+    "time_avg": 0.028,
+    "time_min": 0.028,
+    "time_max": 0.028,
+    "count": 68685,
+    "status": "success"
+  },
+  "10th_alg2_ds8": {
+    "time_avg": 0.066,
+    "time_min": 0.066,
+    "time_max": 0.066,
+    "count": 61873,
+    "status": "success"
+  },
+  "10th_alg3_ds8": {
+    "time_avg": 0.104,
+    "time_min": 0.104,
+    "time_max": 0.104,
+    "count": 61873,
+    "status": "success"
+  },
+  "10th_alg4_ds8": {
+    "time_avg": 0.202,
+    "time_min": 0.202,
+    "time_max": 0.202,
+    "count": 61873,
+    "status": "success"
+  },
+  "90th_alg1_ds8": {
+    "time_avg": 0.039,
+    "time_min": 0.039,
+    "time_max": 0.039,
+    "count": 68685,
+    "status": "success"
+  },
+  "90th_alg2_ds8": {
+    "time_avg": 0.09,
+    "time_min": 0.09,
+    "time_max": 0.09,
+    "count": 7334,
+    "status": "success"
+  },
+  "90th_alg3_ds8": {
+    "time_avg": 0.07,
+    "time_min": 0.07,
+    "time_max": 0.07,
+    "count": 7334,
+    "status": "success"
+  },
+  "90th_alg4_ds8": {
+    "time_avg": 0.076,
+    "time_min": 0.076,
+    "time_max": 0.076,
+    "count": 7334,
+    "status": "success"
+  }
+}

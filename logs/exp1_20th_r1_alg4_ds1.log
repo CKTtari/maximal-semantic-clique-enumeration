@@ -1,0 +1,23 @@
+============================================
+  alg6_v2_standard (Clique Size-Layered MCE)
+  mine <tau> | sink <file> | log <file> | quit
+============================================
+Dataset: dataset/dataset/sc-ldoor.txt (ID=1)
+Graph: V=909537  E=20770807
+Load: 11090 ms
+
+
+=== Building VectorDB ===
+  Float32VectorStore: 909537x256
+=== DB ready ===
+
+
+>> 
+=== AvgSim Clique MCE  tau=-0.053 ===
+Ablation: W_PRUNE=1  MONO_PRUNE=1  LAYER_DEDUP=1
+Stage1: computing and caching all edge similarities...
+  [Stage1] edges: 20770807, sim>-0.053: 16616649
+  [Stage1 time]: 895 ms
+Stage2: building layer-0 (sim > -0.053 edges)...
+  Layer-0: 16616649 2-cliques (after dedup)
+Stage3: clique expansion by size layers...

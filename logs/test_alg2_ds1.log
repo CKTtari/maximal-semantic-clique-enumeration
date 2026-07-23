@@ -1,0 +1,67 @@
+============================================
+  ALG4 Standard (Semantic BK)
+  mine <tau> | sink <file> | log <file> | quit
+============================================
+Dataset: dataset/dataset/sc-ldoor.txt (ID=1)
+Graph: V=909537  E=20770807
+Load: 13044 ms
+
+
+=== Building VectorDB ===
+  Float32VectorStore: 909537x256
+=== DB ready ===
+
+
+>> 
+=== ALG4 MCE  tau=0.053 ===
+[Stage1] Computing and caching all edge similarities...
+  edges cached: 20770807
+  [Stage1] Done: 3920 ms
+[Stage2] Degeneracy ordering...
+  [Stage2] Done: 352 ms
+[Stage3] Semantic BK search...
+  tau=0.053  threads=32  timeout=600s
+  progress 545/909537 (0.1%)  cliques=5147  elapsed=5s
+  progress 895/909537 (0.1%)  cliques=8979  elapsed=10s
+  progress 1207/909537 (0.1%)  cliques=12417  elapsed=15s
+  progress 1438/909537 (0.2%)  cliques=14852  elapsed=20s
+  progress 1662/909537 (0.2%)  cliques=17111  elapsed=25s
+  progress 1810/909537 (0.2%)  cliques=19119  elapsed=30s
+  progress 2010/909537 (0.2%)  cliques=21385  elapsed=35s
+  progress 2270/909537 (0.2%)  cliques=24268  elapsed=40s
+  progress 2453/909537 (0.3%)  cliques=26384  elapsed=45s
+  progress 2666/909537 (0.3%)  cliques=28995  elapsed=50s
+  progress 2997/909537 (0.3%)  cliques=32264  elapsed=56s
+  progress 3156/909537 (0.3%)  cliques=34553  elapsed=61s
+  progress 3387/909537 (0.4%)  cliques=37207  elapsed=66s
+  progress 3657/909537 (0.4%)  cliques=40207  elapsed=71s
+  progress 3945/909537 (0.4%)  cliques=43016  elapsed=76s
+  progress 4145/909537 (0.5%)  cliques=45700  elapsed=81s
+  progress 4346/909537 (0.5%)  cliques=48054  elapsed=86s
+  progress 4458/909537 (0.5%)  cliques=49532  elapsed=92s
+  progress 4570/909537 (0.5%)  cliques=50912  elapsed=97s
+  progress 4702/909537 (0.5%)  cliques=52756  elapsed=102s
+  progress 4886/909537 (0.5%)  cliques=54824  elapsed=107s
+  progress 5046/909537 (0.6%)  cliques=56683  elapsed=112s
+  progress 5156/909537 (0.6%)  cliques=58088  elapsed=118s
+  progress 5296/909537 (0.6%)  cliques=59802  elapsed=123s
+  progress 5424/909537 (0.6%)  cliques=61331  elapsed=128s
+  progress 5521/909537 (0.6%)  cliques=62640  elapsed=134s
+  progress 5706/909537 (0.6%)  cliques=64289  elapsed=139s
+  progress 5837/909537 (0.6%)  cliques=65702  elapsed=144s
+  progress 6041/909537 (0.7%)  cliques=67861  elapsed=149s
+  progress 6176/909537 (0.7%)  cliques=69575  elapsed=155s
+  progress 6325/909537 (0.7%)  cliques=71261  elapsed=160s
+  progress 6427/909537 (0.7%)  cliques=72692  elapsed=166s
+  progress 6532/909537 (0.7%)  cliques=73982  elapsed=171s
+  progress 6677/909537 (0.7%)  cliques=75514  elapsed=176s
+  progress 6780/909537 (0.7%)  cliques=76818  elapsed=181s
+  progress 6933/909537 (0.8%)  cliques=78672  elapsed=186s
+  progress 7098/909537 (0.8%)  cliques=80375  elapsed=191s
+  progress 7334/909537 (0.8%)  cliques=82910  elapsed=197s
+  progress 7534/909537 (0.8%)  cliques=84935  elapsed=202s
+  progress 7670/909537 (0.8%)  cliques=86638  elapsed=207s
+  progress 7788/909537 (0.9%)  cliques=88089  elapsed=212s
+  progress 7848/909537 (0.9%)  cliques=89042  elapsed=217s
+  progress 7985/909537 (0.9%)  cliques=90906  elapsed=222s
+  progress 8057/909537 (0.9%)  cliques=91811  elapsed=227s

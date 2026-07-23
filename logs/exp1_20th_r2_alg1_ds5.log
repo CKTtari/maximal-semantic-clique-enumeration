@@ -1,0 +1,38 @@
+============================================
+  ALG1 Standard (Structural MCE)
+  mine | sink <file> | log <file> | quit
+============================================
+Dataset: dataset/dataset/soc-digg.txt (ID=5)
+Graph: V=770799  E=5907132
+Load: 7433 ms
+
+
+>> 
+=== ALG1 Standard MCE ===
+[Stage1] Building adjacency...
+  [Stage1] Done: 339 ms  (V=770799, E=5907132)
+[Stage2] Degeneracy ordering...
+  [Stage2] Done: 97 ms
+[Stage3] Tomita Pivot BK search...
+  threads=32  timeout=600s
+  progress 759904/770799 (98.6%)  cliques=30122134  elapsed=5s
+  progress 760511/770799 (98.7%)  cliques=59840511  elapsed=10s
+  progress 760956/770799 (98.7%)  cliques=88759454  elapsed=15s
+  progress 761185/770799 (98.8%)  cliques=123486500  elapsed=20s
+  progress 761212/770799 (98.8%)  cliques=161475758  elapsed=26s
+  progress 761237/770799 (98.8%)  cliques=181237327  elapsed=32s
+  progress 762183/770799 (98.9%)  cliques=203567128  elapsed=37s
+  progress 763651/770799 (99.1%)  cliques=230226706  elapsed=42s
+  progress 764342/770799 (99.2%)  cliques=258437316  elapsed=47s
+  progress 765022/770799 (99.3%)  cliques=284338516  elapsed=52s
+  progress 765734/770799 (99.3%)  cliques=309423691  elapsed=57s
+  progress 766284/770799 (99.4%)  cliques=335727216  elapsed=62s
+  progress 766688/770799 (99.5%)  cliques=363110509  elapsed=67s
+  progress 767001/770799 (99.5%)  cliques=389622310  elapsed=72s
+  progress 767268/770799 (99.5%)  cliques=416808023  elapsed=77s
+  progress 767511/770799 (99.6%)  cliques=442215277  elapsed=82s
+  progress 767833/770799 (99.6%)  cliques=466142045  elapsed=87s
+  progress 768185/770799 (99.7%)  cliques=490665110  elapsed=92s
+  progress 768492/770799 (99.7%)  cliques=514929041  elapsed=97s
+  progress 768791/770799 (99.7%)  cliques=542155657  elapsed=102s
+  progress 768849/770799 (99.7%)  cliques=566332981  elapsed=107s

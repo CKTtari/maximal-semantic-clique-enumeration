@@ -1,0 +1,98 @@
+============================================
+  ALG1 Standard (Structural MCE)
+  mine | sink <file> | log <file> | quit
+============================================
+Dataset: dataset/dataset/tech-as-skitter.txt (ID=6)
+Graph: V=1694616  E=11094209
+Load: 11413 ms
+
+
+>> 
+=== ALG1 Standard MCE ===
+[Stage1] Building adjacency...
+  [Stage1] Done: 476 ms  (V=1694616, E=11094209)
+[Stage2] Degeneracy ordering...
+  [Stage2] Done: 422 ms
+[Stage3] Tomita Pivot BK search...
+  threads=32  timeout=600s
+  progress 1694325/1694616 (100.0%)  cliques=28014563  elapsed=5s
+  [Stage3] Done: 8724 ms  cliques=37321301
+
+=== TOTAL: 9625 ms,  37321301 maximal cliques ===
+
+--- Phase timing summary ---
+  Adj build          :    476 ms  (  4.9%)
+  Degeneracy ordering:    422 ms  (  4.4%)
+  BK search          :   8724 ms  ( 90.6%)
+----------------------------
+
+--- Clique size distribution ---
+  size   2: 2318772 (6.21%)
+  size   3: 3171593 (8.50%)
+  size   4: 1823318 (4.89%)
+  size   5: 939336 (2.52%)
+  size   6: 684873 (1.84%)
+  size   7: 598284 (1.60%)
+  size   8: 588889 (1.58%)
+  size   9: 608937 (1.63%)
+  size  10: 665661 (1.78%)
+  size  11: 728098 (1.95%)
+  size  12: 798073 (2.14%)
+  size  13: 877282 (2.35%)
+  size  14: 945194 (2.53%)
+  size  15: 980831 (2.63%)
+  size  16: 939987 (2.52%)
+  size  17: 839330 (2.25%)
+  size  18: 729601 (1.95%)
+  size  19: 639413 (1.71%)
+  size  20: 600192 (1.61%)
+  size  21: 611976 (1.64%)
+  size  22: 640890 (1.72%)
+  size  23: 673924 (1.81%)
+  size  24: 706753 (1.89%)
+  size  25: 753633 (2.02%)
+  size  26: 818353 (2.19%)
+  size  27: 892719 (2.39%)
+  size  28: 955212 (2.56%)
+  size  29: 999860 (2.68%)
+  size  30: 1034106 (2.77%)
+  size  31: 1055653 (2.83%)
+  size  32: 1017560 (2.73%)
+  size  33: 946717 (2.54%)
+  size  34: 878552 (2.35%)
+  size  35: 809485 (2.17%)
+  size  36: 744634 (2.00%)
+  size  37: 663650 (1.78%)
+  size  38: 583922 (1.56%)
+  size  39: 520239 (1.39%)
+  size  40: 474301 (1.27%)
+  size  41: 420796 (1.13%)
+  size  42: 367879 (0.99%)
+  size  43: 321829 (0.86%)
+  size  44: 275995 (0.74%)
+  size  45: 222461 (0.60%)
+  size  46: 158352 (0.42%)
+  size  47: 99522 (0.27%)
+  size  48: 62437 (0.17%)
+  size  49: 39822 (0.11%)
+  size  50: 30011 (0.08%)
+  size  51: 25637 (0.07%)
+  size  52: 17707 (0.05%)
+  size  53: 9514 (0.03%)
+  size  54: 3737 (0.01%)
+  size  55: 2042 (0.01%)
+  size  56: 1080 (0.00%)
+  size  57: 546 (0.00%)
+  size  58: 449 (0.00%)
+  size  59: 447 (0.00%)
+  size  60: 405 (0.00%)
+  size  61: 283 (0.00%)
+  size  62: 242 (0.00%)
+  size  63: 146 (0.00%)
+  size  64: 84 (0.00%)
+  size  65: 49 (0.00%)
+  size  66: 22 (0.00%)
+  size  67: 4 (0.00%)
+  Average clique size: 19.91
+--------------------------------
+>> Bye.

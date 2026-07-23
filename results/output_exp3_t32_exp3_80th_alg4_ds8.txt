@@ -1,0 +1,53 @@
+=== STDOUT ===
+============================================
+  alg6_v2_standard (Clique Size-Layered MCE)
+  mine <tau> | sink <file> | log <file> | quit
+============================================
+Dataset: dataset/dataset/WN18RR_edges.txt (ID=8)
+Loaded chunk: dataset/vectors/WN18RR_vectors.json.chunk.0.bin (40943 vertices)
+Loaded vectors from 40943 vertices across multiple chunks
+Vector dimension: 384
+Normalizing vectors...
+Vectors normalized successfully
+Graph: V=40943  E=75762
+Load: 99 ms
+
+
+=== Building VectorDB ===
+  Float32VectorStore: 40943x384
+=== DB ready ===
+
+
+>> 
+=== AvgSim Clique MCE  tau=0.557 ===
+Ablation: W_PRUNE=1  MONO_PRUNE=1  LAYER_DEDUP=1
+Stage1: computing and caching all edge similarities...
+  [Stage1] edges: 75753, sim>0.557: 15151
+  [Stage1 time]: 8 ms
+Stage2: building layer-0 (sim > 0.557 edges)...
+  Layer-0: 15151 2-cliques (after dedup)
+Stage3: clique expansion by size layers...
+  Layer  0: in=15151     out_next=888       dedup_removed=332       maximal_collected=13500   t=3ms
+  Layer  1: in=888       out_next=6         dedup_removed=4         maximal_collected=873     t=0ms
+  Layer  2: in=6         out_next=0         dedup_removed=0         maximal_collected=6       t=0ms
+
+  [Stage2+3 time]: 3 layers, 6 ms
+
+Stage4: post-validation (exact dedup)...
+  raw collected: 14379  after exact dedup: 14379  (removed 0)
+  subset_pruned: 0  final: 14379
+  [Stage4 time]: 3 ms
+
+--- Clique size distribution ---
+  size   2: 13500 (93.89%)
+  size   3: 873 (6.07%)
+  size   4: 6 (0.04%)
+  Average clique size: 2.06
+--- Total cliques: 14379 ---
+
+=== TOTAL: 20 ms,  14379 maximal cliques ===
+>> Bye.
+
+=== STDERR ===
+
+=== Exit Code: 0 ===

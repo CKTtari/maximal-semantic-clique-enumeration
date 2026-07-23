@@ -1,0 +1,49 @@
+=== STDOUT ===
+============================================
+  ALG4 Standard (Semantic BK)
+  mine <tau> | sink <file> | log <file> | quit
+============================================
+Dataset: dataset/dataset/WN18RR_edges.txt (ID=8)
+Loaded chunk: dataset/vectors/WN18RR_vectors.json.chunk.0.bin (40943 vertices)
+Loaded vectors from 40943 vertices across multiple chunks
+Vector dimension: 384
+Normalizing vectors...
+Vectors normalized successfully
+Graph: V=40943  E=75762
+Load: 112 ms
+
+
+=== Building VectorDB ===
+  Float32VectorStore: 40943x384
+=== DB ready ===
+
+
+>> 
+=== ALG4 MCE  tau=0.628 ===
+[Stage1] Computing and caching all edge similarities...
+  edges cached: 75753
+  [Stage1] Done: 47 ms
+[Stage2] Degeneracy ordering...
+  [Stage2] Done: 4 ms
+[Stage3] Semantic BK search...
+  tau=0.628  threads=128  timeout=600s
+  [Stage3] Done: 27 ms  cliques=7334
+
+=== TOTAL: 90 ms,  7334 maximal cliques ===
+
+--- Phase timing summary ---
+  Graph build        :     47 ms  ( 52.2%)
+  Degeneracy ordering:      4 ms  (  4.4%)
+  BK search          :     27 ms  ( 30.0%)
+----------------------------
+
+--- Clique size distribution ---
+  size   2: 7015 (95.65%)
+  size   3: 319 (4.35%)
+  Average clique size: 2.04
+--------------------------------
+>> Bye.
+
+=== STDERR ===
+
+=== Exit Code: 0 ===

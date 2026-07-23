@@ -1,0 +1,56 @@
+=== STDOUT ===
+============================================
+  ALG5_standard (Struct+Semantic MCE)
+  mine <tau> | sink <file> | log <file> | quit
+============================================
+Dataset: dataset/dataset/WN18RR_edges.txt (ID=8)
+Loaded chunk: dataset/vectors/WN18RR_vectors.json.chunk.0.bin (40943 vertices)
+Loaded vectors from 40943 vertices across multiple chunks
+Vector dimension: 384
+Normalizing vectors...
+Vectors normalized successfully
+Graph: V=40943  E=75762
+Load: 98 ms
+
+
+=== Building VectorDB ===
+  Float32VectorStore: 40943x384
+=== DB ready ===
+
+
+>> 
+=== ALG5 MCE  tau=0.423 ===
+Stage1: computing and caching all edge similarities...
+  edges cached: 75753
+  [Stage1 build_graph]: 18 ms
+Stage1b: degeneracy ordering...
+  [Stage1b degeneracy]: 3 ms
+Stage2+3: BK + intra-clique subset enumeration...
+  tau=0.423  threads=32  timeout=6000s
+  merging thread-local candidates...
+  [Stage2+3 total]: 11 ms  candidates=35561
+    BK ratio in Phase1+2: 76.00%
+    Subset ratio in Phase1+2: 24.00%
+Stage4: global dedup (subset pruning)...
+  after exact dedup: 35354
+  [Stage4 dedup]: 10 ms  pruned=269  final=35085
+
+=== TOTAL: 45 ms,  35085 maximal cliques ===
+
+--- Phase timing summary ---
+  BK ratio in Phase1+2:          76.00%
+  Subset ratio in Phase1+2:      24.00%
+  Phase3 dedup:                     10 ms
+----------------------------
+
+--- Clique size distribution ---
+  size   2: 32057 (91.37%)
+  size   3: 2989 (8.52%)
+  size   4: 39 (0.11%)
+  Average clique size: 2.09
+--- Total: 35085 ---
+>> Bye.
+
+=== STDERR ===
+
+=== Exit Code: 0 ===

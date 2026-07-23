@@ -1,0 +1,83 @@
+{
+  "10th_alg1_ds2": {
+    "time_avg": 0.128,
+    "time_min": 0.128,
+    "time_max": 0.128,
+    "count": 28154,
+    "status": "success"
+  },
+  "10th_alg2_ds2": {
+    "time_avg": "运行超时(>600s)",
+    "count": null,
+    "status": "failed",
+    "error_type": "TLE",
+    "elapsed": 600.2629873752594,
+    "error": "运行超时(>600s)",
+    "output_preview": "============================================\n  ALG4 Standard (Semantic BK)\n  mine <tau> | sink <file> | log <file> | quit\n============================================\nDataset: dataset/dataset/sc-nasasrb.txt (ID=2)\nLoaded binary vectors from dataset/vectors-256/sc-nasasrb_vectors.bin\nVector dimension: 256\nNormalizing vectors...\nVectors normalized successfully\nGraph: V=54870  E=1311227\nLoad: 1058 ms\n\n\n=== Building VectorDB ===\n  Float32VectorStore: 54870x256\n=== DB ready ===\n\n\n>> \n=== ALG4 MCE  ta",
+    "stderr_preview": ""
+  },
+  "10th_alg3_ds2": {
+    "time_avg": 0.393,
+    "time_min": 0.393,
+    "time_max": 0.393,
+    "count": 28154,
+    "status": "success"
+  },
+  "10th_alg4_ds2": {
+    "time_avg": "内存不足(OOM) - 程序被系统终止",
+    "count": null,
+    "status": "failed",
+    "error_type": "OOM",
+    "elapsed": 31.189250230789185,
+    "error": "内存不足(OOM) - 程序被系统终止",
+    "output_preview": "============================================\n  alg6_v2_standard (Clique Size-Layered MCE)\n  mine <tau> | sink <file> | log <file> | quit\n============================================\nDataset: dataset/dataset/sc-nasasrb.txt (ID=2)\nLoaded binary vectors from dataset/vectors-256/sc-nasasrb_vectors.bin\nVector dimension: 256\nNormalizing vectors...\nVectors normalized successfully\nGraph: V=54870  E=1311227\nLoad: 918 ms\n\n\n=== Building VectorDB ===\n  Float32VectorStore: 54870x256\n=== DB ready ===\n\n\n>> ",
+    "stderr_preview": "terminate called after throwing an instance of 'std::bad_alloc'\n  what():  std::bad_alloc\ntimeout: the monitored command dumped core\n"
+  },
+  "90th_alg1_ds2": {
+    "time_avg": 0.107,
+    "time_min": 0.107,
+    "time_max": 0.107,
+    "count": 28154,
+    "status": "success"
+  },
+  "90th_alg2_ds2": {
+    "time_avg": "运行超时(>600s)",
+    "count": null,
+    "status": "failed",
+    "error_type": "TLE",
+    "elapsed": 600.301974773407,
+    "error": "运行超时(>600s)",
+    "output_preview": "============================================\n  ALG4 Standard (Semantic BK)\n  mine <tau> | sink <file> | log <file> | quit\n============================================\nDataset: dataset/dataset/sc-nasasrb.txt (ID=2)\nLoaded binary vectors from dataset/vectors-256/sc-nasasrb_vectors.bin\nVector dimension: 256\nNormalizing vectors...\nVectors normalized successfully\nGraph: V=54870  E=1311227\nLoad: 961 ms\n\n\n=== Building VectorDB ===\n  Float32VectorStore: 54870x256\n=== DB ready ===\n\n\n>> \n=== ALG4 MCE  tau",
+    "stderr_preview": ""
+  },
+  "90th_alg3_ds2": {
+    "time_avg": 30.496,
+    "time_min": 30.496,
+    "time_max": 30.496,
+    "count": 156691,
+    "status": "success"
+  },
+  "90th_alg4_ds2": {
+    "time_avg": 1.33,
+    "time_min": 1.33,
+    "time_max": 1.33,
+    "count": 156691,
+    "status": "success"
+  },
+  "exp4_10th_alg3-stats_ds2": {
+    "time_avg": 0.426,
+    "time_min": 0.426,
+    "time_max": 0.426,
+    "count": 28154,
+    "status": "success",
+    "elapsed": 1.6037380695343018
+  },
+  "exp4_90th_alg3-stats_ds2": {
+    "time_avg": 25.842,
+    "time_min": 25.842,
+    "time_max": 25.842,
+    "count": 156691,
+    "status": "success",
+    "elapsed": 26.997402667999268
+  }
+}

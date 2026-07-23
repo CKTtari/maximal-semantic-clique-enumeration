@@ -1,0 +1,20 @@
+{
+  "90th_alg4_ds4": {
+    "time_avg": 4.667,
+    "time_min": 4.667,
+    "time_max": 4.667,
+    "count": 556594,
+    "status": "success",
+    "elapsed": 8.425954341888428
+  },
+  "exp4_90th_alg4-stats_ds4": {
+    "time_avg": 7.475,
+    "time_min": 7.475,
+    "time_max": 7.475,
+    "count": 556594,
+    "status": "success",
+    "elapsed": 11.495702266693115,
+    "log_file": "log_exp4_90th_alg4-stats_ds4.txt",
+    "raw_log": "============================================\n  ALG7_v2_stats (Clique Size-Layered MCE, Extended Stats)\n  mine <tau> | sink <file> | log <file> | quit\n============================================\nDataset: dataset/dataset/soc-buzznet.txt (ID=4)\nGraph: V=101163  E=2763066\nLoad: 2909 ms\n\n\n=== Building VectorDB ===\n  Float32VectorStore: 101163x256\n=== DB ready ===\n\n\n>> \n=== AvgSim Clique MCE  tau=0.080 ===\nStage1: computing and caching all edge similarities...\n  [Stage1] edges: 2763066, sim>0.080: 276306\n  [Stage1 time]: 182 ms\nStage2: building layer-0 (sim > 0.080 edges)...\n  Layer-0: 276306 2-cliques (after dedup)\nStage3: clique expansion by size layers...\n  Layer  0: in=276306    out_next=455175    dedup_removed=222627    maximal_collected=101654  t=2352ms\n  Layer  1: in=455175    out_next=307959    dedup_removed=300844    maximal_collected=205873  t=1988ms\n  Layer  2: in=307959    out_next=99346     dedup_removed=146135    maximal_collected=171014  t=1115ms\n  Layer  3: in=99346     out_next=16594     dedup_removed=33065     maximal_collected=65998   t=305ms\n  Layer  4: in=16594     out_next=1447      dedup_removed=3788      maximal_collected=12595   t=41ms\n  Layer  5: in=1447      out_next=49        dedup_removed=157       maximal_collected=1251    t=3ms\n  Layer  6: in=49        out_next=0         dedup_removed=0         maximal_collected=49      t=0ms\n\n  [Stage2+3 time]: 7 layers, 6703 ms\n\nStage4: post-validation (exact dedup + subset check)...\n  raw collected: 558434  after exact dedup: 558434  (removed 0 exact duplicates)\n  subset check pruned: 1840  (should be 0 if algorithm is correct)\n  final count: 556594\n  [Stage4 time]: 508 ms\n\n--- Clique size distribution (after post-validation) ---\n  size   2: 101027 (18.15%)\n  size   3: 205021 (36.83%)\n  size   4: 170701 (30.67%)\n  size   5: 65955 (11.85%)\n  size   6: 12590 (2.26%)\n  size   7: 1251 (0.22%)\n  size   8: 49 (0.01%)\n  Average clique size: 3.44\n--- Total cliques: 556594 ---\n\n+=========================================================+\n|   Extended Mining Statistics   tau=0.080                 |\n+---------------------------------------------------------+\n|  [General]                                              |\n|  #recursive_calls          :          1156876          |\n|  #search_nodes             :          1433182          |\n|  #candidate_expansions     :         35254288          |\n|  #similarity_computations  :         65294761          |\n+---------------------------------------------------------+\n|  [ALG6 Pruning]                                         |\n|  #W_prune_triggers         :         33435790          |\n|  #mono_prune_triggers      :           231312          |\n|  #effective_expansions     :          1587186          |\n|  Effective expansion rate  :            4.50%          |\n+---------------------------------------------------------+\n|  [Dedup]                                                |\n|  Total produced (before dedup):       2421926          |\n|  Total dedup removed          :        706616          |\n|  Dedup ratio                  :         29.18%          |\n+---------------------------------------------------------+\n|  Final maximal cliques     :           556594          |\n+=========================================================+\n\n=== TOTAL: 7475 ms,  556594 maximal cliques ===\n>> Bye.\n"
+  }
+}

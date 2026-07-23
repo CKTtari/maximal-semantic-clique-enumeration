@@ -1,0 +1,40 @@
+============================================
+  ALG4 Standard (Semantic BK)
+  mine <tau> | sink <file> | log <file> | quit
+============================================
+Dataset: dataset/dataset/sc-nasasrb.txt (ID=2)
+Graph: V=54870  E=1311227
+Load: 597 ms
+
+
+=== Building VectorDB ===
+  Float32VectorStore: 54870x256
+=== DB ready ===
+
+
+>> 
+=== ALG4 MCE  tau=-0.053 ===
+[Stage1] Computing and caching all edge similarities...
+  edges cached: 1311227
+  [Stage1] Done: 154 ms
+[Stage2] Degeneracy ordering...
+  [Stage2] Done: 12 ms
+[Stage3] Semantic BK search...
+  tau=-0.053  threads=32  timeout=600s
+  progress 3369/54870 (6.1%)  cliques=5452  elapsed=5s
+  progress 3538/54870 (6.4%)  cliques=5985  elapsed=10s
+  progress 3547/54870 (6.5%)  cliques=5990  elapsed=15s
+  progress 3562/54870 (6.5%)  cliques=5999  elapsed=22s
+  progress 3585/54870 (6.5%)  cliques=6023  elapsed=27s
+  progress 3592/54870 (6.5%)  cliques=6030  elapsed=38s
+  progress 3611/54870 (6.6%)  cliques=6048  elapsed=44s
+  progress 3623/54870 (6.6%)  cliques=6050  elapsed=51s
+  progress 3632/54870 (6.6%)  cliques=6063  elapsed=57s
+  progress 3650/54870 (6.7%)  cliques=6072  elapsed=63s
+  progress 3658/54870 (6.7%)  cliques=6086  elapsed=70s
+  progress 3680/54870 (6.7%)  cliques=6105  elapsed=81s
+  progress 3699/54870 (6.7%)  cliques=6108  elapsed=87s
+  progress 3728/54870 (6.8%)  cliques=6114  elapsed=93s
+  progress 3755/54870 (6.8%)  cliques=6128  elapsed=98s
+  progress 3771/54870 (6.9%)  cliques=6136  elapsed=105s
+  progress 3792/54870 (6.9%)  cliques=6162  elapsed=112s

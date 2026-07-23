@@ -1,0 +1,164 @@
+{
+  "exp3_90th_alg3_ds1": {
+    "time_avg": 471.345,
+    "time_min": 471.345,
+    "time_max": 471.345,
+    "count": 2463604,
+    "status": "success",
+    "elapsed": 498.00467705726624
+  },
+  "exp4_10th_alg3-stats_ds1": {
+    "time_avg": 25.572,
+    "time_min": 25.572,
+    "time_max": 25.572,
+    "count": 274750,
+    "status": "success",
+    "elapsed": 50.88434863090515
+  },
+  "exp3_95th_alg3_ds1": {
+    "time_avg": 42.287,
+    "time_min": 42.287,
+    "time_max": 42.287,
+    "count": 959006,
+    "status": "success",
+    "elapsed": 57.378446102142334
+  },
+  "10th_alg3_ds1": {
+    "time_avg": 4.067,
+    "time_min": 4.067,
+    "time_max": 4.067,
+    "count": 274750,
+    "status": "success",
+    "elapsed": 18.912289142608643
+  },
+  "90th_alg3_ds1": {
+    "time_avg": 237.353,
+    "time_min": 237.353,
+    "time_max": 237.353,
+    "count": 2463604,
+    "status": "success",
+    "elapsed": 252.33689069747925
+  },
+  "exp4_90th_alg3-stats_ds1": {
+    "time_avg": 232.9,
+    "time_min": 232.9,
+    "time_max": 232.9,
+    "count": 2463604,
+    "status": "success",
+    "elapsed": 247.9109752178192
+  },
+  "exp3_80th_alg3_ds1": {
+    "time_avg": 579.431,
+    "time_min": 579.431,
+    "time_max": 579.431,
+    "count": 13444877,
+    "status": "success",
+    "elapsed": 595.3647334575653
+  },
+  "exp3_95th_alg4_ds1": {
+    "time_avg": 5.267,
+    "time_min": 5.267,
+    "time_max": 5.267,
+    "count": 959006,
+    "status": "success",
+    "elapsed": 25.876635313034058
+  },
+  "90th_alg4_ds1": {
+    "time_avg": 18.11,
+    "time_min": 18.11,
+    "time_max": 18.11,
+    "count": 2463603,
+    "status": "success",
+    "elapsed": 39.53192114830017
+  },
+  "exp3_90th_alg4_ds1": {
+    "time_avg": 13.954,
+    "time_min": 13.954,
+    "time_max": 13.954,
+    "count": 2463603,
+    "status": "success",
+    "elapsed": 30.90479302406311
+  },
+  "exp4_90th_alg4-stats_ds1": {
+    "time_avg": 26.053,
+    "time_min": 26.053,
+    "time_max": 26.053,
+    "count": 2463603,
+    "status": "success",
+    "elapsed": 42.933640241622925,
+    "log_file": "log_exp4_90th_alg4-stats_ds1.txt",
+    "raw_log": "============================================\n  ALG7_v2_stats (Clique Size-Layered MCE, Extended Stats)\n  mine <tau> | sink <file> | log <file> | quit\n============================================\nDataset: dataset/dataset/sc-ldoor.txt (ID=1)\nGraph: V=909537  E=20770807\nLoad: 12901 ms\n\n\n=== Building VectorDB ===\n  Float32VectorStore: 909537x256\n=== DB ready ===\n\n\n>> \n=== AvgSim Clique MCE  tau=0.080 ===\nStage1: computing and caching all edge similarities...\n  [Stage1] edges: 20770807, sim>0.080: 2077083\n  [Stage1 time]: 897 ms\nStage2: building layer-0 (sim > 0.080 edges)...\n  Layer-0: 2077083 2-cliques (after dedup)\nStage3: clique expansion by size layers...\n  Layer  0: in=2077083   out_next=2767258   dedup_removed=1359768   maximal_collected=325974  t=8263ms\n  Layer  1: in=2767258   out_next=1303792   dedup_removed=1266939   maximal_collected=1142072  t=7834ms\n  Layer  2: in=1303792   out_next=261280    dedup_removed=381797    maximal_collected=802426  t=3229ms\n  Layer  3: in=261280    out_next=25126     dedup_removed=49189     maximal_collected=195049  t=616ms\n  Layer  4: in=25126     out_next=1218      dedup_removed=2920      maximal_collected=20972   t=53ms\n  Layer  5: in=1218      out_next=19        dedup_removed=60        maximal_collected=1127    t=4ms\n  Layer  6: in=19        out_next=0         dedup_removed=0         maximal_collected=19      t=0ms\n\n  [Stage2+3 time]: 7 layers, 23103 ms\n\nStage4: post-validation (exact dedup + subset check)...\n  raw collected: 2487639  after exact dedup: 2487639  (removed 0 exact duplicates)\n  subset check pruned: 24036  (should be 0 if algorithm is correct)\n  final count: 2463603\n  [Stage4 time]: 1661 ms\n\n--- Clique size distribution (after post-validation) ---\n  size   2: 310174 (12.59%)\n  size   3: 1134777 (46.06%)\n  size   4: 801535 (32.54%)\n  size   5: 194999 (7.92%)\n  size   6: 20972 (0.85%)\n  size   7: 1127 (0.05%)\n  size   8: 19 (0.00%)\n  Average clique size: 3.39\n--- Total cliques: 2463603 ---\n\n+=========================================================+\n|   Extended Mining Statistics   tau=0.080                 |\n+---------------------------------------------------------+\n|  [General]                                              |\n|  #recursive_calls          :          6435776          |\n|  #search_nodes             :          8512859          |\n|  #candidate_expansions     :        144474552          |\n|  #similarity_computations  :        261099873          |\n+---------------------------------------------------------+\n|  [ALG6 Pruning]                                         |\n|  #W_prune_triggers         :        135712767          |\n|  #mono_prune_triggers      :          1342419          |\n|  #effective_expansions     :          7419366          |\n|  Effective expansion rate  :            5.14%          |\n+---------------------------------------------------------+\n|  [Dedup]                                                |\n|  Total produced (before dedup):      11984088          |\n|  Total dedup removed          :       3060673          |\n|  Dedup ratio                  :         25.54%          |\n+---------------------------------------------------------+\n|  Final maximal cliques     :          2463603          |\n+=========================================================+\n\n=== TOTAL: 26053 ms,  2463603 maximal cliques ===\n>> Bye.\n"
+  },
+  "exp6a_w_ds1": {
+    "time_avg": 19.691,
+    "time_min": 19.691,
+    "time_max": 19.691,
+    "count": 2463603,
+    "status": "success",
+    "elapsed": 36.52924370765686
+  },
+  "exp6a_both_ds1": {
+    "time_avg": 12.792,
+    "time_min": 12.792,
+    "time_max": 12.792,
+    "count": 2463603,
+    "status": "success",
+    "elapsed": 29.987712860107422
+  },
+  "exp6a_full_ds1": {
+    "time_avg": 14.288,
+    "time_min": 14.288,
+    "time_max": 14.288,
+    "count": 2463603,
+    "status": "success",
+    "elapsed": 31.079981088638306
+  },
+  "exp7_naive_ds1": {
+    "time_avg": 11.378,
+    "time_min": 11.378,
+    "time_max": 11.378,
+    "count": 2463603,
+    "status": "success",
+    "elapsed": 24.753166913986206
+  },
+  "exp7_noacc_ds1": {
+    "time_avg": 11.335,
+    "time_min": 11.335,
+    "time_max": 11.335,
+    "count": 2463603,
+    "status": "success",
+    "elapsed": 25.01764726638794
+  },
+  "exp7_noreorder_ds1": {
+    "time_avg": 11.189,
+    "time_min": 11.189,
+    "time_max": 11.189,
+    "count": 2463603,
+    "status": "success",
+    "elapsed": 24.471182346343994
+  },
+  "exp7_full_ds1": {
+    "time_avg": 11.392,
+    "time_min": 11.392,
+    "time_max": 11.392,
+    "count": 2463603,
+    "status": "success",
+    "elapsed": 24.81307291984558
+  },
+  "50th_alg3_ds1": {
+    "time_avg": 410.714,
+    "time_min": 410.714,
+    "time_max": 410.714,
+    "count": 24372919,
+    "status": "success",
+    "elapsed": 427.3347854614258
+  },
+  "exp3_50th_alg3_ds1": {
+    "time_avg": 415.63,
+    "time_min": 415.63,
+    "time_max": 415.63,
+    "count": 24372919,
+    "status": "success",
+    "elapsed": 432.47481298446655
+  }
+}

@@ -1,0 +1,74 @@
+============================================
+  ALG7_v2_stats (Clique Size-Layered MCE, Extended Stats)
+  mine <tau> | sink <file> | log <file> | quit
+============================================
+Dataset: dataset/dataset/sc-ldoor.txt (ID=1)
+Graph: V=909537  E=20770807
+Load: 12901 ms
+
+
+=== Building VectorDB ===
+  Float32VectorStore: 909537x256
+=== DB ready ===
+
+
+>> 
+=== AvgSim Clique MCE  tau=0.080 ===
+Stage1: computing and caching all edge similarities...
+  [Stage1] edges: 20770807, sim>0.080: 2077083
+  [Stage1 time]: 897 ms
+Stage2: building layer-0 (sim > 0.080 edges)...
+  Layer-0: 2077083 2-cliques (after dedup)
+Stage3: clique expansion by size layers...
+  Layer  0: in=2077083   out_next=2767258   dedup_removed=1359768   maximal_collected=325974  t=8263ms
+  Layer  1: in=2767258   out_next=1303792   dedup_removed=1266939   maximal_collected=1142072  t=7834ms
+  Layer  2: in=1303792   out_next=261280    dedup_removed=381797    maximal_collected=802426  t=3229ms
+  Layer  3: in=261280    out_next=25126     dedup_removed=49189     maximal_collected=195049  t=616ms
+  Layer  4: in=25126     out_next=1218      dedup_removed=2920      maximal_collected=20972   t=53ms
+  Layer  5: in=1218      out_next=19        dedup_removed=60        maximal_collected=1127    t=4ms
+  Layer  6: in=19        out_next=0         dedup_removed=0         maximal_collected=19      t=0ms
+
+  [Stage2+3 time]: 7 layers, 23103 ms
+
+Stage4: post-validation (exact dedup + subset check)...
+  raw collected: 2487639  after exact dedup: 2487639  (removed 0 exact duplicates)
+  subset check pruned: 24036  (should be 0 if algorithm is correct)
+  final count: 2463603
+  [Stage4 time]: 1661 ms
+
+--- Clique size distribution (after post-validation) ---
+  size   2: 310174 (12.59%)
+  size   3: 1134777 (46.06%)
+  size   4: 801535 (32.54%)
+  size   5: 194999 (7.92%)
+  size   6: 20972 (0.85%)
+  size   7: 1127 (0.05%)
+  size   8: 19 (0.00%)
+  Average clique size: 3.39
+--- Total cliques: 2463603 ---
+
++=========================================================+
+|   Extended Mining Statistics   tau=0.080                 |
++---------------------------------------------------------+
+|  [General]                                              |
+|  #recursive_calls          :          6435776          |
+|  #search_nodes             :          8512859          |
+|  #candidate_expansions     :        144474552          |
+|  #similarity_computations  :        261099873          |
++---------------------------------------------------------+
+|  [ALG6 Pruning]                                         |
+|  #W_prune_triggers         :        135712767          |
+|  #mono_prune_triggers      :          1342419          |
+|  #effective_expansions     :          7419366          |
+|  Effective expansion rate  :            5.14%          |
++---------------------------------------------------------+
+|  [Dedup]                                                |
+|  Total produced (before dedup):      11984088          |
+|  Total dedup removed          :       3060673          |
+|  Dedup ratio                  :         25.54%          |
++---------------------------------------------------------+
+|  Final maximal cliques     :          2463603          |
++=========================================================+
+
+=== TOTAL: 26053 ms,  2463603 maximal cliques ===
+>> Bye.

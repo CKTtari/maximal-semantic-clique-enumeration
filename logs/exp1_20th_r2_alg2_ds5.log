@@ -1,0 +1,36 @@
+============================================
+  ALG4 Standard (Semantic BK)
+  mine <tau> | sink <file> | log <file> | quit
+============================================
+Dataset: dataset/dataset/soc-digg.txt (ID=5)
+Graph: V=770799  E=5907132
+Load: 5687 ms
+
+
+=== Building VectorDB ===
+  Float32VectorStore: 770799x256
+=== DB ready ===
+
+
+>> 
+=== ALG4 MCE  tau=-0.053 ===
+[Stage1] Computing and caching all edge similarities...
+  edges cached: 5907132
+  [Stage1] Done: 1025 ms
+[Stage2] Degeneracy ordering...
+  [Stage2] Done: 130 ms
+[Stage3] Semantic BK search...
+  tau=-0.053  threads=32  timeout=600s
+  progress 739374/770799 (95.9%)  cliques=2147801  elapsed=5s
+  progress 740166/770799 (96.0%)  cliques=2194930  elapsed=10s
+  progress 741232/770799 (96.2%)  cliques=2260576  elapsed=15s
+  progress 741398/770799 (96.2%)  cliques=2271655  elapsed=25s
+  progress 741466/770799 (96.2%)  cliques=2275629  elapsed=30s
+  progress 741655/770799 (96.2%)  cliques=2288817  elapsed=37s
+  progress 741799/770799 (96.2%)  cliques=2298792  elapsed=45s
+  progress 741871/770799 (96.2%)  cliques=2305298  elapsed=68s
+  progress 742003/770799 (96.3%)  cliques=2313905  elapsed=77s
+  progress 742019/770799 (96.3%)  cliques=2315580  elapsed=82s
+  progress 742020/770799 (96.3%)  cliques=2315616  elapsed=95s
+  progress 742512/770799 (96.3%)  cliques=2349815  elapsed=101s
+  progress 742737/770799 (96.4%)  cliques=2367803  elapsed=108s

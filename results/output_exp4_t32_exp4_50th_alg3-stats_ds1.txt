@@ -1,0 +1,19 @@
+=== STDOUT ===
+============================================
+  ALG5 Standard (StrSub) - Stats Version
+  mine <tau> | sink <file> | log <file> | dataset <id> | quit
+============================================
+Loaded binary vectors from dataset/vectors-256/sc-ldoor_vectors.bin
+Vector dimension: 256
+Normalizing vectors...
+Vectors normalized successfully
+
+=== Building VectorDB ===
+  Float32VectorStore: 909537x256
+=== DB ready ===
+
+Dataset loaded: ID=1, V=909537
+>> 
+=== STDERR ===
+
+=== Exit Code: 124 ===

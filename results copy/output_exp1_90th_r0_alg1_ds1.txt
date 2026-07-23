@@ -1,0 +1,53 @@
+=== STDOUT ===
+============================================
+  ALG1 Standard (Structural MCE)
+  mine | sink <file> | log <file> | quit
+============================================
+Dataset: dataset/dataset/sc-ldoor.txt (ID=1)
+Loaded binary vectors from dataset/vectors-256/sc-ldoor_vectors.bin
+Vector dimension: 256
+Normalizing vectors...
+Vectors normalized successfully
+Graph: V=909537  E=20770807
+Load: 13956 ms
+
+
+>> 
+=== ALG1 Standard MCE ===
+[Stage1] Building adjacency...
+  [Stage1] Done: 464 ms  (V=909537, E=20770807)
+[Stage2] Degeneracy ordering...
+  [Stage2] Done: 606 ms
+[Stage3] Tomita Pivot BK search...
+  threads=128  timeout=600s
+  [Stage3] Done: 173 ms  cliques=274770
+
+=== TOTAL: 1246 ms,  274770 maximal cliques ===
+
+--- Phase timing summary ---
+  Adj build          :    464 ms  ( 37.2%)
+  Degeneracy ordering:    606 ms  ( 48.6%)
+  BK search          :    173 ms  ( 13.9%)
+----------------------------
+
+--- Clique size distribution ---
+  size   3: 3984 (1.45%)
+  size   4: 512 (0.19%)
+  size   5: 150 (0.05%)
+  size   6: 5 (0.00%)
+  size   7: 15 (0.01%)
+  size   8: 5 (0.00%)
+  size  15: 65 (0.02%)
+  size  16: 70 (0.03%)
+  size  17: 172 (0.06%)
+  size  18: 28195 (10.26%)
+  size  19: 49470 (18.00%)
+  size  20: 72571 (26.41%)
+  size  21: 119556 (43.51%)
+  Average clique size: 19.76
+--------------------------------
+>> Bye.
+
+=== STDERR ===
+
+=== Exit Code: 0 ===

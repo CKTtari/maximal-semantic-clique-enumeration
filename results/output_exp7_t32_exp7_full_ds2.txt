@@ -1,0 +1,58 @@
+=== STDOUT ===
+============================================
+  alg6_v2_standard (Clique Size-Layered MCE)
+  mine <tau> | sink <file> | log <file> | quit
+============================================
+Dataset: dataset/dataset/sc-nasasrb.txt (ID=2)
+Loaded binary vectors from dataset/vectors-256/sc-nasasrb_vectors.bin
+Vector dimension: 256
+Normalizing vectors...
+Vectors normalized successfully
+Graph: V=54870  E=1311227
+Load: 563 ms
+
+
+=== Building VectorDB ===
+  Float32VectorStore: 54870x256
+=== DB ready ===
+
+
+>> 
+=== AvgSim Clique MCE  tau=0.080 ===
+Ablation: W_PRUNE=1  MONO_PRUNE=1  LAYER_DEDUP=1
+Stage1: computing and caching all edge similarities...
+  [Stage1] edges: 1311227, sim>0.080: 131124
+  [Stage1 time]: 43 ms
+Stage2: building layer-0 (sim > 0.080 edges)...
+  Layer-0: 131124 2-cliques (after dedup)
+Stage3: clique expansion by size layers...
+  Layer  0: in=131124    out_next=172727    dedup_removed=84783     maximal_collected=22659   t=165ms
+  Layer  1: in=172727    out_next=80972     dedup_removed=79278     maximal_collected=72285   t=167ms
+  Layer  2: in=80972     out_next=16400     dedup_removed=23973     maximal_collected=49646   t=80ms
+  Layer  3: in=16400     out_next=1675      dedup_removed=3245      maximal_collected=12097   t=12ms
+  Layer  4: in=1675      out_next=84        dedup_removed=220       maximal_collected=1374    t=1ms
+  Layer  5: in=84        out_next=0         dedup_removed=0         maximal_collected=84      t=0ms
+
+  [Stage2+3 time]: 6 layers, 483 ms
+
+Stage4: post-validation (exact dedup)...
+  raw collected: 158145  after exact dedup: 158145  (removed 0)
+  subset_pruned: 1454  final: 156691
+  [Stage4 time]: 52 ms
+
+--- Clique size distribution ---
+  size   2: 21720 (13.86%)
+  size   3: 71831 (45.84%)
+  size   4: 49590 (31.65%)
+  size   5: 12092 (7.72%)
+  size   6: 1374 (0.88%)
+  size   7: 84 (0.05%)
+  Average clique size: 3.36
+--- Total cliques: 156691 ---
+
+=== TOTAL: 590 ms,  156691 maximal cliques ===
+>> Bye.
+
+=== STDERR ===
+
+=== Exit Code: 0 ===

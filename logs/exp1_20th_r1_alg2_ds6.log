@@ -1,0 +1,43 @@
+============================================
+  ALG4 Standard (Semantic BK)
+  mine <tau> | sink <file> | log <file> | quit
+============================================
+Dataset: dataset/dataset/tech-as-skitter.txt (ID=6)
+Graph: V=1694616  E=11094209
+Load: 11495 ms
+
+
+=== Building VectorDB ===
+  Float32VectorStore: 1694616x256
+=== DB ready ===
+
+
+>> 
+=== ALG4 MCE  tau=-0.053 ===
+[Stage1] Computing and caching all edge similarities...
+  edges cached: 11094209
+  [Stage1] Done: 2720 ms
+[Stage2] Degeneracy ordering...
+  [Stage2] Done: 523 ms
+[Stage3] Semantic BK search...
+  tau=-0.053  threads=32  timeout=600s
+  progress 1585944/1694616 (93.6%)  cliques=5552534  elapsed=5s
+  progress 1596096/1694616 (94.2%)  cliques=5732510  elapsed=10s
+  progress 1602831/1694616 (94.6%)  cliques=5866775  elapsed=15s
+  progress 1607110/1694616 (94.8%)  cliques=5952173  elapsed=20s
+  progress 1609996/1694616 (95.0%)  cliques=6015455  elapsed=25s
+  progress 1611299/1694616 (95.1%)  cliques=6045049  elapsed=30s
+  progress 1613941/1694616 (95.2%)  cliques=6104405  elapsed=35s
+  progress 1615870/1694616 (95.4%)  cliques=6147884  elapsed=40s
+  progress 1616618/1694616 (95.4%)  cliques=6162784  elapsed=45s
+  progress 1618228/1694616 (95.5%)  cliques=6199574  elapsed=50s
+  progress 1619484/1694616 (95.6%)  cliques=6231105  elapsed=55s
+  progress 1620631/1694616 (95.6%)  cliques=6259442  elapsed=60s
+  progress 1622141/1694616 (95.7%)  cliques=6296694  elapsed=65s
+  progress 1622575/1694616 (95.7%)  cliques=6306729  elapsed=70s
+  progress 1623095/1694616 (95.8%)  cliques=6319211  elapsed=75s
+  progress 1623958/1694616 (95.8%)  cliques=6339768  elapsed=80s
+  progress 1624667/1694616 (95.9%)  cliques=6356171  elapsed=85s
+  progress 1625198/1694616 (95.9%)  cliques=6370761  elapsed=90s
+  progress 1626156/1694616 (96.0%)  cliques=6394902  elapsed=96s
+  progress 1626782/1694616 (96.0%)  cliques=6411674  elapsed=101s

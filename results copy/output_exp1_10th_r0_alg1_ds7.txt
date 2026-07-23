@@ -1,0 +1,67 @@
+=== STDOUT ===
+============================================
+  ALG1 Standard (Structural MCE)
+  mine | sink <file> | log <file> | quit
+============================================
+Dataset: dataset/dataset/FB15K-237_edges.txt (ID=7)
+Loaded chunk: dataset/vectors/FB15K-237_vectors.json.chunk.0.bin (14541 vertices)
+Loaded vectors from 14541 vertices across multiple chunks
+Vector dimension: 384
+Normalizing vectors...
+Vectors normalized successfully
+Graph: V=14541  E=248611
+Load: 166 ms
+
+
+>> 
+=== ALG1 Standard MCE ===
+[Stage1] Building adjacency...
+  [Stage1] Done: 15 ms  (V=14541, E=248611)
+[Stage2] Degeneracy ordering...
+  [Stage2] Done: 10 ms
+[Stage3] Tomita Pivot BK search...
+  threads=128  timeout=600s
+  [Stage3] Done: 20 ms  cliques=155111
+
+=== TOTAL: 45 ms,  155111 maximal cliques ===
+
+--- Phase timing summary ---
+  Adj build          :     15 ms  ( 33.3%)
+  Degeneracy ordering:     10 ms  ( 22.2%)
+  BK search          :     20 ms  ( 44.4%)
+----------------------------
+
+--- Clique size distribution ---
+  size   2: 43744 (28.20%)
+  size   3: 60752 (39.17%)
+  size   4: 29487 (19.01%)
+  size   5: 13784 (8.89%)
+  size   6: 4014 (2.59%)
+  size   7: 895 (0.58%)
+  size   8: 397 (0.26%)
+  size   9: 315 (0.20%)
+  size  10: 242 (0.16%)
+  size  11: 191 (0.12%)
+  size  12: 153 (0.10%)
+  size  13: 193 (0.12%)
+  size  14: 184 (0.12%)
+  size  15: 150 (0.10%)
+  size  16: 120 (0.08%)
+  size  17: 106 (0.07%)
+  size  18: 120 (0.08%)
+  size  19: 102 (0.07%)
+  size  20: 88 (0.06%)
+  size  21: 35 (0.02%)
+  size  22: 18 (0.01%)
+  size  23: 9 (0.01%)
+  size  24: 2 (0.00%)
+  size  25: 3 (0.00%)
+  size  26: 6 (0.00%)
+  size  27: 1 (0.00%)
+  Average clique size: 3.34
+--------------------------------
+>> Bye.
+
+=== STDERR ===
+
+=== Exit Code: 0 ===

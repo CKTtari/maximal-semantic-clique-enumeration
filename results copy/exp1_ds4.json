@@ -1,0 +1,73 @@
+{
+  "10th_alg1_ds4": {
+    "time_avg": 63.062,
+    "time_min": 63.062,
+    "time_max": 63.062,
+    "count": 390020762,
+    "status": "success"
+  },
+  "10th_alg2_ds4": {
+    "time_avg": "\u8fd0\u884c\u8d85\u65f6(>600s)",
+    "count": null,
+    "status": "failed",
+    "error_type": "TLE",
+    "elapsed": 600.3273348808289,
+    "error": "\u8fd0\u884c\u8d85\u65f6(>600s)",
+    "output_preview": "============================================\n  ALG4 Standard (Semantic BK)\n  mine <tau> | sink <file> | log <file> | quit\n============================================\nDataset: dataset/dataset/soc-buzznet.txt (ID=4)\nLoaded binary vectors from dataset/vectors-256/soc-buzznet_vectors.bin\nVector dimension: 256\nNormalizing vectors...\nVectors normalized successfully\nGraph: V=101163  E=2763066\nLoad: 2664 ms\n\n\n=== Building VectorDB ===\n  Float32VectorStore: 101163x256\n=== DB ready ===\n\n\n>> \n=== ALG4 MCE",
+    "stderr_preview": ""
+  },
+  "10th_alg3_ds4": {
+    "time_avg": "\u5185\u5b58\u4e0d\u8db3(OOM) - \u7a0b\u5e8f\u88ab\u7cfb\u7edf\u7ec8\u6b62",
+    "count": null,
+    "status": "failed",
+    "error_type": "OOM",
+    "elapsed": 55.48793125152588,
+    "error": "\u5185\u5b58\u4e0d\u8db3(OOM) - \u7a0b\u5e8f\u88ab\u7cfb\u7edf\u7ec8\u6b62",
+    "output_preview": "============================================\n  ALG5_standard (Struct+Semantic MCE)\n  mine <tau> | sink <file> | log <file> | quit\n============================================\nDataset: dataset/dataset/soc-buzznet.txt (ID=4)\nLoaded binary vectors from dataset/vectors-256/soc-buzznet_vectors.bin\nVector dimension: 256\nNormalizing vectors...\nVectors normalized successfully\nGraph: V=101163  E=2763066\nLoad: 2660 ms\n\n\n=== Building VectorDB ===\n  Float32VectorStore: 101163x256\n=== DB ready ===\n\n\n>> ",
+    "stderr_preview": "terminate called after throwing an instance of 'std::bad_alloc'\n  what():  std::bad_alloc\ntimeout: the monitored command dumped core\n"
+  },
+  "10th_alg4_ds4": {
+    "time_avg": "\u5185\u5b58\u4e0d\u8db3(OOM) - \u7a0b\u5e8f\u88ab\u7cfb\u7edf\u7ec8\u6b62",
+    "count": null,
+    "status": "failed",
+    "error_type": "OOM",
+    "elapsed": 31.0086612701416,
+    "error": "\u5185\u5b58\u4e0d\u8db3(OOM) - \u7a0b\u5e8f\u88ab\u7cfb\u7edf\u7ec8\u6b62",
+    "output_preview": "============================================\n  alg6_v2_standard (Clique Size-Layered MCE)\n  mine <tau> | sink <file> | log <file> | quit\n============================================\nDataset: dataset/dataset/soc-buzznet.txt (ID=4)\nLoaded binary vectors from dataset/vectors-256/soc-buzznet_vectors.bin\nVector dimension: 256\nNormalizing vectors...\nVectors normalized successfully\nGraph: V=101163  E=2763066\nLoad: 2997 ms\n\n\n=== Building VectorDB ===\n  Float32VectorStore: 101163x256\n=== DB ready ===\n\n\n>",
+    "stderr_preview": "terminate called after throwing an instance of 'std::bad_alloc'\n  what():  std::bad_alloc\ntimeout: the monitored command dumped core\n"
+  },
+  "90th_alg1_ds4": {
+    "time_avg": 44.62,
+    "time_min": 44.62,
+    "time_max": 44.62,
+    "count": 390020762,
+    "status": "success"
+  },
+  "90th_alg2_ds4": {
+    "time_avg": "\u8fd0\u884c\u8d85\u65f6(>600s)",
+    "count": null,
+    "status": "failed",
+    "error_type": "TLE",
+    "elapsed": 600.455322265625,
+    "error": "\u8fd0\u884c\u8d85\u65f6(>600s)",
+    "output_preview": "============================================\n  ALG4 Standard (Semantic BK)\n  mine <tau> | sink <file> | log <file> | quit\n============================================\nDataset: dataset/dataset/soc-buzznet.txt (ID=4)\nLoaded binary vectors from dataset/vectors-256/soc-buzznet_vectors.bin\nVector dimension: 256\nNormalizing vectors...\nVectors normalized successfully\nGraph: V=101163  E=2763066\nLoad: 2729 ms\n\n\n=== Building VectorDB ===\n  Float32VectorStore: 101163x256\n=== DB ready ===\n\n\n>> \n=== ALG4 MCE",
+    "stderr_preview": ""
+  },
+  "90th_alg3_ds4": {
+    "time_avg": "\u5185\u5b58\u4e0d\u8db3(OOM) - \u7a0b\u5e8f\u88ab\u7cfb\u7edf\u7ec8\u6b62",
+    "count": null,
+    "status": "failed",
+    "error_type": "OOM",
+    "elapsed": 300.80413699150085,
+    "error": "\u5185\u5b58\u4e0d\u8db3(OOM) - \u7a0b\u5e8f\u88ab\u7cfb\u7edf\u7ec8\u6b62",
+    "output_preview": "============================================\n  ALG5_standard (Struct+Semantic MCE)\n  mine <tau> | sink <file> | log <file> | quit\n============================================\nDataset: dataset/dataset/soc-buzznet.txt (ID=4)\nLoaded binary vectors from dataset/vectors-256/soc-buzznet_vectors.bin\nVector dimension: 256\nNormalizing vectors...\nVectors normalized successfully\nGraph: V=101163  E=2763066\nLoad: 2788 ms\n\n\n=== Building VectorDB ===\n  Float32VectorStore: 101163x256\n=== DB ready ===\n\n\n>> ",
+    "stderr_preview": "terminate called after throwing an instance of 'std::bad_alloc'\n  what():  std::bad_alloc\ntimeout: the monitored command dumped core\n"
+  },
+  "90th_alg4_ds4": {
+    "time_avg": 4.393,
+    "time_min": 4.393,
+    "time_max": 4.393,
+    "count": 556594,
+    "status": "success"
+  }
+}

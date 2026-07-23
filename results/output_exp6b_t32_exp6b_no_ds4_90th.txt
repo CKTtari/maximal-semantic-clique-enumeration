@@ -1,0 +1,98 @@
+=== STDOUT ===
+============================================
+  ALG5_standard (Struct+Semantic MCE)
+  mine <tau> | sink <file> | log <file> | quit
+============================================
+Dataset: dataset/dataset/soc-buzznet.txt (ID=4)
+Loaded binary vectors from dataset/vectors-256/soc-buzznet_vectors.bin
+Vector dimension: 256
+Normalizing vectors...
+Vectors normalized successfully
+Graph: V=101163  E=2763066
+Load: 2554 ms
+
+
+=== Building VectorDB ===
+  Float32VectorStore: 101163x256
+=== DB ready ===
+
+
+>> 
+=== ALG5 MCE  tau=0.080 ===
+Stage1: computing and caching all edge similarities...
+  edges cached: 2763066
+  [Stage1 build_graph]: 521 ms
+Stage1b: degeneracy ordering...
+  [Stage1b degeneracy]: 118 ms
+Stage2+3: BK + intra-clique subset enumeration...
+  tau=0.080  threads=32  timeout=6000s
+  progress 88486/101163 (87.5%)  candidates=0  elapsed=5s
+  progress 89774/101163 (88.7%)  candidates=0  elapsed=10s
+  progress 91154/101163 (90.1%)  candidates=0  elapsed=15s
+  progress 91710/101163 (90.7%)  candidates=0  elapsed=20s
+  progress 92408/101163 (91.3%)  candidates=0  elapsed=25s
+  progress 93001/101163 (91.9%)  candidates=0  elapsed=30s
+  progress 93608/101163 (92.5%)  candidates=0  elapsed=35s
+  progress 94101/101163 (93.0%)  candidates=0  elapsed=40s
+  progress 94670/101163 (93.6%)  candidates=0  elapsed=45s
+  progress 95049/101163 (94.0%)  candidates=0  elapsed=50s
+  progress 95449/101163 (94.4%)  candidates=0  elapsed=55s
+  progress 95704/101163 (94.6%)  candidates=0  elapsed=60s
+  progress 95905/101163 (94.8%)  candidates=0  elapsed=65s
+  progress 96122/101163 (95.0%)  candidates=0  elapsed=70s
+  progress 96321/101163 (95.2%)  candidates=0  elapsed=75s
+  progress 96360/101163 (95.3%)  candidates=0  elapsed=80s
+  progress 96459/101163 (95.4%)  candidates=0  elapsed=85s
+  progress 96532/101163 (95.4%)  candidates=0  elapsed=90s
+  progress 96662/101163 (95.6%)  candidates=0  elapsed=95s
+  progress 96757/101163 (95.6%)  candidates=0  elapsed=101s
+  progress 96831/101163 (95.7%)  candidates=0  elapsed=106s
+  progress 96874/101163 (95.8%)  candidates=0  elapsed=112s
+  progress 96992/101163 (95.9%)  candidates=0  elapsed=117s
+  progress 97052/101163 (95.9%)  candidates=0  elapsed=122s
+  progress 97133/101163 (96.0%)  candidates=0  elapsed=128s
+  progress 97207/101163 (96.1%)  candidates=0  elapsed=133s
+  progress 97288/101163 (96.2%)  candidates=0  elapsed=138s
+  progress 97348/101163 (96.2%)  candidates=0  elapsed=144s
+  progress 97430/101163 (96.3%)  candidates=0  elapsed=149s
+  progress 97477/101163 (96.4%)  candidates=0  elapsed=156s
+  progress 97503/101163 (96.4%)  candidates=0  elapsed=162s
+  progress 97564/101163 (96.4%)  candidates=0  elapsed=167s
+  progress 97605/101163 (96.5%)  candidates=0  elapsed=172s
+  progress 97698/101163 (96.6%)  candidates=0  elapsed=177s
+  progress 97758/101163 (96.6%)  candidates=0  elapsed=182s
+  progress 97804/101163 (96.7%)  candidates=0  elapsed=187s
+  progress 97842/101163 (96.7%)  candidates=0  elapsed=192s
+  progress 97885/101163 (96.8%)  candidates=0  elapsed=198s
+  progress 97947/101163 (96.8%)  candidates=0  elapsed=203s
+  progress 97975/101163 (96.8%)  candidates=0  elapsed=208s
+  progress 98023/101163 (96.9%)  candidates=0  elapsed=213s
+  progress 98058/101163 (96.9%)  candidates=0  elapsed=218s
+  progress 98085/101163 (97.0%)  candidates=0  elapsed=225s
+  progress 98130/101163 (97.0%)  candidates=0  elapsed=230s
+  progress 98176/101163 (97.0%)  candidates=0  elapsed=235s
+  progress 98204/101163 (97.1%)  candidates=0  elapsed=241s
+  progress 98227/101163 (97.1%)  candidates=0  elapsed=246s
+  progress 98236/101163 (97.1%)  candidates=0  elapsed=251s
+  progress 98261/101163 (97.1%)  candidates=0  elapsed=256s
+  progress 98275/101163 (97.1%)  candidates=0  elapsed=263s
+  progress 98300/101163 (97.2%)  candidates=0  elapsed=269s
+  progress 98320/101163 (97.2%)  candidates=0  elapsed=274s
+  progress 98333/101163 (97.2%)  candidates=0  elapsed=279s
+  progress 98374/101163 (97.2%)  candidates=0  elapsed=285s
+  progress 98398/101163 (97.3%)  candidates=0  elapsed=290s
+  progress 98421/101163 (97.3%)  candidates=0  elapsed=296s
+  progress 98445/101163 (97.3%)  candidates=0  elapsed=301s
+  progress 98493/101163 (97.4%)  candidates=0  elapsed=306s
+  progress 98521/101163 (97.4%)  candidates=0  elapsed=316s
+  progress 98534/101163 (97.4%)  candidates=0  elapsed=325s
+  progress 98553/101163 (97.4%)  candidates=0  elapsed=330s
+  progress 98572/101163 (97.4%)  candidates=0  elapsed=338s
+  progress 98596/101163 (97.5%)  candidates=0  elapsed=346s
+  progress 98616/101163 (97.5%)  candidates=0
+=== STDERR ===
+terminate called after throwing an instance of 'std::bad_alloc'
+  what():  std::bad_alloc
+timeout: the monitored command dumped core
+
+=== Exit Code: 134 ===

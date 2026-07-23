@@ -1,0 +1,43 @@
+============================================
+  ALG4 Standard (Semantic BK)
+  mine <tau> | sink <file> | log <file> | quit
+============================================
+Dataset: dataset/dataset/sc-ldoor.txt (ID=1)
+Graph: V=909537  E=20770807
+Load: 8979 ms
+
+
+=== Building VectorDB ===
+  Float32VectorStore: 909537x256
+=== DB ready ===
+
+
+>> 
+=== ALG4 MCE  tau=-0.053 ===
+[Stage1] Computing and caching all edge similarities...
+  edges cached: 20770807
+  [Stage1] Done: 3626 ms
+[Stage2] Degeneracy ordering...
+  [Stage2] Done: 316 ms
+[Stage3] Semantic BK search...
+  tau=-0.053  threads=32  timeout=600s
+  progress 501/909537 (0.1%)  cliques=182  elapsed=5s
+  progress 860/909537 (0.1%)  cliques=306  elapsed=10s
+  progress 1182/909537 (0.1%)  cliques=484  elapsed=15s
+  progress 1381/909537 (0.2%)  cliques=549  elapsed=20s
+  progress 1557/909537 (0.2%)  cliques=605  elapsed=25s
+  progress 1752/909537 (0.2%)  cliques=669  elapsed=30s
+  progress 1902/909537 (0.2%)  cliques=717  elapsed=35s
+  progress 2074/909537 (0.2%)  cliques=772  elapsed=40s
+  progress 2284/909537 (0.3%)  cliques=838  elapsed=45s
+  progress 2451/909537 (0.3%)  cliques=893  elapsed=50s
+  progress 2651/909537 (0.3%)  cliques=955  elapsed=55s
+  progress 2971/909537 (0.3%)  cliques=1068  elapsed=60s
+  progress 3164/909537 (0.3%)  cliques=1129  elapsed=66s
+  progress 3367/909537 (0.4%)  cliques=1196  elapsed=71s
+  progress 3578/909537 (0.4%)  cliques=1263  elapsed=76s
+  progress 3802/909537 (0.4%)  cliques=1339  elapsed=81s
+  progress 4040/909537 (0.4%)  cliques=1416  elapsed=86s
+  progress 4154/909537 (0.5%)  cliques=1506  elapsed=91s
+  progress 4343/909537 (0.5%)  cliques=1685  elapsed=96s
+  progress 4510/909537 (0.5%)  cliques=1744  elapsed=101s

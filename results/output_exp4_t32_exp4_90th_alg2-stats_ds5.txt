@@ -1,0 +1,23 @@
+=== STDOUT ===
+============================================
+  ALG4 Stats (Semantic BK with Statistics)
+  mine <tau> | sink <file> | log <file> | quit
+============================================
+Dataset: dataset/dataset/soc-digg.txt (ID=5)
+Loaded binary vectors from dataset/vectors-256/soc-digg_vectors.bin
+Vector dimension: 256
+Normalizing vectors...
+Vectors normalized successfully
+Graph: V=770799  E=5907132
+Load: 5423 ms
+
+
+=== Building VectorDB ===
+  Float32VectorStore: 770799x256
+=== DB ready ===
+
+
+>> 
+=== STDERR ===
+
+=== Exit Code: 124 ===

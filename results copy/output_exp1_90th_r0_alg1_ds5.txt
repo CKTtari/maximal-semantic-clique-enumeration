@@ -1,0 +1,101 @@
+=== STDOUT ===
+============================================
+  ALG1 Standard (Structural MCE)
+  mine | sink <file> | log <file> | quit
+============================================
+Dataset: dataset/dataset/soc-digg.txt (ID=5)
+Loaded binary vectors from dataset/vectors-256/soc-digg_vectors.bin
+Vector dimension: 256
+Normalizing vectors...
+Vectors normalized successfully
+Graph: V=770799  E=5907132
+Load: 5668 ms
+
+
+>> 
+=== ALG1 Standard MCE ===
+[Stage1] Building adjacency...
+  [Stage1] Done: 306 ms  (V=770799, E=5907132)
+[Stage2] Degeneracy ordering...
+  [Stage2] Done: 264 ms
+[Stage3] Tomita Pivot BK search...
+  threads=128  timeout=600s
+  progress 761186/770799 (98.8%)  cliques=97988041  elapsed=5s
+  progress 764097/770799 (99.1%)  cliques=184212137  elapsed=10s
+  progress 765777/770799 (99.3%)  cliques=272296750  elapsed=15s
+  progress 766990/770799 (99.5%)  cliques=359286611  elapsed=20s
+  progress 767743/770799 (99.6%)  cliques=440430347  elapsed=25s
+  progress 768658/770799 (99.7%)  cliques=513676871  elapsed=30s
+  progress 769236/770799 (99.8%)  cliques=592339119  elapsed=35s
+  progress 769661/770799 (99.9%)  cliques=669631664  elapsed=40s
+  progress 770137/770799 (99.9%)  cliques=760202029  elapsed=45s
+  progress 770258/770799 (99.9%)  cliques=849818869  elapsed=51s
+  progress 770389/770799 (99.9%)  cliques=940447068  elapsed=56s
+  progress 770514/770799 (100.0%)  cliques=1029125002  elapsed=61s
+  [Stage3] Done: 69811 ms  cliques=1073605654
+
+=== TOTAL: 70384 ms,  1073605654 maximal cliques ===
+
+--- Phase timing summary ---
+  Adj build          :    306 ms  (  0.4%)
+  Degeneracy ordering:    264 ms  (  0.4%)
+  BK search          :  69811 ms  ( 99.2%)
+----------------------------
+
+--- Clique size distribution ---
+  size   2: 1463558 (0.14%)
+  size   3: 1231605 (0.11%)
+  size   4: 3208938 (0.30%)
+  size   5: 11743314 (1.09%)
+  size   6: 34160882 (3.18%)
+  size   7: 69028228 (6.43%)
+  size   8: 101460191 (9.45%)
+  size   9: 124236947 (11.57%)
+  size  10: 137448612 (12.80%)
+  size  11: 131989109 (12.29%)
+  size  12: 103410193 (9.63%)
+  size  13: 64351793 (5.99%)
+  size  14: 31980411 (2.98%)
+  size  15: 13506221 (1.26%)
+  size  16: 6137944 (0.57%)
+  size  17: 4330504 (0.40%)
+  size  18: 4487177 (0.42%)
+  size  19: 5114326 (0.48%)
+  size  20: 5868304 (0.55%)
+  size  21: 6558520 (0.61%)
+  size  22: 7039628 (0.66%)
+  size  23: 7436252 (0.69%)
+  size  24: 7817624 (0.73%)
+  size  25: 8248001 (0.77%)
+  size  26: 8678952 (0.81%)
+  size  27: 9061838 (0.84%)
+  size  28: 9257393 (0.86%)
+  size  29: 9318142 (0.87%)
+  size  30: 9324966 (0.87%)
+  size  31: 9529873 (0.89%)
+  size  32: 9988830 (0.93%)
+  size  33: 10838890 (1.01%)
+  size  34: 11977150 (1.12%)
+  size  35: 13268897 (1.24%)
+  size  36: 14274399 (1.33%)
+  size  37: 14582480 (1.36%)
+  size  38: 13853877 (1.29%)
+  size  39: 12061721 (1.12%)
+  size  40: 9488658 (0.88%)
+  size  41: 6746638 (0.63%)
+  size  42: 4383258 (0.41%)
+  size  43: 2537729 (0.24%)
+  size  44: 1302558 (0.12%)
+  size  45: 586727 (0.05%)
+  size  46: 213672 (0.02%)
+  size  47: 56856 (0.01%)
+  size  48: 11892 (0.00%)
+  size  49: 1784 (0.00%)
+  size  50: 192 (0.00%)
+  Average clique size: 14.71
+--------------------------------
+>> Bye.
+
+=== STDERR ===
+
+=== Exit Code: 0 ===

@@ -1,0 +1,38 @@
+============================================
+  ALG4 Standard (Semantic BK)
+  mine <tau> | sink <file> | log <file> | quit
+============================================
+Dataset: dataset/dataset/sc-pkustk11.txt (ID=3)
+Graph: V=87804  E=2565054
+Load: 1340 ms
+
+
+=== Building VectorDB ===
+  Float32VectorStore: 87804x256
+=== DB ready ===
+
+
+>> 
+=== ALG4 MCE  tau=-0.053 ===
+[Stage1] Computing and caching all edge similarities...
+  edges cached: 2565054
+  [Stage1] Done: 337 ms
+[Stage2] Degeneracy ordering...
+  [Stage2] Done: 31 ms
+[Stage3] Semantic BK search...
+  tau=-0.053  threads=32  timeout=600s
+  progress 748/87804 (0.9%)  cliques=130  elapsed=5s
+  progress 752/87804 (0.9%)  cliques=131  elapsed=11s
+  progress 770/87804 (0.9%)  cliques=134  elapsed=18s
+  progress 787/87804 (0.9%)  cliques=137  elapsed=27s
+  progress 798/87804 (0.9%)  cliques=139  elapsed=32s
+  progress 806/87804 (0.9%)  cliques=140  elapsed=43s
+  progress 822/87804 (0.9%)  cliques=143  elapsed=50s
+  progress 835/87804 (1.0%)  cliques=145  elapsed=55s
+  progress 841/87804 (1.0%)  cliques=146  elapsed=65s
+  progress 858/87804 (1.0%)  cliques=149  elapsed=75s
+  progress 871/87804 (1.0%)  cliques=151  elapsed=82s
+  progress 881/87804 (1.0%)  cliques=152  elapsed=88s
+  progress 895/87804 (1.0%)  cliques=155  elapsed=98s
+  progress 908/87804 (1.0%)  cliques=157  elapsed=103s
+  progress 914/87804 (1.0%)  cliques=158  elapsed=108s

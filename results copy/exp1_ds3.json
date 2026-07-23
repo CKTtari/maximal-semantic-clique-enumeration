@@ -1,0 +1,78 @@
+{
+  "10th_alg1_ds3": {
+    "time_avg": 0.38,
+    "time_min": 0.38,
+    "time_max": 0.38,
+    "count": 22612,
+    "status": "success"
+  },
+  "10th_alg2_ds3": {
+    "time_avg": "运行超时(>600s)",
+    "count": null,
+    "status": "failed",
+    "error_type": "TLE",
+    "elapsed": 600.3463671207428,
+    "error": "运行超时(>600s)",
+    "output_preview": "============================================\n  ALG4 Standard (Semantic BK)\n  mine <tau> | sink <file> | log <file> | quit\n============================================\nDataset: dataset/dataset/sc-pkustk11.txt (ID=3)\nLoaded binary vectors from dataset/vectors-256/sc-pkustk11_vectors.bin\nVector dimension: 256\nNormalizing vectors...\nVectors normalized successfully\nGraph: V=87804  E=2565054\nLoad: 1970 ms\n\n\n=== Building VectorDB ===\n  Float32VectorStore: 87804x256\n=== DB ready ===\n\n\n>> \n=== ALG4 MCE  ",
+    "stderr_preview": ""
+  },
+  "10th_alg3_ds3": {
+    "time_avg": 0.662,
+    "time_min": 0.662,
+    "time_max": 0.662,
+    "count": 22612,
+    "status": "success"
+  },
+  "10th_alg4_ds3": {
+    "time_avg": "内存不足(OOM) - 程序被系统终止",
+    "count": null,
+    "status": "failed",
+    "error_type": "OOM",
+    "elapsed": 14.579729557037354,
+    "error": "内存不足(OOM) - 程序被系统终止",
+    "output_preview": "============================================\n  alg6_v2_standard (Clique Size-Layered MCE)\n  mine <tau> | sink <file> | log <file> | quit\n============================================\nDataset: dataset/dataset/sc-pkustk11.txt (ID=3)\nLoaded binary vectors from dataset/vectors-256/sc-pkustk11_vectors.bin\nVector dimension: 256\nNormalizing vectors...\nVectors normalized successfully\nGraph: V=87804  E=2565054\nLoad: 1505 ms\n\n\n=== Building VectorDB ===\n  Float32VectorStore: 87804x256\n=== DB ready ===\n\n\n>> ",
+    "stderr_preview": "terminate called after throwing an instance of 'std::bad_alloc'\n  what():  std::bad_alloc\ntimeout: the monitored command dumped core\n"
+  },
+  "90th_alg1_ds3": {
+    "time_avg": 0.127,
+    "time_min": 0.127,
+    "time_max": 0.127,
+    "count": 22612,
+    "status": "success"
+  },
+  "90th_alg2_ds3": {
+    "time_avg": "运行超时(>600s)",
+    "count": null,
+    "status": "failed",
+    "error_type": "TLE",
+    "elapsed": 600.3100447654724,
+    "error": "运行超时(>600s)",
+    "output_preview": "============================================\n  ALG4 Standard (Semantic BK)\n  mine <tau> | sink <file> | log <file> | quit\n============================================\nDataset: dataset/dataset/sc-pkustk11.txt (ID=3)\nLoaded binary vectors from dataset/vectors-256/sc-pkustk11_vectors.bin\nVector dimension: 256\nNormalizing vectors...\nVectors normalized successfully\nGraph: V=87804  E=2565054\nLoad: 1399 ms\n\n\n=== Building VectorDB ===\n  Float32VectorStore: 87804x256\n=== DB ready ===\n\n\n>> \n=== ALG4 MCE  ",
+    "stderr_preview": ""
+  },
+  "90th_alg3_ds3": {
+    "time_avg": "运行超时(>600s)",
+    "count": null,
+    "status": "failed",
+    "error_type": "TLE",
+    "elapsed": 600.3313586711884,
+    "error": "运行超时(>600s)",
+    "output_preview": "============================================\n  ALG5_standard (Struct+Semantic MCE)\n  mine <tau> | sink <file> | log <file> | quit\n============================================\nDataset: dataset/dataset/sc-pkustk11.txt (ID=3)\nLoaded binary vectors from dataset/vectors-256/sc-pkustk11_vectors.bin\nVector dimension: 256\nNormalizing vectors...\nVectors normalized successfully\nGraph: V=87804  E=2565054\nLoad: 1257 ms\n\n\n=== Building VectorDB ===\n  Float32VectorStore: 87804x256\n=== DB ready ===\n\n\n>> ",
+    "stderr_preview": ""
+  },
+  "90th_alg4_ds3": {
+    "time_avg": 1.564,
+    "time_min": 1.564,
+    "time_max": 1.564,
+    "count": 344861,
+    "status": "success"
+  },
+  "exp4_10th_alg3-stats_ds3": {
+    "time_avg": 0.698,
+    "time_min": 0.698,
+    "time_max": 0.698,
+    "count": 22612,
+    "status": "success",
+    "elapsed": 2.581951856613159
+  }
+}

@@ -1,0 +1,98 @@
+=== STDOUT ===
+============================================
+  ALG5_standard (Struct+Semantic MCE)
+  mine <tau> | sink <file> | log <file> | quit
+============================================
+Dataset: dataset/dataset/dblp_coauthor.txt (ID=9)
+Loaded chunk: dataset/vectors/dblp_coauthor_vectors.json.chunk.0.bin (320000 vertices)
+Loaded chunk: dataset/vectors/dblp_coauthor_vectors.json.chunk.1.bin (320000 vertices)
+Loaded chunk: dataset/vectors/dblp_coauthor_vectors.json.chunk.2.bin (320000 vertices)
+Loaded chunk: dataset/vectors/dblp_coauthor_vectors.json.chunk.3.bin (320000 vertices)
+Loaded chunk: dataset/vectors/dblp_coauthor_vectors.json.chunk.4.bin (320000 vertices)
+Loaded chunk: dataset/vectors/dblp_coauthor_vectors.json.chunk.5.bin (210301 vertices)
+Loaded vectors from 1810301 vertices across multiple chunks
+Vector dimension: 384
+Normalizing vectors...
+Vectors normalized successfully
+Graph: V=1810301  E=13018406
+Load: 22983 ms
+
+
+=== Building VectorDB ===
+  Float32VectorStore: 1810301x384
+=== DB ready ===
+
+
+>> 
+=== ALG5 MCE  tau=0.100 ===
+Stage1: computing and caching all edge similarities...
+  edges cached: 12579543
+  [Stage1 build_graph]: 2986 ms
+Stage1b: degeneracy ordering...
+  [Stage1b degeneracy]: 776 ms
+Stage2+3: BK + intra-clique subset enumeration...
+  tau=0.100  threads=32  timeout=6000s
+  progress 1665092/1810301 (92.0%)  candidates=0  elapsed=5s
+  progress 1672958/1810301 (92.4%)  candidates=0  elapsed=10s
+  progress 1676945/1810301 (92.6%)  candidates=0  elapsed=15s
+  progress 1678780/1810301 (92.7%)  candidates=0  elapsed=20s
+  progress 1681205/1810301 (92.9%)  candidates=0  elapsed=25s
+  progress 1682927/1810301 (93.0%)  candidates=0  elapsed=30s
+  progress 1683987/1810301 (93.0%)  candidates=0  elapsed=36s
+  progress 1684621/1810301 (93.1%)  candidates=0  elapsed=42s
+  progress 1685856/1810301 (93.1%)  candidates=0  elapsed=47s
+  progress 1687462/1810301 (93.2%)  candidates=0  elapsed=52s
+  progress 1688538/1810301 (93.3%)  candidates=0  elapsed=58s
+  progress 1688873/1810301 (93.3%)  candidates=0  elapsed=65s
+  progress 1690212/1810301 (93.4%)  candidates=0  elapsed=70s
+  progress 1690465/1810301 (93.4%)  candidates=0  elapsed=76s
+  progress 1690940/1810301 (93.4%)  candidates=0  elapsed=82s
+  progress 1691052/1810301 (93.4%)  candidates=0  elapsed=87s
+  progress 1691110/1810301 (93.4%)  candidates=0  elapsed=98s
+  progress 1691425/1810301 (93.4%)  candidates=0  elapsed=103s
+  progress 1691768/1810301 (93.5%)  candidates=0  elapsed=108s
+  progress 1692652/1810301 (93.5%)  candidates=0  elapsed=113s
+  progress 1692865/1810301 (93.5%)  candidates=0  elapsed=118s
+  progress 1693091/1810301 (93.5%)  candidates=0  elapsed=124s
+  progress 1693365/1810301 (93.5%)  candidates=0  elapsed=129s
+  progress 1693424/1810301 (93.5%)  candidates=0  elapsed=135s
+  progress 1693670/1810301 (93.6%)  candidates=0  elapsed=141s
+  progress 1693678/1810301 (93.6%)  candidates=0  elapsed=151s
+  progress 1693943/1810301 (93.6%)  candidates=0  elapsed=158s
+  progress 1694026/1810301 (93.6%)  candidates=0  elapsed=163s
+  progress 1694482/1810301 (93.6%)  candidates=0  elapsed=170s
+  progress 1694690/1810301 (93.6%)  candidates=0  elapsed=176s
+  progress 1694877/1810301 (93.6%)  candidates=0  elapsed=181s
+  progress 1694986/1810301 (93.6%)  candidates=0  elapsed=188s
+  progress 1695084/1810301 (93.6%)  candidates=0  elapsed=194s
+  progress 1695196/1810301 (93.6%)  candidates=0  elapsed=204s
+  progress 1695344/1810301 (93.6%)  candidates=0  elapsed=210s
+  progress 1695761/1810301 (93.7%)  candidates=0  elapsed=216s
+  progress 1695994/1810301 (93.7%)  candidates=0  elapsed=228s
+  progress 1696185/1810301 (93.7%)  candidates=0  elapsed=235s
+  progress 1696520/1810301 (93.7%)  candidates=0  elapsed=240s
+  progress 1697497/1810301 (93.8%)  candidates=0  elapsed=248s
+  progress 1697785/1810301 (93.8%)  candidates=0  elapsed=254s
+  progress 1697835/1810301 (93.8%)  candidates=0  elapsed=259s
+  progress 1697870/1810301 (93.8%)  candidates=0  elapsed=265s
+  progress 1698082/1810301 (93.8%)  candidates=0  elapsed=274s
+  progress 1698119/1810301 (93.8%)  candidates=0  elapsed=293s
+  progress 1698208/1810301 (93.8%)  candidates=0  elapsed=298s
+  progress 1698224/1810301 (93.8%)  candidates=0  elapsed=310s
+  progress 1698236/1810301 (93.8%)  candidates=0  elapsed=324s
+  progress 1698282/1810301 (93.8%)  candidates=0  elapsed=330s
+  progress 1698364/1810301 (93.8%)  candidates=0  elapsed=355s
+  progress 1698530/1810301 (93.8%)  candidates=0  elapsed=374s
+  progress 1698606/1810301 (93.8%)  candidates=0  elapsed=381s
+  progress 1698809/1810301 (93.8%)  candidates=0  elapsed=388s
+  progress 1699087/1810301 (93.9%)  candidates=0  elapsed=394s
+  progress 1699419/1810301 (93.9%)  candidates=0  elapsed=423s
+  progress 1699523/1810301 (93.9%)  candidates=0  elapsed=435s
+  progress 1699595/1810301 (93.9%)  candidates=0  elapsed=442s
+  progress 1699888/1810301 (93.9%)  candidates=0  elapsed=448s
+  progress 1700109/1810301 (93.9%)  candidates=0  elapsed=455s
+  progress 1700125/1810301 (93.9%)  candidates=0  elapsed=467s
+  progress 1700362/1810301 (93.9%)  candi
+=== STDERR ===
+
+=== Exit Code: 124 ===

@@ -1,0 +1,26 @@
+=== STDOUT ===
+============================================
+  ALG5_standard (Struct+Semantic MCE)
+  mine <tau> | sink <file> | log <file> | quit
+============================================
+Dataset: dataset/dataset/soc-buzznet.txt (ID=4)
+Loaded binary vectors from dataset/vectors-256/soc-buzznet_vectors.bin
+Vector dimension: 256
+Normalizing vectors...
+Vectors normalized successfully
+Graph: V=101163  E=2763066
+Load: 2271 ms
+
+
+=== Building VectorDB ===
+  Float32VectorStore: 101163x256
+=== DB ready ===
+
+
+>> 
+=== STDERR ===
+terminate called after throwing an instance of 'std::bad_alloc'
+terminate called recursively
+timeout: the monitored command dumped core
+
+=== Exit Code: 134 ===

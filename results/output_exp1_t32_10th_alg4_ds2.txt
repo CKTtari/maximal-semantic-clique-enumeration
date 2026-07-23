@@ -1,0 +1,26 @@
+=== STDOUT ===
+============================================
+  alg6_v2_standard (Clique Size-Layered MCE)
+  mine <tau> | sink <file> | log <file> | quit
+============================================
+Dataset: dataset/dataset/sc-nasasrb.txt (ID=2)
+Loaded binary vectors from dataset/vectors-256/sc-nasasrb_vectors.bin
+Vector dimension: 256
+Normalizing vectors...
+Vectors normalized successfully
+Graph: V=54870  E=1311227
+Load: 612 ms
+
+
+=== Building VectorDB ===
+  Float32VectorStore: 54870x256
+=== DB ready ===
+
+
+>> 
+=== STDERR ===
+terminate called after throwing an instance of 'std::bad_alloc'
+  what():  std::bad_alloc
+timeout: the monitored command dumped core
+
+=== Exit Code: 134 ===

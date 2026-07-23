@@ -1,0 +1,97 @@
+=== STDOUT ===
+============================================
+  ALG4 Standard (Semantic BK)
+  mine <tau> | sink <file> | log <file> | quit
+============================================
+Dataset: dataset/dataset/sc-nasasrb.txt (ID=2)
+Loaded binary vectors from dataset/vectors-256/sc-nasasrb_vectors.bin
+Vector dimension: 256
+Normalizing vectors...
+Vectors normalized successfully
+Graph: V=54870  E=1311227
+Load: 552 ms
+
+
+=== Building VectorDB ===
+  Float32VectorStore: 54870x256
+=== DB ready ===
+
+
+>> 
+=== ALG4 MCE  tau=0.053 ===
+[Stage1] Computing and caching all edge similarities...
+  edges cached: 1311227
+  [Stage1] Done: 149 ms
+[Stage2] Degeneracy ordering...
+  [Stage2] Done: 33 ms
+[Stage3] Semantic BK search...
+  tau=0.053  threads=16  timeout=600s
+  progress 3585/54870 (6.5%)  cliques=28641  elapsed=5s
+  progress 3656/54870 (6.7%)  cliques=30538  elapsed=10s
+  progress 3720/54870 (6.8%)  cliques=31863  elapsed=15s
+  progress 3787/54870 (6.9%)  cliques=33300  elapsed=20s
+  progress 3854/54870 (7.0%)  cliques=34863  elapsed=26s
+  progress 3918/54870 (7.1%)  cliques=36009  elapsed=31s
+  progress 3985/54870 (7.3%)  cliques=37463  elapsed=36s
+  progress 4021/54870 (7.3%)  cliques=38343  elapsed=41s
+  progress 4078/54870 (7.4%)  cliques=39592  elapsed=46s
+  progress 4129/54870 (7.5%)  cliques=40849  elapsed=51s
+  progress 4246/54870 (7.7%)  cliques=42837  elapsed=56s
+  progress 4284/54870 (7.8%)  cliques=43475  elapsed=61s
+  progress 4318/54870 (7.9%)  cliques=44508  elapsed=66s
+  progress 4431/54870 (8.1%)  cliques=45423  elapsed=71s
+  progress 4586/54870 (8.4%)  cliques=46476  elapsed=77s
+  progress 4767/54870 (8.7%)  cliques=47583  elapsed=82s
+  progress 4949/54870 (9.0%)  cliques=48907  elapsed=87s
+  progress 5101/54870 (9.3%)  cliques=49915  elapsed=92s
+  progress 5224/54870 (9.5%)  cliques=51121  elapsed=97s
+  progress 5337/54870 (9.7%)  cliques=52629  elapsed=102s
+  progress 5459/54870 (9.9%)  cliques=54356  elapsed=108s
+  progress 5594/54870 (10.2%)  cliques=55926  elapsed=113s
+  progress 5741/54870 (10.5%)  cliques=57408  elapsed=118s
+  progress 5871/54870 (10.7%)  cliques=58881  elapsed=123s
+  progress 5999/54870 (10.9%)  cliques=60452  elapsed=128s
+  progress 6144/54870 (11.2%)  cliques=62091  elapsed=133s
+  progress 6284/54870 (11.5%)  cliques=63825  elapsed=138s
+  progress 6419/54870 (11.7%)  cliques=65362  elapsed=143s
+  progress 6553/54870 (11.9%)  cliques=67049  elapsed=148s
+  progress 6612/54870 (12.1%)  cliques=68230  elapsed=154s
+  progress 6647/54870 (12.1%)  cliques=68837  elapsed=159s
+  progress 6709/54870 (12.2%)  cliques=69679  elapsed=164s
+  progress 6815/54870 (12.4%)  cliques=70872  elapsed=169s
+  progress 6947/54870 (12.7%)  cliques=72685  elapsed=174s
+  progress 7043/54870 (12.8%)  cliques=74320  elapsed=179s
+  progress 7133/54870 (13.0%)  cliques=75674  elapsed=185s
+  progress 7217/54870 (13.2%)  cliques=76543  elapsed=190s
+  progress 7294/54870 (13.3%)  cliques=77406  elapsed=196s
+  progress 7349/54870 (13.4%)  cliques=78453  elapsed=201s
+  progress 7378/54870 (13.4%)  cliques=78890  elapsed=206s
+  progress 7400/54870 (13.5%)  cliques=79217  elapsed=212s
+  progress 7419/54870 (13.5%)  cliques=79571  elapsed=217s
+  progress 7433/54870 (13.5%)  cliques=79768  elapsed=223s
+  progress 7457/54870 (13.6%)  cliques=80067  elapsed=228s
+  progress 7480/54870 (13.6%)  cliques=80393  elapsed=233s
+  progress 7500/54870 (13.7%)  cliques=80788  elapsed=239s
+  progress 7520/54870 (13.7%)  cliques=81097  elapsed=244s
+  progress 7557/54870 (13.8%)  cliques=81569  elapsed=251s
+  progress 7569/54870 (13.8%)  cliques=81733  elapsed=257s
+  progress 7588/54870 (13.8%)  cliques=82033  elapsed=262s
+  progress 7618/54870 (13.9%)  cliques=82623  elapsed=268s
+  progress 7636/54870 (13.9%)  cliques=82973  elapsed=274s
+  progress 7657/54870 (14.0%)  cliques=83292  elapsed=280s
+  progress 7672/54870 (14.0%)  cliques=83618  elapsed=285s
+  progress 7681/54870 (14.0%)  cliques=83763  elapsed=291s
+  progress 7713/54870 (14.1%)  cliques=84176  elapsed=296s
+  progress 7732/54870 (14.1%)  cliques=84654  elapsed=305s
+  progress 7747/54870 (14.1%)  cliques=85019  elapsed=311s
+  progress 7763/54870 (14.1%)  cliques=85302  elapsed=316s
+  progress 7778/54870 (14.2%)  cliques=85661  elapsed=322s
+  progress 7802/54870 (14.2%)  cliques=85990  elapsed=327s
+  progress 7819/54870 (14.3%)  cliques=86734  elapsed=332s
+  progress 7832/54870 (14.3%)  cliques=87020  elapsed=338s
+  progress 7843/54870 (14.3%)  cliques=87168  elapsed=344s
+  progress 7861/54870 (14.3%)  cliques=87572  elapsed=350s
+  progress 7880/54870 (14.4%)  cliques=87771 
+=== STDERR ===
+
+=== Exit Code: 124 ===

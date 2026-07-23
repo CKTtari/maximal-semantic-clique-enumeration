@@ -1,0 +1,80 @@
+=== STDOUT ===
+============================================
+  ALG5_standard (Struct+Semantic MCE)
+  mine <tau> | sink <file> | log <file> | quit
+============================================
+Dataset: dataset/dataset/FB15K-237_edges.txt (ID=7)
+Loaded chunk: dataset/vectors/FB15K-237_vectors.json.chunk.0.bin (14541 vertices)
+Loaded vectors from 14541 vertices across multiple chunks
+Vector dimension: 384
+Normalizing vectors...
+Vectors normalized successfully
+Graph: V=14541  E=248611
+Load: 188 ms
+
+
+=== Building VectorDB ===
+  Float32VectorStore: 14541x384
+=== DB ready ===
+
+
+>> 
+=== ALG5 MCE  tau=0.151 ===
+Stage1: computing and caching all edge similarities...
+  edges cached: 247294
+  [Stage1 build_graph]: 39 ms
+Stage1b: degeneracy ordering...
+  [Stage1b degeneracy]: 9 ms
+Stage2+3: BK + intra-clique subset enumeration...
+  tau=0.151  threads=32  timeout=6000s
+  merging thread-local candidates...
+  [Stage2+3 total]: 286 ms  candidates=225949
+    BK ratio in Phase1+2: 40.07%
+    Subset ratio in Phase1+2: 59.93%
+Stage4: global dedup (subset pruning)...
+  after exact dedup: 152489
+  [Stage4 dedup]: 131 ms  pruned=34557  final=117932
+
+=== TOTAL: 470 ms,  117932 maximal cliques ===
+
+--- Phase timing summary ---
+  BK ratio in Phase1+2:          40.07%
+  Subset ratio in Phase1+2:      59.93%
+  Phase3 dedup:                    131 ms
+----------------------------
+
+--- Clique size distribution ---
+  size   2: 29833 (25.30%)
+  size   3: 37593 (31.88%)
+  size   4: 20084 (17.03%)
+  size   5: 9731 (8.25%)
+  size   6: 4776 (4.05%)
+  size   7: 2005 (1.70%)
+  size   8: 1236 (1.05%)
+  size   9: 968 (0.82%)
+  size  10: 1042 (0.88%)
+  size  11: 1045 (0.89%)
+  size  12: 1053 (0.89%)
+  size  13: 1190 (1.01%)
+  size  14: 1487 (1.26%)
+  size  15: 1161 (0.98%)
+  size  16: 804 (0.68%)
+  size  17: 522 (0.44%)
+  size  18: 359 (0.30%)
+  size  19: 293 (0.25%)
+  size  20: 345 (0.29%)
+  size  21: 332 (0.28%)
+  size  22: 366 (0.31%)
+  size  23: 478 (0.41%)
+  size  24: 695 (0.59%)
+  size  25: 389 (0.33%)
+  size  26: 120 (0.10%)
+  size  27: 21 (0.02%)
+  size  28: 4 (0.00%)
+  Average clique size: 4.65
+--- Total: 117932 ---
+>> Bye.
+
+=== STDERR ===
+
+=== Exit Code: 0 ===

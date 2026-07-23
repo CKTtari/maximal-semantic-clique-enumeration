@@ -1,0 +1,73 @@
+Loaded binary vectors from dataset/vectors-256/sc-ldoor_vectors.bin
+Vector dimension: 256
+Normalizing vectors...
+Vectors normalized successfully
+Loaded binary vectors from dataset/vectors-256/sc-nasasrb_vectors.bin
+Vector dimension: 256
+Normalizing vectors...
+Vectors normalized successfully
+Loaded binary vectors from dataset/vectors-256/sc-pkustk11_vectors.bin
+Vector dimension: 256
+Normalizing vectors...
+Vectors normalized successfully
+Loaded binary vectors from dataset/vectors-256/soc-buzznet_vectors.bin
+Vector dimension: 256
+Normalizing vectors...
+Vectors normalized successfully
+Loaded binary vectors from dataset/vectors-256/soc-digg_vectors.bin
+Vector dimension: 256
+Normalizing vectors...
+Vectors normalized successfully
+Loaded binary vectors from dataset/vectors-256/tech-as-skitter_vectors.bin
+Vector dimension: 256
+Normalizing vectors...
+Vectors normalized successfully
+Loaded chunk: dataset/vectors/FB15K-237_vectors.json.chunk.0.bin (14541 vertices)
+Loaded vectors from 14541 vertices across multiple chunks
+Vector dimension: 384
+Normalizing vectors...
+Vectors normalized successfully
+Loaded chunk: dataset/vectors/WN18RR_vectors.json.chunk.0.bin (40943 vertices)
+Loaded vectors from 40943 vertices across multiple chunks
+Vector dimension: 384
+Normalizing vectors...
+Vectors normalized successfully
+Loaded chunk: dataset/vectors/dblp_coauthor_vectors.json.chunk.0.bin (320000 vertices)
+Loaded chunk: dataset/vectors/dblp_coauthor_vectors.json.chunk.1.bin (320000 vertices)
+Loaded chunk: dataset/vectors/dblp_coauthor_vectors.json.chunk.2.bin (320000 vertices)
+Loaded chunk: dataset/vectors/dblp_coauthor_vectors.json.chunk.3.bin (320000 vertices)
+Loaded chunk: dataset/vectors/dblp_coauthor_vectors.json.chunk.4.bin (320000 vertices)
+Loaded chunk: dataset/vectors/dblp_coauthor_vectors.json.chunk.5.bin (210301 vertices)
+Loaded vectors from 1810301 vertices across multiple chunks
+Vector dimension: 384
+Normalizing vectors...
+Vectors normalized successfully
+Loaded chunk: dataset/vectors\products_vectors.chunk.0.bin (100000 vertices)
+Loaded chunk: dataset/vectors\products_vectors.chunk.1.bin (100000 vertices)
+Loaded chunk: dataset/vectors\products_vectors.chunk.2.bin (100000 vertices)
+Loaded chunk: dataset/vectors\products_vectors.chunk.3.bin (100000 vertices)
+Loaded chunk: dataset/vectors\products_vectors.chunk.4.bin (100000 vertices)
+Loaded chunk: dataset/vectors\products_vectors.chunk.5.bin (100000 vertices)
+Loaded chunk: dataset/vectors\products_vectors.chunk.6.bin (100000 vertices)
+Loaded chunk: dataset/vectors\products_vectors.chunk.7.bin (100000 vertices)
+Loaded chunk: dataset/vectors\products_vectors.chunk.8.bin (100000 vertices)
+Loaded chunk: dataset/vectors\products_vectors.chunk.9.bin (100000 vertices)
+Loaded chunk: dataset/vectors\products_vectors.chunk.10.bin (100000 vertices)
+Loaded chunk: dataset/vectors\products_vectors.chunk.11.bin (100000 vertices)
+Loaded chunk: dataset/vectors\products_vectors.chunk.12.bin (100000 vertices)
+Loaded chunk: dataset/vectors\products_vectors.chunk.13.bin (100000 vertices)
+Loaded chunk: dataset/vectors\products_vectors.chunk.14.bin (100000 vertices)
+Loaded chunk: dataset/vectors\products_vectors.chunk.15.bin (100000 vertices)
+Loaded chunk: dataset/vectors\products_vectors.chunk.16.bin (100000 vertices)
+Loaded chunk: dataset/vectors\products_vectors.chunk.17.bin (100000 vertices)
+Loaded chunk: dataset/vectors\products_vectors.chunk.18.bin (100000 vertices)
+Loaded chunk: dataset/vectors\products_vectors.chunk.19.bin (100000 vertices)
+Loaded chunk: dataset/vectors\products_vectors.chunk.20.bin (100000 vertices)
+Loaded chunk: dataset/vectors\products_vectors.chunk.21.bin (100000 vertices)
+Loaded chunk: dataset/vectors\products_vectors.chunk.22.bin (100000 vertices)
+Loaded chunk: dataset/vectors\products_vectors.chunk.23.bin (100000 vertices)
+Loaded chunk: dataset/vectors\products_vectors.chunk.24.bin (49029 vertices)
+Loaded vectors from 2449029 vertices across multiple chunks
+Vector dimension: 100
+Normalizing vectors...
+Vectors normalized successfully

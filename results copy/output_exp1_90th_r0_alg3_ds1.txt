@@ -1,0 +1,90 @@
+=== STDOUT ===
+============================================
+  ALG5_standard (Struct+Semantic MCE)
+  mine <tau> | sink <file> | log <file> | quit
+============================================
+Dataset: dataset/dataset/sc-ldoor.txt (ID=1)
+Loaded binary vectors from dataset/vectors-256/sc-ldoor_vectors.bin
+Vector dimension: 256
+Normalizing vectors...
+Vectors normalized successfully
+Graph: V=909537  E=20770807
+Load: 14450 ms
+
+
+=== Building VectorDB ===
+  Float32VectorStore: 909537x256
+=== DB ready ===
+
+
+>> 
+=== ALG5 MCE  tau=0.080 ===
+Stage1: computing and caching all edge similarities...
+  edges cached: 20770807
+  [Stage1 build_graph]: 4062 ms
+Stage1b: degeneracy ordering...
+  [Stage1b degeneracy]: 773 ms
+Stage2+3: BK + intra-clique subset enumeration...
+  tau=0.080  threads=128  timeout=6000s
+  progress 29567/909537 (3.3%)  candidates=0  elapsed=5s
+  progress 53604/909537 (5.9%)  candidates=0  elapsed=10s
+  progress 105508/909537 (11.6%)  candidates=0  elapsed=15s
+  progress 144888/909537 (15.9%)  candidates=0  elapsed=20s
+  progress 183729/909537 (20.2%)  candidates=0  elapsed=25s
+  progress 216944/909537 (23.9%)  candidates=0  elapsed=30s
+  progress 251323/909537 (27.6%)  candidates=0  elapsed=35s
+  progress 281580/909537 (31.0%)  candidates=0  elapsed=40s
+  progress 313987/909537 (34.5%)  candidates=0  elapsed=45s
+  progress 345697/909537 (38.0%)  candidates=0  elapsed=50s
+  progress 377641/909537 (41.5%)  candidates=0  elapsed=55s
+  progress 408043/909537 (44.9%)  candidates=0  elapsed=60s
+  progress 438200/909537 (48.2%)  candidates=0  elapsed=65s
+  progress 466778/909537 (51.3%)  candidates=0  elapsed=70s
+  progress 494663/909537 (54.4%)  candidates=0  elapsed=75s
+  progress 523844/909537 (57.6%)  candidates=0  elapsed=80s
+  progress 553057/909537 (60.8%)  candidates=0  elapsed=85s
+  progress 580318/909537 (63.8%)  candidates=0  elapsed=90s
+  progress 608121/909537 (66.9%)  candidates=0  elapsed=95s
+  progress 635688/909537 (69.9%)  candidates=0  elapsed=100s
+  progress 661555/909537 (72.7%)  candidates=0  elapsed=105s
+  progress 688064/909537 (75.6%)  candidates=0  elapsed=110s
+  progress 713784/909537 (78.5%)  candidates=0  elapsed=115s
+  progress 738827/909537 (81.2%)  candidates=0  elapsed=120s
+  progress 762433/909537 (83.8%)  candidates=0  elapsed=125s
+  progress 785216/909537 (86.3%)  candidates=0  elapsed=130s
+  progress 807600/909537 (88.8%)  candidates=0  elapsed=135s
+  progress 830409/909537 (91.3%)  candidates=0  elapsed=140s
+  progress 851208/909537 (93.6%)  candidates=0  elapsed=145s
+  progress 871208/909537 (95.8%)  candidates=0  elapsed=150s
+  progress 891656/909537 (98.0%)  candidates=0  elapsed=155s
+  merging thread-local candidates...
+  [Stage2+3 total]: 159958 ms  candidates=4820805
+    BK ratio in Phase1+2: 0.24%
+    Subset ratio in Phase1+2: 99.76%
+Stage4: global dedup (subset pruning)...
+  after exact dedup: 3325170
+  [Stage4 dedup]: 3237 ms  pruned=861566  final=2463604
+
+=== TOTAL: 168454 ms,  2463604 maximal cliques ===
+
+--- Phase timing summary ---
+  BK ratio in Phase1+2:           0.24%
+  Subset ratio in Phase1+2:      99.76%
+  Phase3 dedup:                   3237 ms
+----------------------------
+
+--- Clique size distribution ---
+  size   2: 310174 (12.59%)
+  size   3: 1134778 (46.06%)
+  size   4: 801536 (32.54%)
+  size   5: 194998 (7.92%)
+  size   6: 20972 (0.85%)
+  size   7: 1127 (0.05%)
+  size   8: 19 (0.00%)
+  Average clique size: 3.39
+--- Total: 2463604 ---
+>> Bye.
+
+=== STDERR ===
+
+=== Exit Code: 0 ===

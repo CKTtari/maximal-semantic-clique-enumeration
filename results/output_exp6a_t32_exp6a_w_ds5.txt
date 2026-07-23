@@ -1,0 +1,62 @@
+=== STDOUT ===
+============================================
+  alg6_v2_standard (Clique Size-Layered MCE)
+  mine <tau> | sink <file> | log <file> | quit
+============================================
+Dataset: dataset/dataset/soc-digg.txt (ID=5)
+Loaded binary vectors from dataset/vectors-256/soc-digg_vectors.bin
+Vector dimension: 256
+Normalizing vectors...
+Vectors normalized successfully
+Graph: V=770799  E=5907132
+Load: 6774 ms
+
+
+=== Building VectorDB ===
+  Float32VectorStore: 770799x256
+=== DB ready ===
+
+
+>> 
+=== AvgSim Clique MCE  tau=0.080 ===
+Ablation: W_PRUNE=1  MONO_PRUNE=0  LAYER_DEDUP=0
+Stage1: computing and caching all edge similarities...
+  [Stage1] edges: 5907132, sim>0.080: 590714
+  [Stage1 time]: 506 ms
+Stage2: building layer-0 (sim > 0.080 edges)...
+  Layer-0: 590714 2-cliques (after dedup)
+Stage3: clique expansion by size layers...
+  Layer  0: in=590714    out_next=1668053   dedup_removed=0         maximal_collected=313019  t=1076ms
+  Layer  1: in=1668053   out_next=3567736   dedup_removed=0         maximal_collected=630569  t=1924ms
+  Layer  2: in=3567736   out_next=4131442   dedup_removed=0         maximal_collected=1890796  t=2430ms
+  Layer  3: in=4131442   out_next=3379635   dedup_removed=0         maximal_collected=2609304  t=2353ms
+  Layer  4: in=3379635   out_next=2690638   dedup_removed=0         maximal_collected=2180974  t=1965ms
+  Layer  5: in=2690638   out_next=1674004   dedup_removed=0         maximal_collected=1824830  t=1490ms
+  Layer  6: in=1674004   out_next=1022672   dedup_removed=0         maximal_collected=1013926  t=937ms
+  Layer  7: in=1022672   out_next=0         dedup_removed=0         maximal_collected=1022672  t=526ms
+
+  [Stage2+3 time]: 8 layers, 13129 ms
+
+Stage4: post-validation (exact dedup)...
+  raw collected: 11486090  after exact dedup: 1266258  (removed 10219832)
+  subset_pruned: 3178  final: 1263080
+  [Stage4 time]: 8838 ms
+
+--- Clique size distribution ---
+  size   2: 312377 (24.73%)
+  size   3: 365866 (28.97%)
+  size   4: 404298 (32.01%)
+  size   5: 149430 (11.83%)
+  size   6: 26781 (2.12%)
+  size   7: 3947 (0.31%)
+  size   8: 338 (0.03%)
+  size   9: 43 (0.00%)
+  Average clique size: 3.39
+--- Total cliques: 1263080 ---
+
+=== TOTAL: 22867 ms,  1263080 maximal cliques ===
+>> Bye.
+
+=== STDERR ===
+
+=== Exit Code: 0 ===

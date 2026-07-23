@@ -1,0 +1,73 @@
+{
+  "10th_alg1_ds5": {
+    "time_avg": 114.933,
+    "time_min": 114.933,
+    "time_max": 114.933,
+    "count": 1073605654,
+    "status": "success"
+  },
+  "10th_alg2_ds5": {
+    "time_avg": "\u8fd0\u884c\u8d85\u65f6(>600s)",
+    "count": null,
+    "status": "failed",
+    "error_type": "TLE",
+    "elapsed": 600.5479989051819,
+    "error": "\u8fd0\u884c\u8d85\u65f6(>600s)",
+    "output_preview": "============================================\n  ALG4 Standard (Semantic BK)\n  mine <tau> | sink <file> | log <file> | quit\n============================================\nDataset: dataset/dataset/soc-digg.txt (ID=5)\nLoaded binary vectors from dataset/vectors-256/soc-digg_vectors.bin\nVector dimension: 256\nNormalizing vectors...\nVectors normalized successfully\nGraph: V=770799  E=5907132\nLoad: 7268 ms\n\n\n=== Building VectorDB ===\n  Float32VectorStore: 770799x256\n=== DB ready ===\n\n\n>> \n=== ALG4 MCE  tau=",
+    "stderr_preview": ""
+  },
+  "10th_alg3_ds5": {
+    "time_avg": "\u5185\u5b58\u4e0d\u8db3(OOM) - \u7a0b\u5e8f\u88ab\u7cfb\u7edf\u7ec8\u6b62",
+    "count": null,
+    "status": "failed",
+    "error_type": "OOM",
+    "elapsed": 31.822221755981445,
+    "error": "\u5185\u5b58\u4e0d\u8db3(OOM) - \u7a0b\u5e8f\u88ab\u7cfb\u7edf\u7ec8\u6b62",
+    "output_preview": "============================================\n  ALG5_standard (Struct+Semantic MCE)\n  mine <tau> | sink <file> | log <file> | quit\n============================================\nDataset: dataset/dataset/soc-digg.txt (ID=5)\nLoaded binary vectors from dataset/vectors-256/soc-digg_vectors.bin\nVector dimension: 256\nNormalizing vectors...\nVectors normalized successfully\nGraph: V=770799  E=5907132\nLoad: 5808 ms\n\n\n=== Building VectorDB ===\n  Float32VectorStore: 770799x256\n=== DB ready ===\n\n\n>> ",
+    "stderr_preview": "terminate called after throwing an instance of 'std::bad_alloc'\n  what():  std::bad_alloc\ntimeout: the monitored command dumped core\n"
+  },
+  "10th_alg4_ds5": {
+    "time_avg": "\u5185\u5b58\u4e0d\u8db3(OOM) - \u7a0b\u5e8f\u88ab\u7cfb\u7edf\u7ec8\u6b62",
+    "count": null,
+    "status": "failed",
+    "error_type": "OOM",
+    "elapsed": 24.794018030166626,
+    "error": "\u5185\u5b58\u4e0d\u8db3(OOM) - \u7a0b\u5e8f\u88ab\u7cfb\u7edf\u7ec8\u6b62",
+    "output_preview": "============================================\n  alg6_v2_standard (Clique Size-Layered MCE)\n  mine <tau> | sink <file> | log <file> | quit\n============================================\nDataset: dataset/dataset/soc-digg.txt (ID=5)\nLoaded binary vectors from dataset/vectors-256/soc-digg_vectors.bin\nVector dimension: 256\nNormalizing vectors...\nVectors normalized successfully\nGraph: V=770799  E=5907132\nLoad: 5666 ms\n\n\n=== Building VectorDB ===\n  Float32VectorStore: 770799x256\n=== DB ready ===\n\n\n>> ",
+    "stderr_preview": "terminate called after throwing an instance of 'std::bad_alloc'\nterminate called recursively\ntimeout: the monitored command dumped core\n"
+  },
+  "90th_alg1_ds5": {
+    "time_avg": 70.384,
+    "time_min": 70.384,
+    "time_max": 70.384,
+    "count": 1073605654,
+    "status": "success"
+  },
+  "90th_alg2_ds5": {
+    "time_avg": "\u8fd0\u884c\u8d85\u65f6(>600s)",
+    "count": null,
+    "status": "failed",
+    "error_type": "TLE",
+    "elapsed": 600.5863070487976,
+    "error": "\u8fd0\u884c\u8d85\u65f6(>600s)",
+    "output_preview": "============================================\n  ALG4 Standard (Semantic BK)\n  mine <tau> | sink <file> | log <file> | quit\n============================================\nDataset: dataset/dataset/soc-digg.txt (ID=5)\nLoaded binary vectors from dataset/vectors-256/soc-digg_vectors.bin\nVector dimension: 256\nNormalizing vectors...\nVectors normalized successfully\nGraph: V=770799  E=5907132\nLoad: 5655 ms\n\n\n=== Building VectorDB ===\n  Float32VectorStore: 770799x256\n=== DB ready ===\n\n\n>> ",
+    "stderr_preview": ""
+  },
+  "90th_alg3_ds5": {
+    "time_avg": "\u8fd0\u884c\u8d85\u65f6(>600s)",
+    "count": null,
+    "status": "failed",
+    "error_type": "TLE",
+    "elapsed": 600.7464120388031,
+    "error": "\u8fd0\u884c\u8d85\u65f6(>600s)",
+    "output_preview": "============================================\n  ALG5_standard (Struct+Semantic MCE)\n  mine <tau> | sink <file> | log <file> | quit\n============================================\nDataset: dataset/dataset/soc-digg.txt (ID=5)\nLoaded binary vectors from dataset/vectors-256/soc-digg_vectors.bin\nVector dimension: 256\nNormalizing vectors...\nVectors normalized successfully\nGraph: V=770799  E=5907132\nLoad: 5953 ms\n\n\n=== Building VectorDB ===\n  Float32VectorStore: 770799x256\n=== DB ready ===\n\n\n>> ",
+    "stderr_preview": ""
+  },
+  "90th_alg4_ds5": {
+    "time_avg": 8.168,
+    "time_min": 8.168,
+    "time_max": 8.168,
+    "count": 1263080,
+    "status": "success"
+  }
+}

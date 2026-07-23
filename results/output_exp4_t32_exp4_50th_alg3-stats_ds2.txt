@@ -1,0 +1,92 @@
+=== STDOUT ===
+============================================
+  ALG5 Standard (StrSub) - Stats Version
+  mine <tau> | sink <file> | log <file> | dataset <id> | quit
+============================================
+Loaded binary vectors from dataset/vectors-256/sc-nasasrb_vectors.bin
+Vector dimension: 256
+Normalizing vectors...
+Vectors normalized successfully
+
+=== Building VectorDB ===
+  Float32VectorStore: 54870x256
+=== DB ready ===
+
+Dataset loaded: ID=2, V=54870
+>> 
+=== ALG5 MCE (stats)  tau=-0.000 ===
+Stage1: computing and caching all edge similarities...
+  edges cached: 1311227
+  [Stage1 build_graph]: 168 ms
+Stage1b: degeneracy ordering...
+  [Stage1b degeneracy]: 42 ms
+Stage2+3: BK + intra-clique subset enumeration...
+  tau=-0.000  threads=32
+  merging thread-local candidates...
+  [Stage2+3 total]: 534606 ms  candidates=1855725
+    BK ratio in Phase1+2: 100.00%
+    Subset ratio in Phase1+2: 0.00%
+Stage4: global dedup (subset pruning)...
+  after exact dedup: 1837863
+  [Stage4 dedup]: 9748 ms  pruned=125168  final=1712695
+
+=== TOTAL: 544626 ms,  1712695 maximal cliques ===
+
++============================================================+
+|   Extended Mining Statistics (ALG3/StrSub)  tau=-0.000      |
++------------------------------------------------------------+
+|  [General]                                                 |
+|  #recursive_calls (BK)      :         555467            |
+|  #search_nodes              :         555467            |
+|  #candidate_expansions      :         500597            |
+|  #similarity_computations   :       10219071            |
++------------------------------------------------------------+
+|  [ALG3 Two-Phase]                                           |
+|  #phase1_calls (BK enum)    :              0            |
+|  #phase2_calls (subset enum):          28154            |
+|  #subsets_produced (pre-dedup):      1855725            |
+|  #topedge_prunes           :            142            |
+|  #localmax_prunes          :         125168            |
+|  LocalMax filter rate      :          6.74 %           |
+|  BK time ratio             :        100.00 %           |
+|  Subset time ratio         :          0.00 %           |
++------------------------------------------------------------+
+|  [Phase Timing]                                            |
+|  Graph build        :      168 ms  (  0.0%)               |
+|  Degeneracy ordering:       42 ms  (  0.0%)               |
+|  BK + Subset enum    :        0 ms  (  0.0%)               |
+|  Global dedup (P3)   :     9748 ms  (  1.8%)               |
++============================================================+
+
+
+--- Clique size distribution ---
+  size   3: 40 (0.00%)
+  size   4: 241 (0.01%)
+  size   5: 1085 (0.06%)
+  size   6: 3414 (0.20%)
+  size   7: 7776 (0.45%)
+  size   8: 15646 (0.91%)
+  size   9: 25954 (1.52%)
+  size  10: 41176 (2.40%)
+  size  11: 67786 (3.96%)
+  size  12: 110613 (6.46%)
+  size  13: 159668 (9.32%)
+  size  14: 209894 (12.26%)
+  size  15: 242663 (14.17%)
+  size  16: 248708 (14.52%)
+  size  17: 218375 (12.75%)
+  size  18: 163769 (9.56%)
+  size  19: 102912 (6.01%)
+  size  20: 56315 (3.29%)
+  size  21: 24465 (1.43%)
+  size  22: 8860 (0.52%)
+  size  23: 2380 (0.14%)
+  size  24: 955 (0.06%)
+  Average clique size: 15.23
+--- Total: 1712695 ---
+time_avg 544.626  time_min 544.626  time_max 544.626  count 1712695
+>> Bye.
+
+=== STDERR ===
+
+=== Exit Code: 0 ===

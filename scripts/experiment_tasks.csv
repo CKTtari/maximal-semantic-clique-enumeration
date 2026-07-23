@@ -1,0 +1,344 @@
+﻿task_id,exp_id,exp_name,dataset_id,dataset_name,scale_level,algorithm_id,algorithm_name,code_version,tau_percentile,tau_value,threads,variant,extra_params,status,elapsed_s,tle_standard,runs,priority,created_at,updated_at,error_msg,error_type
+10th_alg2_ds1,exp1,Overall Efficiency,1,sc-ldoor,,2,SemBK,alg2-raw.exe,10,-0.0801868,,,,pending,,,1,100.3,2026-05-13 22:59:18,,,
+50th_alg2_ds1,exp1,Overall Efficiency,1,sc-ldoor,,2,SemBK,alg2-raw.exe,50,-8.09878e-06,,,,pending,,,1,100.5,2026-05-13 22:59:18,,,
+90th_alg2_ds1,exp1,Overall Efficiency,1,sc-ldoor,,2,SemBK,alg2-raw.exe,90,0.0801759,,,,tle,600.62,600,1,100.7,2026-05-13 22:59:18,2026-05-14 08:21:10,运行超时(>600s),TLE
+10th_alg3_ds1,exp1,Overall Efficiency,1,sc-ldoor,,3,StrSub,alg3-raw.exe,10,-0.0801868,,,,completed,18.91,600,1,101.95,2026-05-13 22:59:18,2026-05-13 23:30:52,,
+50th_alg3_ds1,exp1,Overall Efficiency,1,sc-ldoor,,3,StrSub,alg3-raw.exe,50,-8.09878e-06,,,,completed,427.33,600,1,100.75,2026-05-13 22:59:18,2026-05-14 05:36:27,,
+90th_alg3_ds1,exp1,Overall Efficiency,1,sc-ldoor,,3,StrSub,alg3-raw.exe,90,0.0801759,,,,completed,252.34,600,1,101.95,2026-05-13 22:59:18,2026-05-13 23:35:05,,
+10th_alg4_ds1,exp1,Overall Efficiency,1,sc-ldoor,,4,MonoSemMCE,alg4-raw.exe,10,-0.0801868,,,,pending,,600,1,100.6,2026-05-13 22:59:18,2026-05-14 13:04:09,,
+50th_alg4_ds1,exp1,Overall Efficiency,1,sc-ldoor,,4,MonoSemMCE,alg4-raw.exe,50,-8.09878e-06,,,,oom,24.72,600,1,101.0,2026-05-13 22:59:18,2026-05-15 00:13:06,内存不足(OOM),OOM
+90th_alg4_ds1,exp1,Overall Efficiency,1,sc-ldoor,,4,MonoSemMCE,alg4-raw.exe,90,0.0801759,,,,completed,39.53,600,1,101.4,2026-05-13 22:59:18,2026-05-14 03:36:57,,
+10th_alg2_ds2,exp1,Overall Efficiency,2,sc-nasasrb,,2,SemBK,alg2-raw.exe,10,-0.0802311,,,,pending,,,1,100.3,2026-05-13 22:59:18,,,
+50th_alg2_ds2,exp1,Overall Efficiency,2,sc-nasasrb,,2,SemBK,alg2-raw.exe,50,-4.66295e-05,,,,pending,,,1,100.5,2026-05-13 22:59:18,,,
+90th_alg2_ds2,exp1,Overall Efficiency,2,sc-nasasrb,,2,SemBK,alg2-raw.exe,90,0.0800619,,,,tle,600.25,600,1,100.7,2026-05-13 22:59:18,2026-05-14 08:31:12,运行超时(>600s),TLE
+10th_alg3_ds2,exp1,Overall Efficiency,2,sc-nasasrb,,3,StrSub,alg3-raw.exe,10,-0.0802311,,,,completed,1.39,600,1,101.95,2026-05-13 22:59:18,2026-05-13 23:35:08,,
+50th_alg3_ds2,exp1,Overall Efficiency,2,sc-nasasrb,,3,StrSub,alg3-raw.exe,50,-4.66295e-05,,,,completed,107.85,600,1,100.75,2026-05-13 22:59:18,2026-05-14 05:38:16,,
+90th_alg3_ds2,exp1,Overall Efficiency,2,sc-nasasrb,,3,StrSub,alg3-raw.exe,90,0.0800619,,,,completed,43.58,600,1,101.95,2026-05-13 22:59:18,2026-05-13 23:35:53,,
+10th_alg4_ds2,exp1,Overall Efficiency,2,sc-nasasrb,,4,MonoSemMCE,alg4-raw.exe,10,-0.0802311,,,,pending,,600,1,100.6,2026-05-13 22:59:18,2026-05-14 13:04:55,,
+50th_alg4_ds2,exp1,Overall Efficiency,2,sc-nasasrb,,4,MonoSemMCE,alg4-raw.exe,50,-4.66295e-05,,,,oom,36.53,600,1,101.0,2026-05-13 22:59:18,2026-05-15 00:13:43,内存不足(OOM),OOM
+90th_alg4_ds2,exp1,Overall Efficiency,2,sc-nasasrb,,4,MonoSemMCE,alg4-raw.exe,90,0.0800619,,,,completed,2.02,600,1,101.4,2026-05-13 22:59:18,2026-05-14 03:37:00,,
+10th_alg2_ds3,exp1,Overall Efficiency,3,sc-pkustk11,,2,SemBK,alg2-raw.exe,10,-0.0802687,,,,pending,,,1,100.3,2026-05-13 22:59:18,,,
+50th_alg2_ds3,exp1,Overall Efficiency,3,sc-pkustk11,,2,SemBK,alg2-raw.exe,50,2.17557e-05,,,,pending,,,1,100.5,2026-05-13 22:59:18,,,
+90th_alg2_ds3,exp1,Overall Efficiency,3,sc-pkustk11,,2,SemBK,alg2-raw.exe,90,0.08019,,,,tle,600.28,600,1,100.7,2026-05-13 22:59:18,2026-05-14 08:41:13,运行超时(>600s),TLE
+10th_alg3_ds3,exp1,Overall Efficiency,3,sc-pkustk11,,3,StrSub,alg3-raw.exe,10,-0.0802687,,,,completed,2.33,600,1,101.95,2026-05-13 22:59:18,2026-05-13 23:35:57,,
+50th_alg3_ds3,exp1,Overall Efficiency,3,sc-pkustk11,,3,StrSub,alg3-raw.exe,50,2.17557e-05,,,,tle,600.35,600,1,100.75,2026-05-13 22:59:18,2026-05-14 05:48:18,运行超时(>600s),TLE
+90th_alg3_ds3,exp1,Overall Efficiency,3,sc-pkustk11,,3,StrSub,alg3-raw.exe,90,0.08019,,,,tle,600.29,600,1,101.95,2026-05-13 22:59:18,2026-05-13 23:45:58,运行超时(>600s),TLE
+10th_alg4_ds3,exp1,Overall Efficiency,3,sc-pkustk11,,4,MonoSemMCE,alg4-raw.exe,10,-0.0802687,,,,pending,,600,1,100.6,2026-05-13 22:59:18,2026-05-14 13:05:53,,
+50th_alg4_ds3,exp1,Overall Efficiency,3,sc-pkustk11,,4,MonoSemMCE,alg4-raw.exe,50,2.17557e-05,,,,oom,23.85,600,1,101.0,2026-05-13 22:59:18,2026-05-15 00:14:08,内存不足(OOM),OOM
+90th_alg4_ds3,exp1,Overall Efficiency,3,sc-pkustk11,,4,MonoSemMCE,alg4-raw.exe,90,0.08019,,,,completed,3.83,600,1,101.4,2026-05-13 22:59:18,2026-05-14 03:37:05,,
+10th_alg2_ds4,exp1,Overall Efficiency,4,soc-buzznet,,2,SemBK,alg2-raw.exe,10,-0.0802048,,,,pending,,,1,100.3,2026-05-13 22:59:18,,,
+50th_alg2_ds4,exp1,Overall Efficiency,4,soc-buzznet,,2,SemBK,alg2-raw.exe,50,-6.88639e-05,,,,pending,,,1,100.5,2026-05-13 22:59:18,,,
+90th_alg2_ds4,exp1,Overall Efficiency,4,soc-buzznet,,2,SemBK,alg2-raw.exe,90,0.0801639,,,,tle,600.29,600,1,100.7,2026-05-13 22:59:18,2026-05-14 08:51:15,运行超时(>600s),TLE
+10th_alg3_ds4,exp1,Overall Efficiency,4,soc-buzznet,,3,StrSub,alg3-raw.exe,10,-0.0802048,,,,oom,59.17,600,1,101.95,2026-05-13 22:59:18,2026-05-13 23:46:59,内存不足(OOM),OOM
+50th_alg3_ds4,exp1,Overall Efficiency,4,soc-buzznet,,3,StrSub,alg3-raw.exe,50,-6.88639e-05,,,,oom,351.15,600,1,100.75,2026-05-13 22:59:18,2026-05-14 05:54:10,内存不足(OOM),OOM
+90th_alg3_ds4,exp1,Overall Efficiency,4,soc-buzznet,,3,StrSub,alg3-raw.exe,90,0.0801639,,,,tle,601.14,600,1,101.95,2026-05-13 22:59:18,2026-05-13 23:57:01,运行超时(>600s),TLE
+10th_alg4_ds4,exp1,Overall Efficiency,4,soc-buzznet,,4,MonoSemMCE,alg4-raw.exe,10,-0.0802048,,,,pending,,600,1,100.6,2026-05-13 22:59:18,2026-05-14 13:08:34,,
+50th_alg4_ds4,exp1,Overall Efficiency,4,soc-buzznet,,4,MonoSemMCE,alg4-raw.exe,50,-6.88639e-05,,,,oom,45.62,600,1,101.0,2026-05-13 22:59:18,2026-05-15 00:14:55,内存不足(OOM),OOM
+90th_alg4_ds4,exp1,Overall Efficiency,4,soc-buzznet,,4,MonoSemMCE,alg4-raw.exe,90,0.0801639,,,,completed,8.43,600,1,101.4,2026-05-13 22:59:18,2026-05-14 03:37:15,,
+10th_alg2_ds5,exp1,Overall Efficiency,5,soc-digg,,2,SemBK,alg2-raw.exe,10,-0.0801891,,,,pending,,,1,100.3,2026-05-13 22:59:18,,,
+50th_alg2_ds5,exp1,Overall Efficiency,5,soc-digg,,2,SemBK,alg2-raw.exe,50,4.60632e-06,,,,pending,,,1,100.5,2026-05-13 22:59:18,,,
+90th_alg2_ds5,exp1,Overall Efficiency,5,soc-digg,,2,SemBK,alg2-raw.exe,90,0.080216,,,,tle,600.46,600,1,100.7,2026-05-13 22:59:18,2026-05-14 09:01:16,运行超时(>600s),TLE
+10th_alg3_ds5,exp1,Overall Efficiency,5,soc-digg,,3,StrSub,alg3-raw.exe,10,-0.0801891,,,,oom,58.13,600,1,101.95,2026-05-13 22:59:18,2026-05-13 23:58:00,内存不足(OOM),OOM
+50th_alg3_ds5,exp1,Overall Efficiency,5,soc-digg,,3,StrSub,alg3-raw.exe,50,4.60632e-06,,,,tle,600.57,600,1,100.75,2026-05-13 22:59:18,2026-05-14 06:04:12,运行超时(>600s),TLE
+90th_alg3_ds5,exp1,Overall Efficiency,5,soc-digg,,3,StrSub,alg3-raw.exe,90,0.080216,,,,tle,600.55,600,1,101.95,2026-05-13 22:59:18,2026-05-14 00:08:02,运行超时(>600s),TLE
+10th_alg4_ds5,exp1,Overall Efficiency,5,soc-digg,,4,MonoSemMCE,alg4-raw.exe,10,-0.0801891,,,,pending,,600,1,100.6,2026-05-13 22:59:18,2026-05-14 13:09:06,,
+50th_alg4_ds5,exp1,Overall Efficiency,5,soc-digg,,4,MonoSemMCE,alg4-raw.exe,50,4.60632e-06,,,,oom,25.78,600,1,101.0,2026-05-13 22:59:18,2026-05-15 00:15:22,内存不足(OOM),OOM
+90th_alg4_ds5,exp1,Overall Efficiency,5,soc-digg,,4,MonoSemMCE,alg4-raw.exe,90,0.080216,,,,completed,16.95,600,1,101.4,2026-05-13 22:59:18,2026-05-14 03:37:33,,
+10th_alg2_ds7,exp1,Overall Efficiency,7,FB15K-237,,2,SemBK,alg2-raw.exe,10,-0.0151881,,,,pending,,,1,100.3,2026-05-13 22:59:18,,,
+50th_alg2_ds7,exp1,Overall Efficiency,7,FB15K-237,,2,SemBK,alg2-raw.exe,50,0.117534,,,,pending,,,1,100.5,2026-05-13 22:59:18,,,
+90th_alg2_ds7,exp1,Overall Efficiency,7,FB15K-237,,2,SemBK,alg2-raw.exe,90,0.300316,,,,tle,600.25,600,1,100.7,2026-05-13 22:59:18,2026-05-14 09:11:18,运行超时(>600s),TLE
+10th_alg3_ds7,exp1,Overall Efficiency,7,FB15K-237,,3,StrSub,alg3-raw.exe,10,-0.0151881,,,,completed,0.68,600,1,101.95,2026-05-13 22:59:18,2026-05-14 00:08:04,,
+50th_alg3_ds7,exp1,Overall Efficiency,7,FB15K-237,,3,StrSub,alg3-raw.exe,50,0.117534,,,,completed,0.65,600,1,100.75,2026-05-13 22:59:18,2026-05-14 06:04:14,,
+90th_alg3_ds7,exp1,Overall Efficiency,7,FB15K-237,,3,StrSub,alg3-raw.exe,90,0.300316,,,,completed,59.82,600,1,101.95,2026-05-13 22:59:18,2026-05-14 00:09:05,,
+10th_alg4_ds7,exp1,Overall Efficiency,7,FB15K-237,,4,MonoSemMCE,alg4-raw.exe,10,-0.0151881,,,,pending,,600,1,100.6,2026-05-13 22:59:18,2026-05-14 13:10:09,,
+50th_alg4_ds7,exp1,Overall Efficiency,7,FB15K-237,,4,MonoSemMCE,alg4-raw.exe,50,0.117534,,,,oom,46.35,600,1,101.0,2026-05-13 22:59:18,2026-05-15 00:16:10,内存不足(OOM),OOM
+90th_alg4_ds7,exp1,Overall Efficiency,7,FB15K-237,,4,MonoSemMCE,alg4-raw.exe,90,0.300316,,,,failed,0.47,600,1,101.4,2026-05-13 22:59:18,2026-05-14 22:01:37,段错误(SegFault),SIGNAL_139
+10th_alg2_ds8,exp1,Overall Efficiency,8,WN18RR,,2,SemBK,alg2-raw.exe,10,0.221709,,,,pending,,,1,100.3,2026-05-13 22:59:18,,,
+50th_alg2_ds8,exp1,Overall Efficiency,8,WN18RR,,2,SemBK,alg2-raw.exe,50,0.423383,,,,pending,,,1,100.5,2026-05-13 22:59:18,,,
+90th_alg2_ds8,exp1,Overall Efficiency,8,WN18RR,,2,SemBK,alg2-raw.exe,90,0.628274,,,,completed,0.4,600,1,100.7,2026-05-13 22:59:18,2026-05-14 09:11:20,,
+10th_alg3_ds8,exp1,Overall Efficiency,8,WN18RR,,3,StrSub,alg3-raw.exe,10,0.221709,,,,completed,0.43,600,1,101.95,2026-05-13 22:59:18,2026-05-14 00:09:07,,
+50th_alg3_ds8,exp1,Overall Efficiency,8,WN18RR,,3,StrSub,alg3-raw.exe,50,0.423383,,,,completed,0.4,600,1,100.75,2026-05-13 22:59:18,2026-05-14 06:04:15,,
+90th_alg3_ds8,exp1,Overall Efficiency,8,WN18RR,,3,StrSub,alg3-raw.exe,90,0.628274,,,,completed,0.42,600,1,101.95,2026-05-13 22:59:18,2026-05-14 00:09:09,,
+10th_alg4_ds8,exp1,Overall Efficiency,8,WN18RR,,4,MonoSemMCE,alg4-raw.exe,10,0.221709,,,,completed,0.43,600,1,100.6,2026-05-13 22:59:18,2026-05-14 13:10:11,,
+50th_alg4_ds8,exp1,Overall Efficiency,8,WN18RR,,4,MonoSemMCE,alg4-raw.exe,50,0.423383,,,,completed,0.39,600,1,101.0,2026-05-13 22:59:18,2026-05-14 05:17:34,,
+90th_alg4_ds8,exp1,Overall Efficiency,8,WN18RR,,4,MonoSemMCE,alg4-raw.exe,90,0.628274,,,,completed,0.46,600,1,101.4,2026-05-13 22:59:18,2026-05-14 03:39:00,,
+exp2_L1_alg2_ds9_20th,exp2,Scalability,9,DBLP,L1,2,SemBK,alg2-raw.exe,20,0.0129052,,,scale=L1,pending,,,1,100.35,2026-05-13 22:59:18,,,
+exp2_L1_alg2_ds9_50th,exp2,Scalability,9,DBLP,L1,2,SemBK,alg2-raw.exe,50,0.0997056,,,scale=L1,pending,,,1,100.5,2026-05-13 22:59:18,,,
+exp2_L1_alg2_ds9_80th,exp2,Scalability,9,DBLP,L1,2,SemBK,alg2-raw.exe,80,0.199608,,,scale=L1,tle,600.86,600,1,100.65,2026-05-13 22:59:18,2026-05-14 11:03:07,运行超时(>600s),TLE
+exp2_L1_alg3_ds9_20th,exp2,Scalability,9,DBLP,L1,3,StrSub,alg3-raw.exe,20,0.0129052,,,scale=L1,failed,30.85,600,1,101.65,2026-05-13 22:59:18,2026-05-14 02:06:32,程序异常中止(Abort),SIGNAL_134
+exp2_L1_alg3_ds9_50th,exp2,Scalability,9,DBLP,L1,3,StrSub,alg3-raw.exe,50,0.0997056,,,scale=L1,tle,600.83,600,1,100.75,2026-05-13 22:59:18,2026-05-14 06:14:17,运行超时(>600s),TLE
+exp2_L1_alg3_ds9_80th,exp2,Scalability,9,DBLP,L1,3,StrSub,alg3-raw.exe,80,0.199608,,,scale=L1,tle,601.02,600,1,101.65,2026-05-13 22:59:18,2026-05-14 02:16:34,运行超时(>600s),TLE
+exp2_L1_alg4_ds9_20th,exp2,Scalability,9,DBLP,L1,4,MonoSemMCE,alg4-raw.exe,20,0.0129052,,,scale=L1,interrupted,38.95,600,1,100.7,2026-05-13 22:59:18,2026-05-15 00:27:38,,
+exp2_L1_alg4_ds9_50th,exp2,Scalability,9,DBLP,L1,4,MonoSemMCE,alg4-raw.exe,50,0.0997056,,,scale=L1,oom,37.24,600,1,101.0,2026-05-13 22:59:18,2026-05-15 00:16:48,内存不足(OOM),OOM
+exp2_L1_alg4_ds9_80th,exp2,Scalability,9,DBLP,L1,4,MonoSemMCE,alg4-raw.exe,80,0.199608,,,scale=L1,oom,36.14,600,1,101.3,2026-05-13 22:59:18,2026-05-15 00:06:48,内存不足(OOM),OOM
+exp2_L1_alg4_ds9_90th,exp2,Scalability,9,DBLP,L1,4,MonoSemMCE,alg4-raw.exe,90,0.254785,,,scale=L1,interrupted,25.88,600,1,101.4,2026-05-13 22:59:18,2026-05-14 22:02:04,,
+exp2_L6_alg2_ds9_20th,exp2,Scalability,9,DBLP,L6,2,SemBK,alg2-raw.exe,20,0.0129052,,,scale=L6,pending,,,1,100.35,2026-05-13 22:59:18,,,
+exp2_L6_alg2_ds9_50th,exp2,Scalability,9,DBLP,L6,2,SemBK,alg2-raw.exe,50,0.0997056,,,scale=L6,pending,,,1,100.5,2026-05-13 22:59:18,,,
+exp2_L6_alg2_ds9_80th,exp2,Scalability,9,DBLP,L6,2,SemBK,alg2-raw.exe,80,0.199608,,,scale=L6,tle,600.85,600,1,100.65,2026-05-13 22:59:18,2026-05-14 11:13:09,运行超时(>600s),TLE
+exp2_L6_alg3_ds9_20th,exp2,Scalability,9,DBLP,L6,3,StrSub,alg3-raw.exe,20,0.0129052,,,scale=L6,failed,31.48,600,1,101.65,2026-05-13 22:59:18,2026-05-14 02:17:07,程序异常中止(Abort),SIGNAL_134
+exp2_L6_alg3_ds9_50th,exp2,Scalability,9,DBLP,L6,3,StrSub,alg3-raw.exe,50,0.0997056,,,scale=L6,tle,600.8,600,1,100.75,2026-05-13 22:59:18,2026-05-14 06:24:19,运行超时(>600s),TLE
+exp2_L6_alg3_ds9_80th,exp2,Scalability,9,DBLP,L6,3,StrSub,alg3-raw.exe,80,0.199608,,,scale=L6,tle,600.95,600,1,101.65,2026-05-13 22:59:18,2026-05-14 02:27:09,运行超时(>600s),TLE
+exp2_L6_alg4_ds9_20th,exp2,Scalability,9,DBLP,L6,4,MonoSemMCE,alg4-raw.exe,20,0.0129052,,,scale=L6,failed,40.21,600,1,100.7,2026-05-13 22:59:18,2026-05-14 09:12:42,程序异常中止(Abort),SIGNAL_134
+exp2_L6_alg4_ds9_50th,exp2,Scalability,9,DBLP,L6,4,MonoSemMCE,alg4-raw.exe,50,0.0997056,,,scale=L6,oom,37.52,600,1,101.0,2026-05-13 22:59:18,2026-05-15 00:17:27,内存不足(OOM),OOM
+exp2_L6_alg4_ds9_80th,exp2,Scalability,9,DBLP,L6,4,MonoSemMCE,alg4-raw.exe,80,0.199608,,,scale=L6,oom,36.32,600,1,101.3,2026-05-13 22:59:18,2026-05-15 00:07:26,内存不足(OOM),OOM
+exp2_L6_alg4_ds9_90th,exp2,Scalability,9,DBLP,L6,4,MonoSemMCE,alg4-raw.exe,90,0.254785,,,scale=L6,interrupted,29.58,600,1,101.4,2026-05-13 22:59:18,2026-05-14 23:14:10,,
+exp2_L1_alg2_ds10_20th,exp2,Scalability,10,Amazon,L1,2,SemBK,alg2-raw.exe,20,,,,scale=L1,pending,,,1,100.35,2026-05-13 22:59:18,,,
+exp2_L1_alg2_ds10_50th,exp2,Scalability,10,Amazon,L1,2,SemBK,alg2-raw.exe,50,,,,scale=L1,pending,,,1,100.5,2026-05-13 22:59:18,,,
+exp2_L1_alg2_ds10_80th,exp2,Scalability,10,Amazon,L1,2,SemBK,alg2-raw.exe,80,,,,scale=L1,failed,,,1,100.65,2026-05-13 22:59:18,2026-05-14 11:13:10,,MISSING_TAU
+exp2_L1_alg3_ds10_20th,exp2,Scalability,10,Amazon,L1,3,StrSub,alg3-raw.exe,20,,,,scale=L1,failed,,,1,101.65,2026-05-13 22:59:18,2026-05-14 02:27:10,,MISSING_TAU
+exp2_L1_alg3_ds10_50th,exp2,Scalability,10,Amazon,L1,3,StrSub,alg3-raw.exe,50,,,,scale=L1,failed,,,1,100.75,2026-05-13 22:59:18,2026-05-14 06:24:21,,MISSING_TAU
+exp2_L1_alg3_ds10_80th,exp2,Scalability,10,Amazon,L1,3,StrSub,alg3-raw.exe,80,,,,scale=L1,failed,,,1,101.65,2026-05-13 22:59:18,2026-05-14 02:27:11,,MISSING_TAU
+exp2_L1_alg4_ds10_20th,exp2,Scalability,10,Amazon,L1,4,MonoSemMCE,alg4-raw.exe,20,,,,scale=L1,failed,,,1,100.7,2026-05-13 22:59:18,2026-05-14 09:12:43,,MISSING_TAU
+exp2_L1_alg4_ds10_50th,exp2,Scalability,10,Amazon,L1,4,MonoSemMCE,alg4-raw.exe,50,,,,scale=L1,failed,,,1,101.0,2026-05-13 22:59:18,2026-05-14 05:18:54,,MISSING_TAU
+exp2_L1_alg4_ds10_80th,exp2,Scalability,10,Amazon,L1,4,MonoSemMCE,alg4-raw.exe,80,,,,scale=L1,failed,,,1,101.3,2026-05-13 22:59:18,2026-05-14 04:27:12,,MISSING_TAU
+exp2_L1_alg4_ds10_90th,exp2,Scalability,10,Amazon,L1,4,MonoSemMCE,alg4-raw.exe,90,,,,scale=L1,failed,,,1,101.4,2026-05-13 22:59:18,2026-05-14 03:40:33,,MISSING_TAU
+exp2_L6_alg2_ds10_20th,exp2,Scalability,10,Amazon,L6,2,SemBK,alg2-raw.exe,20,,,,scale=L6,pending,,,1,100.35,2026-05-13 22:59:18,,,
+exp2_L6_alg2_ds10_50th,exp2,Scalability,10,Amazon,L6,2,SemBK,alg2-raw.exe,50,,,,scale=L6,pending,,,1,100.5,2026-05-13 22:59:18,,,
+exp2_L6_alg2_ds10_80th,exp2,Scalability,10,Amazon,L6,2,SemBK,alg2-raw.exe,80,,,,scale=L6,failed,,,1,100.65,2026-05-13 22:59:18,2026-05-14 11:13:11,,MISSING_TAU
+exp2_L6_alg3_ds10_20th,exp2,Scalability,10,Amazon,L6,3,StrSub,alg3-raw.exe,20,,,,scale=L6,failed,,,1,101.65,2026-05-13 22:59:18,2026-05-14 02:27:12,,MISSING_TAU
+exp2_L6_alg3_ds10_50th,exp2,Scalability,10,Amazon,L6,3,StrSub,alg3-raw.exe,50,,,,scale=L6,failed,,,1,100.75,2026-05-13 22:59:18,2026-05-14 06:24:22,,MISSING_TAU
+exp2_L6_alg3_ds10_80th,exp2,Scalability,10,Amazon,L6,3,StrSub,alg3-raw.exe,80,,,,scale=L6,failed,,,1,101.65,2026-05-13 22:59:18,2026-05-14 02:27:13,,MISSING_TAU
+exp2_L6_alg4_ds10_20th,exp2,Scalability,10,Amazon,L6,4,MonoSemMCE,alg4-raw.exe,20,,,,scale=L6,failed,,,1,100.7,2026-05-13 22:59:18,2026-05-14 09:12:45,,MISSING_TAU
+exp2_L6_alg4_ds10_50th,exp2,Scalability,10,Amazon,L6,4,MonoSemMCE,alg4-raw.exe,50,,,,scale=L6,failed,,,1,101.0,2026-05-13 22:59:18,2026-05-14 05:18:55,,MISSING_TAU
+exp2_L6_alg4_ds10_80th,exp2,Scalability,10,Amazon,L6,4,MonoSemMCE,alg4-raw.exe,80,,,,scale=L6,failed,,,1,101.3,2026-05-13 22:59:18,2026-05-14 04:27:14,,MISSING_TAU
+exp2_L6_alg4_ds10_90th,exp2,Scalability,10,Amazon,L6,4,MonoSemMCE,alg4-raw.exe,90,,,,scale=L6,failed,,,1,101.4,2026-05-13 22:59:18,2026-05-14 03:40:34,,MISSING_TAU
+exp3_50th_alg2_ds1,exp3,Sensitivity to Tau,1,sc-ldoor,,2,SemBK,alg2-raw.exe,50,-8.09878e-06,,,,pending,,,1,100.5,2026-05-13 22:59:18,,,
+exp3_60th_alg2_ds1,exp3,Sensitivity to Tau,1,sc-ldoor,,2,SemBK,alg2-raw.exe,60,0.0158715,,,,interrupted,377.8,,1,100.55,2026-05-13 22:59:18,2026-05-14 13:59:07,,
+exp3_70th_alg2_ds1,exp3,Sensitivity to Tau,1,sc-ldoor,,2,SemBK,alg2-raw.exe,70,0.032833,,,,tle,600.86,600,1,100.6,2026-05-13 22:59:18,2026-05-14 13:20:13,运行超时(>600s),TLE
+exp3_80th_alg2_ds1,exp3,Sensitivity to Tau,1,sc-ldoor,,2,SemBK,alg2-raw.exe,80,0.0526829,,,,tle,600.65,600,1,100.65,2026-05-13 22:59:18,2026-05-14 11:23:13,运行超时(>600s),TLE
+exp3_90th_alg2_ds1,exp3,Sensitivity to Tau,1,sc-ldoor,,2,SemBK,alg2-raw.exe,90,0.0801759,,,,tle,600.64,600,1,100.7,2026-05-13 22:59:18,2026-05-14 09:22:46,运行超时(>600s),TLE
+exp3_95th_alg2_ds1,exp3,Sensitivity to Tau,1,sc-ldoor,,2,SemBK,alg2-raw.exe,95,0.102793,,,,tle,600.63,600,1,100.725,2026-05-13 22:59:18,2026-05-14 07:51:04,运行超时(>600s),TLE
+exp3_50th_alg3_ds1,exp3,Sensitivity to Tau,1,sc-ldoor,,3,StrSub,alg3-raw.exe,50,-8.09878e-06,,,,completed,432.47,600,1,100.75,2026-05-13 22:59:18,2026-05-14 06:31:36,,
+exp3_60th_alg3_ds1,exp3,Sensitivity to Tau,1,sc-ldoor,,3,StrSub,alg3-raw.exe,60,0.0158715,,,,tle,601.01,600,1,101.05,2026-05-13 22:59:18,2026-05-14 04:45:04,运行超时(>600s),TLE
+exp3_70th_alg3_ds1,exp3,Sensitivity to Tau,1,sc-ldoor,,3,StrSub,alg3-raw.exe,70,0.032833,,,,tle,600.91,600,1,101.35,2026-05-13 22:59:18,2026-05-14 04:11:44,运行超时(>600s),TLE
+exp3_80th_alg3_ds1,exp3,Sensitivity to Tau,1,sc-ldoor,,3,StrSub,alg3-raw.exe,80,0.0526829,,,,completed,595.36,600,1,101.65,2026-05-13 22:59:18,2026-05-14 02:37:10,,
+exp3_90th_alg3_ds1,exp3,Sensitivity to Tau,1,sc-ldoor,,3,StrSub,alg3-raw.exe,90,0.0801759,,,,completed,471.35,600,1,-9999,2026-05-13 22:59:18,,,
+exp3_95th_alg3_ds1,exp3,Sensitivity to Tau,1,sc-ldoor,,3,StrSub,alg3-raw.exe,95,0.102793,,,,completed,57.38,600,1,102.1,2026-05-13 22:59:18,2026-05-13 23:00:20,,
+exp3_50th_alg4_ds1,exp3,Sensitivity to Tau,1,sc-ldoor,,4,MonoSemMCE,alg4-raw.exe,50,-8.09878e-06,,,,oom,22.87,600,1,101.0,2026-05-13 22:59:18,2026-05-15 00:17:51,内存不足(OOM),OOM
+exp3_60th_alg4_ds1,exp3,Sensitivity to Tau,1,sc-ldoor,,4,MonoSemMCE,alg4-raw.exe,60,0.0158715,,,,oom,23.68,600,1,101.1,2026-05-13 22:59:18,2026-05-15 00:11:48,内存不足(OOM),OOM
+exp3_70th_alg4_ds1,exp3,Sensitivity to Tau,1,sc-ldoor,,4,MonoSemMCE,alg4-raw.exe,70,0.032833,,,,oom,21.37,600,1,101.2,2026-05-13 22:59:18,2026-05-15 00:10:03,内存不足(OOM),OOM
+exp3_80th_alg4_ds1,exp3,Sensitivity to Tau,1,sc-ldoor,,4,MonoSemMCE,alg4-raw.exe,80,0.0526829,,,,oom,47.28,600,1,101.3,2026-05-13 22:59:18,2026-05-15 00:08:14,内存不足(OOM),OOM
+exp3_90th_alg4_ds1,exp3,Sensitivity to Tau,1,sc-ldoor,,4,MonoSemMCE,alg4-raw.exe,90,0.0801759,,,,completed,30.9,600,1,101.4,2026-05-13 22:59:18,2026-05-14 03:41:06,,
+exp3_95th_alg4_ds1,exp3,Sensitivity to Tau,1,sc-ldoor,,4,MonoSemMCE,alg4-raw.exe,95,0.102793,,,,completed,25.88,600,1,101.45,2026-05-13 22:59:18,2026-05-14 03:34:55,,
+exp3_50th_alg2_ds5,exp3,Sensitivity to Tau,5,soc-digg,,2,SemBK,alg2-raw.exe,50,4.60632e-06,,,,pending,,,1,100.5,2026-05-13 22:59:18,,,
+exp3_60th_alg2_ds5,exp3,Sensitivity to Tau,5,soc-digg,,2,SemBK,alg2-raw.exe,60,0.015832,,,,pending,,,1,100.55,2026-05-13 22:59:18,,,
+exp3_70th_alg2_ds5,exp3,Sensitivity to Tau,5,soc-digg,,2,SemBK,alg2-raw.exe,70,0.0327999,,,,tle,600.65,600,1,100.6,2026-05-13 22:59:18,2026-05-14 13:30:15,运行超时(>600s),TLE
+exp3_80th_alg2_ds5,exp3,Sensitivity to Tau,5,soc-digg,,2,SemBK,alg2-raw.exe,80,0.0526589,,,,tle,600.49,600,1,100.65,2026-05-13 22:59:18,2026-05-14 11:33:14,运行超时(>600s),TLE
+exp3_90th_alg2_ds5,exp3,Sensitivity to Tau,5,soc-digg,,2,SemBK,alg2-raw.exe,90,0.080216,,,,tle,600.48,600,1,100.7,2026-05-13 22:59:18,2026-05-14 09:32:48,运行超时(>600s),TLE
+exp3_95th_alg2_ds5,exp3,Sensitivity to Tau,5,soc-digg,,2,SemBK,alg2-raw.exe,95,0.102869,,,,tle,600.48,600,1,100.725,2026-05-13 22:59:18,2026-05-14 08:01:05,运行超时(>600s),TLE
+exp3_50th_alg3_ds5,exp3,Sensitivity to Tau,5,soc-digg,,3,StrSub,alg3-raw.exe,50,4.60632e-06,,,,tle,600.59,600,1,100.75,2026-05-13 22:59:18,2026-05-14 06:41:37,运行超时(>600s),TLE
+exp3_60th_alg3_ds5,exp3,Sensitivity to Tau,5,soc-digg,,3,StrSub,alg3-raw.exe,60,0.015832,,,,tle,600.69,600,1,101.05,2026-05-13 22:59:18,2026-05-14 04:55:05,运行超时(>600s),TLE
+exp3_70th_alg3_ds5,exp3,Sensitivity to Tau,5,soc-digg,,3,StrSub,alg3-raw.exe,70,0.0327999,,,,tle,600.58,600,1,101.35,2026-05-13 22:59:18,2026-05-14 04:21:46,运行超时(>600s),TLE
+exp3_80th_alg3_ds5,exp3,Sensitivity to Tau,5,soc-digg,,3,StrSub,alg3-raw.exe,80,0.0526589,,,,tle,600.54,600,1,101.65,2026-05-13 22:59:18,2026-05-14 02:47:12,运行超时(>600s),TLE
+exp3_90th_alg3_ds5,exp3,Sensitivity to Tau,5,soc-digg,,3,StrSub,alg3-raw.exe,90,0.080216,,,,tle,600.54,600,1,101.95,2026-05-13 22:59:18,2026-05-14 00:19:11,运行超时(>600s),TLE
+exp3_95th_alg3_ds5,exp3,Sensitivity to Tau,5,soc-digg,,3,StrSub,alg3-raw.exe,95,0.102869,,,,tle,1209.18,600,1,102.1,2026-05-13 22:59:18,2026-05-13 23:20:30,运行超时(>600s),TLE
+exp3_50th_alg4_ds5,exp3,Sensitivity to Tau,5,soc-digg,,4,MonoSemMCE,alg4-raw.exe,50,4.60632e-06,,,,oom,25.95,600,1,101.0,2026-05-13 22:59:18,2026-05-15 00:18:18,内存不足(OOM),OOM
+exp3_60th_alg4_ds5,exp3,Sensitivity to Tau,5,soc-digg,,4,MonoSemMCE,alg4-raw.exe,60,0.015832,,,,oom,50.5,600,1,101.1,2026-05-13 22:59:18,2026-05-15 00:12:40,内存不足(OOM),OOM
+exp3_70th_alg4_ds5,exp3,Sensitivity to Tau,5,soc-digg,,4,MonoSemMCE,alg4-raw.exe,70,0.0327999,,,,oom,37.96,600,1,101.2,2026-05-13 22:59:18,2026-05-15 00:10:42,内存不足(OOM),OOM
+exp3_80th_alg4_ds5,exp3,Sensitivity to Tau,5,soc-digg,,4,MonoSemMCE,alg4-raw.exe,80,0.0526589,,,,oom,50.49,600,1,101.3,2026-05-13 22:59:18,2026-05-15 00:09:06,内存不足(OOM),OOM
+exp3_90th_alg4_ds5,exp3,Sensitivity to Tau,5,soc-digg,,4,MonoSemMCE,alg4-raw.exe,90,0.080216,,,,completed,16.56,600,1,101.4,2026-05-13 22:59:18,2026-05-14 03:41:24,,
+exp3_95th_alg4_ds5,exp3,Sensitivity to Tau,5,soc-digg,,4,MonoSemMCE,alg4-raw.exe,95,0.102869,,,,completed,13.7,600,1,101.45,2026-05-13 22:59:18,2026-05-14 03:35:10,,
+exp3_50th_alg2_ds7,exp3,Sensitivity to Tau,7,FB15K-237,,2,SemBK,alg2-raw.exe,50,0.117534,,,,pending,,,1,100.5,2026-05-13 22:59:18,,,
+exp3_60th_alg2_ds7,exp3,Sensitivity to Tau,7,FB15K-237,,2,SemBK,alg2-raw.exe,60,0.150935,,,,pending,,,1,100.55,2026-05-13 22:59:18,,,
+exp3_70th_alg2_ds7,exp3,Sensitivity to Tau,7,FB15K-237,,2,SemBK,alg2-raw.exe,70,0.189047,,,,tle,600.32,600,1,100.6,2026-05-13 22:59:18,2026-05-14 13:40:17,运行超时(>600s),TLE
+exp3_80th_alg2_ds7,exp3,Sensitivity to Tau,7,FB15K-237,,2,SemBK,alg2-raw.exe,80,0.234886,,,,tle,600.24,600,1,100.65,2026-05-13 22:59:18,2026-05-14 11:43:16,运行超时(>600s),TLE
+exp3_90th_alg2_ds7,exp3,Sensitivity to Tau,7,FB15K-237,,2,SemBK,alg2-raw.exe,90,0.300316,,,,tle,600.24,600,1,100.7,2026-05-13 22:59:18,2026-05-14 09:42:50,运行超时(>600s),TLE
+exp3_95th_alg2_ds7,exp3,Sensitivity to Tau,7,FB15K-237,,2,SemBK,alg2-raw.exe,95,0.359274,,,,tle,600.25,600,1,100.725,2026-05-13 22:59:18,2026-05-14 08:11:07,运行超时(>600s),TLE
+exp3_50th_alg3_ds7,exp3,Sensitivity to Tau,7,FB15K-237,,3,StrSub,alg3-raw.exe,50,0.117534,,,,completed,0.64,600,1,100.75,2026-05-13 22:59:18,2026-05-14 06:41:39,,
+exp3_60th_alg3_ds7,exp3,Sensitivity to Tau,7,FB15K-237,,3,StrSub,alg3-raw.exe,60,0.150935,,,,completed,0.98,600,1,101.05,2026-05-13 22:59:18,2026-05-14 04:55:08,,
+exp3_70th_alg3_ds7,exp3,Sensitivity to Tau,7,FB15K-237,,3,StrSub,alg3-raw.exe,70,0.189047,,,,completed,1.65,600,1,101.35,2026-05-13 22:59:18,2026-05-14 04:21:49,,
+exp3_80th_alg3_ds7,exp3,Sensitivity to Tau,7,FB15K-237,,3,StrSub,alg3-raw.exe,80,0.234886,,,,completed,16.13,600,1,-9999,2026-05-13 22:59:18,,,
+exp3_90th_alg3_ds7,exp3,Sensitivity to Tau,7,FB15K-237,,3,StrSub,alg3-raw.exe,90,0.300316,,,,completed,58.99,600,1,101.95,2026-05-13 22:59:18,2026-05-14 00:20:11,,
+exp3_95th_alg3_ds7,exp3,Sensitivity to Tau,7,FB15K-237,,3,StrSub,alg3-raw.exe,95,0.359274,,,,tle,600.25,600,1,102.1,2026-05-13 22:59:18,2026-05-13 23:30:32,运行超时(>600s),TLE
+exp3_50th_alg4_ds7,exp3,Sensitivity to Tau,7,FB15K-237,,4,MonoSemMCE,alg4-raw.exe,50,0.117534,,,,oom,47.21,600,1,101.0,2026-05-13 22:59:18,2026-05-15 00:19:06,内存不足(OOM),OOM
+exp3_60th_alg4_ds7,exp3,Sensitivity to Tau,7,FB15K-237,,4,MonoSemMCE,alg4-raw.exe,60,0.150935,,,,failed,41.98,600,1,101.1,2026-05-13 22:59:18,2026-05-14 04:35:00,程序异常中止(Abort),SIGNAL_134
+exp3_70th_alg4_ds7,exp3,Sensitivity to Tau,7,FB15K-237,,4,MonoSemMCE,alg4-raw.exe,70,0.189047,,,,oom,39.85,600,1,101.2,2026-05-13 22:59:18,2026-05-15 00:11:23,内存不足(OOM),OOM
+exp3_80th_alg4_ds7,exp3,Sensitivity to Tau,7,FB15K-237,,4,MonoSemMCE,alg4-raw.exe,80,0.234886,,,,oom,32.94,600,1,101.3,2026-05-13 22:59:18,2026-05-15 00:09:40,内存不足(OOM),OOM
+exp3_90th_alg4_ds7,exp3,Sensitivity to Tau,7,FB15K-237,,4,MonoSemMCE,alg4-raw.exe,90,0.300316,,,,oom,72.87,600,1,101.4,2026-05-13 22:59:18,2026-05-14 23:56:39,内存不足(OOM),OOM
+exp3_95th_alg4_ds7,exp3,Sensitivity to Tau,7,FB15K-237,,4,MonoSemMCE,alg4-raw.exe,95,0.359274,,,,failed,0.46,600,1,101.45,2026-05-13 22:59:18,2026-05-14 22:01:36,段错误(SegFault),SIGNAL_139
+exp3_50th_alg2_ds8,exp3,Sensitivity to Tau,8,WN18RR,,2,SemBK,alg2-raw.exe,50,0.423383,,,,pending,,,1,100.5,2026-05-13 22:59:18,,,
+exp3_60th_alg2_ds8,exp3,Sensitivity to Tau,8,WN18RR,,2,SemBK,alg2-raw.exe,60,0.462893,,,,pending,,,1,100.55,2026-05-13 22:59:18,,,
+exp3_70th_alg2_ds8,exp3,Sensitivity to Tau,8,WN18RR,,2,SemBK,alg2-raw.exe,70,0.506444,,,,completed,0.49,600,1,100.6,2026-05-13 22:59:18,2026-05-14 13:40:18,,
+exp3_80th_alg2_ds8,exp3,Sensitivity to Tau,8,WN18RR,,2,SemBK,alg2-raw.exe,80,0.557237,,,,completed,0.4,600,1,100.65,2026-05-13 22:59:18,2026-05-14 11:43:18,,
+exp3_90th_alg2_ds8,exp3,Sensitivity to Tau,8,WN18RR,,2,SemBK,alg2-raw.exe,90,0.628274,,,,completed,0.4,600,1,100.7,2026-05-13 22:59:18,2026-05-14 09:42:51,,
+exp3_95th_alg2_ds8,exp3,Sensitivity to Tau,8,WN18RR,,2,SemBK,alg2-raw.exe,95,0.684187,,,,completed,0.4,600,1,100.725,2026-05-13 22:59:18,2026-05-14 08:11:09,,
+exp3_50th_alg3_ds8,exp3,Sensitivity to Tau,8,WN18RR,,3,StrSub,alg3-raw.exe,50,0.423383,,,,completed,0.41,600,1,100.75,2026-05-13 22:59:18,2026-05-14 06:41:41,,
+exp3_60th_alg3_ds8,exp3,Sensitivity to Tau,8,WN18RR,,3,StrSub,alg3-raw.exe,60,0.462893,,,,completed,0.41,600,1,101.05,2026-05-13 22:59:18,2026-05-14 04:55:10,,
+exp3_70th_alg3_ds8,exp3,Sensitivity to Tau,8,WN18RR,,3,StrSub,alg3-raw.exe,70,0.506444,,,,completed,0.42,600,1,101.35,2026-05-13 22:59:18,2026-05-14 04:21:51,,
+exp3_80th_alg3_ds8,exp3,Sensitivity to Tau,8,WN18RR,,3,StrSub,alg3-raw.exe,80,0.557237,,,,completed,0.04,600,1,-9999,2026-05-13 22:59:18,,,
+exp3_90th_alg3_ds8,exp3,Sensitivity to Tau,8,WN18RR,,3,StrSub,alg3-raw.exe,90,0.628274,,,,completed,0.41,600,1,101.95,2026-05-13 22:59:18,2026-05-14 00:20:13,,
+exp3_95th_alg3_ds8,exp3,Sensitivity to Tau,8,WN18RR,,3,StrSub,alg3-raw.exe,95,0.684187,,,,completed,0.09,600,1,-9999,2026-05-13 22:59:18,,,
+exp3_50th_alg4_ds8,exp3,Sensitivity to Tau,8,WN18RR,,4,MonoSemMCE,alg4-raw.exe,50,0.423383,,,,completed,0.39,600,1,101.0,2026-05-13 22:59:18,2026-05-14 05:20:34,,
+exp3_60th_alg4_ds8,exp3,Sensitivity to Tau,8,WN18RR,,4,MonoSemMCE,alg4-raw.exe,60,0.462893,,,,completed,0.39,600,1,101.1,2026-05-13 22:59:18,2026-05-14 04:35:01,,
+exp3_70th_alg4_ds8,exp3,Sensitivity to Tau,8,WN18RR,,4,MonoSemMCE,alg4-raw.exe,70,0.506444,,,,completed,0.37,600,1,101.2,2026-05-13 22:59:18,2026-05-14 04:33:00,,
+exp3_80th_alg4_ds8,exp3,Sensitivity to Tau,8,WN18RR,,4,MonoSemMCE,alg4-raw.exe,80,0.557237,,,,completed,0.37,600,1,101.3,2026-05-13 22:59:18,2026-05-14 04:29:17,,
+exp3_90th_alg4_ds8,exp3,Sensitivity to Tau,8,WN18RR,,4,MonoSemMCE,alg4-raw.exe,90,0.628274,,,,completed,0.37,600,1,101.4,2026-05-13 22:59:18,2026-05-14 03:42:53,,
+exp3_95th_alg4_ds8,exp3,Sensitivity to Tau,8,WN18RR,,4,MonoSemMCE,alg4-raw.exe,95,0.684187,,,,completed,0.53,600,1,101.45,2026-05-13 22:59:18,2026-05-14 03:36:16,,
+exp4_10th_alg2-stats_ds1,exp4,Diagnostics,1,sc-ldoor,,2,SemBK,alg2-stats.exe,10,-0.0801868,,,stats_mode=True,pending,,,1,100.3,2026-05-13 22:59:18,,,
+exp4_50th_alg2-stats_ds1,exp4,Diagnostics,1,sc-ldoor,,2,SemBK,alg2-stats.exe,50,-8.09878e-06,,,stats_mode=True,pending,,,1,100.5,2026-05-13 22:59:18,,,
+exp4_90th_alg2-stats_ds1,exp4,Diagnostics,1,sc-ldoor,,2,SemBK,alg2-stats.exe,90,0.0801759,,,stats_mode=True,tle,600.55,600,1,100.7,2026-05-13 22:59:18,2026-05-14 09:52:53,运行超时(>600s),TLE
+exp4_10th_alg3-stats_ds1,exp4,Diagnostics,1,sc-ldoor,,3,StrSub,alg3-stats.exe,10,-0.0801868,,,stats_mode=True,completed,25.57,600,1,-9999,2026-05-13 22:59:18,,,
+exp4_50th_alg3-stats_ds1,exp4,Diagnostics,1,sc-ldoor,,3,StrSub,alg3-stats.exe,50,-8.09878e-06,,,stats_mode=True,tle,600.68,600,1,100.75,2026-05-13 22:59:18,2026-05-14 06:51:43,运行超时(>600s),TLE
+exp4_90th_alg3-stats_ds1,exp4,Diagnostics,1,sc-ldoor,,3,StrSub,alg3-stats.exe,90,0.0801759,,,stats_mode=True,completed,247.91,600,1,101.95,2026-05-13 22:59:18,2026-05-14 00:24:22,,
+exp4_10th_alg4-stats_ds1,exp4,Diagnostics,1,sc-ldoor,,4,MonoSemMCE,alg4-stats.exe,10,-0.0801868,,,stats_mode=True,pending,,600,1,100.6,2026-05-13 22:59:18,2026-05-14 13:41:40,,
+exp4_50th_alg4-stats_ds1,exp4,Diagnostics,1,sc-ldoor,,4,MonoSemMCE,alg4-stats.exe,50,-8.09878e-06,,,stats_mode=True,oom,53.91,600,1,101.0,2026-05-13 22:59:18,2026-05-15 00:20:01,内存不足(OOM),OOM
+exp4_90th_alg4-stats_ds1,exp4,Diagnostics,1,sc-ldoor,,4,MonoSemMCE,alg4-stats.exe,90,0.0801759,,,stats_mode=True,completed,42.93,600,1,101.4,2026-05-13 22:59:18,2026-05-14 03:43:37,,
+exp4_10th_alg2-stats_ds2,exp4,Diagnostics,2,sc-nasasrb,,2,SemBK,alg2-stats.exe,10,-0.0802311,,,stats_mode=True,pending,,,1,100.3,2026-05-13 22:59:18,,,
+exp4_50th_alg2-stats_ds2,exp4,Diagnostics,2,sc-nasasrb,,2,SemBK,alg2-stats.exe,50,-4.66295e-05,,,stats_mode=True,pending,,,1,100.5,2026-05-13 22:59:18,,,
+exp4_90th_alg2-stats_ds2,exp4,Diagnostics,2,sc-nasasrb,,2,SemBK,alg2-stats.exe,90,0.0800619,,,stats_mode=True,tle,600.27,600,1,100.7,2026-05-13 22:59:18,2026-05-14 10:02:55,运行超时(>600s),TLE
+exp4_10th_alg3-stats_ds2,exp4,Diagnostics,2,sc-nasasrb,,3,StrSub,alg3-stats.exe,10,-0.0802311,,,stats_mode=True,completed,1.02,600,1,-9999,2026-05-13 22:59:18,,,
+exp4_50th_alg3-stats_ds2,exp4,Diagnostics,2,sc-nasasrb,,3,StrSub,alg3-stats.exe,50,-4.66295e-05,,,stats_mode=True,completed,545.85,600,1,100.75,2026-05-13 22:59:18,2026-05-14 07:00:50,,
+exp4_90th_alg3-stats_ds2,exp4,Diagnostics,2,sc-nasasrb,,3,StrSub,alg3-stats.exe,90,0.0800619,,,stats_mode=True,completed,92.85,600,1,-9999,2026-05-13 22:59:18,,,
+exp4_10th_alg4-stats_ds2,exp4,Diagnostics,2,sc-nasasrb,,4,MonoSemMCE,alg4-stats.exe,10,-0.0802311,,,stats_mode=True,pending,,600,1,100.6,2026-05-13 22:59:18,2026-05-14 13:43:01,,
+exp4_50th_alg4-stats_ds2,exp4,Diagnostics,2,sc-nasasrb,,4,MonoSemMCE,alg4-stats.exe,50,-4.66295e-05,,,stats_mode=True,oom,63.23,600,1,101.0,2026-05-13 22:59:18,2026-05-15 00:21:06,内存不足(OOM),OOM
+exp4_90th_alg4-stats_ds2,exp4,Diagnostics,2,sc-nasasrb,,4,MonoSemMCE,alg4-stats.exe,90,0.0800619,,,stats_mode=True,completed,2.42,600,1,101.4,2026-05-13 22:59:18,2026-05-14 03:43:41,,
+exp4_10th_alg2-stats_ds3,exp4,Diagnostics,3,sc-pkustk11,,2,SemBK,alg2-stats.exe,10,-0.0802687,,,stats_mode=True,pending,,,1,100.3,2026-05-13 22:59:18,,,
+exp4_50th_alg2-stats_ds3,exp4,Diagnostics,3,sc-pkustk11,,2,SemBK,alg2-stats.exe,50,2.17557e-05,,,stats_mode=True,pending,,,1,100.5,2026-05-13 22:59:18,,,
+exp4_90th_alg2-stats_ds3,exp4,Diagnostics,3,sc-pkustk11,,2,SemBK,alg2-stats.exe,90,0.08019,,,stats_mode=True,tle,600.28,600,1,100.7,2026-05-13 22:59:18,2026-05-14 10:12:56,运行超时(>600s),TLE
+exp4_10th_alg3-stats_ds3,exp4,Diagnostics,3,sc-pkustk11,,3,StrSub,alg3-stats.exe,10,-0.0802687,,,stats_mode=True,completed,1.72,600,1,-9999,2026-05-13 22:59:18,,,
+exp4_50th_alg3-stats_ds3,exp4,Diagnostics,3,sc-pkustk11,,3,StrSub,alg3-stats.exe,50,2.17557e-05,,,stats_mode=True,tle,600.27,600,1,100.75,2026-05-13 22:59:18,2026-05-14 07:10:52,运行超时(>600s),TLE
+exp4_90th_alg3-stats_ds3,exp4,Diagnostics,3,sc-pkustk11,,3,StrSub,alg3-stats.exe,90,0.08019,,,stats_mode=True,tle,600.29,600,1,101.95,2026-05-13 22:59:18,2026-05-14 00:34:24,运行超时(>600s),TLE
+exp4_10th_alg4-stats_ds3,exp4,Diagnostics,3,sc-pkustk11,,4,MonoSemMCE,alg4-stats.exe,10,-0.0802687,,,stats_mode=True,pending,,600,1,100.6,2026-05-13 22:59:18,2026-05-14 13:44:46,,
+exp4_50th_alg4-stats_ds3,exp4,Diagnostics,3,sc-pkustk11,,4,MonoSemMCE,alg4-stats.exe,50,2.17557e-05,,,stats_mode=True,oom,62.39,600,1,101.0,2026-05-13 22:59:18,2026-05-15 00:22:09,内存不足(OOM),OOM
+exp4_90th_alg4-stats_ds3,exp4,Diagnostics,3,sc-pkustk11,,4,MonoSemMCE,alg4-stats.exe,90,0.08019,,,stats_mode=True,completed,4.82,600,1,101.4,2026-05-13 22:59:18,2026-05-14 03:43:47,,
+exp4_10th_alg2-stats_ds4,exp4,Diagnostics,4,soc-buzznet,,2,SemBK,alg2-stats.exe,10,-0.0802048,,,stats_mode=True,pending,,,1,100.3,2026-05-13 22:59:18,,,
+exp4_50th_alg2-stats_ds4,exp4,Diagnostics,4,soc-buzznet,,2,SemBK,alg2-stats.exe,50,-6.88639e-05,,,stats_mode=True,pending,,,1,100.5,2026-05-13 22:59:18,,,
+exp4_90th_alg2-stats_ds4,exp4,Diagnostics,4,soc-buzznet,,2,SemBK,alg2-stats.exe,90,0.0801639,,,stats_mode=True,tle,600.3,600,1,100.7,2026-05-13 22:59:18,2026-05-14 10:22:57,运行超时(>600s),TLE
+exp4_10th_alg3-stats_ds4,exp4,Diagnostics,4,soc-buzznet,,3,StrSub,alg3-stats.exe,10,-0.0802048,,,stats_mode=True,oom,521.83,600,1,101.95,2026-05-13 22:59:18,2026-05-14 00:43:07,内存不足(OOM),OOM
+exp4_50th_alg3-stats_ds4,exp4,Diagnostics,4,soc-buzznet,,3,StrSub,alg3-stats.exe,50,-6.88639e-05,,,stats_mode=True,tle,600.65,600,1,100.75,2026-05-13 22:59:18,2026-05-14 07:20:54,运行超时(>600s),TLE
+exp4_90th_alg3-stats_ds4,exp4,Diagnostics,4,soc-buzznet,,3,StrSub,alg3-stats.exe,90,0.0801639,,,stats_mode=True,tle,601.19,600,1,101.95,2026-05-13 22:59:18,2026-05-14 00:53:09,运行超时(>600s),TLE
+exp4_10th_alg4-stats_ds4,exp4,Diagnostics,4,soc-buzznet,,4,MonoSemMCE,alg4-stats.exe,10,-0.0802048,,,stats_mode=True,pending,,600,1,100.6,2026-05-13 22:59:18,2026-05-14 13:46:41,,
+exp4_50th_alg4-stats_ds4,exp4,Diagnostics,4,soc-buzznet,,4,MonoSemMCE,alg4-stats.exe,50,-6.88639e-05,,,stats_mode=True,oom,119.01,600,1,101.0,2026-05-13 22:59:18,2026-05-15 00:24:09,内存不足(OOM),OOM
+exp4_90th_alg4-stats_ds4,exp4,Diagnostics,4,soc-buzznet,,4,MonoSemMCE,alg4-stats.exe,90,0.0801639,,,stats_mode=True,completed,11.5,600,1,101.4,2026-05-13 22:59:18,2026-05-14 03:44:01,,
+exp4_10th_alg2-stats_ds5,exp4,Diagnostics,5,soc-digg,,2,SemBK,alg2-stats.exe,10,-0.0801891,,,stats_mode=True,pending,,,1,100.3,2026-05-13 22:59:18,,,
+exp4_50th_alg2-stats_ds5,exp4,Diagnostics,5,soc-digg,,2,SemBK,alg2-stats.exe,50,4.60632e-06,,,stats_mode=True,pending,,,1,100.5,2026-05-13 22:59:18,,,
+exp4_90th_alg2-stats_ds5,exp4,Diagnostics,5,soc-digg,,2,SemBK,alg2-stats.exe,90,0.080216,,,stats_mode=True,tle,600.49,600,1,100.7,2026-05-13 22:59:18,2026-05-14 10:32:59,运行超时(>600s),TLE
+exp4_10th_alg3-stats_ds5,exp4,Diagnostics,5,soc-digg,,3,StrSub,alg3-stats.exe,10,-0.0801891,,,stats_mode=True,tle,601.27,600,1,101.95,2026-05-13 22:59:18,2026-05-14 01:03:11,运行超时(>600s),TLE
+exp4_50th_alg3-stats_ds5,exp4,Diagnostics,5,soc-digg,,3,StrSub,alg3-stats.exe,50,4.60632e-06,,,stats_mode=True,tle,600.56,600,1,100.75,2026-05-13 22:59:18,2026-05-14 07:30:55,运行超时(>600s),TLE
+exp4_90th_alg3-stats_ds5,exp4,Diagnostics,5,soc-digg,,3,StrSub,alg3-stats.exe,90,0.080216,,,stats_mode=True,tle,600.55,600,1,101.95,2026-05-13 22:59:18,2026-05-14 01:13:13,运行超时(>600s),TLE
+exp4_10th_alg4-stats_ds5,exp4,Diagnostics,5,soc-digg,,4,MonoSemMCE,alg4-stats.exe,10,-0.0801891,,,stats_mode=True,pending,,600,1,100.6,2026-05-13 22:59:18,2026-05-14 13:48:29,,
+exp4_50th_alg4-stats_ds5,exp4,Diagnostics,5,soc-digg,,4,MonoSemMCE,alg4-stats.exe,50,4.60632e-06,,,stats_mode=True,oom,83.76,600,1,101.0,2026-05-13 22:59:18,2026-05-15 00:25:34,内存不足(OOM),OOM
+exp4_90th_alg4-stats_ds5,exp4,Diagnostics,5,soc-digg,,4,MonoSemMCE,alg4-stats.exe,90,0.080216,,,stats_mode=True,completed,25.58,600,1,101.4,2026-05-13 22:59:18,2026-05-14 03:44:28,,
+exp4_10th_alg2-stats_ds7,exp4,Diagnostics,7,FB15K-237,,2,SemBK,alg2-stats.exe,10,-0.0151881,,,stats_mode=True,pending,,,1,100.3,2026-05-13 22:59:18,,,
+exp4_50th_alg2-stats_ds7,exp4,Diagnostics,7,FB15K-237,,2,SemBK,alg2-stats.exe,50,0.117534,,,stats_mode=True,pending,,,1,100.5,2026-05-13 22:59:18,,,
+exp4_90th_alg2-stats_ds7,exp4,Diagnostics,7,FB15K-237,,2,SemBK,alg2-stats.exe,90,0.300316,,,stats_mode=True,tle,600.23,600,1,100.7,2026-05-13 22:59:18,2026-05-14 10:43:01,运行超时(>600s),TLE
+exp4_10th_alg3-stats_ds7,exp4,Diagnostics,7,FB15K-237,,3,StrSub,alg3-stats.exe,10,-0.0151881,,,stats_mode=True,completed,0.32,600,1,-9999,2026-05-13 22:59:18,,,
+exp4_50th_alg3-stats_ds7,exp4,Diagnostics,7,FB15K-237,,3,StrSub,alg3-stats.exe,50,0.117534,,,stats_mode=True,completed,0.78,600,1,100.75,2026-05-13 22:59:18,2026-05-14 07:30:58,,
+exp4_90th_alg3-stats_ds7,exp4,Diagnostics,7,FB15K-237,,3,StrSub,alg3-stats.exe,90,0.300316,,,stats_mode=True,completed,194.06,600,1,-9999,2026-05-13 22:59:18,,,
+exp4_10th_alg4-stats_ds7,exp4,Diagnostics,7,FB15K-237,,4,MonoSemMCE,alg4-stats.exe,10,-0.0151881,,,stats_mode=True,pending,,600,1,100.6,2026-05-13 22:59:18,2026-05-14 13:50:45,,
+exp4_50th_alg4-stats_ds7,exp4,Diagnostics,7,FB15K-237,,4,MonoSemMCE,alg4-stats.exe,50,0.117534,,,stats_mode=True,failed,93.69,600,1,101.0,2026-05-13 22:59:18,2026-05-14 05:27:57,程序异常中止(Abort),SIGNAL_134
+exp4_90th_alg4-stats_ds7,exp4,Diagnostics,7,FB15K-237,,4,MonoSemMCE,alg4-stats.exe,90,0.300316,,,stats_mode=True,oom,140.84,600,1,101.4,2026-05-13 22:59:18,2026-05-14 23:59:01,内存不足(OOM),OOM
+exp4_10th_alg2-stats_ds8,exp4,Diagnostics,8,WN18RR,,2,SemBK,alg2-stats.exe,10,0.221709,,,stats_mode=True,pending,,,1,100.3,2026-05-13 22:59:18,,,
+exp4_50th_alg2-stats_ds8,exp4,Diagnostics,8,WN18RR,,2,SemBK,alg2-stats.exe,50,0.423383,,,stats_mode=True,pending,,,1,100.5,2026-05-13 22:59:18,,,
+exp4_90th_alg2-stats_ds8,exp4,Diagnostics,8,WN18RR,,2,SemBK,alg2-stats.exe,90,0.628274,,,stats_mode=True,completed,0.4,600,1,100.7,2026-05-13 22:59:18,2026-05-14 10:43:03,,
+exp4_10th_alg3-stats_ds8,exp4,Diagnostics,8,WN18RR,,3,StrSub,alg3-stats.exe,10,0.221709,,,stats_mode=True,completed,0.06,600,1,-9999,2026-05-13 22:59:18,,,
+exp4_50th_alg3-stats_ds8,exp4,Diagnostics,8,WN18RR,,3,StrSub,alg3-stats.exe,50,0.423383,,,stats_mode=True,completed,0.43,600,1,100.75,2026-05-13 22:59:18,2026-05-14 07:31:00,,
+exp4_90th_alg3-stats_ds8,exp4,Diagnostics,8,WN18RR,,3,StrSub,alg3-stats.exe,90,0.628274,,,stats_mode=True,completed,0.04,600,1,-9999,2026-05-13 22:59:18,,,
+exp4_10th_alg4-stats_ds8,exp4,Diagnostics,8,WN18RR,,4,MonoSemMCE,alg4-stats.exe,10,0.221709,,,stats_mode=True,completed,0.67,600,1,100.6,2026-05-13 22:59:18,2026-05-14 13:50:47,,
+exp4_50th_alg4-stats_ds8,exp4,Diagnostics,8,WN18RR,,4,MonoSemMCE,alg4-stats.exe,50,0.423383,,,stats_mode=True,completed,0.41,600,1,101.0,2026-05-13 22:59:18,2026-05-14 05:27:59,,
+exp4_90th_alg4-stats_ds8,exp4,Diagnostics,8,WN18RR,,4,MonoSemMCE,alg4-stats.exe,90,0.628274,,,stats_mode=True,completed,0.37,600,1,101.4,2026-05-13 22:59:18,2026-05-14 03:46:57,,
+exp4_10th_alg2-stats_ds9,exp4,Diagnostics,9,DBLP,,2,SemBK,alg2-stats.exe,10,-0.0262021,,,stats_mode=True,pending,,,1,100.3,2026-05-13 22:59:18,,,
+exp4_50th_alg2-stats_ds9,exp4,Diagnostics,9,DBLP,,2,SemBK,alg2-stats.exe,50,0.0997056,,,stats_mode=True,pending,,,1,100.5,2026-05-13 22:59:18,,,
+exp4_90th_alg2-stats_ds9,exp4,Diagnostics,9,DBLP,,2,SemBK,alg2-stats.exe,90,0.254785,,,stats_mode=True,tle,600.82,600,1,100.7,2026-05-13 22:59:18,2026-05-14 10:53:05,运行超时(>600s),TLE
+exp4_10th_alg3-stats_ds9,exp4,Diagnostics,9,DBLP,,3,StrSub,alg3-stats.exe,10,-0.0262021,,,stats_mode=True,failed,270.08,600,1,101.95,2026-05-13 22:59:18,2026-05-14 01:17:45,程序异常中止(Abort),SIGNAL_134
+exp4_50th_alg3-stats_ds9,exp4,Diagnostics,9,DBLP,,3,StrSub,alg3-stats.exe,50,0.0997056,,,stats_mode=True,tle,600.87,600,1,100.75,2026-05-13 22:59:18,2026-05-14 07:41:02,运行超时(>600s),TLE
+exp4_90th_alg3-stats_ds9,exp4,Diagnostics,9,DBLP,,3,StrSub,alg3-stats.exe,90,0.254785,,,stats_mode=True,tle,601.01,600,1,101.95,2026-05-13 22:59:18,2026-05-14 01:27:47,运行超时(>600s),TLE
+exp4_10th_alg4-stats_ds9,exp4,Diagnostics,9,DBLP,,4,MonoSemMCE,alg4-stats.exe,10,-0.0262021,,,stats_mode=True,pending,,600,1,100.6,2026-05-13 22:59:18,2026-05-14 13:52:48,,
+exp4_50th_alg4-stats_ds9,exp4,Diagnostics,9,DBLP,,4,MonoSemMCE,alg4-stats.exe,50,0.0997056,,,stats_mode=True,oom,82.39,600,1,101.0,2026-05-13 22:59:18,2026-05-15 00:26:58,内存不足(OOM),OOM
+exp4_90th_alg4-stats_ds9,exp4,Diagnostics,9,DBLP,,4,MonoSemMCE,alg4-stats.exe,90,0.254785,,,stats_mode=True,oom,77.65,600,1,101.4,2026-05-13 22:59:18,2026-05-15 00:00:20,内存不足(OOM),OOM
+exp5_t1_alg2_ds2_80th,exp5,Parallel Scalability,2,sc-nasasrb,,2,SemBK,alg2-raw.exe,80,0.0526655,1,,OMP_NUM_THREADS=1,tle,600.27,600,1,100.65,2026-05-13 22:59:18,2026-05-14 11:53:19,运行超时(>600s),TLE
+exp5_t2_alg2_ds2_80th,exp5,Parallel Scalability,2,sc-nasasrb,,2,SemBK,alg2-raw.exe,80,0.0526655,2,,OMP_NUM_THREADS=2,tle,600.27,600,1,100.65,2026-05-13 22:59:18,2026-05-14 12:03:21,运行超时(>600s),TLE
+exp5_t4_alg2_ds2_80th,exp5,Parallel Scalability,2,sc-nasasrb,,2,SemBK,alg2-raw.exe,80,0.0526655,4,,OMP_NUM_THREADS=4,tle,600.26,600,1,100.65,2026-05-13 22:59:18,2026-05-14 12:13:22,运行超时(>600s),TLE
+exp5_t8_alg2_ds2_80th,exp5,Parallel Scalability,2,sc-nasasrb,,2,SemBK,alg2-raw.exe,80,0.0526655,8,,OMP_NUM_THREADS=8,tle,600.26,600,1,100.65,2026-05-13 22:59:18,2026-05-14 12:23:24,运行超时(>600s),TLE
+exp5_t16_alg2_ds2_80th,exp5,Parallel Scalability,2,sc-nasasrb,,2,SemBK,alg2-raw.exe,80,0.0526655,16,,OMP_NUM_THREADS=16,tle,600.26,600,1,100.65,2026-05-13 22:59:18,2026-05-14 12:33:25,运行超时(>600s),TLE
+exp5_t32_alg2_ds2_80th,exp5,Parallel Scalability,2,sc-nasasrb,,2,SemBK,alg2-raw.exe,80,0.0526655,32,,OMP_NUM_THREADS=32,tle,600.27,600,1,100.65,2026-05-13 22:59:18,2026-05-14 12:43:26,运行超时(>600s),TLE
+exp5_t64_alg2_ds2_80th,exp5,Parallel Scalability,2,sc-nasasrb,,2,SemBK,alg2-raw.exe,80,0.0526655,64,,OMP_NUM_THREADS=64,tle,600.36,600,1,100.65,2026-05-13 22:59:18,2026-05-14 12:53:28,运行超时(>600s),TLE
+exp5_t128_alg2_ds2_80th,exp5,Parallel Scalability,2,sc-nasasrb,,2,SemBK,alg2-raw.exe,80,0.0526655,128,,OMP_NUM_THREADS=128,tle,600.37,600,1,100.65,2026-05-13 22:59:18,2026-05-14 13:03:30,运行超时(>600s),TLE
+exp5_t1_alg3_ds2_80th,exp5,Parallel Scalability,2,sc-nasasrb,,3,StrSub,alg3-raw.exe,80,0.0526655,1,,OMP_NUM_THREADS=1,tle,600.27,600,1,101.65,2026-05-13 22:59:18,2026-05-14 02:57:13,运行超时(>600s),TLE
+exp5_t2_alg3_ds2_80th,exp5,Parallel Scalability,2,sc-nasasrb,,3,StrSub,alg3-raw.exe,80,0.0526655,2,,OMP_NUM_THREADS=2,tle,600.31,600,1,101.65,2026-05-13 22:59:18,2026-05-14 03:07:15,运行超时(>600s),TLE
+exp5_t4_alg3_ds2_80th,exp5,Parallel Scalability,2,sc-nasasrb,,3,StrSub,alg3-raw.exe,80,0.0526655,4,,OMP_NUM_THREADS=4,tle,600.28,600,1,101.65,2026-05-13 22:59:18,2026-05-14 03:17:16,运行超时(>600s),TLE
+exp5_t8_alg3_ds2_80th,exp5,Parallel Scalability,2,sc-nasasrb,,3,StrSub,alg3-raw.exe,80,0.0526655,8,,OMP_NUM_THREADS=8,completed,437.64,600,1,101.65,2026-05-13 22:59:18,2026-05-14 03:24:35,,
+exp5_t16_alg3_ds2_80th,exp5,Parallel Scalability,2,sc-nasasrb,,3,StrSub,alg3-raw.exe,80,0.0526655,16,,OMP_NUM_THREADS=16,completed,258.0,600,1,101.65,2026-05-13 22:59:18,2026-05-14 03:28:55,,
+exp5_t32_alg3_ds2_80th,exp5,Parallel Scalability,2,sc-nasasrb,,3,StrSub,alg3-raw.exe,80,0.0526655,32,,OMP_NUM_THREADS=32,completed,155.43,600,1,101.65,2026-05-13 22:59:18,2026-05-14 03:31:31,,
+exp5_t64_alg3_ds2_80th,exp5,Parallel Scalability,2,sc-nasasrb,,3,StrSub,alg3-raw.exe,80,0.0526655,64,,OMP_NUM_THREADS=64,completed,99.7,600,1,101.65,2026-05-13 22:59:18,2026-05-14 03:33:13,,
+exp5_t128_alg3_ds2_80th,exp5,Parallel Scalability,2,sc-nasasrb,,3,StrSub,alg3-raw.exe,80,0.0526655,128,,OMP_NUM_THREADS=128,completed,73.9,600,1,101.65,2026-05-13 22:59:18,2026-05-14 03:34:28,,
+exp5_t1_alg4_ds2_80th,exp5,Parallel Scalability,2,sc-nasasrb,,4,MonoSemMCE,alg4-raw.exe,80,0.0526655,1,,OMP_NUM_THREADS=1,completed,23.8,600,1,101.3,2026-05-13 22:59:18,2026-05-14 04:29:42,,
+exp5_t2_alg4_ds2_80th,exp5,Parallel Scalability,2,sc-nasasrb,,4,MonoSemMCE,alg4-raw.exe,80,0.0526655,2,,OMP_NUM_THREADS=2,completed,18.55,600,1,101.3,2026-05-13 22:59:18,2026-05-14 04:30:02,,
+exp5_t4_alg4_ds2_80th,exp5,Parallel Scalability,2,sc-nasasrb,,4,MonoSemMCE,alg4-raw.exe,80,0.0526655,4,,OMP_NUM_THREADS=4,completed,13.97,600,1,101.3,2026-05-13 22:59:18,2026-05-14 04:30:17,,
+exp5_t8_alg4_ds2_80th,exp5,Parallel Scalability,2,sc-nasasrb,,4,MonoSemMCE,alg4-raw.exe,80,0.0526655,8,,OMP_NUM_THREADS=8,completed,11.75,600,1,101.3,2026-05-13 22:59:18,2026-05-14 04:30:30,,
+exp5_t16_alg4_ds2_80th,exp5,Parallel Scalability,2,sc-nasasrb,,4,MonoSemMCE,alg4-raw.exe,80,0.0526655,16,,OMP_NUM_THREADS=16,completed,11.13,600,1,101.3,2026-05-13 22:59:18,2026-05-14 04:30:43,,
+exp5_t32_alg4_ds2_80th,exp5,Parallel Scalability,2,sc-nasasrb,,4,MonoSemMCE,alg4-raw.exe,80,0.0526655,32,,OMP_NUM_THREADS=32,completed,10.41,600,1,101.3,2026-05-13 22:59:18,2026-05-14 04:30:55,,
+exp5_t64_alg4_ds2_80th,exp5,Parallel Scalability,2,sc-nasasrb,,4,MonoSemMCE,alg4-raw.exe,80,0.0526655,64,,OMP_NUM_THREADS=64,completed,10.23,600,1,101.3,2026-05-13 22:59:18,2026-05-14 04:31:06,,
+exp5_t128_alg4_ds2_80th,exp5,Parallel Scalability,2,sc-nasasrb,,4,MonoSemMCE,alg4-raw.exe,80,0.0526655,128,,OMP_NUM_THREADS=128,completed,10.29,600,1,101.3,2026-05-13 22:59:18,2026-05-14 04:31:18,,
+exp6a_no_ds1,exp6a,Ablation (MonoSemMCE),1,sc-ldoor,,4,MonoSemMCE,alg4-ablation-no.exe,90,0.0801759,,"No pruning (W=0,M=0,L=0)",ablation=no,oom,21.03,600,1,101.4,2026-05-13 22:59:18,2026-05-15 00:00:42,内存不足(OOM),OOM
+exp6a_w_ds1,exp6a,Ablation (MonoSemMCE),1,sc-ldoor,,4,MonoSemMCE,alg4-ablation-w.exe,90,0.0801759,,W-pruning only,ablation=w,completed,36.53,600,1,101.4,2026-05-13 22:59:18,2026-05-14 03:49:34,,
+exp6a_mono_ds1,exp6a,Ablation (MonoSemMCE),1,sc-ldoor,,4,MonoSemMCE,alg4-ablation-mono.exe,90,0.0801759,,Monotone break only,ablation=mono,oom,21.24,600,1,101.4,2026-05-13 22:59:18,2026-05-15 00:01:05,内存不足(OOM),OOM
+exp6a_both_ds1,exp6a,Ablation (MonoSemMCE),1,sc-ldoor,,4,MonoSemMCE,alg4-ablation-both.exe,90,0.0801759,,"Both, no layer dedup",ablation=both,completed,29.99,600,1,101.4,2026-05-13 22:59:18,2026-05-14 03:50:35,,
+exp6a_full_ds1,exp6a,Ablation (MonoSemMCE),1,sc-ldoor,,4,MonoSemMCE,alg4-ablation-full.exe,90,0.0801759,,Full MonoSemMCE,ablation=full,completed,31.08,600,1,101.4,2026-05-13 22:59:18,2026-05-14 03:51:07,,
+exp6a_no_ds5,exp6a,Ablation (MonoSemMCE),5,soc-digg,,4,MonoSemMCE,alg4-ablation-no.exe,90,0.080216,,"No pruning (W=0,M=0,L=0)",ablation=no,oom,24.28,600,1,101.4,2026-05-13 22:59:18,2026-05-15 00:01:30,内存不足(OOM),OOM
+exp6a_w_ds5,exp6a,Ablation (MonoSemMCE),5,soc-digg,,4,MonoSemMCE,alg4-ablation-w.exe,90,0.080216,,W-pruning only,ablation=w,completed,32.82,600,1,101.4,2026-05-13 22:59:18,2026-05-14 03:52:14,,
+exp6a_mono_ds5,exp6a,Ablation (MonoSemMCE),5,soc-digg,,4,MonoSemMCE,alg4-ablation-mono.exe,90,0.080216,,Monotone break only,ablation=mono,oom,23.17,600,1,101.4,2026-05-13 22:59:18,2026-05-15 00:01:55,内存不足(OOM),OOM
+exp6a_both_ds5,exp6a,Ablation (MonoSemMCE),5,soc-digg,,4,MonoSemMCE,alg4-ablation-both.exe,90,0.080216,,"Both, no layer dedup",ablation=both,completed,20.38,600,1,101.4,2026-05-13 22:59:18,2026-05-14 03:53:08,,
+exp6a_full_ds5,exp6a,Ablation (MonoSemMCE),5,soc-digg,,4,MonoSemMCE,alg4-ablation-full.exe,90,0.080216,,Full MonoSemMCE,ablation=full,completed,18.65,600,1,101.4,2026-05-13 22:59:18,2026-05-14 03:53:28,,
+exp6a_no_ds7,exp6a,Ablation (MonoSemMCE),7,FB15K-237,,4,MonoSemMCE,alg4-ablation-no.exe,90,0.300316,,"No pruning (W=0,M=0,L=0)",ablation=no,oom,14.27,600,1,101.4,2026-05-13 22:59:18,2026-05-15 00:02:10,内存不足(OOM),OOM
+exp6a_w_ds7,exp6a,Ablation (MonoSemMCE),7,FB15K-237,,4,MonoSemMCE,alg4-ablation-w.exe,90,0.300316,,W-pruning only,ablation=w,oom,17.06,600,1,101.4,2026-05-13 22:59:18,2026-05-15 00:02:28,内存不足(OOM),OOM
+exp6a_mono_ds7,exp6a,Ablation (MonoSemMCE),7,FB15K-237,,4,MonoSemMCE,alg4-ablation-mono.exe,90,0.300316,,Monotone break only,ablation=mono,oom,16.57,600,1,101.4,2026-05-13 22:59:18,2026-05-15 00:02:46,内存不足(OOM),OOM
+exp6a_both_ds7,exp6a,Ablation (MonoSemMCE),7,FB15K-237,,4,MonoSemMCE,alg4-ablation-both.exe,90,0.300316,,"Both, no layer dedup",ablation=both,oom,15.4,600,1,101.4,2026-05-13 22:59:18,2026-05-15 00:03:03,内存不足(OOM),OOM
+exp6a_full_ds7,exp6a,Ablation (MonoSemMCE),7,FB15K-237,,4,MonoSemMCE,alg4-ablation-full.exe,90,0.300316,,Full MonoSemMCE,ablation=full,oom,76.34,600,1,101.4,2026-05-13 22:59:18,2026-05-15 00:04:20,内存不足(OOM),OOM
+exp6a_no_ds8,exp6a,Ablation (MonoSemMCE),8,WN18RR,,4,MonoSemMCE,alg4-ablation-no.exe,90,0.628274,,"No pruning (W=0,M=0,L=0)",ablation=no,completed,0.37,600,1,101.4,2026-05-13 22:59:18,2026-05-14 03:56:09,,
+exp6a_w_ds8,exp6a,Ablation (MonoSemMCE),8,WN18RR,,4,MonoSemMCE,alg4-ablation-w.exe,90,0.628274,,W-pruning only,ablation=w,completed,0.37,600,1,101.4,2026-05-13 22:59:18,2026-05-14 03:56:11,,
+exp6a_mono_ds8,exp6a,Ablation (MonoSemMCE),8,WN18RR,,4,MonoSemMCE,alg4-ablation-mono.exe,90,0.628274,,Monotone break only,ablation=mono,completed,0.38,600,1,101.4,2026-05-13 22:59:18,2026-05-14 03:56:12,,
+exp6a_both_ds8,exp6a,Ablation (MonoSemMCE),8,WN18RR,,4,MonoSemMCE,alg4-ablation-both.exe,90,0.628274,,"Both, no layer dedup",ablation=both,completed,0.37,600,1,101.4,2026-05-13 22:59:18,2026-05-14 03:56:14,,
+exp6a_full_ds8,exp6a,Ablation (MonoSemMCE),8,WN18RR,,4,MonoSemMCE,alg4-ablation-full.exe,90,0.628274,,Full MonoSemMCE,ablation=full,completed,0.38,600,1,101.4,2026-05-13 22:59:18,2026-05-14 03:56:16,,
+exp6b_no_ds4_10th,exp6b,Ablation (StrSub),4,soc-buzznet,,3,StrSub,alg3-ablation-no.exe,10,-0.0802048,,"No pruning, no filter",ablation=no,oom,68.83,600,1,101.95,2026-05-13 22:59:18,2026-05-14 01:28:57,内存不足(OOM),OOM
+exp6b_no_ds4_30th,exp6b,Ablation (StrSub),4,soc-buzznet,,3,StrSub,alg3-ablation-no.exe,30,-0.0328819,,"No pruning, no filter",ablation=no,oom,55.94,600,1,101.35,2026-05-13 22:59:18,2026-05-14 04:22:48,内存不足(OOM),OOM
+exp6b_no_ds4_60th,exp6b,Ablation (StrSub),4,soc-buzznet,,3,StrSub,alg3-ablation-no.exe,60,0.0158009,,"No pruning, no filter",ablation=no,oom,15.72,600,1,101.05,2026-05-13 22:59:18,2026-05-14 04:55:26,内存不足(OOM),OOM
+exp6b_no_ds4_90th,exp6b,Ablation (StrSub),4,soc-buzznet,,3,StrSub,alg3-ablation-no.exe,90,0.0801639,,"No pruning, no filter",ablation=no,oom,426.25,600,1,101.95,2026-05-13 22:59:18,2026-05-14 01:36:04,内存不足(OOM),OOM
+exp6b_topedge_ds4_10th,exp6b,Ablation (StrSub),4,soc-buzznet,,3,StrSub,alg3-ablation-topedge.exe,10,-0.0802048,,Top-Edge pruning only,ablation=topedge,oom,62.56,600,1,101.95,2026-05-13 22:59:18,2026-05-14 01:37:08,内存不足(OOM),OOM
+exp6b_topedge_ds4_30th,exp6b,Ablation (StrSub),4,soc-buzznet,,3,StrSub,alg3-ablation-topedge.exe,30,-0.0328819,,Top-Edge pruning only,ablation=topedge,oom,56.64,600,1,101.35,2026-05-13 22:59:18,2026-05-14 04:23:46,内存不足(OOM),OOM
+exp6b_topedge_ds4_60th,exp6b,Ablation (StrSub),4,soc-buzznet,,3,StrSub,alg3-ablation-topedge.exe,60,0.0158009,,Top-Edge pruning only,ablation=topedge,oom,15.36,600,1,101.05,2026-05-13 22:59:18,2026-05-14 04:55:43,内存不足(OOM),OOM
+exp6b_topedge_ds4_90th,exp6b,Ablation (StrSub),4,soc-buzznet,,3,StrSub,alg3-ablation-topedge.exe,90,0.0801639,,Top-Edge pruning only,ablation=topedge,oom,400.2,600,1,101.95,2026-05-13 22:59:18,2026-05-14 01:43:49,内存不足(OOM),OOM
+exp6b_localmax_ds4_10th,exp6b,Ablation (StrSub),4,soc-buzznet,,3,StrSub,alg3-ablation-localmax.exe,10,-0.0802048,,Local max filter only,ablation=localmax,oom,62.59,600,1,101.95,2026-05-13 22:59:18,2026-05-14 01:44:53,内存不足(OOM),OOM
+exp6b_localmax_ds4_30th,exp6b,Ablation (StrSub),4,soc-buzznet,,3,StrSub,alg3-ablation-localmax.exe,30,-0.0328819,,Local max filter only,ablation=localmax,oom,59.7,600,1,101.35,2026-05-13 22:59:18,2026-05-14 04:24:47,内存不足(OOM),OOM
+exp6b_localmax_ds4_60th,exp6b,Ablation (StrSub),4,soc-buzznet,,3,StrSub,alg3-ablation-localmax.exe,60,0.0158009,,Local max filter only,ablation=localmax,tle,601.42,600,1,101.05,2026-05-13 22:59:18,2026-05-14 05:05:46,运行超时(>600s),TLE
+exp6b_localmax_ds4_90th,exp6b,Ablation (StrSub),4,soc-buzznet,,3,StrSub,alg3-ablation-localmax.exe,90,0.0801639,,Local max filter only,ablation=localmax,tle,601.19,600,1,101.95,2026-05-13 22:59:18,2026-05-14 01:54:55,运行超时(>600s),TLE
+exp6b_full_ds4_10th,exp6b,Ablation (StrSub),4,soc-buzznet,,3,StrSub,alg3-ablation-full.exe,10,-0.0802048,,Full StrSub,ablation=full,oom,60.6,600,1,101.95,2026-05-13 22:59:18,2026-05-14 01:55:57,内存不足(OOM),OOM
+exp6b_full_ds4_30th,exp6b,Ablation (StrSub),4,soc-buzznet,,3,StrSub,alg3-ablation-full.exe,30,-0.0328819,,Full StrSub,ablation=full,oom,59.86,600,1,101.35,2026-05-13 22:59:18,2026-05-14 04:25:48,内存不足(OOM),OOM
+exp6b_full_ds4_60th,exp6b,Ablation (StrSub),4,soc-buzznet,,3,StrSub,alg3-ablation-full.exe,60,0.0158009,,Full StrSub,ablation=full,oom,509.89,600,1,101.05,2026-05-13 22:59:18,2026-05-14 05:14:17,内存不足(OOM),OOM
+exp6b_full_ds4_90th,exp6b,Ablation (StrSub),4,soc-buzznet,,3,StrSub,alg3-ablation-full.exe,90,0.0801639,,Full StrSub,ablation=full,tle,601.22,600,1,101.95,2026-05-13 22:59:18,2026-05-14 02:06:00,运行超时(>600s),TLE
+exp6b_no_ds8_10th,exp6b,Ablation (StrSub),8,WN18RR,,3,StrSub,alg3-ablation-no.exe,10,0.221709,,"No pruning, no filter",ablation=no,completed,0.05,600,1,-9999,2026-05-13 22:59:18,,,
+exp6b_no_ds8_30th,exp6b,Ablation (StrSub),8,WN18RR,,3,StrSub,alg3-ablation-no.exe,30,0.341496,,"No pruning, no filter",ablation=no,completed,0.43,600,1,101.35,2026-05-13 22:59:18,2026-05-14 04:25:50,,
+exp6b_no_ds8_60th,exp6b,Ablation (StrSub),8,WN18RR,,3,StrSub,alg3-ablation-no.exe,60,0.462893,,"No pruning, no filter",ablation=no,completed,0.42,600,1,101.05,2026-05-13 22:59:18,2026-05-14 05:14:18,,
+exp6b_no_ds8_90th,exp6b,Ablation (StrSub),8,WN18RR,,3,StrSub,alg3-ablation-no.exe,90,0.628274,,"No pruning, no filter",ablation=no,completed,0.04,600,1,-9999,2026-05-13 22:59:18,,,
+exp6b_topedge_ds8_10th,exp6b,Ablation (StrSub),8,WN18RR,,3,StrSub,alg3-ablation-topedge.exe,10,0.221709,,Top-Edge pruning only,ablation=topedge,completed,0.06,600,1,-9999,2026-05-13 22:59:18,,,
+exp6b_topedge_ds8_30th,exp6b,Ablation (StrSub),8,WN18RR,,3,StrSub,alg3-ablation-topedge.exe,30,0.341496,,Top-Edge pruning only,ablation=topedge,completed,0.43,600,1,101.35,2026-05-13 22:59:18,2026-05-14 04:25:51,,
+exp6b_topedge_ds8_60th,exp6b,Ablation (StrSub),8,WN18RR,,3,StrSub,alg3-ablation-topedge.exe,60,0.462893,,Top-Edge pruning only,ablation=topedge,completed,0.42,600,1,101.05,2026-05-13 22:59:18,2026-05-14 05:14:20,,
+exp6b_topedge_ds8_90th,exp6b,Ablation (StrSub),8,WN18RR,,3,StrSub,alg3-ablation-topedge.exe,90,0.628274,,Top-Edge pruning only,ablation=topedge,completed,0.04,600,1,-9999,2026-05-13 22:59:18,,,
+exp6b_localmax_ds8_10th,exp6b,Ablation (StrSub),8,WN18RR,,3,StrSub,alg3-ablation-localmax.exe,10,0.221709,,Local max filter only,ablation=localmax,completed,0.06,600,1,-9999,2026-05-13 22:59:18,,,
+exp6b_localmax_ds8_30th,exp6b,Ablation (StrSub),8,WN18RR,,3,StrSub,alg3-ablation-localmax.exe,30,0.341496,,Local max filter only,ablation=localmax,completed,0.43,600,1,101.35,2026-05-13 22:59:18,2026-05-14 04:25:53,,
+exp6b_localmax_ds8_60th,exp6b,Ablation (StrSub),8,WN18RR,,3,StrSub,alg3-ablation-localmax.exe,60,0.462893,,Local max filter only,ablation=localmax,completed,0.42,600,1,101.05,2026-05-13 22:59:18,2026-05-14 05:14:22,,
+exp6b_localmax_ds8_90th,exp6b,Ablation (StrSub),8,WN18RR,,3,StrSub,alg3-ablation-localmax.exe,90,0.628274,,Local max filter only,ablation=localmax,completed,0.04,600,1,-9999,2026-05-13 22:59:18,,,
+exp6b_full_ds8_10th,exp6b,Ablation (StrSub),8,WN18RR,,3,StrSub,alg3-ablation-full.exe,10,0.221709,,Full StrSub,ablation=full,completed,0.06,600,1,-9999,2026-05-13 22:59:18,,,
+exp6b_full_ds8_30th,exp6b,Ablation (StrSub),8,WN18RR,,3,StrSub,alg3-ablation-full.exe,30,0.341496,,Full StrSub,ablation=full,completed,0.42,600,1,101.35,2026-05-13 22:59:18,2026-05-14 04:25:55,,
+exp6b_full_ds8_60th,exp6b,Ablation (StrSub),8,WN18RR,,3,StrSub,alg3-ablation-full.exe,60,0.462893,,Full StrSub,ablation=full,completed,0.4,600,1,101.05,2026-05-13 22:59:18,2026-05-14 05:14:24,,
+exp6b_full_ds8_90th,exp6b,Ablation (StrSub),8,WN18RR,,3,StrSub,alg3-ablation-full.exe,90,0.628274,,Full StrSub,ablation=full,completed,0.04,600,1,-9999,2026-05-13 22:59:18,,,
+exp7_dense_ds1,exp7,Engineering Optimizations,1,sc-ldoor,,4,MonoSemMCE,alg4-eng-dense.exe,90,0.0801759,,Dense bitmap,engineering=dense,failed,4.93,600,1,101.4,2026-05-13 22:59:18,2026-05-15 00:04:26,错误码:143,ERROR_143
+exp7_naive_ds1,exp7,Engineering Optimizations,1,sc-ldoor,,4,MonoSemMCE,alg4-eng-naive.exe,90,0.0801759,,Naïve intersection,engineering=naive,completed,24.75,600,1,101.4,2026-05-13 22:59:18,2026-05-14 03:56:57,,
+exp7_noacc_ds1,exp7,Engineering Optimizations,1,sc-ldoor,,4,MonoSemMCE,alg4-eng-noacc.exe,90,0.0801759,,No incremental acc,engineering=noacc,completed,25.02,600,1,101.4,2026-05-13 22:59:18,2026-05-14 03:57:24,,
+exp7_noreorder_ds1,exp7,Engineering Optimizations,1,sc-ldoor,,4,MonoSemMCE,alg4-eng-noreorder.exe,90,0.0801759,,No reorder caching,engineering=noreorder,completed,24.47,600,1,101.4,2026-05-13 22:59:18,2026-05-14 03:57:49,,
+exp7_full_ds1,exp7,Engineering Optimizations,1,sc-ldoor,,4,MonoSemMCE,alg4-eng-full.exe,90,0.0801759,,Full system,engineering=full,completed,24.81,600,1,101.4,2026-05-13 22:59:18,2026-05-14 03:58:16,,
+exp7_dense_ds2,exp7,Engineering Optimizations,2,sc-nasasrb,,4,MonoSemMCE,alg4-eng-dense.exe,90,0.0800619,,Dense bitmap,engineering=dense,completed,1.83,600,1,101.4,2026-05-13 22:59:18,2026-05-14 03:58:19,,
+exp7_naive_ds2,exp7,Engineering Optimizations,2,sc-nasasrb,,4,MonoSemMCE,alg4-eng-naive.exe,90,0.0800619,,Naïve intersection,engineering=naive,completed,1.58,600,1,101.4,2026-05-13 22:59:18,2026-05-14 03:58:22,,
+exp7_noacc_ds2,exp7,Engineering Optimizations,2,sc-nasasrb,,4,MonoSemMCE,alg4-eng-noacc.exe,90,0.0800619,,No incremental acc,engineering=noacc,completed,1.57,600,1,101.4,2026-05-13 22:59:18,2026-05-14 03:58:25,,
+exp7_noreorder_ds2,exp7,Engineering Optimizations,2,sc-nasasrb,,4,MonoSemMCE,alg4-eng-noreorder.exe,90,0.0800619,,No reorder caching,engineering=noreorder,completed,1.55,600,1,101.4,2026-05-13 22:59:18,2026-05-14 03:58:28,,
+exp7_full_ds2,exp7,Engineering Optimizations,2,sc-nasasrb,,4,MonoSemMCE,alg4-eng-full.exe,90,0.0800619,,Full system,engineering=full,completed,1.82,600,1,101.4,2026-05-13 22:59:18,2026-05-14 03:58:31,,
+exp7_dense_ds8,exp7,Engineering Optimizations,8,WN18RR,,4,MonoSemMCE,alg4-eng-dense.exe,90,0.628274,,Dense bitmap,engineering=dense,completed,0.52,600,1,101.4,2026-05-13 22:59:18,2026-05-14 03:58:33,,
+exp7_naive_ds8,exp7,Engineering Optimizations,8,WN18RR,,4,MonoSemMCE,alg4-eng-naive.exe,90,0.628274,,Naïve intersection,engineering=naive,completed,0.36,600,1,101.4,2026-05-13 22:59:18,2026-05-14 03:58:34,,
+exp7_noacc_ds8,exp7,Engineering Optimizations,8,WN18RR,,4,MonoSemMCE,alg4-eng-noacc.exe,90,0.628274,,No incremental acc,engineering=noacc,completed,0.37,600,1,101.4,2026-05-13 22:59:18,2026-05-14 03:58:36,,
+exp7_noreorder_ds8,exp7,Engineering Optimizations,8,WN18RR,,4,MonoSemMCE,alg4-eng-noreorder.exe,90,0.628274,,No reorder caching,engineering=noreorder,completed,0.37,600,1,101.4,2026-05-13 22:59:18,2026-05-14 03:58:38,,
+exp7_full_ds8,exp7,Engineering Optimizations,8,WN18RR,,4,MonoSemMCE,alg4-eng-full.exe,90,0.628274,,Full system,engineering=full,completed,0.38,600,1,101.4,2026-05-13 22:59:18,2026-05-14 03:58:40,,
+exp7_dense_ds9,exp7,Engineering Optimizations,9,DBLP,,4,MonoSemMCE,alg4-eng-dense.exe,90,0.254785,,Dense bitmap,engineering=dense,oom,27.63,600,1,101.4,2026-05-13 22:59:18,2026-05-15 00:04:55,内存不足(OOM),OOM
+exp7_naive_ds9,exp7,Engineering Optimizations,9,DBLP,,4,MonoSemMCE,alg4-eng-naive.exe,90,0.254785,,Naïve intersection,engineering=naive,failed,40.55,600,1,101.4,2026-05-13 22:59:18,2026-05-14 03:59:50,程序异常中止(Abort),SIGNAL_134
+exp7_noacc_ds9,exp7,Engineering Optimizations,9,DBLP,,4,MonoSemMCE,alg4-eng-noacc.exe,90,0.254785,,No incremental acc,engineering=noacc,oom,37.35,600,1,101.4,2026-05-13 22:59:18,2026-05-15 00:05:34,内存不足(OOM),OOM
+exp7_noreorder_ds9,exp7,Engineering Optimizations,9,DBLP,,4,MonoSemMCE,alg4-eng-noreorder.exe,90,0.254785,,No reorder caching,engineering=noreorder,failed,36.17,600,1,101.4,2026-05-13 22:59:18,2026-05-14 04:01:05,程序异常中止(Abort),SIGNAL_134
+exp7_full_ds9,exp7,Engineering Optimizations,9,DBLP,,4,MonoSemMCE,alg4-eng-full.exe,90,0.254785,,Full system,engineering=full,oom,36.28,600,1,101.4,2026-05-13 22:59:18,2026-05-15 00:06:11,内存不足(OOM),OOM

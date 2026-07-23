@@ -1,0 +1,66 @@
+=== STDOUT ===
+============================================
+  ALG5_standard (Struct+Semantic MCE)
+  mine <tau> | sink <file> | log <file> | quit
+============================================
+Dataset: dataset/dataset/sc-ldoor.txt (ID=1)
+Loaded binary vectors from dataset/vectors-256/sc-ldoor_vectors.bin
+Vector dimension: 256
+Normalizing vectors...
+Vectors normalized successfully
+Graph: V=909537  E=20770807
+Load: 13599 ms
+
+
+=== Building VectorDB ===
+  Float32VectorStore: 909537x256
+=== DB ready ===
+
+
+>> 
+=== ALG5 MCE  tau=-0.080 ===
+Stage1: computing and caching all edge similarities...
+  edges cached: 20770807
+  [Stage1 build_graph]: 3523 ms
+Stage1b: degeneracy ordering...
+  [Stage1b degeneracy]: 756 ms
+Stage2+3: BK + intra-clique subset enumeration...
+  tau=-0.080  threads=128  timeout=6000s
+  merging thread-local candidates...
+  [Stage2+3 total]: 592 ms  candidates=274778
+    BK ratio in Phase1+2: 92.54%
+    Subset ratio in Phase1+2: 7.46%
+Stage4: global dedup (subset pruning)...
+  after exact dedup: 274778
+  [Stage4 dedup]: 561 ms  pruned=28  final=274750
+
+=== TOTAL: 5618 ms,  274750 maximal cliques ===
+
+--- Phase timing summary ---
+  BK ratio in Phase1+2:          92.54%
+  Subset ratio in Phase1+2:       7.46%
+  Phase3 dedup:                    561 ms
+----------------------------
+
+--- Clique size distribution ---
+  size   2: 15 (0.01%)
+  size   3: 3949 (1.44%)
+  size   4: 512 (0.19%)
+  size   5: 150 (0.05%)
+  size   6: 5 (0.00%)
+  size   7: 15 (0.01%)
+  size   8: 5 (0.00%)
+  size  15: 65 (0.02%)
+  size  16: 70 (0.03%)
+  size  17: 172 (0.06%)
+  size  18: 28195 (10.26%)
+  size  19: 49470 (18.01%)
+  size  20: 72571 (26.41%)
+  size  21: 119556 (43.51%)
+  Average clique size: 19.76
+--- Total: 274750 ---
+>> Bye.
+
+=== STDERR ===
+
+=== Exit Code: 0 ===

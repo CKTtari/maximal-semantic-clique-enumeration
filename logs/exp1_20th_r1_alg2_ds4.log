@@ -1,0 +1,44 @@
+============================================
+  ALG4 Standard (Semantic BK)
+  mine <tau> | sink <file> | log <file> | quit
+============================================
+Dataset: dataset/dataset/soc-buzznet.txt (ID=4)
+Graph: V=101163  E=2763066
+Load: 2688 ms
+
+
+=== Building VectorDB ===
+  Float32VectorStore: 101163x256
+=== DB ready ===
+
+
+>> 
+=== ALG4 MCE  tau=-0.053 ===
+[Stage1] Computing and caching all edge similarities...
+  edges cached: 2763066
+  [Stage1] Done: 408 ms
+[Stage2] Degeneracy ordering...
+  [Stage2] Done: 46 ms
+[Stage3] Semantic BK search...
+  tau=-0.053  threads=32  timeout=600s
+  progress 78855/101163 (77.9%)  cliques=1775199  elapsed=5s
+  progress 81280/101163 (80.3%)  cliques=2221734  elapsed=10s
+  progress 82607/101163 (81.7%)  cliques=2530480  elapsed=15s
+  progress 83655/101163 (82.7%)  cliques=2825102  elapsed=20s
+  progress 84413/101163 (83.4%)  cliques=3056933  elapsed=25s
+  progress 85280/101163 (84.3%)  cliques=3347004  elapsed=30s
+  progress 85741/101163 (84.8%)  cliques=3525932  elapsed=35s
+  progress 85986/101163 (85.0%)  cliques=3625460  elapsed=40s
+  progress 86234/101163 (85.2%)  cliques=3733017  elapsed=45s
+  progress 86424/101163 (85.4%)  cliques=3817359  elapsed=50s
+  progress 86595/101163 (85.6%)  cliques=3898132  elapsed=55s
+  progress 86743/101163 (85.7%)  cliques=3973386  elapsed=60s
+  progress 86960/101163 (86.0%)  cliques=4083124  elapsed=65s
+  progress 87289/101163 (86.3%)  cliques=4238881  elapsed=70s
+  progress 87452/101163 (86.4%)  cliques=4316753  elapsed=75s
+  progress 87619/101163 (86.6%)  cliques=4405463  elapsed=80s
+  progress 87746/101163 (86.7%)  cliques=4469785  elapsed=85s
+  progress 87753/101163 (86.7%)  cliques=4482158  elapsed=98s
+  progress 87769/101163 (86.8%)  cliques=4494029  elapsed=103s
+  progress 87842/101163 (86.8%)  cliques=4531274  elapsed=108s
+  progress 87956/101163 (86.9%)  cliques=4593374  elapsed=113s

@@ -1,0 +1,34 @@
+=== STDOUT ===
+============================================
+  alg6_v2_standard (Clique Size-Layered MCE)
+  mine <tau> | sink <file> | log <file> | quit
+============================================
+Dataset: dataset/dataset/dblp_coauthor.txt (ID=9)
+Loaded chunk: dataset/vectors/dblp_coauthor_vectors.json.chunk.0.bin (320000 vertices)
+Loaded chunk: dataset/vectors/dblp_coauthor_vectors.json.chunk.1.bin (320000 vertices)
+Loaded chunk: dataset/vectors/dblp_coauthor_vectors.json.chunk.2.bin (320000 vertices)
+Loaded chunk: dataset/vectors/dblp_coauthor_vectors.json.chunk.3.bin (320000 vertices)
+Loaded chunk: dataset/vectors/dblp_coauthor_vectors.json.chunk.4.bin (320000 vertices)
+Loaded chunk: dataset/vectors/dblp_coauthor_vectors.json.chunk.5.bin (210301 vertices)
+Loaded vectors from 1810301 vertices across multiple chunks
+Vector dimension: 384
+Normalizing vectors...
+Vectors normalized successfully
+Graph: V=1810301  E=13018406
+Load: 22769 ms
+
+
+=== Building VectorDB ===
+  Float32VectorStore: 1810301x384
+=== DB ready ===
+
+
+>> 
+=== STDERR ===
+terminate called recursively
+terminate called recursively
+terminate called after throwing an instance of 'terminate called recursively
+terminate called recursively
+timeout: the monitored command dumped core
+
+=== Exit Code: 134 ===

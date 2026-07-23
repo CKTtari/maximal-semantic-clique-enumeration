@@ -1,0 +1,6 @@
+=== STDOUT ===
+
+=== STDERR ===
+timeout: failed to run command ‘./alg3-raw.exe’: No such file or directory
+
+=== Exit Code: 127 ===

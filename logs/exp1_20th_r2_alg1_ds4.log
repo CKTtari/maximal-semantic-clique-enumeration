@@ -1,0 +1,37 @@
+============================================
+  ALG1 Standard (Structural MCE)
+  mine | sink <file> | log <file> | quit
+============================================
+Dataset: dataset/dataset/soc-buzznet.txt (ID=4)
+Graph: V=101163  E=2763066
+Load: 3270 ms
+
+
+>> 
+=== ALG1 Standard MCE ===
+[Stage1] Building adjacency...
+  [Stage1] Done: 96 ms  (V=101163, E=2763066)
+[Stage2] Degeneracy ordering...
+  [Stage2] Done: 43 ms
+[Stage3] Tomita Pivot BK search...
+  threads=32  timeout=600s
+  progress 95345/101163 (94.2%)  cliques=15547976  elapsed=5s
+  progress 97202/101163 (96.1%)  cliques=25356475  elapsed=10s
+  progress 98304/101163 (97.2%)  cliques=37290248  elapsed=15s
+  progress 98834/101163 (97.7%)  cliques=47155095  elapsed=20s
+  progress 99209/101163 (98.1%)  cliques=58059814  elapsed=25s
+  progress 99587/101163 (98.4%)  cliques=72318500  elapsed=30s
+  progress 99845/101163 (98.7%)  cliques=85743663  elapsed=35s
+  progress 100029/101163 (98.9%)  cliques=100441209  elapsed=40s
+  progress 100188/101163 (99.0%)  cliques=117132719  elapsed=45s
+  progress 100313/101163 (99.2%)  cliques=132929604  elapsed=51s
+  progress 100426/101163 (99.3%)  cliques=149166390  elapsed=56s
+  progress 100490/101163 (99.3%)  cliques=164237403  elapsed=62s
+  progress 100558/101163 (99.4%)  cliques=182022283  elapsed=68s
+  progress 100608/101163 (99.5%)  cliques=196188339  elapsed=73s
+  progress 100656/101163 (99.5%)  cliques=214381509  elapsed=78s
+  progress 100680/101163 (99.5%)  cliques=223484460  elapsed=84s
+  progress 100735/101163 (99.6%)  cliques=243454183  elapsed=89s
+  progress 100777/101163 (99.6%)  cliques=262315887  elapsed=97s
+  progress 100814/101163 (99.7%)  cliques=279103613  elapsed=102s
+  progress 100852/101163 (99.7%)  cliques=294437611  elapsed=107s

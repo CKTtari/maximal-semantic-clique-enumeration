@@ -1,0 +1,23 @@
+# Local datasets and raw source archives
+/dataset/
+/rawDatasets/
+
+# Compiled binaries and build output
+*.exe
+/build/
+
+# LaTeX intermediate files
+/main.aux
+/main.bbl
+/main.blg
+/main.fdb_latexmk
+/main.fls
+/main.log
+/main.out
+/main.synctex.gz
+
+# Editor, OS, and Python caches
+.DS_Store
+__pycache__/
+*.py[cod]
+

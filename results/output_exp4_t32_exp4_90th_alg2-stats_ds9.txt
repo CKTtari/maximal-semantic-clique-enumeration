@@ -1,0 +1,97 @@
+=== STDOUT ===
+============================================
+  ALG4 Stats (Semantic BK with Statistics)
+  mine <tau> | sink <file> | log <file> | quit
+============================================
+Dataset: dataset/dataset/dblp_coauthor.txt (ID=9)
+Loaded chunk: dataset/vectors/dblp_coauthor_vectors.json.chunk.0.bin (320000 vertices)
+Loaded chunk: dataset/vectors/dblp_coauthor_vectors.json.chunk.1.bin (320000 vertices)
+Loaded chunk: dataset/vectors/dblp_coauthor_vectors.json.chunk.2.bin (320000 vertices)
+Loaded chunk: dataset/vectors/dblp_coauthor_vectors.json.chunk.3.bin (320000 vertices)
+Loaded chunk: dataset/vectors/dblp_coauthor_vectors.json.chunk.4.bin (320000 vertices)
+Loaded chunk: dataset/vectors/dblp_coauthor_vectors.json.chunk.5.bin (210301 vertices)
+Loaded vectors from 1810301 vertices across multiple chunks
+Vector dimension: 384
+Normalizing vectors...
+Vectors normalized successfully
+Graph: V=1810301  E=13018406
+Load: 22602 ms
+
+
+=== Building VectorDB ===
+  Float32VectorStore: 1810301x384
+=== DB ready ===
+
+
+>> 
+=== ALG4 Stats MCE  tau=0.255 ===
+[Stage1] Computing and caching all edge similarities...
+  edges cached: 12579543
+  [Stage1] Done: 3033 ms
+[Stage2] Degeneracy ordering...
+  [Stage2] Done: 779 ms
+[Stage3] Semantic BK search...
+  tau=0.255  threads=32  timeout=600s
+  progress 1476989/1810301 (81.6%)  cliques=141919  elapsed=5s
+  progress 1507085/1810301 (83.3%)  cliques=164209  elapsed=10s
+  progress 1524925/1810301 (84.2%)  cliques=179940  elapsed=15s
+  progress 1533198/1810301 (84.7%)  cliques=186883  elapsed=20s
+  progress 1541399/1810301 (85.1%)  cliques=195001  elapsed=25s
+  progress 1548602/1810301 (85.5%)  cliques=202574  elapsed=30s
+  progress 1552338/1810301 (85.8%)  cliques=206270  elapsed=35s
+  progress 1556087/1810301 (86.0%)  cliques=210247  elapsed=40s
+  progress 1559859/1810301 (86.2%)  cliques=214479  elapsed=45s
+  progress 1563982/1810301 (86.4%)  cliques=219779  elapsed=50s
+  progress 1567305/1810301 (86.6%)  cliques=223841  elapsed=55s
+  progress 1569141/1810301 (86.7%)  cliques=225696  elapsed=60s
+  progress 1570743/1810301 (86.8%)  cliques=227522  elapsed=65s
+  progress 1572524/1810301 (86.9%)  cliques=229540  elapsed=70s
+  progress 1574517/1810301 (87.0%)  cliques=231698  elapsed=75s
+  progress 1576283/1810301 (87.1%)  cliques=233779  elapsed=80s
+  progress 1577959/1810301 (87.2%)  cliques=235985  elapsed=85s
+  progress 1579682/1810301 (87.3%)  cliques=238748  elapsed=90s
+  progress 1582083/1810301 (87.4%)  cliques=242218  elapsed=95s
+  progress 1583546/1810301 (87.5%)  cliques=244177  elapsed=100s
+  progress 1584427/1810301 (87.5%)  cliques=245150  elapsed=105s
+  progress 1585230/1810301 (87.6%)  cliques=246183  elapsed=110s
+  progress 1586047/1810301 (87.6%)  cliques=247269  elapsed=115s
+  progress 1586836/1810301 (87.7%)  cliques=248266  elapsed=120s
+  progress 1587624/1810301 (87.7%)  cliques=249272  elapsed=125s
+  progress 1588406/1810301 (87.7%)  cliques=250237  elapsed=130s
+  progress 1589261/1810301 (87.8%)  cliques=251473  elapsed=135s
+  progress 1590011/1810301 (87.8%)  cliques=252547  elapsed=140s
+  progress 1590894/1810301 (87.9%)  cliques=253857  elapsed=145s
+  progress 1591634/1810301 (87.9%)  cliques=255148  elapsed=150s
+  progress 1592536/1810301 (88.0%)  cliques=256371  elapsed=155s
+  progress 1593481/1810301 (88.0%)  cliques=257738  elapsed=160s
+  progress 1594329/1810301 (88.1%)  cliques=259105  elapsed=165s
+  progress 1595186/1810301 (88.1%)  cliques=260567  elapsed=170s
+  progress 1596201/1810301 (88.2%)  cliques=262280  elapsed=175s
+  progress 1597429/1810301 (88.2%)  cliques=264250  elapsed=180s
+  progress 1598186/1810301 (88.3%)  cliques=265333  elapsed=185s
+  progress 1598584/1810301 (88.3%)  cliques=265792  elapsed=190s
+  progress 1598983/1810301 (88.3%)  cliques=266235  elapsed=195s
+  progress 1599316/1810301 (88.3%)  cliques=266757  elapsed=200s
+  progress 1599694/1810301 (88.4%)  cliques=267202  elapsed=205s
+  progress 1600067/1810301 (88.4%)  cliques=267698  elapsed=210s
+  progress 1600430/1810301 (88.4%)  cliques=268169  elapsed=216s
+  progress 1600816/1810301 (88.4%)  cliques=268629  elapsed=221s
+  progress 1601216/1810301 (88.5%)  cliques=269076  elapsed=226s
+  progress 1601577/1810301 (88.5%)  cliques=269529  elapsed=231s
+  progress 1601913/1810301 (88.5%)  cliques=270168  elapsed=236s
+  progress 1602246/1810301 (88.5%)  cliques=270788  elapsed=241s
+  progress 1602611/1810301 (88.5%)  cliques=271314  elapsed=246s
+  progress 1602991/1810301 (88.5%)  cliques=271889  elapsed=251s
+  progress 1603358/1810301 (88.6%)  cliques=272439  elapsed=256s
+  progress 1603699/1810301 (88.6%)  cliques=272913  elapsed=261s
+  progress 1604072/1810301 (88.6%)  cliques=273420  elapsed=266s
+  progress 1604437/1810301 (88.6%)  cliques=273991  elapsed=271s
+  progress 1604842/1810301 (88.7%)  cliques=274596  elapsed=276s
+  progress 1605246/1810301 (88.7%)  cliques=275291  elapsed=281s
+  progress 1605643/1810301 (88.7%)  cliques=275911  elapsed=286s
+  progress 1605984/1810301 (88.7%)  cliques=276460  elapsed=291s
+  progress 1606388/1810301 (88.7%)  cliques=277137  elapsed=296s
+  progress 1606
+=== STDERR ===
+
+=== Exit Code: 124 ===

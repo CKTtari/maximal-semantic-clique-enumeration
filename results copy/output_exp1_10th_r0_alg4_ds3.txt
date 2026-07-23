@@ -1,0 +1,26 @@
+=== STDOUT ===
+============================================
+  alg6_v2_standard (Clique Size-Layered MCE)
+  mine <tau> | sink <file> | log <file> | quit
+============================================
+Dataset: dataset/dataset/sc-pkustk11.txt (ID=3)
+Loaded binary vectors from dataset/vectors-256/sc-pkustk11_vectors.bin
+Vector dimension: 256
+Normalizing vectors...
+Vectors normalized successfully
+Graph: V=87804  E=2565054
+Load: 1505 ms
+
+
+=== Building VectorDB ===
+  Float32VectorStore: 87804x256
+=== DB ready ===
+
+
+>> 
+=== STDERR ===
+terminate called after throwing an instance of 'std::bad_alloc'
+  what():  std::bad_alloc
+timeout: the monitored command dumped core
+
+=== Exit Code: 134 ===

@@ -1,0 +1,60 @@
+{
+  "exp3_95th_alg4_ds5": {
+    "time_avg": 2.452,
+    "time_min": 2.452,
+    "time_max": 2.452,
+    "count": 355974,
+    "status": "success",
+    "elapsed": 13.695499181747437
+  },
+  "90th_alg4_ds5": {
+    "time_avg": 7.715,
+    "time_min": 7.715,
+    "time_max": 7.715,
+    "count": 1263080,
+    "status": "success",
+    "elapsed": 16.95247769355774
+  },
+  "exp3_90th_alg4_ds5": {
+    "time_avg": 8.043,
+    "time_min": 8.043,
+    "time_max": 8.043,
+    "count": 1263081,
+    "status": "success",
+    "elapsed": 16.55579447746277
+  },
+  "exp4_90th_alg4-stats_ds5": {
+    "time_avg": 16.219,
+    "time_min": 16.219,
+    "time_max": 16.219,
+    "count": 1263080,
+    "status": "success",
+    "elapsed": 25.57741117477417,
+    "log_file": "log_exp4_90th_alg4-stats_ds5.txt",
+    "raw_log": "============================================\n  ALG7_v2_stats (Clique Size-Layered MCE, Extended Stats)\n  mine <tau> | sink <file> | log <file> | quit\n============================================\nDataset: dataset/dataset/soc-digg.txt (ID=5)\nGraph: V=770799  E=5907132\nLoad: 6716 ms\n\n\n=== Building VectorDB ===\n  Float32VectorStore: 770799x256\n=== DB ready ===\n\n\n>> \n=== AvgSim Clique MCE  tau=0.080 ===\nStage1: computing and caching all edge similarities...\n  [Stage1] edges: 5907132, sim>0.080: 590714\n  [Stage1 time]: 480 ms\nStage2: building layer-0 (sim > 0.080 edges)...\n  Layer-0: 590714 2-cliques (after dedup)\nStage3: clique expansion by size layers...\n  Layer  0: in=590714    out_next=922441    dedup_removed=451989    maximal_collected=313019  t=4019ms\n  Layer  1: in=922441    out_next=716376    dedup_removed=698370    maximal_collected=367580  t=4313ms\n  Layer  2: in=716376    out_next=223191    dedup_removed=325737    maximal_collected=404959  t=2639ms\n  Layer  3: in=223191    out_next=38987     dedup_removed=75808     maximal_collected=149577  t=660ms\n  Layer  4: in=38987     out_next=5490      dedup_removed=13492     maximal_collected=26793   t=110ms\n  Layer  5: in=5490      out_next=521       dedup_removed=1542      maximal_collected=3948    t=14ms\n  Layer  6: in=521       out_next=43        dedup_removed=142       maximal_collected=338     t=1ms\n  Layer  7: in=43        out_next=0         dedup_removed=0         maximal_collected=43      t=0ms\n\n  [Stage2+3 time]: 8 layers, 13082 ms\n\nStage4: post-validation (exact dedup + subset check)...\n  raw collected: 1266257  after exact dedup: 1266257  (removed 0 exact duplicates)\n  subset check pruned: 3177  (should be 0 if algorithm is correct)\n  final count: 1263080\n  [Stage4 time]: 2300 ms\n\n--- Clique size distribution (after post-validation) ---\n  size   2: 312377 (24.73%)\n  size   3: 365866 (28.97%)\n  size   4: 404298 (32.01%)\n  size   5: 149430 (11.83%)\n  size   6: 26781 (2.12%)\n  size   7: 3947 (0.31%)\n  size   8: 338 (0.03%)\n  size   9: 43 (0.00%)\n  Average clique size: 3.39\n--- Total cliques: 1263080 ---\n\n+=========================================================+\n|   Extended Mining Statistics   tau=0.080                 |\n+---------------------------------------------------------+\n|  [General]                                              |\n|  #recursive_calls          :          2497763          |\n|  #search_nodes             :          3088477          |\n|  #candidate_expansions     :         79378082          |\n|  #similarity_computations  :        146857017          |\n+---------------------------------------------------------+\n|  [ALG6 Pruning]                                         |\n|  #W_prune_triggers         :         75401413          |\n|  #mono_prune_triggers      :           502540          |\n|  #effective_expansions     :          3474129          |\n|  Effective expansion rate  :            4.38%          |\n+---------------------------------------------------------+\n|  [Dedup]                                                |\n|  Total produced (before dedup):       5331100          |\n|  Total dedup removed          :       1567080          |\n|  Dedup ratio                  :         29.40%          |\n+---------------------------------------------------------+\n|  Final maximal cliques     :          1263080          |\n+=========================================================+\n\n=== TOTAL: 16219 ms,  1263080 maximal cliques ===\n>> Bye.\n"
+  },
+  "exp6a_w_ds5": {
+    "time_avg": 22.867,
+    "time_min": 22.867,
+    "time_max": 22.867,
+    "count": 1263080,
+    "status": "success",
+    "elapsed": 32.82185363769531
+  },
+  "exp6a_both_ds5": {
+    "time_avg": 10.572,
+    "time_min": 10.572,
+    "time_max": 10.572,
+    "count": 1263080,
+    "status": "success",
+    "elapsed": 20.377108097076416
+  },
+  "exp6a_full_ds5": {
+    "time_avg": 9.392,
+    "time_min": 9.392,
+    "time_max": 9.392,
+    "count": 1263080,
+    "status": "success",
+    "elapsed": 18.646451234817505
+  }
+}

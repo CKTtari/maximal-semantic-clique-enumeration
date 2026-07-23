@@ -1,0 +1,97 @@
+=== STDOUT ===
+============================================
+  ALG5_standard (Struct+Semantic MCE)
+  mine <tau> | sink <file> | log <file> | quit
+============================================
+Dataset: dataset/dataset/sc-pkustk11.txt (ID=3)
+Loaded binary vectors from dataset/vectors-256/sc-pkustk11_vectors.bin
+Vector dimension: 256
+Normalizing vectors...
+Vectors normalized successfully
+Graph: V=87804  E=2565054
+Load: 1116 ms
+
+
+=== Building VectorDB ===
+  Float32VectorStore: 87804x256
+=== DB ready ===
+
+
+>> 
+=== ALG5 MCE  tau=0.000 ===
+Stage1: computing and caching all edge similarities...
+  edges cached: 2565054
+  [Stage1 build_graph]: 293 ms
+Stage1b: degeneracy ordering...
+  [Stage1b degeneracy]: 64 ms
+Stage2+3: BK + intra-clique subset enumeration...
+  tau=0.000  threads=32  timeout=6000s
+  progress 3307/87804 (3.8%)  candidates=0  elapsed=5s
+  progress 4381/87804 (5.0%)  candidates=0  elapsed=10s
+  progress 5419/87804 (6.2%)  candidates=0  elapsed=15s
+  progress 6397/87804 (7.3%)  candidates=0  elapsed=20s
+  progress 7585/87804 (8.6%)  candidates=0  elapsed=25s
+  progress 8659/87804 (9.9%)  candidates=0  elapsed=30s
+  progress 9601/87804 (10.9%)  candidates=0  elapsed=35s
+  progress 10399/87804 (11.8%)  candidates=0  elapsed=40s
+  progress 11293/87804 (12.9%)  candidates=0  elapsed=45s
+  progress 12007/87804 (13.7%)  candidates=0  elapsed=50s
+  progress 13267/87804 (15.1%)  candidates=0  elapsed=55s
+  progress 14065/87804 (16.0%)  candidates=0  elapsed=61s
+  progress 15242/87804 (17.4%)  candidates=0  elapsed=66s
+  progress 16201/87804 (18.5%)  candidates=0  elapsed=71s
+  progress 16885/87804 (19.2%)  candidates=0  elapsed=76s
+  progress 17623/87804 (20.1%)  candidates=0  elapsed=81s
+  progress 18259/87804 (20.8%)  candidates=0  elapsed=86s
+  progress 19141/87804 (21.8%)  candidates=0  elapsed=91s
+  progress 19945/87804 (22.7%)  candidates=0  elapsed=96s
+  progress 20599/87804 (23.5%)  candidates=0  elapsed=101s
+  progress 21115/87804 (24.0%)  candidates=0  elapsed=106s
+  progress 22357/87804 (25.5%)  candidates=0  elapsed=111s
+  progress 23077/87804 (26.3%)  candidates=0  elapsed=116s
+  progress 23689/87804 (27.0%)  candidates=0  elapsed=122s
+  progress 24589/87804 (28.0%)  candidates=0  elapsed=127s
+  progress 25477/87804 (29.0%)  candidates=0  elapsed=132s
+  progress 26131/87804 (29.8%)  candidates=0  elapsed=137s
+  progress 27319/87804 (31.1%)  candidates=0  elapsed=142s
+  progress 28387/87804 (32.3%)  candidates=0  elapsed=147s
+  progress 28825/87804 (32.8%)  candidates=0  elapsed=152s
+  progress 29227/87804 (33.3%)  candidates=0  elapsed=157s
+  progress 30145/87804 (34.3%)  candidates=0  elapsed=162s
+  progress 30998/87804 (35.3%)  candidates=0  elapsed=168s
+  progress 31897/87804 (36.3%)  candidates=0  elapsed=173s
+  progress 32797/87804 (37.4%)  candidates=0  elapsed=178s
+  progress 33553/87804 (38.2%)  candidates=0  elapsed=183s
+  progress 34471/87804 (39.3%)  candidates=0  elapsed=188s
+  progress 35347/87804 (40.3%)  candidates=0  elapsed=193s
+  progress 35911/87804 (40.9%)  candidates=0  elapsed=198s
+  progress 36518/87804 (41.6%)  candidates=0  elapsed=203s
+  progress 37381/87804 (42.6%)  candidates=0  elapsed=208s
+  progress 38215/87804 (43.5%)  candidates=0  elapsed=213s
+  progress 39367/87804 (44.8%)  candidates=0  elapsed=218s
+  progress 39955/87804 (45.5%)  candidates=0  elapsed=224s
+  progress 40573/87804 (46.2%)  candidates=0  elapsed=229s
+  progress 41323/87804 (47.1%)  candidates=0  elapsed=234s
+  progress 42085/87804 (47.9%)  candidates=0  elapsed=239s
+  progress 42799/87804 (48.7%)  candidates=0  elapsed=244s
+  progress 43867/87804 (50.0%)  candidates=0  elapsed=249s
+  progress 45157/87804 (51.4%)  candidates=0  elapsed=254s
+  progress 46099/87804 (52.5%)  candidates=0  elapsed=259s
+  progress 46537/87804 (53.0%)  candidates=0  elapsed=264s
+  progress 46999/87804 (53.5%)  candidates=0  elapsed=269s
+  progress 47785/87804 (54.4%)  candidates=0  elapsed=274s
+  progress 48325/87804 (55.0%)  candidates=0  elapsed=279s
+  progress 49099/87804 (55.9%)  candidates=0  elapsed=284s
+  progress 50113/87804 (57.1%)  candidates=0  elapsed=289s
+  progress 50797/87804 (57.9%)  candidates=0  elapsed=295s
+  progress 51415/87804 (58.6%)  candidates=0  elapsed=300s
+  progress 52333/87804 (59.6%)  candidates=0  elapsed=305s
+  progress 53005/87804 (60.4%)  candidates=0  elapsed=310s
+  progress 53995/87804 (61.5%)  candidates=0  elapsed=315s
+  progress 54853/87804 (62.5%)  candidates=0  elapsed=320s
+  progress 55574/87804 (63.3%)  candidates=0  elapsed=325s
+  progress 56929/87804 (64.8%)  candidates=0  elapsed=330s
+  pr
+=== STDERR ===
+
+=== Exit Code: 124 ===

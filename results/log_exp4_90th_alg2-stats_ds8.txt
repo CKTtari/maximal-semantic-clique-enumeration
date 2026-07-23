@@ -1,0 +1,55 @@
+============================================
+  ALG4 Stats (Semantic BK with Statistics)
+  mine <tau> | sink <file> | log <file> | quit
+============================================
+Dataset: dataset/dataset/WN18RR_edges.txt (ID=8)
+Graph: V=40943  E=75762
+Load: 96 ms
+
+
+=== Building VectorDB ===
+  Float32VectorStore: 40943x384
+=== DB ready ===
+
+
+>> 
+=== ALG4 Stats MCE  tau=0.628 ===
+[Stage1] Computing and caching all edge similarities...
+  edges cached: 75753
+  [Stage1] Done: 17 ms
+[Stage2] Degeneracy ordering...
+  [Stage2] Done: 3 ms
+[Stage3] Semantic BK search...
+  tau=0.628  threads=32  timeout=600s
+  [Stage3] Done: 15 ms  cliques=7334
+
+=== TOTAL: 37 ms,  7334 maximal cliques ===
+
++============================================================+
+|   Extended Mining Statistics   tau=0.628                    |
++------------------------------------------------------------+
+|  [General]                                                 |
+|  #recursive_calls (produce)    :         121858            |
+|  #search_nodes                 :         125051            |
+|  #candidate_expansions         :          82698            |
+|  #similarity_computations      :         105331            |
++------------------------------------------------------------+
+|  [ALG4 Check Mode]                                          |
+|  #check_calls                 :           3193            |
+|  #check_failed (filtered)     :            370            |
+|  #check_passed (emitted)      :          41252            |
+|  extra recursion ratio         :          2.55 %           |
++------------------------------------------------------------+
+|  [Phase Timing]                                            |
+|  Graph build        :       18 ms  ( 48.6%)               |
+|  Degeneracy ordering:        3 ms  (  8.1%)               |
+|  BK search          :       15 ms  ( 40.5%)               |
++============================================================+
+
+
+--- Clique size distribution ---
+  size   2: 7015 (95.65%)
+  size   3: 319 (4.35%)
+  Average clique size: 2.04
+--------------------------------
+>> Bye.

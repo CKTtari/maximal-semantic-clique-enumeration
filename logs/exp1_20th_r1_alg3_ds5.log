@@ -1,0 +1,42 @@
+============================================
+  ALG5_standard (Struct+Semantic MCE)
+  mine <tau> | sink <file> | log <file> | quit
+============================================
+Dataset: dataset/dataset/soc-digg.txt (ID=5)
+Graph: V=770799  E=5907132
+Load: 6594 ms
+
+
+=== Building VectorDB ===
+  Float32VectorStore: 770799x256
+=== DB ready ===
+
+
+>> 
+=== ALG5 MCE  tau=-0.053 ===
+Stage1: computing and caching all edge similarities...
+  edges cached: 5907132
+  [Stage1 build_graph]: 991 ms
+Stage1b: degeneracy ordering...
+  [Stage1b degeneracy]: 120 ms
+Stage2+3: BK + intra-clique subset enumeration...
+  tau=-0.053  threads=32  timeout=6000s
+  progress 758839/770799 (98.4%)  candidates=0  elapsed=5s
+  progress 759787/770799 (98.6%)  candidates=0  elapsed=10s
+  progress 760150/770799 (98.6%)  candidates=0  elapsed=15s
+  progress 760491/770799 (98.7%)  candidates=0  elapsed=20s
+  progress 760612/770799 (98.7%)  candidates=0  elapsed=25s
+  progress 760925/770799 (98.7%)  candidates=0  elapsed=30s
+  progress 760947/770799 (98.7%)  candidates=0  elapsed=37s
+  progress 761101/770799 (98.7%)  candidates=0  elapsed=42s
+  progress 761181/770799 (98.8%)  candidates=0  elapsed=49s
+  progress 761196/770799 (98.8%)  candidates=0  elapsed=59s
+  progress 761205/770799 (98.8%)  candidates=0  elapsed=66s
+  progress 761212/770799 (98.8%)  candidates=0  elapsed=73s
+  progress 761219/770799 (98.8%)  candidates=0  elapsed=78s
+  progress 761232/770799 (98.8%)  candidates=0  elapsed=85s
+  progress 761249/770799 (98.8%)  candidates=0  elapsed=90s
+  progress 761815/770799 (98.8%)  candidates=0  elapsed=95s
+  progress 762765/770799 (99.0%)  candidates=0  elapsed=100s
+  progress 762975/770799 (99.0%)  candidates=0  elapsed=106s
+  progress 762999/770799 (99.0%)  candidates=0  elapsed=111s

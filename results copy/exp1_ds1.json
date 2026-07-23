@@ -1,0 +1,107 @@
+{
+  "10th_alg1_ds1": {
+    "time_avg": 1.068,
+    "time_min": 1.068,
+    "time_max": 1.068,
+    "count": 274770,
+    "status": "success"
+  },
+  "10th_alg2_ds1": {
+    "time_avg": "运行超时(>600s)",
+    "count": null,
+    "status": "failed",
+    "error_type": "TLE",
+    "elapsed": 1217.2586815357208,
+    "error": "运行超时(>600s)",
+    "output_preview": "============================================\n  ALG4 Standard (Semantic BK)\n  mine <tau> | sink <file> | log <file> | quit\n============================================\nDataset: dataset/dataset/sc-ldoor.txt (ID=1)\nLoaded binary vectors from dataset/vectors-256/sc-ldoor_vectors.bin\nVector dimension: 256\nNormalizing vectors...\nVectors normalized successfully\nGraph: V=909537  E=20770807\nLoad: 14276 ms\n\n\n=== Building VectorDB ===\n  Float32VectorStore: 909537x256\n=== DB ready ===\n\n\n>> \n=== ALG4 MCE  ta",
+    "stderr_preview": ""
+  },
+  "10th_alg3_ds1": {
+    "time_avg": 5.618,
+    "time_min": 5.618,
+    "time_max": 5.618,
+    "count": 274750,
+    "status": "success"
+  },
+  "10th_alg4_ds1": {
+    "time_avg": "内存不足(OOM) - 程序被系统终止",
+    "count": null,
+    "status": "failed",
+    "error_type": "OOM",
+    "elapsed": 22.524969577789307,
+    "error": "内存不足(OOM) - 程序被系统终止",
+    "output_preview": "============================================\n  alg6_v2_standard (Clique Size-Layered MCE)\n  mine <tau> | sink <file> | log <file> | quit\n============================================\nDataset: dataset/dataset/sc-ldoor.txt (ID=1)\nLoaded binary vectors from dataset/vectors-256/sc-ldoor_vectors.bin\nVector dimension: 256\nNormalizing vectors...\nVectors normalized successfully\nGraph: V=909537  E=20770807\nLoad: 13450 ms\n\n\n=== Building VectorDB ===\n  Float32VectorStore: 909537x256\n=== DB ready ===\n\n\n>> ",
+    "stderr_preview": "terminate called after throwing an instance of 'std::bad_alloc'\n  what():  std::bad_alloc\ntimeout: the monitored command dumped core\n"
+  },
+  "90th_alg1_ds1": {
+    "time_avg": 1.246,
+    "time_min": 1.246,
+    "time_max": 1.246,
+    "count": 274770,
+    "status": "success"
+  },
+  "90th_alg2_ds1": {
+    "time_avg": "运行超时(>600s)",
+    "count": null,
+    "status": "failed",
+    "error_type": "TLE",
+    "elapsed": 600.8539800643921,
+    "error": "运行超时(>600s)",
+    "output_preview": "============================================\n  ALG4 Standard (Semantic BK)\n  mine <tau> | sink <file> | log <file> | quit\n============================================\nDataset: dataset/dataset/sc-ldoor.txt (ID=1)\nLoaded binary vectors from dataset/vectors-256/sc-ldoor_vectors.bin\nVector dimension: 256\nNormalizing vectors...\nVectors normalized successfully\nGraph: V=909537  E=20770807\nLoad: 14084 ms\n\n\n=== Building VectorDB ===\n  Float32VectorStore: 909537x256\n=== DB ready ===\n\n\n>> \n=== ALG4 MCE  ta",
+    "stderr_preview": ""
+  },
+  "90th_alg3_ds1": {
+    "time_avg": 168.454,
+    "time_min": 168.454,
+    "time_max": 168.454,
+    "count": 2463604,
+    "status": "success"
+  },
+  "90th_alg4_ds1": {
+    "time_avg": 15.265,
+    "time_min": 15.265,
+    "time_max": 15.265,
+    "count": 2463603,
+    "status": "success"
+  },
+  "50th_alg1_ds1": {
+    "time_avg": 1.049,
+    "time_min": 1.049,
+    "time_max": 1.049,
+    "count": 274770,
+    "status": "success",
+    "elapsed": 15.778590202331543
+  },
+  "exp3_95th_alg3_ds1": {
+    "time_avg": 17.072,
+    "time_min": 17.072,
+    "time_max": 17.072,
+    "count": 959006,
+    "status": "success",
+    "elapsed": 31.59448504447937
+  },
+  "exp3_90th_alg3_ds1": {
+    "time_avg": 123.164,
+    "time_min": 123.164,
+    "time_max": 123.164,
+    "count": 2463604,
+    "status": "success",
+    "elapsed": 138.21011638641357
+  },
+  "exp4_10th_alg3-stats_ds1": {
+    "time_avg": 95.394,
+    "time_min": 95.394,
+    "time_max": 95.394,
+    "count": 274750,
+    "status": "success",
+    "elapsed": 111.50337839126587
+  },
+  "exp4_90th_alg3-stats_ds1": {
+    "time_avg": 152.77,
+    "time_min": 152.77,
+    "time_max": 152.77,
+    "count": 2463604,
+    "status": "success",
+    "elapsed": 168.98793029785156
+  }
+}

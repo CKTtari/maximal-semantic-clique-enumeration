@@ -1,0 +1,66 @@
+=== STDOUT ===
+============================================
+  alg6_v2_standard (Clique Size-Layered MCE)
+  mine <tau> | sink <file> | log <file> | quit
+============================================
+Dataset: dataset/dataset/sc-nasasrb.txt (ID=2)
+Loaded binary vectors from dataset/vectors-256/sc-nasasrb_vectors.bin
+Vector dimension: 256
+Normalizing vectors...
+Vectors normalized successfully
+Graph: V=54870  E=1311227
+Load: 576 ms
+
+
+=== Building VectorDB ===
+  Float32VectorStore: 54870x256
+=== DB ready ===
+
+
+>> 
+=== AvgSim Clique MCE  tau=0.053 ===
+Ablation: W_PRUNE=1  MONO_PRUNE=1  LAYER_DEDUP=1
+Stage1: computing and caching all edge similarities...
+  [Stage1] edges: 1311227, sim>0.053: 262246
+  [Stage1 time]: 72 ms
+Stage2: building layer-0 (sim > 0.053 edges)...
+  Layer-0: 262246 2-cliques (after dedup)
+Stage3: clique expansion by size layers...
+  Layer  0: in=262246    out_next=867868    dedup_removed=423911    maximal_collected=4114    t=1711ms
+  Layer  1: in=867868    out_next=1374799   dedup_removed=1338363   maximal_collected=52933   t=3682ms
+  Layer  2: in=1374799   out_next=1230903   dedup_removed=1799322   maximal_collected=183976  t=4632ms
+  Layer  3: in=1230903   out_next=683481    dedup_removed=1332962   maximal_collected=270221  t=3508ms
+  Layer  4: in=683481    out_next=247870    dedup_removed=604722    maximal_collected=211362  t=1815ms
+  Layer  5: in=247870    out_next=60232     dedup_removed=175510    maximal_collected=99082   t=629ms
+  Layer  6: in=60232     out_next=9991      dedup_removed=33879     maximal_collected=29153   t=136ms
+  Layer  7: in=9991      out_next=1049      dedup_removed=4027      maximal_collected=5662    t=13ms
+  Layer  8: in=1049      out_next=54        dedup_removed=243       maximal_collected=741     t=0ms
+  Layer  9: in=54        out_next=0         dedup_removed=0         maximal_collected=54      t=0ms
+
+  [Stage2+3 time]: 10 layers, 16506 ms
+
+Stage4: post-validation (exact dedup)...
+  raw collected: 857298  after exact dedup: 857298  (removed 0)
+  subset_pruned: 19934  final: 837364
+  [Stage4 time]: 721 ms
+
+--- Clique size distribution ---
+  size   2: 3012 (0.36%)
+  size   3: 47512 (5.67%)
+  size   4: 176781 (21.11%)
+  size   5: 265831 (31.75%)
+  size   6: 209864 (25.06%)
+  size   7: 98807 (11.80%)
+  size   8: 29103 (3.48%)
+  size   9: 5659 (0.68%)
+  size  10: 741 (0.09%)
+  size  11: 54 (0.01%)
+  Average clique size: 5.29
+--- Total cliques: 837364 ---
+
+=== TOTAL: 17349 ms,  837364 maximal cliques ===
+>> Bye.
+
+=== STDERR ===
+
+=== Exit Code: 0 ===
