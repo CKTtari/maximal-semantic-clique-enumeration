@@ -1,0 +1,626 @@
+{
+  "schema_version": 2,
+  "run_name": "batch0-alg3-ablation-equivalence",
+  "archived_utc": "2026-07-23T09:08:17.190704+00:00",
+  "local_result_directory": "experiment-output/batch0-alg3-ablation-equivalence",
+  "plans": [
+    {
+      "path": "experiments/plans/batch0-alg3-ablation-equivalence.json",
+      "sha256": "8a14dcc5986cb16ff1ece9735af4003cfc0cf148ac5c6e14420246545e44517c"
+    }
+  ],
+  "summary": {
+    "attempts": 4,
+    "status_counts": {
+      "completed": 4
+    }
+  },
+  "records": [
+    {
+      "task_id": "1b0c3e553825e1b7",
+      "attempt": 1,
+      "status": "completed",
+      "rerun_reason": null,
+      "started_utc": "2026-07-23T08:13:26.702301+00:00",
+      "wall_seconds": 0.23802170000271872,
+      "task": {
+        "algorithm": 3,
+        "mode": "raw",
+        "dataset": 8,
+        "tau": 0.8,
+        "threads": 32,
+        "timeout_seconds": 180,
+        "graph": null,
+        "vectors": null,
+        "capture_cliques": true,
+        "defines": {},
+        "warmup": false,
+        "repetition": 0,
+        "task_id": "1b0c3e553825e1b7"
+      },
+      "parsed": {
+        "algorithm_ms": 38,
+        "clique_count": 577,
+        "peak_memory_gib": 0.19,
+        "size_histogram": {
+          "2": 573,
+          "3": 4
+        },
+        "stats": {}
+      },
+      "validation": {
+        "unique_cliques": 577,
+        "compared_with": [],
+        "exact_match": true
+      },
+      "build": {
+        "fingerprint": "2d0383e9aab712e9",
+        "executable_sha256": "d1979312dbe977c3ef3a4196af1d409403533af9640538ec846ad7dd065e3c6e",
+        "command": [
+          "g++",
+          "-std=c++17",
+          "-fopenmp",
+          "-mavx2",
+          "-O3",
+          "src/alg3-raw.cpp",
+          "src/semantic_graph.cpp",
+          "-o",
+          "no-use/compiled/experiment-runner/alg3-raw-2d0383e9aab712e9.exe"
+        ],
+        "source_verification": {
+          "status": "verified_current",
+          "observed_current_fingerprint": "2d0383e9aab712e9",
+          "reason": null
+        },
+        "source_hashes": {
+          "alg3-raw.cpp": "fc80d45196988448fd94b3f65b04eebcd4f6f68770111b57a81fb7c898a95c3e",
+          "semantic_graph.cpp": "c6d51c9086fbd5c7d264eb411ac04890806744fc4e05dc7eee0b156760a9cd92",
+          "semantic_graph.h": "8192c4e8e02fc8ace59d59365f72643e34ca32ba71faa5bb338381a8cd308078",
+          "experiment_runtime.h": "1a15525107f95da07392efce763189a04a92d078bcf3660fcb0892dbdb053e25"
+        }
+      },
+      "inputs": {
+        "status": "legacy_post_run_snapshot",
+        "reason": "Run predates input hashing; this is a post-run snapshot and is not represented as a run-time fingerprint.",
+        "snapshot": {
+          "dataset_catalog": {
+            "path": "experiments/datasets.json",
+            "sha256": "956d6f0abf808aeb0c2056384786f5b893b72919eb5aa5ee90109bef4ef19094"
+          },
+          "files": [
+            {
+              "role": "graph",
+              "path": "dataset/dataset/WN18RR_edges.txt",
+              "bytes": 937949,
+              "sha256": "876c6143d5d2433f6722a8ce3f7662dce91b44ef687c34c4b885dc4cfa1127ec"
+            },
+            {
+              "role": "vector_index",
+              "path": "dataset/vectors/WN18RR_vectors.index",
+              "bytes": 60,
+              "sha256": "d8115fc7c0baa8ace7c327b8b29620863ab16df65816c52cd021f664355afd04"
+            },
+            {
+              "role": "vector_chunk",
+              "path": "dataset/vectors/WN18RR_vectors.json.chunk.0.bin",
+              "bytes": 125776904,
+              "sha256": "d828bb5eec810ac2189c62669ccd7e63453733345077319d013e8ec4cae5ac37"
+            }
+          ]
+        }
+      },
+      "run_environment": {
+        "plan": "experiments/plans/batch0-alg3-ablation-equivalence.json",
+        "plan_sha256": "8a14dcc5986cb16ff1ece9735af4003cfc0cf148ac5c6e14420246545e44517c",
+        "git": {
+          "commit": "59299fd9164d077d7e04cd97fc9ac89cbf962c9f",
+          "dirty": true
+        },
+        "machine": {
+          "platform": "Windows-11-10.0.26100-SP0",
+          "processor": "AMD64 Family 25 Model 97 Stepping 2, AuthenticAMD",
+          "logical_cpu_count": 32,
+          "python": "3.12.7",
+          "compiler": "g++ (x86_64-posix-seh-rev0, Built by MinGW-Builds project) 13.2.0"
+        },
+        "memory_limit_gib": 16,
+        "external_timeout_policy": "hard per-process TLE from task.timeout_seconds"
+      },
+      "result_json": {
+        "path": "experiment-output/batch0-alg3-ablation-equivalence/1b0c3e553825e1b7.attempt-001.json",
+        "bytes": 3361,
+        "sha256": "2ce902ce85a684b0da846cd08b39fd9e1e007e2ee22dfe6687e502fec6844964"
+      },
+      "artifacts": {
+        "program_log": {
+          "path": "experiment-output/batch0-alg3-ablation-equivalence/1b0c3e553825e1b7.attempt-001.program.log",
+          "bytes": 1336,
+          "sha256": "3f1eb282962e7fd03d70f1df57fe06837efef546a6c959149b062116084b0aa5"
+        },
+        "stdout": {
+          "path": "experiment-output/batch0-alg3-ablation-equivalence/1b0c3e553825e1b7.attempt-001.stdout.txt",
+          "bytes": 1555,
+          "sha256": "c06aa6b444d3d403ddc18a7581c030b164441a3d73f76c9774ba64835f1790aa"
+        },
+        "stderr": {
+          "path": "experiment-output/batch0-alg3-ablation-equivalence/1b0c3e553825e1b7.attempt-001.stderr.txt",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "cliques": {
+          "path": "experiment-output/batch0-alg3-ablation-equivalence/1b0c3e553825e1b7.attempt-001.cliques.txt",
+          "bytes": 7271,
+          "sha256": "f077a599fc04957d02109dd076f3b53c4a81a4e980f30f0cf7ad27f55f8b2625"
+        }
+      }
+    },
+    {
+      "task_id": "5b7f72d696488cd8",
+      "attempt": 1,
+      "status": "completed",
+      "rerun_reason": null,
+      "started_utc": "2026-07-23T08:13:36.940194+00:00",
+      "wall_seconds": 0.3112629000097513,
+      "task": {
+        "algorithm": 3,
+        "mode": "raw",
+        "dataset": 8,
+        "tau": 0.8,
+        "threads": 32,
+        "timeout_seconds": 180,
+        "graph": null,
+        "vectors": null,
+        "capture_cliques": true,
+        "defines": {
+          "ACMSC_STRSUB_VERTEX_BOUND": 0
+        },
+        "warmup": false,
+        "repetition": 0,
+        "task_id": "5b7f72d696488cd8"
+      },
+      "parsed": {
+        "algorithm_ms": 37,
+        "clique_count": 577,
+        "peak_memory_gib": 0.19,
+        "size_histogram": {
+          "2": 573,
+          "3": 4
+        },
+        "stats": {}
+      },
+      "validation": {
+        "unique_cliques": 577,
+        "compared_with": [
+          {
+            "task_id": "1b0c3e553825e1b7",
+            "algorithm": 3,
+            "exact_match": true,
+            "only_current": 0,
+            "only_previous": 0
+          },
+          {
+            "task_id": "d75c001bada230c1",
+            "algorithm": 3,
+            "exact_match": true,
+            "only_current": 0,
+            "only_previous": 0
+          }
+        ],
+        "exact_match": true
+      },
+      "build": {
+        "fingerprint": "5eb8b605dd1ec746",
+        "executable_sha256": "46b7b4a60e36f04fa9d9da43c3aac695a5c0c97f07e9620f8bd62cbedf116f8e",
+        "command": [
+          "g++",
+          "-std=c++17",
+          "-fopenmp",
+          "-mavx2",
+          "-O3",
+          "-DACMSC_STRSUB_VERTEX_BOUND=0",
+          "src/alg3-raw.cpp",
+          "src/semantic_graph.cpp",
+          "-o",
+          "no-use/compiled/experiment-runner/alg3-raw-5eb8b605dd1ec746.exe"
+        ],
+        "source_verification": {
+          "status": "verified_current",
+          "observed_current_fingerprint": "5eb8b605dd1ec746",
+          "reason": null
+        },
+        "source_hashes": {
+          "alg3-raw.cpp": "fc80d45196988448fd94b3f65b04eebcd4f6f68770111b57a81fb7c898a95c3e",
+          "semantic_graph.cpp": "c6d51c9086fbd5c7d264eb411ac04890806744fc4e05dc7eee0b156760a9cd92",
+          "semantic_graph.h": "8192c4e8e02fc8ace59d59365f72643e34ca32ba71faa5bb338381a8cd308078",
+          "experiment_runtime.h": "1a15525107f95da07392efce763189a04a92d078bcf3660fcb0892dbdb053e25"
+        }
+      },
+      "inputs": {
+        "status": "legacy_post_run_snapshot",
+        "reason": "Run predates input hashing; this is a post-run snapshot and is not represented as a run-time fingerprint.",
+        "snapshot": {
+          "dataset_catalog": {
+            "path": "experiments/datasets.json",
+            "sha256": "956d6f0abf808aeb0c2056384786f5b893b72919eb5aa5ee90109bef4ef19094"
+          },
+          "files": [
+            {
+              "role": "graph",
+              "path": "dataset/dataset/WN18RR_edges.txt",
+              "bytes": 937949,
+              "sha256": "876c6143d5d2433f6722a8ce3f7662dce91b44ef687c34c4b885dc4cfa1127ec"
+            },
+            {
+              "role": "vector_index",
+              "path": "dataset/vectors/WN18RR_vectors.index",
+              "bytes": 60,
+              "sha256": "d8115fc7c0baa8ace7c327b8b29620863ab16df65816c52cd021f664355afd04"
+            },
+            {
+              "role": "vector_chunk",
+              "path": "dataset/vectors/WN18RR_vectors.json.chunk.0.bin",
+              "bytes": 125776904,
+              "sha256": "d828bb5eec810ac2189c62669ccd7e63453733345077319d013e8ec4cae5ac37"
+            }
+          ]
+        }
+      },
+      "run_environment": {
+        "plan": "experiments/plans/batch0-alg3-ablation-equivalence.json",
+        "plan_sha256": "8a14dcc5986cb16ff1ece9735af4003cfc0cf148ac5c6e14420246545e44517c",
+        "git": {
+          "commit": "59299fd9164d077d7e04cd97fc9ac89cbf962c9f",
+          "dirty": true
+        },
+        "machine": {
+          "platform": "Windows-11-10.0.26100-SP0",
+          "processor": "AMD64 Family 25 Model 97 Stepping 2, AuthenticAMD",
+          "logical_cpu_count": 32,
+          "python": "3.12.7",
+          "compiler": "g++ (x86_64-posix-seh-rev0, Built by MinGW-Builds project) 13.2.0"
+        },
+        "memory_limit_gib": 16,
+        "external_timeout_policy": "hard per-process TLE from task.timeout_seconds"
+      },
+      "result_json": {
+        "path": "experiment-output/batch0-alg3-ablation-equivalence/5b7f72d696488cd8.attempt-001.json",
+        "bytes": 3789,
+        "sha256": "ff2296b14d84d71a978c44892c0a76c2909ecd197dce85ed2f7bf665c14ce0a9"
+      },
+      "artifacts": {
+        "program_log": {
+          "path": "experiment-output/batch0-alg3-ablation-equivalence/5b7f72d696488cd8.attempt-001.program.log",
+          "bytes": 1336,
+          "sha256": "d338dde681026d5c74bd2c5305f56bb05906b952a23faa0d179c56339f74fda3"
+        },
+        "stdout": {
+          "path": "experiment-output/batch0-alg3-ablation-equivalence/5b7f72d696488cd8.attempt-001.stdout.txt",
+          "bytes": 1555,
+          "sha256": "b0e4277b80193ed57708cb90a374d7c0532a816332045ce2ae649b17da34c72b"
+        },
+        "stderr": {
+          "path": "experiment-output/batch0-alg3-ablation-equivalence/5b7f72d696488cd8.attempt-001.stderr.txt",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "cliques": {
+          "path": "experiment-output/batch0-alg3-ablation-equivalence/5b7f72d696488cd8.attempt-001.cliques.txt",
+          "bytes": 7271,
+          "sha256": "f077a599fc04957d02109dd076f3b53c4a81a4e980f30f0cf7ad27f55f8b2625"
+        }
+      }
+    },
+    {
+      "task_id": "d75c001bada230c1",
+      "attempt": 1,
+      "status": "completed",
+      "rerun_reason": null,
+      "started_utc": "2026-07-23T08:13:31.919564+00:00",
+      "wall_seconds": 0.31486969999969006,
+      "task": {
+        "algorithm": 3,
+        "mode": "raw",
+        "dataset": 8,
+        "tau": 0.8,
+        "threads": 32,
+        "timeout_seconds": 180,
+        "graph": null,
+        "vectors": null,
+        "capture_cliques": true,
+        "defines": {
+          "ACMSC_STRSUB_TOP_EDGE": 0
+        },
+        "warmup": false,
+        "repetition": 0,
+        "task_id": "d75c001bada230c1"
+      },
+      "parsed": {
+        "algorithm_ms": 37,
+        "clique_count": 577,
+        "peak_memory_gib": 0.19,
+        "size_histogram": {
+          "2": 573,
+          "3": 4
+        },
+        "stats": {}
+      },
+      "validation": {
+        "unique_cliques": 577,
+        "compared_with": [
+          {
+            "task_id": "1b0c3e553825e1b7",
+            "algorithm": 3,
+            "exact_match": true,
+            "only_current": 0,
+            "only_previous": 0
+          }
+        ],
+        "exact_match": true
+      },
+      "build": {
+        "fingerprint": "dc63604f2fd259d3",
+        "executable_sha256": "f5fed75842c617eb40cadad1b9c2d39e89417489b3218ba008da397428eea9d7",
+        "command": [
+          "g++",
+          "-std=c++17",
+          "-fopenmp",
+          "-mavx2",
+          "-O3",
+          "-DACMSC_STRSUB_TOP_EDGE=0",
+          "src/alg3-raw.cpp",
+          "src/semantic_graph.cpp",
+          "-o",
+          "no-use/compiled/experiment-runner/alg3-raw-dc63604f2fd259d3.exe"
+        ],
+        "source_verification": {
+          "status": "verified_current",
+          "observed_current_fingerprint": "dc63604f2fd259d3",
+          "reason": null
+        },
+        "source_hashes": {
+          "alg3-raw.cpp": "fc80d45196988448fd94b3f65b04eebcd4f6f68770111b57a81fb7c898a95c3e",
+          "semantic_graph.cpp": "c6d51c9086fbd5c7d264eb411ac04890806744fc4e05dc7eee0b156760a9cd92",
+          "semantic_graph.h": "8192c4e8e02fc8ace59d59365f72643e34ca32ba71faa5bb338381a8cd308078",
+          "experiment_runtime.h": "1a15525107f95da07392efce763189a04a92d078bcf3660fcb0892dbdb053e25"
+        }
+      },
+      "inputs": {
+        "status": "legacy_post_run_snapshot",
+        "reason": "Run predates input hashing; this is a post-run snapshot and is not represented as a run-time fingerprint.",
+        "snapshot": {
+          "dataset_catalog": {
+            "path": "experiments/datasets.json",
+            "sha256": "956d6f0abf808aeb0c2056384786f5b893b72919eb5aa5ee90109bef4ef19094"
+          },
+          "files": [
+            {
+              "role": "graph",
+              "path": "dataset/dataset/WN18RR_edges.txt",
+              "bytes": 937949,
+              "sha256": "876c6143d5d2433f6722a8ce3f7662dce91b44ef687c34c4b885dc4cfa1127ec"
+            },
+            {
+              "role": "vector_index",
+              "path": "dataset/vectors/WN18RR_vectors.index",
+              "bytes": 60,
+              "sha256": "d8115fc7c0baa8ace7c327b8b29620863ab16df65816c52cd021f664355afd04"
+            },
+            {
+              "role": "vector_chunk",
+              "path": "dataset/vectors/WN18RR_vectors.json.chunk.0.bin",
+              "bytes": 125776904,
+              "sha256": "d828bb5eec810ac2189c62669ccd7e63453733345077319d013e8ec4cae5ac37"
+            }
+          ]
+        }
+      },
+      "run_environment": {
+        "plan": "experiments/plans/batch0-alg3-ablation-equivalence.json",
+        "plan_sha256": "8a14dcc5986cb16ff1ece9735af4003cfc0cf148ac5c6e14420246545e44517c",
+        "git": {
+          "commit": "59299fd9164d077d7e04cd97fc9ac89cbf962c9f",
+          "dirty": true
+        },
+        "machine": {
+          "platform": "Windows-11-10.0.26100-SP0",
+          "processor": "AMD64 Family 25 Model 97 Stepping 2, AuthenticAMD",
+          "logical_cpu_count": 32,
+          "python": "3.12.7",
+          "compiler": "g++ (x86_64-posix-seh-rev0, Built by MinGW-Builds project) 13.2.0"
+        },
+        "memory_limit_gib": 16,
+        "external_timeout_policy": "hard per-process TLE from task.timeout_seconds"
+      },
+      "result_json": {
+        "path": "experiment-output/batch0-alg3-ablation-equivalence/d75c001bada230c1.attempt-001.json",
+        "bytes": 3612,
+        "sha256": "f45888eda4ec5b9b573d11aa620658ea39e495a07b104afe2ff3f31fb91f67e3"
+      },
+      "artifacts": {
+        "program_log": {
+          "path": "experiment-output/batch0-alg3-ablation-equivalence/d75c001bada230c1.attempt-001.program.log",
+          "bytes": 1336,
+          "sha256": "33360d3139b60a4bfe08e30599bd1d433a35152390823c6e29a150d8bfea6806"
+        },
+        "stdout": {
+          "path": "experiment-output/batch0-alg3-ablation-equivalence/d75c001bada230c1.attempt-001.stdout.txt",
+          "bytes": 1555,
+          "sha256": "ab6b4c7b1b6dd203278b7089b6f8e38e5344103f51622888dc208b5c10985f3f"
+        },
+        "stderr": {
+          "path": "experiment-output/batch0-alg3-ablation-equivalence/d75c001bada230c1.attempt-001.stderr.txt",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "cliques": {
+          "path": "experiment-output/batch0-alg3-ablation-equivalence/d75c001bada230c1.attempt-001.cliques.txt",
+          "bytes": 7271,
+          "sha256": "f077a599fc04957d02109dd076f3b53c4a81a4e980f30f0cf7ad27f55f8b2625"
+        }
+      }
+    },
+    {
+      "task_id": "dbece1af26e024ad",
+      "attempt": 1,
+      "status": "completed",
+      "rerun_reason": null,
+      "started_utc": "2026-07-23T08:13:41.968138+00:00",
+      "wall_seconds": 0.3372001999960048,
+      "task": {
+        "algorithm": 3,
+        "mode": "raw",
+        "dataset": 8,
+        "tau": 0.8,
+        "threads": 32,
+        "timeout_seconds": 180,
+        "graph": null,
+        "vectors": null,
+        "capture_cliques": true,
+        "defines": {
+          "ACMSC_STRSUB_LOCAL_MAX": 0
+        },
+        "warmup": false,
+        "repetition": 0,
+        "task_id": "dbece1af26e024ad"
+      },
+      "parsed": {
+        "algorithm_ms": 35,
+        "clique_count": 577,
+        "peak_memory_gib": 0.19,
+        "size_histogram": {
+          "2": 573,
+          "3": 4
+        },
+        "stats": {}
+      },
+      "validation": {
+        "unique_cliques": 577,
+        "compared_with": [
+          {
+            "task_id": "1b0c3e553825e1b7",
+            "algorithm": 3,
+            "exact_match": true,
+            "only_current": 0,
+            "only_previous": 0
+          },
+          {
+            "task_id": "5b7f72d696488cd8",
+            "algorithm": 3,
+            "exact_match": true,
+            "only_current": 0,
+            "only_previous": 0
+          },
+          {
+            "task_id": "d75c001bada230c1",
+            "algorithm": 3,
+            "exact_match": true,
+            "only_current": 0,
+            "only_previous": 0
+          }
+        ],
+        "exact_match": true
+      },
+      "build": {
+        "fingerprint": "c0e36458ee4a867c",
+        "executable_sha256": "eef3d20eadf15e0fab3be978d6475819e82a1899d0c99c841aed9375f6b2d3f5",
+        "command": [
+          "g++",
+          "-std=c++17",
+          "-fopenmp",
+          "-mavx2",
+          "-O3",
+          "-DACMSC_STRSUB_LOCAL_MAX=0",
+          "src/alg3-raw.cpp",
+          "src/semantic_graph.cpp",
+          "-o",
+          "no-use/compiled/experiment-runner/alg3-raw-c0e36458ee4a867c.exe"
+        ],
+        "source_verification": {
+          "status": "verified_current",
+          "observed_current_fingerprint": "c0e36458ee4a867c",
+          "reason": null
+        },
+        "source_hashes": {
+          "alg3-raw.cpp": "fc80d45196988448fd94b3f65b04eebcd4f6f68770111b57a81fb7c898a95c3e",
+          "semantic_graph.cpp": "c6d51c9086fbd5c7d264eb411ac04890806744fc4e05dc7eee0b156760a9cd92",
+          "semantic_graph.h": "8192c4e8e02fc8ace59d59365f72643e34ca32ba71faa5bb338381a8cd308078",
+          "experiment_runtime.h": "1a15525107f95da07392efce763189a04a92d078bcf3660fcb0892dbdb053e25"
+        }
+      },
+      "inputs": {
+        "status": "legacy_post_run_snapshot",
+        "reason": "Run predates input hashing; this is a post-run snapshot and is not represented as a run-time fingerprint.",
+        "snapshot": {
+          "dataset_catalog": {
+            "path": "experiments/datasets.json",
+            "sha256": "956d6f0abf808aeb0c2056384786f5b893b72919eb5aa5ee90109bef4ef19094"
+          },
+          "files": [
+            {
+              "role": "graph",
+              "path": "dataset/dataset/WN18RR_edges.txt",
+              "bytes": 937949,
+              "sha256": "876c6143d5d2433f6722a8ce3f7662dce91b44ef687c34c4b885dc4cfa1127ec"
+            },
+            {
+              "role": "vector_index",
+              "path": "dataset/vectors/WN18RR_vectors.index",
+              "bytes": 60,
+              "sha256": "d8115fc7c0baa8ace7c327b8b29620863ab16df65816c52cd021f664355afd04"
+            },
+            {
+              "role": "vector_chunk",
+              "path": "dataset/vectors/WN18RR_vectors.json.chunk.0.bin",
+              "bytes": 125776904,
+              "sha256": "d828bb5eec810ac2189c62669ccd7e63453733345077319d013e8ec4cae5ac37"
+            }
+          ]
+        }
+      },
+      "run_environment": {
+        "plan": "experiments/plans/batch0-alg3-ablation-equivalence.json",
+        "plan_sha256": "8a14dcc5986cb16ff1ece9735af4003cfc0cf148ac5c6e14420246545e44517c",
+        "git": {
+          "commit": "59299fd9164d077d7e04cd97fc9ac89cbf962c9f",
+          "dirty": true
+        },
+        "machine": {
+          "platform": "Windows-11-10.0.26100-SP0",
+          "processor": "AMD64 Family 25 Model 97 Stepping 2, AuthenticAMD",
+          "logical_cpu_count": 32,
+          "python": "3.12.7",
+          "compiler": "g++ (x86_64-posix-seh-rev0, Built by MinGW-Builds project) 13.2.0"
+        },
+        "memory_limit_gib": 16,
+        "external_timeout_policy": "hard per-process TLE from task.timeout_seconds"
+      },
+      "result_json": {
+        "path": "experiment-output/batch0-alg3-ablation-equivalence/dbece1af26e024ad.attempt-001.json",
+        "bytes": 3953,
+        "sha256": "6800fff410da8a7e9cfe5daef644d75fa5dc4747c4f5cfcf6f7fb8a2190a4e17"
+      },
+      "artifacts": {
+        "program_log": {
+          "path": "experiment-output/batch0-alg3-ablation-equivalence/dbece1af26e024ad.attempt-001.program.log",
+          "bytes": 1336,
+          "sha256": "b897403f4f71ff04b8d05828cbc4cb760f3fd03f79414a0b515c2af2f596c309"
+        },
+        "stdout": {
+          "path": "experiment-output/batch0-alg3-ablation-equivalence/dbece1af26e024ad.attempt-001.stdout.txt",
+          "bytes": 1555,
+          "sha256": "db5ba6f73cd28625d3fd709fbb169f4b9d27700e7d0c15b673fd4d9cd71604d7"
+        },
+        "stderr": {
+          "path": "experiment-output/batch0-alg3-ablation-equivalence/dbece1af26e024ad.attempt-001.stderr.txt",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "cliques": {
+          "path": "experiment-output/batch0-alg3-ablation-equivalence/dbece1af26e024ad.attempt-001.cliques.txt",
+          "bytes": 7271,
+          "sha256": "f077a599fc04957d02109dd076f3b53c4a81a4e980f30f0cf7ad27f55f8b2625"
+        }
+      }
+    }
+  ]
+}

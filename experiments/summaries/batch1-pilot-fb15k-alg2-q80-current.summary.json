@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "source_manifest": "experiments/archive/batch1-pilot-fb15k-alg2-q80-current.manifest.json",
+  "source_run": "batch1-pilot-fb15k-alg2-q80-current",
+  "source_plan_summary": {
+    "attempts": 1,
+    "planned_tasks": 1,
+    "attempted_tasks": 1,
+    "completed_tasks": 0,
+    "unattempted_tasks": 0,
+    "unattempted_task_ids": [],
+    "plan_complete": true,
+    "status_counts": {
+      "tle": 1
+    }
+  },
+  "groups": [
+    {
+      "configuration": {
+        "algorithm": 2,
+        "mode": "raw",
+        "dataset": 7,
+        "tau": 0.234886,
+        "threads": 32,
+        "timeout_seconds": 180,
+        "graph": null,
+        "vectors": null,
+        "capture_cliques": false,
+        "defines": {},
+        "warmup": false
+      },
+      "status_counts": {
+        "tle": 1
+      },
+      "timing": null,
+      "result": null
+    }
+  ]
+}

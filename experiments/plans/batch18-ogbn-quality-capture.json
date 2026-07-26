@@ -1,0 +1,7 @@
+{
+  "name": "batch18-ogbn-quality-capture",
+  "tasks": [
+    {"algorithm": 1, "mode": "raw", "dataset": 11, "threads": 32, "timeout_seconds": 1200, "capture_cliques": true},
+    {"algorithm": 3, "mode": "raw", "dataset": 11, "tau": 0.888756, "threads": 32, "timeout_seconds": 1200, "capture_cliques": true}
+  ]
+}

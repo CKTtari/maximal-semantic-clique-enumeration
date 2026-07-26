@@ -1,0 +1,21 @@
+{
+  "schema_version": 1,
+  "graphs": [
+    {
+      "path": "dataset/dataset/ca-dblp-2012.txt",
+      "vertices": 317080,
+      "header_edges": 1049866,
+      "input_rows": 1049866,
+      "self_loops": 0,
+      "duplicate_edges": 0,
+      "edges": 1049866,
+      "average_degree": 6.622089063,
+      "max_degree": 343,
+      "degeneracy": 113,
+      "max_forward_degree": 113,
+      "wedges": 21780889,
+      "triangles": 2224385,
+      "transitivity": 0.306376613
+    }
+  ]
+}

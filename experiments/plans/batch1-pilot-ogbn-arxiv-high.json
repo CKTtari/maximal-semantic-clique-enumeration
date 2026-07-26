@@ -1,0 +1,36 @@
+{
+  "name": "batch1-pilot-ogbn-arxiv-high",
+  "tasks": [
+    {
+      "algorithm": 1,
+      "mode": "raw",
+      "dataset": 11,
+      "threads": 32,
+      "timeout_seconds": 180
+    },
+    {
+      "algorithm": 4,
+      "mode": "raw",
+      "dataset": 11,
+      "tau": 0.949708,
+      "threads": 32,
+      "timeout_seconds": 180
+    },
+    {
+      "algorithm": 3,
+      "mode": "raw",
+      "dataset": 11,
+      "tau": 0.949708,
+      "threads": 32,
+      "timeout_seconds": 180
+    },
+    {
+      "algorithm": 2,
+      "mode": "raw",
+      "dataset": 11,
+      "tau": 0.949708,
+      "threads": 32,
+      "timeout_seconds": 180
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "name": "batch9-pilot-ca-dblp-alg3-common-grid",
+  "tasks": [
+    {"algorithm": 3, "mode": "raw", "dataset": 13, "tau": -0.0527015, "threads": 32, "timeout_seconds": 180, "repetitions": 1},
+    {"algorithm": 3, "mode": "raw", "dataset": 13, "tau": 0.0527576, "threads": 32, "timeout_seconds": 180, "repetitions": 1},
+    {"algorithm": 3, "mode": "raw", "dataset": 13, "tau": 0.144852, "threads": 32, "timeout_seconds": 180, "repetitions": 1}
+  ]
+}

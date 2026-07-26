@@ -1,4 +1,8 @@
 // ============================================================
+
+#ifndef ACMSC_ENABLE_STATS
+#define ACMSC_ENABLE_STATS 0
+#endif
 // ALG1_standard.cpp  结构极大团枚举 — Tomita Pivot BK（标准版）
 //
 // 特性：
@@ -8,6 +12,7 @@
 //   - 无任何统计计数器，时间效率纯洁准确
 // ============================================================
 
+#include "experiment_runtime.h"
 #include "semantic_graph.h"
 #include <vector>
 #include <iostream>
@@ -24,6 +29,7 @@
 #include <sstream>
 #include <queue>
 #include <cstdarg>
+#include <memory>
 
 #ifdef _WIN32
     #include <malloc.h>
@@ -138,16 +144,31 @@ private:
     vector<int>          ordering_;
 
     std::atomic<long long> clique_count_{0};
-    static constexpr int   MAX_CLIQUE_SZ = 512;
-    std::atomic<long long> size_hist_[MAX_CLIQUE_SZ]{};
+#if ACMSC_ENABLE_STATS
+    std::atomic<unsigned long long> bk_states_{0};
+    std::atomic<unsigned long long> pivot_tests_{0};
+    std::atomic<unsigned long long> branch_expansions_{0};
+#endif
+    std::unique_ptr<std::atomic<long long>[]> size_hist_;
+    int                    size_hist_size_ = 0;
     FILE*                  sink_     = nullptr;
     std::mutex             sink_mutex_;
+    int                    timeout_seconds_ = 0;
+    std::atomic<bool>      timed_out_{false};
+    chrono::steady_clock::time_point deadline_;
+
+    bool deadline_reached() {
+        if (timeout_seconds_ <= 0 || chrono::steady_clock::now() < deadline_)
+            return false;
+        timed_out_.store(true, std::memory_order_relaxed);
+        return true;
+    }
 
     inline void emit(const vector<int>& C) {
         int sz = (int)C.size();
         clique_count_.fetch_add(1, std::memory_order_relaxed);
-        if (sz < MAX_CLIQUE_SZ)
-            size_hist_[sz > 0 ? sz-1 : 0].fetch_add(1, std::memory_order_relaxed);
+        if (sz >= 0 && sz < size_hist_size_)
+            size_hist_[sz].fetch_add(1, std::memory_order_relaxed);
         if (sink_) {
             std::lock_guard<std::mutex> lk(sink_mutex_);
             for (int i = 0; i < sz; i++) {
@@ -162,6 +183,10 @@ private:
                    vector<int>& P,
                    vector<int>& X)
     {
+        if (deadline_reached()) return;
+#if ACMSC_ENABLE_STATS
+        bk_states_.fetch_add(1, std::memory_order_relaxed);
+#endif
         if (P.empty()) {
             if (X.empty()) {
                 emit(C);
@@ -174,10 +199,16 @@ private:
         P_row.build(P);
 
         for (int u : P) {
+#if ACMSC_ENABLE_STATS
+            pivot_tests_.fetch_add(1, std::memory_order_relaxed);
+#endif
             int cnt = bitmap_->get_row(u).intersect_count(P_row);
             if (cnt > best) { best = cnt; pivot = u; }
         }
         for (int u : X) {
+#if ACMSC_ENABLE_STATS
+            pivot_tests_.fetch_add(1, std::memory_order_relaxed);
+#endif
             int cnt = bitmap_->get_row(u).intersect_count(P_row);
             if (cnt > best) { best = cnt; pivot = u; }
         }
@@ -193,6 +224,9 @@ private:
         }
 
         for (int v : S) {
+#if ACMSC_ENABLE_STATS
+            branch_expansions_.fetch_add(1, std::memory_order_relaxed);
+#endif
             const auto& v_row = bitmap_->get_row(v);
 
             vector<int> P_new;
@@ -214,6 +248,7 @@ private:
             C.push_back(v);
             tomita_bk(C, P_new, X_new);
             C.pop_back();
+            if (timed_out_.load(std::memory_order_relaxed)) return;
 
             P.erase(find(P.begin(), P.end(), v));
             X.push_back(v);
@@ -293,10 +328,17 @@ private:
         logger.print("  [Stage2] Done: %lld ms\n", degen_ms);
     }
 
-    void run_search(long long& search_ms) {
+    bool run_search(long long& search_ms) {
         logger.print("[Stage3] Tomita Pivot BK search...\n");
-        logger.print("  threads=%d  timeout=600s\n", omp_get_max_threads());
+        if (timeout_seconds_ > 0)
+            logger.print("  threads=%d  timeout=%ds\n", omp_get_max_threads(),
+                         timeout_seconds_);
+        else
+            logger.print("  threads=%d  timeout=external/unlimited\n",
+                         omp_get_max_threads());
         auto t0 = chrono::high_resolution_clock::now();
+        if (timeout_seconds_ > 0)
+            deadline_ = chrono::steady_clock::now() + chrono::seconds(timeout_seconds_);
         int n = g_.V;
         int total = (int)ordering_.size();
 
@@ -306,18 +348,12 @@ private:
 
         auto last_print = chrono::high_resolution_clock::now();
         std::atomic<int> progress_i{0};
-        std::atomic<bool> timed_out{false};
         std::mutex print_mutex;
 
         #pragma omp parallel for schedule(dynamic, 1)
         for (int i = 0; i < total; i++) {
-            if (timed_out.load()) continue;
-
+            if (timed_out_.load(std::memory_order_relaxed)) continue;
             auto now = chrono::high_resolution_clock::now();
-            if (chrono::duration_cast<chrono::seconds>(now - t0).count() >= 600) {
-                timed_out.store(true);
-                continue;
-            }
 
             int v = ordering_[i];
 
@@ -348,20 +384,21 @@ private:
             }
         }
 
-        if (timed_out.load()) {
-            logger.print("  [TIMEOUT] reached 600 seconds, stopping search\n");
-        }
-
         search_ms = chrono::duration_cast<chrono::milliseconds>(
             chrono::high_resolution_clock::now()-t0).count();
+        if (timed_out_.load(std::memory_order_relaxed)) {
+            logger.print("  [TIMEOUT] incomplete search stopped after %lld ms\n",
+                         search_ms);
+            return false;
+        }
         logger.print("  [Stage3] Done: %lld ms  cliques=%lld\n",
                      search_ms, (long long)clique_count_.load());
+        return true;
     }
 
 public:
-    explicit MCEMiner(const Graph& g) : g_(g) {
-        for (auto& h : size_hist_) h.store(0);
-    }
+    explicit MCEMiner(const Graph& g, int timeout_seconds)
+        : g_(g), timeout_seconds_(max(0, timeout_seconds)) {}
     ~MCEMiner() {
         delete bitmap_;
         if (sink_) fclose(sink_);
@@ -374,7 +411,12 @@ public:
 
     long long mine() {
         clique_count_.store(0);
-        for (auto& h : size_hist_) h.store(0);
+        timed_out_.store(false);
+#if ACMSC_ENABLE_STATS
+        bk_states_.store(0);
+        pivot_tests_.store(0);
+        branch_expansions_.store(0);
+#endif
         delete bitmap_; bitmap_ = nullptr;
         adj_.clear(); ordering_.clear();
 
@@ -383,8 +425,19 @@ public:
 
         long long adj_ms = 0, degen_ms = 0, search_ms = 0;
         build_adj(adj_ms);
+        int max_degree = 0;
+        for (const auto& row : adj_)
+            max_degree = max(max_degree, static_cast<int>(row.size()));
+        size_hist_size_ = max(2, max_degree + 2);
+        size_hist_ = make_unique<atomic<long long>[]>(size_hist_size_);
+        for (int i = 0; i < size_hist_size_; ++i) size_hist_[i].store(0);
         build_degeneracy_ordering(degen_ms);
-        run_search(search_ms);
+        if (!run_search(search_ms)) {
+            logger.print("[TIMEOUT] incomplete run; no result count is reported.\n");
+            logger.print("Peak process memory: %.2f GiB (limit 16.00 GiB)\n",
+                         acmsc_runtime::peak_memory_bytes() / 1073741824.0);
+            return -1;
+        }
 
         long long total_ms = chrono::duration_cast<chrono::milliseconds>(
             chrono::high_resolution_clock::now()-t0).count();
@@ -392,6 +445,13 @@ public:
 
         logger.print("\n=== TOTAL: %lld ms,  %lld maximal cliques ===\n",
                      total_ms, final_count);
+        logger.print("Peak process memory: %.2f GiB (limit 16.00 GiB)\n",
+                     acmsc_runtime::peak_memory_bytes() / 1073741824.0);
+#if ACMSC_ENABLE_STATS
+        logger.print("STAT bk_states=%llu pivot_tests=%llu branch_expansions=%llu\n",
+                     bk_states_.load(), pivot_tests_.load(),
+                     branch_expansions_.load());
+#endif
 
         logger.print("\n--- Phase timing summary ---\n");
         logger.print("  Adj build          : %6lld ms  (%5.1f%%)\n",
@@ -405,12 +465,12 @@ public:
         logger.print("\n--- Clique size distribution ---\n");
         long long total = clique_count_.load();
         long long sum_sizes = 0;
-        for (int i = 0; i < MAX_CLIQUE_SZ; i++) {
+        for (int i = 1; i < size_hist_size_; i++) {
             long long c = size_hist_[i].load();
             if (c > 0) {
                 logger.print("  size %3d: %lld (%.2f%%)\n",
-                           i+1, c, total>0?100.0*c/total:0.0);
-                sum_sizes += (long long)(i+1)*c;
+                           i, c, total>0?100.0*c/total:0.0);
+                sum_sizes += (long long)i*c;
             }
         }
         if (total > 0)
@@ -425,33 +485,35 @@ public:
 // main
 // ============================================================
 int main(int argc, char* argv[]) {
-    omp_set_num_threads(omp_get_max_threads());
+    if (!acmsc_runtime::enforce_memory_limit()) {
+        fprintf(stderr, "Failed to enforce the 16 GiB process memory limit.\n");
+        return 2;
+    }
 
-    string graph_file, vec_index, log_path;
-    int dataset_id = 8;
+    string graph_file, vec_index, log_path, graph_override;
+    int dataset_id = 2;
+    int requested_threads = acmsc_runtime::kDefaultThreads;
+    int timeout_seconds = acmsc_runtime::kDefaultTimeoutSeconds;
 
     for (int i = 1; i < argc; i++) {
         string arg = argv[i];
-        if ((arg == "dataset" || arg == "dataset") && i + 1 < argc) {
-            dataset_id = atoi(argv[i + 1]);
+        if (arg == "dataset" && i + 1 < argc) {
+            dataset_id = atoi(argv[++i]);
         } else if (arg == "log" && i + 1 < argc) {
-            log_path = argv[i + 1];
+            log_path = argv[++i];
+        } else if (arg == "threads" && i + 1 < argc) {
+            requested_threads = atoi(argv[++i]);
+        } else if (arg == "graph" && i + 1 < argc) {
+            graph_override = argv[++i];
+        } else if (arg == "timeout" && i + 1 < argc) {
+            timeout_seconds = atoi(argv[++i]);
         }
     }
-
-    switch (dataset_id) {
-        case 1:  graph_file = "dataset/dataset/sc-ldoor.txt";         vec_index = "dataset/vectors-256/sc-ldoor_vectors.bin";       break;
-        case 2:  graph_file = "dataset/dataset/sc-nasasrb.txt";       vec_index = "dataset/vectors-256/sc-nasasrb_vectors.bin";     break;
-        case 3:  graph_file = "dataset/dataset/sc-pkustk11.txt";      vec_index = "dataset/vectors-256/sc-pkustk11_vectors.bin";    break;
-        case 4:  graph_file = "dataset/dataset/soc-buzznet.txt";      vec_index = "dataset/vectors-256/soc-buzznet_vectors.bin";    break;
-        case 5:  graph_file = "dataset/dataset/soc-digg.txt";         vec_index = "dataset/vectors-256/soc-digg_vectors.bin";       break;
-        case 6:  graph_file = "dataset/dataset/tech-as-skitter.txt";  vec_index = "dataset/vectors-256/tech-as-skitter_vectors.bin"; break;
-        case 7:  graph_file = "dataset/dataset/FB15K-237_edges.txt";  vec_index = "dataset/vectors/FB15K-237_vectors.index";        break;
-        case 8:  graph_file = "dataset/dataset/WN18RR_edges.txt";     vec_index = "dataset/vectors/WN18RR_vectors.index";           break;
-        case 9:  graph_file = "dataset/dataset/dblp_coauthor.txt";    vec_index = "dataset/vectors/dblp_coauthor_vectors.index";    break;
-        case 10: graph_file = "dataset/dataset/products.txt";   vec_index = "dataset/vectors/products_vectors.index";     break;
-        default: graph_file = "dataset/dataset/sc-nasasrb.txt";       vec_index = "dataset/vectors-256/sc-nasasrb_vectors.bin";     break;
-    }
+    const int thread_count = max(1, min(requested_threads, omp_get_num_procs()));
+    omp_set_dynamic(0);
+    omp_set_num_threads(thread_count);
+    acmsc_runtime::select_dataset(dataset_id, graph_file, vec_index);
+    if (!graph_override.empty()) graph_file = graph_override;
 
     if (!log_path.empty()) logger.open(log_path);
 
@@ -464,33 +526,23 @@ int main(int argc, char* argv[]) {
     auto t_load = chrono::high_resolution_clock::now();
     Graph g(graph_file);
     if (g.V == 0) { fprintf(stderr, "Failed to load graph\n"); return 1; }
-
-    bool vec_loaded = false;
-    if (fs::exists(vec_index)) {
-        if (vec_index.find(".index") != string::npos) {
-            vec_loaded = g.loadVectorsFromChunks(vec_index);
-        } else {
-            vec_loaded = g.loadVectorsFromBinary(vec_index);
-        }
-        if (!vec_loaded) {
-            fprintf(stderr, "Failed to load vectors from: %s\n", vec_index.c_str());
-            return 1;
-        }
-    } else {
-        fprintf(stderr, "Vector file not found: %s\n", vec_index.c_str());
-        return 1;
-    }
-    g.normalizeVectors();
+    vector<set<int>>().swap(g.adjSet);
 
     long long ec = 0;
     for (int i = 0; i < g.V; i++) ec += (long long)g.adj[i].size();
     ec /= 2;
     logger.print("Graph: V=%d  E=%lld\n", g.V, ec);
+    if (timeout_seconds > 0)
+        logger.print("Threads: %d, timeout: %ds, memory limit: 16 GiB\n",
+                     thread_count, timeout_seconds);
+    else
+        logger.print("Threads: %d, timeout: external, memory limit: 16 GiB\n",
+                     thread_count);
     logger.print("Load: %lld ms\n\n",
                chrono::duration_cast<chrono::milliseconds>(
                    chrono::high_resolution_clock::now()-t_load).count());
 
-    MCEMiner miner(g);
+    MCEMiner miner(g, timeout_seconds);
 
     logger.print("\n>> ");
     string line;

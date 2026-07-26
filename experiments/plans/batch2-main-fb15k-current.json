@@ -1,0 +1,13 @@
+{
+  "name": "batch2-main-fb15k-current",
+  "tasks": [
+    {"algorithm": 3, "mode": "raw", "dataset": 7, "tau": 0.117534, "threads": 32, "timeout_seconds": 3600, "warmup": true},
+    {"algorithm": 3, "mode": "raw", "dataset": 7, "tau": 0.117534, "threads": 32, "timeout_seconds": 3600, "repetitions": 3},
+    {"algorithm": 3, "mode": "raw", "dataset": 7, "tau": 0.234886, "threads": 32, "timeout_seconds": 3600, "warmup": true},
+    {"algorithm": 3, "mode": "raw", "dataset": 7, "tau": 0.234886, "threads": 32, "timeout_seconds": 3600, "repetitions": 3},
+    {"algorithm": 3, "mode": "raw", "dataset": 7, "tau": 0.537601, "threads": 32, "timeout_seconds": 3600, "warmup": true},
+    {"algorithm": 3, "mode": "raw", "dataset": 7, "tau": 0.537601, "threads": 32, "timeout_seconds": 3600, "repetitions": 3},
+    {"algorithm": 4, "mode": "raw", "dataset": 7, "tau": 0.537601, "threads": 32, "timeout_seconds": 3600, "warmup": true},
+    {"algorithm": 4, "mode": "raw", "dataset": 7, "tau": 0.537601, "threads": 32, "timeout_seconds": 3600, "repetitions": 3}
+  ]
+}

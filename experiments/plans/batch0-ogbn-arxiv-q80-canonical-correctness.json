@@ -1,0 +1,23 @@
+{
+  "name": "batch0-ogbn-arxiv-q80-canonical-correctness",
+  "tasks": [
+    {
+      "algorithm": 3,
+      "mode": "raw",
+      "dataset": 11,
+      "tau": 0.888756,
+      "threads": 32,
+      "timeout_seconds": 180,
+      "capture_cliques": true
+    },
+    {
+      "algorithm": 4,
+      "mode": "raw",
+      "dataset": 11,
+      "tau": 0.888756,
+      "threads": 32,
+      "timeout_seconds": 180,
+      "capture_cliques": true
+    }
+  ]
+}

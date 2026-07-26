@@ -1,0 +1,44 @@
+{
+  "name": "batch0-alg3-ablation-equivalence",
+  "tasks": [
+    {
+      "algorithm": 3,
+      "mode": "raw",
+      "dataset": 8,
+      "tau": 0.8,
+      "threads": 32,
+      "timeout_seconds": 180,
+      "capture_cliques": true
+    },
+    {
+      "algorithm": 3,
+      "mode": "raw",
+      "dataset": 8,
+      "tau": 0.8,
+      "threads": 32,
+      "timeout_seconds": 180,
+      "capture_cliques": true,
+      "defines": {"ACMSC_STRSUB_TOP_EDGE": 0}
+    },
+    {
+      "algorithm": 3,
+      "mode": "raw",
+      "dataset": 8,
+      "tau": 0.8,
+      "threads": 32,
+      "timeout_seconds": 180,
+      "capture_cliques": true,
+      "defines": {"ACMSC_STRSUB_VERTEX_BOUND": 0}
+    },
+    {
+      "algorithm": 3,
+      "mode": "raw",
+      "dataset": 8,
+      "tau": 0.8,
+      "threads": 32,
+      "timeout_seconds": 180,
+      "capture_cliques": true,
+      "defines": {"ACMSC_STRSUB_LOCAL_MAX": 0}
+    }
+  ]
+}

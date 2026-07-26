@@ -1,0 +1,7 @@
+{
+  "name": "batch9-pilot-pwtk-alg4-common-grid",
+  "tasks": [
+    {"algorithm": 4, "mode": "raw", "dataset": 14, "tau": 0.0526251, "threads": 32, "timeout_seconds": 180, "repetitions": 1},
+    {"algorithm": 4, "mode": "raw", "dataset": 14, "tau": 0.145163, "threads": 32, "timeout_seconds": 180, "repetitions": 1}
+  ]
+}

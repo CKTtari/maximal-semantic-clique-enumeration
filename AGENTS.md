@@ -14,11 +14,12 @@ This is a research codebase and LaTeX paper for **"Maximal Semantic Cliques Mini
 
 | File | Algorithm | Description |
 |------|-----------|-------------|
-| `alg1-standard.cpp` | **StructBK** | Structural MCE baseline — Tomita pivot BK with degeneracy ordering. No semantic constraint. |
-| `alg4-standard.cpp` | **SemBK** | Semantic BK — pivot-free BK with Check pass for semantic maximality. Direct adaptation, no pruning. |
-| `alg5-standard-improved.cpp` | **StrSub** | Structural decomposition + subset enumeration. Phase 1: BK with pivot. Phase 2: intra-clique semantic enumeration with Top-Edge Layer Pruning. Phase 3: global deduplication. |
-| `alg6-standard.cpp` | **MonoSemMCE** | Level-synchronous clique expansion. BK-free. Uses W-pruning, monotone break, and per-layer deduplication. Best for high-τ regime. |
+| `alg1-raw.cpp` | **StructBK** | Structural MCE reference: Tomita pivot BK with degeneracy ordering. No semantic constraint. |
+| `alg2-raw.cpp` | **SemBK** | Pivot-free semantic BK baseline with a Check pass for inclusion maximality. |
+| `alg3-raw.cpp` | **StrSub** | Pivoted structural decomposition followed by exact intra-clique semantic enumeration and global containment filtering. |
+| `alg4-raw.cpp` | **MonoSemMCE** | Canonical-parent reverse DFS. It stores neither size layers nor visited tables and targets the high-$\tau$ regime. |
 | `semantic_graph.cpp` | Graph I/O | Graph loader, vector loaders (binary, chunks, JSON), cosine similarity, normalization. |
+| `experiment_runtime.h` | Runtime policy | Shared 16 GiB process limit, default 32-thread policy, peak-memory query, and dataset mapping. |
 
 All algorithms share:
 - `BlockedSparseBitmap` for O(blocks) neighbor intersection
@@ -33,12 +34,12 @@ All algorithms share:
 All algorithms compile with the same pattern. There is no Makefile or CMake.
 
 ```bash
-# Build any algorithm (example: alg6)
-g++ -std=c++17 -fopenmp -mavx2 -O3 src/alg6-standard.cpp src/semantic_graph.cpp -o alg6
+# Build any algorithm (example: Alg4 raw)
+g++ -std=c++17 -fopenmp -mavx2 -O3 src/alg4-raw.cpp src/semantic_graph.cpp -o alg4-raw
 
 # Build all four algorithms
-for f in alg1 alg4 alg5 alg6; do
-  g++ -std=c++17 -fopenmp -mavx2 -O3 src/${f}-standard.cpp src/semantic_graph.cpp -o $f
+for f in alg1 alg2 alg3 alg4; do
+  g++ -std=c++17 -fopenmp -mavx2 -O3 src/${f}-raw.cpp src/semantic_graph.cpp -o ${f}-raw
 done
 ```
 
@@ -49,7 +50,7 @@ Requirements: GCC/Clang with C++17, OpenMP, AVX2. Tested on GCC 11.4+.
 All algorithms use an interactive command loop:
 
 ```bash
-./alg6 dataset 2 log output.log   # dataset ID + optional log file
+./alg4-raw dataset 2 threads 32 timeout 0 log output.log
 # Then type commands:
 mine 0.2       # run with τ = 0.2
 sink out.txt   # write cliques to file
@@ -70,19 +71,19 @@ Dataset IDs are hardcoded in each `main()`. Default datasets expect a `dataset/`
 ### Why no pivot in semantic algorithms
 The average-similarity constraint is non-monotone over the subset lattice. Standard BK pivoting relies on structural monotonicity (every maximal clique containing a vertex `u` also contains pivot `p` if `u ∈ N(p)`). Under the average constraint, a clique containing `u` but not `p` may be valid while `{p,u}` is not, so suppressing `u` loses output. This is why SemBK (alg4) omits pivoting entirely, and why StrSub (alg5) decouples structural and semantic search.
 
-### Monotone Path Property (MonoSemMCE / alg6)
-Theorem: every ACMSC admits a vertex insertion ordering where `avgSim` is non-increasing at every step. This enables the **sorted-suffix cut** (monotone break): once a candidate's marginal contribution `δ_v` exceeds the threshold `δ_lim`, the entire remaining sorted suffix is discarded in O(1). Combined with **W-pruning** (`W + δ_v < τ·k`), this defines a feasibility window that contracts rapidly as τ increases.
+### Canonical Parent Property (MonoSemMCE / Alg4)
+Every feasible clique has a feasible parent obtained by deleting a vertex of minimum incident-similarity sum. Vertex ID breaks ties, so the parent is unique. Alg4 accepts a child only when the inserted vertex is exactly the child's canonical deletion. This removes duplicate insertion paths without a visited table. The feasibility test `W(C) + acc[v] - tau*|C| >= 0` is a correctness condition, not an optional pruning ablation.
 
-### Ablation switches in alg6
-At the top of `alg6-standard.cpp`:
+### Exact ablation switches in Alg3
+At compile time, Alg3 accepts:
 ```cpp
-#define ENABLE_W_PRUNE     1
-#define ENABLE_MONO_PRUNE  1
-#define ENABLE_LAYER_DEDUP 1
+#define ACMSC_STRSUB_TOP_EDGE 1
+#define ACMSC_STRSUB_VERTEX_BOUND 1
+#define ACMSC_STRSUB_LOCAL_MAX 1
 ```
-Set to 0 to disable individual pruning rules for experiments.
+Setting one to 0 only removes pruning; the global containment filter preserves exact output.
 
-### Top-Edge Layer Pruning (StrSub / alg5)
+### Top-Edge Layer Pruning (StrSub / Alg3)
 For a structural maximal clique `M` of size `m`, sort all `C(m,2)` pairwise similarities descending. The best-case average for any size-k subset is the mean of the top `C(k,2)` edges. If this mean `< τ`, no size-k subset can satisfy the constraint, so the entire size layer is skipped. This is implemented in `process_structural_clique()`.
 
 ## Paper Notation Macros (main.tex lines 58–84)
@@ -96,9 +97,9 @@ These are defined once in `main.tex` and used throughout:
 
 ## Common Tasks
 
-- **Add a new dataset**: edit the `switch(dataset_id)` block in each algorithm's `main()`
+- **Add a new dataset**: edit the single mapping in `src/experiment_runtime.h`
 - **Change vector dimension**: handled automatically by `Graph::loadVectorsFromBinary()` / `loadVectorsFromChunks()`
-- **Run a single experiment non-interactively**: pipe commands, e.g. `printf 'mine 0.2\nquit\n' | ./alg6 dataset 2`
+- **Run reproducible experiments**: use `python scripts/run_experiments.py --plan experiments/plans/<plan>.json`
 - **Regenerate paper PDF**: `latexmk -pdf main.tex` (requires `acmart.cls`, `ACM-Reference-Format.bst`)
 
 ## Paper Writing (main.tex)
@@ -159,5 +160,4 @@ Final verification order:
 4. Remove redundant claims, repeated motivation, and cosmetic wording.
 5. Replace list-like exposition with connected technical reasoning where dependency exists.
 6. Verify that experiments directly test the stated system goals and tradeoffs.
-
 

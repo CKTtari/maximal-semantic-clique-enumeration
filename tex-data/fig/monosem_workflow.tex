@@ -1,0 +1,51 @@
+\documentclass[tikz,border=6pt]{standalone}
+\usepackage{newtxtext,newtxmath}
+\usetikzlibrary{arrows.meta,positioning,fit,calc}
+\definecolor{paperblue}{HTML}{2F6DB0}
+\definecolor{paperred}{HTML}{C83E4D}
+\definecolor{papergold}{HTML}{E3A008}
+\definecolor{papergreen}{HTML}{2E8B57}
+\begin{document}
+\begin{tikzpicture}[
+  font=\fontsize{16}{19}\selectfont,
+  >=Latex,
+  state/.style={draw=black, rounded corners=2pt, line width=1.1pt,
+    minimum height=15mm, minimum width=52mm, align=center, fill=white},
+  accepted/.style={->, draw=paperblue, line width=1.8pt},
+  deletion/.style={->, draw=papergreen, line width=1.6pt},
+  rejected/.style={->, draw=paperred, line width=1.6pt, dashed},
+  note/.style={font=\fontsize{14}{17}\selectfont, align=center}
+]
+\node[state, fill=papergold!12, minimum width=176mm] (theorem) at (8.5,0)
+  {Deterministic minimum-contribution deletion\\
+   $d(C)=\arg\min_{v\in C}\left(\sum_{u\in C\setminus\{v\}}\operatorname{sim}(u,v),v\right)$,
+   \quad $\operatorname{avgSim}(C\setminus\{d(C)\})\geq\operatorname{avgSim}(C)$};
+
+\node[note] at (8.5,-2.0) {Running example: the unique reverse paths to $C_1$ and $C_2$};
+\node[state, fill=paperblue!7] (e24) at (0,-4.3)
+  {$\{v_2,v_4\}$\\avg. $1.000$};
+\node[state, fill=paperblue!7] (t124) at (8.5,-4.3)
+  {$\{v_1,v_2,v_4\}$\\avg. $0.867$};
+\node[state, fill=papergreen!16] (c1) at (17,-4.3)
+  {$C_1=\{v_1,v_2,v_3,v_4\}$\\avg. $0.693$};
+\draw[accepted] (e24) -- node[above,note] {$+v_1$ accepted} (t124);
+\draw[accepted] (t124) -- node[above,note] {$+v_3$ accepted} (c1);
+\draw[deletion, bend left=22] (c1.south) to node[below,note] {$d(C_1)=v_3$} (t124.south);
+\draw[deletion, bend left=22] (t124.south) to node[below,note] {$d(\{v_1,v_2,v_4\})=v_1$} (e24.south);
+
+\node[state, fill=paperblue!7] (e56) at (0,-9.3)
+  {$\{v_5,v_6\}$\\avg. $0.960$};
+\node[state, fill=papergreen!16] (c2) at (8.5,-9.3)
+  {$C_2=\{v_3,v_5,v_6\}$\\avg. $0.693$};
+\node[state, fill=paperred!5] (e35) at (17,-9.3)
+  {$\{v_3,v_5\}$\\avg. $0.640$};
+\draw[accepted] (e56) -- node[above,note] {$+v_3$ accepted} (c2);
+\draw[deletion, bend left=22] (c2.south) to node[below,note] {$d(C_2)=v_3$} (e56.south);
+\draw[rejected] (e35) -- node[above,note,text=paperred] {$+v_6$ rejected} (c2);
+\node[note, text=paperred] at (12.75,-10.7) {$v_6\neq d(C_2)$};
+
+\node[state, fill=paperblue!8, minimum width=176mm] (result) at (8.5,-13.3)
+  {Reverse DFS accepts only unique-parent insertions. The second construction of $C_2$ is rejected\\
+   without a visited table; after strict-containment filtering, $C_1$ and $C_2$ are returned.};
+\end{tikzpicture}
+\end{document}

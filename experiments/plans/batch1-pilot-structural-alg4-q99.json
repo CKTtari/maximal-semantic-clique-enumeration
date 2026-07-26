@@ -1,0 +1,37 @@
+{
+  "name": "batch1-pilot-structural-alg4-q99",
+  "tasks": [
+    {
+      "algorithm": 4,
+      "mode": "raw",
+      "dataset": 3,
+      "tau": 0.145317,
+      "threads": 32,
+      "timeout_seconds": 180
+    },
+    {
+      "algorithm": 4,
+      "mode": "raw",
+      "dataset": 4,
+      "tau": 0.14518,
+      "threads": 32,
+      "timeout_seconds": 180
+    },
+    {
+      "algorithm": 4,
+      "mode": "raw",
+      "dataset": 5,
+      "tau": 0.145193,
+      "threads": 32,
+      "timeout_seconds": 180
+    },
+    {
+      "algorithm": 4,
+      "mode": "raw",
+      "dataset": 6,
+      "tau": 0.145157,
+      "threads": 32,
+      "timeout_seconds": 180
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "name": "batch0-structural-v2-correctness",
+  "tasks": [
+    {"algorithm": 3, "mode": "raw", "dataset": 2, "tau": 0.14503, "threads": 32, "timeout_seconds": 180, "capture_cliques": true},
+    {"algorithm": 4, "mode": "raw", "dataset": 2, "tau": 0.14503, "threads": 32, "timeout_seconds": 180, "capture_cliques": true},
+    {"algorithm": 3, "mode": "raw", "dataset": 3, "tau": 0.145001, "threads": 32, "timeout_seconds": 180, "capture_cliques": true},
+    {"algorithm": 4, "mode": "raw", "dataset": 3, "tau": 0.145001, "threads": 32, "timeout_seconds": 180, "capture_cliques": true}
+  ]
+}

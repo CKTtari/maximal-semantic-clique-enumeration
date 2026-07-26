@@ -1,0 +1,14 @@
+{
+  "name": "batch12-threshold-ldoor-current",
+  "tasks": [
+    {"algorithm": 3, "mode": "raw", "dataset": 1, "tau": -0.102847, "threads": 32, "timeout_seconds": 1200, "repetitions": 3},
+    {"algorithm": 3, "mode": "raw", "dataset": 1, "tau": 0.0000256747, "threads": 32, "timeout_seconds": 1200, "repetitions": 3},
+    {"algorithm": 3, "mode": "raw", "dataset": 1, "tau": 0.0328792, "threads": 32, "timeout_seconds": 1200, "repetitions": 3},
+    {"algorithm": 3, "mode": "raw", "dataset": 1, "tau": 0.080211, "threads": 32, "timeout_seconds": 1200, "repetitions": 3},
+    {"algorithm": 3, "mode": "raw", "dataset": 1, "tau": 0.102893, "threads": 32, "timeout_seconds": 1200, "repetitions": 3},
+    {"algorithm": 3, "mode": "raw", "dataset": 1, "tau": 0.117587, "threads": 32, "timeout_seconds": 1200, "repetitions": 3},
+    {"algorithm": 4, "mode": "raw", "dataset": 1, "tau": 0.080211, "threads": 32, "timeout_seconds": 1200, "repetitions": 3},
+    {"algorithm": 4, "mode": "raw", "dataset": 1, "tau": 0.102893, "threads": 32, "timeout_seconds": 1200, "repetitions": 3},
+    {"algorithm": 4, "mode": "raw", "dataset": 1, "tau": 0.117587, "threads": 32, "timeout_seconds": 1200, "repetitions": 3}
+  ]
+}

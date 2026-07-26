@@ -1,0 +1,133 @@
+{
+  "schema_version": 2,
+  "run_name": "batch5-scale-dblp-q99-pilot",
+  "archived_utc": "2026-07-23T10:01:16.738533+00:00",
+  "local_result_directory": "experiment-output/batch5-scale-dblp-q99-pilot",
+  "plans": [
+    {
+      "path": "experiments/plans/batch5-scale-dblp-q99-pilot.json",
+      "sha256": "2652af9178db6eb60d2dbfdd2f2bdb6726fd43add607fa6367e2b4058ab43e5d"
+    }
+  ],
+  "summary": {
+    "attempts": 1,
+    "status_counts": {
+      "tle": 1
+    }
+  },
+  "records": [
+    {
+      "task_id": "d188dee7e0ccbe61",
+      "attempt": 1,
+      "status": "tle",
+      "rerun_reason": null,
+      "started_utc": "2026-07-23T09:57:58.414922+00:00",
+      "wall_seconds": 180.03486909999629,
+      "task": {
+        "algorithm": 4,
+        "mode": "raw",
+        "dataset": 9,
+        "tau": 0.392207,
+        "threads": 32,
+        "timeout_seconds": 180,
+        "graph": "dataset/scale_datasets/dblp-degree-prefix/level-25000.graph.txt",
+        "vectors": "dataset/scale_datasets/dblp-degree-prefix/level-25000.vectors.bin",
+        "capture_cliques": false,
+        "defines": {},
+        "warmup": false,
+        "repetition": 0,
+        "task_id": "d188dee7e0ccbe61"
+      },
+      "parsed": null,
+      "validation": null,
+      "build": {
+        "fingerprint": "a5109816b58eb078",
+        "executable_sha256": "9f8deee1713c1d1020ebb49e2332b9e06605a87fae2506d31233faad1f5c3d12",
+        "command": [
+          "g++",
+          "-std=c++17",
+          "-fopenmp",
+          "-mavx2",
+          "-O3",
+          "src/alg4-raw.cpp",
+          "src/semantic_graph.cpp",
+          "-o",
+          "no-use/compiled/experiment-runner/alg4-raw-a5109816b58eb078.exe"
+        ],
+        "source_verification": {
+          "status": "verified_current",
+          "observed_current_fingerprint": "a5109816b58eb078",
+          "reason": null
+        },
+        "source_hashes": {
+          "alg4-raw.cpp": "2a4c3a22b326f5716e381c5dddafdbc21cc1696fc2d80f7e2f87668f3f3f98fe",
+          "semantic_graph.cpp": "c6d51c9086fbd5c7d264eb411ac04890806744fc4e05dc7eee0b156760a9cd92",
+          "semantic_graph.h": "8192c4e8e02fc8ace59d59365f72643e34ca32ba71faa5bb338381a8cd308078",
+          "experiment_runtime.h": "cc5fd4517f8ca2f43f7e7a4fa0f4c9a00ca8778966bc2ab2228d622a070e5354"
+        }
+      },
+      "inputs": {
+        "status": "verified_run_time",
+        "snapshot": {
+          "dataset_catalog": {
+            "path": "experiments/datasets.json",
+            "sha256": "be27e812615b59c62775fb3b129a5f422ad837c4d149311f220e0ad3bca1740b"
+          },
+          "files": [
+            {
+              "role": "graph",
+              "path": "dataset/scale_datasets/dblp-degree-prefix/level-25000.graph.txt",
+              "bytes": 32143042,
+              "sha256": "56270024e15f4009f5f1f78cb52b766d9d70779bc8a9fb55247b0462da5dc50f"
+            },
+            {
+              "role": "vector_binary",
+              "path": "dataset/scale_datasets/dblp-degree-prefix/level-25000.vectors.bin",
+              "bytes": 76800008,
+              "sha256": "b0de76ecc24fe770f61f3e0b16a8b339977e598cbc9569783ada1d1cf9aef87f"
+            }
+          ]
+        }
+      },
+      "run_environment": {
+        "plan": "experiments/plans/batch5-scale-dblp-q99-pilot.json",
+        "plan_sha256": "2652af9178db6eb60d2dbfdd2f2bdb6726fd43add607fa6367e2b4058ab43e5d",
+        "git": {
+          "commit": "59299fd9164d077d7e04cd97fc9ac89cbf962c9f",
+          "dirty": true
+        },
+        "machine": {
+          "platform": "Windows-11-10.0.26100-SP0",
+          "processor": "AMD64 Family 25 Model 97 Stepping 2, AuthenticAMD",
+          "logical_cpu_count": 32,
+          "python": "3.12.7",
+          "compiler": "g++ (x86_64-posix-seh-rev0, Built by MinGW-Builds project) 13.2.0"
+        },
+        "memory_limit_gib": 16,
+        "external_timeout_policy": "hard per-process TLE from task.timeout_seconds"
+      },
+      "result_json": {
+        "path": "experiment-output/batch5-scale-dblp-q99-pilot/d188dee7e0ccbe61.attempt-001.json",
+        "bytes": 4090,
+        "sha256": "63ea7ba721dfc1ac7e07734e7ff72ac7aebbeacd8dcc45d2192806f1c7ca33fc"
+      },
+      "artifacts": {
+        "program_log": {
+          "path": "experiment-output/batch5-scale-dblp-q99-pilot/d188dee7e0ccbe61.attempt-001.program.log",
+          "bytes": 736,
+          "sha256": "b27d6381ebb8965b4169f3ad6ed7231792683adfa6a4befd9ea94d99862aafa2"
+        },
+        "stdout": {
+          "path": "experiment-output/batch5-scale-dblp-q99-pilot/d188dee7e0ccbe61.attempt-001.stdout.txt",
+          "bytes": 720,
+          "sha256": "fc5e2a8657a3fec0fc216fbbda5eb7bf31fc1d1be3a734a76f7d1dae7f59763a"
+        },
+        "stderr": {
+          "path": "experiment-output/batch5-scale-dblp-q99-pilot/d188dee7e0ccbe61.attempt-001.stderr.txt",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    }
+  ]
+}

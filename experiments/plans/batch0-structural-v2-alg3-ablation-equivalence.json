@@ -1,0 +1,9 @@
+{
+  "name": "batch0-structural-v2-alg3-ablation-equivalence",
+  "tasks": [
+    {"algorithm": 3, "mode": "raw", "dataset": 2, "tau": 0.14503, "threads": 32, "timeout_seconds": 180, "capture_cliques": true},
+    {"algorithm": 3, "mode": "raw", "dataset": 2, "tau": 0.14503, "threads": 32, "timeout_seconds": 180, "capture_cliques": true, "defines": {"ACMSC_STRSUB_TOP_EDGE": 0}},
+    {"algorithm": 3, "mode": "raw", "dataset": 2, "tau": 0.14503, "threads": 32, "timeout_seconds": 180, "capture_cliques": true, "defines": {"ACMSC_STRSUB_VERTEX_BOUND": 0}},
+    {"algorithm": 3, "mode": "raw", "dataset": 2, "tau": 0.14503, "threads": 32, "timeout_seconds": 180, "capture_cliques": true, "defines": {"ACMSC_STRSUB_LOCAL_MAX": 0}}
+  ]
+}

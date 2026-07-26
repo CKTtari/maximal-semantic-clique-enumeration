@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "source_manifest": "experiments/archive/batch11-main-alg3-q80-long.manifest.json",
+  "source_run": "batch11-main-alg3-q80-long",
+  "source_plan_summary": {
+    "attempts": 1,
+    "planned_tasks": 9,
+    "attempted_tasks": 1,
+    "completed_tasks": 0,
+    "unattempted_tasks": 8,
+    "unattempted_task_ids": [
+      "11c2a7aee01da27a",
+      "1279076852e330b8",
+      "366a99e42045ce2a",
+      "3673c061536f56f6",
+      "4271abd7aa5c35a1",
+      "668efc731330ca4a",
+      "6aea7861384af354",
+      "f5ac9956dd914595"
+    ],
+    "plan_complete": false,
+    "status_counts": {
+      "tle": 1
+    }
+  },
+  "groups": [
+    {
+      "configuration": {
+        "algorithm": 3,
+        "mode": "raw",
+        "dataset": 3,
+        "tau": 0.0526216,
+        "threads": 32,
+        "timeout_seconds": 1200,
+        "graph": null,
+        "vectors": null,
+        "capture_cliques": false,
+        "defines": {},
+        "warmup": false
+      },
+      "status_counts": {
+        "tle": 1
+      },
+      "timing": null,
+      "result": null
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "name": "batch1-pilot-structural-uniform-ds2",
+  "tasks": [
+    {"algorithm": 3, "mode": "raw", "dataset": 2, "tau": -0.102883, "threads": 32, "timeout_seconds": 180, "repetitions": 1},
+    {"algorithm": 3, "mode": "raw", "dataset": 2, "tau": 0.0000330061, "threads": 32, "timeout_seconds": 180, "repetitions": 1},
+    {"algorithm": 4, "mode": "raw", "dataset": 2, "tau": 0.0000330061, "threads": 32, "timeout_seconds": 180, "repetitions": 1}
+  ]
+}

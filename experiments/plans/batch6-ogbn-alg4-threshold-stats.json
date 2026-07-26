@@ -1,0 +1,11 @@
+{
+  "name": "batch6-ogbn-alg4-threshold-stats",
+  "tasks": [
+    {"algorithm": 4, "mode": "stats", "dataset": 11, "tau": 0.68185, "threads": 32, "timeout_seconds": 3600, "repetitions": 1},
+    {"algorithm": 4, "mode": "stats", "dataset": 11, "tau": 0.773547, "threads": 32, "timeout_seconds": 3600, "repetitions": 1},
+    {"algorithm": 4, "mode": "stats", "dataset": 11, "tau": 0.872133, "threads": 32, "timeout_seconds": 3600, "repetitions": 1},
+    {"algorithm": 4, "mode": "stats", "dataset": 11, "tau": 0.909257, "threads": 32, "timeout_seconds": 3600, "repetitions": 1},
+    {"algorithm": 4, "mode": "stats", "dataset": 11, "tau": 0.924347, "threads": 32, "timeout_seconds": 3600, "repetitions": 1},
+    {"algorithm": 4, "mode": "stats", "dataset": 11, "tau": 0.933471, "threads": 32, "timeout_seconds": 3600, "repetitions": 1}
+  ]
+}

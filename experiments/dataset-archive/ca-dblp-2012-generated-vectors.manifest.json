@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "name": "ca-dblp-2012-generated-vectors",
+  "kind": "generated_attributes_on_public_graphs",
+  "archived_utc": "2026-07-24T15:08:41.155212+00:00",
+  "provenance_file": {
+    "path": "dataset/vectors-256/ca-dblp-2012.provenance.json",
+    "bytes": 1193,
+    "sha256": "77b4af51ff4089af757a52f58225fb06296535155a163d725ad310a79d56136e"
+  },
+  "verified_files": [
+    {
+      "path": "dataset/dataset/ca-dblp-2012.txt",
+      "bytes": 13409417,
+      "sha256": "c7d1317200999a1925e86e674f72c05cf5f90dc5802ac2cfff2dd3acc92e240a"
+    },
+    {
+      "path": "dataset/vectors-256/ca-dblp-2012_vectors.bin",
+      "bytes": 649379848,
+      "sha256": "3c5ad6529133aa62762576d69c36eed295b6d996a7011cb713778ef382fe2a54"
+    }
+  ],
+  "audit": {
+    "path": "experiments/dataset-audits/candidate-ca-dblp.json",
+    "bytes": 497,
+    "sha256": "1bb0629c163ef9c4a6954e242492b7ba6af41d1d2c34c129c61f29dd2ceb0052"
+  },
+  "provenance": {
+    "schema_version": 1,
+    "kind": "generated_attributes_on_public_graphs",
+    "created_utc": "2026-07-24T15:08:19.430451+00:00",
+    "generator": {
+      "script": "scripts/generate_structural_vectors.py",
+      "script_sha256": "af2f7af86ee56718dff7495a82f5520dcda6eaa74728367b523cfb189b7cb316",
+      "numpy_version": "1.26.4",
+      "bit_generator": "PCG64",
+      "distribution": "independent Uniform[-1, 1) coordinates",
+      "normalization": "L2 normalization by the shared C++ graph loader",
+      "dimension": 256,
+      "chunk_rows": 8192,
+      "binary_format": "little-endian int32 V, int32 dimension, row-major float64 values"
+    },
+    "datasets": [
+      {
+        "name": "ca-dblp-2012",
+        "vertices": 317080,
+        "dimension": 256,
+        "seed": 2026072313,
+        "graph": {
+          "path": "dataset/dataset/ca-dblp-2012.txt",
+          "bytes": 13409417,
+          "sha256": "c7d1317200999a1925e86e674f72c05cf5f90dc5802ac2cfff2dd3acc92e240a"
+        },
+        "vectors": {
+          "path": "dataset/vectors-256/ca-dblp-2012_vectors.bin",
+          "bytes": 649379848,
+          "sha256": "3c5ad6529133aa62762576d69c36eed295b6d996a7011cb713778ef382fe2a54"
+        }
+      }
+    ]
+  }
+}

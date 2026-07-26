@@ -1,0 +1,84 @@
+{
+  "name": "batch1-pilot-wn18rr",
+  "tasks": [
+    {
+      "algorithm": 1,
+      "mode": "raw",
+      "dataset": 8,
+      "threads": 32,
+      "timeout_seconds": 180
+    },
+    {
+      "algorithm": 2,
+      "mode": "raw",
+      "dataset": 8,
+      "tau": 0.423383,
+      "threads": 32,
+      "timeout_seconds": 180
+    },
+    {
+      "algorithm": 3,
+      "mode": "raw",
+      "dataset": 8,
+      "tau": 0.423383,
+      "threads": 32,
+      "timeout_seconds": 180
+    },
+    {
+      "algorithm": 4,
+      "mode": "raw",
+      "dataset": 8,
+      "tau": 0.423383,
+      "threads": 32,
+      "timeout_seconds": 180
+    },
+    {
+      "algorithm": 2,
+      "mode": "raw",
+      "dataset": 8,
+      "tau": 0.557237,
+      "threads": 32,
+      "timeout_seconds": 180
+    },
+    {
+      "algorithm": 3,
+      "mode": "raw",
+      "dataset": 8,
+      "tau": 0.557237,
+      "threads": 32,
+      "timeout_seconds": 180
+    },
+    {
+      "algorithm": 4,
+      "mode": "raw",
+      "dataset": 8,
+      "tau": 0.557237,
+      "threads": 32,
+      "timeout_seconds": 180
+    },
+    {
+      "algorithm": 2,
+      "mode": "raw",
+      "dataset": 8,
+      "tau": 0.684187,
+      "threads": 32,
+      "timeout_seconds": 180
+    },
+    {
+      "algorithm": 3,
+      "mode": "raw",
+      "dataset": 8,
+      "tau": 0.684187,
+      "threads": 32,
+      "timeout_seconds": 180
+    },
+    {
+      "algorithm": 4,
+      "mode": "raw",
+      "dataset": 8,
+      "tau": 0.684187,
+      "threads": 32,
+      "timeout_seconds": 180
+    }
+  ]
+}

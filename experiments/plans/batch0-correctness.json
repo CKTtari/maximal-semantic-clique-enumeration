@@ -1,0 +1,35 @@
+{
+  "name": "batch0-correctness",
+  "tasks": [
+    {
+      "algorithm": 2,
+      "mode": "raw",
+      "dataset": 8,
+      "tau": 0.8,
+      "threads": 32,
+      "timeout_seconds": 180,
+      "capture_cliques": true,
+      "repetitions": 1
+    },
+    {
+      "algorithm": 3,
+      "mode": "raw",
+      "dataset": 8,
+      "tau": 0.8,
+      "threads": 32,
+      "timeout_seconds": 180,
+      "capture_cliques": true,
+      "repetitions": 1
+    },
+    {
+      "algorithm": 4,
+      "mode": "raw",
+      "dataset": 8,
+      "tau": 0.8,
+      "threads": 32,
+      "timeout_seconds": 180,
+      "capture_cliques": true,
+      "repetitions": 1
+    }
+  ]
+}

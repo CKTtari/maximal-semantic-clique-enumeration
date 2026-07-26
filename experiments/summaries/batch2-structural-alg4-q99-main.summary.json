@@ -1,0 +1,194 @@
+{
+  "schema_version": 1,
+  "source_manifest": "experiments/archive/batch2-structural-alg4-q99-main.manifest.json",
+  "source_run": "batch2-structural-alg4-q99-main",
+  "source_plan_summary": {
+    "attempts": 15,
+    "planned_tasks": 15,
+    "attempted_tasks": 15,
+    "completed_tasks": 15,
+    "unattempted_tasks": 0,
+    "unattempted_task_ids": [],
+    "plan_complete": true,
+    "status_counts": {
+      "completed": 15
+    }
+  },
+  "groups": [
+    {
+      "configuration": {
+        "algorithm": 4,
+        "mode": "raw",
+        "dataset": 2,
+        "tau": 0.145065,
+        "threads": 32,
+        "timeout_seconds": 3600,
+        "graph": null,
+        "vectors": null,
+        "capture_cliques": false,
+        "defines": {},
+        "warmup": false
+      },
+      "status_counts": {
+        "completed": 3
+      },
+      "timing": {
+        "completed_repetitions": 3,
+        "algorithm_ms_median": 66,
+        "algorithm_ms_min": 65,
+        "algorithm_ms_max": 69,
+        "wall_seconds_median": 0.7671876999957021,
+        "peak_memory_gib_median": 0.19,
+        "peak_memory_gib_max": 0.19
+      },
+      "result": {
+        "clique_count": 12804,
+        "size_histogram": {
+          "2": 12260,
+          "3": 539,
+          "4": 5
+        }
+      }
+    },
+    {
+      "configuration": {
+        "algorithm": 4,
+        "mode": "raw",
+        "dataset": 3,
+        "tau": 0.145317,
+        "threads": 32,
+        "timeout_seconds": 3600,
+        "graph": null,
+        "vectors": null,
+        "capture_cliques": false,
+        "defines": {},
+        "warmup": false
+      },
+      "status_counts": {
+        "completed": 3
+      },
+      "timing": {
+        "completed_repetitions": 3,
+        "algorithm_ms_median": 127,
+        "algorithm_ms_min": 120,
+        "algorithm_ms_max": 128,
+        "wall_seconds_median": 1.4159447999991244,
+        "peak_memory_gib_median": 0.32,
+        "peak_memory_gib_max": 0.32
+      },
+      "result": {
+        "clique_count": 24857,
+        "size_histogram": {
+          "2": 23412,
+          "3": 1434,
+          "4": 11
+        }
+      }
+    },
+    {
+      "configuration": {
+        "algorithm": 4,
+        "mode": "raw",
+        "dataset": 4,
+        "tau": 0.14518,
+        "threads": 32,
+        "timeout_seconds": 3600,
+        "graph": null,
+        "vectors": null,
+        "capture_cliques": false,
+        "defines": {},
+        "warmup": false
+      },
+      "status_counts": {
+        "completed": 3
+      },
+      "timing": {
+        "completed_repetitions": 3,
+        "algorithm_ms_median": 217,
+        "algorithm_ms_min": 211,
+        "algorithm_ms_max": 235,
+        "wall_seconds_median": 3.9757510000054026,
+        "peak_memory_gib_median": 0.5,
+        "peak_memory_gib_max": 0.5
+      },
+      "result": {
+        "clique_count": 27156,
+        "size_histogram": {
+          "2": 25541,
+          "3": 1601,
+          "4": 14
+        }
+      }
+    },
+    {
+      "configuration": {
+        "algorithm": 4,
+        "mode": "raw",
+        "dataset": 5,
+        "tau": 0.145193,
+        "threads": 32,
+        "timeout_seconds": 3600,
+        "graph": null,
+        "vectors": null,
+        "capture_cliques": false,
+        "defines": {},
+        "warmup": false
+      },
+      "status_counts": {
+        "completed": 3
+      },
+      "timing": {
+        "completed_repetitions": 3,
+        "algorithm_ms_median": 802,
+        "algorithm_ms_min": 776,
+        "algorithm_ms_max": 897,
+        "wall_seconds_median": 9.519817899999907,
+        "peak_memory_gib_median": 2.79,
+        "peak_memory_gib_max": 2.79
+      },
+      "result": {
+        "clique_count": 58203,
+        "size_histogram": {
+          "2": 54868,
+          "3": 3313,
+          "4": 22
+        }
+      }
+    },
+    {
+      "configuration": {
+        "algorithm": 4,
+        "mode": "raw",
+        "dataset": 6,
+        "tau": 0.145157,
+        "threads": 32,
+        "timeout_seconds": 3600,
+        "graph": null,
+        "vectors": null,
+        "capture_cliques": false,
+        "defines": {},
+        "warmup": false
+      },
+      "status_counts": {
+        "completed": 3
+      },
+      "timing": {
+        "completed_repetitions": 3,
+        "algorithm_ms_median": 1540,
+        "algorithm_ms_min": 1494,
+        "algorithm_ms_max": 1634,
+        "wall_seconds_median": 16.36399589999928,
+        "peak_memory_gib_median": 6.14,
+        "peak_memory_gib_max": 6.14
+      },
+      "result": {
+        "clique_count": 110347,
+        "size_histogram": {
+          "2": 108947,
+          "3": 1396,
+          "4": 4
+        }
+      }
+    }
+  ]
+}

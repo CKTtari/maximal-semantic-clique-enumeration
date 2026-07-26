@@ -1,0 +1,69 @@
+{
+  "schema_version": 1,
+  "graphs": [
+    {
+      "path": "dataset/scale_datasets/dblp-degree-prefix-small/level-1000.graph.txt",
+      "vertices": 1000,
+      "header_edges": 80637,
+      "input_rows": 80637,
+      "self_loops": 0,
+      "duplicate_edges": 0,
+      "edges": 80637,
+      "average_degree": 161.274,
+      "max_degree": 644,
+      "degeneracy": 95,
+      "max_forward_degree": 95,
+      "wedges": 16127082,
+      "triangles": 1588287,
+      "transitivity": 0.2954571075
+    },
+    {
+      "path": "dataset/scale_datasets/dblp-degree-prefix-small/level-2500.graph.txt",
+      "vertices": 2500,
+      "header_edges": 244641,
+      "input_rows": 244641,
+      "self_loops": 0,
+      "duplicate_edges": 0,
+      "edges": 244641,
+      "average_degree": 195.7128,
+      "max_degree": 1311,
+      "degeneracy": 134,
+      "max_forward_degree": 134,
+      "wedges": 65678145,
+      "triangles": 5438102,
+      "transitivity": 0.2483977889
+    },
+    {
+      "path": "dataset/scale_datasets/dblp-degree-prefix-small/level-5000.graph.txt",
+      "vertices": 5000,
+      "header_edges": 548067,
+      "input_rows": 548067,
+      "self_loops": 0,
+      "duplicate_edges": 0,
+      "edges": 548067,
+      "average_degree": 219.2268,
+      "max_degree": 2127,
+      "degeneracy": 223,
+      "max_forward_degree": 223,
+      "wedges": 178832556,
+      "triangles": 15511549,
+      "transitivity": 0.2602135094
+    },
+    {
+      "path": "dataset/scale_datasets/dblp-degree-prefix-small/level-10000.graph.txt",
+      "vertices": 10000,
+      "header_edges": 1246158,
+      "input_rows": 1246158,
+      "self_loops": 0,
+      "duplicate_edges": 0,
+      "edges": 1246158,
+      "average_degree": 249.2316,
+      "max_degree": 3305,
+      "degeneracy": 398,
+      "max_forward_degree": 398,
+      "wedges": 499841074,
+      "triangles": 59218478,
+      "transitivity": 0.3554238402
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "name": "batch0-raw-stats-baselines",
+  "tasks": [
+    {"algorithm": 1, "mode": "raw", "dataset": 8, "threads": 32, "timeout_seconds": 180, "capture_cliques": true},
+    {"algorithm": 1, "mode": "stats", "dataset": 8, "threads": 32, "timeout_seconds": 180, "capture_cliques": true},
+    {"algorithm": 2, "mode": "raw", "dataset": 8, "tau": 0.8, "threads": 32, "timeout_seconds": 180, "capture_cliques": true},
+    {"algorithm": 2, "mode": "stats", "dataset": 8, "tau": 0.8, "threads": 32, "timeout_seconds": 180, "capture_cliques": true}
+  ]
+}

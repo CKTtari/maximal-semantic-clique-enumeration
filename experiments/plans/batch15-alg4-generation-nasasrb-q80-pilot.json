@@ -1,0 +1,8 @@
+{
+  "name": "batch15-alg4-generation-nasasrb-q80-pilot",
+  "tasks": [
+    {"algorithm": 4, "mode": "raw", "dataset": 2, "tau": 0.0527296, "threads": 32, "timeout_seconds": 180},
+    {"algorithm": 4, "mode": "raw", "dataset": 2, "tau": 0.0527296, "threads": 32, "timeout_seconds": 180, "defines": {"ACMSC_ALG4_GENERATION": 1}},
+    {"algorithm": 4, "mode": "raw", "dataset": 2, "tau": 0.0527296, "threads": 32, "timeout_seconds": 180, "defines": {"ACMSC_ALG4_GENERATION": 2}}
+  ]
+}

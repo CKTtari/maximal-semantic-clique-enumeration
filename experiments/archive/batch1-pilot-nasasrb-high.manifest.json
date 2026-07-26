@@ -1,0 +1,515 @@
+{
+  "schema_version": 2,
+  "run_name": "batch1-pilot-nasasrb-high",
+  "archived_utc": "2026-07-23T09:12:49.062909+00:00",
+  "local_result_directory": "experiment-output/batch1-pilot-nasasrb-high",
+  "plans": [
+    {
+      "path": "experiments/plans/batch1-pilot-nasasrb-high.json",
+      "sha256": "47eb3f8e14a325e7109e103f39038b9e04322b63bfcb87252d6d02ce2e1b99bf"
+    }
+  ],
+  "summary": {
+    "attempts": 4,
+    "status_counts": {
+      "completed": 3,
+      "tle": 1
+    }
+  },
+  "records": [
+    {
+      "task_id": "5c49d0ad07193957",
+      "attempt": 1,
+      "status": "completed",
+      "rerun_reason": null,
+      "started_utc": "2026-07-23T09:09:30.344932+00:00",
+      "wall_seconds": 1.0270664999989094,
+      "task": {
+        "algorithm": 3,
+        "mode": "raw",
+        "dataset": 2,
+        "tau": 0.145065,
+        "threads": 32,
+        "timeout_seconds": 180,
+        "graph": null,
+        "vectors": null,
+        "capture_cliques": false,
+        "defines": {},
+        "warmup": false,
+        "repetition": 0,
+        "task_id": "5c49d0ad07193957"
+      },
+      "parsed": {
+        "algorithm_ms": 271,
+        "clique_count": 12804,
+        "peak_memory_gib": 0.24,
+        "size_histogram": {
+          "2": 12260,
+          "3": 539,
+          "4": 5
+        },
+        "stats": {}
+      },
+      "validation": null,
+      "build": {
+        "fingerprint": "2d0383e9aab712e9",
+        "executable_sha256": "d1979312dbe977c3ef3a4196af1d409403533af9640538ec846ad7dd065e3c6e",
+        "command": [
+          "g++",
+          "-std=c++17",
+          "-fopenmp",
+          "-mavx2",
+          "-O3",
+          "src/alg3-raw.cpp",
+          "src/semantic_graph.cpp",
+          "-o",
+          "no-use/compiled/experiment-runner/alg3-raw-2d0383e9aab712e9.exe"
+        ],
+        "source_verification": {
+          "status": "verified_current",
+          "observed_current_fingerprint": "2d0383e9aab712e9",
+          "reason": null
+        },
+        "source_hashes": {
+          "alg3-raw.cpp": "fc80d45196988448fd94b3f65b04eebcd4f6f68770111b57a81fb7c898a95c3e",
+          "semantic_graph.cpp": "c6d51c9086fbd5c7d264eb411ac04890806744fc4e05dc7eee0b156760a9cd92",
+          "semantic_graph.h": "8192c4e8e02fc8ace59d59365f72643e34ca32ba71faa5bb338381a8cd308078",
+          "experiment_runtime.h": "1a15525107f95da07392efce763189a04a92d078bcf3660fcb0892dbdb053e25"
+        }
+      },
+      "inputs": {
+        "status": "verified_run_time",
+        "snapshot": {
+          "dataset_catalog": {
+            "path": "experiments/datasets.json",
+            "sha256": "956d6f0abf808aeb0c2056384786f5b893b72919eb5aa5ee90109bef4ef19094"
+          },
+          "files": [
+            {
+              "role": "graph",
+              "path": "dataset/dataset/sc-nasasrb.txt",
+              "bytes": 15163675,
+              "sha256": "ebaebd0857d5414dc67b4fac1cb12bed76bf1f099a75595c15cc149d7eeaf771"
+            },
+            {
+              "role": "vector_binary",
+              "path": "dataset/vectors-256/sc-nasasrb_vectors.bin",
+              "bytes": 112373768,
+              "sha256": "fa5dab6305ce2d089d9aa7efb8a9cc654312d0cc2bfc702b61f60015e07d32cc"
+            }
+          ]
+        }
+      },
+      "run_environment": {
+        "plan": "experiments/plans/batch1-pilot-nasasrb-high.json",
+        "plan_sha256": "47eb3f8e14a325e7109e103f39038b9e04322b63bfcb87252d6d02ce2e1b99bf",
+        "git": {
+          "commit": "59299fd9164d077d7e04cd97fc9ac89cbf962c9f",
+          "dirty": true
+        },
+        "machine": {
+          "platform": "Windows-11-10.0.26100-SP0",
+          "processor": "AMD64 Family 25 Model 97 Stepping 2, AuthenticAMD",
+          "logical_cpu_count": 32,
+          "python": "3.12.7",
+          "compiler": "g++ (x86_64-posix-seh-rev0, Built by MinGW-Builds project) 13.2.0"
+        },
+        "memory_limit_gib": 16,
+        "external_timeout_policy": "hard per-process TLE from task.timeout_seconds"
+      },
+      "result_json": {
+        "path": "experiment-output/batch1-pilot-nasasrb-high/5c49d0ad07193957.attempt-001.json",
+        "bytes": 4032,
+        "sha256": "3f476bc0f0ca3ed21d2d0675b0c715811dd3faa39b8c780adac9596ac404b29c"
+      },
+      "artifacts": {
+        "program_log": {
+          "path": "experiment-output/batch1-pilot-nasasrb-high/5c49d0ad07193957.attempt-001.program.log",
+          "bytes": 1279,
+          "sha256": "7f7047b0b183fc172d8721fe15cb79394b6768bc8a8983e2033e22c16d2040fd"
+        },
+        "stdout": {
+          "path": "experiment-output/batch1-pilot-nasasrb-high/5c49d0ad07193957.attempt-001.stdout.txt",
+          "bytes": 1482,
+          "sha256": "f15374977c8e1f8e5d60c484408ef6bfcaf522f020d63b22ca687f3fa8cb5936"
+        },
+        "stderr": {
+          "path": "experiment-output/batch1-pilot-nasasrb-high/5c49d0ad07193957.attempt-001.stderr.txt",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    {
+      "task_id": "dc38cd5656761202",
+      "attempt": 1,
+      "status": "tle",
+      "rerun_reason": null,
+      "started_utc": "2026-07-23T09:09:48.710379+00:00",
+      "wall_seconds": 180.0509588999994,
+      "task": {
+        "algorithm": 2,
+        "mode": "raw",
+        "dataset": 2,
+        "tau": 0.145065,
+        "threads": 32,
+        "timeout_seconds": 180,
+        "graph": null,
+        "vectors": null,
+        "capture_cliques": false,
+        "defines": {},
+        "warmup": false,
+        "repetition": 0,
+        "task_id": "dc38cd5656761202"
+      },
+      "parsed": null,
+      "validation": null,
+      "build": {
+        "fingerprint": "6585261e6935ce5b",
+        "executable_sha256": "b99a263c66fc14588ce8c726e9c03b0d98b95f2fd2d50440417b53a933eab83a",
+        "command": [
+          "g++",
+          "-std=c++17",
+          "-fopenmp",
+          "-mavx2",
+          "-O3",
+          "src/alg2-raw.cpp",
+          "src/semantic_graph.cpp",
+          "-o",
+          "no-use/compiled/experiment-runner/alg2-raw-6585261e6935ce5b.exe"
+        ],
+        "source_verification": {
+          "status": "verified_current",
+          "observed_current_fingerprint": "6585261e6935ce5b",
+          "reason": null
+        },
+        "source_hashes": {
+          "alg2-raw.cpp": "6087966df0b12819f71ecb9aa948dd0f1e608c97c6b7e88a415dc6c0b96d4ea4",
+          "semantic_graph.cpp": "c6d51c9086fbd5c7d264eb411ac04890806744fc4e05dc7eee0b156760a9cd92",
+          "semantic_graph.h": "8192c4e8e02fc8ace59d59365f72643e34ca32ba71faa5bb338381a8cd308078",
+          "experiment_runtime.h": "1a15525107f95da07392efce763189a04a92d078bcf3660fcb0892dbdb053e25"
+        }
+      },
+      "inputs": {
+        "status": "verified_run_time",
+        "snapshot": {
+          "dataset_catalog": {
+            "path": "experiments/datasets.json",
+            "sha256": "956d6f0abf808aeb0c2056384786f5b893b72919eb5aa5ee90109bef4ef19094"
+          },
+          "files": [
+            {
+              "role": "graph",
+              "path": "dataset/dataset/sc-nasasrb.txt",
+              "bytes": 15163675,
+              "sha256": "ebaebd0857d5414dc67b4fac1cb12bed76bf1f099a75595c15cc149d7eeaf771"
+            },
+            {
+              "role": "vector_binary",
+              "path": "dataset/vectors-256/sc-nasasrb_vectors.bin",
+              "bytes": 112373768,
+              "sha256": "fa5dab6305ce2d089d9aa7efb8a9cc654312d0cc2bfc702b61f60015e07d32cc"
+            }
+          ]
+        }
+      },
+      "run_environment": {
+        "plan": "experiments/plans/batch1-pilot-nasasrb-high.json",
+        "plan_sha256": "47eb3f8e14a325e7109e103f39038b9e04322b63bfcb87252d6d02ce2e1b99bf",
+        "git": {
+          "commit": "59299fd9164d077d7e04cd97fc9ac89cbf962c9f",
+          "dirty": true
+        },
+        "machine": {
+          "platform": "Windows-11-10.0.26100-SP0",
+          "processor": "AMD64 Family 25 Model 97 Stepping 2, AuthenticAMD",
+          "logical_cpu_count": 32,
+          "python": "3.12.7",
+          "compiler": "g++ (x86_64-posix-seh-rev0, Built by MinGW-Builds project) 13.2.0"
+        },
+        "memory_limit_gib": 16,
+        "external_timeout_policy": "hard per-process TLE from task.timeout_seconds"
+      },
+      "result_json": {
+        "path": "experiment-output/batch1-pilot-nasasrb-high/dc38cd5656761202.attempt-001.json",
+        "bytes": 3842,
+        "sha256": "838e874d88d3de28218da6b38fb1c1a83c5bfac1ae481cfc959e4da4f912c90c"
+      },
+      "artifacts": {
+        "program_log": {
+          "path": "experiment-output/batch1-pilot-nasasrb-high/dc38cd5656761202.attempt-001.program.log",
+          "bytes": 2782,
+          "sha256": "35e12b73f3f522ba1a3a3b6cce64048dd8f94728d310abc5eafde8427de92071"
+        },
+        "stdout": {
+          "path": "experiment-output/batch1-pilot-nasasrb-high/dc38cd5656761202.attempt-001.stdout.txt",
+          "bytes": 652,
+          "sha256": "4d9a16b85680e1f3a49cfc3c894cade8b4531ccc43a2e3be2dfa5b48abcae307"
+        },
+        "stderr": {
+          "path": "experiment-output/batch1-pilot-nasasrb-high/dc38cd5656761202.attempt-001.stderr.txt",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    {
+      "task_id": "e8fb3cba1bb4b0ac",
+      "attempt": 1,
+      "status": "completed",
+      "rerun_reason": null,
+      "started_utc": "2026-07-23T09:09:19.222158+00:00",
+      "wall_seconds": 0.7567476999975042,
+      "task": {
+        "algorithm": 4,
+        "mode": "raw",
+        "dataset": 2,
+        "tau": 0.145065,
+        "threads": 32,
+        "timeout_seconds": 180,
+        "graph": null,
+        "vectors": null,
+        "capture_cliques": false,
+        "defines": {},
+        "warmup": false,
+        "repetition": 0,
+        "task_id": "e8fb3cba1bb4b0ac"
+      },
+      "parsed": {
+        "algorithm_ms": 58,
+        "clique_count": 12804,
+        "peak_memory_gib": 0.19,
+        "size_histogram": {
+          "2": 12260,
+          "3": 539,
+          "4": 5
+        },
+        "stats": {}
+      },
+      "validation": null,
+      "build": {
+        "fingerprint": "4ebbbaa4d5da8283",
+        "executable_sha256": "95e403f5d54b8bbbc8582f9e1c4bf787e42cc8fccec95e1a5eff571947c74b83",
+        "command": [
+          "g++",
+          "-std=c++17",
+          "-fopenmp",
+          "-mavx2",
+          "-O3",
+          "src/alg4-raw.cpp",
+          "src/semantic_graph.cpp",
+          "-o",
+          "no-use/compiled/experiment-runner/alg4-raw-4ebbbaa4d5da8283.exe"
+        ],
+        "source_verification": {
+          "status": "verified_current",
+          "observed_current_fingerprint": "4ebbbaa4d5da8283",
+          "reason": null
+        },
+        "source_hashes": {
+          "alg4-raw.cpp": "69f95cd5f2e867a2f53843d543cbd4484b525f2c05ada0d07df9fa44cf3364d2",
+          "semantic_graph.cpp": "c6d51c9086fbd5c7d264eb411ac04890806744fc4e05dc7eee0b156760a9cd92",
+          "semantic_graph.h": "8192c4e8e02fc8ace59d59365f72643e34ca32ba71faa5bb338381a8cd308078",
+          "experiment_runtime.h": "1a15525107f95da07392efce763189a04a92d078bcf3660fcb0892dbdb053e25"
+        }
+      },
+      "inputs": {
+        "status": "verified_run_time",
+        "snapshot": {
+          "dataset_catalog": {
+            "path": "experiments/datasets.json",
+            "sha256": "956d6f0abf808aeb0c2056384786f5b893b72919eb5aa5ee90109bef4ef19094"
+          },
+          "files": [
+            {
+              "role": "graph",
+              "path": "dataset/dataset/sc-nasasrb.txt",
+              "bytes": 15163675,
+              "sha256": "ebaebd0857d5414dc67b4fac1cb12bed76bf1f099a75595c15cc149d7eeaf771"
+            },
+            {
+              "role": "vector_binary",
+              "path": "dataset/vectors-256/sc-nasasrb_vectors.bin",
+              "bytes": 112373768,
+              "sha256": "fa5dab6305ce2d089d9aa7efb8a9cc654312d0cc2bfc702b61f60015e07d32cc"
+            }
+          ]
+        }
+      },
+      "run_environment": {
+        "plan": "experiments/plans/batch1-pilot-nasasrb-high.json",
+        "plan_sha256": "47eb3f8e14a325e7109e103f39038b9e04322b63bfcb87252d6d02ce2e1b99bf",
+        "git": {
+          "commit": "59299fd9164d077d7e04cd97fc9ac89cbf962c9f",
+          "dirty": true
+        },
+        "machine": {
+          "platform": "Windows-11-10.0.26100-SP0",
+          "processor": "AMD64 Family 25 Model 97 Stepping 2, AuthenticAMD",
+          "logical_cpu_count": 32,
+          "python": "3.12.7",
+          "compiler": "g++ (x86_64-posix-seh-rev0, Built by MinGW-Builds project) 13.2.0"
+        },
+        "memory_limit_gib": 16,
+        "external_timeout_policy": "hard per-process TLE from task.timeout_seconds"
+      },
+      "result_json": {
+        "path": "experiment-output/batch1-pilot-nasasrb-high/e8fb3cba1bb4b0ac.attempt-001.json",
+        "bytes": 4031,
+        "sha256": "d6719b472b7443736476530a8eefe9cfcb593853aed651fc21b209d1d5a944ab"
+      },
+      "artifacts": {
+        "program_log": {
+          "path": "experiment-output/batch1-pilot-nasasrb-high/e8fb3cba1bb4b0ac.attempt-001.program.log",
+          "bytes": 1122,
+          "sha256": "00d5b7d50cd388c265bcb8e2e128c25db8224d0137fff9ea397073c69e1191f6"
+        },
+        "stdout": {
+          "path": "experiment-output/batch1-pilot-nasasrb-high/e8fb3cba1bb4b0ac.attempt-001.stdout.txt",
+          "bytes": 1325,
+          "sha256": "3f569485155ad1aaae689b11e633514d5d7257217ed96935d4084552f258dece"
+        },
+        "stderr": {
+          "path": "experiment-output/batch1-pilot-nasasrb-high/e8fb3cba1bb4b0ac.attempt-001.stderr.txt",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    {
+      "task_id": "eb12b1b0b065737a",
+      "attempt": 1,
+      "status": "completed",
+      "rerun_reason": null,
+      "started_utc": "2026-07-23T09:08:51.594906+00:00",
+      "wall_seconds": 0.6025806999969063,
+      "task": {
+        "algorithm": 1,
+        "mode": "raw",
+        "dataset": 2,
+        "tau": null,
+        "threads": 32,
+        "timeout_seconds": 180,
+        "graph": null,
+        "vectors": null,
+        "capture_cliques": false,
+        "defines": {},
+        "warmup": false,
+        "repetition": 0,
+        "task_id": "eb12b1b0b065737a"
+      },
+      "parsed": {
+        "algorithm_ms": 63,
+        "clique_count": 28154,
+        "peak_memory_gib": 0.15,
+        "size_histogram": {
+          "4": 10,
+          "5": 10,
+          "6": 65,
+          "7": 70,
+          "8": 444,
+          "9": 180,
+          "10": 514,
+          "11": 1422,
+          "12": 4708,
+          "13": 1432,
+          "14": 1222,
+          "15": 2507,
+          "16": 2489,
+          "17": 454,
+          "18": 777,
+          "19": 771,
+          "20": 5139,
+          "21": 1968,
+          "22": 1648,
+          "23": 385,
+          "24": 1939
+        },
+        "stats": {}
+      },
+      "validation": null,
+      "build": {
+        "fingerprint": "0275eaa8d086a6fa",
+        "executable_sha256": "87570798ea94f16f31ca124633222777e70dc3c42ae33424839e60f7a81e9636",
+        "command": [
+          "g++",
+          "-std=c++17",
+          "-fopenmp",
+          "-mavx2",
+          "-O3",
+          "src/alg1-raw.cpp",
+          "src/semantic_graph.cpp",
+          "-o",
+          "no-use/compiled/experiment-runner/alg1-raw-0275eaa8d086a6fa.exe"
+        ],
+        "source_verification": {
+          "status": "verified_current",
+          "observed_current_fingerprint": "0275eaa8d086a6fa",
+          "reason": null
+        },
+        "source_hashes": {
+          "alg1-raw.cpp": "4a7d33ad80c2585666cccbe052e7a61f52bfc446620115152de79c5c65353f70",
+          "semantic_graph.cpp": "c6d51c9086fbd5c7d264eb411ac04890806744fc4e05dc7eee0b156760a9cd92",
+          "semantic_graph.h": "8192c4e8e02fc8ace59d59365f72643e34ca32ba71faa5bb338381a8cd308078",
+          "experiment_runtime.h": "1a15525107f95da07392efce763189a04a92d078bcf3660fcb0892dbdb053e25"
+        }
+      },
+      "inputs": {
+        "status": "verified_run_time",
+        "snapshot": {
+          "dataset_catalog": {
+            "path": "experiments/datasets.json",
+            "sha256": "956d6f0abf808aeb0c2056384786f5b893b72919eb5aa5ee90109bef4ef19094"
+          },
+          "files": [
+            {
+              "role": "graph",
+              "path": "dataset/dataset/sc-nasasrb.txt",
+              "bytes": 15163675,
+              "sha256": "ebaebd0857d5414dc67b4fac1cb12bed76bf1f099a75595c15cc149d7eeaf771"
+            }
+          ]
+        }
+      },
+      "run_environment": {
+        "plan": "experiments/plans/batch1-pilot-nasasrb-high.json",
+        "plan_sha256": "47eb3f8e14a325e7109e103f39038b9e04322b63bfcb87252d6d02ce2e1b99bf",
+        "git": {
+          "commit": "59299fd9164d077d7e04cd97fc9ac89cbf962c9f",
+          "dirty": true
+        },
+        "machine": {
+          "platform": "Windows-11-10.0.26100-SP0",
+          "processor": "AMD64 Family 25 Model 97 Stepping 2, AuthenticAMD",
+          "logical_cpu_count": 32,
+          "python": "3.12.7",
+          "compiler": "g++ (x86_64-posix-seh-rev0, Built by MinGW-Builds project) 13.2.0"
+        },
+        "memory_limit_gib": 16,
+        "external_timeout_policy": "hard per-process TLE from task.timeout_seconds"
+      },
+      "result_json": {
+        "path": "experiment-output/batch1-pilot-nasasrb-high/eb12b1b0b065737a.attempt-001.json",
+        "bytes": 3998,
+        "sha256": "b4b45e966c8444fd10aaf1c96d1e1b768044aac3490a0f92b18bc48b009cdadd"
+      },
+      "artifacts": {
+        "program_log": {
+          "path": "experiment-output/batch1-pilot-nasasrb-high/eb12b1b0b065737a.attempt-001.program.log",
+          "bytes": 1583,
+          "sha256": "f4b97c4c2e107887e068e5255dd552febb64aa92aaa390f2b922aa69ab87c7f2"
+        },
+        "stdout": {
+          "path": "experiment-output/batch1-pilot-nasasrb-high/eb12b1b0b065737a.attempt-001.stdout.txt",
+          "bytes": 1583,
+          "sha256": "f4b97c4c2e107887e068e5255dd552febb64aa92aaa390f2b922aa69ab87c7f2"
+        },
+        "stderr": {
+          "path": "experiment-output/batch1-pilot-nasasrb-high/eb12b1b0b065737a.attempt-001.stderr.txt",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    }
+  ]
+}

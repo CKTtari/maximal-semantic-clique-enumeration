@@ -1,0 +1,15 @@
+{
+  "name": "batch1-pilot-fb15k",
+  "tasks": [
+    {"algorithm": 1, "mode": "raw", "dataset": 7, "threads": 32, "timeout_seconds": 180},
+    {"algorithm": 2, "mode": "raw", "dataset": 7, "tau": 0.117534, "threads": 32, "timeout_seconds": 180},
+    {"algorithm": 3, "mode": "raw", "dataset": 7, "tau": 0.117534, "threads": 32, "timeout_seconds": 180},
+    {"algorithm": 4, "mode": "raw", "dataset": 7, "tau": 0.117534, "threads": 32, "timeout_seconds": 180},
+    {"algorithm": 2, "mode": "raw", "dataset": 7, "tau": 0.234886, "threads": 32, "timeout_seconds": 180},
+    {"algorithm": 3, "mode": "raw", "dataset": 7, "tau": 0.234886, "threads": 32, "timeout_seconds": 180},
+    {"algorithm": 4, "mode": "raw", "dataset": 7, "tau": 0.234886, "threads": 32, "timeout_seconds": 180},
+    {"algorithm": 2, "mode": "raw", "dataset": 7, "tau": 0.359274, "threads": 32, "timeout_seconds": 180},
+    {"algorithm": 3, "mode": "raw", "dataset": 7, "tau": 0.359274, "threads": 32, "timeout_seconds": 180},
+    {"algorithm": 4, "mode": "raw", "dataset": 7, "tau": 0.359274, "threads": 32, "timeout_seconds": 180}
+  ]
+}

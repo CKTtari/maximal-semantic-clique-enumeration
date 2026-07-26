@@ -1,0 +1,281 @@
+{
+  "schema_version": 2,
+  "run_name": "batch9-pilot-ldoor-alg4-common-grid",
+  "archived_utc": "2026-07-24T15:05:36.788348+00:00",
+  "local_result_directory": "experiment-output/batch9-pilot-ldoor-alg4-common-grid",
+  "plans": [
+    {
+      "path": "experiments/plans/batch9-pilot-ldoor-alg4-common-grid.json",
+      "sha256": "46e1c7f30d564d1a5faf6267ac311d98698d81a9c8e2fed20cccc55bafce8201"
+    }
+  ],
+  "summary": {
+    "attempts": 2,
+    "planned_tasks": 2,
+    "attempted_tasks": 2,
+    "completed_tasks": 2,
+    "unattempted_tasks": 0,
+    "unattempted_task_ids": [],
+    "plan_complete": true,
+    "status_counts": {
+      "completed": 2
+    }
+  },
+  "records": [
+    {
+      "task_id": "130e3fb74c7aeb13",
+      "attempt": 1,
+      "status": "completed",
+      "rerun_reason": null,
+      "started_utc": "2026-07-24T15:04:48.426411+00:00",
+      "wall_seconds": 13.628534599998602,
+      "task": {
+        "algorithm": 4,
+        "mode": "raw",
+        "dataset": 1,
+        "tau": 0.145162,
+        "threads": 32,
+        "timeout_seconds": 180,
+        "graph": null,
+        "vectors": null,
+        "capture_cliques": false,
+        "defines": {},
+        "warmup": false,
+        "repetition": 0,
+        "task_id": "130e3fb74c7aeb13"
+      },
+      "parsed": {
+        "algorithm_ms": 1213,
+        "clique_count": 202030,
+        "peak_memory_gib": 3.11,
+        "size_histogram": {
+          "2": 192349,
+          "3": 9597,
+          "4": 84
+        },
+        "stats": {}
+      },
+      "validation": null,
+      "build": {
+        "fingerprint": "cc4776f3c2d69b98",
+        "executable_sha256": "03a4fb72135a6a580ed324e0ec653eef6ef71e208fb6c62d87a42b7d17271233",
+        "command": [
+          "g++",
+          "-std=c++17",
+          "-fopenmp",
+          "-mavx2",
+          "-O3",
+          "src/alg4-raw.cpp",
+          "src/semantic_graph.cpp",
+          "-o",
+          "no-use/compiled/experiment-runner/alg4-raw-cc4776f3c2d69b98.exe"
+        ],
+        "source_verification": {
+          "status": "verified_current",
+          "observed_current_fingerprint": "cc4776f3c2d69b98",
+          "reason": null
+        },
+        "source_hashes": {
+          "alg4-raw.cpp": "2a4c3a22b326f5716e381c5dddafdbc21cc1696fc2d80f7e2f87668f3f3f98fe",
+          "semantic_graph.cpp": "c6d51c9086fbd5c7d264eb411ac04890806744fc4e05dc7eee0b156760a9cd92",
+          "semantic_graph.h": "8192c4e8e02fc8ace59d59365f72643e34ca32ba71faa5bb338381a8cd308078",
+          "experiment_runtime.h": "8d1b57abde88c6e871e68be7315a31437543b38e8338b8700147534713b3169f"
+        }
+      },
+      "inputs": {
+        "status": "verified_run_time",
+        "snapshot": {
+          "dataset_catalog": {
+            "path": "experiments/datasets.json",
+            "sha256": "02331772c5c8feb3c2f5221608f42f3a65b342e1f88a17d7cfc26007d5f7bf53"
+          },
+          "files": [
+            {
+              "role": "graph",
+              "path": "dataset/dataset/sc-ldoor.txt",
+              "bytes": 285761999,
+              "sha256": "840bdd1718e7e122a2c11347c3edd26e75a04c75c3ba82a8592abb626480d993"
+            },
+            {
+              "role": "vector_binary",
+              "path": "dataset/vectors-256/sc-ldoor_vectors.bin",
+              "bytes": 1862731784,
+              "sha256": "89b598ea62df53b4ba2bb2521affdf527ef0d4b7c28fa211e4962cb14a2a3d7e"
+            }
+          ]
+        }
+      },
+      "run_environment": {
+        "plan": "experiments/plans/batch9-pilot-ldoor-alg4-common-grid.json",
+        "plan_sha256": "46e1c7f30d564d1a5faf6267ac311d98698d81a9c8e2fed20cccc55bafce8201",
+        "git": {
+          "commit": "59299fd9164d077d7e04cd97fc9ac89cbf962c9f",
+          "dirty": true
+        },
+        "machine": {
+          "platform": "Windows-11-10.0.26100-SP0",
+          "processor": "AMD64 Family 25 Model 97 Stepping 2, AuthenticAMD",
+          "logical_cpu_count": 32,
+          "python": "3.12.7",
+          "compiler": "g++ (x86_64-posix-seh-rev0, Built by MinGW-Builds project) 13.2.0"
+        },
+        "memory_limit_gib": 16,
+        "external_timeout_policy": "hard per-process TLE from task.timeout_seconds"
+      },
+      "result_json": {
+        "path": "experiment-output/batch9-pilot-ldoor-alg4-common-grid/130e3fb74c7aeb13.attempt-001.json",
+        "bytes": 4081,
+        "sha256": "ef48c81b11e14d9d47e11537773906d308ec2fbbcb26444926b6512ac087d536"
+      },
+      "artifacts": {
+        "program_log": {
+          "path": "experiment-output/batch9-pilot-ldoor-alg4-common-grid/130e3fb74c7aeb13.attempt-001.program.log",
+          "bytes": 1140,
+          "sha256": "5b341bab0d599b147fba2ae08078b0b5c8976ae1b3945ef7f87500630ee49345"
+        },
+        "stdout": {
+          "path": "experiment-output/batch9-pilot-ldoor-alg4-common-grid/130e3fb74c7aeb13.attempt-001.stdout.txt",
+          "bytes": 1341,
+          "sha256": "4ba36cceebc9dd3fb926b951319398eeef9294bf5a9d65bb898b30912d8781be"
+        },
+        "stderr": {
+          "path": "experiment-output/batch9-pilot-ldoor-alg4-common-grid/130e3fb74c7aeb13.attempt-001.stderr.txt",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    {
+      "task_id": "c960363491fdfb27",
+      "attempt": 1,
+      "status": "completed",
+      "rerun_reason": null,
+      "started_utc": "2026-07-24T15:03:41.589398+00:00",
+      "wall_seconds": 33.37266490000002,
+      "task": {
+        "algorithm": 4,
+        "mode": "raw",
+        "dataset": 1,
+        "tau": 0.0527128,
+        "threads": 32,
+        "timeout_seconds": 180,
+        "graph": null,
+        "vectors": null,
+        "capture_cliques": false,
+        "defines": {},
+        "warmup": false,
+        "repetition": 0,
+        "task_id": "c960363491fdfb27"
+      },
+      "parsed": {
+        "algorithm_ms": 18940,
+        "clique_count": 13473317,
+        "peak_memory_gib": 3.43,
+        "size_histogram": {
+          "2": 21388,
+          "3": 680387,
+          "4": 2898734,
+          "5": 4482599,
+          "6": 3409613,
+          "7": 1489178,
+          "8": 409628,
+          "9": 71754,
+          "10": 8963,
+          "11": 982,
+          "12": 90,
+          "13": 1
+        },
+        "stats": {}
+      },
+      "validation": null,
+      "build": {
+        "fingerprint": "cc4776f3c2d69b98",
+        "executable_sha256": "03a4fb72135a6a580ed324e0ec653eef6ef71e208fb6c62d87a42b7d17271233",
+        "command": [
+          "g++",
+          "-std=c++17",
+          "-fopenmp",
+          "-mavx2",
+          "-O3",
+          "src/alg4-raw.cpp",
+          "src/semantic_graph.cpp",
+          "-o",
+          "no-use/compiled/experiment-runner/alg4-raw-cc4776f3c2d69b98.exe"
+        ],
+        "source_verification": {
+          "status": "verified_current",
+          "observed_current_fingerprint": "cc4776f3c2d69b98",
+          "reason": null
+        },
+        "source_hashes": {
+          "alg4-raw.cpp": "2a4c3a22b326f5716e381c5dddafdbc21cc1696fc2d80f7e2f87668f3f3f98fe",
+          "semantic_graph.cpp": "c6d51c9086fbd5c7d264eb411ac04890806744fc4e05dc7eee0b156760a9cd92",
+          "semantic_graph.h": "8192c4e8e02fc8ace59d59365f72643e34ca32ba71faa5bb338381a8cd308078",
+          "experiment_runtime.h": "8d1b57abde88c6e871e68be7315a31437543b38e8338b8700147534713b3169f"
+        }
+      },
+      "inputs": {
+        "status": "verified_run_time",
+        "snapshot": {
+          "dataset_catalog": {
+            "path": "experiments/datasets.json",
+            "sha256": "02331772c5c8feb3c2f5221608f42f3a65b342e1f88a17d7cfc26007d5f7bf53"
+          },
+          "files": [
+            {
+              "role": "graph",
+              "path": "dataset/dataset/sc-ldoor.txt",
+              "bytes": 285761999,
+              "sha256": "840bdd1718e7e122a2c11347c3edd26e75a04c75c3ba82a8592abb626480d993"
+            },
+            {
+              "role": "vector_binary",
+              "path": "dataset/vectors-256/sc-ldoor_vectors.bin",
+              "bytes": 1862731784,
+              "sha256": "89b598ea62df53b4ba2bb2521affdf527ef0d4b7c28fa211e4962cb14a2a3d7e"
+            }
+          ]
+        }
+      },
+      "run_environment": {
+        "plan": "experiments/plans/batch9-pilot-ldoor-alg4-common-grid.json",
+        "plan_sha256": "46e1c7f30d564d1a5faf6267ac311d98698d81a9c8e2fed20cccc55bafce8201",
+        "git": {
+          "commit": "59299fd9164d077d7e04cd97fc9ac89cbf962c9f",
+          "dirty": true
+        },
+        "machine": {
+          "platform": "Windows-11-10.0.26100-SP0",
+          "processor": "AMD64 Family 25 Model 97 Stepping 2, AuthenticAMD",
+          "logical_cpu_count": 32,
+          "python": "3.12.7",
+          "compiler": "g++ (x86_64-posix-seh-rev0, Built by MinGW-Builds project) 13.2.0"
+        },
+        "memory_limit_gib": 16,
+        "external_timeout_policy": "hard per-process TLE from task.timeout_seconds"
+      },
+      "result_json": {
+        "path": "experiment-output/batch9-pilot-ldoor-alg4-common-grid/c960363491fdfb27.attempt-001.json",
+        "bytes": 4262,
+        "sha256": "4f077c6285c3013e8ca5102637aa0184f339f9a4613c3fd94f3ffe3d320d0ae0"
+      },
+      "artifacts": {
+        "program_log": {
+          "path": "experiment-output/batch9-pilot-ldoor-alg4-common-grid/c960363491fdfb27.attempt-001.program.log",
+          "bytes": 1407,
+          "sha256": "3713c3808064e345f09e5033579ae071f57e3b4bca1ca5be86ec7e17b56dabda"
+        },
+        "stdout": {
+          "path": "experiment-output/batch9-pilot-ldoor-alg4-common-grid/c960363491fdfb27.attempt-001.stdout.txt",
+          "bytes": 1608,
+          "sha256": "7ed05b121e84b8ef5e9403391e40e575d0a4019782c724d3514c5a5ebfc9943c"
+        },
+        "stderr": {
+          "path": "experiment-output/batch9-pilot-ldoor-alg4-common-grid/c960363491fdfb27.attempt-001.stderr.txt",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    }
+  ]
+}

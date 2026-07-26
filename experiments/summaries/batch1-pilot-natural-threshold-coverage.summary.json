@@ -1,0 +1,968 @@
+{
+  "schema_version": 1,
+  "source_manifest": "experiments/archive/batch1-pilot-natural-threshold-coverage.manifest.json",
+  "source_run": "batch1-pilot-natural-threshold-coverage",
+  "source_plan_summary": {
+    "attempts": 20,
+    "planned_tasks": 32,
+    "attempted_tasks": 20,
+    "completed_tasks": 18,
+    "unattempted_tasks": 12,
+    "unattempted_task_ids": [
+      "0a1f1e09fc220a46",
+      "0a6cec5cc7ce697a",
+      "225a9a7eab4e9063",
+      "6747051b5e6f1d8f",
+      "a75e8996e97f9673",
+      "ab749d3dbbc7d6fd",
+      "b06fa9a08e5c3271",
+      "b767d2f8801372bb",
+      "c7a84acf06d5940b",
+      "d807451878662c5c",
+      "f1745beb6875c6fd",
+      "f5603763eeec0958"
+    ],
+    "plan_complete": false,
+    "status_counts": {
+      "completed": 18,
+      "tle": 2
+    }
+  },
+  "groups": [
+    {
+      "configuration": {
+        "algorithm": 1,
+        "mode": "raw",
+        "dataset": 11,
+        "tau": null,
+        "threads": 32,
+        "timeout_seconds": 180,
+        "graph": null,
+        "vectors": null,
+        "capture_cliques": false,
+        "defines": {},
+        "warmup": false
+      },
+      "status_counts": {
+        "completed": 1
+      },
+      "timing": {
+        "completed_repetitions": 1,
+        "algorithm_ms_median": 561,
+        "algorithm_ms_min": 561,
+        "algorithm_ms_max": 561,
+        "wall_seconds_median": 2.0480088999902364,
+        "peak_memory_gib_median": 0.21,
+        "peak_memory_gib_max": 0.21
+      },
+      "result": {
+        "clique_count": 1041789,
+        "size_histogram": {
+          "10": 4499,
+          "11": 2026,
+          "12": 804,
+          "13": 214,
+          "14": 65,
+          "15": 77,
+          "16": 74,
+          "17": 52,
+          "18": 12,
+          "2": 180176,
+          "3": 238079,
+          "4": 227005,
+          "5": 175059,
+          "6": 113340,
+          "7": 61364,
+          "8": 27832,
+          "9": 11111
+        }
+      }
+    },
+    {
+      "configuration": {
+        "algorithm": 1,
+        "mode": "raw",
+        "dataset": 7,
+        "tau": null,
+        "threads": 32,
+        "timeout_seconds": 180,
+        "graph": null,
+        "vectors": null,
+        "capture_cliques": false,
+        "defines": {},
+        "warmup": false
+      },
+      "status_counts": {
+        "completed": 1
+      },
+      "timing": {
+        "completed_repetitions": 1,
+        "algorithm_ms_median": 117,
+        "algorithm_ms_min": 117,
+        "algorithm_ms_max": 117,
+        "wall_seconds_median": 0.3769705999875441,
+        "peak_memory_gib_median": 0.04,
+        "peak_memory_gib_max": 0.04
+      },
+      "result": {
+        "clique_count": 155111,
+        "size_histogram": {
+          "10": 242,
+          "11": 191,
+          "12": 153,
+          "13": 193,
+          "14": 184,
+          "15": 150,
+          "16": 120,
+          "17": 106,
+          "18": 120,
+          "19": 102,
+          "2": 43744,
+          "20": 88,
+          "21": 35,
+          "22": 18,
+          "23": 9,
+          "24": 2,
+          "25": 3,
+          "26": 6,
+          "27": 1,
+          "3": 60752,
+          "4": 29487,
+          "5": 13784,
+          "6": 4014,
+          "7": 895,
+          "8": 397,
+          "9": 315
+        }
+      }
+    },
+    {
+      "configuration": {
+        "algorithm": 2,
+        "mode": "raw",
+        "dataset": 11,
+        "tau": 0.222284,
+        "threads": 32,
+        "timeout_seconds": 180,
+        "graph": null,
+        "vectors": null,
+        "capture_cliques": false,
+        "defines": {},
+        "warmup": false
+      },
+      "status_counts": {
+        "completed": 1
+      },
+      "timing": {
+        "completed_repetitions": 1,
+        "algorithm_ms_median": 2100,
+        "algorithm_ms_min": 2100,
+        "algorithm_ms_max": 2100,
+        "wall_seconds_median": 3.7863952000043355,
+        "peak_memory_gib_median": 0.47,
+        "peak_memory_gib_max": 0.47
+      },
+      "result": {
+        "clique_count": 1041789,
+        "size_histogram": {
+          "10": 4499,
+          "11": 2026,
+          "12": 804,
+          "13": 214,
+          "14": 65,
+          "15": 77,
+          "16": 74,
+          "17": 52,
+          "18": 12,
+          "2": 180176,
+          "3": 238079,
+          "4": 227005,
+          "5": 175059,
+          "6": 113340,
+          "7": 61364,
+          "8": 27832,
+          "9": 11111
+        }
+      }
+    },
+    {
+      "configuration": {
+        "algorithm": 2,
+        "mode": "raw",
+        "dataset": 11,
+        "tau": 0.773547,
+        "threads": 32,
+        "timeout_seconds": 180,
+        "graph": null,
+        "vectors": null,
+        "capture_cliques": false,
+        "defines": {},
+        "warmup": false
+      },
+      "status_counts": {
+        "completed": 1
+      },
+      "timing": {
+        "completed_repetitions": 1,
+        "algorithm_ms_median": 2313,
+        "algorithm_ms_min": 2313,
+        "algorithm_ms_max": 2313,
+        "wall_seconds_median": 3.8048330000019632,
+        "peak_memory_gib_median": 0.47,
+        "peak_memory_gib_max": 0.47
+      },
+      "result": {
+        "clique_count": 925239,
+        "size_histogram": {
+          "10": 4226,
+          "11": 1805,
+          "12": 657,
+          "13": 174,
+          "14": 75,
+          "15": 75,
+          "16": 74,
+          "17": 52,
+          "18": 12,
+          "2": 151287,
+          "3": 206416,
+          "4": 200501,
+          "5": 159878,
+          "6": 105935,
+          "7": 57925,
+          "8": 25950,
+          "9": 10197
+        }
+      }
+    },
+    {
+      "configuration": {
+        "algorithm": 2,
+        "mode": "raw",
+        "dataset": 11,
+        "tau": 0.872133,
+        "threads": 32,
+        "timeout_seconds": 180,
+        "graph": null,
+        "vectors": null,
+        "capture_cliques": false,
+        "defines": {},
+        "warmup": false
+      },
+      "status_counts": {
+        "completed": 1
+      },
+      "timing": {
+        "completed_repetitions": 1,
+        "algorithm_ms_median": 2109,
+        "algorithm_ms_min": 2109,
+        "algorithm_ms_max": 2109,
+        "wall_seconds_median": 3.6512867999990704,
+        "peak_memory_gib_median": 0.47,
+        "peak_memory_gib_max": 0.47
+      },
+      "result": {
+        "clique_count": 357196,
+        "size_histogram": {
+          "10": 695,
+          "11": 184,
+          "12": 56,
+          "13": 42,
+          "14": 54,
+          "15": 72,
+          "16": 74,
+          "17": 52,
+          "18": 12,
+          "2": 81718,
+          "3": 87697,
+          "4": 75456,
+          "5": 56128,
+          "6": 32366,
+          "7": 14765,
+          "8": 5718,
+          "9": 2107
+        }
+      }
+    },
+    {
+      "configuration": {
+        "algorithm": 2,
+        "mode": "raw",
+        "dataset": 11,
+        "tau": 0.909257,
+        "threads": 32,
+        "timeout_seconds": 180,
+        "graph": null,
+        "vectors": null,
+        "capture_cliques": false,
+        "defines": {},
+        "warmup": false
+      },
+      "status_counts": {
+        "completed": 1
+      },
+      "timing": {
+        "completed_repetitions": 1,
+        "algorithm_ms_median": 1774,
+        "algorithm_ms_min": 1774,
+        "algorithm_ms_max": 1774,
+        "wall_seconds_median": 3.3336915999971097,
+        "peak_memory_gib_median": 0.47,
+        "peak_memory_gib_max": 0.47
+      },
+      "result": {
+        "clique_count": 106356,
+        "size_histogram": {
+          "10": 102,
+          "11": 89,
+          "12": 58,
+          "13": 41,
+          "14": 49,
+          "15": 74,
+          "16": 72,
+          "17": 52,
+          "18": 12,
+          "2": 41380,
+          "3": 28912,
+          "4": 18441,
+          "5": 9942,
+          "6": 4660,
+          "7": 1786,
+          "8": 486,
+          "9": 200
+        }
+      }
+    },
+    {
+      "configuration": {
+        "algorithm": 2,
+        "mode": "raw",
+        "dataset": 11,
+        "tau": 0.924347,
+        "threads": 32,
+        "timeout_seconds": 180,
+        "graph": null,
+        "vectors": null,
+        "capture_cliques": false,
+        "defines": {},
+        "warmup": false
+      },
+      "status_counts": {
+        "completed": 1
+      },
+      "timing": {
+        "completed_repetitions": 1,
+        "algorithm_ms_median": 1795,
+        "algorithm_ms_min": 1795,
+        "algorithm_ms_max": 1795,
+        "wall_seconds_median": 3.4103827999933856,
+        "peak_memory_gib_median": 0.47,
+        "peak_memory_gib_max": 0.47
+      },
+      "result": {
+        "clique_count": 53208,
+        "size_histogram": {
+          "10": 170,
+          "11": 407,
+          "12": 729,
+          "13": 876,
+          "14": 419,
+          "15": 101,
+          "16": 1,
+          "2": 25825,
+          "3": 13561,
+          "4": 6700,
+          "5": 2843,
+          "6": 990,
+          "7": 331,
+          "8": 137,
+          "9": 118
+        }
+      }
+    },
+    {
+      "configuration": {
+        "algorithm": 2,
+        "mode": "raw",
+        "dataset": 7,
+        "tau": -0.237632,
+        "threads": 32,
+        "timeout_seconds": 180,
+        "graph": null,
+        "vectors": null,
+        "capture_cliques": false,
+        "defines": {},
+        "warmup": false
+      },
+      "status_counts": {
+        "tle": 1
+      },
+      "timing": null,
+      "result": null
+    },
+    {
+      "configuration": {
+        "algorithm": 3,
+        "mode": "raw",
+        "dataset": 11,
+        "tau": 0.222284,
+        "threads": 32,
+        "timeout_seconds": 180,
+        "graph": null,
+        "vectors": null,
+        "capture_cliques": false,
+        "defines": {},
+        "warmup": false
+      },
+      "status_counts": {
+        "completed": 1
+      },
+      "timing": {
+        "completed_repetitions": 1,
+        "algorithm_ms_median": 1739,
+        "algorithm_ms_min": 1739,
+        "algorithm_ms_max": 1739,
+        "wall_seconds_median": 3.336070999997901,
+        "peak_memory_gib_median": 0.54,
+        "peak_memory_gib_max": 0.54
+      },
+      "result": {
+        "clique_count": 1041789,
+        "size_histogram": {
+          "10": 4499,
+          "11": 2026,
+          "12": 804,
+          "13": 214,
+          "14": 65,
+          "15": 77,
+          "16": 74,
+          "17": 52,
+          "18": 12,
+          "2": 180176,
+          "3": 238079,
+          "4": 227005,
+          "5": 175059,
+          "6": 113340,
+          "7": 61364,
+          "8": 27832,
+          "9": 11111
+        }
+      }
+    },
+    {
+      "configuration": {
+        "algorithm": 3,
+        "mode": "raw",
+        "dataset": 11,
+        "tau": 0.773547,
+        "threads": 32,
+        "timeout_seconds": 180,
+        "graph": null,
+        "vectors": null,
+        "capture_cliques": false,
+        "defines": {},
+        "warmup": false
+      },
+      "status_counts": {
+        "completed": 1
+      },
+      "timing": {
+        "completed_repetitions": 1,
+        "algorithm_ms_median": 1733,
+        "algorithm_ms_min": 1733,
+        "algorithm_ms_max": 1733,
+        "wall_seconds_median": 3.282560999999987,
+        "peak_memory_gib_median": 0.54,
+        "peak_memory_gib_max": 0.54
+      },
+      "result": {
+        "clique_count": 925239,
+        "size_histogram": {
+          "10": 4226,
+          "11": 1805,
+          "12": 657,
+          "13": 174,
+          "14": 75,
+          "15": 75,
+          "16": 74,
+          "17": 52,
+          "18": 12,
+          "2": 151287,
+          "3": 206416,
+          "4": 200501,
+          "5": 159878,
+          "6": 105935,
+          "7": 57925,
+          "8": 25950,
+          "9": 10197
+        }
+      }
+    },
+    {
+      "configuration": {
+        "algorithm": 3,
+        "mode": "raw",
+        "dataset": 11,
+        "tau": 0.872133,
+        "threads": 32,
+        "timeout_seconds": 180,
+        "graph": null,
+        "vectors": null,
+        "capture_cliques": false,
+        "defines": {},
+        "warmup": false
+      },
+      "status_counts": {
+        "completed": 1
+      },
+      "timing": {
+        "completed_repetitions": 1,
+        "algorithm_ms_median": 1388,
+        "algorithm_ms_min": 1388,
+        "algorithm_ms_max": 1388,
+        "wall_seconds_median": 3.0635308000055375,
+        "peak_memory_gib_median": 0.51,
+        "peak_memory_gib_max": 0.51
+      },
+      "result": {
+        "clique_count": 357196,
+        "size_histogram": {
+          "10": 695,
+          "11": 184,
+          "12": 56,
+          "13": 42,
+          "14": 54,
+          "15": 72,
+          "16": 74,
+          "17": 52,
+          "18": 12,
+          "2": 81718,
+          "3": 87697,
+          "4": 75456,
+          "5": 56128,
+          "6": 32366,
+          "7": 14765,
+          "8": 5718,
+          "9": 2107
+        }
+      }
+    },
+    {
+      "configuration": {
+        "algorithm": 3,
+        "mode": "raw",
+        "dataset": 11,
+        "tau": 0.909257,
+        "threads": 32,
+        "timeout_seconds": 180,
+        "graph": null,
+        "vectors": null,
+        "capture_cliques": false,
+        "defines": {},
+        "warmup": false
+      },
+      "status_counts": {
+        "completed": 1
+      },
+      "timing": {
+        "completed_repetitions": 1,
+        "algorithm_ms_median": 1211,
+        "algorithm_ms_min": 1211,
+        "algorithm_ms_max": 1211,
+        "wall_seconds_median": 2.892508600009023,
+        "peak_memory_gib_median": 0.49,
+        "peak_memory_gib_max": 0.49
+      },
+      "result": {
+        "clique_count": 106356,
+        "size_histogram": {
+          "10": 102,
+          "11": 89,
+          "12": 58,
+          "13": 41,
+          "14": 49,
+          "15": 74,
+          "16": 72,
+          "17": 52,
+          "18": 12,
+          "2": 41380,
+          "3": 28912,
+          "4": 18441,
+          "5": 9942,
+          "6": 4660,
+          "7": 1786,
+          "8": 486,
+          "9": 200
+        }
+      }
+    },
+    {
+      "configuration": {
+        "algorithm": 3,
+        "mode": "raw",
+        "dataset": 11,
+        "tau": 0.924347,
+        "threads": 32,
+        "timeout_seconds": 180,
+        "graph": null,
+        "vectors": null,
+        "capture_cliques": false,
+        "defines": {},
+        "warmup": false
+      },
+      "status_counts": {
+        "completed": 1
+      },
+      "timing": {
+        "completed_repetitions": 1,
+        "algorithm_ms_median": 1026,
+        "algorithm_ms_min": 1026,
+        "algorithm_ms_max": 1026,
+        "wall_seconds_median": 2.9407064999977592,
+        "peak_memory_gib_median": 0.47,
+        "peak_memory_gib_max": 0.47
+      },
+      "result": {
+        "clique_count": 53208,
+        "size_histogram": {
+          "10": 170,
+          "11": 407,
+          "12": 729,
+          "13": 876,
+          "14": 419,
+          "15": 101,
+          "16": 1,
+          "2": 25825,
+          "3": 13561,
+          "4": 6700,
+          "5": 2843,
+          "6": 990,
+          "7": 331,
+          "8": 137,
+          "9": 118
+        }
+      }
+    },
+    {
+      "configuration": {
+        "algorithm": 3,
+        "mode": "raw",
+        "dataset": 7,
+        "tau": -0.237632,
+        "threads": 32,
+        "timeout_seconds": 180,
+        "graph": null,
+        "vectors": null,
+        "capture_cliques": false,
+        "defines": {},
+        "warmup": false
+      },
+      "status_counts": {
+        "completed": 1
+      },
+      "timing": {
+        "completed_repetitions": 1,
+        "algorithm_ms_median": 444,
+        "algorithm_ms_min": 444,
+        "algorithm_ms_max": 444,
+        "wall_seconds_median": 1.0328206999984104,
+        "peak_memory_gib_median": 0.11,
+        "peak_memory_gib_max": 0.11
+      },
+      "result": {
+        "clique_count": 221196,
+        "size_histogram": {
+          "10": 633,
+          "11": 574,
+          "12": 518,
+          "13": 599,
+          "14": 627,
+          "15": 802,
+          "16": 669,
+          "17": 576,
+          "18": 401,
+          "19": 295,
+          "2": 46402,
+          "20": 349,
+          "21": 332,
+          "22": 366,
+          "23": 478,
+          "24": 695,
+          "25": 389,
+          "26": 120,
+          "27": 21,
+          "28": 4,
+          "3": 82146,
+          "4": 47331,
+          "5": 21451,
+          "6": 9285,
+          "7": 3107,
+          "8": 2166,
+          "9": 860
+        }
+      }
+    },
+    {
+      "configuration": {
+        "algorithm": 4,
+        "mode": "raw",
+        "dataset": 11,
+        "tau": 0.222284,
+        "threads": 32,
+        "timeout_seconds": 180,
+        "graph": null,
+        "vectors": null,
+        "capture_cliques": false,
+        "defines": {},
+        "warmup": false
+      },
+      "status_counts": {
+        "completed": 1
+      },
+      "timing": {
+        "completed_repetitions": 1,
+        "algorithm_ms_median": 3437,
+        "algorithm_ms_min": 3437,
+        "algorithm_ms_max": 3437,
+        "wall_seconds_median": 5.000278100007563,
+        "peak_memory_gib_median": 0.47,
+        "peak_memory_gib_max": 0.47
+      },
+      "result": {
+        "clique_count": 1041789,
+        "size_histogram": {
+          "10": 4499,
+          "11": 2026,
+          "12": 804,
+          "13": 214,
+          "14": 65,
+          "15": 77,
+          "16": 74,
+          "17": 52,
+          "18": 12,
+          "2": 180176,
+          "3": 238079,
+          "4": 227005,
+          "5": 175059,
+          "6": 113340,
+          "7": 61364,
+          "8": 27832,
+          "9": 11111
+        }
+      }
+    },
+    {
+      "configuration": {
+        "algorithm": 4,
+        "mode": "raw",
+        "dataset": 11,
+        "tau": 0.773547,
+        "threads": 32,
+        "timeout_seconds": 180,
+        "graph": null,
+        "vectors": null,
+        "capture_cliques": false,
+        "defines": {},
+        "warmup": false
+      },
+      "status_counts": {
+        "completed": 1
+      },
+      "timing": {
+        "completed_repetitions": 1,
+        "algorithm_ms_median": 2921,
+        "algorithm_ms_min": 2921,
+        "algorithm_ms_max": 2921,
+        "wall_seconds_median": 4.458342199999606,
+        "peak_memory_gib_median": 0.45,
+        "peak_memory_gib_max": 0.45
+      },
+      "result": {
+        "clique_count": 925239,
+        "size_histogram": {
+          "10": 4226,
+          "11": 1805,
+          "12": 657,
+          "13": 174,
+          "14": 75,
+          "15": 75,
+          "16": 74,
+          "17": 52,
+          "18": 12,
+          "2": 151287,
+          "3": 206416,
+          "4": 200501,
+          "5": 159878,
+          "6": 105935,
+          "7": 57925,
+          "8": 25950,
+          "9": 10197
+        }
+      }
+    },
+    {
+      "configuration": {
+        "algorithm": 4,
+        "mode": "raw",
+        "dataset": 11,
+        "tau": 0.872133,
+        "threads": 32,
+        "timeout_seconds": 180,
+        "graph": null,
+        "vectors": null,
+        "capture_cliques": false,
+        "defines": {},
+        "warmup": false
+      },
+      "status_counts": {
+        "completed": 1
+      },
+      "timing": {
+        "completed_repetitions": 1,
+        "algorithm_ms_median": 1783,
+        "algorithm_ms_min": 1783,
+        "algorithm_ms_max": 1783,
+        "wall_seconds_median": 3.299100999996881,
+        "peak_memory_gib_median": 0.39,
+        "peak_memory_gib_max": 0.39
+      },
+      "result": {
+        "clique_count": 357196,
+        "size_histogram": {
+          "10": 695,
+          "11": 184,
+          "12": 56,
+          "13": 42,
+          "14": 54,
+          "15": 72,
+          "16": 74,
+          "17": 52,
+          "18": 12,
+          "2": 81718,
+          "3": 87697,
+          "4": 75456,
+          "5": 56128,
+          "6": 32366,
+          "7": 14765,
+          "8": 5718,
+          "9": 2107
+        }
+      }
+    },
+    {
+      "configuration": {
+        "algorithm": 4,
+        "mode": "raw",
+        "dataset": 11,
+        "tau": 0.909257,
+        "threads": 32,
+        "timeout_seconds": 180,
+        "graph": null,
+        "vectors": null,
+        "capture_cliques": false,
+        "defines": {},
+        "warmup": false
+      },
+      "status_counts": {
+        "completed": 1
+      },
+      "timing": {
+        "completed_repetitions": 1,
+        "algorithm_ms_median": 1181,
+        "algorithm_ms_min": 1181,
+        "algorithm_ms_max": 1181,
+        "wall_seconds_median": 2.7426141000032658,
+        "peak_memory_gib_median": 0.39,
+        "peak_memory_gib_max": 0.39
+      },
+      "result": {
+        "clique_count": 106356,
+        "size_histogram": {
+          "10": 102,
+          "11": 89,
+          "12": 58,
+          "13": 41,
+          "14": 49,
+          "15": 74,
+          "16": 72,
+          "17": 52,
+          "18": 12,
+          "2": 41380,
+          "3": 28912,
+          "4": 18441,
+          "5": 9942,
+          "6": 4660,
+          "7": 1786,
+          "8": 486,
+          "9": 200
+        }
+      }
+    },
+    {
+      "configuration": {
+        "algorithm": 4,
+        "mode": "raw",
+        "dataset": 11,
+        "tau": 0.924347,
+        "threads": 32,
+        "timeout_seconds": 180,
+        "graph": null,
+        "vectors": null,
+        "capture_cliques": false,
+        "defines": {},
+        "warmup": false
+      },
+      "status_counts": {
+        "completed": 1
+      },
+      "timing": {
+        "completed_repetitions": 1,
+        "algorithm_ms_median": 437,
+        "algorithm_ms_min": 437,
+        "algorithm_ms_max": 437,
+        "wall_seconds_median": 2.1915750999905868,
+        "peak_memory_gib_median": 0.39,
+        "peak_memory_gib_max": 0.39
+      },
+      "result": {
+        "clique_count": 53208,
+        "size_histogram": {
+          "10": 170,
+          "11": 407,
+          "12": 729,
+          "13": 876,
+          "14": 419,
+          "15": 101,
+          "16": 1,
+          "2": 25825,
+          "3": 13561,
+          "4": 6700,
+          "5": 2843,
+          "6": 990,
+          "7": 331,
+          "8": 137,
+          "9": 118
+        }
+      }
+    },
+    {
+      "configuration": {
+        "algorithm": 4,
+        "mode": "raw",
+        "dataset": 7,
+        "tau": -0.237632,
+        "threads": 32,
+        "timeout_seconds": 180,
+        "graph": null,
+        "vectors": null,
+        "capture_cliques": false,
+        "defines": {},
+        "warmup": false
+      },
+      "status_counts": {
+        "tle": 1
+      },
+      "timing": null,
+      "result": null
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "name": "batch21-ogbn-pairsim-quality-sweep",
+  "tasks": [
+    {"algorithm": 1, "mode": "raw", "dataset": 11, "threads": 32, "timeout_seconds": 1200, "capture_cliques": true, "graph": "dataset/derived/ogbn-arxiv-pairsim-q20.txt"},
+    {"algorithm": 1, "mode": "raw", "dataset": 11, "threads": 32, "timeout_seconds": 1200, "capture_cliques": true, "graph": "dataset/derived/ogbn-arxiv-pairsim-q50.txt"},
+    {"algorithm": 1, "mode": "raw", "dataset": 11, "threads": 32, "timeout_seconds": 1200, "capture_cliques": true, "graph": "dataset/derived/ogbn-arxiv-pairsim-q95.txt"},
+    {"algorithm": 1, "mode": "raw", "dataset": 11, "threads": 32, "timeout_seconds": 1200, "capture_cliques": true, "graph": "dataset/derived/ogbn-arxiv-pairsim-q99.txt"}
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "name": "batch2-structural-reference-main",
+  "tasks": [
+    {"algorithm": 1, "mode": "raw", "dataset": 2, "threads": 32, "timeout_seconds": 3600, "repetitions": 3},
+    {"algorithm": 1, "mode": "raw", "dataset": 3, "threads": 32, "timeout_seconds": 3600, "repetitions": 3},
+    {"algorithm": 1, "mode": "raw", "dataset": 4, "threads": 32, "timeout_seconds": 3600, "repetitions": 3},
+    {"algorithm": 1, "mode": "raw", "dataset": 5, "threads": 32, "timeout_seconds": 3600, "repetitions": 3},
+    {"algorithm": 1, "mode": "raw", "dataset": 6, "threads": 32, "timeout_seconds": 3600, "repetitions": 3}
+  ]
+}

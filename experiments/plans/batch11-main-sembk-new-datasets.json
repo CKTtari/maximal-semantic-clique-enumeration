@@ -1,0 +1,11 @@
+{
+  "name": "batch11-main-sembk-new-datasets",
+  "tasks": [
+    {"algorithm": 2, "mode": "raw", "dataset": 14, "tau": -0.0526536, "threads": 32, "timeout_seconds": 1200, "repetitions": 1},
+    {"algorithm": 2, "mode": "raw", "dataset": 14, "tau": 0.0526251, "threads": 32, "timeout_seconds": 1200, "repetitions": 1},
+    {"algorithm": 2, "mode": "raw", "dataset": 14, "tau": 0.145163, "threads": 32, "timeout_seconds": 1200, "repetitions": 1},
+    {"algorithm": 2, "mode": "raw", "dataset": 1, "tau": -0.0526831, "threads": 32, "timeout_seconds": 1200, "repetitions": 1},
+    {"algorithm": 2, "mode": "raw", "dataset": 1, "tau": 0.0527128, "threads": 32, "timeout_seconds": 1200, "repetitions": 1},
+    {"algorithm": 2, "mode": "raw", "dataset": 1, "tau": 0.145162, "threads": 32, "timeout_seconds": 1200, "repetitions": 1}
+  ]
+}

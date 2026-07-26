@@ -5,8 +5,11 @@
 # Compiled binaries and build output
 *.exe
 /build/
+/no-use/
+/experiment-output/
 
 # LaTeX intermediate files
+/main.pdf
 /main.aux
 /main.bbl
 /main.blg
@@ -20,4 +23,3 @@
 .DS_Store
 __pycache__/
 *.py[cod]
-

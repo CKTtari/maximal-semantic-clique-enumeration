@@ -1,0 +1,592 @@
+{
+  "schema_version": 2,
+  "run_name": "batch1-pilot-structural-uniform-ds4-alg3",
+  "archived_utc": "2026-07-23T18:24:57.567842+00:00",
+  "local_result_directory": "experiment-output/batch1-pilot-structural-uniform-ds4-alg3",
+  "plans": [
+    {
+      "path": "experiments/plans/batch1-pilot-structural-uniform-ds4-alg3.json",
+      "sha256": "cad800c36d7258572e0d5b767101e9c6d0116468be8c18effebf9c3aa42f35e1"
+    }
+  ],
+  "summary": {
+    "attempts": 5,
+    "planned_tasks": 5,
+    "attempted_tasks": 5,
+    "completed_tasks": 0,
+    "unattempted_tasks": 0,
+    "unattempted_task_ids": [],
+    "plan_complete": true,
+    "status_counts": {
+      "oom": 2,
+      "tle": 3
+    }
+  },
+  "records": [
+    {
+      "task_id": "0d7a0bfcd3f9d26c",
+      "attempt": 1,
+      "status": "oom",
+      "rerun_reason": null,
+      "started_utc": "2026-07-23T17:49:50.565010+00:00",
+      "wall_seconds": 160.29993140000443,
+      "task": {
+        "algorithm": 3,
+        "mode": "raw",
+        "dataset": 4,
+        "tau": -0.102926,
+        "threads": 32,
+        "timeout_seconds": 180,
+        "graph": null,
+        "vectors": null,
+        "capture_cliques": false,
+        "defines": {},
+        "warmup": false,
+        "repetition": 0,
+        "task_id": "0d7a0bfcd3f9d26c"
+      },
+      "parsed": null,
+      "validation": null,
+      "build": {
+        "fingerprint": "107cf826e22b1cac",
+        "executable_sha256": "06f973d34edd46b2314f8a4b32082dbae810e304c48dcdf24606fe6fd5d29e6e",
+        "command": [
+          "g++",
+          "-std=c++17",
+          "-fopenmp",
+          "-mavx2",
+          "-O3",
+          "src/alg3-raw.cpp",
+          "src/semantic_graph.cpp",
+          "-o",
+          "no-use/compiled/experiment-runner/alg3-raw-107cf826e22b1cac.exe"
+        ],
+        "source_verification": {
+          "status": "verified_current",
+          "observed_current_fingerprint": "107cf826e22b1cac",
+          "reason": null
+        },
+        "source_hashes": {
+          "alg3-raw.cpp": "656b9a9743483e66a7b5bbf6e006182530c37ad9f1affad3247c8f85b91854f5",
+          "semantic_graph.cpp": "c6d51c9086fbd5c7d264eb411ac04890806744fc4e05dc7eee0b156760a9cd92",
+          "semantic_graph.h": "8192c4e8e02fc8ace59d59365f72643e34ca32ba71faa5bb338381a8cd308078",
+          "experiment_runtime.h": "cc5fd4517f8ca2f43f7e7a4fa0f4c9a00ca8778966bc2ab2228d622a070e5354"
+        }
+      },
+      "inputs": {
+        "status": "verified_run_time",
+        "snapshot": {
+          "dataset_catalog": {
+            "path": "experiments/datasets.json",
+            "sha256": "be27e812615b59c62775fb3b129a5f422ad837c4d149311f220e0ad3bca1740b"
+          },
+          "files": [
+            {
+              "role": "graph",
+              "path": "dataset/dataset/soc-buzznet.txt",
+              "bytes": 29569890,
+              "sha256": "f598e99870df634eecbdaa4081cd015de25ab24f8cc4cf3113e4e05ca1c1b937"
+            },
+            {
+              "role": "vector_binary",
+              "path": "dataset/vectors-256/soc-buzznet_vectors.bin",
+              "bytes": 207181832,
+              "sha256": "14c4b13633f996d7e65b15a1a43a7941f40d26beb90fa010ec976a29cf3cc89e"
+            }
+          ]
+        }
+      },
+      "run_environment": {
+        "plan": "experiments/plans/batch1-pilot-structural-uniform-ds4-alg3.json",
+        "plan_sha256": "cad800c36d7258572e0d5b767101e9c6d0116468be8c18effebf9c3aa42f35e1",
+        "git": {
+          "commit": "59299fd9164d077d7e04cd97fc9ac89cbf962c9f",
+          "dirty": true
+        },
+        "machine": {
+          "platform": "Windows-11-10.0.26100-SP0",
+          "processor": "AMD64 Family 25 Model 97 Stepping 2, AuthenticAMD",
+          "logical_cpu_count": 32,
+          "python": "3.12.7",
+          "compiler": "g++ (x86_64-posix-seh-rev0, Built by MinGW-Builds project) 13.2.0"
+        },
+        "memory_limit_gib": 16,
+        "external_timeout_policy": "hard per-process TLE from task.timeout_seconds"
+      },
+      "result_json": {
+        "path": "experiment-output/batch1-pilot-structural-uniform-ds4-alg3/0d7a0bfcd3f9d26c.attempt-001.json",
+        "bytes": 3929,
+        "sha256": "02a1965c42e617002652e9f85697b6bfebb4adb037f25436b08024b8dc9b2d8e"
+      },
+      "artifacts": {
+        "program_log": {
+          "path": "experiment-output/batch1-pilot-structural-uniform-ds4-alg3/0d7a0bfcd3f9d26c.attempt-001.program.log",
+          "bytes": 1975,
+          "sha256": "55e1aaec3d8a86fd298f3bae8c02073ba35a51ecad4294a371e28e988c0ab3d1"
+        },
+        "stdout": {
+          "path": "experiment-output/batch1-pilot-structural-uniform-ds4-alg3/0d7a0bfcd3f9d26c.attempt-001.stdout.txt",
+          "bytes": 604,
+          "sha256": "619fc55b3cc0dd75729cb26bad2e09ec8f3b81d748a251ea13ef72f42e7be09d"
+        },
+        "stderr": {
+          "path": "experiment-output/batch1-pilot-structural-uniform-ds4-alg3/0d7a0bfcd3f9d26c.attempt-001.stderr.txt",
+          "bytes": 92,
+          "sha256": "81a14bd67ced8bf0666ddf34dab837210360a476607729198623527897f813b9"
+        }
+      }
+    },
+    {
+      "task_id": "70140a1f8c7ff043",
+      "attempt": 1,
+      "status": "tle",
+      "rerun_reason": null,
+      "started_utc": "2026-07-23T17:54:32.277426+00:00",
+      "wall_seconds": 180.88816970000335,
+      "task": {
+        "algorithm": 3,
+        "mode": "raw",
+        "dataset": 4,
+        "tau": 1.51023e-05,
+        "threads": 32,
+        "timeout_seconds": 180,
+        "graph": null,
+        "vectors": null,
+        "capture_cliques": false,
+        "defines": {},
+        "warmup": false,
+        "repetition": 0,
+        "task_id": "70140a1f8c7ff043"
+      },
+      "parsed": null,
+      "validation": null,
+      "build": {
+        "fingerprint": "107cf826e22b1cac",
+        "executable_sha256": "06f973d34edd46b2314f8a4b32082dbae810e304c48dcdf24606fe6fd5d29e6e",
+        "command": [
+          "g++",
+          "-std=c++17",
+          "-fopenmp",
+          "-mavx2",
+          "-O3",
+          "src/alg3-raw.cpp",
+          "src/semantic_graph.cpp",
+          "-o",
+          "no-use/compiled/experiment-runner/alg3-raw-107cf826e22b1cac.exe"
+        ],
+        "source_verification": {
+          "status": "verified_current",
+          "observed_current_fingerprint": "107cf826e22b1cac",
+          "reason": null
+        },
+        "source_hashes": {
+          "alg3-raw.cpp": "656b9a9743483e66a7b5bbf6e006182530c37ad9f1affad3247c8f85b91854f5",
+          "semantic_graph.cpp": "c6d51c9086fbd5c7d264eb411ac04890806744fc4e05dc7eee0b156760a9cd92",
+          "semantic_graph.h": "8192c4e8e02fc8ace59d59365f72643e34ca32ba71faa5bb338381a8cd308078",
+          "experiment_runtime.h": "cc5fd4517f8ca2f43f7e7a4fa0f4c9a00ca8778966bc2ab2228d622a070e5354"
+        }
+      },
+      "inputs": {
+        "status": "verified_run_time",
+        "snapshot": {
+          "dataset_catalog": {
+            "path": "experiments/datasets.json",
+            "sha256": "be27e812615b59c62775fb3b129a5f422ad837c4d149311f220e0ad3bca1740b"
+          },
+          "files": [
+            {
+              "role": "graph",
+              "path": "dataset/dataset/soc-buzznet.txt",
+              "bytes": 29569890,
+              "sha256": "f598e99870df634eecbdaa4081cd015de25ab24f8cc4cf3113e4e05ca1c1b937"
+            },
+            {
+              "role": "vector_binary",
+              "path": "dataset/vectors-256/soc-buzznet_vectors.bin",
+              "bytes": 207181832,
+              "sha256": "14c4b13633f996d7e65b15a1a43a7941f40d26beb90fa010ec976a29cf3cc89e"
+            }
+          ]
+        }
+      },
+      "run_environment": {
+        "plan": "experiments/plans/batch1-pilot-structural-uniform-ds4-alg3.json",
+        "plan_sha256": "cad800c36d7258572e0d5b767101e9c6d0116468be8c18effebf9c3aa42f35e1",
+        "git": {
+          "commit": "59299fd9164d077d7e04cd97fc9ac89cbf962c9f",
+          "dirty": true
+        },
+        "machine": {
+          "platform": "Windows-11-10.0.26100-SP0",
+          "processor": "AMD64 Family 25 Model 97 Stepping 2, AuthenticAMD",
+          "logical_cpu_count": 32,
+          "python": "3.12.7",
+          "compiler": "g++ (x86_64-posix-seh-rev0, Built by MinGW-Builds project) 13.2.0"
+        },
+        "memory_limit_gib": 16,
+        "external_timeout_policy": "hard per-process TLE from task.timeout_seconds"
+      },
+      "result_json": {
+        "path": "experiment-output/batch1-pilot-structural-uniform-ds4-alg3/70140a1f8c7ff043.attempt-001.json",
+        "bytes": 3925,
+        "sha256": "6f22c5583751ec9bc2636eee223f6cc110c7a106c5ceefd879488c630b71df3c"
+      },
+      "artifacts": {
+        "program_log": {
+          "path": "experiment-output/batch1-pilot-structural-uniform-ds4-alg3/70140a1f8c7ff043.attempt-001.program.log",
+          "bytes": 2699,
+          "sha256": "2cbabf4d36462c537c60583934a100a592bc8c687a5eb2a8cb4a27b79e2bf02b"
+        },
+        "stdout": {
+          "path": "experiment-output/batch1-pilot-structural-uniform-ds4-alg3/70140a1f8c7ff043.attempt-001.stdout.txt",
+          "bytes": 604,
+          "sha256": "5291f9d992c2e618022fe4b30b3d3adc598ffd2bca2b61152f3447c83870b0e3"
+        },
+        "stderr": {
+          "path": "experiment-output/batch1-pilot-structural-uniform-ds4-alg3/70140a1f8c7ff043.attempt-001.stderr.txt",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    {
+      "task_id": "bff245a1b8faf3e2",
+      "attempt": 1,
+      "status": "tle",
+      "rerun_reason": null,
+      "started_utc": "2026-07-23T17:57:33.169553+00:00",
+      "wall_seconds": 180.54760869999882,
+      "task": {
+        "algorithm": 3,
+        "mode": "raw",
+        "dataset": 4,
+        "tau": 0.0526738,
+        "threads": 32,
+        "timeout_seconds": 180,
+        "graph": null,
+        "vectors": null,
+        "capture_cliques": false,
+        "defines": {},
+        "warmup": false,
+        "repetition": 0,
+        "task_id": "bff245a1b8faf3e2"
+      },
+      "parsed": null,
+      "validation": null,
+      "build": {
+        "fingerprint": "107cf826e22b1cac",
+        "executable_sha256": "06f973d34edd46b2314f8a4b32082dbae810e304c48dcdf24606fe6fd5d29e6e",
+        "command": [
+          "g++",
+          "-std=c++17",
+          "-fopenmp",
+          "-mavx2",
+          "-O3",
+          "src/alg3-raw.cpp",
+          "src/semantic_graph.cpp",
+          "-o",
+          "no-use/compiled/experiment-runner/alg3-raw-107cf826e22b1cac.exe"
+        ],
+        "source_verification": {
+          "status": "verified_current",
+          "observed_current_fingerprint": "107cf826e22b1cac",
+          "reason": null
+        },
+        "source_hashes": {
+          "alg3-raw.cpp": "656b9a9743483e66a7b5bbf6e006182530c37ad9f1affad3247c8f85b91854f5",
+          "semantic_graph.cpp": "c6d51c9086fbd5c7d264eb411ac04890806744fc4e05dc7eee0b156760a9cd92",
+          "semantic_graph.h": "8192c4e8e02fc8ace59d59365f72643e34ca32ba71faa5bb338381a8cd308078",
+          "experiment_runtime.h": "cc5fd4517f8ca2f43f7e7a4fa0f4c9a00ca8778966bc2ab2228d622a070e5354"
+        }
+      },
+      "inputs": {
+        "status": "verified_run_time",
+        "snapshot": {
+          "dataset_catalog": {
+            "path": "experiments/datasets.json",
+            "sha256": "be27e812615b59c62775fb3b129a5f422ad837c4d149311f220e0ad3bca1740b"
+          },
+          "files": [
+            {
+              "role": "graph",
+              "path": "dataset/dataset/soc-buzznet.txt",
+              "bytes": 29569890,
+              "sha256": "f598e99870df634eecbdaa4081cd015de25ab24f8cc4cf3113e4e05ca1c1b937"
+            },
+            {
+              "role": "vector_binary",
+              "path": "dataset/vectors-256/soc-buzznet_vectors.bin",
+              "bytes": 207181832,
+              "sha256": "14c4b13633f996d7e65b15a1a43a7941f40d26beb90fa010ec976a29cf3cc89e"
+            }
+          ]
+        }
+      },
+      "run_environment": {
+        "plan": "experiments/plans/batch1-pilot-structural-uniform-ds4-alg3.json",
+        "plan_sha256": "cad800c36d7258572e0d5b767101e9c6d0116468be8c18effebf9c3aa42f35e1",
+        "git": {
+          "commit": "59299fd9164d077d7e04cd97fc9ac89cbf962c9f",
+          "dirty": true
+        },
+        "machine": {
+          "platform": "Windows-11-10.0.26100-SP0",
+          "processor": "AMD64 Family 25 Model 97 Stepping 2, AuthenticAMD",
+          "logical_cpu_count": 32,
+          "python": "3.12.7",
+          "compiler": "g++ (x86_64-posix-seh-rev0, Built by MinGW-Builds project) 13.2.0"
+        },
+        "memory_limit_gib": 16,
+        "external_timeout_policy": "hard per-process TLE from task.timeout_seconds"
+      },
+      "result_json": {
+        "path": "experiment-output/batch1-pilot-structural-uniform-ds4-alg3/bff245a1b8faf3e2.attempt-001.json",
+        "bytes": 3923,
+        "sha256": "64db0d8e95700af7b3f352314513a6afd4e5f006b7c5633009936922542c9619"
+      },
+      "artifacts": {
+        "program_log": {
+          "path": "experiment-output/batch1-pilot-structural-uniform-ds4-alg3/bff245a1b8faf3e2.attempt-001.program.log",
+          "bytes": 2699,
+          "sha256": "d03019eb6ea361068198f917326dcd474168169839c9c70b851d649364999198"
+        },
+        "stdout": {
+          "path": "experiment-output/batch1-pilot-structural-uniform-ds4-alg3/bff245a1b8faf3e2.attempt-001.stdout.txt",
+          "bytes": 604,
+          "sha256": "7a11fa8f6b0c533f1063ba3ab1fd73bee23abd8dec6c7a1d4a69a27d6b111fad"
+        },
+        "stderr": {
+          "path": "experiment-output/batch1-pilot-structural-uniform-ds4-alg3/bff245a1b8faf3e2.attempt-001.stderr.txt",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    {
+      "task_id": "d5930c31954a9b41",
+      "attempt": 1,
+      "status": "oom",
+      "rerun_reason": null,
+      "started_utc": "2026-07-23T17:52:30.872847+00:00",
+      "wall_seconds": 121.40115600000718,
+      "task": {
+        "algorithm": 3,
+        "mode": "raw",
+        "dataset": 4,
+        "tau": -0.0527214,
+        "threads": 32,
+        "timeout_seconds": 180,
+        "graph": null,
+        "vectors": null,
+        "capture_cliques": false,
+        "defines": {},
+        "warmup": false,
+        "repetition": 0,
+        "task_id": "d5930c31954a9b41"
+      },
+      "parsed": null,
+      "validation": null,
+      "build": {
+        "fingerprint": "107cf826e22b1cac",
+        "executable_sha256": "06f973d34edd46b2314f8a4b32082dbae810e304c48dcdf24606fe6fd5d29e6e",
+        "command": [
+          "g++",
+          "-std=c++17",
+          "-fopenmp",
+          "-mavx2",
+          "-O3",
+          "src/alg3-raw.cpp",
+          "src/semantic_graph.cpp",
+          "-o",
+          "no-use/compiled/experiment-runner/alg3-raw-107cf826e22b1cac.exe"
+        ],
+        "source_verification": {
+          "status": "verified_current",
+          "observed_current_fingerprint": "107cf826e22b1cac",
+          "reason": null
+        },
+        "source_hashes": {
+          "alg3-raw.cpp": "656b9a9743483e66a7b5bbf6e006182530c37ad9f1affad3247c8f85b91854f5",
+          "semantic_graph.cpp": "c6d51c9086fbd5c7d264eb411ac04890806744fc4e05dc7eee0b156760a9cd92",
+          "semantic_graph.h": "8192c4e8e02fc8ace59d59365f72643e34ca32ba71faa5bb338381a8cd308078",
+          "experiment_runtime.h": "cc5fd4517f8ca2f43f7e7a4fa0f4c9a00ca8778966bc2ab2228d622a070e5354"
+        }
+      },
+      "inputs": {
+        "status": "verified_run_time",
+        "snapshot": {
+          "dataset_catalog": {
+            "path": "experiments/datasets.json",
+            "sha256": "be27e812615b59c62775fb3b129a5f422ad837c4d149311f220e0ad3bca1740b"
+          },
+          "files": [
+            {
+              "role": "graph",
+              "path": "dataset/dataset/soc-buzznet.txt",
+              "bytes": 29569890,
+              "sha256": "f598e99870df634eecbdaa4081cd015de25ab24f8cc4cf3113e4e05ca1c1b937"
+            },
+            {
+              "role": "vector_binary",
+              "path": "dataset/vectors-256/soc-buzznet_vectors.bin",
+              "bytes": 207181832,
+              "sha256": "14c4b13633f996d7e65b15a1a43a7941f40d26beb90fa010ec976a29cf3cc89e"
+            }
+          ]
+        }
+      },
+      "run_environment": {
+        "plan": "experiments/plans/batch1-pilot-structural-uniform-ds4-alg3.json",
+        "plan_sha256": "cad800c36d7258572e0d5b767101e9c6d0116468be8c18effebf9c3aa42f35e1",
+        "git": {
+          "commit": "59299fd9164d077d7e04cd97fc9ac89cbf962c9f",
+          "dirty": true
+        },
+        "machine": {
+          "platform": "Windows-11-10.0.26100-SP0",
+          "processor": "AMD64 Family 25 Model 97 Stepping 2, AuthenticAMD",
+          "logical_cpu_count": 32,
+          "python": "3.12.7",
+          "compiler": "g++ (x86_64-posix-seh-rev0, Built by MinGW-Builds project) 13.2.0"
+        },
+        "memory_limit_gib": 16,
+        "external_timeout_policy": "hard per-process TLE from task.timeout_seconds"
+      },
+      "result_json": {
+        "path": "experiment-output/batch1-pilot-structural-uniform-ds4-alg3/d5930c31954a9b41.attempt-001.json",
+        "bytes": 3930,
+        "sha256": "e9d7691c8d786fbe6dc5033ff9bf71a1c7b3cf944d9c4ce164e551d4075cd7e7"
+      },
+      "artifacts": {
+        "program_log": {
+          "path": "experiment-output/batch1-pilot-structural-uniform-ds4-alg3/d5930c31954a9b41.attempt-001.program.log",
+          "bytes": 1853,
+          "sha256": "206c73e3d821c55f3636ad0a87d51ce5a0a7482a3a55dfe5c18bf77b3da980e1"
+        },
+        "stdout": {
+          "path": "experiment-output/batch1-pilot-structural-uniform-ds4-alg3/d5930c31954a9b41.attempt-001.stdout.txt",
+          "bytes": 604,
+          "sha256": "9d6e986a84573a3003f8c4df4667834e5adb3f37b4422a1a11a57bf689d400f3"
+        },
+        "stderr": {
+          "path": "experiment-output/batch1-pilot-structural-uniform-ds4-alg3/d5930c31954a9b41.attempt-001.stderr.txt",
+          "bytes": 92,
+          "sha256": "81a14bd67ced8bf0666ddf34dab837210360a476607729198623527897f813b9"
+        }
+      }
+    },
+    {
+      "task_id": "db19f92fb7fdb7d6",
+      "attempt": 1,
+      "status": "tle",
+      "rerun_reason": null,
+      "started_utc": "2026-07-23T18:00:51.130049+00:00",
+      "wall_seconds": 180.3693157999951,
+      "task": {
+        "algorithm": 3,
+        "mode": "raw",
+        "dataset": 4,
+        "tau": 0.145204,
+        "threads": 32,
+        "timeout_seconds": 180,
+        "graph": null,
+        "vectors": null,
+        "capture_cliques": false,
+        "defines": {},
+        "warmup": false,
+        "repetition": 0,
+        "task_id": "db19f92fb7fdb7d6"
+      },
+      "parsed": null,
+      "validation": null,
+      "build": {
+        "fingerprint": "107cf826e22b1cac",
+        "executable_sha256": "06f973d34edd46b2314f8a4b32082dbae810e304c48dcdf24606fe6fd5d29e6e",
+        "command": [
+          "g++",
+          "-std=c++17",
+          "-fopenmp",
+          "-mavx2",
+          "-O3",
+          "src/alg3-raw.cpp",
+          "src/semantic_graph.cpp",
+          "-o",
+          "no-use/compiled/experiment-runner/alg3-raw-107cf826e22b1cac.exe"
+        ],
+        "source_verification": {
+          "status": "verified_current",
+          "observed_current_fingerprint": "107cf826e22b1cac",
+          "reason": null
+        },
+        "source_hashes": {
+          "alg3-raw.cpp": "656b9a9743483e66a7b5bbf6e006182530c37ad9f1affad3247c8f85b91854f5",
+          "semantic_graph.cpp": "c6d51c9086fbd5c7d264eb411ac04890806744fc4e05dc7eee0b156760a9cd92",
+          "semantic_graph.h": "8192c4e8e02fc8ace59d59365f72643e34ca32ba71faa5bb338381a8cd308078",
+          "experiment_runtime.h": "cc5fd4517f8ca2f43f7e7a4fa0f4c9a00ca8778966bc2ab2228d622a070e5354"
+        }
+      },
+      "inputs": {
+        "status": "verified_run_time",
+        "snapshot": {
+          "dataset_catalog": {
+            "path": "experiments/datasets.json",
+            "sha256": "be27e812615b59c62775fb3b129a5f422ad837c4d149311f220e0ad3bca1740b"
+          },
+          "files": [
+            {
+              "role": "graph",
+              "path": "dataset/dataset/soc-buzznet.txt",
+              "bytes": 29569890,
+              "sha256": "f598e99870df634eecbdaa4081cd015de25ab24f8cc4cf3113e4e05ca1c1b937"
+            },
+            {
+              "role": "vector_binary",
+              "path": "dataset/vectors-256/soc-buzznet_vectors.bin",
+              "bytes": 207181832,
+              "sha256": "14c4b13633f996d7e65b15a1a43a7941f40d26beb90fa010ec976a29cf3cc89e"
+            }
+          ]
+        }
+      },
+      "run_environment": {
+        "plan": "experiments/plans/batch1-pilot-structural-uniform-ds4-alg3.json",
+        "plan_sha256": "cad800c36d7258572e0d5b767101e9c6d0116468be8c18effebf9c3aa42f35e1",
+        "git": {
+          "commit": "59299fd9164d077d7e04cd97fc9ac89cbf962c9f",
+          "dirty": true
+        },
+        "machine": {
+          "platform": "Windows-11-10.0.26100-SP0",
+          "processor": "AMD64 Family 25 Model 97 Stepping 2, AuthenticAMD",
+          "logical_cpu_count": 32,
+          "python": "3.12.7",
+          "compiler": "g++ (x86_64-posix-seh-rev0, Built by MinGW-Builds project) 13.2.0"
+        },
+        "memory_limit_gib": 16,
+        "external_timeout_policy": "hard per-process TLE from task.timeout_seconds"
+      },
+      "result_json": {
+        "path": "experiment-output/batch1-pilot-structural-uniform-ds4-alg3/db19f92fb7fdb7d6.attempt-001.json",
+        "bytes": 3921,
+        "sha256": "ad73493d5f0431eaa284944b38d4a274340ffd653fc0a1ab1e5882f49a028d5c"
+      },
+      "artifacts": {
+        "program_log": {
+          "path": "experiment-output/batch1-pilot-structural-uniform-ds4-alg3/db19f92fb7fdb7d6.attempt-001.program.log",
+          "bytes": 2641,
+          "sha256": "8020a6ee65f14f1b3e0c5323c339a939596b924fb9450a8b82a41383976b1797"
+        },
+        "stdout": {
+          "path": "experiment-output/batch1-pilot-structural-uniform-ds4-alg3/db19f92fb7fdb7d6.attempt-001.stdout.txt",
+          "bytes": 604,
+          "sha256": "5f72cad07c6183928b7500352bf66430f05044b85c2546da58d48f28f04a13da"
+        },
+        "stderr": {
+          "path": "experiment-output/batch1-pilot-structural-uniform-ds4-alg3/db19f92fb7fdb7d6.attempt-001.stderr.txt",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    }
+  ]
+}

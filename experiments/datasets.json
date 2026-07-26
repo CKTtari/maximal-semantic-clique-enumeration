@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "datasets": {
+    "1": {
+      "name": "sc-ldoor",
+      "graph": "dataset/dataset/sc-ldoor.txt",
+      "vectors": "dataset/vectors-256/sc-ldoor_vectors.bin"
+    },
+    "2": {
+      "name": "sc-nasasrb",
+      "graph": "dataset/dataset/sc-nasasrb.txt",
+      "vectors": "dataset/vectors-256/sc-nasasrb_vectors.bin"
+    },
+    "3": {
+      "name": "sc-pkustk11",
+      "graph": "dataset/dataset/sc-pkustk11.txt",
+      "vectors": "dataset/vectors-256/sc-pkustk11_vectors.bin"
+    },
+    "4": {
+      "name": "soc-buzznet",
+      "graph": "dataset/dataset/soc-buzznet.txt",
+      "vectors": "dataset/vectors-256/soc-buzznet_vectors.bin"
+    },
+    "5": {
+      "name": "soc-digg",
+      "graph": "dataset/dataset/soc-digg.txt",
+      "vectors": "dataset/vectors-256/soc-digg_vectors.bin"
+    },
+    "6": {
+      "name": "tech-as-skitter",
+      "graph": "dataset/dataset/tech-as-skitter.txt",
+      "vectors": "dataset/vectors-256/tech-as-skitter_vectors.bin"
+    },
+    "7": {
+      "name": "FB15K-237",
+      "graph": "dataset/dataset/FB15K-237_edges.txt",
+      "vectors": "dataset/vectors/FB15K-237_vectors.index"
+    },
+    "8": {
+      "name": "WN18RR",
+      "graph": "dataset/dataset/WN18RR_edges.txt",
+      "vectors": "dataset/vectors/WN18RR_vectors.index"
+    },
+    "9": {
+      "name": "DBLP",
+      "graph": "dataset/dataset/dblp_coauthor.txt",
+      "vectors": "dataset/vectors/dblp_coauthor_vectors.index"
+    },
+    "10": {
+      "name": "Products",
+      "graph": "dataset/dataset/products.txt",
+      "vectors": "dataset/vectors/products_vectors.index"
+    },
+    "11": {
+      "name": "ogbn-arxiv",
+      "graph": "dataset/dataset/ogbn-arxiv.txt",
+      "vectors": "dataset/vectors/ogbn-arxiv_vectors.bin"
+    },
+    "13": {
+      "name": "ca-dblp-2012",
+      "graph": "dataset/dataset/ca-dblp-2012.txt",
+      "vectors": "dataset/vectors-256/ca-dblp-2012_vectors.bin"
+    },
+    "14": {
+      "name": "sc-pwtk",
+      "graph": "dataset/dataset/sc-pwtk.txt",
+      "vectors": "dataset/vectors-256/sc-pwtk_vectors.bin"
+    },
+    "16": {
+      "name": "email-Enron",
+      "graph": "dataset/Processed/email-Enron/graph.txt",
+      "vectors": "dataset/Processed/email-Enron/email-Enron_vectors.bin"
+    }
+  }
+}

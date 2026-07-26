@@ -1,0 +1,8 @@
+{
+  "name": "batch9-pilot-ldoor-alg3-common-grid",
+  "tasks": [
+    {"algorithm": 3, "mode": "raw", "dataset": 1, "tau": -0.0526831, "threads": 32, "timeout_seconds": 180, "repetitions": 1},
+    {"algorithm": 3, "mode": "raw", "dataset": 1, "tau": 0.0527128, "threads": 32, "timeout_seconds": 180, "repetitions": 1},
+    {"algorithm": 3, "mode": "raw", "dataset": 1, "tau": 0.145162, "threads": 32, "timeout_seconds": 180, "repetitions": 1}
+  ]
+}

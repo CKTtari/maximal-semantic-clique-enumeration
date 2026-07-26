@@ -1,0 +1,390 @@
+{
+  "schema_version": 1,
+  "source_manifest": "experiments/archive/batch14-threshold-ldoor-formal-repeats.manifest.json",
+  "source_run": "batch14-threshold-ldoor-formal-repeats",
+  "source_plan_summary": {
+    "attempts": 18,
+    "planned_tasks": 18,
+    "attempted_tasks": 18,
+    "completed_tasks": 18,
+    "unattempted_tasks": 0,
+    "unattempted_task_ids": [],
+    "plan_complete": true,
+    "status_counts": {
+      "completed": 18
+    }
+  },
+  "groups": [
+    {
+      "configuration": {
+        "algorithm": 3,
+        "mode": "raw",
+        "dataset": 1,
+        "tau": -0.102847,
+        "threads": 32,
+        "timeout_seconds": 1200,
+        "graph": null,
+        "vectors": null,
+        "capture_cliques": false,
+        "defines": {},
+        "warmup": false
+      },
+      "status_counts": {
+        "completed": 2
+      },
+      "timing": {
+        "completed_repetitions": 2,
+        "algorithm_ms_median": 3848.5,
+        "algorithm_ms_min": 3841,
+        "algorithm_ms_max": 3856,
+        "wall_seconds_median": 17.188922100000127,
+        "peak_memory_gib_median": 3.65,
+        "peak_memory_gib_max": 3.65
+      },
+      "result": {
+        "clique_count": 274768,
+        "size_histogram": {
+          "15": 65,
+          "16": 70,
+          "17": 172,
+          "18": 28195,
+          "19": 49470,
+          "2": 1,
+          "20": 72571,
+          "21": 119556,
+          "3": 3981,
+          "4": 512,
+          "5": 150,
+          "6": 5,
+          "7": 15,
+          "8": 5
+        }
+      }
+    },
+    {
+      "configuration": {
+        "algorithm": 3,
+        "mode": "raw",
+        "dataset": 1,
+        "tau": 0.080211,
+        "threads": 32,
+        "timeout_seconds": 1200,
+        "graph": null,
+        "vectors": null,
+        "capture_cliques": false,
+        "defines": {},
+        "warmup": false
+      },
+      "status_counts": {
+        "completed": 2
+      },
+      "timing": {
+        "completed_repetitions": 2,
+        "algorithm_ms_median": 76827.5,
+        "algorithm_ms_min": 73930,
+        "algorithm_ms_max": 79725,
+        "wall_seconds_median": 94.56128919999992,
+        "peak_memory_gib_median": 4.03,
+        "peak_memory_gib_max": 4.03
+      },
+      "result": {
+        "clique_count": 2466236,
+        "size_histogram": {
+          "2": 310222,
+          "3": 1133506,
+          "4": 800574,
+          "5": 198245,
+          "6": 22397,
+          "7": 1257,
+          "8": 35
+        }
+      }
+    },
+    {
+      "configuration": {
+        "algorithm": 3,
+        "mode": "raw",
+        "dataset": 1,
+        "tau": 0.102893,
+        "threads": 32,
+        "timeout_seconds": 1200,
+        "graph": null,
+        "vectors": null,
+        "capture_cliques": false,
+        "defines": {},
+        "warmup": false
+      },
+      "status_counts": {
+        "completed": 2
+      },
+      "timing": {
+        "completed_repetitions": 2,
+        "algorithm_ms_median": 9815.5,
+        "algorithm_ms_min": 9729,
+        "algorithm_ms_max": 9902,
+        "wall_seconds_median": 24.10450519999995,
+        "peak_memory_gib_median": 3.8,
+        "peak_memory_gib_max": 3.8
+      },
+      "result": {
+        "clique_count": 959532,
+        "size_histogram": {
+          "2": 498785,
+          "3": 396890,
+          "4": 60902,
+          "5": 2912,
+          "6": 43
+        }
+      }
+    },
+    {
+      "configuration": {
+        "algorithm": 3,
+        "mode": "raw",
+        "dataset": 1,
+        "tau": 0.117587,
+        "threads": 32,
+        "timeout_seconds": 1200,
+        "graph": null,
+        "vectors": null,
+        "capture_cliques": false,
+        "defines": {},
+        "warmup": false
+      },
+      "status_counts": {
+        "completed": 2
+      },
+      "timing": {
+        "completed_repetitions": 2,
+        "algorithm_ms_median": 5639.5,
+        "algorithm_ms_min": 5500,
+        "algorithm_ms_max": 5779,
+        "wall_seconds_median": 19.04011535000018,
+        "peak_memory_gib_median": 3.72,
+        "peak_memory_gib_max": 3.72
+      },
+      "result": {
+        "clique_count": 573906,
+        "size_histogram": {
+          "2": 433257,
+          "3": 133131,
+          "4": 7404,
+          "5": 114
+        }
+      }
+    },
+    {
+      "configuration": {
+        "algorithm": 3,
+        "mode": "raw",
+        "dataset": 1,
+        "tau": 2.56971e-05,
+        "threads": 32,
+        "timeout_seconds": 1200,
+        "graph": null,
+        "vectors": null,
+        "capture_cliques": false,
+        "defines": {},
+        "warmup": false
+      },
+      "status_counts": {
+        "completed": 2
+      },
+      "timing": {
+        "completed_repetitions": 2,
+        "algorithm_ms_median": 500668.5,
+        "algorithm_ms_min": 497483,
+        "algorithm_ms_max": 503854,
+        "wall_seconds_median": 520.5462696999998,
+        "peak_memory_gib_median": 10.19,
+        "peak_memory_gib_max": 10.19
+      },
+      "result": {
+        "clique_count": 24330757,
+        "size_histogram": {
+          "10": 605954,
+          "11": 1341381,
+          "12": 2413785,
+          "13": 3557396,
+          "14": 4289131,
+          "15": 4246665,
+          "16": 3450882,
+          "17": 2256479,
+          "18": 1178976,
+          "19": 480620,
+          "2": 751,
+          "20": 160603,
+          "21": 58397,
+          "3": 2096,
+          "4": 376,
+          "5": 234,
+          "6": 1559,
+          "7": 11505,
+          "8": 58806,
+          "9": 215161
+        }
+      }
+    },
+    {
+      "configuration": {
+        "algorithm": 4,
+        "mode": "raw",
+        "dataset": 1,
+        "tau": 0.0328792,
+        "threads": 32,
+        "timeout_seconds": 1200,
+        "graph": null,
+        "vectors": null,
+        "capture_cliques": false,
+        "defines": {},
+        "warmup": false
+      },
+      "status_counts": {
+        "completed": 2
+      },
+      "timing": {
+        "completed_repetitions": 2,
+        "algorithm_ms_median": 90391.5,
+        "algorithm_ms_min": 88838,
+        "algorithm_ms_max": 91945,
+        "wall_seconds_median": 112.54247564999969,
+        "peak_memory_gib_median": 12.74,
+        "peak_memory_gib_max": 12.74
+      },
+      "result": {
+        "clique_count": 66619604,
+        "size_histogram": {
+          "10": 5912180,
+          "11": 2281250,
+          "12": 657344,
+          "13": 142996,
+          "14": 22995,
+          "15": 3621,
+          "16": 381,
+          "17": 28,
+          "18": 6,
+          "2": 1114,
+          "3": 50628,
+          "4": 760550,
+          "5": 3892153,
+          "6": 10036863,
+          "7": 15547289,
+          "8": 15917339,
+          "9": 11392867
+        }
+      }
+    },
+    {
+      "configuration": {
+        "algorithm": 4,
+        "mode": "raw",
+        "dataset": 1,
+        "tau": 0.080211,
+        "threads": 32,
+        "timeout_seconds": 1200,
+        "graph": null,
+        "vectors": null,
+        "capture_cliques": false,
+        "defines": {},
+        "warmup": false
+      },
+      "status_counts": {
+        "completed": 2
+      },
+      "timing": {
+        "completed_repetitions": 2,
+        "algorithm_ms_median": 3940.5,
+        "algorithm_ms_min": 3856,
+        "algorithm_ms_max": 4025,
+        "wall_seconds_median": 17.633595350000178,
+        "peak_memory_gib_median": 3.11,
+        "peak_memory_gib_max": 3.11
+      },
+      "result": {
+        "clique_count": 2466236,
+        "size_histogram": {
+          "2": 310222,
+          "3": 1133506,
+          "4": 800574,
+          "5": 198245,
+          "6": 22397,
+          "7": 1257,
+          "8": 35
+        }
+      }
+    },
+    {
+      "configuration": {
+        "algorithm": 4,
+        "mode": "raw",
+        "dataset": 1,
+        "tau": 0.102893,
+        "threads": 32,
+        "timeout_seconds": 1200,
+        "graph": null,
+        "vectors": null,
+        "capture_cliques": false,
+        "defines": {},
+        "warmup": false
+      },
+      "status_counts": {
+        "completed": 2
+      },
+      "timing": {
+        "completed_repetitions": 2,
+        "algorithm_ms_median": 2411.0,
+        "algorithm_ms_min": 2370,
+        "algorithm_ms_max": 2452,
+        "wall_seconds_median": 15.628705699999955,
+        "peak_memory_gib_median": 3.11,
+        "peak_memory_gib_max": 3.11
+      },
+      "result": {
+        "clique_count": 959532,
+        "size_histogram": {
+          "2": 498785,
+          "3": 396890,
+          "4": 60902,
+          "5": 2912,
+          "6": 43
+        }
+      }
+    },
+    {
+      "configuration": {
+        "algorithm": 4,
+        "mode": "raw",
+        "dataset": 1,
+        "tau": 0.117587,
+        "threads": 32,
+        "timeout_seconds": 1200,
+        "graph": null,
+        "vectors": null,
+        "capture_cliques": false,
+        "defines": {},
+        "warmup": false
+      },
+      "status_counts": {
+        "completed": 2
+      },
+      "timing": {
+        "completed_repetitions": 2,
+        "algorithm_ms_median": 1519.0,
+        "algorithm_ms_min": 1479,
+        "algorithm_ms_max": 1559,
+        "wall_seconds_median": 13.336689650000153,
+        "peak_memory_gib_median": 3.11,
+        "peak_memory_gib_max": 3.11
+      },
+      "result": {
+        "clique_count": 573906,
+        "size_histogram": {
+          "2": 433257,
+          "3": 133131,
+          "4": 7404,
+          "5": 114
+        }
+      }
+    }
+  ]
+}

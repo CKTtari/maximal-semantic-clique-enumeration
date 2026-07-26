@@ -1,0 +1,85 @@
+{
+  "name": "batch5-scale-dblp-q99-pilot",
+  "tasks": [
+    {
+      "algorithm": 4,
+      "mode": "raw",
+      "dataset": 9,
+      "graph": "dataset/scale_datasets/dblp-degree-prefix/level-25000.graph.txt",
+      "vectors": "dataset/scale_datasets/dblp-degree-prefix/level-25000.vectors.bin",
+      "tau": 0.392207,
+      "threads": 32,
+      "timeout_seconds": 180
+    },
+    {
+      "algorithm": 3,
+      "mode": "raw",
+      "dataset": 9,
+      "graph": "dataset/scale_datasets/dblp-degree-prefix/level-25000.graph.txt",
+      "vectors": "dataset/scale_datasets/dblp-degree-prefix/level-25000.vectors.bin",
+      "tau": 0.392207,
+      "threads": 32,
+      "timeout_seconds": 180
+    },
+    {
+      "algorithm": 4,
+      "mode": "raw",
+      "dataset": 9,
+      "graph": "dataset/scale_datasets/dblp-degree-prefix/level-50000.graph.txt",
+      "vectors": "dataset/scale_datasets/dblp-degree-prefix/level-50000.vectors.bin",
+      "tau": 0.392207,
+      "threads": 32,
+      "timeout_seconds": 180
+    },
+    {
+      "algorithm": 3,
+      "mode": "raw",
+      "dataset": 9,
+      "graph": "dataset/scale_datasets/dblp-degree-prefix/level-50000.graph.txt",
+      "vectors": "dataset/scale_datasets/dblp-degree-prefix/level-50000.vectors.bin",
+      "tau": 0.392207,
+      "threads": 32,
+      "timeout_seconds": 180
+    },
+    {
+      "algorithm": 4,
+      "mode": "raw",
+      "dataset": 9,
+      "graph": "dataset/scale_datasets/dblp-degree-prefix/level-100000.graph.txt",
+      "vectors": "dataset/scale_datasets/dblp-degree-prefix/level-100000.vectors.bin",
+      "tau": 0.392207,
+      "threads": 32,
+      "timeout_seconds": 180
+    },
+    {
+      "algorithm": 3,
+      "mode": "raw",
+      "dataset": 9,
+      "graph": "dataset/scale_datasets/dblp-degree-prefix/level-100000.graph.txt",
+      "vectors": "dataset/scale_datasets/dblp-degree-prefix/level-100000.vectors.bin",
+      "tau": 0.392207,
+      "threads": 32,
+      "timeout_seconds": 180
+    },
+    {
+      "algorithm": 4,
+      "mode": "raw",
+      "dataset": 9,
+      "graph": "dataset/scale_datasets/dblp-degree-prefix/level-200000.graph.txt",
+      "vectors": "dataset/scale_datasets/dblp-degree-prefix/level-200000.vectors.bin",
+      "tau": 0.392207,
+      "threads": 32,
+      "timeout_seconds": 180
+    },
+    {
+      "algorithm": 3,
+      "mode": "raw",
+      "dataset": 9,
+      "graph": "dataset/scale_datasets/dblp-degree-prefix/level-200000.graph.txt",
+      "vectors": "dataset/scale_datasets/dblp-degree-prefix/level-200000.vectors.bin",
+      "tau": 0.392207,
+      "threads": 32,
+      "timeout_seconds": 180
+    }
+  ]
+}

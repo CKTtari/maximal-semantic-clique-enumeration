@@ -1,0 +1,6 @@
+{"name":"batch1-pilot-structural-uniform-ds4-alg4","tasks":[
+  {"algorithm":4,"mode":"raw","dataset":4,"tau":0.0526738,"threads":32,"timeout_seconds":180,"repetitions":1},
+  {"algorithm":4,"mode":"raw","dataset":4,"tau":0.0000151023,"threads":32,"timeout_seconds":180,"repetitions":1},
+  {"algorithm":4,"mode":"raw","dataset":4,"tau":-0.0527214,"threads":32,"timeout_seconds":180,"repetitions":1},
+  {"algorithm":4,"mode":"raw","dataset":4,"tau":-0.102926,"threads":32,"timeout_seconds":180,"repetitions":1}
+]}

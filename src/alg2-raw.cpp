@@ -1,5 +1,9 @@
 // ============================================================
-// ALG4_standard.cpp  语义 BK 极大团挖掘（标准版）
+
+#ifndef ACMSC_ENABLE_STATS
+#define ACMSC_ENABLE_STATS 0
+#endif
+// ALG2 standard: pivot-free semantic BK baseline.
 //
 // 特性：
 //   - 输出信息保存到日志（Logger 同时写 stdout + 文件）
@@ -8,6 +12,7 @@
 //   - 无任何统计计数器，时间效率纯洁准确
 // ============================================================
 
+#include "experiment_runtime.h"
 #include "semantic_graph.h"
 #include <vector>
 #include <iostream>
@@ -26,6 +31,7 @@
 #include <queue>
 #include <cassert>
 #include <cstdarg>
+#include <memory>
 
 #ifdef _WIN32
     #include <malloc.h>
@@ -242,17 +248,34 @@ private:
     vector<int>          ordering_;
 
     std::atomic<long long> clique_count_{0};
-    static constexpr int   MAX_CLIQUE_SZ = 512;
-    std::atomic<long long> size_hist_[MAX_CLIQUE_SZ]{};
+#if ACMSC_ENABLE_STATS
+    std::atomic<unsigned long long> search_states_{0};
+    std::atomic<unsigned long long> candidate_expansions_{0};
+    std::atomic<unsigned long long> check_states_{0};
+    std::atomic<unsigned long long> check_calls_{0};
+    std::atomic<unsigned long long> feasible_terminals_{0};
+#endif
+    std::unique_ptr<std::atomic<long long>[]> size_hist_;
+    int                    size_hist_size_ = 0;
     FILE*                  sink_ = nullptr;
     std::mutex             sink_mutex_;
+    int                    timeout_seconds_ = 0;
+    std::atomic<bool>      timed_out_{false};
+    chrono::steady_clock::time_point deadline_;
+
+    bool deadline_reached() {
+        if (timeout_seconds_ <= 0 || chrono::steady_clock::now() < deadline_)
+            return false;
+        timed_out_.store(true, std::memory_order_relaxed);
+        return true;
+    }
 
     inline void emit(const vector<int>& C) {
         int sz = (int)C.size();
         if (sz <= 1) return;
         clique_count_.fetch_add(1, std::memory_order_relaxed);
-        if (sz < MAX_CLIQUE_SZ)
-            size_hist_[sz-1].fetch_add(1, std::memory_order_relaxed);
+        if (sz < size_hist_size_)
+            size_hist_[sz].fetch_add(1, std::memory_order_relaxed);
         if (sink_) {
             std::lock_guard<std::mutex> lk(sink_mutex_);
             for (int i = 0; i < sz; i++) {
@@ -269,35 +292,43 @@ private:
     }
 
     struct AccStore {
-        vector<float>    val;
+        vector<double>   val;
         vector<uint32_t> gen;
         uint32_t         cur = 0;
-        void init(int n) { val.assign(n, 0.f); gen.assign(n, 0); cur = 1; }
-        inline float get(int w) const { return gen[w]==cur ? val[w] : 0.f; }
+        void init(int n) { val.assign(n, 0.0); gen.assign(n, 0); cur = 1; }
+        inline double get(int w) const { return gen[w]==cur ? val[w] : 0.0; }
         inline void  add(int w, float s) {
-            if (gen[w] != cur) { val[w] = 0.f; gen[w] = cur; }
-            val[w] += s;
+            if (gen[w] != cur) { val[w] = 0.0; gen[w] = cur; }
+            val[w] += static_cast<double>(s);
         }
         inline void  sub(int w, float s) {
-            if (gen[w] == cur) val[w] -= s;
+            if (gen[w] == cur) val[w] -= static_cast<double>(s);
         }
     };
 
     bool search(
         vector<int>& C,
-        float        sim_sum,
+        double       sim_sum,
         vector<int>& cands,
         vector<int>& excl,
         AccStore&    acc,
         bool         is_check,
         int          min_size = 0
     ) {
+        if (deadline_reached()) return false;
+#if ACMSC_ENABLE_STATS
+        search_states_.fetch_add(1, std::memory_order_relaxed);
+        if (is_check) check_states_.fetch_add(1, std::memory_order_relaxed);
+#endif
         bool found_any_longer = false;
         int  k = (int)C.size();
 
         vector<int> to_enumerate(cands.begin(), cands.end());
 
         for (int v : to_enumerate) {
+#if ACMSC_ENABLE_STATS
+            candidate_expansions_.fetch_add(1, std::memory_order_relaxed);
+#endif
             cands.erase(find(cands.begin(), cands.end(), v));
 
             const auto& v_row = bitmap_->get_row(v);
@@ -333,9 +364,9 @@ private:
                 undo.push_back({w, s});
             }
 
-            float sim_sum_new = sim_sum;
+            double sim_sum_new = sim_sum;
             for (int u : C) {
-                sim_sum_new += lookup_sim(u, v);
+                sim_sum_new += static_cast<double>(lookup_sim(u, v));
             }
 
             C.push_back(v);
@@ -344,6 +375,8 @@ private:
             C.pop_back();
 
             for (auto& [w, s] : undo) acc.sub(w, s);
+
+            if (timed_out_.load(std::memory_order_relaxed)) return false;
 
             if (sub) {
                 found_any_longer = true;
@@ -356,15 +389,22 @@ private:
         if (!found_any_longer) {
             long long edges = (long long)k * (k-1) / 2;
             bool avg_ok = (k <= 1) ||
-                          (edges > 0 && sim_sum / (float)edges >= tau_);
+                          (edges > 0 && sim_sum >=
+                              static_cast<double>(tau_) * edges);
 
             if (avg_ok) {
+#if ACMSC_ENABLE_STATS
+                feasible_terminals_.fetch_add(1, std::memory_order_relaxed);
+#endif
                 if (is_check) {
                     return (k > min_size);
                 }
 
                 bool subsumed = false;
                 if (k >= 2 && !excl.empty()) {
+#if ACMSC_ENABLE_STATS
+                    check_calls_.fetch_add(1, std::memory_order_relaxed);
+#endif
                     vector<int> excl_as_cands = excl;
                     vector<int> empty_excl;
                     subsumed = search(C, sim_sum, excl_as_cands, empty_excl,
@@ -478,10 +518,17 @@ private:
                          chrono::high_resolution_clock::now()-t0).count());
     }
 
-    void run_search(long long& search_ms) {
+    bool run_search(long long& search_ms) {
         logger.print("[Stage3] Semantic BK search...\n");
-        logger.print("  tau=%.3f  threads=%d  timeout=600s\n", tau_, omp_get_max_threads());
+        if (timeout_seconds_ > 0)
+            logger.print("  tau=%.3f  threads=%d  timeout=%ds\n", tau_,
+                         omp_get_max_threads(), timeout_seconds_);
+        else
+            logger.print("  tau=%.3f  threads=%d  timeout=external/unlimited\n",
+                         tau_, omp_get_max_threads());
         auto t0 = chrono::high_resolution_clock::now();
+        if (timeout_seconds_ > 0)
+            deadline_ = chrono::steady_clock::now() + chrono::seconds(timeout_seconds_);
         int n = g_.V;
         int total = (int)ordering_.size();
 
@@ -495,18 +542,12 @@ private:
 
         auto last_print = chrono::high_resolution_clock::now();
         std::atomic<int> progress_i{0};
-        std::atomic<bool> timed_out{false};
         std::mutex print_mutex;
 
         #pragma omp parallel for schedule(dynamic, 1)
         for (int i = 0; i < total; i++) {
-            if (timed_out.load()) continue;
-
+            if (timed_out_.load(std::memory_order_relaxed)) continue;
             auto now = chrono::high_resolution_clock::now();
-            if (chrono::duration_cast<chrono::seconds>(now - t0).count() >= 600) {
-                timed_out.store(true);
-                continue;
-            }
 
             int v   = ordering_[i];
             int tid = omp_get_thread_num();
@@ -546,21 +587,22 @@ private:
             }
         }
 
-        if (timed_out.load()) {
-            logger.print("  [TIMEOUT] reached 600 seconds, stopping search\n");
-        }
-
         search_ms = chrono::duration_cast<chrono::milliseconds>(
             chrono::high_resolution_clock::now()-t0).count();
+        if (timed_out_.load(std::memory_order_relaxed)) {
+            logger.print("  [TIMEOUT] incomplete search stopped after %lld ms\n",
+                         search_ms);
+            return false;
+        }
         logger.print("  [Stage3] Done: %lld ms  cliques=%lld\n",
                      search_ms, (long long)clique_count_.load());
+        return true;
     }
 
 public:
-    AvgSimMCEMiner(const VectorDB& db, const Graph& g)
-        : db_(db), g_(g), tau_(0.f) {
-        for (auto& h : size_hist_) h.store(0);
-    }
+    AvgSimMCEMiner(const VectorDB& db, const Graph& g, int timeout_seconds)
+        : db_(db), g_(g), tau_(0.f),
+          timeout_seconds_(max(0, timeout_seconds)) {}
     ~AvgSimMCEMiner() {
         delete bitmap_;
         if (sink_) fclose(sink_);
@@ -574,14 +616,27 @@ public:
     long long mine(double tau) {
         tau_ = (float)tau;
         clique_count_.store(0);
-        for (auto& h : size_hist_) h.store(0);
+        timed_out_.store(false);
+#if ACMSC_ENABLE_STATS
+        search_states_.store(0);
+        candidate_expansions_.store(0);
+        check_states_.store(0);
+        check_calls_.store(0);
+        feasible_terminals_.store(0);
+#endif
         delete bitmap_; bitmap_ = nullptr;
         nb_.clear(); sim_map_.clear(); ordering_.clear();
 
-        logger.print("\n=== ALG4 MCE  tau=%.3f ===\n", tau);
+        logger.print("\n=== ALG2 SemBK  tau=%.3f ===\n", tau);
         auto t0 = chrono::high_resolution_clock::now();
 
         build_graph();
+        int max_degree = 0;
+        for (const auto& row : nb_)
+            max_degree = max(max_degree, static_cast<int>(row.size()));
+        size_hist_size_ = max(2, max_degree + 2);
+        size_hist_ = make_unique<atomic<long long>[]>(size_hist_size_);
+        for (int i = 0; i < size_hist_size_; ++i) size_hist_[i].store(0);
         auto t_after_graph = chrono::high_resolution_clock::now();
         long long graph_ms = chrono::duration_cast<chrono::milliseconds>(t_after_graph - t0).count();
 
@@ -590,7 +645,12 @@ public:
         long long degen_ms = chrono::duration_cast<chrono::milliseconds>(t_after_degen - t_after_graph).count();
 
         long long search_ms = 0;
-        run_search(search_ms);
+        if (!run_search(search_ms)) {
+            logger.print("[TIMEOUT] incomplete run; no result count is reported.\n");
+            logger.print("Peak process memory: %.2f GiB (limit 16.00 GiB)\n",
+                         acmsc_runtime::peak_memory_bytes() / 1073741824.0);
+            return -1;
+        }
         auto t_after_search = chrono::high_resolution_clock::now();
 
         long long total_ms = chrono::duration_cast<chrono::milliseconds>(
@@ -599,6 +659,15 @@ public:
 
         logger.print("\n=== TOTAL: %lld ms,  %lld maximal cliques ===\n",
                      total_ms, final_count);
+        logger.print("Peak process memory: %.2f GiB (limit 16.00 GiB)\n",
+                     acmsc_runtime::peak_memory_bytes() / 1073741824.0);
+#if ACMSC_ENABLE_STATS
+        logger.print("STAT search_states=%llu candidate_expansions=%llu "
+                     "check_calls=%llu check_states=%llu feasible_terminals=%llu\n",
+                     search_states_.load(), candidate_expansions_.load(),
+                     check_calls_.load(), check_states_.load(),
+                     feasible_terminals_.load());
+#endif
 
         logger.print("\n--- Phase timing summary ---\n");
         logger.print("  Graph build        : %6lld ms  (%5.1f%%)\n",
@@ -612,12 +681,12 @@ public:
         logger.print("\n--- Clique size distribution ---\n");
         long long total = clique_count_.load();
         long long sum_sizes = 0;
-        for (int i = 0; i < MAX_CLIQUE_SZ; i++) {
+        for (int i = 2; i < size_hist_size_; i++) {
             long long c = size_hist_[i].load();
             if (c > 0) {
                 logger.print("  size %3d: %lld (%.2f%%)\n",
-                           i+1, c, total>0?100.0*c/total:0.0);
-                sum_sizes += (long long)(i+1)*c;
+                           i, c, total>0?100.0*c/total:0.0);
+                sum_sizes += (long long)i*c;
             }
         }
         if (total > 0)
@@ -632,38 +701,43 @@ public:
 // main
 // ============================================================
 int main(int argc, char* argv[]) {
-    omp_set_num_threads(omp_get_max_threads());
+    if (!acmsc_runtime::enforce_memory_limit()) {
+        fprintf(stderr, "Failed to enforce the 16 GiB process memory limit.\n");
+        return 2;
+    }
 
-    string graph_file, vec_index, log_path;
-    int dataset_id = 8;
+    string graph_file, vec_index, log_path, graph_override, vector_override;
+    int dataset_id = 2;
+    int requested_threads = acmsc_runtime::kDefaultThreads;
+    int timeout_seconds = acmsc_runtime::kDefaultTimeoutSeconds;
 
     for (int i = 1; i < argc; i++) {
         string arg = argv[i];
-        if ((arg == "dataset" || arg == "dataset") && i + 1 < argc) {
-            dataset_id = atoi(argv[i + 1]);
+        if (arg == "dataset" && i + 1 < argc) {
+            dataset_id = atoi(argv[++i]);
         } else if (arg == "log" && i + 1 < argc) {
-            log_path = argv[i + 1];
+            log_path = argv[++i];
+        } else if (arg == "threads" && i + 1 < argc) {
+            requested_threads = atoi(argv[++i]);
+        } else if (arg == "graph" && i + 1 < argc) {
+            graph_override = argv[++i];
+        } else if (arg == "vectors" && i + 1 < argc) {
+            vector_override = argv[++i];
+        } else if (arg == "timeout" && i + 1 < argc) {
+            timeout_seconds = atoi(argv[++i]);
         }
     }
-
-    switch (dataset_id) {
-        case 1: graph_file = "dataset/dataset/sc-ldoor.txt"; vec_index = "dataset/vectors-256/sc-ldoor_vectors.bin"; break;
-        case 2: graph_file = "dataset/dataset/sc-nasasrb.txt"; vec_index = "dataset/vectors-256/sc-nasasrb_vectors.bin"; break;
-        case 3: graph_file = "dataset/dataset/sc-pkustk11.txt"; vec_index = "dataset/vectors-256/sc-pkustk11_vectors.bin"; break;
-        case 4: graph_file = "dataset/dataset/soc-buzznet.txt"; vec_index = "dataset/vectors-256/soc-buzznet_vectors.bin"; break;
-        case 5: graph_file = "dataset/dataset/soc-digg.txt"; vec_index = "dataset/vectors-256/soc-digg_vectors.bin"; break;
-        case 6: graph_file = "dataset/dataset/tech-as-skitter.txt"; vec_index = "dataset/vectors-256/tech-as-skitter_vectors.bin"; break;
-        case 7: graph_file = "dataset/dataset/FB15K-237_edges.txt"; vec_index = "dataset/vectors/FB15K-237_vectors.index"; break;
-        case 8: graph_file = "dataset/dataset/WN18RR_edges.txt";    vec_index = "dataset/vectors/WN18RR_vectors.index";       break;
-        case 9: graph_file = "dataset/dataset/dblp_coauthor.txt";    vec_index = "dataset/vectors/dblp_coauthor_vectors.index"; break;
-        case 10: graph_file = "dataset/dataset/products.txt"; vec_index = "dataset/vectors/products_vectors.index"; break;
-        default: graph_file = "dataset/dataset/sc-nasasrb.txt"; vec_index = "dataset/vectors-256/sc-nasasrb_vectors.bin"; break;
-    }
+    const int thread_count = max(1, min(requested_threads, omp_get_num_procs()));
+    omp_set_dynamic(0);
+    omp_set_num_threads(thread_count);
+    acmsc_runtime::select_dataset(dataset_id, graph_file, vec_index);
+    if (!graph_override.empty()) graph_file = graph_override;
+    if (!vector_override.empty()) vec_index = vector_override;
 
     if (!log_path.empty()) logger.open(log_path);
 
     logger.print("============================================\n");
-    logger.print("  ALG4 Standard (Semantic BK)\n");
+    logger.print("  ALG2 Standard (SemBK)\n");
     logger.print("  mine <tau> | sink <file> | log <file> | quit\n");
     logger.print("============================================\n");
     logger.print("Dataset: %s (ID=%d)\n", graph_file.c_str(), dataset_id);
@@ -671,6 +745,7 @@ int main(int argc, char* argv[]) {
     auto t_load = chrono::high_resolution_clock::now();
     Graph g(graph_file);
     if (g.V == 0) { fprintf(stderr, "Failed to load graph\n"); return 1; }
+    vector<set<int>>().swap(g.adjSet);
 
     bool vec_loaded = false;
     if (fs::exists(vec_index)) {
@@ -693,13 +768,20 @@ int main(int argc, char* argv[]) {
     for (int i = 0; i < g.V; i++) ec += (long long)g.adj[i].size();
     ec /= 2;
     logger.print("Graph: V=%d  E=%lld\n", g.V, ec);
+    if (timeout_seconds > 0)
+        logger.print("Threads: %d, timeout: %ds, memory limit: 16 GiB\n",
+                     thread_count, timeout_seconds);
+    else
+        logger.print("Threads: %d, timeout: external, memory limit: 16 GiB\n",
+                     thread_count);
     logger.print("Load: %lld ms\n\n",
                chrono::duration_cast<chrono::milliseconds>(
                    chrono::high_resolution_clock::now()-t_load).count());
 
     VectorDB db;
     db.build(g);
-    AvgSimMCEMiner miner(db, g);
+    vector<vector<double>>().swap(g.semanticVectors);
+    AvgSimMCEMiner miner(db, g, timeout_seconds);
 
     logger.print("\n>> ");
     string line;

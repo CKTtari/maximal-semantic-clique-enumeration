@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "name": "com-amazon-generated-vectors",
+  "kind": "generated_attributes_on_public_graphs",
+  "archived_utc": "2026-07-23T19:04:34.007441+00:00",
+  "provenance_file": {
+    "path": "dataset/vectors-256/com-amazon.provenance.json",
+    "bytes": 1707,
+    "sha256": "2d73354f8b91bbe9663dfab0816201bab53f981826b0454f4f808bd055a06ece"
+  },
+  "verified_files": [
+    {
+      "path": "dataset/dataset/com-amazon.txt",
+      "bytes": 12345017,
+      "sha256": "04b920ddba40ccdf87d48092a33c7039591d9c59fea0be78e529d73d3e75ac1d"
+    },
+    {
+      "path": "dataset/vectors-256/com-amazon_vectors.bin",
+      "bytes": 685799432,
+      "sha256": "aaaa047467eb7e592bb9b0d28c5e971dcc08abd6660ab0ef7b3726f4239f250f"
+    }
+  ],
+  "audit": {
+    "path": "experiments/dataset-audits/com-amazon.json",
+    "bytes": 487,
+    "sha256": "5b3edec89d9e7f76fa208c1cba26b9f538ba7143d85e25ecc9eb20f651a62dec"
+  },
+  "provenance": {
+    "schema_version": 1,
+    "kind": "generated_attributes_on_public_graphs",
+    "created_utc": "2026-07-23T18:14:08.904949+00:00",
+    "public_graph_import": {
+      "source_url": "https://snap.stanford.edu/data/com-Amazon.html",
+      "archive_path": "rawDatasets/com-amazon.ungraph.txt.gz",
+      "archive_bytes": 4501435,
+      "archive_sha256": "bb4b9fcf549c9174049e885e9a0a4057c9724846e7297c4a1ea299b8e92eec34",
+      "conversion": "undirected deduplication, self-loop removal, ascending source identifiers remapped to contiguous zero-based identifiers",
+      "ordered_source_ids_sha256": "549c1932aff380e5b051f1f6bb2aeab1a00c850d0a902f93454512cf356853db"
+    },
+    "generator": {
+      "script": "scripts/generate_structural_vectors.py",
+      "script_sha256": "08b8b72b025a5da2d28561885acaef6ba31c3b8623ad83a4416906113bb2e765",
+      "numpy_version": "1.26.4",
+      "bit_generator": "PCG64",
+      "distribution": "independent Uniform[-1, 1) coordinates",
+      "normalization": "L2 normalization by the shared C++ graph loader",
+      "dimension": 256,
+      "chunk_rows": 8192,
+      "binary_format": "little-endian int32 V, int32 dimension, row-major float64 values"
+    },
+    "datasets": [
+      {
+        "name": "com-amazon",
+        "vertices": 334863,
+        "dimension": 256,
+        "seed": 2026072312,
+        "graph": {
+          "path": "dataset/dataset/com-amazon.txt",
+          "bytes": 12345017,
+          "sha256": "04b920ddba40ccdf87d48092a33c7039591d9c59fea0be78e529d73d3e75ac1d"
+        },
+        "vectors": {
+          "path": "dataset/vectors-256/com-amazon_vectors.bin",
+          "bytes": 685799432,
+          "sha256": "aaaa047467eb7e592bb9b0d28c5e971dcc08abd6660ab0ef7b3726f4239f250f"
+        }
+      }
+    ]
+  }
+}

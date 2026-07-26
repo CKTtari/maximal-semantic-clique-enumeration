@@ -1,0 +1,7 @@
+{
+  "name": "batch2-structural-alg3-q99-v2-main",
+  "tasks": [
+    {"algorithm": 3, "mode": "raw", "dataset": 2, "tau": 0.14503, "threads": 32, "timeout_seconds": 3600, "repetitions": 3},
+    {"algorithm": 3, "mode": "raw", "dataset": 3, "tau": 0.145001, "threads": 32, "timeout_seconds": 3600, "repetitions": 3}
+  ]
+}

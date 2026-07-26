@@ -1,0 +1,438 @@
+{
+  "schema_version": 1,
+  "source_manifest": "experiments/archive/batch6-mechanism-current.manifest.json",
+  "source_run": "batch6-mechanism-current",
+  "source_plan_summary": {
+    "attempts": 10,
+    "planned_tasks": 10,
+    "attempted_tasks": 10,
+    "completed_tasks": 10,
+    "unattempted_tasks": 0,
+    "unattempted_task_ids": [],
+    "plan_complete": true,
+    "status_counts": {
+      "completed": 10
+    }
+  },
+  "groups": [
+    {
+      "configuration": {
+        "algorithm": 3,
+        "mode": "stats",
+        "dataset": 11,
+        "tau": 0.840429,
+        "threads": 32,
+        "timeout_seconds": 3600,
+        "graph": null,
+        "vectors": null,
+        "capture_cliques": false,
+        "defines": {},
+        "warmup": false
+      },
+      "status_counts": {
+        "completed": 1
+      },
+      "timing": null,
+      "result": {
+        "clique_count": 613668,
+        "size_histogram": {
+          "10": 1965,
+          "11": 628,
+          "12": 133,
+          "13": 48,
+          "14": 54,
+          "15": 72,
+          "16": 74,
+          "17": 52,
+          "18": 12,
+          "2": 110824,
+          "3": 139775,
+          "4": 133144,
+          "5": 105783,
+          "6": 67075,
+          "7": 34203,
+          "8": 14611,
+          "9": 5215
+        },
+        "stats": {
+          "covered_subsets": 10351403,
+          "exact_duplicates": 180214,
+          "feasible_local": 1065790,
+          "global_subsets_pruned": 271908,
+          "structural_cliques": 1041789,
+          "subset_tests": 18991611
+        }
+      }
+    },
+    {
+      "configuration": {
+        "algorithm": 3,
+        "mode": "stats",
+        "dataset": 11,
+        "tau": 0.888756,
+        "threads": 32,
+        "timeout_seconds": 3600,
+        "graph": null,
+        "vectors": null,
+        "capture_cliques": false,
+        "defines": {},
+        "warmup": false
+      },
+      "status_counts": {
+        "completed": 1
+      },
+      "timing": null,
+      "result": {
+        "clique_count": 226936,
+        "size_histogram": {
+          "10": 238,
+          "11": 106,
+          "12": 43,
+          "13": 47,
+          "14": 54,
+          "15": 71,
+          "16": 74,
+          "17": 52,
+          "18": 12,
+          "2": 64194,
+          "3": 59385,
+          "4": 46054,
+          "5": 30589,
+          "6": 15749,
+          "7": 6728,
+          "8": 2681,
+          "9": 859
+        },
+        "stats": {
+          "covered_subsets": 4523388,
+          "exact_duplicates": 419176,
+          "feasible_local": 825718,
+          "global_subsets_pruned": 179606,
+          "structural_cliques": 1041789,
+          "subset_tests": 21964113
+        }
+      }
+    },
+    {
+      "configuration": {
+        "algorithm": 3,
+        "mode": "stats",
+        "dataset": 11,
+        "tau": 0.949708,
+        "threads": 32,
+        "timeout_seconds": 3600,
+        "graph": null,
+        "vectors": null,
+        "capture_cliques": false,
+        "defines": {},
+        "warmup": false
+      },
+      "status_counts": {
+        "completed": 1
+      },
+      "timing": null,
+      "result": {
+        "clique_count": 10261,
+        "size_histogram": {
+          "2": 7701,
+          "3": 1835,
+          "4": 437,
+          "5": 117,
+          "6": 46,
+          "7": 78,
+          "8": 44,
+          "9": 3
+        },
+        "stats": {
+          "covered_subsets": 163735,
+          "exact_duplicates": 66929,
+          "feasible_local": 80716,
+          "global_subsets_pruned": 3526,
+          "structural_cliques": 1041789,
+          "subset_tests": 11794753
+        }
+      }
+    },
+    {
+      "configuration": {
+        "algorithm": 3,
+        "mode": "stats",
+        "dataset": 2,
+        "tau": 0.14503,
+        "threads": 32,
+        "timeout_seconds": 3600,
+        "graph": null,
+        "vectors": null,
+        "capture_cliques": false,
+        "defines": {
+          "ACMSC_STRSUB_LOCAL_MAX": 0
+        },
+        "warmup": false
+      },
+      "status_counts": {
+        "completed": 1
+      },
+      "timing": null,
+      "result": {
+        "clique_count": 12742,
+        "size_histogram": {
+          "2": 12125,
+          "3": 613,
+          "4": 4
+        },
+        "stats": {
+          "covered_subsets": 0,
+          "exact_duplicates": 26695,
+          "feasible_local": 40434,
+          "global_subsets_pruned": 997,
+          "structural_cliques": 28154,
+          "subset_tests": 12953869
+        }
+      }
+    },
+    {
+      "configuration": {
+        "algorithm": 3,
+        "mode": "stats",
+        "dataset": 2,
+        "tau": 0.14503,
+        "threads": 32,
+        "timeout_seconds": 3600,
+        "graph": null,
+        "vectors": null,
+        "capture_cliques": false,
+        "defines": {
+          "ACMSC_STRSUB_TOP_EDGE": 0
+        },
+        "warmup": false
+      },
+      "status_counts": {
+        "completed": 1
+      },
+      "timing": null,
+      "result": {
+        "clique_count": 12742,
+        "size_histogram": {
+          "2": 12125,
+          "3": 613,
+          "4": 4
+        },
+        "stats": {
+          "covered_subsets": 3138,
+          "exact_duplicates": 25334,
+          "feasible_local": 38639,
+          "global_subsets_pruned": 563,
+          "structural_cliques": 28154,
+          "subset_tests": 16496599
+        }
+      }
+    },
+    {
+      "configuration": {
+        "algorithm": 3,
+        "mode": "stats",
+        "dataset": 2,
+        "tau": 0.14503,
+        "threads": 32,
+        "timeout_seconds": 3600,
+        "graph": null,
+        "vectors": null,
+        "capture_cliques": false,
+        "defines": {
+          "ACMSC_STRSUB_VERTEX_BOUND": 0
+        },
+        "warmup": false
+      },
+      "status_counts": {
+        "completed": 1
+      },
+      "timing": null,
+      "result": {
+        "clique_count": 12742,
+        "size_histogram": {
+          "2": 12125,
+          "3": 613,
+          "4": 4
+        },
+        "stats": {
+          "covered_subsets": 3138,
+          "exact_duplicates": 25334,
+          "feasible_local": 38639,
+          "global_subsets_pruned": 563,
+          "structural_cliques": 28154,
+          "subset_tests": 80278402
+        }
+      }
+    },
+    {
+      "configuration": {
+        "algorithm": 3,
+        "mode": "stats",
+        "dataset": 2,
+        "tau": 0.14503,
+        "threads": 32,
+        "timeout_seconds": 3600,
+        "graph": null,
+        "vectors": null,
+        "capture_cliques": false,
+        "defines": {},
+        "warmup": false
+      },
+      "status_counts": {
+        "completed": 1
+      },
+      "timing": null,
+      "result": {
+        "clique_count": 12742,
+        "size_histogram": {
+          "2": 12125,
+          "3": 613,
+          "4": 4
+        },
+        "stats": {
+          "covered_subsets": 3138,
+          "exact_duplicates": 25334,
+          "feasible_local": 38639,
+          "global_subsets_pruned": 563,
+          "structural_cliques": 28154,
+          "subset_tests": 12950731
+        }
+      }
+    },
+    {
+      "configuration": {
+        "algorithm": 4,
+        "mode": "stats",
+        "dataset": 11,
+        "tau": 0.840429,
+        "threads": 32,
+        "timeout_seconds": 3600,
+        "graph": null,
+        "vectors": null,
+        "capture_cliques": false,
+        "defines": {},
+        "warmup": false
+      },
+      "status_counts": {
+        "completed": 1
+      },
+      "timing": null,
+      "result": {
+        "clique_count": 613668,
+        "size_histogram": {
+          "10": 1965,
+          "11": 628,
+          "12": 133,
+          "13": 48,
+          "14": 54,
+          "15": 72,
+          "16": 74,
+          "17": 52,
+          "18": 12,
+          "2": 110824,
+          "3": 139775,
+          "4": 133144,
+          "5": 105783,
+          "6": 67075,
+          "7": 34203,
+          "8": 14611,
+          "9": 5215
+        },
+        "stats": {
+          "candidate_tests": 65302875,
+          "canonical_rejects": 51844289,
+          "raw_candidates": 614244,
+          "states": 9764131,
+          "w_prunes": 4273354
+        }
+      }
+    },
+    {
+      "configuration": {
+        "algorithm": 4,
+        "mode": "stats",
+        "dataset": 11,
+        "tau": 0.888756,
+        "threads": 32,
+        "timeout_seconds": 3600,
+        "graph": null,
+        "vectors": null,
+        "capture_cliques": false,
+        "defines": {},
+        "warmup": false
+      },
+      "status_counts": {
+        "completed": 1
+      },
+      "timing": null,
+      "result": {
+        "clique_count": 226936,
+        "size_histogram": {
+          "10": 238,
+          "11": 106,
+          "12": 43,
+          "13": 47,
+          "14": 54,
+          "15": 71,
+          "16": 74,
+          "17": 52,
+          "18": 12,
+          "2": 64194,
+          "3": 59385,
+          "4": 46054,
+          "5": 30589,
+          "6": 15749,
+          "7": 6728,
+          "8": 2681,
+          "9": 859
+        },
+        "stats": {
+          "candidate_tests": 46483141,
+          "canonical_rejects": 38813255,
+          "raw_candidates": 227419,
+          "states": 5635037,
+          "w_prunes": 2266412
+        }
+      }
+    },
+    {
+      "configuration": {
+        "algorithm": 4,
+        "mode": "stats",
+        "dataset": 11,
+        "tau": 0.949708,
+        "threads": 32,
+        "timeout_seconds": 3600,
+        "graph": null,
+        "vectors": null,
+        "capture_cliques": false,
+        "defines": {},
+        "warmup": false
+      },
+      "status_counts": {
+        "completed": 1
+      },
+      "timing": null,
+      "result": {
+        "clique_count": 10261,
+        "size_histogram": {
+          "2": 7701,
+          "3": 1835,
+          "4": 437,
+          "5": 117,
+          "6": 46,
+          "7": 78,
+          "8": 44,
+          "9": 3
+        },
+        "stats": {
+          "candidate_tests": 121541,
+          "canonical_rejects": 10471,
+          "raw_candidates": 10272,
+          "states": 18011,
+          "w_prunes": 104637
+        }
+      }
+    }
+  ]
+}

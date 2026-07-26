@@ -1,0 +1,566 @@
+{
+  "schema_version": 2,
+  "run_name": "batch21-ogbn-pairsim-quality-sweep",
+  "archived_utc": "2026-07-25T14:24:19.233743+00:00",
+  "local_result_directory": "experiment-output/batch21-ogbn-pairsim-quality-sweep",
+  "plans": [
+    {
+      "path": "experiments/plans/batch21-ogbn-pairsim-quality-sweep.json",
+      "sha256": "57cac4b927fe6ac4e41d796fd91d6e927b0b0e4b32e7c4140b186531a21077d0"
+    }
+  ],
+  "summary": {
+    "attempts": 4,
+    "planned_tasks": 4,
+    "attempted_tasks": 4,
+    "completed_tasks": 4,
+    "unattempted_tasks": 0,
+    "unattempted_task_ids": [],
+    "plan_complete": true,
+    "status_counts": {
+      "completed": 4
+    }
+  },
+  "records": [
+    {
+      "task_id": "211f98354be808b8",
+      "attempt": 1,
+      "status": "completed",
+      "rerun_reason": null,
+      "started_utc": "2026-07-25T14:23:43.900416+00:00",
+      "wall_seconds": 1.536005699999805,
+      "task": {
+        "algorithm": 1,
+        "mode": "raw",
+        "dataset": 11,
+        "tau": null,
+        "threads": 32,
+        "timeout_seconds": 1200,
+        "graph": "dataset/derived/ogbn-arxiv-pairsim-q50.txt",
+        "vectors": null,
+        "capture_cliques": true,
+        "defines": {},
+        "warmup": false,
+        "repetition": 0,
+        "task_id": "211f98354be808b8"
+      },
+      "parsed": {
+        "algorithm_ms": 976,
+        "clique_count": 451960,
+        "peak_memory_gib": 0.11,
+        "size_histogram": {
+          "1": 25480,
+          "2": 160031,
+          "3": 127259,
+          "4": 76555,
+          "5": 39201,
+          "6": 15510,
+          "7": 5291,
+          "8": 1571,
+          "9": 425,
+          "10": 162,
+          "11": 67,
+          "12": 52,
+          "13": 62,
+          "14": 101,
+          "15": 109,
+          "16": 74,
+          "17": 10
+        },
+        "stats": {}
+      },
+      "validation": {
+        "unique_cliques": 451960,
+        "compared_with": [],
+        "exact_match": true
+      },
+      "build": {
+        "fingerprint": "9cd7dde7d8a55e6b",
+        "executable_sha256": "6eb996a377a765ff7aaae52d07a947cf1bd098e8095f80ebec9ff361ce9a9b50",
+        "command": [
+          "g++",
+          "-std=c++17",
+          "-fopenmp",
+          "-mavx2",
+          "-O3",
+          "src/alg1-raw.cpp",
+          "src/semantic_graph.cpp",
+          "-o",
+          "no-use/compiled/experiment-runner/alg1-raw-9cd7dde7d8a55e6b.exe"
+        ],
+        "source_verification": {
+          "status": "verified_current",
+          "observed_current_fingerprint": "9cd7dde7d8a55e6b",
+          "reason": null
+        },
+        "source_hashes": {
+          "alg1-raw.cpp": "4a7d33ad80c2585666cccbe052e7a61f52bfc446620115152de79c5c65353f70",
+          "semantic_graph.cpp": "c6d51c9086fbd5c7d264eb411ac04890806744fc4e05dc7eee0b156760a9cd92",
+          "semantic_graph.h": "8192c4e8e02fc8ace59d59365f72643e34ca32ba71faa5bb338381a8cd308078",
+          "experiment_runtime.h": "dc2be362f49932a172aa59e862dbc6dcb3cebec18dfd7950322bf4a7126ab2a1"
+        }
+      },
+      "inputs": {
+        "status": "verified_run_time",
+        "snapshot": {
+          "dataset_catalog": {
+            "path": "experiments/datasets.json",
+            "sha256": "35c6ced15bff76becdc06c670b753fe56ca69122ca7407205c5a0c14a32bb2d0"
+          },
+          "files": [
+            {
+              "role": "graph",
+              "path": "dataset/derived/ogbn-arxiv-pairsim-q50.txt",
+              "bytes": 7346754,
+              "sha256": "4d4872d869a7a564a018fdfb204b28de5aef025d0f0852dfabd85dd4ba0f8426"
+            }
+          ]
+        }
+      },
+      "run_environment": {
+        "plan": "experiments/plans/batch21-ogbn-pairsim-quality-sweep.json",
+        "plan_sha256": "57cac4b927fe6ac4e41d796fd91d6e927b0b0e4b32e7c4140b186531a21077d0",
+        "git": {
+          "commit": "59299fd9164d077d7e04cd97fc9ac89cbf962c9f",
+          "dirty": true
+        },
+        "machine": {
+          "platform": "Windows-11-10.0.26100-SP0",
+          "processor": "AMD64 Family 25 Model 97 Stepping 2, AuthenticAMD",
+          "logical_cpu_count": 32,
+          "python": "3.12.7",
+          "compiler": "g++ (x86_64-posix-seh-rev0, Built by MinGW-Builds project) 13.2.0"
+        },
+        "memory_limit_gib": 16,
+        "external_timeout_policy": "hard per-process TLE from task.timeout_seconds"
+      },
+      "result_json": {
+        "path": "experiment-output/batch21-ogbn-pairsim-quality-sweep/211f98354be808b8.attempt-001.json",
+        "bytes": 4272,
+        "sha256": "55601edbbb5774656cad8d15140a9c84a92f8575cb44511c41a8f3c8a0341074"
+      },
+      "artifacts": {
+        "program_log": {
+          "path": "experiment-output/batch21-ogbn-pairsim-quality-sweep/211f98354be808b8.attempt-001.program.log",
+          "bytes": 1662,
+          "sha256": "04d90efc7c31f311106adf810aac181a410dd9dd5707c943ddcf5d7c8ff40d1b"
+        },
+        "stdout": {
+          "path": "experiment-output/batch21-ogbn-pairsim-quality-sweep/211f98354be808b8.attempt-001.stdout.txt",
+          "bytes": 1662,
+          "sha256": "04d90efc7c31f311106adf810aac181a410dd9dd5707c943ddcf5d7c8ff40d1b"
+        },
+        "stderr": {
+          "path": "experiment-output/batch21-ogbn-pairsim-quality-sweep/211f98354be808b8.attempt-001.stderr.txt",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "cliques": {
+          "path": "experiment-output/batch21-ogbn-pairsim-quality-sweep/211f98354be808b8.attempt-001.cliques.txt",
+          "bytes": 9237792,
+          "sha256": "971aa5d756db33544145e9f2520063f1318f6c6a72b3f4076a61134b34be72bd"
+        }
+      }
+    },
+    {
+      "task_id": "414787a072c0fa5e",
+      "attempt": 1,
+      "status": "completed",
+      "rerun_reason": null,
+      "started_utc": "2026-07-25T14:23:46.177022+00:00",
+      "wall_seconds": 0.19653870000001916,
+      "task": {
+        "algorithm": 1,
+        "mode": "raw",
+        "dataset": 11,
+        "tau": null,
+        "threads": 32,
+        "timeout_seconds": 1200,
+        "graph": "dataset/derived/ogbn-arxiv-pairsim-q95.txt",
+        "vectors": null,
+        "capture_cliques": true,
+        "defines": {},
+        "warmup": false,
+        "repetition": 0,
+        "task_id": "414787a072c0fa5e"
+      },
+      "parsed": {
+        "algorithm_ms": 141,
+        "clique_count": 164733,
+        "peak_memory_gib": 0.03,
+        "size_histogram": {
+          "1": 119226,
+          "2": 36738,
+          "3": 7141,
+          "4": 1327,
+          "5": 216,
+          "6": 48,
+          "7": 24,
+          "8": 13
+        },
+        "stats": {}
+      },
+      "validation": {
+        "unique_cliques": 164733,
+        "compared_with": [],
+        "exact_match": true
+      },
+      "build": {
+        "fingerprint": "9cd7dde7d8a55e6b",
+        "executable_sha256": "6eb996a377a765ff7aaae52d07a947cf1bd098e8095f80ebec9ff361ce9a9b50",
+        "command": [
+          "g++",
+          "-std=c++17",
+          "-fopenmp",
+          "-mavx2",
+          "-O3",
+          "src/alg1-raw.cpp",
+          "src/semantic_graph.cpp",
+          "-o",
+          "no-use/compiled/experiment-runner/alg1-raw-9cd7dde7d8a55e6b.exe"
+        ],
+        "source_verification": {
+          "status": "verified_current",
+          "observed_current_fingerprint": "9cd7dde7d8a55e6b",
+          "reason": null
+        },
+        "source_hashes": {
+          "alg1-raw.cpp": "4a7d33ad80c2585666cccbe052e7a61f52bfc446620115152de79c5c65353f70",
+          "semantic_graph.cpp": "c6d51c9086fbd5c7d264eb411ac04890806744fc4e05dc7eee0b156760a9cd92",
+          "semantic_graph.h": "8192c4e8e02fc8ace59d59365f72643e34ca32ba71faa5bb338381a8cd308078",
+          "experiment_runtime.h": "dc2be362f49932a172aa59e862dbc6dcb3cebec18dfd7950322bf4a7126ab2a1"
+        }
+      },
+      "inputs": {
+        "status": "verified_run_time",
+        "snapshot": {
+          "dataset_catalog": {
+            "path": "experiments/datasets.json",
+            "sha256": "35c6ced15bff76becdc06c670b753fe56ca69122ca7407205c5a0c14a32bb2d0"
+          },
+          "files": [
+            {
+              "role": "graph",
+              "path": "dataset/derived/ogbn-arxiv-pairsim-q95.txt",
+              "bytes": 734531,
+              "sha256": "ef98646f93283155c8578be6d154c0e884317d9b6d1bd93471b11b70b82d5554"
+            }
+          ]
+        }
+      },
+      "run_environment": {
+        "plan": "experiments/plans/batch21-ogbn-pairsim-quality-sweep.json",
+        "plan_sha256": "57cac4b927fe6ac4e41d796fd91d6e927b0b0e4b32e7c4140b186531a21077d0",
+        "git": {
+          "commit": "59299fd9164d077d7e04cd97fc9ac89cbf962c9f",
+          "dirty": true
+        },
+        "machine": {
+          "platform": "Windows-11-10.0.26100-SP0",
+          "processor": "AMD64 Family 25 Model 97 Stepping 2, AuthenticAMD",
+          "logical_cpu_count": 32,
+          "python": "3.12.7",
+          "compiler": "g++ (x86_64-posix-seh-rev0, Built by MinGW-Builds project) 13.2.0"
+        },
+        "memory_limit_gib": 16,
+        "external_timeout_policy": "hard per-process TLE from task.timeout_seconds"
+      },
+      "result_json": {
+        "path": "experiment-output/batch21-ogbn-pairsim-quality-sweep/414787a072c0fa5e.attempt-001.json",
+        "bytes": 4105,
+        "sha256": "c731bc80d76cdde8b53644e017f51aab2ae0ad81f027f91a7a8f5e8ffc9f58c8"
+      },
+      "artifacts": {
+        "program_log": {
+          "path": "experiment-output/batch21-ogbn-pairsim-quality-sweep/414787a072c0fa5e.attempt-001.program.log",
+          "bytes": 1425,
+          "sha256": "21019bb2132c14b153861b688588def1c37102f367ab30c660891b24e712fcb1"
+        },
+        "stdout": {
+          "path": "experiment-output/batch21-ogbn-pairsim-quality-sweep/414787a072c0fa5e.attempt-001.stdout.txt",
+          "bytes": 1425,
+          "sha256": "21019bb2132c14b153861b688588def1c37102f367ab30c660891b24e712fcb1"
+        },
+        "stderr": {
+          "path": "experiment-output/batch21-ogbn-pairsim-quality-sweep/414787a072c0fa5e.attempt-001.stderr.txt",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "cliques": {
+          "path": "experiment-output/batch21-ogbn-pairsim-quality-sweep/414787a072c0fa5e.attempt-001.cliques.txt",
+          "bytes": 1567262,
+          "sha256": "28cdba5a296e4378b44cf3bd23a4dacf6119007937ebc67babff02734044f331"
+        }
+      }
+    },
+    {
+      "task_id": "424b27e519085718",
+      "attempt": 1,
+      "status": "completed",
+      "rerun_reason": null,
+      "started_utc": "2026-07-25T14:23:46.571034+00:00",
+      "wall_seconds": 0.11381690000007438,
+      "task": {
+        "algorithm": 1,
+        "mode": "raw",
+        "dataset": 11,
+        "tau": null,
+        "threads": 32,
+        "timeout_seconds": 1200,
+        "graph": "dataset/derived/ogbn-arxiv-pairsim-q99.txt",
+        "vectors": null,
+        "capture_cliques": true,
+        "defines": {},
+        "warmup": false,
+        "repetition": 0,
+        "task_id": "424b27e519085718"
+      },
+      "parsed": {
+        "algorithm_ms": 90,
+        "clique_count": 163358,
+        "peak_memory_gib": 0.02,
+        "size_histogram": {
+          "1": 153092,
+          "2": 9500,
+          "3": 690,
+          "4": 64,
+          "5": 12
+        },
+        "stats": {}
+      },
+      "validation": {
+        "unique_cliques": 163358,
+        "compared_with": [],
+        "exact_match": true
+      },
+      "build": {
+        "fingerprint": "9cd7dde7d8a55e6b",
+        "executable_sha256": "6eb996a377a765ff7aaae52d07a947cf1bd098e8095f80ebec9ff361ce9a9b50",
+        "command": [
+          "g++",
+          "-std=c++17",
+          "-fopenmp",
+          "-mavx2",
+          "-O3",
+          "src/alg1-raw.cpp",
+          "src/semantic_graph.cpp",
+          "-o",
+          "no-use/compiled/experiment-runner/alg1-raw-9cd7dde7d8a55e6b.exe"
+        ],
+        "source_verification": {
+          "status": "verified_current",
+          "observed_current_fingerprint": "9cd7dde7d8a55e6b",
+          "reason": null
+        },
+        "source_hashes": {
+          "alg1-raw.cpp": "4a7d33ad80c2585666cccbe052e7a61f52bfc446620115152de79c5c65353f70",
+          "semantic_graph.cpp": "c6d51c9086fbd5c7d264eb411ac04890806744fc4e05dc7eee0b156760a9cd92",
+          "semantic_graph.h": "8192c4e8e02fc8ace59d59365f72643e34ca32ba71faa5bb338381a8cd308078",
+          "experiment_runtime.h": "dc2be362f49932a172aa59e862dbc6dcb3cebec18dfd7950322bf4a7126ab2a1"
+        }
+      },
+      "inputs": {
+        "status": "verified_run_time",
+        "snapshot": {
+          "dataset_catalog": {
+            "path": "experiments/datasets.json",
+            "sha256": "35c6ced15bff76becdc06c670b753fe56ca69122ca7407205c5a0c14a32bb2d0"
+          },
+          "files": [
+            {
+              "role": "graph",
+              "path": "dataset/derived/ogbn-arxiv-pairsim-q99.txt",
+              "bytes": 147024,
+              "sha256": "57daf45296ca9a478a1bb1ba8360d21cf150b911d39e240e3f452067d2e221cc"
+            }
+          ]
+        }
+      },
+      "run_environment": {
+        "plan": "experiments/plans/batch21-ogbn-pairsim-quality-sweep.json",
+        "plan_sha256": "57cac4b927fe6ac4e41d796fd91d6e927b0b0e4b32e7c4140b186531a21077d0",
+        "git": {
+          "commit": "59299fd9164d077d7e04cd97fc9ac89cbf962c9f",
+          "dirty": true
+        },
+        "machine": {
+          "platform": "Windows-11-10.0.26100-SP0",
+          "processor": "AMD64 Family 25 Model 97 Stepping 2, AuthenticAMD",
+          "logical_cpu_count": 32,
+          "python": "3.12.7",
+          "compiler": "g++ (x86_64-posix-seh-rev0, Built by MinGW-Builds project) 13.2.0"
+        },
+        "memory_limit_gib": 16,
+        "external_timeout_policy": "hard per-process TLE from task.timeout_seconds"
+      },
+      "result_json": {
+        "path": "experiment-output/batch21-ogbn-pairsim-quality-sweep/424b27e519085718.attempt-001.json",
+        "bytes": 4051,
+        "sha256": "c97166ecc3847f03d9a999fd74ddffe97d8448e4f6909b7745f18ef6215f91ce"
+      },
+      "artifacts": {
+        "program_log": {
+          "path": "experiment-output/batch21-ogbn-pairsim-quality-sweep/424b27e519085718.attempt-001.program.log",
+          "bytes": 1343,
+          "sha256": "f945a58f9888dfe8f78564f67db0cff67ea4de7e2a20d9220d7b664adb29fdbb"
+        },
+        "stdout": {
+          "path": "experiment-output/batch21-ogbn-pairsim-quality-sweep/424b27e519085718.attempt-001.stdout.txt",
+          "bytes": 1343,
+          "sha256": "f945a58f9888dfe8f78564f67db0cff67ea4de7e2a20d9220d7b664adb29fdbb"
+        },
+        "stderr": {
+          "path": "experiment-output/batch21-ogbn-pairsim-quality-sweep/424b27e519085718.attempt-001.stderr.txt",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "cliques": {
+          "path": "experiment-output/batch21-ogbn-pairsim-quality-sweep/424b27e519085718.attempt-001.cliques.txt",
+          "bytes": 1270333,
+          "sha256": "4aaed78da019eb0b909960ef215e03f482a4f33ccdd2c477eae40ea698d56a8a"
+        }
+      }
+    },
+    {
+      "task_id": "f70f8e2d54ca2812",
+      "attempt": 1,
+      "status": "completed",
+      "rerun_reason": null,
+      "started_utc": "2026-07-25T14:23:40.091559+00:00",
+      "wall_seconds": 2.7021316000000297,
+      "task": {
+        "algorithm": 1,
+        "mode": "raw",
+        "dataset": 11,
+        "tau": null,
+        "threads": 32,
+        "timeout_seconds": 1200,
+        "graph": "dataset/derived/ogbn-arxiv-pairsim-q20.txt",
+        "vectors": null,
+        "capture_cliques": true,
+        "defines": {},
+        "warmup": false,
+        "repetition": 0,
+        "task_id": "f70f8e2d54ca2812"
+      },
+      "parsed": {
+        "algorithm_ms": 1841,
+        "clique_count": 760628,
+        "peak_memory_gib": 0.17,
+        "size_histogram": {
+          "1": 7288,
+          "2": 181874,
+          "3": 202383,
+          "4": 164404,
+          "5": 109942,
+          "6": 57638,
+          "7": 24358,
+          "8": 8490,
+          "9": 2773,
+          "10": 911,
+          "11": 221,
+          "12": 46,
+          "13": 43,
+          "14": 52,
+          "15": 68,
+          "16": 73,
+          "17": 52,
+          "18": 12
+        },
+        "stats": {}
+      },
+      "validation": {
+        "unique_cliques": 760628,
+        "compared_with": [],
+        "exact_match": true
+      },
+      "build": {
+        "fingerprint": "9cd7dde7d8a55e6b",
+        "executable_sha256": "6eb996a377a765ff7aaae52d07a947cf1bd098e8095f80ebec9ff361ce9a9b50",
+        "command": [
+          "g++",
+          "-std=c++17",
+          "-fopenmp",
+          "-mavx2",
+          "-O3",
+          "src/alg1-raw.cpp",
+          "src/semantic_graph.cpp",
+          "-o",
+          "no-use/compiled/experiment-runner/alg1-raw-9cd7dde7d8a55e6b.exe"
+        ],
+        "source_verification": {
+          "status": "verified_current",
+          "observed_current_fingerprint": "9cd7dde7d8a55e6b",
+          "reason": null
+        },
+        "source_hashes": {
+          "alg1-raw.cpp": "4a7d33ad80c2585666cccbe052e7a61f52bfc446620115152de79c5c65353f70",
+          "semantic_graph.cpp": "c6d51c9086fbd5c7d264eb411ac04890806744fc4e05dc7eee0b156760a9cd92",
+          "semantic_graph.h": "8192c4e8e02fc8ace59d59365f72643e34ca32ba71faa5bb338381a8cd308078",
+          "experiment_runtime.h": "dc2be362f49932a172aa59e862dbc6dcb3cebec18dfd7950322bf4a7126ab2a1"
+        }
+      },
+      "inputs": {
+        "status": "verified_run_time",
+        "snapshot": {
+          "dataset_catalog": {
+            "path": "experiments/datasets.json",
+            "sha256": "35c6ced15bff76becdc06c670b753fe56ca69122ca7407205c5a0c14a32bb2d0"
+          },
+          "files": [
+            {
+              "role": "graph",
+              "path": "dataset/derived/ogbn-arxiv-pairsim-q20.txt",
+              "bytes": 11746650,
+              "sha256": "b84bc1e5497af8412e588692d421a3b27f4b966df7561c31067a1d48b53a8198"
+            }
+          ]
+        }
+      },
+      "run_environment": {
+        "plan": "experiments/plans/batch21-ogbn-pairsim-quality-sweep.json",
+        "plan_sha256": "57cac4b927fe6ac4e41d796fd91d6e927b0b0e4b32e7c4140b186531a21077d0",
+        "git": {
+          "commit": "59299fd9164d077d7e04cd97fc9ac89cbf962c9f",
+          "dirty": true
+        },
+        "machine": {
+          "platform": "Windows-11-10.0.26100-SP0",
+          "processor": "AMD64 Family 25 Model 97 Stepping 2, AuthenticAMD",
+          "logical_cpu_count": 32,
+          "python": "3.12.7",
+          "compiler": "g++ (x86_64-posix-seh-rev0, Built by MinGW-Builds project) 13.2.0"
+        },
+        "memory_limit_gib": 16,
+        "external_timeout_policy": "hard per-process TLE from task.timeout_seconds"
+      },
+      "result_json": {
+        "path": "experiment-output/batch21-ogbn-pairsim-quality-sweep/f70f8e2d54ca2812.attempt-001.json",
+        "bytes": 4294,
+        "sha256": "40b9f38efacec829885a5bed33a117223a158ee47141e2577d489d456ae13a52"
+      },
+      "artifacts": {
+        "program_log": {
+          "path": "experiment-output/batch21-ogbn-pairsim-quality-sweep/f70f8e2d54ca2812.attempt-001.program.log",
+          "bytes": 1691,
+          "sha256": "359398640db8fbb7ebedea3add545788ab5f0ca8aec814c25a3569ba6691c979"
+        },
+        "stdout": {
+          "path": "experiment-output/batch21-ogbn-pairsim-quality-sweep/f70f8e2d54ca2812.attempt-001.stdout.txt",
+          "bytes": 1691,
+          "sha256": "359398640db8fbb7ebedea3add545788ab5f0ca8aec814c25a3569ba6691c979"
+        },
+        "stderr": {
+          "path": "experiment-output/batch21-ogbn-pairsim-quality-sweep/f70f8e2d54ca2812.attempt-001.stderr.txt",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "cliques": {
+          "path": "experiment-output/batch21-ogbn-pairsim-quality-sweep/f70f8e2d54ca2812.attempt-001.cliques.txt",
+          "bytes": 18583789,
+          "sha256": "f4fdb18a4edb05c0183755cfc681a9257c75afa8b579a4b49081ef65dede57fb"
+        }
+      }
+    }
+  ]
+}

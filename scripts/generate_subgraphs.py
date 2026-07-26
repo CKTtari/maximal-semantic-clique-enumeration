@@ -1,220 +1,353 @@
 #!/usr/bin/env python3
-"""
-BFS扩展生成不同规模的子图数据集（更新版）
-对应论文 Exp-2：对 DBLP (dataset 9) 和 Amazon (dataset 10)
-生成 6 个子图，边数从 10% 到 100%。
+"""Build nested, fully induced datasets from a real graph and its real vectors.
+
+Vertices are ranked by decreasing source-graph degree, with original vertex id
+as a deterministic tie break.  Every level uses a prefix of that ranking.  The
+script then performs a separate edge pass, so every emitted graph contains all
+and only source edges whose two endpoints are selected.  Vector rows are copied
+from the source store in exactly the same new-id order.
 """
 
+from __future__ import annotations
+
+import argparse
+import bisect
+import hashlib
+import json
 import os
-import random
+import shutil
 import struct
-from collections import deque
-
-# 6 个比例点：10%, 20%, 30%, 50%, 80%, 100%
-RATIOS = [0.1, 0.2, 0.3, 0.5, 0.8, 1.0]
-
-DATASETS = {
-    9: {
-        'name': 'dblp_coauthor',
-        'edge_file': 'dataset/dataset/dblp_coauthor.txt',
-        'vector_file': 'dataset/vectors/dblp_coauthor_vectors.index',
-        'output_dir': 'dataset/scale_datasets/dblp',
-    },
-    10: {
-        'name': 'products',
-        'edge_file': 'dataset/dataset/products.txt',
-        'vector_file': 'dataset/vectors/products_vectors.index',
-        'output_dir': 'dataset/scale_datasets/products',
-    },
-}
+from dataclasses import dataclass
+from pathlib import Path
+from typing import BinaryIO, Iterable, TextIO
 
 
-def read_graph(edge_file):
-    """读取图，返回邻接表和总边数"""
-    print(f"Reading graph from {edge_file}...")
-    adj = {}
-    total_edges = 0
-    with open(edge_file, 'r') as f:
-        first_line = f.readline().strip()
-        while first_line.startswith('#'):
-            first_line = f.readline().strip()
-        for line in f:
-            line = line.strip()
-            if not line or line.startswith('#'):
+HEADER = struct.Struct("<ii")
+ROOT = Path(__file__).resolve().parents[1]
+
+
+def sha256(path: Path) -> str:
+    digest = hashlib.sha256()
+    with path.open("rb") as stream:
+        for block in iter(lambda: stream.read(8 * 1024 * 1024), b""):
+            digest.update(block)
+    return digest.hexdigest()
+
+
+def portable_path(path: Path) -> str:
+    resolved = path.resolve()
+    try:
+        return resolved.relative_to(ROOT).as_posix()
+    except ValueError:
+        return str(resolved)
+
+
+def require_project_output(path: Path) -> None:
+    try:
+        path.resolve().relative_to(ROOT)
+    except ValueError as error:
+        raise ValueError(f"Output directory must stay inside {ROOT}: {path}") from error
+
+
+def resolve_listed_path(index_path: Path, listed: str) -> Path:
+    candidate = Path(listed.replace("\\", os.sep))
+    if candidate.is_absolute() and candidate.exists():
+        return candidate.resolve()
+    cwd_candidate = (Path.cwd() / candidate).resolve()
+    if cwd_candidate.exists():
+        return cwd_candidate
+    index_candidate = (index_path.parent / candidate).resolve()
+    if index_candidate.exists():
+        return index_candidate
+    raise FileNotFoundError(f"Vector chunk does not exist: {listed}")
+
+
+def read_graph_header(path: Path) -> tuple[int, int]:
+    with path.open("r", encoding="utf-8") as stream:
+        fields = stream.readline().split()
+    if len(fields) < 2:
+        raise ValueError(f"Invalid graph header in {path}")
+    vertices, edges = map(int, fields[:2])
+    if vertices <= 0 or edges < 0:
+        raise ValueError(f"Invalid graph dimensions in {path}: {vertices} {edges}")
+    return vertices, edges
+
+
+def iter_edges(path: Path, vertex_count: int) -> Iterable[tuple[int, int]]:
+    with path.open("r", encoding="utf-8") as stream:
+        next(stream)
+        for line_number, line in enumerate(stream, 2):
+            if not line.strip() or line.lstrip().startswith("#"):
                 continue
-            parts = line.split()
-            if len(parts) >= 2:
-                u, v = int(parts[0]), int(parts[1])
-                if u not in adj:
-                    adj[u] = set()
-                if v not in adj:
-                    adj[v] = set()
-                if v not in adj[u]:
-                    adj[u].add(v)
-                    adj[v].add(u)
-                    total_edges += 1
-    print(f"  Vertices: {len(adj)}, Edges: {total_edges}")
-    return adj, total_edges
+            fields = line.split()
+            if len(fields) < 2:
+                raise ValueError(f"Malformed edge at {path}:{line_number}")
+            u, v = int(fields[0]), int(fields[1])
+            if not (0 <= u < vertex_count and 0 <= v < vertex_count):
+                raise ValueError(
+                    f"Out-of-range endpoint at {path}:{line_number}: {u} {v}"
+                )
+            yield u, v
 
 
-def bfs_expand_to_ratio(adj, start_node, target_edges):
-    """BFS扩展直到达到目标边数"""
-    visited = set([start_node])
-    queue = deque([start_node])
-    subgraph_vertices = set([start_node])
-    subgraph_edges = set()
+@dataclass(frozen=True)
+class VectorSource:
+    vertex_count: int
+    dimension: int
+    chunks: tuple[Path, ...]
+    chunk_starts: tuple[int, ...]
+    chunk_counts: tuple[int, ...]
 
-    # 添加起点邻居的边
-    for v in adj.get(start_node, set()):
-        if v in subgraph_vertices:
-            edge = (min(start_node, v), max(start_node, v))
-            subgraph_edges.add(edge)
+    @classmethod
+    def open(cls, path: Path) -> "VectorSource":
+        if path.suffix.lower() != ".index":
+            with path.open("rb") as stream:
+                vertex_count, dimension = HEADER.unpack(stream.read(HEADER.size))
+            expected = HEADER.size + vertex_count * dimension * 8
+            if path.stat().st_size != expected:
+                raise ValueError(
+                    f"Binary vector size mismatch: expected {expected}, "
+                    f"found {path.stat().st_size}"
+                )
+            return cls(vertex_count, dimension, (path,), (0,), (vertex_count,))
 
-    while queue and len(subgraph_edges) < target_edges:
-        u = queue.popleft()
-        for v in adj.get(u, set()):
-            if v not in subgraph_vertices:
-                subgraph_vertices.add(v)
-                visited.add(v)
-                queue.append(v)
-            # 添加 u 与所有已在子图中的邻居的边
-            for w in adj.get(u, set()):
-                if w in subgraph_vertices:
-                    edge = (min(u, w), max(u, w))
-                    if edge not in subgraph_edges:
-                        subgraph_edges.add(edge)
-                        if len(subgraph_edges) >= target_edges:
-                            break
-            if len(subgraph_edges) >= target_edges:
-                break
+        tokens = path.read_text(encoding="utf-8").split()
+        if len(tokens) < 3:
+            raise ValueError(f"Invalid vector index: {path}")
+        vertex_count, dimension = int(tokens[0]), int(tokens[1])
+        chunks: list[Path] = []
+        starts: list[int] = []
+        counts: list[int] = []
+        loaded = 0
+        for listed in tokens[2:]:
+            chunk = resolve_listed_path(path, listed)
+            with chunk.open("rb") as stream:
+                count, chunk_dimension = HEADER.unpack(stream.read(HEADER.size))
+            if chunk_dimension != dimension:
+                raise ValueError(f"Dimension mismatch in vector chunk {chunk}")
+            expected = HEADER.size + count * dimension * 8
+            if chunk.stat().st_size != expected:
+                raise ValueError(f"Truncated or oversized vector chunk: {chunk}")
+            chunks.append(chunk)
+            starts.append(loaded)
+            counts.append(count)
+            loaded += count
+        if loaded != vertex_count:
+            raise ValueError(
+                f"Vector index declares {vertex_count} rows but chunks contain {loaded}"
+            )
+        return cls(
+            vertex_count,
+            dimension,
+            tuple(chunks),
+            tuple(starts),
+            tuple(counts),
+        )
 
-    return subgraph_vertices, subgraph_edges
-
-
-def save_subgraph(vertices, edges, output_edge_file):
-    """保存子图，顶点重新编号为0开始的连续整数"""
-    vertex_list = sorted(vertices)
-    vertex_map = {v: i for i, v in enumerate(vertex_list)}
-    with open(output_edge_file, 'w') as f:
-        f.write(f"{len(vertices)} {len(edges)}\n")
-        for u, v in sorted(edges):
-            f.write(f"{vertex_map[u]} {vertex_map[v]}\n")
-    return vertex_map, vertex_list
-
-
-def save_vectors_index(original_index_file, vertex_list, output_index_file, output_dir):
-    """为子图生成向量 index 文件（引用原始 chunk 文件）"""
-    # 对于 chunk 格式的向量，子图顶点需要重新映射
-    # 简化处理：直接复制原始 index 文件，因为 chunk 文件包含所有顶点
-    # 实际运行时，算法会读取 index 中指定的 chunk 文件
-    # 由于顶点已重新编号为 0..n-1，需要提取对应 chunk 中的向量
-    # 这里我们生成一个新的 index 文件，指向提取后的 chunk
-
-    # 读取原始 index
-    base_dir = os.path.dirname(original_index_file)
-    with open(original_index_file, 'r') as f:
-        lines = f.readlines()
-
-    total_vertices, vector_dim = map(int, lines[0].strip().split())
-
-    # 收集所有 chunk 文件路径
-    chunk_files = []
-    for line in lines[1:]:
-        cf = line.strip()
-        if cf:
-            if not os.path.isabs(cf):
-                cf = os.path.join(base_dir, cf)
-            chunk_files.append(cf)
-
-    # 简化：假设所有顶点都在一个 chunk 中（或按顺序分布）
-    # 对于子图，我们只保留需要的顶点，生成新的 chunk
-    # 由于 chunk 文件格式为 [int n][int dim][n*dim doubles]
-    # 我们需要读取所有 chunk，提取需要的顶点
-
-    # 读取所有向量
-    all_vectors = []
-    for cf in chunk_files:
-        with open(cf, 'rb') as f:
-            chunk_v, chunk_d = struct.unpack('ii', f.read(8))
-            assert chunk_d == vector_dim
-            for _ in range(chunk_v):
-                vec_data = f.read(vector_dim * 8)
-                vec = struct.unpack(f'{vector_dim}d', vec_data)
-                all_vectors.append(vec)
-
-    # 提取子图需要的向量（按原始顶点顺序）
-    sub_vectors = []
-    for v in vertex_list:
-        if v < len(all_vectors):
-            sub_vectors.append(all_vectors[v])
-
-    # 保存为新的 chunk 文件
-    os.makedirs(output_dir, exist_ok=True)
-    chunk_name = os.path.join(output_dir, 'vectors.chunk.0.bin')
-    with open(chunk_name, 'wb') as f:
-        f.write(struct.pack('ii', len(sub_vectors), vector_dim))
-        for vec in sub_vectors:
-            f.write(struct.pack(f'{vector_dim}d', *vec))
-
-    # 保存新的 index 文件
-    with open(output_index_file, 'w') as f:
-        f.write(f"{len(sub_vectors)} {vector_dim}\n")
-        f.write(f"{chunk_name}\n")
+    def copy_rows(self, old_ids: list[int], output: BinaryIO) -> None:
+        handles = [chunk.open("rb") for chunk in self.chunks]
+        row_bytes = self.dimension * 8
+        try:
+            for old_id in old_ids:
+                chunk_index = bisect.bisect_right(self.chunk_starts, old_id) - 1
+                if chunk_index < 0:
+                    raise ValueError(f"No vector chunk covers vertex {old_id}")
+                local_id = old_id - self.chunk_starts[chunk_index]
+                if local_id >= self.chunk_counts[chunk_index]:
+                    raise ValueError(f"No vector row for vertex {old_id}")
+                stream = handles[chunk_index]
+                stream.seek(HEADER.size + local_id * row_bytes)
+                row = stream.read(row_bytes)
+                if len(row) != row_bytes:
+                    raise ValueError(f"Short vector row for vertex {old_id}")
+                output.write(row)
+        finally:
+            for stream in handles:
+                stream.close()
 
 
-def process_dataset(dataset_id, config):
-    """处理单个数据集，生成多个比例的子图"""
-    print(f"\n{'='*60}")
-    print(f"Processing dataset {dataset_id}: {config['name']}")
-    print(f"{'='*60}")
-
-    edge_file = config['edge_file']
-    vector_file = config['vector_file']
-    output_dir = config['output_dir']
-
-    if not os.path.exists(edge_file):
-        print(f"  SKIP: edge file not found: {edge_file}")
-        return
-
-    adj, total_edges = read_graph(edge_file)
-
-    # 选择度数最高的顶点作为 BFS 起点，确保子图连通且有意义
-    start_node = max(adj.keys(), key=lambda x: len(adj[x]))
-    print(f"  Start node: {start_node} (degree {len(adj[start_node])})")
-
-    os.makedirs(output_dir, exist_ok=True)
-
-    for ratio in RATIOS:
-        target_edges = int(total_edges * ratio)
-        level_name = f"L{int(ratio*100)}"
-
-        print(f"\n  Generating {level_name}: target {target_edges:,} edges ({ratio*100:.0f}%)")
-
-        vertices, edges = bfs_expand_to_ratio(adj, start_node, target_edges)
-        print(f"    Result: {len(vertices):,} vertices, {len(edges):,} edges")
-
-        # 保存子图 edge list
-        edge_output = os.path.join(output_dir, f"{config['name']}_{level_name}.txt")
-        vertex_map, vertex_list = save_subgraph(vertices, edges, edge_output)
-        print(f"    Saved: {edge_output}")
-
-        # 保存向量
-        if os.path.exists(vector_file):
-            index_output = os.path.join(output_dir, f"{config['name']}_{level_name}_vectors.index")
-            save_vectors_index(vector_file, vertex_list, index_output, output_dir)
-            print(f"    Saved: {index_output}")
+def choose_vertices(graph_path: Path, vertex_count: int, maximum: int) -> list[int]:
+    degrees = [0] * vertex_count
+    for u, v in iter_edges(graph_path, vertex_count):
+        if u == v:
+            continue
+        degrees[u] += 1
+        degrees[v] += 1
+    ranked = sorted(range(vertex_count), key=lambda vertex: (-degrees[vertex], vertex))
+    return ranked[:maximum]
 
 
-def main():
-    random.seed(42)
-    os.chdir('E:/projects/semanticCliqueMining-writing')
+def write_graph_levels(
+    graph_path: Path,
+    vertex_count: int,
+    selected: list[int],
+    sizes: list[int],
+    output_dir: Path,
+) -> tuple[list[Path], list[int], int]:
+    old_to_new = {old_id: new_id for new_id, old_id in enumerate(selected)}
+    paths = [output_dir / f"level-{size}.graph.txt" for size in sizes]
+    streams: list[TextIO] = []
+    counts = [0] * len(sizes)
+    duplicate_count = 0
+    seen: set[int] = set()
+    maximum = sizes[-1]
+    try:
+        for size, path in zip(sizes, paths):
+            stream = path.open("w+", encoding="ascii", newline="\n")
+            stream.write(f"{size:20d} {0:20d}\n")
+            streams.append(stream)
+        for old_u, old_v in iter_edges(graph_path, vertex_count):
+            if old_u == old_v:
+                continue
+            new_u = old_to_new.get(old_u)
+            new_v = old_to_new.get(old_v)
+            if new_u is None or new_v is None:
+                continue
+            if new_u > new_v:
+                new_u, new_v = new_v, new_u
+            edge_key = new_u * maximum + new_v
+            if edge_key in seen:
+                duplicate_count += 1
+                continue
+            seen.add(edge_key)
+            first_level = bisect.bisect_left(sizes, max(new_u, new_v) + 1)
+            for level in range(first_level, len(sizes)):
+                streams[level].write(f"{new_u} {new_v}\n")
+                counts[level] += 1
+        for stream, size, count in zip(streams, sizes, counts):
+            stream.seek(0)
+            stream.write(f"{size:20d} {count:20d}\n")
+    finally:
+        for stream in streams:
+            stream.close()
+    return paths, counts, duplicate_count
 
-    for ds_id, config in DATASETS.items():
-        process_dataset(ds_id, config)
 
-    print(f"\n{'='*60}")
-    print("Done! Subgraphs generated in dataset/scale_datasets/")
-    print(f"{'='*60}")
+def write_vector_levels(
+    source: VectorSource,
+    selected: list[int],
+    sizes: list[int],
+    output_dir: Path,
+) -> list[Path]:
+    paths = [output_dir / f"level-{size}.vectors.bin" for size in sizes]
+    maximum_path = paths[-1]
+    with maximum_path.open("wb") as output:
+        output.write(HEADER.pack(sizes[-1], source.dimension))
+        source.copy_rows(selected, output)
+
+    row_bytes = source.dimension * 8
+    for size, path in zip(sizes[:-1], paths[:-1]):
+        with maximum_path.open("rb") as source_stream, path.open("wb") as output:
+            source_stream.seek(HEADER.size)
+            output.write(HEADER.pack(size, source.dimension))
+            remaining = size * row_bytes
+            while remaining:
+                block = source_stream.read(min(8 * 1024 * 1024, remaining))
+                if not block:
+                    raise ValueError("Unexpected end of maximum-level vector file")
+                output.write(block)
+                remaining -= len(block)
+    return paths
+
+
+def validate_level(graph_path: Path, vector_path: Path, size: int, edges: int) -> None:
+    graph_vertices, header_edges = read_graph_header(graph_path)
+    if (graph_vertices, header_edges) != (size, edges):
+        raise ValueError(f"Graph validation failed for {graph_path}")
+    observed_edges = sum(1 for _ in iter_edges(graph_path, size))
+    if observed_edges != edges:
+        raise ValueError(
+            f"Graph edge count mismatch in {graph_path}: {observed_edges} != {edges}"
+        )
+    with vector_path.open("rb") as stream:
+        vector_vertices, dimension = HEADER.unpack(stream.read(HEADER.size))
+    expected_bytes = HEADER.size + size * dimension * 8
+    if vector_vertices != size or vector_path.stat().st_size != expected_bytes:
+        raise ValueError(f"Vector validation failed for {vector_path}")
+
+
+def parse_args() -> argparse.Namespace:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--graph", type=Path, required=True)
+    parser.add_argument("--vectors", type=Path, required=True)
+    parser.add_argument("--output-dir", type=Path, required=True)
+    parser.add_argument("--sizes", type=int, nargs="+", required=True)
+    return parser.parse_args()
+
+
+def main() -> None:
+    args = parse_args()
+    graph_path = args.graph.resolve()
+    vector_path = args.vectors.resolve()
+    output_dir = args.output_dir.resolve()
+    require_project_output(output_dir)
+    sizes = sorted(set(args.sizes))
+    vertex_count, source_header_edges = read_graph_header(graph_path)
+    if not sizes or sizes[0] < 2 or sizes[-1] > vertex_count:
+        raise ValueError(f"Sizes must be between 2 and {vertex_count}")
+
+    vectors = VectorSource.open(vector_path)
+    if vectors.vertex_count != vertex_count:
+        raise ValueError(
+            f"Graph/vector vertex mismatch: {vertex_count} != {vectors.vertex_count}"
+        )
+    output_dir.mkdir(parents=True, exist_ok=True)
+    selected = choose_vertices(graph_path, vertex_count, sizes[-1])
+    graph_paths, edge_counts, duplicates = write_graph_levels(
+        graph_path, vertex_count, selected, sizes, output_dir
+    )
+    vector_paths = write_vector_levels(vectors, selected, sizes, output_dir)
+
+    levels = []
+    for size, graph_output, vector_output, edge_count in zip(
+        sizes, graph_paths, vector_paths, edge_counts
+    ):
+        validate_level(graph_output, vector_output, size, edge_count)
+        levels.append(
+            {
+                "vertices": size,
+                "edges": edge_count,
+                "graph": portable_path(graph_output),
+                "vectors": portable_path(vector_output),
+                "graph_sha256": sha256(graph_output),
+                "vectors_sha256": sha256(vector_output),
+            }
+        )
+
+    source_files = [graph_path, vector_path, *vectors.chunks]
+    unique_source_files = list(dict.fromkeys(source_files))
+    manifest = {
+        "schema_version": 1,
+        "construction": {
+            "type": "nested_full_induced_subgraphs",
+            "vertex_order": "source degree descending; original id ascending tie-break",
+            "random_seed": None,
+            "edge_rule": "all unique non-self source edges with both endpoints selected",
+            "vector_rule": "unaltered source vector row, reordered with vertex ids",
+        },
+        "source": {
+            "graph_vertices": vertex_count,
+            "graph_header_edges": source_header_edges,
+            "vector_dimension": vectors.dimension,
+            "files": [
+                {
+                    "path": portable_path(path),
+                    "bytes": path.stat().st_size,
+                    "sha256": sha256(path),
+                }
+                for path in unique_source_files
+            ],
+        },
+        "selected_original_ids": selected,
+        "discarded_duplicate_edges_within_largest_level": duplicates,
+        "levels": levels,
+    }
+    manifest_path = output_dir / "provenance.json"
+    manifest_path.write_text(
+        json.dumps(manifest, indent=2, ensure_ascii=True) + "\n", encoding="utf-8"
+    )
+    print(f"Generated {len(levels)} validated levels in {output_dir}")
+    print(f"Provenance: {manifest_path}")
 
 
 if __name__ == "__main__":

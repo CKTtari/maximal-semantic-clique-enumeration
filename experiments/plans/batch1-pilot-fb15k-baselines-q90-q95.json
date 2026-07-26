@@ -1,0 +1,9 @@
+{
+  "name": "batch1-pilot-fb15k-baselines-q90-q95",
+  "tasks": [
+    {"algorithm": 2, "mode": "raw", "dataset": 7, "tau": 0.300316, "threads": 32, "timeout_seconds": 180, "repetitions": 1},
+    {"algorithm": 4, "mode": "raw", "dataset": 7, "tau": 0.300316, "threads": 32, "timeout_seconds": 180, "repetitions": 1},
+    {"algorithm": 2, "mode": "raw", "dataset": 7, "tau": 0.359274, "threads": 32, "timeout_seconds": 180, "repetitions": 1},
+    {"algorithm": 4, "mode": "raw", "dataset": 7, "tau": 0.359274, "threads": 32, "timeout_seconds": 180, "repetitions": 1}
+  ]
+}

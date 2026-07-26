@@ -1,0 +1,8 @@
+{
+  "name": "batch15-alg4-generation-fb15k-q95-pilot",
+  "tasks": [
+    {"algorithm": 4, "mode": "raw", "dataset": 7, "tau": 0.359274, "threads": 32, "timeout_seconds": 180},
+    {"algorithm": 4, "mode": "raw", "dataset": 7, "tau": 0.359274, "threads": 32, "timeout_seconds": 180, "defines": {"ACMSC_ALG4_GENERATION": 1}},
+    {"algorithm": 4, "mode": "raw", "dataset": 7, "tau": 0.359274, "threads": 32, "timeout_seconds": 180, "defines": {"ACMSC_ALG4_GENERATION": 2}}
+  ]
+}

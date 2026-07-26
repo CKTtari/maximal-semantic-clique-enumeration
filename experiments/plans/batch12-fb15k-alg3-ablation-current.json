@@ -1,0 +1,9 @@
+{
+  "name": "batch12-fb15k-alg3-ablation-current",
+  "tasks": [
+    {"algorithm": 3, "mode": "raw", "dataset": 7, "tau": 0.234886, "threads": 32, "timeout_seconds": 1200, "repetitions": 3},
+    {"algorithm": 3, "mode": "raw", "dataset": 7, "tau": 0.234886, "threads": 32, "timeout_seconds": 1200, "repetitions": 3, "defines": {"ACMSC_STRSUB_TOP_EDGE": 0}},
+    {"algorithm": 3, "mode": "raw", "dataset": 7, "tau": 0.234886, "threads": 32, "timeout_seconds": 1200, "repetitions": 3, "defines": {"ACMSC_STRSUB_VERTEX_BOUND": 0}},
+    {"algorithm": 3, "mode": "raw", "dataset": 7, "tau": 0.234886, "threads": 32, "timeout_seconds": 1200, "repetitions": 3, "defines": {"ACMSC_STRSUB_LOCAL_MAX": 0}}
+  ]
+}

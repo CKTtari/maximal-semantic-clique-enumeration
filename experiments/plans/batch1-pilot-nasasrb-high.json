@@ -1,0 +1,36 @@
+{
+  "name": "batch1-pilot-nasasrb-high",
+  "tasks": [
+    {
+      "algorithm": 1,
+      "mode": "raw",
+      "dataset": 2,
+      "threads": 32,
+      "timeout_seconds": 180
+    },
+    {
+      "algorithm": 4,
+      "mode": "raw",
+      "dataset": 2,
+      "tau": 0.145065,
+      "threads": 32,
+      "timeout_seconds": 180
+    },
+    {
+      "algorithm": 3,
+      "mode": "raw",
+      "dataset": 2,
+      "tau": 0.145065,
+      "threads": 32,
+      "timeout_seconds": 180
+    },
+    {
+      "algorithm": 2,
+      "mode": "raw",
+      "dataset": 2,
+      "tau": 0.145065,
+      "threads": 32,
+      "timeout_seconds": 180
+    }
+  ]
+}

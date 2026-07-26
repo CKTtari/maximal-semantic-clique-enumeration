@@ -1,0 +1,120 @@
+{
+  "schema_version": 1,
+  "source_manifest": "experiments/archive/batch1-pilot-structural-uniform-ds4-alg3.manifest.json",
+  "source_run": "batch1-pilot-structural-uniform-ds4-alg3",
+  "source_plan_summary": {
+    "attempts": 5,
+    "planned_tasks": 5,
+    "attempted_tasks": 5,
+    "completed_tasks": 0,
+    "unattempted_tasks": 0,
+    "unattempted_task_ids": [],
+    "plan_complete": true,
+    "status_counts": {
+      "oom": 2,
+      "tle": 3
+    }
+  },
+  "groups": [
+    {
+      "configuration": {
+        "algorithm": 3,
+        "mode": "raw",
+        "dataset": 4,
+        "tau": -0.0527214,
+        "threads": 32,
+        "timeout_seconds": 180,
+        "graph": null,
+        "vectors": null,
+        "capture_cliques": false,
+        "defines": {},
+        "warmup": false
+      },
+      "status_counts": {
+        "oom": 1
+      },
+      "timing": null,
+      "result": null
+    },
+    {
+      "configuration": {
+        "algorithm": 3,
+        "mode": "raw",
+        "dataset": 4,
+        "tau": -0.102926,
+        "threads": 32,
+        "timeout_seconds": 180,
+        "graph": null,
+        "vectors": null,
+        "capture_cliques": false,
+        "defines": {},
+        "warmup": false
+      },
+      "status_counts": {
+        "oom": 1
+      },
+      "timing": null,
+      "result": null
+    },
+    {
+      "configuration": {
+        "algorithm": 3,
+        "mode": "raw",
+        "dataset": 4,
+        "tau": 0.0526738,
+        "threads": 32,
+        "timeout_seconds": 180,
+        "graph": null,
+        "vectors": null,
+        "capture_cliques": false,
+        "defines": {},
+        "warmup": false
+      },
+      "status_counts": {
+        "tle": 1
+      },
+      "timing": null,
+      "result": null
+    },
+    {
+      "configuration": {
+        "algorithm": 3,
+        "mode": "raw",
+        "dataset": 4,
+        "tau": 0.145204,
+        "threads": 32,
+        "timeout_seconds": 180,
+        "graph": null,
+        "vectors": null,
+        "capture_cliques": false,
+        "defines": {},
+        "warmup": false
+      },
+      "status_counts": {
+        "tle": 1
+      },
+      "timing": null,
+      "result": null
+    },
+    {
+      "configuration": {
+        "algorithm": 3,
+        "mode": "raw",
+        "dataset": 4,
+        "tau": 1.51023e-05,
+        "threads": 32,
+        "timeout_seconds": 180,
+        "graph": null,
+        "vectors": null,
+        "capture_cliques": false,
+        "defines": {},
+        "warmup": false
+      },
+      "status_counts": {
+        "tle": 1
+      },
+      "timing": null,
+      "result": null
+    }
+  ]
+}

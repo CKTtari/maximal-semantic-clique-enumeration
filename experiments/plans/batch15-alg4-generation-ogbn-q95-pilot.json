@@ -1,0 +1,8 @@
+{
+  "name": "batch15-alg4-generation-ogbn-q95-pilot",
+  "tasks": [
+    {"algorithm": 4, "mode": "raw", "dataset": 11, "tau": 0.924347, "threads": 32, "timeout_seconds": 180, "capture_cliques": true},
+    {"algorithm": 4, "mode": "raw", "dataset": 11, "tau": 0.924347, "threads": 32, "timeout_seconds": 180, "capture_cliques": true, "defines": {"ACMSC_ALG4_GENERATION": 1}},
+    {"algorithm": 4, "mode": "raw", "dataset": 11, "tau": 0.924347, "threads": 32, "timeout_seconds": 180, "capture_cliques": true, "defines": {"ACMSC_ALG4_GENERATION": 2}}
+  ]
+}

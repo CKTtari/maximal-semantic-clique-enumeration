@@ -1,0 +1,283 @@
+{
+  "schema_version": 2,
+  "run_name": "batch1-pilot-products-high",
+  "archived_utc": "2026-07-23T09:54:36.312158+00:00",
+  "local_result_directory": "experiment-output/batch1-pilot-products-high",
+  "plans": [
+    {
+      "path": "experiments/plans/batch1-pilot-products-high.json",
+      "sha256": "7cd600e2ad1e3100b25b9772f3c5bcd026bc187246df40825062f7ffb1e1625f"
+    }
+  ],
+  "summary": {
+    "attempts": 1,
+    "status_counts": {
+      "tle": 1
+    }
+  },
+  "records": [
+    {
+      "task_id": "98a9cd122adc9efb",
+      "attempt": 1,
+      "status": "tle",
+      "rerun_reason": null,
+      "started_utc": "2026-07-23T09:51:22.090201+00:00",
+      "wall_seconds": 180.8927917999972,
+      "task": {
+        "algorithm": 4,
+        "mode": "raw",
+        "dataset": 10,
+        "tau": 0.974898,
+        "threads": 32,
+        "timeout_seconds": 180,
+        "graph": null,
+        "vectors": null,
+        "capture_cliques": false,
+        "defines": {},
+        "warmup": false,
+        "repetition": 0,
+        "task_id": "98a9cd122adc9efb"
+      },
+      "parsed": null,
+      "validation": null,
+      "build": {
+        "fingerprint": "a5109816b58eb078",
+        "executable_sha256": "9f8deee1713c1d1020ebb49e2332b9e06605a87fae2506d31233faad1f5c3d12",
+        "command": [
+          "g++",
+          "-std=c++17",
+          "-fopenmp",
+          "-mavx2",
+          "-O3",
+          "src/alg4-raw.cpp",
+          "src/semantic_graph.cpp",
+          "-o",
+          "no-use/compiled/experiment-runner/alg4-raw-a5109816b58eb078.exe"
+        ],
+        "source_verification": {
+          "status": "verified_current",
+          "observed_current_fingerprint": "a5109816b58eb078",
+          "reason": null
+        },
+        "source_hashes": {
+          "alg4-raw.cpp": "2a4c3a22b326f5716e381c5dddafdbc21cc1696fc2d80f7e2f87668f3f3f98fe",
+          "semantic_graph.cpp": "c6d51c9086fbd5c7d264eb411ac04890806744fc4e05dc7eee0b156760a9cd92",
+          "semantic_graph.h": "8192c4e8e02fc8ace59d59365f72643e34ca32ba71faa5bb338381a8cd308078",
+          "experiment_runtime.h": "cc5fd4517f8ca2f43f7e7a4fa0f4c9a00ca8778966bc2ab2228d622a070e5354"
+        }
+      },
+      "inputs": {
+        "status": "verified_run_time",
+        "snapshot": {
+          "dataset_catalog": {
+            "path": "experiments/datasets.json",
+            "sha256": "be27e812615b59c62775fb3b129a5f422ad837c4d149311f220e0ad3bca1740b"
+          },
+          "files": [
+            {
+              "role": "graph",
+              "path": "dataset/dataset/products.txt",
+              "bytes": 965405586,
+              "sha256": "c7e395cfc94496d1ace9607447b4f271ddec09d89d85d8a9c4cf3aa96f9190f9"
+            },
+            {
+              "role": "vector_index",
+              "path": "dataset/vectors/products_vectors.index",
+              "bytes": 1178,
+              "sha256": "742e39bb21cf7dd9e44be2c8dad3b664e7f0b30f046276e3d162f9e2a8876ebf"
+            },
+            {
+              "role": "vector_chunk",
+              "path": "dataset/vectors/products_vectors.chunk.0.bin",
+              "bytes": 80000008,
+              "sha256": "b7d6eda97b6bf1d6c2a34f972b8d7aecf07ab78a3b91d54e97018a3b8a5efc92"
+            },
+            {
+              "role": "vector_chunk",
+              "path": "dataset/vectors/products_vectors.chunk.1.bin",
+              "bytes": 80000008,
+              "sha256": "1a7d7231c0f831a7947b1f1afcae06ce409c073106cdc04ff03419387477d0aa"
+            },
+            {
+              "role": "vector_chunk",
+              "path": "dataset/vectors/products_vectors.chunk.2.bin",
+              "bytes": 80000008,
+              "sha256": "027c3244110bd28a7c45bd6e422301e5d52cd2a90f8e0e160bf72bf5d98b7b5c"
+            },
+            {
+              "role": "vector_chunk",
+              "path": "dataset/vectors/products_vectors.chunk.3.bin",
+              "bytes": 80000008,
+              "sha256": "495c40719e19194f4f0b2cdf81c3eb10a6948a170d6c3bc0221c43678a064294"
+            },
+            {
+              "role": "vector_chunk",
+              "path": "dataset/vectors/products_vectors.chunk.4.bin",
+              "bytes": 80000008,
+              "sha256": "1b9e74f4d4b92506e7c165fc49df60f0507ced3a3b73ceb5c4bb8d9c08e4d4d8"
+            },
+            {
+              "role": "vector_chunk",
+              "path": "dataset/vectors/products_vectors.chunk.5.bin",
+              "bytes": 80000008,
+              "sha256": "f4cd6448dec5f4cf8b1a24e6f519576bd34c3d32721c36b888a04170d51700b0"
+            },
+            {
+              "role": "vector_chunk",
+              "path": "dataset/vectors/products_vectors.chunk.6.bin",
+              "bytes": 80000008,
+              "sha256": "bffa058410d4ff38932f2e2097ddf99e8658c5b619af5d46bcdb3f9562003995"
+            },
+            {
+              "role": "vector_chunk",
+              "path": "dataset/vectors/products_vectors.chunk.7.bin",
+              "bytes": 80000008,
+              "sha256": "4172c67d6d98ccb6119dc7cd9c9dda0e34bd5c7924dd1bb67bae4ea2cfe3a177"
+            },
+            {
+              "role": "vector_chunk",
+              "path": "dataset/vectors/products_vectors.chunk.8.bin",
+              "bytes": 80000008,
+              "sha256": "5a4ec203adcdcc5e263b3ea680489fbb851e036500bdc43d3e66101b8a8e142f"
+            },
+            {
+              "role": "vector_chunk",
+              "path": "dataset/vectors/products_vectors.chunk.9.bin",
+              "bytes": 80000008,
+              "sha256": "4c71e446b2d818762370f086113f6f813fdd62f135e36193ceab56d8608e17e9"
+            },
+            {
+              "role": "vector_chunk",
+              "path": "dataset/vectors/products_vectors.chunk.10.bin",
+              "bytes": 80000008,
+              "sha256": "a3723932c4e65678a6253f92e5af240c63e06d5ec99b3e06ffa309026eff7de3"
+            },
+            {
+              "role": "vector_chunk",
+              "path": "dataset/vectors/products_vectors.chunk.11.bin",
+              "bytes": 80000008,
+              "sha256": "08d37baf819f12e02132f4c5257dd03b421420eeffbf2ea6ade0b5b9855708e2"
+            },
+            {
+              "role": "vector_chunk",
+              "path": "dataset/vectors/products_vectors.chunk.12.bin",
+              "bytes": 80000008,
+              "sha256": "628a32c63c8ac5b98dc8870c33fec578bf9d3ab7534d72cdae9c3313e9e39d86"
+            },
+            {
+              "role": "vector_chunk",
+              "path": "dataset/vectors/products_vectors.chunk.13.bin",
+              "bytes": 80000008,
+              "sha256": "1fdde4c9e713941a50d246a204623ea750d116992550c112cc751cd710a4a0dd"
+            },
+            {
+              "role": "vector_chunk",
+              "path": "dataset/vectors/products_vectors.chunk.14.bin",
+              "bytes": 80000008,
+              "sha256": "3e056eaa498940cc2bd424dff0a1dc5629e03a7dfeca0ff81572bfbad624f957"
+            },
+            {
+              "role": "vector_chunk",
+              "path": "dataset/vectors/products_vectors.chunk.15.bin",
+              "bytes": 80000008,
+              "sha256": "ae31167eb894356935c2a118d496d2aaf46a85e5f327af687f27ca0e0fe31860"
+            },
+            {
+              "role": "vector_chunk",
+              "path": "dataset/vectors/products_vectors.chunk.16.bin",
+              "bytes": 80000008,
+              "sha256": "48136262902b82e106e757db3cb6ba3864592828a447f6321921db0586c37372"
+            },
+            {
+              "role": "vector_chunk",
+              "path": "dataset/vectors/products_vectors.chunk.17.bin",
+              "bytes": 80000008,
+              "sha256": "ffc671359a21942f2f3b81ec9ae4c1551d03c8e8b15d1058daa0feffb8d6634e"
+            },
+            {
+              "role": "vector_chunk",
+              "path": "dataset/vectors/products_vectors.chunk.18.bin",
+              "bytes": 80000008,
+              "sha256": "738f678ba275efc62819adec6a9cfc907aabfef69780dce73927df8be53216a5"
+            },
+            {
+              "role": "vector_chunk",
+              "path": "dataset/vectors/products_vectors.chunk.19.bin",
+              "bytes": 80000008,
+              "sha256": "eb1eb507d0ff5e8c691b2973c7b53fa9f36fbb9d0b9be382441e312f85e5a078"
+            },
+            {
+              "role": "vector_chunk",
+              "path": "dataset/vectors/products_vectors.chunk.20.bin",
+              "bytes": 80000008,
+              "sha256": "0e7f649b506576128aeeb8764c644a70eabdca847b314b1413d1bdb3feac6960"
+            },
+            {
+              "role": "vector_chunk",
+              "path": "dataset/vectors/products_vectors.chunk.21.bin",
+              "bytes": 80000008,
+              "sha256": "7635db7b4d1743bd99f970ef877973ca836dae0a6a81476b943cd65605af5a60"
+            },
+            {
+              "role": "vector_chunk",
+              "path": "dataset/vectors/products_vectors.chunk.22.bin",
+              "bytes": 80000008,
+              "sha256": "70848189cd24c2cf5d702ac751070f44f7554d86a996ca5dd5f4da1ae2d18891"
+            },
+            {
+              "role": "vector_chunk",
+              "path": "dataset/vectors/products_vectors.chunk.23.bin",
+              "bytes": 80000008,
+              "sha256": "ca2cbef4d98f62da032d64e1fd36a21bd4407fa71583ec8bd33b1a9fc76a24c6"
+            },
+            {
+              "role": "vector_chunk",
+              "path": "dataset/vectors/products_vectors.chunk.24.bin",
+              "bytes": 39223208,
+              "sha256": "7746e9b43b6ba76f4e774dc9031e098b065ff2dbf95b400ff5c47d596adf7aaf"
+            }
+          ]
+        }
+      },
+      "run_environment": {
+        "plan": "experiments/plans/batch1-pilot-products-high.json",
+        "plan_sha256": "7cd600e2ad1e3100b25b9772f3c5bcd026bc187246df40825062f7ffb1e1625f",
+        "git": {
+          "commit": "59299fd9164d077d7e04cd97fc9ac89cbf962c9f",
+          "dirty": true
+        },
+        "machine": {
+          "platform": "Windows-11-10.0.26100-SP0",
+          "processor": "AMD64 Family 25 Model 97 Stepping 2, AuthenticAMD",
+          "logical_cpu_count": 32,
+          "python": "3.12.7",
+          "compiler": "g++ (x86_64-posix-seh-rev0, Built by MinGW-Builds project) 13.2.0"
+        },
+        "memory_limit_gib": 16,
+        "external_timeout_policy": "hard per-process TLE from task.timeout_seconds"
+      },
+      "result_json": {
+        "path": "experiment-output/batch1-pilot-products-high/98a9cd122adc9efb.attempt-001.json",
+        "bytes": 9622,
+        "sha256": "b563e02e7e1b2e5a193bb4dbf2d581337899a24672d0973f789f658c3a987746"
+      },
+      "artifacts": {
+        "program_log": {
+          "path": "experiment-output/batch1-pilot-products-high/98a9cd122adc9efb.attempt-001.program.log",
+          "bytes": 639,
+          "sha256": "a179125488c9d8056c57e5e26416980dff6fa9e8ba6d95950747cff296c91aec"
+        },
+        "stdout": {
+          "path": "experiment-output/batch1-pilot-products-high/98a9cd122adc9efb.attempt-001.stdout.txt",
+          "bytes": 2572,
+          "sha256": "6019b56132bbd1cb5a38ba5f53ef9d3a034c2b5c21f9314036c193b956fd466d"
+        },
+        "stderr": {
+          "path": "experiment-output/batch1-pilot-products-high/98a9cd122adc9efb.attempt-001.stderr.txt",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    }
+  ]
+}

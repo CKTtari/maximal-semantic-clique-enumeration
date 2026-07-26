@@ -1,0 +1,8 @@
+{
+  "name": "batch2-ogbn-q97-main",
+  "tasks": [
+    {"algorithm": 2, "mode": "raw", "dataset": 11, "tau": 0.933471, "threads": 32, "timeout_seconds": 3600, "repetitions": 3},
+    {"algorithm": 3, "mode": "raw", "dataset": 11, "tau": 0.933471, "threads": 32, "timeout_seconds": 3600, "repetitions": 3},
+    {"algorithm": 4, "mode": "raw", "dataset": 11, "tau": 0.933471, "threads": 32, "timeout_seconds": 3600, "repetitions": 3}
+  ]
+}

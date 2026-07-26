@@ -1,0 +1,6 @@
+{
+  "name": "batch1-pilot-fb15k-alg2-q80-current",
+  "tasks": [
+    {"algorithm": 2, "mode": "raw", "dataset": 7, "tau": 0.234886, "threads": 32, "timeout_seconds": 180, "repetitions": 1}
+  ]
+}

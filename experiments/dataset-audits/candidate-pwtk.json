@@ -1,0 +1,21 @@
+{
+  "schema_version": 1,
+  "graphs": [
+    {
+      "path": "dataset/dataset/sc-pwtk.txt",
+      "vertices": 217891,
+      "header_edges": 5653221,
+      "input_rows": 5653221,
+      "self_loops": 0,
+      "duplicate_edges": 0,
+      "edges": 5653221,
+      "average_degree": 51.89035802,
+      "max_degree": 179,
+      "degeneracy": 35,
+      "max_forward_degree": 35,
+      "wedges": 290892728,
+      "triangles": 55981589,
+      "transitivity": 0.5773426106
+    }
+  ]
+}

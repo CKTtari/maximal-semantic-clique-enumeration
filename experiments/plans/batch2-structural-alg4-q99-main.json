@@ -1,0 +1,10 @@
+{
+  "name": "batch2-structural-alg4-q99-main",
+  "tasks": [
+    {"algorithm": 4, "mode": "raw", "dataset": 2, "tau": 0.145065, "threads": 32, "timeout_seconds": 3600, "repetitions": 3},
+    {"algorithm": 4, "mode": "raw", "dataset": 3, "tau": 0.145317, "threads": 32, "timeout_seconds": 3600, "repetitions": 3},
+    {"algorithm": 4, "mode": "raw", "dataset": 4, "tau": 0.14518, "threads": 32, "timeout_seconds": 3600, "repetitions": 3},
+    {"algorithm": 4, "mode": "raw", "dataset": 5, "tau": 0.145193, "threads": 32, "timeout_seconds": 3600, "repetitions": 3},
+    {"algorithm": 4, "mode": "raw", "dataset": 6, "tau": 0.145157, "threads": 32, "timeout_seconds": 3600, "repetitions": 3}
+  ]
+}

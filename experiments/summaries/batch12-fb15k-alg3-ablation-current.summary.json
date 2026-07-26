@@ -1,0 +1,261 @@
+{
+  "schema_version": 1,
+  "source_manifest": "experiments/archive/batch12-fb15k-alg3-ablation-current.manifest.json",
+  "source_run": "batch12-fb15k-alg3-ablation-current",
+  "source_plan_summary": {
+    "attempts": 12,
+    "planned_tasks": 12,
+    "attempted_tasks": 12,
+    "completed_tasks": 12,
+    "unattempted_tasks": 0,
+    "unattempted_task_ids": [],
+    "plan_complete": true,
+    "status_counts": {
+      "completed": 12
+    }
+  },
+  "groups": [
+    {
+      "configuration": {
+        "algorithm": 3,
+        "mode": "raw",
+        "dataset": 7,
+        "tau": 0.234886,
+        "threads": 32,
+        "timeout_seconds": 1200,
+        "graph": null,
+        "vectors": null,
+        "capture_cliques": false,
+        "defines": {
+          "ACMSC_STRSUB_LOCAL_MAX": 0
+        },
+        "warmup": false
+      },
+      "status_counts": {
+        "completed": 3
+      },
+      "timing": {
+        "completed_repetitions": 3,
+        "algorithm_ms_median": 11685,
+        "algorithm_ms_min": 11116,
+        "algorithm_ms_max": 12421,
+        "wall_seconds_median": 13.319406800001161,
+        "peak_memory_gib_median": 2.26,
+        "peak_memory_gib_max": 2.27
+      },
+      "result": {
+        "clique_count": 76106,
+        "size_histogram": {
+          "10": 1277,
+          "11": 1529,
+          "12": 1400,
+          "13": 1143,
+          "14": 1077,
+          "15": 972,
+          "16": 699,
+          "17": 475,
+          "18": 464,
+          "19": 350,
+          "2": 18212,
+          "20": 328,
+          "21": 332,
+          "22": 362,
+          "23": 475,
+          "24": 694,
+          "25": 388,
+          "26": 120,
+          "27": 21,
+          "28": 4,
+          "3": 19234,
+          "4": 9733,
+          "5": 5293,
+          "6": 4020,
+          "7": 2998,
+          "8": 2499,
+          "9": 2007
+        }
+      }
+    },
+    {
+      "configuration": {
+        "algorithm": 3,
+        "mode": "raw",
+        "dataset": 7,
+        "tau": 0.234886,
+        "threads": 32,
+        "timeout_seconds": 1200,
+        "graph": null,
+        "vectors": null,
+        "capture_cliques": false,
+        "defines": {
+          "ACMSC_STRSUB_TOP_EDGE": 0
+        },
+        "warmup": false
+      },
+      "status_counts": {
+        "completed": 3
+      },
+      "timing": {
+        "completed_repetitions": 3,
+        "algorithm_ms_median": 7462,
+        "algorithm_ms_min": 7403,
+        "algorithm_ms_max": 7482,
+        "wall_seconds_median": 7.7056333999935305,
+        "peak_memory_gib_median": 0.12,
+        "peak_memory_gib_max": 0.12
+      },
+      "result": {
+        "clique_count": 76106,
+        "size_histogram": {
+          "10": 1277,
+          "11": 1529,
+          "12": 1400,
+          "13": 1143,
+          "14": 1077,
+          "15": 972,
+          "16": 699,
+          "17": 475,
+          "18": 464,
+          "19": 350,
+          "2": 18212,
+          "20": 328,
+          "21": 332,
+          "22": 362,
+          "23": 475,
+          "24": 694,
+          "25": 388,
+          "26": 120,
+          "27": 21,
+          "28": 4,
+          "3": 19234,
+          "4": 9733,
+          "5": 5293,
+          "6": 4020,
+          "7": 2998,
+          "8": 2499,
+          "9": 2007
+        }
+      }
+    },
+    {
+      "configuration": {
+        "algorithm": 3,
+        "mode": "raw",
+        "dataset": 7,
+        "tau": 0.234886,
+        "threads": 32,
+        "timeout_seconds": 1200,
+        "graph": null,
+        "vectors": null,
+        "capture_cliques": false,
+        "defines": {
+          "ACMSC_STRSUB_VERTEX_BOUND": 0
+        },
+        "warmup": false
+      },
+      "status_counts": {
+        "completed": 3
+      },
+      "timing": {
+        "completed_repetitions": 3,
+        "algorithm_ms_median": 5898,
+        "algorithm_ms_min": 5881,
+        "algorithm_ms_max": 6996,
+        "wall_seconds_median": 6.206331100001989,
+        "peak_memory_gib_median": 0.12,
+        "peak_memory_gib_max": 0.12
+      },
+      "result": {
+        "clique_count": 76106,
+        "size_histogram": {
+          "10": 1277,
+          "11": 1529,
+          "12": 1400,
+          "13": 1143,
+          "14": 1077,
+          "15": 972,
+          "16": 699,
+          "17": 475,
+          "18": 464,
+          "19": 350,
+          "2": 18212,
+          "20": 328,
+          "21": 332,
+          "22": 362,
+          "23": 475,
+          "24": 694,
+          "25": 388,
+          "26": 120,
+          "27": 21,
+          "28": 4,
+          "3": 19234,
+          "4": 9733,
+          "5": 5293,
+          "6": 4020,
+          "7": 2998,
+          "8": 2499,
+          "9": 2007
+        }
+      }
+    },
+    {
+      "configuration": {
+        "algorithm": 3,
+        "mode": "raw",
+        "dataset": 7,
+        "tau": 0.234886,
+        "threads": 32,
+        "timeout_seconds": 1200,
+        "graph": null,
+        "vectors": null,
+        "capture_cliques": false,
+        "defines": {},
+        "warmup": false
+      },
+      "status_counts": {
+        "completed": 3
+      },
+      "timing": {
+        "completed_repetitions": 3,
+        "algorithm_ms_median": 8060,
+        "algorithm_ms_min": 7799,
+        "algorithm_ms_max": 9530,
+        "wall_seconds_median": 8.33553949999623,
+        "peak_memory_gib_median": 0.12,
+        "peak_memory_gib_max": 0.12
+      },
+      "result": {
+        "clique_count": 76106,
+        "size_histogram": {
+          "10": 1277,
+          "11": 1529,
+          "12": 1400,
+          "13": 1143,
+          "14": 1077,
+          "15": 972,
+          "16": 699,
+          "17": 475,
+          "18": 464,
+          "19": 350,
+          "2": 18212,
+          "20": 328,
+          "21": 332,
+          "22": 362,
+          "23": 475,
+          "24": 694,
+          "25": 388,
+          "26": 120,
+          "27": 21,
+          "28": 4,
+          "3": 19234,
+          "4": 9733,
+          "5": 5293,
+          "6": 4020,
+          "7": 2998,
+          "8": 2499,
+          "9": 2007
+        }
+      }
+    }
+  ]
+}

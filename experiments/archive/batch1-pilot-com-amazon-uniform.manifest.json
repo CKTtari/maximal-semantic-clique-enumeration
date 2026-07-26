@@ -1,0 +1,1901 @@
+{
+  "schema_version": 2,
+  "run_name": "batch1-pilot-com-amazon-uniform",
+  "archived_utc": "2026-07-23T18:24:54.601581+00:00",
+  "local_result_directory": "experiment-output/batch1-pilot-com-amazon-uniform",
+  "plans": [
+    {
+      "path": "experiments/plans/batch1-pilot-com-amazon-uniform.json",
+      "sha256": "63dad978243dac4e40e3fc79f9ea6d92857a9c3466a029ec84b4a3278596c6c4"
+    }
+  ],
+  "summary": {
+    "attempts": 15,
+    "planned_tasks": 15,
+    "attempted_tasks": 15,
+    "completed_tasks": 15,
+    "unattempted_tasks": 0,
+    "unattempted_task_ids": [],
+    "plan_complete": true,
+    "status_counts": {
+      "completed": 15
+    }
+  },
+  "records": [
+    {
+      "task_id": "0bf2ecd90f7ee1cb",
+      "attempt": 1,
+      "status": "completed",
+      "rerun_reason": null,
+      "started_utc": "2026-07-23T18:18:09.868511+00:00",
+      "wall_seconds": 2.2329997999913758,
+      "task": {
+        "algorithm": 4,
+        "mode": "raw",
+        "dataset": 2,
+        "tau": 0.145251,
+        "threads": 32,
+        "timeout_seconds": 180,
+        "graph": "dataset/dataset/com-amazon.txt",
+        "vectors": "dataset/vectors-256/com-amazon_vectors.bin",
+        "capture_cliques": false,
+        "defines": {},
+        "warmup": false,
+        "repetition": 0,
+        "task_id": "0bf2ecd90f7ee1cb"
+      },
+      "parsed": {
+        "algorithm_ms": 235,
+        "clique_count": 9239,
+        "peak_memory_gib": 1.12,
+        "size_histogram": {
+          "2": 9207,
+          "3": 32
+        },
+        "stats": {}
+      },
+      "validation": null,
+      "build": {
+        "fingerprint": "a5109816b58eb078",
+        "executable_sha256": "9f8deee1713c1d1020ebb49e2332b9e06605a87fae2506d31233faad1f5c3d12",
+        "command": [
+          "g++",
+          "-std=c++17",
+          "-fopenmp",
+          "-mavx2",
+          "-O3",
+          "src/alg4-raw.cpp",
+          "src/semantic_graph.cpp",
+          "-o",
+          "no-use/compiled/experiment-runner/alg4-raw-a5109816b58eb078.exe"
+        ],
+        "source_verification": {
+          "status": "verified_current",
+          "observed_current_fingerprint": "a5109816b58eb078",
+          "reason": null
+        },
+        "source_hashes": {
+          "alg4-raw.cpp": "2a4c3a22b326f5716e381c5dddafdbc21cc1696fc2d80f7e2f87668f3f3f98fe",
+          "semantic_graph.cpp": "c6d51c9086fbd5c7d264eb411ac04890806744fc4e05dc7eee0b156760a9cd92",
+          "semantic_graph.h": "8192c4e8e02fc8ace59d59365f72643e34ca32ba71faa5bb338381a8cd308078",
+          "experiment_runtime.h": "cc5fd4517f8ca2f43f7e7a4fa0f4c9a00ca8778966bc2ab2228d622a070e5354"
+        }
+      },
+      "inputs": {
+        "status": "verified_run_time",
+        "snapshot": {
+          "dataset_catalog": {
+            "path": "experiments/datasets.json",
+            "sha256": "be27e812615b59c62775fb3b129a5f422ad837c4d149311f220e0ad3bca1740b"
+          },
+          "files": [
+            {
+              "role": "graph",
+              "path": "dataset/dataset/com-amazon.txt",
+              "bytes": 12345017,
+              "sha256": "04b920ddba40ccdf87d48092a33c7039591d9c59fea0be78e529d73d3e75ac1d"
+            },
+            {
+              "role": "vector_binary",
+              "path": "dataset/vectors-256/com-amazon_vectors.bin",
+              "bytes": 685799432,
+              "sha256": "aaaa047467eb7e592bb9b0d28c5e971dcc08abd6660ab0ef7b3726f4239f250f"
+            }
+          ]
+        }
+      },
+      "run_environment": {
+        "plan": "experiments/plans/batch1-pilot-com-amazon-uniform.json",
+        "plan_sha256": "63dad978243dac4e40e3fc79f9ea6d92857a9c3466a029ec84b4a3278596c6c4",
+        "git": {
+          "commit": "59299fd9164d077d7e04cd97fc9ac89cbf962c9f",
+          "dirty": true
+        },
+        "machine": {
+          "platform": "Windows-11-10.0.26100-SP0",
+          "processor": "AMD64 Family 25 Model 97 Stepping 2, AuthenticAMD",
+          "logical_cpu_count": 32,
+          "python": "3.12.7",
+          "compiler": "g++ (x86_64-posix-seh-rev0, Built by MinGW-Builds project) 13.2.0"
+        },
+        "memory_limit_gib": 16,
+        "external_timeout_policy": "hard per-process TLE from task.timeout_seconds"
+      },
+      "result_json": {
+        "path": "experiment-output/batch1-pilot-com-amazon-uniform/0bf2ecd90f7ee1cb.attempt-001.json",
+        "bytes": 4112,
+        "sha256": "330ceafe964762abdba70f94698743a6e514932143241c5b2bd0ed7cad6b3057"
+      },
+      "artifacts": {
+        "program_log": {
+          "path": "experiment-output/batch1-pilot-com-amazon-uniform/0bf2ecd90f7ee1cb.attempt-001.program.log",
+          "bytes": 1095,
+          "sha256": "ac51537378743327f466609ea1b8f437c3b8e529d398a87bf459d00d0698a5e5"
+        },
+        "stdout": {
+          "path": "experiment-output/batch1-pilot-com-amazon-uniform/0bf2ecd90f7ee1cb.attempt-001.stdout.txt",
+          "bytes": 1298,
+          "sha256": "3615f65f344b782386b7892335153caf5cbb0b9457c2e2900ba35302b772066e"
+        },
+        "stderr": {
+          "path": "experiment-output/batch1-pilot-com-amazon-uniform/0bf2ecd90f7ee1cb.attempt-001.stderr.txt",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    {
+      "task_id": "0e1d4a97654ec4a8",
+      "attempt": 1,
+      "status": "completed",
+      "rerun_reason": null,
+      "started_utc": "2026-07-23T18:16:46.581485+00:00",
+      "wall_seconds": 3.2513807999930577,
+      "task": {
+        "algorithm": 3,
+        "mode": "raw",
+        "dataset": 2,
+        "tau": -0.0526932,
+        "threads": 32,
+        "timeout_seconds": 180,
+        "graph": "dataset/dataset/com-amazon.txt",
+        "vectors": "dataset/vectors-256/com-amazon_vectors.bin",
+        "capture_cliques": false,
+        "defines": {},
+        "warmup": false,
+        "repetition": 0,
+        "task_id": "0e1d4a97654ec4a8"
+      },
+      "parsed": {
+        "algorithm_ms": 1068,
+        "clique_count": 423409,
+        "peak_memory_gib": 1.12,
+        "size_histogram": {
+          "2": 174694,
+          "3": 134617,
+          "4": 78143,
+          "5": 30346,
+          "6": 5577,
+          "7": 32
+        },
+        "stats": {}
+      },
+      "validation": null,
+      "build": {
+        "fingerprint": "107cf826e22b1cac",
+        "executable_sha256": "06f973d34edd46b2314f8a4b32082dbae810e304c48dcdf24606fe6fd5d29e6e",
+        "command": [
+          "g++",
+          "-std=c++17",
+          "-fopenmp",
+          "-mavx2",
+          "-O3",
+          "src/alg3-raw.cpp",
+          "src/semantic_graph.cpp",
+          "-o",
+          "no-use/compiled/experiment-runner/alg3-raw-107cf826e22b1cac.exe"
+        ],
+        "source_verification": {
+          "status": "verified_current",
+          "observed_current_fingerprint": "107cf826e22b1cac",
+          "reason": null
+        },
+        "source_hashes": {
+          "alg3-raw.cpp": "656b9a9743483e66a7b5bbf6e006182530c37ad9f1affad3247c8f85b91854f5",
+          "semantic_graph.cpp": "c6d51c9086fbd5c7d264eb411ac04890806744fc4e05dc7eee0b156760a9cd92",
+          "semantic_graph.h": "8192c4e8e02fc8ace59d59365f72643e34ca32ba71faa5bb338381a8cd308078",
+          "experiment_runtime.h": "cc5fd4517f8ca2f43f7e7a4fa0f4c9a00ca8778966bc2ab2228d622a070e5354"
+        }
+      },
+      "inputs": {
+        "status": "verified_run_time",
+        "snapshot": {
+          "dataset_catalog": {
+            "path": "experiments/datasets.json",
+            "sha256": "be27e812615b59c62775fb3b129a5f422ad837c4d149311f220e0ad3bca1740b"
+          },
+          "files": [
+            {
+              "role": "graph",
+              "path": "dataset/dataset/com-amazon.txt",
+              "bytes": 12345017,
+              "sha256": "04b920ddba40ccdf87d48092a33c7039591d9c59fea0be78e529d73d3e75ac1d"
+            },
+            {
+              "role": "vector_binary",
+              "path": "dataset/vectors-256/com-amazon_vectors.bin",
+              "bytes": 685799432,
+              "sha256": "aaaa047467eb7e592bb9b0d28c5e971dcc08abd6660ab0ef7b3726f4239f250f"
+            }
+          ]
+        }
+      },
+      "run_environment": {
+        "plan": "experiments/plans/batch1-pilot-com-amazon-uniform.json",
+        "plan_sha256": "63dad978243dac4e40e3fc79f9ea6d92857a9c3466a029ec84b4a3278596c6c4",
+        "git": {
+          "commit": "59299fd9164d077d7e04cd97fc9ac89cbf962c9f",
+          "dirty": true
+        },
+        "machine": {
+          "platform": "Windows-11-10.0.26100-SP0",
+          "processor": "AMD64 Family 25 Model 97 Stepping 2, AuthenticAMD",
+          "logical_cpu_count": 32,
+          "python": "3.12.7",
+          "compiler": "g++ (x86_64-posix-seh-rev0, Built by MinGW-Builds project) 13.2.0"
+        },
+        "memory_limit_gib": 16,
+        "external_timeout_policy": "hard per-process TLE from task.timeout_seconds"
+      },
+      "result_json": {
+        "path": "experiment-output/batch1-pilot-com-amazon-uniform/0e1d4a97654ec4a8.attempt-001.json",
+        "bytes": 4195,
+        "sha256": "efced4f2c73a2d728da75e41f76c78ba0550bd8927a237f66d65554d817edc0d"
+      },
+      "artifacts": {
+        "program_log": {
+          "path": "experiment-output/batch1-pilot-com-amazon-uniform/0e1d4a97654ec4a8.attempt-001.program.log",
+          "bytes": 1379,
+          "sha256": "d163e8ef85ae193fca3aaf99c3f0cafb3ac3878e20a9fd1490b4e05e3dcea882"
+        },
+        "stdout": {
+          "path": "experiment-output/batch1-pilot-com-amazon-uniform/0e1d4a97654ec4a8.attempt-001.stdout.txt",
+          "bytes": 1582,
+          "sha256": "8e6f8393e848039cb78b15c65f279c8f2a14816d55ec36a047482ed228dac85c"
+        },
+        "stderr": {
+          "path": "experiment-output/batch1-pilot-com-amazon-uniform/0e1d4a97654ec4a8.attempt-001.stderr.txt",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    {
+      "task_id": "1520d0f36a63a0f5",
+      "attempt": 1,
+      "status": "completed",
+      "rerun_reason": null,
+      "started_utc": "2026-07-23T18:17:09.851569+00:00",
+      "wall_seconds": 2.759650899999542,
+      "task": {
+        "algorithm": 2,
+        "mode": "raw",
+        "dataset": 2,
+        "tau": -5.12078e-05,
+        "threads": 32,
+        "timeout_seconds": 180,
+        "graph": "dataset/dataset/com-amazon.txt",
+        "vectors": "dataset/vectors-256/com-amazon_vectors.bin",
+        "capture_cliques": false,
+        "defines": {},
+        "warmup": false,
+        "repetition": 0,
+        "task_id": "1520d0f36a63a0f5"
+      },
+      "parsed": {
+        "algorithm_ms": 521,
+        "clique_count": 329237,
+        "peak_memory_gib": 1.12,
+        "size_histogram": {
+          "2": 149879,
+          "3": 104505,
+          "4": 54211,
+          "5": 17909,
+          "6": 2718,
+          "7": 15
+        },
+        "stats": {}
+      },
+      "validation": null,
+      "build": {
+        "fingerprint": "0db46802a271f309",
+        "executable_sha256": "983eee9e533ece42f9312e881312a627b64d58bb2aeafe6337bcc270e6b55867",
+        "command": [
+          "g++",
+          "-std=c++17",
+          "-fopenmp",
+          "-mavx2",
+          "-O3",
+          "src/alg2-raw.cpp",
+          "src/semantic_graph.cpp",
+          "-o",
+          "no-use/compiled/experiment-runner/alg2-raw-0db46802a271f309.exe"
+        ],
+        "source_verification": {
+          "status": "verified_current",
+          "observed_current_fingerprint": "0db46802a271f309",
+          "reason": null
+        },
+        "source_hashes": {
+          "alg2-raw.cpp": "266f47d7d0f855c442d6e9c7a4916cf3c665cd0992c47912695bb7049bdebc0f",
+          "semantic_graph.cpp": "c6d51c9086fbd5c7d264eb411ac04890806744fc4e05dc7eee0b156760a9cd92",
+          "semantic_graph.h": "8192c4e8e02fc8ace59d59365f72643e34ca32ba71faa5bb338381a8cd308078",
+          "experiment_runtime.h": "cc5fd4517f8ca2f43f7e7a4fa0f4c9a00ca8778966bc2ab2228d622a070e5354"
+        }
+      },
+      "inputs": {
+        "status": "verified_run_time",
+        "snapshot": {
+          "dataset_catalog": {
+            "path": "experiments/datasets.json",
+            "sha256": "be27e812615b59c62775fb3b129a5f422ad837c4d149311f220e0ad3bca1740b"
+          },
+          "files": [
+            {
+              "role": "graph",
+              "path": "dataset/dataset/com-amazon.txt",
+              "bytes": 12345017,
+              "sha256": "04b920ddba40ccdf87d48092a33c7039591d9c59fea0be78e529d73d3e75ac1d"
+            },
+            {
+              "role": "vector_binary",
+              "path": "dataset/vectors-256/com-amazon_vectors.bin",
+              "bytes": 685799432,
+              "sha256": "aaaa047467eb7e592bb9b0d28c5e971dcc08abd6660ab0ef7b3726f4239f250f"
+            }
+          ]
+        }
+      },
+      "run_environment": {
+        "plan": "experiments/plans/batch1-pilot-com-amazon-uniform.json",
+        "plan_sha256": "63dad978243dac4e40e3fc79f9ea6d92857a9c3466a029ec84b4a3278596c6c4",
+        "git": {
+          "commit": "59299fd9164d077d7e04cd97fc9ac89cbf962c9f",
+          "dirty": true
+        },
+        "machine": {
+          "platform": "Windows-11-10.0.26100-SP0",
+          "processor": "AMD64 Family 25 Model 97 Stepping 2, AuthenticAMD",
+          "logical_cpu_count": 32,
+          "python": "3.12.7",
+          "compiler": "g++ (x86_64-posix-seh-rev0, Built by MinGW-Builds project) 13.2.0"
+        },
+        "memory_limit_gib": 16,
+        "external_timeout_policy": "hard per-process TLE from task.timeout_seconds"
+      },
+      "result_json": {
+        "path": "experiment-output/batch1-pilot-com-amazon-uniform/1520d0f36a63a0f5.attempt-001.json",
+        "bytes": 4195,
+        "sha256": "485b15607d240b0543493eec45a238e4783bd8c42156f9f1c40eac860046a48d"
+      },
+      "artifacts": {
+        "program_log": {
+          "path": "experiment-output/batch1-pilot-com-amazon-uniform/1520d0f36a63a0f5.attempt-001.program.log",
+          "bytes": 1339,
+          "sha256": "a039db44a5a4f0603e7f16126a0284f802036dd9d86186596e342dd2a5984008"
+        },
+        "stdout": {
+          "path": "experiment-output/batch1-pilot-com-amazon-uniform/1520d0f36a63a0f5.attempt-001.stdout.txt",
+          "bytes": 1542,
+          "sha256": "b74a3615095dfe595c2823804243c307f5a75cf1d617856dfc1c5e7ef81057a7"
+        },
+        "stderr": {
+          "path": "experiment-output/batch1-pilot-com-amazon-uniform/1520d0f36a63a0f5.attempt-001.stderr.txt",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    {
+      "task_id": "167db092edc2e680",
+      "attempt": 1,
+      "status": "completed",
+      "rerun_reason": null,
+      "started_utc": "2026-07-23T18:17:37.648953+00:00",
+      "wall_seconds": 2.607086400006665,
+      "task": {
+        "algorithm": 2,
+        "mode": "raw",
+        "dataset": 2,
+        "tau": 0.0526286,
+        "threads": 32,
+        "timeout_seconds": 180,
+        "graph": "dataset/dataset/com-amazon.txt",
+        "vectors": "dataset/vectors-256/com-amazon_vectors.bin",
+        "capture_cliques": false,
+        "defines": {},
+        "warmup": false,
+        "repetition": 0,
+        "task_id": "167db092edc2e680"
+      },
+      "parsed": {
+        "algorithm_ms": 498,
+        "clique_count": 162733,
+        "peak_memory_gib": 1.12,
+        "size_histogram": {
+          "2": 120169,
+          "3": 37025,
+          "4": 5247,
+          "5": 288,
+          "6": 4
+        },
+        "stats": {}
+      },
+      "validation": null,
+      "build": {
+        "fingerprint": "0db46802a271f309",
+        "executable_sha256": "983eee9e533ece42f9312e881312a627b64d58bb2aeafe6337bcc270e6b55867",
+        "command": [
+          "g++",
+          "-std=c++17",
+          "-fopenmp",
+          "-mavx2",
+          "-O3",
+          "src/alg2-raw.cpp",
+          "src/semantic_graph.cpp",
+          "-o",
+          "no-use/compiled/experiment-runner/alg2-raw-0db46802a271f309.exe"
+        ],
+        "source_verification": {
+          "status": "verified_current",
+          "observed_current_fingerprint": "0db46802a271f309",
+          "reason": null
+        },
+        "source_hashes": {
+          "alg2-raw.cpp": "266f47d7d0f855c442d6e9c7a4916cf3c665cd0992c47912695bb7049bdebc0f",
+          "semantic_graph.cpp": "c6d51c9086fbd5c7d264eb411ac04890806744fc4e05dc7eee0b156760a9cd92",
+          "semantic_graph.h": "8192c4e8e02fc8ace59d59365f72643e34ca32ba71faa5bb338381a8cd308078",
+          "experiment_runtime.h": "cc5fd4517f8ca2f43f7e7a4fa0f4c9a00ca8778966bc2ab2228d622a070e5354"
+        }
+      },
+      "inputs": {
+        "status": "verified_run_time",
+        "snapshot": {
+          "dataset_catalog": {
+            "path": "experiments/datasets.json",
+            "sha256": "be27e812615b59c62775fb3b129a5f422ad837c4d149311f220e0ad3bca1740b"
+          },
+          "files": [
+            {
+              "role": "graph",
+              "path": "dataset/dataset/com-amazon.txt",
+              "bytes": 12345017,
+              "sha256": "04b920ddba40ccdf87d48092a33c7039591d9c59fea0be78e529d73d3e75ac1d"
+            },
+            {
+              "role": "vector_binary",
+              "path": "dataset/vectors-256/com-amazon_vectors.bin",
+              "bytes": 685799432,
+              "sha256": "aaaa047467eb7e592bb9b0d28c5e971dcc08abd6660ab0ef7b3726f4239f250f"
+            }
+          ]
+        }
+      },
+      "run_environment": {
+        "plan": "experiments/plans/batch1-pilot-com-amazon-uniform.json",
+        "plan_sha256": "63dad978243dac4e40e3fc79f9ea6d92857a9c3466a029ec84b4a3278596c6c4",
+        "git": {
+          "commit": "59299fd9164d077d7e04cd97fc9ac89cbf962c9f",
+          "dirty": true
+        },
+        "machine": {
+          "platform": "Windows-11-10.0.26100-SP0",
+          "processor": "AMD64 Family 25 Model 97 Stepping 2, AuthenticAMD",
+          "logical_cpu_count": 32,
+          "python": "3.12.7",
+          "compiler": "g++ (x86_64-posix-seh-rev0, Built by MinGW-Builds project) 13.2.0"
+        },
+        "memory_limit_gib": 16,
+        "external_timeout_policy": "hard per-process TLE from task.timeout_seconds"
+      },
+      "result_json": {
+        "path": "experiment-output/batch1-pilot-com-amazon-uniform/167db092edc2e680.attempt-001.json",
+        "bytes": 4169,
+        "sha256": "9b92c72932e4e2f4b0af5806fc1b232fe8197cfc3f5b45e19db00c335c6c0ac7"
+      },
+      "artifacts": {
+        "program_log": {
+          "path": "experiment-output/batch1-pilot-com-amazon-uniform/167db092edc2e680.attempt-001.program.log",
+          "bytes": 1305,
+          "sha256": "2518d24855d2414bec92b3da241a28e8769d52b25793b88f1a6cc20637227ccf"
+        },
+        "stdout": {
+          "path": "experiment-output/batch1-pilot-com-amazon-uniform/167db092edc2e680.attempt-001.stdout.txt",
+          "bytes": 1508,
+          "sha256": "e7f057e0581a082631f26eef5e2582711b711883eefa60dfc759dff40821727e"
+        },
+        "stderr": {
+          "path": "experiment-output/batch1-pilot-com-amazon-uniform/167db092edc2e680.attempt-001.stderr.txt",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    {
+      "task_id": "26b97f54e1a681d3",
+      "attempt": 1,
+      "status": "completed",
+      "rerun_reason": null,
+      "started_utc": "2026-07-23T18:16:43.843676+00:00",
+      "wall_seconds": 2.719444600006682,
+      "task": {
+        "algorithm": 2,
+        "mode": "raw",
+        "dataset": 2,
+        "tau": -0.0526932,
+        "threads": 32,
+        "timeout_seconds": 180,
+        "graph": "dataset/dataset/com-amazon.txt",
+        "vectors": "dataset/vectors-256/com-amazon_vectors.bin",
+        "capture_cliques": false,
+        "defines": {},
+        "warmup": false,
+        "repetition": 0,
+        "task_id": "26b97f54e1a681d3"
+      },
+      "parsed": {
+        "algorithm_ms": 563,
+        "clique_count": 423409,
+        "peak_memory_gib": 1.12,
+        "size_histogram": {
+          "2": 174694,
+          "3": 134617,
+          "4": 78143,
+          "5": 30346,
+          "6": 5577,
+          "7": 32
+        },
+        "stats": {}
+      },
+      "validation": null,
+      "build": {
+        "fingerprint": "0db46802a271f309",
+        "executable_sha256": "983eee9e533ece42f9312e881312a627b64d58bb2aeafe6337bcc270e6b55867",
+        "command": [
+          "g++",
+          "-std=c++17",
+          "-fopenmp",
+          "-mavx2",
+          "-O3",
+          "src/alg2-raw.cpp",
+          "src/semantic_graph.cpp",
+          "-o",
+          "no-use/compiled/experiment-runner/alg2-raw-0db46802a271f309.exe"
+        ],
+        "source_verification": {
+          "status": "verified_current",
+          "observed_current_fingerprint": "0db46802a271f309",
+          "reason": null
+        },
+        "source_hashes": {
+          "alg2-raw.cpp": "266f47d7d0f855c442d6e9c7a4916cf3c665cd0992c47912695bb7049bdebc0f",
+          "semantic_graph.cpp": "c6d51c9086fbd5c7d264eb411ac04890806744fc4e05dc7eee0b156760a9cd92",
+          "semantic_graph.h": "8192c4e8e02fc8ace59d59365f72643e34ca32ba71faa5bb338381a8cd308078",
+          "experiment_runtime.h": "cc5fd4517f8ca2f43f7e7a4fa0f4c9a00ca8778966bc2ab2228d622a070e5354"
+        }
+      },
+      "inputs": {
+        "status": "verified_run_time",
+        "snapshot": {
+          "dataset_catalog": {
+            "path": "experiments/datasets.json",
+            "sha256": "be27e812615b59c62775fb3b129a5f422ad837c4d149311f220e0ad3bca1740b"
+          },
+          "files": [
+            {
+              "role": "graph",
+              "path": "dataset/dataset/com-amazon.txt",
+              "bytes": 12345017,
+              "sha256": "04b920ddba40ccdf87d48092a33c7039591d9c59fea0be78e529d73d3e75ac1d"
+            },
+            {
+              "role": "vector_binary",
+              "path": "dataset/vectors-256/com-amazon_vectors.bin",
+              "bytes": 685799432,
+              "sha256": "aaaa047467eb7e592bb9b0d28c5e971dcc08abd6660ab0ef7b3726f4239f250f"
+            }
+          ]
+        }
+      },
+      "run_environment": {
+        "plan": "experiments/plans/batch1-pilot-com-amazon-uniform.json",
+        "plan_sha256": "63dad978243dac4e40e3fc79f9ea6d92857a9c3466a029ec84b4a3278596c6c4",
+        "git": {
+          "commit": "59299fd9164d077d7e04cd97fc9ac89cbf962c9f",
+          "dirty": true
+        },
+        "machine": {
+          "platform": "Windows-11-10.0.26100-SP0",
+          "processor": "AMD64 Family 25 Model 97 Stepping 2, AuthenticAMD",
+          "logical_cpu_count": 32,
+          "python": "3.12.7",
+          "compiler": "g++ (x86_64-posix-seh-rev0, Built by MinGW-Builds project) 13.2.0"
+        },
+        "memory_limit_gib": 16,
+        "external_timeout_policy": "hard per-process TLE from task.timeout_seconds"
+      },
+      "result_json": {
+        "path": "experiment-output/batch1-pilot-com-amazon-uniform/26b97f54e1a681d3.attempt-001.json",
+        "bytes": 4193,
+        "sha256": "87fde167e1515378a0c590e842467209b30c1f89365de1b5e05237a58ce8fc2b"
+      },
+      "artifacts": {
+        "program_log": {
+          "path": "experiment-output/batch1-pilot-com-amazon-uniform/26b97f54e1a681d3.attempt-001.program.log",
+          "bytes": 1339,
+          "sha256": "79347e3abf8cd154b42fe6461cb0638f40bff57db2db69e9a3fe8ef862fbad41"
+        },
+        "stdout": {
+          "path": "experiment-output/batch1-pilot-com-amazon-uniform/26b97f54e1a681d3.attempt-001.stdout.txt",
+          "bytes": 1542,
+          "sha256": "724156ce79fa5210fc0153b5e625cacb41a7dfb25b7d201c767ae9c65e7f297c"
+        },
+        "stderr": {
+          "path": "experiment-output/batch1-pilot-com-amazon-uniform/26b97f54e1a681d3.attempt-001.stderr.txt",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    {
+      "task_id": "2bf9450b5dff96c0",
+      "attempt": 1,
+      "status": "completed",
+      "rerun_reason": null,
+      "started_utc": "2026-07-23T18:16:19.709382+00:00",
+      "wall_seconds": 2.9230893999920227,
+      "task": {
+        "algorithm": 2,
+        "mode": "raw",
+        "dataset": 2,
+        "tau": -0.102669,
+        "threads": 32,
+        "timeout_seconds": 180,
+        "graph": "dataset/dataset/com-amazon.txt",
+        "vectors": "dataset/vectors-256/com-amazon_vectors.bin",
+        "capture_cliques": false,
+        "defines": {},
+        "warmup": false,
+        "repetition": 0,
+        "task_id": "2bf9450b5dff96c0"
+      },
+      "parsed": {
+        "algorithm_ms": 664,
+        "clique_count": 459352,
+        "peak_memory_gib": 1.12,
+        "size_histogram": {
+          "2": 200765,
+          "3": 143211,
+          "4": 79344,
+          "5": 30423,
+          "6": 5577,
+          "7": 32
+        },
+        "stats": {}
+      },
+      "validation": null,
+      "build": {
+        "fingerprint": "0db46802a271f309",
+        "executable_sha256": "983eee9e533ece42f9312e881312a627b64d58bb2aeafe6337bcc270e6b55867",
+        "command": [
+          "g++",
+          "-std=c++17",
+          "-fopenmp",
+          "-mavx2",
+          "-O3",
+          "src/alg2-raw.cpp",
+          "src/semantic_graph.cpp",
+          "-o",
+          "no-use/compiled/experiment-runner/alg2-raw-0db46802a271f309.exe"
+        ],
+        "source_verification": {
+          "status": "verified_current",
+          "observed_current_fingerprint": "0db46802a271f309",
+          "reason": null
+        },
+        "source_hashes": {
+          "alg2-raw.cpp": "266f47d7d0f855c442d6e9c7a4916cf3c665cd0992c47912695bb7049bdebc0f",
+          "semantic_graph.cpp": "c6d51c9086fbd5c7d264eb411ac04890806744fc4e05dc7eee0b156760a9cd92",
+          "semantic_graph.h": "8192c4e8e02fc8ace59d59365f72643e34ca32ba71faa5bb338381a8cd308078",
+          "experiment_runtime.h": "cc5fd4517f8ca2f43f7e7a4fa0f4c9a00ca8778966bc2ab2228d622a070e5354"
+        }
+      },
+      "inputs": {
+        "status": "verified_run_time",
+        "snapshot": {
+          "dataset_catalog": {
+            "path": "experiments/datasets.json",
+            "sha256": "be27e812615b59c62775fb3b129a5f422ad837c4d149311f220e0ad3bca1740b"
+          },
+          "files": [
+            {
+              "role": "graph",
+              "path": "dataset/dataset/com-amazon.txt",
+              "bytes": 12345017,
+              "sha256": "04b920ddba40ccdf87d48092a33c7039591d9c59fea0be78e529d73d3e75ac1d"
+            },
+            {
+              "role": "vector_binary",
+              "path": "dataset/vectors-256/com-amazon_vectors.bin",
+              "bytes": 685799432,
+              "sha256": "aaaa047467eb7e592bb9b0d28c5e971dcc08abd6660ab0ef7b3726f4239f250f"
+            }
+          ]
+        }
+      },
+      "run_environment": {
+        "plan": "experiments/plans/batch1-pilot-com-amazon-uniform.json",
+        "plan_sha256": "63dad978243dac4e40e3fc79f9ea6d92857a9c3466a029ec84b4a3278596c6c4",
+        "git": {
+          "commit": "59299fd9164d077d7e04cd97fc9ac89cbf962c9f",
+          "dirty": true
+        },
+        "machine": {
+          "platform": "Windows-11-10.0.26100-SP0",
+          "processor": "AMD64 Family 25 Model 97 Stepping 2, AuthenticAMD",
+          "logical_cpu_count": 32,
+          "python": "3.12.7",
+          "compiler": "g++ (x86_64-posix-seh-rev0, Built by MinGW-Builds project) 13.2.0"
+        },
+        "memory_limit_gib": 16,
+        "external_timeout_policy": "hard per-process TLE from task.timeout_seconds"
+      },
+      "result_json": {
+        "path": "experiment-output/batch1-pilot-com-amazon-uniform/2bf9450b5dff96c0.attempt-001.json",
+        "bytes": 4193,
+        "sha256": "9967409de0e5f311992338243d5f5af09d8121373ef3dcbd101dffa6ef87db71"
+      },
+      "artifacts": {
+        "program_log": {
+          "path": "experiment-output/batch1-pilot-com-amazon-uniform/2bf9450b5dff96c0.attempt-001.program.log",
+          "bytes": 1339,
+          "sha256": "0efa3b2b9258696070da983341f824ef9d88e8dc3832196f2ee01d0a44802b5e"
+        },
+        "stdout": {
+          "path": "experiment-output/batch1-pilot-com-amazon-uniform/2bf9450b5dff96c0.attempt-001.stdout.txt",
+          "bytes": 1542,
+          "sha256": "8008c74e3ad4f2b56e77a53b132c4073d7a09d254d52b3db1915907d566366a3"
+        },
+        "stderr": {
+          "path": "experiment-output/batch1-pilot-com-amazon-uniform/2bf9450b5dff96c0.attempt-001.stderr.txt",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    {
+      "task_id": "3288de16e1eccbcf",
+      "attempt": 1,
+      "status": "completed",
+      "rerun_reason": null,
+      "started_utc": "2026-07-23T18:16:49.850867+00:00",
+      "wall_seconds": 3.1903638999938266,
+      "task": {
+        "algorithm": 4,
+        "mode": "raw",
+        "dataset": 2,
+        "tau": -0.0526932,
+        "threads": 32,
+        "timeout_seconds": 180,
+        "graph": "dataset/dataset/com-amazon.txt",
+        "vectors": "dataset/vectors-256/com-amazon_vectors.bin",
+        "capture_cliques": false,
+        "defines": {},
+        "warmup": false,
+        "repetition": 0,
+        "task_id": "3288de16e1eccbcf"
+      },
+      "parsed": {
+        "algorithm_ms": 1135,
+        "clique_count": 423409,
+        "peak_memory_gib": 1.12,
+        "size_histogram": {
+          "2": 174694,
+          "3": 134617,
+          "4": 78143,
+          "5": 30346,
+          "6": 5577,
+          "7": 32
+        },
+        "stats": {}
+      },
+      "validation": null,
+      "build": {
+        "fingerprint": "a5109816b58eb078",
+        "executable_sha256": "9f8deee1713c1d1020ebb49e2332b9e06605a87fae2506d31233faad1f5c3d12",
+        "command": [
+          "g++",
+          "-std=c++17",
+          "-fopenmp",
+          "-mavx2",
+          "-O3",
+          "src/alg4-raw.cpp",
+          "src/semantic_graph.cpp",
+          "-o",
+          "no-use/compiled/experiment-runner/alg4-raw-a5109816b58eb078.exe"
+        ],
+        "source_verification": {
+          "status": "verified_current",
+          "observed_current_fingerprint": "a5109816b58eb078",
+          "reason": null
+        },
+        "source_hashes": {
+          "alg4-raw.cpp": "2a4c3a22b326f5716e381c5dddafdbc21cc1696fc2d80f7e2f87668f3f3f98fe",
+          "semantic_graph.cpp": "c6d51c9086fbd5c7d264eb411ac04890806744fc4e05dc7eee0b156760a9cd92",
+          "semantic_graph.h": "8192c4e8e02fc8ace59d59365f72643e34ca32ba71faa5bb338381a8cd308078",
+          "experiment_runtime.h": "cc5fd4517f8ca2f43f7e7a4fa0f4c9a00ca8778966bc2ab2228d622a070e5354"
+        }
+      },
+      "inputs": {
+        "status": "verified_run_time",
+        "snapshot": {
+          "dataset_catalog": {
+            "path": "experiments/datasets.json",
+            "sha256": "be27e812615b59c62775fb3b129a5f422ad837c4d149311f220e0ad3bca1740b"
+          },
+          "files": [
+            {
+              "role": "graph",
+              "path": "dataset/dataset/com-amazon.txt",
+              "bytes": 12345017,
+              "sha256": "04b920ddba40ccdf87d48092a33c7039591d9c59fea0be78e529d73d3e75ac1d"
+            },
+            {
+              "role": "vector_binary",
+              "path": "dataset/vectors-256/com-amazon_vectors.bin",
+              "bytes": 685799432,
+              "sha256": "aaaa047467eb7e592bb9b0d28c5e971dcc08abd6660ab0ef7b3726f4239f250f"
+            }
+          ]
+        }
+      },
+      "run_environment": {
+        "plan": "experiments/plans/batch1-pilot-com-amazon-uniform.json",
+        "plan_sha256": "63dad978243dac4e40e3fc79f9ea6d92857a9c3466a029ec84b4a3278596c6c4",
+        "git": {
+          "commit": "59299fd9164d077d7e04cd97fc9ac89cbf962c9f",
+          "dirty": true
+        },
+        "machine": {
+          "platform": "Windows-11-10.0.26100-SP0",
+          "processor": "AMD64 Family 25 Model 97 Stepping 2, AuthenticAMD",
+          "logical_cpu_count": 32,
+          "python": "3.12.7",
+          "compiler": "g++ (x86_64-posix-seh-rev0, Built by MinGW-Builds project) 13.2.0"
+        },
+        "memory_limit_gib": 16,
+        "external_timeout_policy": "hard per-process TLE from task.timeout_seconds"
+      },
+      "result_json": {
+        "path": "experiment-output/batch1-pilot-com-amazon-uniform/3288de16e1eccbcf.attempt-001.json",
+        "bytes": 4195,
+        "sha256": "2c13689ec30ee32d4861c17ef3561f818ca168601f14bc93cb896526b6f5bf32"
+      },
+      "artifacts": {
+        "program_log": {
+          "path": "experiment-output/batch1-pilot-com-amazon-uniform/3288de16e1eccbcf.attempt-001.program.log",
+          "bytes": 1226,
+          "sha256": "493a4c5ad6b33fd27807fea9cf987dfd5bfd15abd2d911eb5bc7d215725ae964"
+        },
+        "stdout": {
+          "path": "experiment-output/batch1-pilot-com-amazon-uniform/3288de16e1eccbcf.attempt-001.stdout.txt",
+          "bytes": 1429,
+          "sha256": "c876bfec24750d8de766c18cfdd408ed00a38937b713af46837ab93bd932841b"
+        },
+        "stderr": {
+          "path": "experiment-output/batch1-pilot-com-amazon-uniform/3288de16e1eccbcf.attempt-001.stderr.txt",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    {
+      "task_id": "51750db0390bf849",
+      "attempt": 1,
+      "status": "completed",
+      "rerun_reason": null,
+      "started_utc": "2026-07-23T18:17:12.629745+00:00",
+      "wall_seconds": 2.9634583999868482,
+      "task": {
+        "algorithm": 3,
+        "mode": "raw",
+        "dataset": 2,
+        "tau": -5.12078e-05,
+        "threads": 32,
+        "timeout_seconds": 180,
+        "graph": "dataset/dataset/com-amazon.txt",
+        "vectors": "dataset/vectors-256/com-amazon_vectors.bin",
+        "capture_cliques": false,
+        "defines": {},
+        "warmup": false,
+        "repetition": 0,
+        "task_id": "51750db0390bf849"
+      },
+      "parsed": {
+        "algorithm_ms": 791,
+        "clique_count": 329237,
+        "peak_memory_gib": 1.12,
+        "size_histogram": {
+          "2": 149879,
+          "3": 104505,
+          "4": 54211,
+          "5": 17909,
+          "6": 2718,
+          "7": 15
+        },
+        "stats": {}
+      },
+      "validation": null,
+      "build": {
+        "fingerprint": "107cf826e22b1cac",
+        "executable_sha256": "06f973d34edd46b2314f8a4b32082dbae810e304c48dcdf24606fe6fd5d29e6e",
+        "command": [
+          "g++",
+          "-std=c++17",
+          "-fopenmp",
+          "-mavx2",
+          "-O3",
+          "src/alg3-raw.cpp",
+          "src/semantic_graph.cpp",
+          "-o",
+          "no-use/compiled/experiment-runner/alg3-raw-107cf826e22b1cac.exe"
+        ],
+        "source_verification": {
+          "status": "verified_current",
+          "observed_current_fingerprint": "107cf826e22b1cac",
+          "reason": null
+        },
+        "source_hashes": {
+          "alg3-raw.cpp": "656b9a9743483e66a7b5bbf6e006182530c37ad9f1affad3247c8f85b91854f5",
+          "semantic_graph.cpp": "c6d51c9086fbd5c7d264eb411ac04890806744fc4e05dc7eee0b156760a9cd92",
+          "semantic_graph.h": "8192c4e8e02fc8ace59d59365f72643e34ca32ba71faa5bb338381a8cd308078",
+          "experiment_runtime.h": "cc5fd4517f8ca2f43f7e7a4fa0f4c9a00ca8778966bc2ab2228d622a070e5354"
+        }
+      },
+      "inputs": {
+        "status": "verified_run_time",
+        "snapshot": {
+          "dataset_catalog": {
+            "path": "experiments/datasets.json",
+            "sha256": "be27e812615b59c62775fb3b129a5f422ad837c4d149311f220e0ad3bca1740b"
+          },
+          "files": [
+            {
+              "role": "graph",
+              "path": "dataset/dataset/com-amazon.txt",
+              "bytes": 12345017,
+              "sha256": "04b920ddba40ccdf87d48092a33c7039591d9c59fea0be78e529d73d3e75ac1d"
+            },
+            {
+              "role": "vector_binary",
+              "path": "dataset/vectors-256/com-amazon_vectors.bin",
+              "bytes": 685799432,
+              "sha256": "aaaa047467eb7e592bb9b0d28c5e971dcc08abd6660ab0ef7b3726f4239f250f"
+            }
+          ]
+        }
+      },
+      "run_environment": {
+        "plan": "experiments/plans/batch1-pilot-com-amazon-uniform.json",
+        "plan_sha256": "63dad978243dac4e40e3fc79f9ea6d92857a9c3466a029ec84b4a3278596c6c4",
+        "git": {
+          "commit": "59299fd9164d077d7e04cd97fc9ac89cbf962c9f",
+          "dirty": true
+        },
+        "machine": {
+          "platform": "Windows-11-10.0.26100-SP0",
+          "processor": "AMD64 Family 25 Model 97 Stepping 2, AuthenticAMD",
+          "logical_cpu_count": 32,
+          "python": "3.12.7",
+          "compiler": "g++ (x86_64-posix-seh-rev0, Built by MinGW-Builds project) 13.2.0"
+        },
+        "memory_limit_gib": 16,
+        "external_timeout_policy": "hard per-process TLE from task.timeout_seconds"
+      },
+      "result_json": {
+        "path": "experiment-output/batch1-pilot-com-amazon-uniform/51750db0390bf849.attempt-001.json",
+        "bytes": 4196,
+        "sha256": "d94317911c7bff448158b829079a4067387874ff4d1587fd538917de791afc7e"
+      },
+      "artifacts": {
+        "program_log": {
+          "path": "experiment-output/batch1-pilot-com-amazon-uniform/51750db0390bf849.attempt-001.program.log",
+          "bytes": 1378,
+          "sha256": "957b41c66488255ff580b8ff9bff3fc38b57cdd1a30bb85b881dfbc8c183bdee"
+        },
+        "stdout": {
+          "path": "experiment-output/batch1-pilot-com-amazon-uniform/51750db0390bf849.attempt-001.stdout.txt",
+          "bytes": 1581,
+          "sha256": "99d8eb758a44b717cdd41dfa7abdf198cea1a398147f9f543e5a6e49148faf39"
+        },
+        "stderr": {
+          "path": "experiment-output/batch1-pilot-com-amazon-uniform/51750db0390bf849.attempt-001.stderr.txt",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    {
+      "task_id": "5de1b03ba075b3cf",
+      "attempt": 1,
+      "status": "completed",
+      "rerun_reason": null,
+      "started_utc": "2026-07-23T18:16:26.204346+00:00",
+      "wall_seconds": 3.382678699999815,
+      "task": {
+        "algorithm": 4,
+        "mode": "raw",
+        "dataset": 2,
+        "tau": -0.102669,
+        "threads": 32,
+        "timeout_seconds": 180,
+        "graph": "dataset/dataset/com-amazon.txt",
+        "vectors": "dataset/vectors-256/com-amazon_vectors.bin",
+        "capture_cliques": false,
+        "defines": {},
+        "warmup": false,
+        "repetition": 0,
+        "task_id": "5de1b03ba075b3cf"
+      },
+      "parsed": {
+        "algorithm_ms": 1313,
+        "clique_count": 459352,
+        "peak_memory_gib": 1.12,
+        "size_histogram": {
+          "2": 200765,
+          "3": 143211,
+          "4": 79344,
+          "5": 30423,
+          "6": 5577,
+          "7": 32
+        },
+        "stats": {}
+      },
+      "validation": null,
+      "build": {
+        "fingerprint": "a5109816b58eb078",
+        "executable_sha256": "9f8deee1713c1d1020ebb49e2332b9e06605a87fae2506d31233faad1f5c3d12",
+        "command": [
+          "g++",
+          "-std=c++17",
+          "-fopenmp",
+          "-mavx2",
+          "-O3",
+          "src/alg4-raw.cpp",
+          "src/semantic_graph.cpp",
+          "-o",
+          "no-use/compiled/experiment-runner/alg4-raw-a5109816b58eb078.exe"
+        ],
+        "source_verification": {
+          "status": "verified_current",
+          "observed_current_fingerprint": "a5109816b58eb078",
+          "reason": null
+        },
+        "source_hashes": {
+          "alg4-raw.cpp": "2a4c3a22b326f5716e381c5dddafdbc21cc1696fc2d80f7e2f87668f3f3f98fe",
+          "semantic_graph.cpp": "c6d51c9086fbd5c7d264eb411ac04890806744fc4e05dc7eee0b156760a9cd92",
+          "semantic_graph.h": "8192c4e8e02fc8ace59d59365f72643e34ca32ba71faa5bb338381a8cd308078",
+          "experiment_runtime.h": "cc5fd4517f8ca2f43f7e7a4fa0f4c9a00ca8778966bc2ab2228d622a070e5354"
+        }
+      },
+      "inputs": {
+        "status": "verified_run_time",
+        "snapshot": {
+          "dataset_catalog": {
+            "path": "experiments/datasets.json",
+            "sha256": "be27e812615b59c62775fb3b129a5f422ad837c4d149311f220e0ad3bca1740b"
+          },
+          "files": [
+            {
+              "role": "graph",
+              "path": "dataset/dataset/com-amazon.txt",
+              "bytes": 12345017,
+              "sha256": "04b920ddba40ccdf87d48092a33c7039591d9c59fea0be78e529d73d3e75ac1d"
+            },
+            {
+              "role": "vector_binary",
+              "path": "dataset/vectors-256/com-amazon_vectors.bin",
+              "bytes": 685799432,
+              "sha256": "aaaa047467eb7e592bb9b0d28c5e971dcc08abd6660ab0ef7b3726f4239f250f"
+            }
+          ]
+        }
+      },
+      "run_environment": {
+        "plan": "experiments/plans/batch1-pilot-com-amazon-uniform.json",
+        "plan_sha256": "63dad978243dac4e40e3fc79f9ea6d92857a9c3466a029ec84b4a3278596c6c4",
+        "git": {
+          "commit": "59299fd9164d077d7e04cd97fc9ac89cbf962c9f",
+          "dirty": true
+        },
+        "machine": {
+          "platform": "Windows-11-10.0.26100-SP0",
+          "processor": "AMD64 Family 25 Model 97 Stepping 2, AuthenticAMD",
+          "logical_cpu_count": 32,
+          "python": "3.12.7",
+          "compiler": "g++ (x86_64-posix-seh-rev0, Built by MinGW-Builds project) 13.2.0"
+        },
+        "memory_limit_gib": 16,
+        "external_timeout_policy": "hard per-process TLE from task.timeout_seconds"
+      },
+      "result_json": {
+        "path": "experiment-output/batch1-pilot-com-amazon-uniform/5de1b03ba075b3cf.attempt-001.json",
+        "bytes": 4193,
+        "sha256": "c8a9d7a74e344baebc3053d6d147ae6364fc9906c0a02388dab2c5edbc7b7fc9"
+      },
+      "artifacts": {
+        "program_log": {
+          "path": "experiment-output/batch1-pilot-com-amazon-uniform/5de1b03ba075b3cf.attempt-001.program.log",
+          "bytes": 1225,
+          "sha256": "1e3f2665cbb14733593d51cafc852a08b4febd3d3eb32da98bc1434e7d9c74d8"
+        },
+        "stdout": {
+          "path": "experiment-output/batch1-pilot-com-amazon-uniform/5de1b03ba075b3cf.attempt-001.stdout.txt",
+          "bytes": 1428,
+          "sha256": "1654722aaf3bb658df523a408ceca0f1ce152cf0c02d5eb949bf9b14abb9fa20"
+        },
+        "stderr": {
+          "path": "experiment-output/batch1-pilot-com-amazon-uniform/5de1b03ba075b3cf.attempt-001.stderr.txt",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    {
+      "task_id": "800ecce8bd5a6317",
+      "attempt": 1,
+      "status": "completed",
+      "rerun_reason": null,
+      "started_utc": "2026-07-23T18:17:40.272876+00:00",
+      "wall_seconds": 2.9582198999996763,
+      "task": {
+        "algorithm": 3,
+        "mode": "raw",
+        "dataset": 2,
+        "tau": 0.0526286,
+        "threads": 32,
+        "timeout_seconds": 180,
+        "graph": "dataset/dataset/com-amazon.txt",
+        "vectors": "dataset/vectors-256/com-amazon_vectors.bin",
+        "capture_cliques": false,
+        "defines": {},
+        "warmup": false,
+        "repetition": 0,
+        "task_id": "800ecce8bd5a6317"
+      },
+      "parsed": {
+        "algorithm_ms": 734,
+        "clique_count": 162733,
+        "peak_memory_gib": 1.12,
+        "size_histogram": {
+          "2": 120169,
+          "3": 37025,
+          "4": 5247,
+          "5": 288,
+          "6": 4
+        },
+        "stats": {}
+      },
+      "validation": null,
+      "build": {
+        "fingerprint": "107cf826e22b1cac",
+        "executable_sha256": "06f973d34edd46b2314f8a4b32082dbae810e304c48dcdf24606fe6fd5d29e6e",
+        "command": [
+          "g++",
+          "-std=c++17",
+          "-fopenmp",
+          "-mavx2",
+          "-O3",
+          "src/alg3-raw.cpp",
+          "src/semantic_graph.cpp",
+          "-o",
+          "no-use/compiled/experiment-runner/alg3-raw-107cf826e22b1cac.exe"
+        ],
+        "source_verification": {
+          "status": "verified_current",
+          "observed_current_fingerprint": "107cf826e22b1cac",
+          "reason": null
+        },
+        "source_hashes": {
+          "alg3-raw.cpp": "656b9a9743483e66a7b5bbf6e006182530c37ad9f1affad3247c8f85b91854f5",
+          "semantic_graph.cpp": "c6d51c9086fbd5c7d264eb411ac04890806744fc4e05dc7eee0b156760a9cd92",
+          "semantic_graph.h": "8192c4e8e02fc8ace59d59365f72643e34ca32ba71faa5bb338381a8cd308078",
+          "experiment_runtime.h": "cc5fd4517f8ca2f43f7e7a4fa0f4c9a00ca8778966bc2ab2228d622a070e5354"
+        }
+      },
+      "inputs": {
+        "status": "verified_run_time",
+        "snapshot": {
+          "dataset_catalog": {
+            "path": "experiments/datasets.json",
+            "sha256": "be27e812615b59c62775fb3b129a5f422ad837c4d149311f220e0ad3bca1740b"
+          },
+          "files": [
+            {
+              "role": "graph",
+              "path": "dataset/dataset/com-amazon.txt",
+              "bytes": 12345017,
+              "sha256": "04b920ddba40ccdf87d48092a33c7039591d9c59fea0be78e529d73d3e75ac1d"
+            },
+            {
+              "role": "vector_binary",
+              "path": "dataset/vectors-256/com-amazon_vectors.bin",
+              "bytes": 685799432,
+              "sha256": "aaaa047467eb7e592bb9b0d28c5e971dcc08abd6660ab0ef7b3726f4239f250f"
+            }
+          ]
+        }
+      },
+      "run_environment": {
+        "plan": "experiments/plans/batch1-pilot-com-amazon-uniform.json",
+        "plan_sha256": "63dad978243dac4e40e3fc79f9ea6d92857a9c3466a029ec84b4a3278596c6c4",
+        "git": {
+          "commit": "59299fd9164d077d7e04cd97fc9ac89cbf962c9f",
+          "dirty": true
+        },
+        "machine": {
+          "platform": "Windows-11-10.0.26100-SP0",
+          "processor": "AMD64 Family 25 Model 97 Stepping 2, AuthenticAMD",
+          "logical_cpu_count": 32,
+          "python": "3.12.7",
+          "compiler": "g++ (x86_64-posix-seh-rev0, Built by MinGW-Builds project) 13.2.0"
+        },
+        "memory_limit_gib": 16,
+        "external_timeout_policy": "hard per-process TLE from task.timeout_seconds"
+      },
+      "result_json": {
+        "path": "experiment-output/batch1-pilot-com-amazon-uniform/800ecce8bd5a6317.attempt-001.json",
+        "bytes": 4170,
+        "sha256": "bdb62c1d158b643c10a2cd9e4a38ef4010ac7ff68b9592aacc768e27638926ce"
+      },
+      "artifacts": {
+        "program_log": {
+          "path": "experiment-output/batch1-pilot-com-amazon-uniform/800ecce8bd5a6317.attempt-001.program.log",
+          "bytes": 1344,
+          "sha256": "f86ac3fb011add739698e9361b78e3188f30ddf4c58e0fc7c98ff5e48f6034e1"
+        },
+        "stdout": {
+          "path": "experiment-output/batch1-pilot-com-amazon-uniform/800ecce8bd5a6317.attempt-001.stdout.txt",
+          "bytes": 1547,
+          "sha256": "d5d02cde26a87845cc4444aa6c7cb05917f1e2c9ec0768f8d829e2c87c1f0a74"
+        },
+        "stderr": {
+          "path": "experiment-output/batch1-pilot-com-amazon-uniform/800ecce8bd5a6317.attempt-001.stderr.txt",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    {
+      "task_id": "8e6eb74e229256af",
+      "attempt": 1,
+      "status": "completed",
+      "rerun_reason": null,
+      "started_utc": "2026-07-23T18:16:22.649923+00:00",
+      "wall_seconds": 3.54179469999508,
+      "task": {
+        "algorithm": 3,
+        "mode": "raw",
+        "dataset": 2,
+        "tau": -0.102669,
+        "threads": 32,
+        "timeout_seconds": 180,
+        "graph": "dataset/dataset/com-amazon.txt",
+        "vectors": "dataset/vectors-256/com-amazon_vectors.bin",
+        "capture_cliques": false,
+        "defines": {},
+        "warmup": false,
+        "repetition": 0,
+        "task_id": "8e6eb74e229256af"
+      },
+      "parsed": {
+        "algorithm_ms": 1023,
+        "clique_count": 459352,
+        "peak_memory_gib": 1.12,
+        "size_histogram": {
+          "2": 200765,
+          "3": 143211,
+          "4": 79344,
+          "5": 30423,
+          "6": 5577,
+          "7": 32
+        },
+        "stats": {}
+      },
+      "validation": null,
+      "build": {
+        "fingerprint": "107cf826e22b1cac",
+        "executable_sha256": "06f973d34edd46b2314f8a4b32082dbae810e304c48dcdf24606fe6fd5d29e6e",
+        "command": [
+          "g++",
+          "-std=c++17",
+          "-fopenmp",
+          "-mavx2",
+          "-O3",
+          "src/alg3-raw.cpp",
+          "src/semantic_graph.cpp",
+          "-o",
+          "no-use/compiled/experiment-runner/alg3-raw-107cf826e22b1cac.exe"
+        ],
+        "source_verification": {
+          "status": "verified_current",
+          "observed_current_fingerprint": "107cf826e22b1cac",
+          "reason": null
+        },
+        "source_hashes": {
+          "alg3-raw.cpp": "656b9a9743483e66a7b5bbf6e006182530c37ad9f1affad3247c8f85b91854f5",
+          "semantic_graph.cpp": "c6d51c9086fbd5c7d264eb411ac04890806744fc4e05dc7eee0b156760a9cd92",
+          "semantic_graph.h": "8192c4e8e02fc8ace59d59365f72643e34ca32ba71faa5bb338381a8cd308078",
+          "experiment_runtime.h": "cc5fd4517f8ca2f43f7e7a4fa0f4c9a00ca8778966bc2ab2228d622a070e5354"
+        }
+      },
+      "inputs": {
+        "status": "verified_run_time",
+        "snapshot": {
+          "dataset_catalog": {
+            "path": "experiments/datasets.json",
+            "sha256": "be27e812615b59c62775fb3b129a5f422ad837c4d149311f220e0ad3bca1740b"
+          },
+          "files": [
+            {
+              "role": "graph",
+              "path": "dataset/dataset/com-amazon.txt",
+              "bytes": 12345017,
+              "sha256": "04b920ddba40ccdf87d48092a33c7039591d9c59fea0be78e529d73d3e75ac1d"
+            },
+            {
+              "role": "vector_binary",
+              "path": "dataset/vectors-256/com-amazon_vectors.bin",
+              "bytes": 685799432,
+              "sha256": "aaaa047467eb7e592bb9b0d28c5e971dcc08abd6660ab0ef7b3726f4239f250f"
+            }
+          ]
+        }
+      },
+      "run_environment": {
+        "plan": "experiments/plans/batch1-pilot-com-amazon-uniform.json",
+        "plan_sha256": "63dad978243dac4e40e3fc79f9ea6d92857a9c3466a029ec84b4a3278596c6c4",
+        "git": {
+          "commit": "59299fd9164d077d7e04cd97fc9ac89cbf962c9f",
+          "dirty": true
+        },
+        "machine": {
+          "platform": "Windows-11-10.0.26100-SP0",
+          "processor": "AMD64 Family 25 Model 97 Stepping 2, AuthenticAMD",
+          "logical_cpu_count": 32,
+          "python": "3.12.7",
+          "compiler": "g++ (x86_64-posix-seh-rev0, Built by MinGW-Builds project) 13.2.0"
+        },
+        "memory_limit_gib": 16,
+        "external_timeout_policy": "hard per-process TLE from task.timeout_seconds"
+      },
+      "result_json": {
+        "path": "experiment-output/batch1-pilot-com-amazon-uniform/8e6eb74e229256af.attempt-001.json",
+        "bytes": 4192,
+        "sha256": "8752fe0834278f73e17f97451e15de2d1f610ae4962a7f870043339d1fdce524"
+      },
+      "artifacts": {
+        "program_log": {
+          "path": "experiment-output/batch1-pilot-com-amazon-uniform/8e6eb74e229256af.attempt-001.program.log",
+          "bytes": 1377,
+          "sha256": "8be567d4009c22bc3ef07afaa0665165957e0ead9be717581012d40d3f2b9575"
+        },
+        "stdout": {
+          "path": "experiment-output/batch1-pilot-com-amazon-uniform/8e6eb74e229256af.attempt-001.stdout.txt",
+          "bytes": 1580,
+          "sha256": "451bee5cae176411716da9cfdb3d034d05b3d0cdef93d6bf812c42fee7b27c64"
+        },
+        "stderr": {
+          "path": "experiment-output/batch1-pilot-com-amazon-uniform/8e6eb74e229256af.attempt-001.stderr.txt",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    {
+      "task_id": "9e0c9217c3c29d84",
+      "attempt": 1,
+      "status": "completed",
+      "rerun_reason": null,
+      "started_utc": "2026-07-23T18:17:43.247682+00:00",
+      "wall_seconds": 2.555944699997781,
+      "task": {
+        "algorithm": 4,
+        "mode": "raw",
+        "dataset": 2,
+        "tau": 0.0526286,
+        "threads": 32,
+        "timeout_seconds": 180,
+        "graph": "dataset/dataset/com-amazon.txt",
+        "vectors": "dataset/vectors-256/com-amazon_vectors.bin",
+        "capture_cliques": false,
+        "defines": {},
+        "warmup": false,
+        "repetition": 0,
+        "task_id": "9e0c9217c3c29d84"
+      },
+      "parsed": {
+        "algorithm_ms": 486,
+        "clique_count": 162733,
+        "peak_memory_gib": 1.12,
+        "size_histogram": {
+          "2": 120169,
+          "3": 37025,
+          "4": 5247,
+          "5": 288,
+          "6": 4
+        },
+        "stats": {}
+      },
+      "validation": null,
+      "build": {
+        "fingerprint": "a5109816b58eb078",
+        "executable_sha256": "9f8deee1713c1d1020ebb49e2332b9e06605a87fae2506d31233faad1f5c3d12",
+        "command": [
+          "g++",
+          "-std=c++17",
+          "-fopenmp",
+          "-mavx2",
+          "-O3",
+          "src/alg4-raw.cpp",
+          "src/semantic_graph.cpp",
+          "-o",
+          "no-use/compiled/experiment-runner/alg4-raw-a5109816b58eb078.exe"
+        ],
+        "source_verification": {
+          "status": "verified_current",
+          "observed_current_fingerprint": "a5109816b58eb078",
+          "reason": null
+        },
+        "source_hashes": {
+          "alg4-raw.cpp": "2a4c3a22b326f5716e381c5dddafdbc21cc1696fc2d80f7e2f87668f3f3f98fe",
+          "semantic_graph.cpp": "c6d51c9086fbd5c7d264eb411ac04890806744fc4e05dc7eee0b156760a9cd92",
+          "semantic_graph.h": "8192c4e8e02fc8ace59d59365f72643e34ca32ba71faa5bb338381a8cd308078",
+          "experiment_runtime.h": "cc5fd4517f8ca2f43f7e7a4fa0f4c9a00ca8778966bc2ab2228d622a070e5354"
+        }
+      },
+      "inputs": {
+        "status": "verified_run_time",
+        "snapshot": {
+          "dataset_catalog": {
+            "path": "experiments/datasets.json",
+            "sha256": "be27e812615b59c62775fb3b129a5f422ad837c4d149311f220e0ad3bca1740b"
+          },
+          "files": [
+            {
+              "role": "graph",
+              "path": "dataset/dataset/com-amazon.txt",
+              "bytes": 12345017,
+              "sha256": "04b920ddba40ccdf87d48092a33c7039591d9c59fea0be78e529d73d3e75ac1d"
+            },
+            {
+              "role": "vector_binary",
+              "path": "dataset/vectors-256/com-amazon_vectors.bin",
+              "bytes": 685799432,
+              "sha256": "aaaa047467eb7e592bb9b0d28c5e971dcc08abd6660ab0ef7b3726f4239f250f"
+            }
+          ]
+        }
+      },
+      "run_environment": {
+        "plan": "experiments/plans/batch1-pilot-com-amazon-uniform.json",
+        "plan_sha256": "63dad978243dac4e40e3fc79f9ea6d92857a9c3466a029ec84b4a3278596c6c4",
+        "git": {
+          "commit": "59299fd9164d077d7e04cd97fc9ac89cbf962c9f",
+          "dirty": true
+        },
+        "machine": {
+          "platform": "Windows-11-10.0.26100-SP0",
+          "processor": "AMD64 Family 25 Model 97 Stepping 2, AuthenticAMD",
+          "logical_cpu_count": 32,
+          "python": "3.12.7",
+          "compiler": "g++ (x86_64-posix-seh-rev0, Built by MinGW-Builds project) 13.2.0"
+        },
+        "memory_limit_gib": 16,
+        "external_timeout_policy": "hard per-process TLE from task.timeout_seconds"
+      },
+      "result_json": {
+        "path": "experiment-output/batch1-pilot-com-amazon-uniform/9e0c9217c3c29d84.attempt-001.json",
+        "bytes": 4169,
+        "sha256": "86c7662cd2cacc594c71167fe59acf486ca0e3edf6705a93c360777cf83c43a6"
+      },
+      "artifacts": {
+        "program_log": {
+          "path": "experiment-output/batch1-pilot-com-amazon-uniform/9e0c9217c3c29d84.attempt-001.program.log",
+          "bytes": 1191,
+          "sha256": "60ad89b85a4c71796f9c297a2376a9095292a591e1c855a646966c19b6d608f0"
+        },
+        "stdout": {
+          "path": "experiment-output/batch1-pilot-com-amazon-uniform/9e0c9217c3c29d84.attempt-001.stdout.txt",
+          "bytes": 1394,
+          "sha256": "e6ed9e3ab2726b70ba6a1a9545557b776b8b4146ec4ea58cb870f74bc55f7ebf"
+        },
+        "stderr": {
+          "path": "experiment-output/batch1-pilot-com-amazon-uniform/9e0c9217c3c29d84.attempt-001.stderr.txt",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    {
+      "task_id": "bb349219db75ea29",
+      "attempt": 1,
+      "status": "completed",
+      "rerun_reason": null,
+      "started_utc": "2026-07-23T18:18:07.199301+00:00",
+      "wall_seconds": 2.6530640999990283,
+      "task": {
+        "algorithm": 3,
+        "mode": "raw",
+        "dataset": 2,
+        "tau": 0.145251,
+        "threads": 32,
+        "timeout_seconds": 180,
+        "graph": "dataset/dataset/com-amazon.txt",
+        "vectors": "dataset/vectors-256/com-amazon_vectors.bin",
+        "capture_cliques": false,
+        "defines": {},
+        "warmup": false,
+        "repetition": 0,
+        "task_id": "bb349219db75ea29"
+      },
+      "parsed": {
+        "algorithm_ms": 519,
+        "clique_count": 9239,
+        "peak_memory_gib": 1.12,
+        "size_histogram": {
+          "2": 9207,
+          "3": 32
+        },
+        "stats": {}
+      },
+      "validation": null,
+      "build": {
+        "fingerprint": "107cf826e22b1cac",
+        "executable_sha256": "06f973d34edd46b2314f8a4b32082dbae810e304c48dcdf24606fe6fd5d29e6e",
+        "command": [
+          "g++",
+          "-std=c++17",
+          "-fopenmp",
+          "-mavx2",
+          "-O3",
+          "src/alg3-raw.cpp",
+          "src/semantic_graph.cpp",
+          "-o",
+          "no-use/compiled/experiment-runner/alg3-raw-107cf826e22b1cac.exe"
+        ],
+        "source_verification": {
+          "status": "verified_current",
+          "observed_current_fingerprint": "107cf826e22b1cac",
+          "reason": null
+        },
+        "source_hashes": {
+          "alg3-raw.cpp": "656b9a9743483e66a7b5bbf6e006182530c37ad9f1affad3247c8f85b91854f5",
+          "semantic_graph.cpp": "c6d51c9086fbd5c7d264eb411ac04890806744fc4e05dc7eee0b156760a9cd92",
+          "semantic_graph.h": "8192c4e8e02fc8ace59d59365f72643e34ca32ba71faa5bb338381a8cd308078",
+          "experiment_runtime.h": "cc5fd4517f8ca2f43f7e7a4fa0f4c9a00ca8778966bc2ab2228d622a070e5354"
+        }
+      },
+      "inputs": {
+        "status": "verified_run_time",
+        "snapshot": {
+          "dataset_catalog": {
+            "path": "experiments/datasets.json",
+            "sha256": "be27e812615b59c62775fb3b129a5f422ad837c4d149311f220e0ad3bca1740b"
+          },
+          "files": [
+            {
+              "role": "graph",
+              "path": "dataset/dataset/com-amazon.txt",
+              "bytes": 12345017,
+              "sha256": "04b920ddba40ccdf87d48092a33c7039591d9c59fea0be78e529d73d3e75ac1d"
+            },
+            {
+              "role": "vector_binary",
+              "path": "dataset/vectors-256/com-amazon_vectors.bin",
+              "bytes": 685799432,
+              "sha256": "aaaa047467eb7e592bb9b0d28c5e971dcc08abd6660ab0ef7b3726f4239f250f"
+            }
+          ]
+        }
+      },
+      "run_environment": {
+        "plan": "experiments/plans/batch1-pilot-com-amazon-uniform.json",
+        "plan_sha256": "63dad978243dac4e40e3fc79f9ea6d92857a9c3466a029ec84b4a3278596c6c4",
+        "git": {
+          "commit": "59299fd9164d077d7e04cd97fc9ac89cbf962c9f",
+          "dirty": true
+        },
+        "machine": {
+          "platform": "Windows-11-10.0.26100-SP0",
+          "processor": "AMD64 Family 25 Model 97 Stepping 2, AuthenticAMD",
+          "logical_cpu_count": 32,
+          "python": "3.12.7",
+          "compiler": "g++ (x86_64-posix-seh-rev0, Built by MinGW-Builds project) 13.2.0"
+        },
+        "memory_limit_gib": 16,
+        "external_timeout_policy": "hard per-process TLE from task.timeout_seconds"
+      },
+      "result_json": {
+        "path": "experiment-output/batch1-pilot-com-amazon-uniform/bb349219db75ea29.attempt-001.json",
+        "bytes": 4112,
+        "sha256": "88c362f3ae35750c8ad42050b0da9b889bcc86f781fc72175d7f88d1faa8bc2f"
+      },
+      "artifacts": {
+        "program_log": {
+          "path": "experiment-output/batch1-pilot-com-amazon-uniform/bb349219db75ea29.attempt-001.program.log",
+          "bytes": 1250,
+          "sha256": "b155173fcf65a162e32cab97fe461e004fcab734983a5fe4627599a107983332"
+        },
+        "stdout": {
+          "path": "experiment-output/batch1-pilot-com-amazon-uniform/bb349219db75ea29.attempt-001.stdout.txt",
+          "bytes": 1453,
+          "sha256": "ff85951cb3cb6e3bc29c11934555cc6d0affe450f145370054e98939b70de74c"
+        },
+        "stderr": {
+          "path": "experiment-output/batch1-pilot-com-amazon-uniform/bb349219db75ea29.attempt-001.stderr.txt",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    {
+      "task_id": "dc16bc7c96ecca52",
+      "attempt": 1,
+      "status": "completed",
+      "rerun_reason": null,
+      "started_utc": "2026-07-23T18:18:04.543742+00:00",
+      "wall_seconds": 2.643669299999601,
+      "task": {
+        "algorithm": 2,
+        "mode": "raw",
+        "dataset": 2,
+        "tau": 0.145251,
+        "threads": 32,
+        "timeout_seconds": 180,
+        "graph": "dataset/dataset/com-amazon.txt",
+        "vectors": "dataset/vectors-256/com-amazon_vectors.bin",
+        "capture_cliques": false,
+        "defines": {},
+        "warmup": false,
+        "repetition": 0,
+        "task_id": "dc16bc7c96ecca52"
+      },
+      "parsed": {
+        "algorithm_ms": 528,
+        "clique_count": 9239,
+        "peak_memory_gib": 1.12,
+        "size_histogram": {
+          "2": 9207,
+          "3": 32
+        },
+        "stats": {}
+      },
+      "validation": null,
+      "build": {
+        "fingerprint": "0db46802a271f309",
+        "executable_sha256": "983eee9e533ece42f9312e881312a627b64d58bb2aeafe6337bcc270e6b55867",
+        "command": [
+          "g++",
+          "-std=c++17",
+          "-fopenmp",
+          "-mavx2",
+          "-O3",
+          "src/alg2-raw.cpp",
+          "src/semantic_graph.cpp",
+          "-o",
+          "no-use/compiled/experiment-runner/alg2-raw-0db46802a271f309.exe"
+        ],
+        "source_verification": {
+          "status": "verified_current",
+          "observed_current_fingerprint": "0db46802a271f309",
+          "reason": null
+        },
+        "source_hashes": {
+          "alg2-raw.cpp": "266f47d7d0f855c442d6e9c7a4916cf3c665cd0992c47912695bb7049bdebc0f",
+          "semantic_graph.cpp": "c6d51c9086fbd5c7d264eb411ac04890806744fc4e05dc7eee0b156760a9cd92",
+          "semantic_graph.h": "8192c4e8e02fc8ace59d59365f72643e34ca32ba71faa5bb338381a8cd308078",
+          "experiment_runtime.h": "cc5fd4517f8ca2f43f7e7a4fa0f4c9a00ca8778966bc2ab2228d622a070e5354"
+        }
+      },
+      "inputs": {
+        "status": "verified_run_time",
+        "snapshot": {
+          "dataset_catalog": {
+            "path": "experiments/datasets.json",
+            "sha256": "be27e812615b59c62775fb3b129a5f422ad837c4d149311f220e0ad3bca1740b"
+          },
+          "files": [
+            {
+              "role": "graph",
+              "path": "dataset/dataset/com-amazon.txt",
+              "bytes": 12345017,
+              "sha256": "04b920ddba40ccdf87d48092a33c7039591d9c59fea0be78e529d73d3e75ac1d"
+            },
+            {
+              "role": "vector_binary",
+              "path": "dataset/vectors-256/com-amazon_vectors.bin",
+              "bytes": 685799432,
+              "sha256": "aaaa047467eb7e592bb9b0d28c5e971dcc08abd6660ab0ef7b3726f4239f250f"
+            }
+          ]
+        }
+      },
+      "run_environment": {
+        "plan": "experiments/plans/batch1-pilot-com-amazon-uniform.json",
+        "plan_sha256": "63dad978243dac4e40e3fc79f9ea6d92857a9c3466a029ec84b4a3278596c6c4",
+        "git": {
+          "commit": "59299fd9164d077d7e04cd97fc9ac89cbf962c9f",
+          "dirty": true
+        },
+        "machine": {
+          "platform": "Windows-11-10.0.26100-SP0",
+          "processor": "AMD64 Family 25 Model 97 Stepping 2, AuthenticAMD",
+          "logical_cpu_count": 32,
+          "python": "3.12.7",
+          "compiler": "g++ (x86_64-posix-seh-rev0, Built by MinGW-Builds project) 13.2.0"
+        },
+        "memory_limit_gib": 16,
+        "external_timeout_policy": "hard per-process TLE from task.timeout_seconds"
+      },
+      "result_json": {
+        "path": "experiment-output/batch1-pilot-com-amazon-uniform/dc16bc7c96ecca52.attempt-001.json",
+        "bytes": 4111,
+        "sha256": "388c4b59b7d298ab97860f93e06983ce9469c977c8c446a0c9eb78d0f3a13ec3"
+      },
+      "artifacts": {
+        "program_log": {
+          "path": "experiment-output/batch1-pilot-com-amazon-uniform/dc16bc7c96ecca52.attempt-001.program.log",
+          "bytes": 1220,
+          "sha256": "80051e208afdcb2594d31b53a568928a662574f3ae03b63bfaf4d644e4236d7f"
+        },
+        "stdout": {
+          "path": "experiment-output/batch1-pilot-com-amazon-uniform/dc16bc7c96ecca52.attempt-001.stdout.txt",
+          "bytes": 1423,
+          "sha256": "3437bcbac2d9c9e03a377db33601e6f607ce00c7799ec2713011c35d0c236a65"
+        },
+        "stderr": {
+          "path": "experiment-output/batch1-pilot-com-amazon-uniform/dc16bc7c96ecca52.attempt-001.stderr.txt",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    {
+      "task_id": "ecd7d4d21e26a38b",
+      "attempt": 1,
+      "status": "completed",
+      "rerun_reason": null,
+      "started_utc": "2026-07-23T18:17:15.611356+00:00",
+      "wall_seconds": 3.0654240000003483,
+      "task": {
+        "algorithm": 4,
+        "mode": "raw",
+        "dataset": 2,
+        "tau": -5.12078e-05,
+        "threads": 32,
+        "timeout_seconds": 180,
+        "graph": "dataset/dataset/com-amazon.txt",
+        "vectors": "dataset/vectors-256/com-amazon_vectors.bin",
+        "capture_cliques": false,
+        "defines": {},
+        "warmup": false,
+        "repetition": 0,
+        "task_id": "ecd7d4d21e26a38b"
+      },
+      "parsed": {
+        "algorithm_ms": 920,
+        "clique_count": 329237,
+        "peak_memory_gib": 1.12,
+        "size_histogram": {
+          "2": 149879,
+          "3": 104505,
+          "4": 54211,
+          "5": 17909,
+          "6": 2718,
+          "7": 15
+        },
+        "stats": {}
+      },
+      "validation": null,
+      "build": {
+        "fingerprint": "a5109816b58eb078",
+        "executable_sha256": "9f8deee1713c1d1020ebb49e2332b9e06605a87fae2506d31233faad1f5c3d12",
+        "command": [
+          "g++",
+          "-std=c++17",
+          "-fopenmp",
+          "-mavx2",
+          "-O3",
+          "src/alg4-raw.cpp",
+          "src/semantic_graph.cpp",
+          "-o",
+          "no-use/compiled/experiment-runner/alg4-raw-a5109816b58eb078.exe"
+        ],
+        "source_verification": {
+          "status": "verified_current",
+          "observed_current_fingerprint": "a5109816b58eb078",
+          "reason": null
+        },
+        "source_hashes": {
+          "alg4-raw.cpp": "2a4c3a22b326f5716e381c5dddafdbc21cc1696fc2d80f7e2f87668f3f3f98fe",
+          "semantic_graph.cpp": "c6d51c9086fbd5c7d264eb411ac04890806744fc4e05dc7eee0b156760a9cd92",
+          "semantic_graph.h": "8192c4e8e02fc8ace59d59365f72643e34ca32ba71faa5bb338381a8cd308078",
+          "experiment_runtime.h": "cc5fd4517f8ca2f43f7e7a4fa0f4c9a00ca8778966bc2ab2228d622a070e5354"
+        }
+      },
+      "inputs": {
+        "status": "verified_run_time",
+        "snapshot": {
+          "dataset_catalog": {
+            "path": "experiments/datasets.json",
+            "sha256": "be27e812615b59c62775fb3b129a5f422ad837c4d149311f220e0ad3bca1740b"
+          },
+          "files": [
+            {
+              "role": "graph",
+              "path": "dataset/dataset/com-amazon.txt",
+              "bytes": 12345017,
+              "sha256": "04b920ddba40ccdf87d48092a33c7039591d9c59fea0be78e529d73d3e75ac1d"
+            },
+            {
+              "role": "vector_binary",
+              "path": "dataset/vectors-256/com-amazon_vectors.bin",
+              "bytes": 685799432,
+              "sha256": "aaaa047467eb7e592bb9b0d28c5e971dcc08abd6660ab0ef7b3726f4239f250f"
+            }
+          ]
+        }
+      },
+      "run_environment": {
+        "plan": "experiments/plans/batch1-pilot-com-amazon-uniform.json",
+        "plan_sha256": "63dad978243dac4e40e3fc79f9ea6d92857a9c3466a029ec84b4a3278596c6c4",
+        "git": {
+          "commit": "59299fd9164d077d7e04cd97fc9ac89cbf962c9f",
+          "dirty": true
+        },
+        "machine": {
+          "platform": "Windows-11-10.0.26100-SP0",
+          "processor": "AMD64 Family 25 Model 97 Stepping 2, AuthenticAMD",
+          "logical_cpu_count": 32,
+          "python": "3.12.7",
+          "compiler": "g++ (x86_64-posix-seh-rev0, Built by MinGW-Builds project) 13.2.0"
+        },
+        "memory_limit_gib": 16,
+        "external_timeout_policy": "hard per-process TLE from task.timeout_seconds"
+      },
+      "result_json": {
+        "path": "experiment-output/batch1-pilot-com-amazon-uniform/ecd7d4d21e26a38b.attempt-001.json",
+        "bytes": 4196,
+        "sha256": "eac2e63f8594c6c83a03e17d63a629269f296fcc2fcbcc1a0f81eff04a0623d2"
+      },
+      "artifacts": {
+        "program_log": {
+          "path": "experiment-output/batch1-pilot-com-amazon-uniform/ecd7d4d21e26a38b.attempt-001.program.log",
+          "bytes": 1227,
+          "sha256": "ad10bdab03aa9b0d24b799b2fcb27a8bce3f85aca85de5d0c59f957cd2e7d3a9"
+        },
+        "stdout": {
+          "path": "experiment-output/batch1-pilot-com-amazon-uniform/ecd7d4d21e26a38b.attempt-001.stdout.txt",
+          "bytes": 1430,
+          "sha256": "83f194c86e604f18da72250ac604eb19b311be96e4ca52a1c4cf44237c2cfbc4"
+        },
+        "stderr": {
+          "path": "experiment-output/batch1-pilot-com-amazon-uniform/ecd7d4d21e26a38b.attempt-001.stderr.txt",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    }
+  ]
+}

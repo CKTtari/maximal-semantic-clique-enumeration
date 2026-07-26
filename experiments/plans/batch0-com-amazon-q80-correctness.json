@@ -1,0 +1,8 @@
+{
+  "name": "batch0-com-amazon-q80-correctness",
+  "tasks": [
+    {"algorithm": 2, "mode": "raw", "dataset": 2, "graph": "dataset/dataset/com-amazon.txt", "vectors": "dataset/vectors-256/com-amazon_vectors.bin", "tau": 0.0526286, "threads": 32, "timeout_seconds": 180, "capture_cliques": true, "repetitions": 1},
+    {"algorithm": 3, "mode": "raw", "dataset": 2, "graph": "dataset/dataset/com-amazon.txt", "vectors": "dataset/vectors-256/com-amazon_vectors.bin", "tau": 0.0526286, "threads": 32, "timeout_seconds": 180, "capture_cliques": true, "repetitions": 1},
+    {"algorithm": 4, "mode": "raw", "dataset": 2, "graph": "dataset/dataset/com-amazon.txt", "vectors": "dataset/vectors-256/com-amazon_vectors.bin", "tau": 0.0526286, "threads": 32, "timeout_seconds": 180, "capture_cliques": true, "repetitions": 1}
+  ]
+}

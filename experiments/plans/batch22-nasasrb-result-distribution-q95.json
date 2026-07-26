@@ -1,0 +1,6 @@
+{
+  "name": "batch22-nasasrb-result-distribution-q95",
+  "tasks": [
+    {"algorithm": 3, "mode": "raw", "dataset": 2, "tau": 0.102769, "threads": 32, "timeout_seconds": 1200}
+  ]
+}

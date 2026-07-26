@@ -1,0 +1,406 @@
+{
+  "schema_version": 2,
+  "run_name": "batch9-pilot-pwtk-alg3-common-grid",
+  "archived_utc": "2026-07-24T15:28:38.296989+00:00",
+  "local_result_directory": "experiment-output/batch9-pilot-pwtk-alg3-common-grid",
+  "plans": [
+    {
+      "path": "experiments/plans/batch9-pilot-pwtk-alg3-common-grid.json",
+      "sha256": "e8795d9e86656c7e8e4547df0c7388a84c3d156b9cb4e5377e9ce36c80b61877"
+    }
+  ],
+  "summary": {
+    "attempts": 3,
+    "planned_tasks": 3,
+    "attempted_tasks": 3,
+    "completed_tasks": 2,
+    "unattempted_tasks": 0,
+    "unattempted_task_ids": [],
+    "plan_complete": true,
+    "status_counts": {
+      "completed": 2,
+      "tle": 1
+    }
+  },
+  "records": [
+    {
+      "task_id": "27859119c3b52f66",
+      "attempt": 1,
+      "status": "completed",
+      "rerun_reason": null,
+      "started_utc": "2026-07-24T15:24:42.388350+00:00",
+      "wall_seconds": 4.712274899997283,
+      "task": {
+        "algorithm": 3,
+        "mode": "raw",
+        "dataset": 14,
+        "tau": 0.145163,
+        "threads": 32,
+        "timeout_seconds": 180,
+        "graph": null,
+        "vectors": null,
+        "capture_cliques": false,
+        "defines": {},
+        "warmup": false,
+        "repetition": 0,
+        "task_id": "27859119c3b52f66"
+      },
+      "parsed": {
+        "algorithm_ms": 1320,
+        "clique_count": 54907,
+        "peak_memory_gib": 0.95,
+        "size_histogram": {
+          "2": 52003,
+          "3": 2882,
+          "4": 22
+        },
+        "stats": {}
+      },
+      "validation": null,
+      "build": {
+        "fingerprint": "64e4967861b335bf",
+        "executable_sha256": "69c1a62388b882a1a6d832b0ab65b278b84da5c6c64458429e91f214dfaac8f6",
+        "command": [
+          "g++",
+          "-std=c++17",
+          "-fopenmp",
+          "-mavx2",
+          "-O3",
+          "src/alg3-raw.cpp",
+          "src/semantic_graph.cpp",
+          "-o",
+          "no-use/compiled/experiment-runner/alg3-raw-64e4967861b335bf.exe"
+        ],
+        "source_verification": {
+          "status": "verified_current",
+          "observed_current_fingerprint": "64e4967861b335bf",
+          "reason": null
+        },
+        "source_hashes": {
+          "alg3-raw.cpp": "88e7ff339339d8c2fcc15881413cbcbc066dc394d55fdacfdd6c46ac7717a036",
+          "semantic_graph.cpp": "c6d51c9086fbd5c7d264eb411ac04890806744fc4e05dc7eee0b156760a9cd92",
+          "semantic_graph.h": "8192c4e8e02fc8ace59d59365f72643e34ca32ba71faa5bb338381a8cd308078",
+          "experiment_runtime.h": "dc2be362f49932a172aa59e862dbc6dcb3cebec18dfd7950322bf4a7126ab2a1"
+        }
+      },
+      "inputs": {
+        "status": "verified_run_time",
+        "snapshot": {
+          "dataset_catalog": {
+            "path": "experiments/datasets.json",
+            "sha256": "35c6ced15bff76becdc06c670b753fe56ca69122ca7407205c5a0c14a32bb2d0"
+          },
+          "files": [
+            {
+              "role": "graph",
+              "path": "dataset/dataset/sc-pwtk.txt",
+              "bytes": 73301256,
+              "sha256": "f3376c28ebb24ca1af6ca55a2ed00c00cf89e6b2ed600b2a164d19f7c3f0977d"
+            },
+            {
+              "role": "vector_binary",
+              "path": "dataset/vectors-256/sc-pwtk_vectors.bin",
+              "bytes": 446240776,
+              "sha256": "e6236541e0619db274544dd907508e619056d73feef6dbb1f8db15cbc4629bb9"
+            }
+          ]
+        }
+      },
+      "run_environment": {
+        "plan": "experiments/plans/batch9-pilot-pwtk-alg3-common-grid.json",
+        "plan_sha256": "e8795d9e86656c7e8e4547df0c7388a84c3d156b9cb4e5377e9ce36c80b61877",
+        "git": {
+          "commit": "59299fd9164d077d7e04cd97fc9ac89cbf962c9f",
+          "dirty": true
+        },
+        "machine": {
+          "platform": "Windows-11-10.0.26100-SP0",
+          "processor": "AMD64 Family 25 Model 97 Stepping 2, AuthenticAMD",
+          "logical_cpu_count": 32,
+          "python": "3.12.7",
+          "compiler": "g++ (x86_64-posix-seh-rev0, Built by MinGW-Builds project) 13.2.0"
+        },
+        "memory_limit_gib": 16,
+        "external_timeout_policy": "hard per-process TLE from task.timeout_seconds"
+      },
+      "result_json": {
+        "path": "experiment-output/batch9-pilot-pwtk-alg3-common-grid/27859119c3b52f66.attempt-001.json",
+        "bytes": 4069,
+        "sha256": "c1fea8c592c135aa6f5f300c5a1ce5e93ecfe2f032424d8700d5648d7f1fc374"
+      },
+      "artifacts": {
+        "program_log": {
+          "path": "experiment-output/batch9-pilot-pwtk-alg3-common-grid/27859119c3b52f66.attempt-001.program.log",
+          "bytes": 1287,
+          "sha256": "57d3ed3eed9c3e3d2c1da20e64e418db5c5993ab6bac69f34f466a013beae4ed"
+        },
+        "stdout": {
+          "path": "experiment-output/batch9-pilot-pwtk-alg3-common-grid/27859119c3b52f66.attempt-001.stdout.txt",
+          "bytes": 1487,
+          "sha256": "c75aa7395f5bf8b7d02a40c59ffafcfdd2fa82062aef3749cb41f92b09414cc8"
+        },
+        "stderr": {
+          "path": "experiment-output/batch9-pilot-pwtk-alg3-common-grid/27859119c3b52f66.attempt-001.stderr.txt",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    {
+      "task_id": "27bbb7584041a197",
+      "attempt": 1,
+      "status": "tle",
+      "rerun_reason": null,
+      "started_utc": "2026-07-24T15:21:03.753871+00:00",
+      "wall_seconds": 180.0986972999999,
+      "task": {
+        "algorithm": 3,
+        "mode": "raw",
+        "dataset": 14,
+        "tau": 0.0526251,
+        "threads": 32,
+        "timeout_seconds": 180,
+        "graph": null,
+        "vectors": null,
+        "capture_cliques": false,
+        "defines": {},
+        "warmup": false,
+        "repetition": 0,
+        "task_id": "27bbb7584041a197"
+      },
+      "parsed": null,
+      "validation": null,
+      "build": {
+        "fingerprint": "64e4967861b335bf",
+        "executable_sha256": "69c1a62388b882a1a6d832b0ab65b278b84da5c6c64458429e91f214dfaac8f6",
+        "command": [
+          "g++",
+          "-std=c++17",
+          "-fopenmp",
+          "-mavx2",
+          "-O3",
+          "src/alg3-raw.cpp",
+          "src/semantic_graph.cpp",
+          "-o",
+          "no-use/compiled/experiment-runner/alg3-raw-64e4967861b335bf.exe"
+        ],
+        "source_verification": {
+          "status": "verified_current",
+          "observed_current_fingerprint": "64e4967861b335bf",
+          "reason": null
+        },
+        "source_hashes": {
+          "alg3-raw.cpp": "88e7ff339339d8c2fcc15881413cbcbc066dc394d55fdacfdd6c46ac7717a036",
+          "semantic_graph.cpp": "c6d51c9086fbd5c7d264eb411ac04890806744fc4e05dc7eee0b156760a9cd92",
+          "semantic_graph.h": "8192c4e8e02fc8ace59d59365f72643e34ca32ba71faa5bb338381a8cd308078",
+          "experiment_runtime.h": "dc2be362f49932a172aa59e862dbc6dcb3cebec18dfd7950322bf4a7126ab2a1"
+        }
+      },
+      "inputs": {
+        "status": "verified_run_time",
+        "snapshot": {
+          "dataset_catalog": {
+            "path": "experiments/datasets.json",
+            "sha256": "35c6ced15bff76becdc06c670b753fe56ca69122ca7407205c5a0c14a32bb2d0"
+          },
+          "files": [
+            {
+              "role": "graph",
+              "path": "dataset/dataset/sc-pwtk.txt",
+              "bytes": 73301256,
+              "sha256": "f3376c28ebb24ca1af6ca55a2ed00c00cf89e6b2ed600b2a164d19f7c3f0977d"
+            },
+            {
+              "role": "vector_binary",
+              "path": "dataset/vectors-256/sc-pwtk_vectors.bin",
+              "bytes": 446240776,
+              "sha256": "e6236541e0619db274544dd907508e619056d73feef6dbb1f8db15cbc4629bb9"
+            }
+          ]
+        }
+      },
+      "run_environment": {
+        "plan": "experiments/plans/batch9-pilot-pwtk-alg3-common-grid.json",
+        "plan_sha256": "e8795d9e86656c7e8e4547df0c7388a84c3d156b9cb4e5377e9ce36c80b61877",
+        "git": {
+          "commit": "59299fd9164d077d7e04cd97fc9ac89cbf962c9f",
+          "dirty": true
+        },
+        "machine": {
+          "platform": "Windows-11-10.0.26100-SP0",
+          "processor": "AMD64 Family 25 Model 97 Stepping 2, AuthenticAMD",
+          "logical_cpu_count": 32,
+          "python": "3.12.7",
+          "compiler": "g++ (x86_64-posix-seh-rev0, Built by MinGW-Builds project) 13.2.0"
+        },
+        "memory_limit_gib": 16,
+        "external_timeout_policy": "hard per-process TLE from task.timeout_seconds"
+      },
+      "result_json": {
+        "path": "experiment-output/batch9-pilot-pwtk-alg3-common-grid/27bbb7584041a197.attempt-001.json",
+        "bytes": 3878,
+        "sha256": "115c9f11973018221bce78db405fd29a9b7ba7b00fa8389d87b819f88534ddec"
+      },
+      "artifacts": {
+        "program_log": {
+          "path": "experiment-output/batch9-pilot-pwtk-alg3-common-grid/27bbb7584041a197.attempt-001.program.log",
+          "bytes": 2735,
+          "sha256": "2c128aedc85f0c237617275506a334ef1898572670e9d191517b754917be0813"
+        },
+        "stdout": {
+          "path": "experiment-output/batch9-pilot-pwtk-alg3-common-grid/27bbb7584041a197.attempt-001.stdout.txt",
+          "bytes": 597,
+          "sha256": "5de40fdba472c16d5427207b5ce34883703fa570a0bf98591cb837c61165bfda"
+        },
+        "stderr": {
+          "path": "experiment-output/batch9-pilot-pwtk-alg3-common-grid/27bbb7584041a197.attempt-001.stderr.txt",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    {
+      "task_id": "295e8666ed32ce80",
+      "attempt": 1,
+      "status": "completed",
+      "rerun_reason": null,
+      "started_utc": "2026-07-24T15:20:31.299718+00:00",
+      "wall_seconds": 5.754771699997946,
+      "task": {
+        "algorithm": 3,
+        "mode": "raw",
+        "dataset": 14,
+        "tau": -0.0526536,
+        "threads": 32,
+        "timeout_seconds": 180,
+        "graph": null,
+        "vectors": null,
+        "capture_cliques": false,
+        "defines": {},
+        "warmup": false,
+        "repetition": 0,
+        "task_id": "295e8666ed32ce80"
+      },
+      "parsed": {
+        "algorithm_ms": 1311,
+        "clique_count": 58523,
+        "peak_memory_gib": 0.95,
+        "size_histogram": {
+          "2": 25,
+          "3": 41,
+          "4": 104,
+          "5": 21,
+          "6": 464,
+          "7": 452,
+          "8": 1623,
+          "9": 1962,
+          "10": 3229,
+          "11": 2537,
+          "12": 2616,
+          "13": 1262,
+          "14": 2402,
+          "15": 2183,
+          "16": 2996,
+          "17": 252,
+          "18": 1197,
+          "19": 688,
+          "20": 1175,
+          "21": 127,
+          "22": 267,
+          "23": 214,
+          "24": 32686
+        },
+        "stats": {}
+      },
+      "validation": null,
+      "build": {
+        "fingerprint": "64e4967861b335bf",
+        "executable_sha256": "69c1a62388b882a1a6d832b0ab65b278b84da5c6c64458429e91f214dfaac8f6",
+        "command": [
+          "g++",
+          "-std=c++17",
+          "-fopenmp",
+          "-mavx2",
+          "-O3",
+          "src/alg3-raw.cpp",
+          "src/semantic_graph.cpp",
+          "-o",
+          "no-use/compiled/experiment-runner/alg3-raw-64e4967861b335bf.exe"
+        ],
+        "source_verification": {
+          "status": "verified_current",
+          "observed_current_fingerprint": "64e4967861b335bf",
+          "reason": null
+        },
+        "source_hashes": {
+          "alg3-raw.cpp": "88e7ff339339d8c2fcc15881413cbcbc066dc394d55fdacfdd6c46ac7717a036",
+          "semantic_graph.cpp": "c6d51c9086fbd5c7d264eb411ac04890806744fc4e05dc7eee0b156760a9cd92",
+          "semantic_graph.h": "8192c4e8e02fc8ace59d59365f72643e34ca32ba71faa5bb338381a8cd308078",
+          "experiment_runtime.h": "dc2be362f49932a172aa59e862dbc6dcb3cebec18dfd7950322bf4a7126ab2a1"
+        }
+      },
+      "inputs": {
+        "status": "verified_run_time",
+        "snapshot": {
+          "dataset_catalog": {
+            "path": "experiments/datasets.json",
+            "sha256": "35c6ced15bff76becdc06c670b753fe56ca69122ca7407205c5a0c14a32bb2d0"
+          },
+          "files": [
+            {
+              "role": "graph",
+              "path": "dataset/dataset/sc-pwtk.txt",
+              "bytes": 73301256,
+              "sha256": "f3376c28ebb24ca1af6ca55a2ed00c00cf89e6b2ed600b2a164d19f7c3f0977d"
+            },
+            {
+              "role": "vector_binary",
+              "path": "dataset/vectors-256/sc-pwtk_vectors.bin",
+              "bytes": 446240776,
+              "sha256": "e6236541e0619db274544dd907508e619056d73feef6dbb1f8db15cbc4629bb9"
+            }
+          ]
+        }
+      },
+      "run_environment": {
+        "plan": "experiments/plans/batch9-pilot-pwtk-alg3-common-grid.json",
+        "plan_sha256": "e8795d9e86656c7e8e4547df0c7388a84c3d156b9cb4e5377e9ce36c80b61877",
+        "git": {
+          "commit": "59299fd9164d077d7e04cd97fc9ac89cbf962c9f",
+          "dirty": true
+        },
+        "machine": {
+          "platform": "Windows-11-10.0.26100-SP0",
+          "processor": "AMD64 Family 25 Model 97 Stepping 2, AuthenticAMD",
+          "logical_cpu_count": 32,
+          "python": "3.12.7",
+          "compiler": "g++ (x86_64-posix-seh-rev0, Built by MinGW-Builds project) 13.2.0"
+        },
+        "memory_limit_gib": 16,
+        "external_timeout_policy": "hard per-process TLE from task.timeout_seconds"
+      },
+      "result_json": {
+        "path": "experiment-output/batch9-pilot-pwtk-alg3-common-grid/295e8666ed32ce80.attempt-001.json",
+        "bytes": 4434,
+        "sha256": "a685d668ca5e0b18d3cc18aec5a60f9f9bd57ddeea744e9ea41f3ff28b50638c"
+      },
+      "artifacts": {
+        "program_log": {
+          "path": "experiment-output/batch9-pilot-pwtk-alg3-common-grid/295e8666ed32ce80.attempt-001.program.log",
+          "bytes": 1794,
+          "sha256": "8dcaee636740b65c6ff179bb6510db30ef044f9ff6ab37986808776b85faafa1"
+        },
+        "stdout": {
+          "path": "experiment-output/batch9-pilot-pwtk-alg3-common-grid/295e8666ed32ce80.attempt-001.stdout.txt",
+          "bytes": 1994,
+          "sha256": "cf46672dd416736d028ad9788ecb4f903737a42649f259c4c43ffaecfc993ff2"
+        },
+        "stderr": {
+          "path": "experiment-output/batch9-pilot-pwtk-alg3-common-grid/295e8666ed32ce80.attempt-001.stderr.txt",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    }
+  ]
+}

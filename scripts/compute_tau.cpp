@@ -1,3 +1,5 @@
+#include "experiment_runtime.h"
+
 #include <iostream>
 #include <fstream>
 #include <vector>
@@ -75,16 +77,31 @@ vector<DatasetConfig> DATASETS = {
     {6, "tech-as-skitter", "dataset/dataset/tech-as-skitter.txt", "dataset/vectors-256/tech-as-skitter_vectors.bin"},
     {7, "FB15K-237", "dataset/dataset/FB15K-237_edges.txt", "dataset/vectors/FB15K-237_vectors.index"},
     {8, "WN18RR", "dataset/dataset/WN18RR_edges.txt", "dataset/vectors/WN18RR_vectors.index"},
-    {9, "DBLP", "dataset/dataset/dblp_coauthor.txt", "dataset/vectors/dblp_coauthor_vectors.index"}
+    {9, "DBLP", "dataset/dataset/dblp_coauthor.txt", "dataset/vectors/dblp_coauthor_vectors.index"},
+    {10, "Products", "dataset/dataset/products.txt", "dataset/vectors/products_vectors.index"},
+    {11, "ogbn-arxiv", "dataset/dataset/ogbn-arxiv.txt", "dataset/vectors/ogbn-arxiv_vectors.bin"},
+    {12, "com-amazon", "dataset/dataset/com-amazon.txt", "dataset/vectors-256/com-amazon_vectors.bin"},
+    {13, "ca-dblp-2012", "dataset/dataset/ca-dblp-2012.txt", "dataset/vectors-256/ca-dblp-2012_vectors.bin"},
+    {14, "sc-pwtk", "dataset/dataset/sc-pwtk.txt", "dataset/vectors-256/sc-pwtk_vectors.bin"},
+    {16, "email-Enron", "dataset/Processed/email-Enron/graph.txt", "dataset/Processed/email-Enron/email-Enron_vectors.bin"}
 };
 
-int main() {
-    vector<int> PERCENTILES = {10, 20, 30, 40, 50, 60, 70, 80, 85, 90, 93, 95, 97, 99};
+int main(int argc, char* argv[]) {
+    if (!acmsc_runtime::enforce_memory_limit()) {
+        cerr << "Failed to enforce the 16 GiB process memory limit." << endl;
+        return 2;
+    }
+    vector<int> requested;
+    for (int i = 1; i < argc; ++i) requested.push_back(atoi(argv[i]));
+    vector<int> PERCENTILES = {5, 10, 20, 30, 40, 50, 60, 65, 70, 80, 85, 90, 93, 95, 97, 99};
 
     cout << "{" << endl;
     bool first_ds = true;
 
     for (const auto& cfg : DATASETS) {
+        if (!requested.empty() &&
+            find(requested.begin(), requested.end(), cfg.id) == requested.end())
+            continue;
         if (!first_ds) cout << "," << endl;
         first_ds = false;
 
@@ -101,6 +118,7 @@ int main() {
             cout.rdbuf(old_cout_buf);
             continue;
         }
+        vector<set<int>>().swap(g.adjSet);
 
         // Load vectors (exactly as alg4-raw.cpp)
         if (fs::exists(cfg.vec_index)) {
@@ -117,6 +135,7 @@ int main() {
         // Build Float32VectorStore for fast SIMD dot product
         Float32VectorStore vecs;
         vecs.build(g);
+        vector<vector<double>>().swap(g.semanticVectors);
 
         long long ec = 0;
         for (int i = 0; i < g.V; i++) ec += (long long)g.adj[i].size();
@@ -135,7 +154,7 @@ int main() {
 
         // Compute similarities in parallel using SIMD dot product
         size_t E = edges.size();
-        vector<double> sims(E);
+        vector<float> sims(E);
 
         #pragma omp parallel for schedule(dynamic, 4096)
         for (size_t i = 0; i < E; ++i) {

@@ -1,0 +1,99 @@
+{
+  "schema_version": 1,
+  "source_manifest": "experiments/archive/batch1-pilot-fb15k-baselines-q20-q70.manifest.json",
+  "source_run": "batch1-pilot-fb15k-baselines-q20-q70",
+  "source_plan_summary": {
+    "attempts": 4,
+    "planned_tasks": 4,
+    "attempted_tasks": 4,
+    "completed_tasks": 0,
+    "unattempted_tasks": 0,
+    "unattempted_task_ids": [],
+    "plan_complete": true,
+    "status_counts": {
+      "tle": 4
+    }
+  },
+  "groups": [
+    {
+      "configuration": {
+        "algorithm": 2,
+        "mode": "raw",
+        "dataset": 7,
+        "tau": 0.02516,
+        "threads": 32,
+        "timeout_seconds": 180,
+        "graph": null,
+        "vectors": null,
+        "capture_cliques": false,
+        "defines": {},
+        "warmup": false
+      },
+      "status_counts": {
+        "tle": 1
+      },
+      "timing": null,
+      "result": null
+    },
+    {
+      "configuration": {
+        "algorithm": 2,
+        "mode": "raw",
+        "dataset": 7,
+        "tau": 0.189047,
+        "threads": 32,
+        "timeout_seconds": 180,
+        "graph": null,
+        "vectors": null,
+        "capture_cliques": false,
+        "defines": {},
+        "warmup": false
+      },
+      "status_counts": {
+        "tle": 1
+      },
+      "timing": null,
+      "result": null
+    },
+    {
+      "configuration": {
+        "algorithm": 4,
+        "mode": "raw",
+        "dataset": 7,
+        "tau": 0.02516,
+        "threads": 32,
+        "timeout_seconds": 180,
+        "graph": null,
+        "vectors": null,
+        "capture_cliques": false,
+        "defines": {},
+        "warmup": false
+      },
+      "status_counts": {
+        "tle": 1
+      },
+      "timing": null,
+      "result": null
+    },
+    {
+      "configuration": {
+        "algorithm": 4,
+        "mode": "raw",
+        "dataset": 7,
+        "tau": 0.189047,
+        "threads": 32,
+        "timeout_seconds": 180,
+        "graph": null,
+        "vectors": null,
+        "capture_cliques": false,
+        "defines": {},
+        "warmup": false
+      },
+      "status_counts": {
+        "tle": 1
+      },
+      "timing": null,
+      "result": null
+    }
+  ]
+}

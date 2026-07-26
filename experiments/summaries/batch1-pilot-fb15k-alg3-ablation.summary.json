@@ -1,0 +1,261 @@
+{
+  "schema_version": 1,
+  "source_manifest": "experiments/archive/batch1-pilot-fb15k-alg3-ablation.manifest.json",
+  "source_run": "batch1-pilot-fb15k-alg3-ablation",
+  "source_plan_summary": {
+    "attempts": 4,
+    "planned_tasks": 4,
+    "attempted_tasks": 4,
+    "completed_tasks": 4,
+    "unattempted_tasks": 0,
+    "unattempted_task_ids": [],
+    "plan_complete": true,
+    "status_counts": {
+      "completed": 4
+    }
+  },
+  "groups": [
+    {
+      "configuration": {
+        "algorithm": 3,
+        "mode": "stats",
+        "dataset": 7,
+        "tau": 0.234886,
+        "threads": 32,
+        "timeout_seconds": 180,
+        "graph": null,
+        "vectors": null,
+        "capture_cliques": false,
+        "defines": {
+          "ACMSC_STRSUB_LOCAL_MAX": 0
+        },
+        "warmup": false
+      },
+      "status_counts": {
+        "completed": 1
+      },
+      "timing": null,
+      "result": {
+        "clique_count": 76106,
+        "size_histogram": {
+          "10": 1277,
+          "11": 1529,
+          "12": 1400,
+          "13": 1143,
+          "14": 1077,
+          "15": 972,
+          "16": 699,
+          "17": 475,
+          "18": 464,
+          "19": 350,
+          "2": 18212,
+          "20": 328,
+          "21": 332,
+          "22": 362,
+          "23": 475,
+          "24": 694,
+          "25": 388,
+          "26": 120,
+          "27": 21,
+          "28": 4,
+          "3": 19234,
+          "4": 9733,
+          "5": 5293,
+          "6": 4020,
+          "7": 2998,
+          "8": 2499,
+          "9": 2007
+        },
+        "stats": {
+          "covered_subsets": 0,
+          "exact_duplicates": 9884002,
+          "feasible_local": 21719661,
+          "global_subsets_pruned": 11759553,
+          "structural_cliques": 221196,
+          "subset_tests": 277435771
+        }
+      }
+    },
+    {
+      "configuration": {
+        "algorithm": 3,
+        "mode": "stats",
+        "dataset": 7,
+        "tau": 0.234886,
+        "threads": 32,
+        "timeout_seconds": 180,
+        "graph": null,
+        "vectors": null,
+        "capture_cliques": false,
+        "defines": {
+          "ACMSC_STRSUB_TOP_EDGE": 0
+        },
+        "warmup": false
+      },
+      "status_counts": {
+        "completed": 1
+      },
+      "timing": null,
+      "result": {
+        "clique_count": 76106,
+        "size_histogram": {
+          "10": 1277,
+          "11": 1529,
+          "12": 1400,
+          "13": 1143,
+          "14": 1077,
+          "15": 972,
+          "16": 699,
+          "17": 475,
+          "18": 464,
+          "19": 350,
+          "2": 18212,
+          "20": 328,
+          "21": 332,
+          "22": 362,
+          "23": 475,
+          "24": 694,
+          "25": 388,
+          "26": 120,
+          "27": 21,
+          "28": 4,
+          "3": 19234,
+          "4": 9733,
+          "5": 5293,
+          "6": 4020,
+          "7": 2998,
+          "8": 2499,
+          "9": 2007
+        },
+        "stats": {
+          "covered_subsets": 65403926,
+          "exact_duplicates": 198870,
+          "feasible_local": 302095,
+          "global_subsets_pruned": 27119,
+          "structural_cliques": 221196,
+          "subset_tests": 213213581
+        }
+      }
+    },
+    {
+      "configuration": {
+        "algorithm": 3,
+        "mode": "stats",
+        "dataset": 7,
+        "tau": 0.234886,
+        "threads": 32,
+        "timeout_seconds": 180,
+        "graph": null,
+        "vectors": null,
+        "capture_cliques": false,
+        "defines": {
+          "ACMSC_STRSUB_VERTEX_BOUND": 0
+        },
+        "warmup": false
+      },
+      "status_counts": {
+        "completed": 1
+      },
+      "timing": null,
+      "result": {
+        "clique_count": 76106,
+        "size_histogram": {
+          "10": 1277,
+          "11": 1529,
+          "12": 1400,
+          "13": 1143,
+          "14": 1077,
+          "15": 972,
+          "16": 699,
+          "17": 475,
+          "18": 464,
+          "19": 350,
+          "2": 18212,
+          "20": 328,
+          "21": 332,
+          "22": 362,
+          "23": 475,
+          "24": 694,
+          "25": 388,
+          "26": 120,
+          "27": 21,
+          "28": 4,
+          "3": 19234,
+          "4": 9733,
+          "5": 5293,
+          "6": 4020,
+          "7": 2998,
+          "8": 2499,
+          "9": 2007
+        },
+        "stats": {
+          "covered_subsets": 65403926,
+          "exact_duplicates": 198870,
+          "feasible_local": 302095,
+          "global_subsets_pruned": 27119,
+          "structural_cliques": 221196,
+          "subset_tests": 220122247
+        }
+      }
+    },
+    {
+      "configuration": {
+        "algorithm": 3,
+        "mode": "stats",
+        "dataset": 7,
+        "tau": 0.234886,
+        "threads": 32,
+        "timeout_seconds": 180,
+        "graph": null,
+        "vectors": null,
+        "capture_cliques": false,
+        "defines": {},
+        "warmup": false
+      },
+      "status_counts": {
+        "completed": 1
+      },
+      "timing": null,
+      "result": {
+        "clique_count": 76106,
+        "size_histogram": {
+          "10": 1277,
+          "11": 1529,
+          "12": 1400,
+          "13": 1143,
+          "14": 1077,
+          "15": 972,
+          "16": 699,
+          "17": 475,
+          "18": 464,
+          "19": 350,
+          "2": 18212,
+          "20": 328,
+          "21": 332,
+          "22": 362,
+          "23": 475,
+          "24": 694,
+          "25": 388,
+          "26": 120,
+          "27": 21,
+          "28": 4,
+          "3": 19234,
+          "4": 9733,
+          "5": 5293,
+          "6": 4020,
+          "7": 2998,
+          "8": 2499,
+          "9": 2007
+        },
+        "stats": {
+          "covered_subsets": 65403926,
+          "exact_duplicates": 198870,
+          "feasible_local": 302095,
+          "global_subsets_pruned": 27119,
+          "structural_cliques": 221196,
+          "subset_tests": 212031845
+        }
+      }
+    }
+  ]
+}

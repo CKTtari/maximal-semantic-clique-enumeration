@@ -1,0 +1,6 @@
+{
+  "name": "batch11-main-alg3-ldoor-q80-repeat",
+  "tasks": [
+    {"algorithm": 3, "mode": "raw", "dataset": 1, "tau": 0.0527128, "threads": 32, "timeout_seconds": 1200, "repetitions": 3}
+  ]
+}

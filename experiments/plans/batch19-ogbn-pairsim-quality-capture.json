@@ -1,0 +1,14 @@
+{
+  "name": "batch19-ogbn-pairsim-quality-capture",
+  "tasks": [
+    {
+      "algorithm": 1,
+      "mode": "raw",
+      "dataset": 11,
+      "threads": 32,
+      "timeout_seconds": 1200,
+      "capture_cliques": true,
+      "graph": "dataset/derived/ogbn-arxiv-pairsim-q80.txt"
+    }
+  ]
+}

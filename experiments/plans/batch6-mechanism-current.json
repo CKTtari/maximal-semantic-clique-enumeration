@@ -1,0 +1,15 @@
+{
+  "name": "batch6-mechanism-current",
+  "tasks": [
+    {"algorithm": 3, "mode": "stats", "dataset": 2, "tau": 0.14503, "threads": 32, "timeout_seconds": 3600},
+    {"algorithm": 3, "mode": "stats", "dataset": 2, "tau": 0.14503, "threads": 32, "timeout_seconds": 3600, "defines": {"ACMSC_STRSUB_TOP_EDGE": 0}},
+    {"algorithm": 3, "mode": "stats", "dataset": 2, "tau": 0.14503, "threads": 32, "timeout_seconds": 3600, "defines": {"ACMSC_STRSUB_VERTEX_BOUND": 0}},
+    {"algorithm": 3, "mode": "stats", "dataset": 2, "tau": 0.14503, "threads": 32, "timeout_seconds": 3600, "defines": {"ACMSC_STRSUB_LOCAL_MAX": 0}},
+    {"algorithm": 3, "mode": "stats", "dataset": 11, "tau": 0.840429, "threads": 32, "timeout_seconds": 3600},
+    {"algorithm": 3, "mode": "stats", "dataset": 11, "tau": 0.888756, "threads": 32, "timeout_seconds": 3600},
+    {"algorithm": 3, "mode": "stats", "dataset": 11, "tau": 0.949708, "threads": 32, "timeout_seconds": 3600},
+    {"algorithm": 4, "mode": "stats", "dataset": 11, "tau": 0.840429, "threads": 32, "timeout_seconds": 3600},
+    {"algorithm": 4, "mode": "stats", "dataset": 11, "tau": 0.888756, "threads": 32, "timeout_seconds": 3600},
+    {"algorithm": 4, "mode": "stats", "dataset": 11, "tau": 0.949708, "threads": 32, "timeout_seconds": 3600}
+  ]
+}

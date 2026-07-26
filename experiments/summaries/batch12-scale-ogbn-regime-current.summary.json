@@ -1,0 +1,2283 @@
+{
+  "schema_version": 1,
+  "source_manifest": "experiments/archive/batch12-scale-ogbn-regime-current.manifest.json",
+  "source_run": "batch12-scale-ogbn-regime-current",
+  "source_plan_summary": {
+    "attempts": 144,
+    "planned_tasks": 144,
+    "attempted_tasks": 144,
+    "completed_tasks": 144,
+    "unattempted_tasks": 0,
+    "unattempted_task_ids": [],
+    "plan_complete": true,
+    "status_counts": {
+      "completed": 144
+    }
+  },
+  "groups": [
+    {
+      "configuration": {
+        "algorithm": 3,
+        "mode": "raw",
+        "dataset": 11,
+        "tau": 0.773547,
+        "threads": 32,
+        "timeout_seconds": 1200,
+        "graph": "dataset/scale_datasets/ogbn-arxiv-degree-prefix/level-100000.graph.txt",
+        "vectors": "dataset/scale_datasets/ogbn-arxiv-degree-prefix/level-100000.vectors.bin",
+        "capture_cliques": false,
+        "defines": {},
+        "warmup": false
+      },
+      "status_counts": {
+        "completed": 3
+      },
+      "timing": {
+        "completed_repetitions": 3,
+        "algorithm_ms_median": 1028,
+        "algorithm_ms_min": 952,
+        "algorithm_ms_max": 1068,
+        "wall_seconds_median": 2.396632799995132,
+        "peak_memory_gib_median": 0.41,
+        "peak_memory_gib_max": 0.42
+      },
+      "result": {
+        "clique_count": 835423,
+        "size_histogram": {
+          "10": 4226,
+          "11": 1805,
+          "12": 657,
+          "13": 174,
+          "14": 75,
+          "15": 75,
+          "16": 74,
+          "17": 52,
+          "18": 12,
+          "2": 87043,
+          "3": 184931,
+          "4": 196792,
+          "5": 159512,
+          "6": 105923,
+          "7": 57925,
+          "8": 25950,
+          "9": 10197
+        }
+      }
+    },
+    {
+      "configuration": {
+        "algorithm": 3,
+        "mode": "raw",
+        "dataset": 11,
+        "tau": 0.773547,
+        "threads": 32,
+        "timeout_seconds": 1200,
+        "graph": "dataset/scale_datasets/ogbn-arxiv-degree-prefix/level-169343.graph.txt",
+        "vectors": "dataset/scale_datasets/ogbn-arxiv-degree-prefix/level-169343.vectors.bin",
+        "capture_cliques": false,
+        "defines": {},
+        "warmup": false
+      },
+      "status_counts": {
+        "completed": 3
+      },
+      "timing": {
+        "completed_repetitions": 3,
+        "algorithm_ms_median": 1216,
+        "algorithm_ms_min": 1157,
+        "algorithm_ms_max": 1259,
+        "wall_seconds_median": 2.8722361999971326,
+        "peak_memory_gib_median": 0.53,
+        "peak_memory_gib_max": 0.54
+      },
+      "result": {
+        "clique_count": 925239,
+        "size_histogram": {
+          "10": 4226,
+          "11": 1805,
+          "12": 657,
+          "13": 174,
+          "14": 75,
+          "15": 75,
+          "16": 74,
+          "17": 52,
+          "18": 12,
+          "2": 151287,
+          "3": 206416,
+          "4": 200501,
+          "5": 159878,
+          "6": 105935,
+          "7": 57925,
+          "8": 25950,
+          "9": 10197
+        }
+      }
+    },
+    {
+      "configuration": {
+        "algorithm": 3,
+        "mode": "raw",
+        "dataset": 11,
+        "tau": 0.773547,
+        "threads": 32,
+        "timeout_seconds": 1200,
+        "graph": "dataset/scale_datasets/ogbn-arxiv-degree-prefix/level-25000.graph.txt",
+        "vectors": "dataset/scale_datasets/ogbn-arxiv-degree-prefix/level-25000.vectors.bin",
+        "capture_cliques": false,
+        "defines": {},
+        "warmup": false
+      },
+      "status_counts": {
+        "completed": 3
+      },
+      "timing": {
+        "completed_repetitions": 3,
+        "algorithm_ms_median": 516,
+        "algorithm_ms_min": 513,
+        "algorithm_ms_max": 559,
+        "wall_seconds_median": 1.116676900004677,
+        "peak_memory_gib_median": 0.18,
+        "peak_memory_gib_max": 0.18
+      },
+      "result": {
+        "clique_count": 474596,
+        "size_histogram": {
+          "10": 4101,
+          "11": 1785,
+          "12": 628,
+          "13": 166,
+          "14": 63,
+          "15": 72,
+          "16": 74,
+          "17": 52,
+          "18": 12,
+          "2": 15052,
+          "3": 66734,
+          "4": 105195,
+          "5": 109968,
+          "6": 85769,
+          "7": 51172,
+          "8": 24002,
+          "9": 9751
+        }
+      }
+    },
+    {
+      "configuration": {
+        "algorithm": 3,
+        "mode": "raw",
+        "dataset": 11,
+        "tau": 0.773547,
+        "threads": 32,
+        "timeout_seconds": 1200,
+        "graph": "dataset/scale_datasets/ogbn-arxiv-degree-prefix/level-50000.graph.txt",
+        "vectors": "dataset/scale_datasets/ogbn-arxiv-degree-prefix/level-50000.vectors.bin",
+        "capture_cliques": false,
+        "defines": {},
+        "warmup": false
+      },
+      "status_counts": {
+        "completed": 3
+      },
+      "timing": {
+        "completed_repetitions": 3,
+        "algorithm_ms_median": 754,
+        "algorithm_ms_min": 744,
+        "algorithm_ms_max": 771,
+        "wall_seconds_median": 1.7105064999996102,
+        "peak_memory_gib_median": 0.28,
+        "peak_memory_gib_max": 0.28
+      },
+      "result": {
+        "clique_count": 672546,
+        "size_histogram": {
+          "10": 4226,
+          "11": 1805,
+          "12": 657,
+          "13": 174,
+          "14": 75,
+          "15": 75,
+          "16": 74,
+          "17": 52,
+          "18": 12,
+          "2": 37200,
+          "3": 123422,
+          "4": 162646,
+          "5": 146729,
+          "6": 102356,
+          "7": 57076,
+          "8": 25791,
+          "9": 10176
+        }
+      }
+    },
+    {
+      "configuration": {
+        "algorithm": 3,
+        "mode": "raw",
+        "dataset": 11,
+        "tau": 0.840429,
+        "threads": 32,
+        "timeout_seconds": 1200,
+        "graph": "dataset/scale_datasets/ogbn-arxiv-degree-prefix/level-100000.graph.txt",
+        "vectors": "dataset/scale_datasets/ogbn-arxiv-degree-prefix/level-100000.vectors.bin",
+        "capture_cliques": false,
+        "defines": {},
+        "warmup": false
+      },
+      "status_counts": {
+        "completed": 3
+      },
+      "timing": {
+        "completed_repetitions": 3,
+        "algorithm_ms_median": 1021,
+        "algorithm_ms_min": 1012,
+        "algorithm_ms_max": 1249,
+        "wall_seconds_median": 2.4229416999951354,
+        "peak_memory_gib_median": 0.42,
+        "peak_memory_gib_max": 0.42
+      },
+      "result": {
+        "clique_count": 551816,
+        "size_histogram": {
+          "10": 1965,
+          "11": 628,
+          "12": 133,
+          "13": 48,
+          "14": 54,
+          "15": 72,
+          "16": 74,
+          "17": 52,
+          "18": 12,
+          "2": 66306,
+          "3": 125270,
+          "4": 130558,
+          "5": 105546,
+          "6": 67069,
+          "7": 34203,
+          "8": 14611,
+          "9": 5215
+        }
+      }
+    },
+    {
+      "configuration": {
+        "algorithm": 3,
+        "mode": "raw",
+        "dataset": 11,
+        "tau": 0.840429,
+        "threads": 32,
+        "timeout_seconds": 1200,
+        "graph": "dataset/scale_datasets/ogbn-arxiv-degree-prefix/level-169343.graph.txt",
+        "vectors": "dataset/scale_datasets/ogbn-arxiv-degree-prefix/level-169343.vectors.bin",
+        "capture_cliques": false,
+        "defines": {},
+        "warmup": false
+      },
+      "status_counts": {
+        "completed": 3
+      },
+      "timing": {
+        "completed_repetitions": 3,
+        "algorithm_ms_median": 1242,
+        "algorithm_ms_min": 1174,
+        "algorithm_ms_max": 1245,
+        "wall_seconds_median": 3.0667555000036373,
+        "peak_memory_gib_median": 0.54,
+        "peak_memory_gib_max": 0.54
+      },
+      "result": {
+        "clique_count": 613668,
+        "size_histogram": {
+          "10": 1965,
+          "11": 628,
+          "12": 133,
+          "13": 48,
+          "14": 54,
+          "15": 72,
+          "16": 74,
+          "17": 52,
+          "18": 12,
+          "2": 110824,
+          "3": 139775,
+          "4": 133144,
+          "5": 105783,
+          "6": 67075,
+          "7": 34203,
+          "8": 14611,
+          "9": 5215
+        }
+      }
+    },
+    {
+      "configuration": {
+        "algorithm": 3,
+        "mode": "raw",
+        "dataset": 11,
+        "tau": 0.840429,
+        "threads": 32,
+        "timeout_seconds": 1200,
+        "graph": "dataset/scale_datasets/ogbn-arxiv-degree-prefix/level-25000.graph.txt",
+        "vectors": "dataset/scale_datasets/ogbn-arxiv-degree-prefix/level-25000.vectors.bin",
+        "capture_cliques": false,
+        "defines": {},
+        "warmup": false
+      },
+      "status_counts": {
+        "completed": 3
+      },
+      "timing": {
+        "completed_repetitions": 3,
+        "algorithm_ms_median": 614,
+        "algorithm_ms_min": 547,
+        "algorithm_ms_max": 618,
+        "wall_seconds_median": 1.2437454999962938,
+        "peak_memory_gib_median": 0.18,
+        "peak_memory_gib_max": 0.18
+      },
+      "result": {
+        "clique_count": 304491,
+        "size_histogram": {
+          "10": 1873,
+          "11": 606,
+          "12": 117,
+          "13": 42,
+          "14": 52,
+          "15": 72,
+          "16": 74,
+          "17": 52,
+          "18": 12,
+          "2": 12363,
+          "3": 44524,
+          "4": 68852,
+          "5": 72823,
+          "6": 54533,
+          "7": 30075,
+          "8": 13473,
+          "9": 4948
+        }
+      }
+    },
+    {
+      "configuration": {
+        "algorithm": 3,
+        "mode": "raw",
+        "dataset": 11,
+        "tau": 0.840429,
+        "threads": 32,
+        "timeout_seconds": 1200,
+        "graph": "dataset/scale_datasets/ogbn-arxiv-degree-prefix/level-50000.graph.txt",
+        "vectors": "dataset/scale_datasets/ogbn-arxiv-degree-prefix/level-50000.vectors.bin",
+        "capture_cliques": false,
+        "defines": {},
+        "warmup": false
+      },
+      "status_counts": {
+        "completed": 3
+      },
+      "timing": {
+        "completed_repetitions": 3,
+        "algorithm_ms_median": 828,
+        "algorithm_ms_min": 812,
+        "algorithm_ms_max": 865,
+        "wall_seconds_median": 1.8032495000006747,
+        "peak_memory_gib_median": 0.28,
+        "peak_memory_gib_max": 0.28
+      },
+      "result": {
+        "clique_count": 438499,
+        "size_histogram": {
+          "10": 1965,
+          "11": 628,
+          "12": 133,
+          "13": 48,
+          "14": 54,
+          "15": 72,
+          "16": 74,
+          "17": 52,
+          "18": 12,
+          "2": 29867,
+          "3": 83147,
+          "4": 107351,
+          "5": 96945,
+          "6": 64783,
+          "7": 33645,
+          "8": 14521,
+          "9": 5202
+        }
+      }
+    },
+    {
+      "configuration": {
+        "algorithm": 3,
+        "mode": "raw",
+        "dataset": 11,
+        "tau": 0.888756,
+        "threads": 32,
+        "timeout_seconds": 1200,
+        "graph": "dataset/scale_datasets/ogbn-arxiv-degree-prefix/level-100000.graph.txt",
+        "vectors": "dataset/scale_datasets/ogbn-arxiv-degree-prefix/level-100000.vectors.bin",
+        "capture_cliques": false,
+        "defines": {},
+        "warmup": false
+      },
+      "status_counts": {
+        "completed": 3
+      },
+      "timing": {
+        "completed_repetitions": 3,
+        "algorithm_ms_median": 1006,
+        "algorithm_ms_min": 914,
+        "algorithm_ms_max": 1026,
+        "wall_seconds_median": 2.467738699997426,
+        "peak_memory_gib_median": 0.4,
+        "peak_memory_gib_max": 0.4
+      },
+      "result": {
+        "clique_count": 197638,
+        "size_histogram": {
+          "10": 238,
+          "11": 106,
+          "12": 43,
+          "13": 47,
+          "14": 54,
+          "15": 71,
+          "16": 74,
+          "17": 52,
+          "18": 12,
+          "2": 41981,
+          "3": 53393,
+          "4": 45061,
+          "5": 30490,
+          "6": 15748,
+          "7": 6728,
+          "8": 2681,
+          "9": 859
+        }
+      }
+    },
+    {
+      "configuration": {
+        "algorithm": 3,
+        "mode": "raw",
+        "dataset": 11,
+        "tau": 0.888756,
+        "threads": 32,
+        "timeout_seconds": 1200,
+        "graph": "dataset/scale_datasets/ogbn-arxiv-degree-prefix/level-169343.graph.txt",
+        "vectors": "dataset/scale_datasets/ogbn-arxiv-degree-prefix/level-169343.vectors.bin",
+        "capture_cliques": false,
+        "defines": {},
+        "warmup": false
+      },
+      "status_counts": {
+        "completed": 3
+      },
+      "timing": {
+        "completed_repetitions": 3,
+        "algorithm_ms_median": 1123,
+        "algorithm_ms_min": 1097,
+        "algorithm_ms_max": 1138,
+        "wall_seconds_median": 2.958239899999171,
+        "peak_memory_gib_median": 0.5,
+        "peak_memory_gib_max": 0.5
+      },
+      "result": {
+        "clique_count": 226936,
+        "size_histogram": {
+          "10": 238,
+          "11": 106,
+          "12": 43,
+          "13": 47,
+          "14": 54,
+          "15": 71,
+          "16": 74,
+          "17": 52,
+          "18": 12,
+          "2": 64194,
+          "3": 59385,
+          "4": 46054,
+          "5": 30589,
+          "6": 15749,
+          "7": 6728,
+          "8": 2681,
+          "9": 859
+        }
+      }
+    },
+    {
+      "configuration": {
+        "algorithm": 3,
+        "mode": "raw",
+        "dataset": 11,
+        "tau": 0.888756,
+        "threads": 32,
+        "timeout_seconds": 1200,
+        "graph": "dataset/scale_datasets/ogbn-arxiv-degree-prefix/level-25000.graph.txt",
+        "vectors": "dataset/scale_datasets/ogbn-arxiv-degree-prefix/level-25000.vectors.bin",
+        "capture_cliques": false,
+        "defines": {},
+        "warmup": false
+      },
+      "status_counts": {
+        "completed": 3
+      },
+      "timing": {
+        "completed_repetitions": 3,
+        "algorithm_ms_median": 515,
+        "algorithm_ms_min": 503,
+        "algorithm_ms_max": 603,
+        "wall_seconds_median": 1.0464929000008851,
+        "peak_memory_gib_median": 0.17,
+        "peak_memory_gib_max": 0.17
+      },
+      "result": {
+        "clique_count": 93352,
+        "size_histogram": {
+          "10": 196,
+          "11": 90,
+          "12": 34,
+          "13": 43,
+          "14": 52,
+          "15": 71,
+          "16": 74,
+          "17": 52,
+          "18": 12,
+          "2": 9325,
+          "3": 19290,
+          "4": 22963,
+          "5": 20192,
+          "6": 12295,
+          "7": 5575,
+          "8": 2343,
+          "9": 745
+        }
+      }
+    },
+    {
+      "configuration": {
+        "algorithm": 3,
+        "mode": "raw",
+        "dataset": 11,
+        "tau": 0.888756,
+        "threads": 32,
+        "timeout_seconds": 1200,
+        "graph": "dataset/scale_datasets/ogbn-arxiv-degree-prefix/level-50000.graph.txt",
+        "vectors": "dataset/scale_datasets/ogbn-arxiv-degree-prefix/level-50000.vectors.bin",
+        "capture_cliques": false,
+        "defines": {},
+        "warmup": false
+      },
+      "status_counts": {
+        "completed": 3
+      },
+      "timing": {
+        "completed_repetitions": 3,
+        "algorithm_ms_median": 708,
+        "algorithm_ms_min": 702,
+        "algorithm_ms_max": 740,
+        "wall_seconds_median": 1.6965162999986205,
+        "peak_memory_gib_median": 0.28,
+        "peak_memory_gib_max": 0.28
+      },
+      "result": {
+        "clique_count": 146325,
+        "size_histogram": {
+          "10": 238,
+          "11": 106,
+          "12": 43,
+          "13": 47,
+          "14": 54,
+          "15": 71,
+          "16": 74,
+          "17": 52,
+          "18": 12,
+          "2": 20989,
+          "3": 35706,
+          "4": 36398,
+          "5": 27457,
+          "6": 15015,
+          "7": 6547,
+          "8": 2660,
+          "9": 856
+        }
+      }
+    },
+    {
+      "configuration": {
+        "algorithm": 3,
+        "mode": "raw",
+        "dataset": 11,
+        "tau": 0.909257,
+        "threads": 32,
+        "timeout_seconds": 1200,
+        "graph": "dataset/scale_datasets/ogbn-arxiv-degree-prefix/level-100000.graph.txt",
+        "vectors": "dataset/scale_datasets/ogbn-arxiv-degree-prefix/level-100000.vectors.bin",
+        "capture_cliques": false,
+        "defines": {},
+        "warmup": false
+      },
+      "status_counts": {
+        "completed": 3
+      },
+      "timing": {
+        "completed_repetitions": 3,
+        "algorithm_ms_median": 809,
+        "algorithm_ms_min": 794,
+        "algorithm_ms_max": 922,
+        "wall_seconds_median": 2.2155466999975033,
+        "peak_memory_gib_median": 0.38,
+        "peak_memory_gib_max": 0.38
+      },
+      "result": {
+        "clique_count": 89836,
+        "size_histogram": {
+          "10": 102,
+          "11": 89,
+          "12": 58,
+          "13": 41,
+          "14": 49,
+          "15": 74,
+          "16": 72,
+          "17": 52,
+          "18": 12,
+          "2": 28285,
+          "3": 26007,
+          "4": 17971,
+          "5": 9892,
+          "6": 4660,
+          "7": 1786,
+          "8": 486,
+          "9": 200
+        }
+      }
+    },
+    {
+      "configuration": {
+        "algorithm": 3,
+        "mode": "raw",
+        "dataset": 11,
+        "tau": 0.909257,
+        "threads": 32,
+        "timeout_seconds": 1200,
+        "graph": "dataset/scale_datasets/ogbn-arxiv-degree-prefix/level-169343.graph.txt",
+        "vectors": "dataset/scale_datasets/ogbn-arxiv-degree-prefix/level-169343.vectors.bin",
+        "capture_cliques": false,
+        "defines": {},
+        "warmup": false
+      },
+      "status_counts": {
+        "completed": 3
+      },
+      "timing": {
+        "completed_repetitions": 3,
+        "algorithm_ms_median": 943,
+        "algorithm_ms_min": 894,
+        "algorithm_ms_max": 950,
+        "wall_seconds_median": 2.7858870000054594,
+        "peak_memory_gib_median": 0.48,
+        "peak_memory_gib_max": 0.48
+      },
+      "result": {
+        "clique_count": 106356,
+        "size_histogram": {
+          "10": 102,
+          "11": 89,
+          "12": 58,
+          "13": 41,
+          "14": 49,
+          "15": 74,
+          "16": 72,
+          "17": 52,
+          "18": 12,
+          "2": 41380,
+          "3": 28912,
+          "4": 18441,
+          "5": 9942,
+          "6": 4660,
+          "7": 1786,
+          "8": 486,
+          "9": 200
+        }
+      }
+    },
+    {
+      "configuration": {
+        "algorithm": 3,
+        "mode": "raw",
+        "dataset": 11,
+        "tau": 0.909257,
+        "threads": 32,
+        "timeout_seconds": 1200,
+        "graph": "dataset/scale_datasets/ogbn-arxiv-degree-prefix/level-25000.graph.txt",
+        "vectors": "dataset/scale_datasets/ogbn-arxiv-degree-prefix/level-25000.vectors.bin",
+        "capture_cliques": false,
+        "defines": {},
+        "warmup": false
+      },
+      "status_counts": {
+        "completed": 3
+      },
+      "timing": {
+        "completed_repetitions": 3,
+        "algorithm_ms_median": 474,
+        "algorithm_ms_min": 399,
+        "algorithm_ms_max": 522,
+        "wall_seconds_median": 1.17166079999879,
+        "peak_memory_gib_median": 0.15,
+        "peak_memory_gib_max": 0.15
+      },
+      "result": {
+        "clique_count": 36753,
+        "size_histogram": {
+          "10": 80,
+          "11": 76,
+          "12": 52,
+          "13": 38,
+          "14": 47,
+          "15": 74,
+          "16": 72,
+          "17": 52,
+          "18": 12,
+          "2": 6956,
+          "3": 9312,
+          "4": 8637,
+          "5": 6065,
+          "6": 3356,
+          "7": 1386,
+          "8": 377,
+          "9": 161
+        }
+      }
+    },
+    {
+      "configuration": {
+        "algorithm": 3,
+        "mode": "raw",
+        "dataset": 11,
+        "tau": 0.909257,
+        "threads": 32,
+        "timeout_seconds": 1200,
+        "graph": "dataset/scale_datasets/ogbn-arxiv-degree-prefix/level-50000.graph.txt",
+        "vectors": "dataset/scale_datasets/ogbn-arxiv-degree-prefix/level-50000.vectors.bin",
+        "capture_cliques": false,
+        "defines": {},
+        "warmup": false
+      },
+      "status_counts": {
+        "completed": 3
+      },
+      "timing": {
+        "completed_repetitions": 3,
+        "algorithm_ms_median": 627,
+        "algorithm_ms_min": 617,
+        "algorithm_ms_max": 679,
+        "wall_seconds_median": 1.5467645000026096,
+        "peak_memory_gib_median": 0.25,
+        "peak_memory_gib_max": 0.25
+      },
+      "result": {
+        "clique_count": 62035,
+        "size_histogram": {
+          "10": 102,
+          "11": 89,
+          "12": 58,
+          "13": 41,
+          "14": 49,
+          "15": 74,
+          "16": 72,
+          "17": 52,
+          "18": 12,
+          "2": 14812,
+          "3": 17174,
+          "4": 14111,
+          "5": 8625,
+          "6": 4357,
+          "7": 1731,
+          "8": 478,
+          "9": 198
+        }
+      }
+    },
+    {
+      "configuration": {
+        "algorithm": 3,
+        "mode": "raw",
+        "dataset": 11,
+        "tau": 0.924347,
+        "threads": 32,
+        "timeout_seconds": 1200,
+        "graph": "dataset/scale_datasets/ogbn-arxiv-degree-prefix/level-100000.graph.txt",
+        "vectors": "dataset/scale_datasets/ogbn-arxiv-degree-prefix/level-100000.vectors.bin",
+        "capture_cliques": false,
+        "defines": {},
+        "warmup": false
+      },
+      "status_counts": {
+        "completed": 3
+      },
+      "timing": {
+        "completed_repetitions": 3,
+        "algorithm_ms_median": 832,
+        "algorithm_ms_min": 784,
+        "algorithm_ms_max": 911,
+        "wall_seconds_median": 2.2386645000005956,
+        "peak_memory_gib_median": 0.37,
+        "peak_memory_gib_max": 0.37
+      },
+      "result": {
+        "clique_count": 43770,
+        "size_histogram": {
+          "10": 170,
+          "11": 407,
+          "12": 729,
+          "13": 876,
+          "14": 419,
+          "15": 101,
+          "16": 1,
+          "2": 18030,
+          "3": 12153,
+          "4": 6480,
+          "5": 2828,
+          "6": 990,
+          "7": 331,
+          "8": 137,
+          "9": 118
+        }
+      }
+    },
+    {
+      "configuration": {
+        "algorithm": 3,
+        "mode": "raw",
+        "dataset": 11,
+        "tau": 0.924347,
+        "threads": 32,
+        "timeout_seconds": 1200,
+        "graph": "dataset/scale_datasets/ogbn-arxiv-degree-prefix/level-169343.graph.txt",
+        "vectors": "dataset/scale_datasets/ogbn-arxiv-degree-prefix/level-169343.vectors.bin",
+        "capture_cliques": false,
+        "defines": {},
+        "warmup": false
+      },
+      "status_counts": {
+        "completed": 3
+      },
+      "timing": {
+        "completed_repetitions": 3,
+        "algorithm_ms_median": 803,
+        "algorithm_ms_min": 746,
+        "algorithm_ms_max": 904,
+        "wall_seconds_median": 2.511104199998954,
+        "peak_memory_gib_median": 0.46,
+        "peak_memory_gib_max": 0.46
+      },
+      "result": {
+        "clique_count": 53208,
+        "size_histogram": {
+          "10": 170,
+          "11": 407,
+          "12": 729,
+          "13": 876,
+          "14": 419,
+          "15": 101,
+          "16": 1,
+          "2": 25825,
+          "3": 13561,
+          "4": 6700,
+          "5": 2843,
+          "6": 990,
+          "7": 331,
+          "8": 137,
+          "9": 118
+        }
+      }
+    },
+    {
+      "configuration": {
+        "algorithm": 3,
+        "mode": "raw",
+        "dataset": 11,
+        "tau": 0.924347,
+        "threads": 32,
+        "timeout_seconds": 1200,
+        "graph": "dataset/scale_datasets/ogbn-arxiv-degree-prefix/level-25000.graph.txt",
+        "vectors": "dataset/scale_datasets/ogbn-arxiv-degree-prefix/level-25000.vectors.bin",
+        "capture_cliques": false,
+        "defines": {},
+        "warmup": false
+      },
+      "status_counts": {
+        "completed": 3
+      },
+      "timing": {
+        "completed_repetitions": 3,
+        "algorithm_ms_median": 412,
+        "algorithm_ms_min": 406,
+        "algorithm_ms_max": 432,
+        "wall_seconds_median": 0.9145216999968397,
+        "peak_memory_gib_median": 0.14,
+        "peak_memory_gib_max": 0.14
+      },
+      "result": {
+        "clique_count": 16769,
+        "size_histogram": {
+          "10": 144,
+          "11": 396,
+          "12": 721,
+          "13": 876,
+          "14": 417,
+          "15": 101,
+          "16": 1,
+          "2": 4679,
+          "3": 4124,
+          "4": 2780,
+          "5": 1480,
+          "6": 631,
+          "7": 217,
+          "8": 96,
+          "9": 106
+        }
+      }
+    },
+    {
+      "configuration": {
+        "algorithm": 3,
+        "mode": "raw",
+        "dataset": 11,
+        "tau": 0.924347,
+        "threads": 32,
+        "timeout_seconds": 1200,
+        "graph": "dataset/scale_datasets/ogbn-arxiv-degree-prefix/level-50000.graph.txt",
+        "vectors": "dataset/scale_datasets/ogbn-arxiv-degree-prefix/level-50000.vectors.bin",
+        "capture_cliques": false,
+        "defines": {},
+        "warmup": false
+      },
+      "status_counts": {
+        "completed": 3
+      },
+      "timing": {
+        "completed_repetitions": 3,
+        "algorithm_ms_median": 583,
+        "algorithm_ms_min": 558,
+        "algorithm_ms_max": 636,
+        "wall_seconds_median": 1.5503485000008368,
+        "peak_memory_gib_median": 0.24,
+        "peak_memory_gib_max": 0.24
+      },
+      "result": {
+        "clique_count": 28885,
+        "size_histogram": {
+          "10": 170,
+          "11": 407,
+          "12": 729,
+          "13": 876,
+          "14": 419,
+          "15": 101,
+          "16": 1,
+          "2": 9711,
+          "3": 7758,
+          "4": 4894,
+          "5": 2337,
+          "6": 912,
+          "7": 318,
+          "8": 135,
+          "9": 117
+        }
+      }
+    },
+    {
+      "configuration": {
+        "algorithm": 3,
+        "mode": "raw",
+        "dataset": 11,
+        "tau": 0.949708,
+        "threads": 32,
+        "timeout_seconds": 1200,
+        "graph": "dataset/scale_datasets/ogbn-arxiv-degree-prefix/level-100000.graph.txt",
+        "vectors": "dataset/scale_datasets/ogbn-arxiv-degree-prefix/level-100000.vectors.bin",
+        "capture_cliques": false,
+        "defines": {},
+        "warmup": false
+      },
+      "status_counts": {
+        "completed": 3
+      },
+      "timing": {
+        "completed_repetitions": 3,
+        "algorithm_ms_median": 663,
+        "algorithm_ms_min": 624,
+        "algorithm_ms_max": 673,
+        "wall_seconds_median": 1.9590832000030787,
+        "peak_memory_gib_median": 0.35,
+        "peak_memory_gib_max": 0.35
+      },
+      "result": {
+        "clique_count": 7655,
+        "size_histogram": {
+          "2": 5355,
+          "3": 1588,
+          "4": 426,
+          "5": 115,
+          "6": 46,
+          "7": 78,
+          "8": 44,
+          "9": 3
+        }
+      }
+    },
+    {
+      "configuration": {
+        "algorithm": 3,
+        "mode": "raw",
+        "dataset": 11,
+        "tau": 0.949708,
+        "threads": 32,
+        "timeout_seconds": 1200,
+        "graph": "dataset/scale_datasets/ogbn-arxiv-degree-prefix/level-169343.graph.txt",
+        "vectors": "dataset/scale_datasets/ogbn-arxiv-degree-prefix/level-169343.vectors.bin",
+        "capture_cliques": false,
+        "defines": {},
+        "warmup": false
+      },
+      "status_counts": {
+        "completed": 3
+      },
+      "timing": {
+        "completed_repetitions": 3,
+        "algorithm_ms_median": 707,
+        "algorithm_ms_min": 705,
+        "algorithm_ms_max": 714,
+        "wall_seconds_median": 2.4189448000033735,
+        "peak_memory_gib_median": 0.44,
+        "peak_memory_gib_max": 0.44
+      },
+      "result": {
+        "clique_count": 10261,
+        "size_histogram": {
+          "2": 7701,
+          "3": 1835,
+          "4": 437,
+          "5": 117,
+          "6": 46,
+          "7": 78,
+          "8": 44,
+          "9": 3
+        }
+      }
+    },
+    {
+      "configuration": {
+        "algorithm": 3,
+        "mode": "raw",
+        "dataset": 11,
+        "tau": 0.949708,
+        "threads": 32,
+        "timeout_seconds": 1200,
+        "graph": "dataset/scale_datasets/ogbn-arxiv-degree-prefix/level-25000.graph.txt",
+        "vectors": "dataset/scale_datasets/ogbn-arxiv-degree-prefix/level-25000.vectors.bin",
+        "capture_cliques": false,
+        "defines": {},
+        "warmup": false
+      },
+      "status_counts": {
+        "completed": 3
+      },
+      "timing": {
+        "completed_repetitions": 3,
+        "algorithm_ms_median": 340,
+        "algorithm_ms_min": 300,
+        "algorithm_ms_max": 343,
+        "wall_seconds_median": 0.8889084000038565,
+        "peak_memory_gib_median": 0.13,
+        "peak_memory_gib_max": 0.13
+      },
+      "result": {
+        "clique_count": 2006,
+        "size_histogram": {
+          "2": 1284,
+          "3": 430,
+          "4": 125,
+          "5": 47,
+          "6": 32,
+          "7": 43,
+          "8": 42,
+          "9": 3
+        }
+      }
+    },
+    {
+      "configuration": {
+        "algorithm": 3,
+        "mode": "raw",
+        "dataset": 11,
+        "tau": 0.949708,
+        "threads": 32,
+        "timeout_seconds": 1200,
+        "graph": "dataset/scale_datasets/ogbn-arxiv-degree-prefix/level-50000.graph.txt",
+        "vectors": "dataset/scale_datasets/ogbn-arxiv-degree-prefix/level-50000.vectors.bin",
+        "capture_cliques": false,
+        "defines": {},
+        "warmup": false
+      },
+      "status_counts": {
+        "completed": 3
+      },
+      "timing": {
+        "completed_repetitions": 3,
+        "algorithm_ms_median": 593,
+        "algorithm_ms_min": 515,
+        "algorithm_ms_max": 594,
+        "wall_seconds_median": 1.802372700003616,
+        "peak_memory_gib_median": 0.22,
+        "peak_memory_gib_max": 0.22
+      },
+      "result": {
+        "clique_count": 4205,
+        "size_histogram": {
+          "2": 2768,
+          "3": 925,
+          "4": 261,
+          "5": 83,
+          "6": 43,
+          "7": 78,
+          "8": 44,
+          "9": 3
+        }
+      }
+    },
+    {
+      "configuration": {
+        "algorithm": 4,
+        "mode": "raw",
+        "dataset": 11,
+        "tau": 0.773547,
+        "threads": 32,
+        "timeout_seconds": 1200,
+        "graph": "dataset/scale_datasets/ogbn-arxiv-degree-prefix/level-100000.graph.txt",
+        "vectors": "dataset/scale_datasets/ogbn-arxiv-degree-prefix/level-100000.vectors.bin",
+        "capture_cliques": false,
+        "defines": {},
+        "warmup": false
+      },
+      "status_counts": {
+        "completed": 3
+      },
+      "timing": {
+        "completed_repetitions": 3,
+        "algorithm_ms_median": 3201,
+        "algorithm_ms_min": 2973,
+        "algorithm_ms_max": 3386,
+        "wall_seconds_median": 4.666247900000599,
+        "peak_memory_gib_median": 0.35,
+        "peak_memory_gib_max": 0.35
+      },
+      "result": {
+        "clique_count": 835423,
+        "size_histogram": {
+          "10": 4226,
+          "11": 1805,
+          "12": 657,
+          "13": 174,
+          "14": 75,
+          "15": 75,
+          "16": 74,
+          "17": 52,
+          "18": 12,
+          "2": 87043,
+          "3": 184931,
+          "4": 196792,
+          "5": 159512,
+          "6": 105923,
+          "7": 57925,
+          "8": 25950,
+          "9": 10197
+        }
+      }
+    },
+    {
+      "configuration": {
+        "algorithm": 4,
+        "mode": "raw",
+        "dataset": 11,
+        "tau": 0.773547,
+        "threads": 32,
+        "timeout_seconds": 1200,
+        "graph": "dataset/scale_datasets/ogbn-arxiv-degree-prefix/level-169343.graph.txt",
+        "vectors": "dataset/scale_datasets/ogbn-arxiv-degree-prefix/level-169343.vectors.bin",
+        "capture_cliques": false,
+        "defines": {},
+        "warmup": false
+      },
+      "status_counts": {
+        "completed": 3
+      },
+      "timing": {
+        "completed_repetitions": 3,
+        "algorithm_ms_median": 3320,
+        "algorithm_ms_min": 3122,
+        "algorithm_ms_max": 3422,
+        "wall_seconds_median": 5.075369600002887,
+        "peak_memory_gib_median": 0.44,
+        "peak_memory_gib_max": 0.44
+      },
+      "result": {
+        "clique_count": 925239,
+        "size_histogram": {
+          "10": 4226,
+          "11": 1805,
+          "12": 657,
+          "13": 174,
+          "14": 75,
+          "15": 75,
+          "16": 74,
+          "17": 52,
+          "18": 12,
+          "2": 151287,
+          "3": 206416,
+          "4": 200501,
+          "5": 159878,
+          "6": 105935,
+          "7": 57925,
+          "8": 25950,
+          "9": 10197
+        }
+      }
+    },
+    {
+      "configuration": {
+        "algorithm": 4,
+        "mode": "raw",
+        "dataset": 11,
+        "tau": 0.773547,
+        "threads": 32,
+        "timeout_seconds": 1200,
+        "graph": "dataset/scale_datasets/ogbn-arxiv-degree-prefix/level-25000.graph.txt",
+        "vectors": "dataset/scale_datasets/ogbn-arxiv-degree-prefix/level-25000.vectors.bin",
+        "capture_cliques": false,
+        "defines": {},
+        "warmup": false
+      },
+      "status_counts": {
+        "completed": 3
+      },
+      "timing": {
+        "completed_repetitions": 3,
+        "algorithm_ms_median": 2130,
+        "algorithm_ms_min": 2103,
+        "algorithm_ms_max": 2160,
+        "wall_seconds_median": 2.60630740000488,
+        "peak_memory_gib_median": 0.14,
+        "peak_memory_gib_max": 0.14
+      },
+      "result": {
+        "clique_count": 474596,
+        "size_histogram": {
+          "10": 4101,
+          "11": 1785,
+          "12": 628,
+          "13": 166,
+          "14": 63,
+          "15": 72,
+          "16": 74,
+          "17": 52,
+          "18": 12,
+          "2": 15052,
+          "3": 66734,
+          "4": 105195,
+          "5": 109968,
+          "6": 85769,
+          "7": 51172,
+          "8": 24002,
+          "9": 9751
+        }
+      }
+    },
+    {
+      "configuration": {
+        "algorithm": 4,
+        "mode": "raw",
+        "dataset": 11,
+        "tau": 0.773547,
+        "threads": 32,
+        "timeout_seconds": 1200,
+        "graph": "dataset/scale_datasets/ogbn-arxiv-degree-prefix/level-50000.graph.txt",
+        "vectors": "dataset/scale_datasets/ogbn-arxiv-degree-prefix/level-50000.vectors.bin",
+        "capture_cliques": false,
+        "defines": {},
+        "warmup": false
+      },
+      "status_counts": {
+        "completed": 3
+      },
+      "timing": {
+        "completed_repetitions": 3,
+        "algorithm_ms_median": 2651,
+        "algorithm_ms_min": 2476,
+        "algorithm_ms_max": 2711,
+        "wall_seconds_median": 3.5842660000053,
+        "peak_memory_gib_median": 0.23,
+        "peak_memory_gib_max": 0.23
+      },
+      "result": {
+        "clique_count": 672546,
+        "size_histogram": {
+          "10": 4226,
+          "11": 1805,
+          "12": 657,
+          "13": 174,
+          "14": 75,
+          "15": 75,
+          "16": 74,
+          "17": 52,
+          "18": 12,
+          "2": 37200,
+          "3": 123422,
+          "4": 162646,
+          "5": 146729,
+          "6": 102356,
+          "7": 57076,
+          "8": 25791,
+          "9": 10176
+        }
+      }
+    },
+    {
+      "configuration": {
+        "algorithm": 4,
+        "mode": "raw",
+        "dataset": 11,
+        "tau": 0.840429,
+        "threads": 32,
+        "timeout_seconds": 1200,
+        "graph": "dataset/scale_datasets/ogbn-arxiv-degree-prefix/level-100000.graph.txt",
+        "vectors": "dataset/scale_datasets/ogbn-arxiv-degree-prefix/level-100000.vectors.bin",
+        "capture_cliques": false,
+        "defines": {},
+        "warmup": false
+      },
+      "status_counts": {
+        "completed": 3
+      },
+      "timing": {
+        "completed_repetitions": 3,
+        "algorithm_ms_median": 2232,
+        "algorithm_ms_min": 2091,
+        "algorithm_ms_max": 2340,
+        "wall_seconds_median": 3.6182915000026696,
+        "peak_memory_gib_median": 0.32,
+        "peak_memory_gib_max": 0.32
+      },
+      "result": {
+        "clique_count": 551816,
+        "size_histogram": {
+          "10": 1965,
+          "11": 628,
+          "12": 133,
+          "13": 48,
+          "14": 54,
+          "15": 72,
+          "16": 74,
+          "17": 52,
+          "18": 12,
+          "2": 66306,
+          "3": 125270,
+          "4": 130558,
+          "5": 105546,
+          "6": 67069,
+          "7": 34203,
+          "8": 14611,
+          "9": 5215
+        }
+      }
+    },
+    {
+      "configuration": {
+        "algorithm": 4,
+        "mode": "raw",
+        "dataset": 11,
+        "tau": 0.840429,
+        "threads": 32,
+        "timeout_seconds": 1200,
+        "graph": "dataset/scale_datasets/ogbn-arxiv-degree-prefix/level-169343.graph.txt",
+        "vectors": "dataset/scale_datasets/ogbn-arxiv-degree-prefix/level-169343.vectors.bin",
+        "capture_cliques": false,
+        "defines": {},
+        "warmup": false
+      },
+      "status_counts": {
+        "completed": 3
+      },
+      "timing": {
+        "completed_repetitions": 3,
+        "algorithm_ms_median": 2403,
+        "algorithm_ms_min": 2381,
+        "algorithm_ms_max": 2504,
+        "wall_seconds_median": 4.22112009999546,
+        "peak_memory_gib_median": 0.41,
+        "peak_memory_gib_max": 0.41
+      },
+      "result": {
+        "clique_count": 613668,
+        "size_histogram": {
+          "10": 1965,
+          "11": 628,
+          "12": 133,
+          "13": 48,
+          "14": 54,
+          "15": 72,
+          "16": 74,
+          "17": 52,
+          "18": 12,
+          "2": 110824,
+          "3": 139775,
+          "4": 133144,
+          "5": 105783,
+          "6": 67075,
+          "7": 34203,
+          "8": 14611,
+          "9": 5215
+        }
+      }
+    },
+    {
+      "configuration": {
+        "algorithm": 4,
+        "mode": "raw",
+        "dataset": 11,
+        "tau": 0.840429,
+        "threads": 32,
+        "timeout_seconds": 1200,
+        "graph": "dataset/scale_datasets/ogbn-arxiv-degree-prefix/level-25000.graph.txt",
+        "vectors": "dataset/scale_datasets/ogbn-arxiv-degree-prefix/level-25000.vectors.bin",
+        "capture_cliques": false,
+        "defines": {},
+        "warmup": false
+      },
+      "status_counts": {
+        "completed": 3
+      },
+      "timing": {
+        "completed_repetitions": 3,
+        "algorithm_ms_median": 1769,
+        "algorithm_ms_min": 1716,
+        "algorithm_ms_max": 1791,
+        "wall_seconds_median": 2.3451036000042222,
+        "peak_memory_gib_median": 0.12,
+        "peak_memory_gib_max": 0.12
+      },
+      "result": {
+        "clique_count": 304491,
+        "size_histogram": {
+          "10": 1873,
+          "11": 606,
+          "12": 117,
+          "13": 42,
+          "14": 52,
+          "15": 72,
+          "16": 74,
+          "17": 52,
+          "18": 12,
+          "2": 12363,
+          "3": 44524,
+          "4": 68852,
+          "5": 72823,
+          "6": 54533,
+          "7": 30075,
+          "8": 13473,
+          "9": 4948
+        }
+      }
+    },
+    {
+      "configuration": {
+        "algorithm": 4,
+        "mode": "raw",
+        "dataset": 11,
+        "tau": 0.840429,
+        "threads": 32,
+        "timeout_seconds": 1200,
+        "graph": "dataset/scale_datasets/ogbn-arxiv-degree-prefix/level-50000.graph.txt",
+        "vectors": "dataset/scale_datasets/ogbn-arxiv-degree-prefix/level-50000.vectors.bin",
+        "capture_cliques": false,
+        "defines": {},
+        "warmup": false
+      },
+      "status_counts": {
+        "completed": 3
+      },
+      "timing": {
+        "completed_repetitions": 3,
+        "algorithm_ms_median": 2114,
+        "algorithm_ms_min": 1907,
+        "algorithm_ms_max": 2209,
+        "wall_seconds_median": 3.0961832999964827,
+        "peak_memory_gib_median": 0.2,
+        "peak_memory_gib_max": 0.21
+      },
+      "result": {
+        "clique_count": 438499,
+        "size_histogram": {
+          "10": 1965,
+          "11": 628,
+          "12": 133,
+          "13": 48,
+          "14": 54,
+          "15": 72,
+          "16": 74,
+          "17": 52,
+          "18": 12,
+          "2": 29867,
+          "3": 83147,
+          "4": 107351,
+          "5": 96945,
+          "6": 64783,
+          "7": 33645,
+          "8": 14521,
+          "9": 5202
+        }
+      }
+    },
+    {
+      "configuration": {
+        "algorithm": 4,
+        "mode": "raw",
+        "dataset": 11,
+        "tau": 0.888756,
+        "threads": 32,
+        "timeout_seconds": 1200,
+        "graph": "dataset/scale_datasets/ogbn-arxiv-degree-prefix/level-100000.graph.txt",
+        "vectors": "dataset/scale_datasets/ogbn-arxiv-degree-prefix/level-100000.vectors.bin",
+        "capture_cliques": false,
+        "defines": {},
+        "warmup": false
+      },
+      "status_counts": {
+        "completed": 3
+      },
+      "timing": {
+        "completed_repetitions": 3,
+        "algorithm_ms_median": 1533,
+        "algorithm_ms_min": 1463,
+        "algorithm_ms_max": 1584,
+        "wall_seconds_median": 2.8354165999990073,
+        "peak_memory_gib_median": 0.28,
+        "peak_memory_gib_max": 0.28
+      },
+      "result": {
+        "clique_count": 197638,
+        "size_histogram": {
+          "10": 238,
+          "11": 106,
+          "12": 43,
+          "13": 47,
+          "14": 54,
+          "15": 71,
+          "16": 74,
+          "17": 52,
+          "18": 12,
+          "2": 41981,
+          "3": 53393,
+          "4": 45061,
+          "5": 30490,
+          "6": 15748,
+          "7": 6728,
+          "8": 2681,
+          "9": 859
+        }
+      }
+    },
+    {
+      "configuration": {
+        "algorithm": 4,
+        "mode": "raw",
+        "dataset": 11,
+        "tau": 0.888756,
+        "threads": 32,
+        "timeout_seconds": 1200,
+        "graph": "dataset/scale_datasets/ogbn-arxiv-degree-prefix/level-169343.graph.txt",
+        "vectors": "dataset/scale_datasets/ogbn-arxiv-degree-prefix/level-169343.vectors.bin",
+        "capture_cliques": false,
+        "defines": {},
+        "warmup": false
+      },
+      "status_counts": {
+        "completed": 3
+      },
+      "timing": {
+        "completed_repetitions": 3,
+        "algorithm_ms_median": 1639,
+        "algorithm_ms_min": 1619,
+        "algorithm_ms_max": 1760,
+        "wall_seconds_median": 3.610551999998279,
+        "peak_memory_gib_median": 0.39,
+        "peak_memory_gib_max": 0.39
+      },
+      "result": {
+        "clique_count": 226936,
+        "size_histogram": {
+          "10": 238,
+          "11": 106,
+          "12": 43,
+          "13": 47,
+          "14": 54,
+          "15": 71,
+          "16": 74,
+          "17": 52,
+          "18": 12,
+          "2": 64194,
+          "3": 59385,
+          "4": 46054,
+          "5": 30589,
+          "6": 15749,
+          "7": 6728,
+          "8": 2681,
+          "9": 859
+        }
+      }
+    },
+    {
+      "configuration": {
+        "algorithm": 4,
+        "mode": "raw",
+        "dataset": 11,
+        "tau": 0.888756,
+        "threads": 32,
+        "timeout_seconds": 1200,
+        "graph": "dataset/scale_datasets/ogbn-arxiv-degree-prefix/level-25000.graph.txt",
+        "vectors": "dataset/scale_datasets/ogbn-arxiv-degree-prefix/level-25000.vectors.bin",
+        "capture_cliques": false,
+        "defines": {},
+        "warmup": false
+      },
+      "status_counts": {
+        "completed": 3
+      },
+      "timing": {
+        "completed_repetitions": 3,
+        "algorithm_ms_median": 1487,
+        "algorithm_ms_min": 1390,
+        "algorithm_ms_max": 1520,
+        "wall_seconds_median": 1.9627744999961578,
+        "peak_memory_gib_median": 0.1,
+        "peak_memory_gib_max": 0.1
+      },
+      "result": {
+        "clique_count": 93352,
+        "size_histogram": {
+          "10": 196,
+          "11": 90,
+          "12": 34,
+          "13": 43,
+          "14": 52,
+          "15": 71,
+          "16": 74,
+          "17": 52,
+          "18": 12,
+          "2": 9325,
+          "3": 19290,
+          "4": 22963,
+          "5": 20192,
+          "6": 12295,
+          "7": 5575,
+          "8": 2343,
+          "9": 745
+        }
+      }
+    },
+    {
+      "configuration": {
+        "algorithm": 4,
+        "mode": "raw",
+        "dataset": 11,
+        "tau": 0.888756,
+        "threads": 32,
+        "timeout_seconds": 1200,
+        "graph": "dataset/scale_datasets/ogbn-arxiv-degree-prefix/level-50000.graph.txt",
+        "vectors": "dataset/scale_datasets/ogbn-arxiv-degree-prefix/level-50000.vectors.bin",
+        "capture_cliques": false,
+        "defines": {},
+        "warmup": false
+      },
+      "status_counts": {
+        "completed": 3
+      },
+      "timing": {
+        "completed_repetitions": 3,
+        "algorithm_ms_median": 1423,
+        "algorithm_ms_min": 1414,
+        "algorithm_ms_max": 1538,
+        "wall_seconds_median": 2.286794200001168,
+        "peak_memory_gib_median": 0.17,
+        "peak_memory_gib_max": 0.18
+      },
+      "result": {
+        "clique_count": 146325,
+        "size_histogram": {
+          "10": 238,
+          "11": 106,
+          "12": 43,
+          "13": 47,
+          "14": 54,
+          "15": 71,
+          "16": 74,
+          "17": 52,
+          "18": 12,
+          "2": 20989,
+          "3": 35706,
+          "4": 36398,
+          "5": 27457,
+          "6": 15015,
+          "7": 6547,
+          "8": 2660,
+          "9": 856
+        }
+      }
+    },
+    {
+      "configuration": {
+        "algorithm": 4,
+        "mode": "raw",
+        "dataset": 11,
+        "tau": 0.909257,
+        "threads": 32,
+        "timeout_seconds": 1200,
+        "graph": "dataset/scale_datasets/ogbn-arxiv-degree-prefix/level-100000.graph.txt",
+        "vectors": "dataset/scale_datasets/ogbn-arxiv-degree-prefix/level-100000.vectors.bin",
+        "capture_cliques": false,
+        "defines": {},
+        "warmup": false
+      },
+      "status_counts": {
+        "completed": 3
+      },
+      "timing": {
+        "completed_repetitions": 3,
+        "algorithm_ms_median": 1194,
+        "algorithm_ms_min": 1183,
+        "algorithm_ms_max": 1228,
+        "wall_seconds_median": 2.4192505000028177,
+        "peak_memory_gib_median": 0.27,
+        "peak_memory_gib_max": 0.27
+      },
+      "result": {
+        "clique_count": 89836,
+        "size_histogram": {
+          "10": 102,
+          "11": 89,
+          "12": 58,
+          "13": 41,
+          "14": 49,
+          "15": 74,
+          "16": 72,
+          "17": 52,
+          "18": 12,
+          "2": 28285,
+          "3": 26007,
+          "4": 17971,
+          "5": 9892,
+          "6": 4660,
+          "7": 1786,
+          "8": 486,
+          "9": 200
+        }
+      }
+    },
+    {
+      "configuration": {
+        "algorithm": 4,
+        "mode": "raw",
+        "dataset": 11,
+        "tau": 0.909257,
+        "threads": 32,
+        "timeout_seconds": 1200,
+        "graph": "dataset/scale_datasets/ogbn-arxiv-degree-prefix/level-169343.graph.txt",
+        "vectors": "dataset/scale_datasets/ogbn-arxiv-degree-prefix/level-169343.vectors.bin",
+        "capture_cliques": false,
+        "defines": {},
+        "warmup": false
+      },
+      "status_counts": {
+        "completed": 3
+      },
+      "timing": {
+        "completed_repetitions": 3,
+        "algorithm_ms_median": 1242,
+        "algorithm_ms_min": 1174,
+        "algorithm_ms_max": 1344,
+        "wall_seconds_median": 2.6526819999999134,
+        "peak_memory_gib_median": 0.39,
+        "peak_memory_gib_max": 0.39
+      },
+      "result": {
+        "clique_count": 106356,
+        "size_histogram": {
+          "10": 102,
+          "11": 89,
+          "12": 58,
+          "13": 41,
+          "14": 49,
+          "15": 74,
+          "16": 72,
+          "17": 52,
+          "18": 12,
+          "2": 41380,
+          "3": 28912,
+          "4": 18441,
+          "5": 9942,
+          "6": 4660,
+          "7": 1786,
+          "8": 486,
+          "9": 200
+        }
+      }
+    },
+    {
+      "configuration": {
+        "algorithm": 4,
+        "mode": "raw",
+        "dataset": 11,
+        "tau": 0.909257,
+        "threads": 32,
+        "timeout_seconds": 1200,
+        "graph": "dataset/scale_datasets/ogbn-arxiv-degree-prefix/level-25000.graph.txt",
+        "vectors": "dataset/scale_datasets/ogbn-arxiv-degree-prefix/level-25000.vectors.bin",
+        "capture_cliques": false,
+        "defines": {},
+        "warmup": false
+      },
+      "status_counts": {
+        "completed": 3
+      },
+      "timing": {
+        "completed_repetitions": 3,
+        "algorithm_ms_median": 1065,
+        "algorithm_ms_min": 1016,
+        "algorithm_ms_max": 1100,
+        "wall_seconds_median": 1.560077200003434,
+        "peak_memory_gib_median": 0.09,
+        "peak_memory_gib_max": 0.09
+      },
+      "result": {
+        "clique_count": 36753,
+        "size_histogram": {
+          "10": 80,
+          "11": 76,
+          "12": 52,
+          "13": 38,
+          "14": 47,
+          "15": 74,
+          "16": 72,
+          "17": 52,
+          "18": 12,
+          "2": 6956,
+          "3": 9312,
+          "4": 8637,
+          "5": 6065,
+          "6": 3356,
+          "7": 1386,
+          "8": 377,
+          "9": 161
+        }
+      }
+    },
+    {
+      "configuration": {
+        "algorithm": 4,
+        "mode": "raw",
+        "dataset": 11,
+        "tau": 0.909257,
+        "threads": 32,
+        "timeout_seconds": 1200,
+        "graph": "dataset/scale_datasets/ogbn-arxiv-degree-prefix/level-50000.graph.txt",
+        "vectors": "dataset/scale_datasets/ogbn-arxiv-degree-prefix/level-50000.vectors.bin",
+        "capture_cliques": false,
+        "defines": {},
+        "warmup": false
+      },
+      "status_counts": {
+        "completed": 3
+      },
+      "timing": {
+        "completed_repetitions": 3,
+        "algorithm_ms_median": 1328,
+        "algorithm_ms_min": 1175,
+        "algorithm_ms_max": 1350,
+        "wall_seconds_median": 2.320074100003694,
+        "peak_memory_gib_median": 0.17,
+        "peak_memory_gib_max": 0.17
+      },
+      "result": {
+        "clique_count": 62035,
+        "size_histogram": {
+          "10": 102,
+          "11": 89,
+          "12": 58,
+          "13": 41,
+          "14": 49,
+          "15": 74,
+          "16": 72,
+          "17": 52,
+          "18": 12,
+          "2": 14812,
+          "3": 17174,
+          "4": 14111,
+          "5": 8625,
+          "6": 4357,
+          "7": 1731,
+          "8": 478,
+          "9": 198
+        }
+      }
+    },
+    {
+      "configuration": {
+        "algorithm": 4,
+        "mode": "raw",
+        "dataset": 11,
+        "tau": 0.924347,
+        "threads": 32,
+        "timeout_seconds": 1200,
+        "graph": "dataset/scale_datasets/ogbn-arxiv-degree-prefix/level-100000.graph.txt",
+        "vectors": "dataset/scale_datasets/ogbn-arxiv-degree-prefix/level-100000.vectors.bin",
+        "capture_cliques": false,
+        "defines": {},
+        "warmup": false
+      },
+      "status_counts": {
+        "completed": 3
+      },
+      "timing": {
+        "completed_repetitions": 3,
+        "algorithm_ms_median": 346,
+        "algorithm_ms_min": 340,
+        "algorithm_ms_max": 385,
+        "wall_seconds_median": 1.608438399998704,
+        "peak_memory_gib_median": 0.27,
+        "peak_memory_gib_max": 0.27
+      },
+      "result": {
+        "clique_count": 43770,
+        "size_histogram": {
+          "10": 170,
+          "11": 407,
+          "12": 729,
+          "13": 876,
+          "14": 419,
+          "15": 101,
+          "16": 1,
+          "2": 18030,
+          "3": 12153,
+          "4": 6480,
+          "5": 2828,
+          "6": 990,
+          "7": 331,
+          "8": 137,
+          "9": 118
+        }
+      }
+    },
+    {
+      "configuration": {
+        "algorithm": 4,
+        "mode": "raw",
+        "dataset": 11,
+        "tau": 0.924347,
+        "threads": 32,
+        "timeout_seconds": 1200,
+        "graph": "dataset/scale_datasets/ogbn-arxiv-degree-prefix/level-169343.graph.txt",
+        "vectors": "dataset/scale_datasets/ogbn-arxiv-degree-prefix/level-169343.vectors.bin",
+        "capture_cliques": false,
+        "defines": {},
+        "warmup": false
+      },
+      "status_counts": {
+        "completed": 3
+      },
+      "timing": {
+        "completed_repetitions": 3,
+        "algorithm_ms_median": 421,
+        "algorithm_ms_min": 384,
+        "algorithm_ms_max": 445,
+        "wall_seconds_median": 1.8619934000016656,
+        "peak_memory_gib_median": 0.39,
+        "peak_memory_gib_max": 0.39
+      },
+      "result": {
+        "clique_count": 53208,
+        "size_histogram": {
+          "10": 170,
+          "11": 407,
+          "12": 729,
+          "13": 876,
+          "14": 419,
+          "15": 101,
+          "16": 1,
+          "2": 25825,
+          "3": 13561,
+          "4": 6700,
+          "5": 2843,
+          "6": 990,
+          "7": 331,
+          "8": 137,
+          "9": 118
+        }
+      }
+    },
+    {
+      "configuration": {
+        "algorithm": 4,
+        "mode": "raw",
+        "dataset": 11,
+        "tau": 0.924347,
+        "threads": 32,
+        "timeout_seconds": 1200,
+        "graph": "dataset/scale_datasets/ogbn-arxiv-degree-prefix/level-25000.graph.txt",
+        "vectors": "dataset/scale_datasets/ogbn-arxiv-degree-prefix/level-25000.vectors.bin",
+        "capture_cliques": false,
+        "defines": {},
+        "warmup": false
+      },
+      "status_counts": {
+        "completed": 3
+      },
+      "timing": {
+        "completed_repetitions": 3,
+        "algorithm_ms_median": 248,
+        "algorithm_ms_min": 239,
+        "algorithm_ms_max": 250,
+        "wall_seconds_median": 0.7180741999982274,
+        "peak_memory_gib_median": 0.09,
+        "peak_memory_gib_max": 0.09
+      },
+      "result": {
+        "clique_count": 16769,
+        "size_histogram": {
+          "10": 144,
+          "11": 396,
+          "12": 721,
+          "13": 876,
+          "14": 417,
+          "15": 101,
+          "16": 1,
+          "2": 4679,
+          "3": 4124,
+          "4": 2780,
+          "5": 1480,
+          "6": 631,
+          "7": 217,
+          "8": 96,
+          "9": 106
+        }
+      }
+    },
+    {
+      "configuration": {
+        "algorithm": 4,
+        "mode": "raw",
+        "dataset": 11,
+        "tau": 0.924347,
+        "threads": 32,
+        "timeout_seconds": 1200,
+        "graph": "dataset/scale_datasets/ogbn-arxiv-degree-prefix/level-50000.graph.txt",
+        "vectors": "dataset/scale_datasets/ogbn-arxiv-degree-prefix/level-50000.vectors.bin",
+        "capture_cliques": false,
+        "defines": {},
+        "warmup": false
+      },
+      "status_counts": {
+        "completed": 3
+      },
+      "timing": {
+        "completed_repetitions": 3,
+        "algorithm_ms_median": 311,
+        "algorithm_ms_min": 308,
+        "algorithm_ms_max": 319,
+        "wall_seconds_median": 1.1436851000034949,
+        "peak_memory_gib_median": 0.16,
+        "peak_memory_gib_max": 0.16
+      },
+      "result": {
+        "clique_count": 28885,
+        "size_histogram": {
+          "10": 170,
+          "11": 407,
+          "12": 729,
+          "13": 876,
+          "14": 419,
+          "15": 101,
+          "16": 1,
+          "2": 9711,
+          "3": 7758,
+          "4": 4894,
+          "5": 2337,
+          "6": 912,
+          "7": 318,
+          "8": 135,
+          "9": 117
+        }
+      }
+    },
+    {
+      "configuration": {
+        "algorithm": 4,
+        "mode": "raw",
+        "dataset": 11,
+        "tau": 0.949708,
+        "threads": 32,
+        "timeout_seconds": 1200,
+        "graph": "dataset/scale_datasets/ogbn-arxiv-degree-prefix/level-100000.graph.txt",
+        "vectors": "dataset/scale_datasets/ogbn-arxiv-degree-prefix/level-100000.vectors.bin",
+        "capture_cliques": false,
+        "defines": {},
+        "warmup": false
+      },
+      "status_counts": {
+        "completed": 3
+      },
+      "timing": {
+        "completed_repetitions": 3,
+        "algorithm_ms_median": 151,
+        "algorithm_ms_min": 149,
+        "algorithm_ms_max": 183,
+        "wall_seconds_median": 1.334952000004705,
+        "peak_memory_gib_median": 0.27,
+        "peak_memory_gib_max": 0.27
+      },
+      "result": {
+        "clique_count": 7655,
+        "size_histogram": {
+          "2": 5355,
+          "3": 1588,
+          "4": 426,
+          "5": 115,
+          "6": 46,
+          "7": 78,
+          "8": 44,
+          "9": 3
+        }
+      }
+    },
+    {
+      "configuration": {
+        "algorithm": 4,
+        "mode": "raw",
+        "dataset": 11,
+        "tau": 0.949708,
+        "threads": 32,
+        "timeout_seconds": 1200,
+        "graph": "dataset/scale_datasets/ogbn-arxiv-degree-prefix/level-169343.graph.txt",
+        "vectors": "dataset/scale_datasets/ogbn-arxiv-degree-prefix/level-169343.vectors.bin",
+        "capture_cliques": false,
+        "defines": {},
+        "warmup": false
+      },
+      "status_counts": {
+        "completed": 3
+      },
+      "timing": {
+        "completed_repetitions": 3,
+        "algorithm_ms_median": 200,
+        "algorithm_ms_min": 197,
+        "algorithm_ms_max": 202,
+        "wall_seconds_median": 1.7796455999996397,
+        "peak_memory_gib_median": 0.39,
+        "peak_memory_gib_max": 0.39
+      },
+      "result": {
+        "clique_count": 10261,
+        "size_histogram": {
+          "2": 7701,
+          "3": 1835,
+          "4": 437,
+          "5": 117,
+          "6": 46,
+          "7": 78,
+          "8": 44,
+          "9": 3
+        }
+      }
+    },
+    {
+      "configuration": {
+        "algorithm": 4,
+        "mode": "raw",
+        "dataset": 11,
+        "tau": 0.949708,
+        "threads": 32,
+        "timeout_seconds": 1200,
+        "graph": "dataset/scale_datasets/ogbn-arxiv-degree-prefix/level-25000.graph.txt",
+        "vectors": "dataset/scale_datasets/ogbn-arxiv-degree-prefix/level-25000.vectors.bin",
+        "capture_cliques": false,
+        "defines": {},
+        "warmup": false
+      },
+      "status_counts": {
+        "completed": 3
+      },
+      "timing": {
+        "completed_repetitions": 3,
+        "algorithm_ms_median": 57,
+        "algorithm_ms_min": 55,
+        "algorithm_ms_max": 58,
+        "wall_seconds_median": 0.5794567999982974,
+        "peak_memory_gib_median": 0.09,
+        "peak_memory_gib_max": 0.09
+      },
+      "result": {
+        "clique_count": 2006,
+        "size_histogram": {
+          "2": 1284,
+          "3": 430,
+          "4": 125,
+          "5": 47,
+          "6": 32,
+          "7": 43,
+          "8": 42,
+          "9": 3
+        }
+      }
+    },
+    {
+      "configuration": {
+        "algorithm": 4,
+        "mode": "raw",
+        "dataset": 11,
+        "tau": 0.949708,
+        "threads": 32,
+        "timeout_seconds": 1200,
+        "graph": "dataset/scale_datasets/ogbn-arxiv-degree-prefix/level-50000.graph.txt",
+        "vectors": "dataset/scale_datasets/ogbn-arxiv-degree-prefix/level-50000.vectors.bin",
+        "capture_cliques": false,
+        "defines": {},
+        "warmup": false
+      },
+      "status_counts": {
+        "completed": 3
+      },
+      "timing": {
+        "completed_repetitions": 3,
+        "algorithm_ms_median": 106,
+        "algorithm_ms_min": 99,
+        "algorithm_ms_max": 121,
+        "wall_seconds_median": 1.1055686000036076,
+        "peak_memory_gib_median": 0.16,
+        "peak_memory_gib_max": 0.16
+      },
+      "result": {
+        "clique_count": 4205,
+        "size_histogram": {
+          "2": 2768,
+          "3": 925,
+          "4": 261,
+          "5": 83,
+          "6": 43,
+          "7": 78,
+          "8": 44,
+          "9": 3
+        }
+      }
+    }
+  ]
+}

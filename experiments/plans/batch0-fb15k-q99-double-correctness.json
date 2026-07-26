@@ -1,0 +1,23 @@
+{
+  "name": "batch0-fb15k-q99-double-correctness",
+  "tasks": [
+    {
+      "algorithm": 3,
+      "mode": "raw",
+      "dataset": 7,
+      "tau": 0.537601,
+      "threads": 32,
+      "timeout_seconds": 180,
+      "capture_cliques": true
+    },
+    {
+      "algorithm": 4,
+      "mode": "raw",
+      "dataset": 7,
+      "tau": 0.537601,
+      "threads": 32,
+      "timeout_seconds": 180,
+      "capture_cliques": true
+    }
+  ]
+}

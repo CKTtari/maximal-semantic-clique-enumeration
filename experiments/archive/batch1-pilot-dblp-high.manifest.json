@@ -1,0 +1,169 @@
+{
+  "schema_version": 2,
+  "run_name": "batch1-pilot-dblp-high",
+  "archived_utc": "2026-07-23T09:46:32.745171+00:00",
+  "local_result_directory": "experiment-output/batch1-pilot-dblp-high",
+  "plans": [
+    {
+      "path": "experiments/plans/batch1-pilot-dblp-high.json",
+      "sha256": "3c7bdbf434f2871f2d1ff0ee2a476904da4b5e20cf3c55a340108400f822dce2"
+    }
+  ],
+  "summary": {
+    "attempts": 1,
+    "status_counts": {
+      "tle": 1
+    }
+  },
+  "records": [
+    {
+      "task_id": "0cc9e86e4bf5786b",
+      "attempt": 1,
+      "status": "tle",
+      "rerun_reason": null,
+      "started_utc": "2026-07-23T09:42:56.363604+00:00",
+      "wall_seconds": 180.35781560000032,
+      "task": {
+        "algorithm": 4,
+        "mode": "raw",
+        "dataset": 9,
+        "tau": 0.392207,
+        "threads": 32,
+        "timeout_seconds": 180,
+        "graph": null,
+        "vectors": null,
+        "capture_cliques": false,
+        "defines": {},
+        "warmup": false,
+        "repetition": 0,
+        "task_id": "0cc9e86e4bf5786b"
+      },
+      "parsed": null,
+      "validation": null,
+      "build": {
+        "fingerprint": "a5109816b58eb078",
+        "executable_sha256": "9f8deee1713c1d1020ebb49e2332b9e06605a87fae2506d31233faad1f5c3d12",
+        "command": [
+          "g++",
+          "-std=c++17",
+          "-fopenmp",
+          "-mavx2",
+          "-O3",
+          "src/alg4-raw.cpp",
+          "src/semantic_graph.cpp",
+          "-o",
+          "no-use/compiled/experiment-runner/alg4-raw-a5109816b58eb078.exe"
+        ],
+        "source_verification": {
+          "status": "verified_current",
+          "observed_current_fingerprint": "a5109816b58eb078",
+          "reason": null
+        },
+        "source_hashes": {
+          "alg4-raw.cpp": "2a4c3a22b326f5716e381c5dddafdbc21cc1696fc2d80f7e2f87668f3f3f98fe",
+          "semantic_graph.cpp": "c6d51c9086fbd5c7d264eb411ac04890806744fc4e05dc7eee0b156760a9cd92",
+          "semantic_graph.h": "8192c4e8e02fc8ace59d59365f72643e34ca32ba71faa5bb338381a8cd308078",
+          "experiment_runtime.h": "cc5fd4517f8ca2f43f7e7a4fa0f4c9a00ca8778966bc2ab2228d622a070e5354"
+        }
+      },
+      "inputs": {
+        "status": "verified_run_time",
+        "snapshot": {
+          "dataset_catalog": {
+            "path": "experiments/datasets.json",
+            "sha256": "be27e812615b59c62775fb3b129a5f422ad837c4d149311f220e0ad3bca1740b"
+          },
+          "files": [
+            {
+              "role": "graph",
+              "path": "dataset/dataset/dblp_coauthor.txt",
+              "bytes": 193487489,
+              "sha256": "6e0a09c7a6ec593398d0ea500cb5a9ae8e42c4f2ba85cb91b40b6c086e4bdfa4"
+            },
+            {
+              "role": "vector_index",
+              "path": "dataset/vectors/dblp_coauthor_vectors.index",
+              "bytes": 349,
+              "sha256": "b8694ee71eb9c8b09f4f26f8ed51475b4d4b22ff98006be12e9514bc9eb25779"
+            },
+            {
+              "role": "vector_chunk",
+              "path": "dataset/vectors/dblp_coauthor_vectors.json.chunk.0.bin",
+              "bytes": 983040008,
+              "sha256": "73485cdefbc9c1f5da667704d255d976083d9893c6536307ef6875296ac85433"
+            },
+            {
+              "role": "vector_chunk",
+              "path": "dataset/vectors/dblp_coauthor_vectors.json.chunk.1.bin",
+              "bytes": 983040008,
+              "sha256": "1b9caf9b35b226d03546b9e5d53b6c6e0d954950b8f74e03180828fb06665296"
+            },
+            {
+              "role": "vector_chunk",
+              "path": "dataset/vectors/dblp_coauthor_vectors.json.chunk.2.bin",
+              "bytes": 983040008,
+              "sha256": "57b123a71e46bc6ba400ca1e15f0de085c2cc4cb1b621088068b35b3acf8f479"
+            },
+            {
+              "role": "vector_chunk",
+              "path": "dataset/vectors/dblp_coauthor_vectors.json.chunk.3.bin",
+              "bytes": 983040008,
+              "sha256": "d6d3b6c67ad81c072af404fc9ab33b7b440c005705f84e4e9f649c1e751c0fd8"
+            },
+            {
+              "role": "vector_chunk",
+              "path": "dataset/vectors/dblp_coauthor_vectors.json.chunk.4.bin",
+              "bytes": 983040008,
+              "sha256": "45f69fd78c6b95390b3feac2077de4f680ba4d61d391cf25c1e754106a865ab3"
+            },
+            {
+              "role": "vector_chunk",
+              "path": "dataset/vectors/dblp_coauthor_vectors.json.chunk.5.bin",
+              "bytes": 646044680,
+              "sha256": "6f57a8f69710b08720500c81ef7318647eb6ff6ceb86855cf4cc76e2a368c78b"
+            }
+          ]
+        }
+      },
+      "run_environment": {
+        "plan": "experiments/plans/batch1-pilot-dblp-high.json",
+        "plan_sha256": "3c7bdbf434f2871f2d1ff0ee2a476904da4b5e20cf3c55a340108400f822dce2",
+        "git": {
+          "commit": "59299fd9164d077d7e04cd97fc9ac89cbf962c9f",
+          "dirty": true
+        },
+        "machine": {
+          "platform": "Windows-11-10.0.26100-SP0",
+          "processor": "AMD64 Family 25 Model 97 Stepping 2, AuthenticAMD",
+          "logical_cpu_count": 32,
+          "python": "3.12.7",
+          "compiler": "g++ (x86_64-posix-seh-rev0, Built by MinGW-Builds project) 13.2.0"
+        },
+        "memory_limit_gib": 16,
+        "external_timeout_policy": "hard per-process TLE from task.timeout_seconds"
+      },
+      "result_json": {
+        "path": "experiment-output/batch1-pilot-dblp-high/0cc9e86e4bf5786b.attempt-001.json",
+        "bytes": 5282,
+        "sha256": "8c8d42d75568b8d633eb4f8a6bd849f960a16b4077a773f53ac764f7c11d0787"
+      },
+      "artifacts": {
+        "program_log": {
+          "path": "experiment-output/batch1-pilot-dblp-high/0cc9e86e4bf5786b.attempt-001.program.log",
+          "bytes": 716,
+          "sha256": "229761b2635d7ff5544098ddb29cb2cf7d16be3e9ada3fb0f3008968b29bff22"
+        },
+        "stdout": {
+          "path": "experiment-output/batch1-pilot-dblp-high/0cc9e86e4bf5786b.attempt-001.stdout.txt",
+          "bytes": 1139,
+          "sha256": "39b1d6a4bab915c4b9170b8c10382559e647a68cbda1136425d6583b81e7a059"
+        },
+        "stderr": {
+          "path": "experiment-output/batch1-pilot-dblp-high/0cc9e86e4bf5786b.attempt-001.stderr.txt",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    }
+  ]
+}

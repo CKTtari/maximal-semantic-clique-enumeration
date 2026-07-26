@@ -1,0 +1,32 @@
+{
+  "name": "batch0-ogbn-arxiv-q99-correctness",
+  "tasks": [
+    {
+      "algorithm": 2,
+      "mode": "raw",
+      "dataset": 11,
+      "tau": 0.949708,
+      "threads": 32,
+      "timeout_seconds": 180,
+      "capture_cliques": true
+    },
+    {
+      "algorithm": 3,
+      "mode": "raw",
+      "dataset": 11,
+      "tau": 0.949708,
+      "threads": 32,
+      "timeout_seconds": 180,
+      "capture_cliques": true
+    },
+    {
+      "algorithm": 4,
+      "mode": "raw",
+      "dataset": 11,
+      "tau": 0.949708,
+      "threads": 32,
+      "timeout_seconds": 180,
+      "capture_cliques": true
+    }
+  ]
+}

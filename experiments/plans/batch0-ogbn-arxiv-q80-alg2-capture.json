@@ -1,0 +1,14 @@
+{
+  "name": "batch0-ogbn-arxiv-q80-alg2-capture",
+  "tasks": [
+    {
+      "algorithm": 2,
+      "mode": "raw",
+      "dataset": 11,
+      "tau": 0.888756,
+      "threads": 32,
+      "timeout_seconds": 180,
+      "capture_cliques": true
+    }
+  ]
+}

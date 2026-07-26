@@ -1,0 +1,10 @@
+{
+  "name": "batch1-pilot-structural-uniform-ds3",
+  "tasks": [
+    {"algorithm": 3, "mode": "raw", "dataset": 3, "tau": -0.102866, "threads": 32, "timeout_seconds": 180, "repetitions": 1},
+    {"algorithm": 3, "mode": "raw", "dataset": 3, "tau": 0.0000245795, "threads": 32, "timeout_seconds": 180, "repetitions": 1},
+    {"algorithm": 3, "mode": "raw", "dataset": 3, "tau": 0.0526216, "threads": 32, "timeout_seconds": 180, "repetitions": 1},
+    {"algorithm": 4, "mode": "raw", "dataset": 3, "tau": 0.0526216, "threads": 32, "timeout_seconds": 180, "repetitions": 1},
+    {"algorithm": 4, "mode": "raw", "dataset": 3, "tau": 0.0000245795, "threads": 32, "timeout_seconds": 180, "repetitions": 1}
+  ]
+}

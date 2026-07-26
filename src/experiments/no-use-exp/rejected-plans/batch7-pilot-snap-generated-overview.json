@@ -1,0 +1,49 @@
+{
+  "name": "batch7-pilot-snap-generated-overview",
+  "tasks": [
+    {
+      "algorithm": 3,
+      "mode": "raw",
+      "dataset": 2,
+      "graph": "dataset/Processed/email-Enron/graph.txt",
+      "vectors": "dataset/Processed/email-Enron/email-Enron_vectors.bin",
+      "tau": 0.145164,
+      "threads": 32,
+      "timeout_seconds": 180,
+      "repetitions": 1
+    },
+    {
+      "algorithm": 4,
+      "mode": "raw",
+      "dataset": 2,
+      "graph": "dataset/Processed/email-Enron/graph.txt",
+      "vectors": "dataset/Processed/email-Enron/email-Enron_vectors.bin",
+      "tau": 0.145164,
+      "threads": 32,
+      "timeout_seconds": 180,
+      "repetitions": 1
+    },
+    {
+      "algorithm": 3,
+      "mode": "raw",
+      "dataset": 2,
+      "graph": "dataset/Processed/ca-HepPh/graph.txt",
+      "vectors": "dataset/Processed/ca-HepPh/ca-HepPh_vectors.bin",
+      "tau": 0.145003,
+      "threads": 32,
+      "timeout_seconds": 180,
+      "repetitions": 1
+    },
+    {
+      "algorithm": 4,
+      "mode": "raw",
+      "dataset": 2,
+      "graph": "dataset/Processed/ca-HepPh/graph.txt",
+      "vectors": "dataset/Processed/ca-HepPh/ca-HepPh_vectors.bin",
+      "tau": 0.145003,
+      "threads": 32,
+      "timeout_seconds": 180,
+      "repetitions": 1
+    }
+  ]
+}

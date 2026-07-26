@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "name": "sc-pwtk-generated-vectors",
+  "kind": "generated_attributes_on_public_graphs",
+  "archived_utc": "2026-07-24T15:19:40.317219+00:00",
+  "provenance_file": {
+    "path": "dataset/vectors-256/sc-pwtk.provenance.json",
+    "bytes": 1178,
+    "sha256": "3a15f38846a4e853c6d3b56454b31f23a5526b90e72c2c6df0b7164b1747cf30"
+  },
+  "verified_files": [
+    {
+      "path": "dataset/dataset/sc-pwtk.txt",
+      "bytes": 73301256,
+      "sha256": "f3376c28ebb24ca1af6ca55a2ed00c00cf89e6b2ed600b2a164d19f7c3f0977d"
+    },
+    {
+      "path": "dataset/vectors-256/sc-pwtk_vectors.bin",
+      "bytes": 446240776,
+      "sha256": "e6236541e0619db274544dd907508e619056d73feef6dbb1f8db15cbc4629bb9"
+    }
+  ],
+  "audit": {
+    "path": "experiments/dataset-audits/candidate-pwtk.json",
+    "bytes": 493,
+    "sha256": "61329e185540c9f07c19eaf950aece8b4b267b5867d6f5266ba4825b7b01564c"
+  },
+  "provenance": {
+    "schema_version": 1,
+    "kind": "generated_attributes_on_public_graphs",
+    "created_utc": "2026-07-24T15:19:16.023696+00:00",
+    "generator": {
+      "script": "scripts/generate_structural_vectors.py",
+      "script_sha256": "3d7f5161e24f662bba18049aeefd35391314531aaf3c505999ae410cacb1e96d",
+      "numpy_version": "1.26.4",
+      "bit_generator": "PCG64",
+      "distribution": "independent Uniform[-1, 1) coordinates",
+      "normalization": "L2 normalization by the shared C++ graph loader",
+      "dimension": 256,
+      "chunk_rows": 8192,
+      "binary_format": "little-endian int32 V, int32 dimension, row-major float64 values"
+    },
+    "datasets": [
+      {
+        "name": "sc-pwtk",
+        "vertices": 217891,
+        "dimension": 256,
+        "seed": 2026072307,
+        "graph": {
+          "path": "dataset/dataset/sc-pwtk.txt",
+          "bytes": 73301256,
+          "sha256": "f3376c28ebb24ca1af6ca55a2ed00c00cf89e6b2ed600b2a164d19f7c3f0977d"
+        },
+        "vectors": {
+          "path": "dataset/vectors-256/sc-pwtk_vectors.bin",
+          "bytes": 446240776,
+          "sha256": "e6236541e0619db274544dd907508e619056d73feef6dbb1f8db15cbc4629bb9"
+        }
+      }
+    ]
+  }
+}

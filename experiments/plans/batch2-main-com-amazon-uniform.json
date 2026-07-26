@@ -1,0 +1,20 @@
+{
+  "name": "batch2-main-com-amazon-uniform",
+  "tasks": [
+    {"algorithm": 2, "mode": "raw", "dataset": 2, "graph": "dataset/dataset/com-amazon.txt", "vectors": "dataset/vectors-256/com-amazon_vectors.bin", "tau": -0.102669, "threads": 32, "timeout_seconds": 3600, "repetitions": 3},
+    {"algorithm": 3, "mode": "raw", "dataset": 2, "graph": "dataset/dataset/com-amazon.txt", "vectors": "dataset/vectors-256/com-amazon_vectors.bin", "tau": -0.102669, "threads": 32, "timeout_seconds": 3600, "repetitions": 3},
+    {"algorithm": 4, "mode": "raw", "dataset": 2, "graph": "dataset/dataset/com-amazon.txt", "vectors": "dataset/vectors-256/com-amazon_vectors.bin", "tau": -0.102669, "threads": 32, "timeout_seconds": 3600, "repetitions": 3},
+    {"algorithm": 2, "mode": "raw", "dataset": 2, "graph": "dataset/dataset/com-amazon.txt", "vectors": "dataset/vectors-256/com-amazon_vectors.bin", "tau": -0.0526932, "threads": 32, "timeout_seconds": 3600, "repetitions": 3},
+    {"algorithm": 3, "mode": "raw", "dataset": 2, "graph": "dataset/dataset/com-amazon.txt", "vectors": "dataset/vectors-256/com-amazon_vectors.bin", "tau": -0.0526932, "threads": 32, "timeout_seconds": 3600, "repetitions": 3},
+    {"algorithm": 4, "mode": "raw", "dataset": 2, "graph": "dataset/dataset/com-amazon.txt", "vectors": "dataset/vectors-256/com-amazon_vectors.bin", "tau": -0.0526932, "threads": 32, "timeout_seconds": 3600, "repetitions": 3},
+    {"algorithm": 2, "mode": "raw", "dataset": 2, "graph": "dataset/dataset/com-amazon.txt", "vectors": "dataset/vectors-256/com-amazon_vectors.bin", "tau": -0.0000512078, "threads": 32, "timeout_seconds": 3600, "repetitions": 3},
+    {"algorithm": 3, "mode": "raw", "dataset": 2, "graph": "dataset/dataset/com-amazon.txt", "vectors": "dataset/vectors-256/com-amazon_vectors.bin", "tau": -0.0000512078, "threads": 32, "timeout_seconds": 3600, "repetitions": 3},
+    {"algorithm": 4, "mode": "raw", "dataset": 2, "graph": "dataset/dataset/com-amazon.txt", "vectors": "dataset/vectors-256/com-amazon_vectors.bin", "tau": -0.0000512078, "threads": 32, "timeout_seconds": 3600, "repetitions": 3},
+    {"algorithm": 2, "mode": "raw", "dataset": 2, "graph": "dataset/dataset/com-amazon.txt", "vectors": "dataset/vectors-256/com-amazon_vectors.bin", "tau": 0.0526286, "threads": 32, "timeout_seconds": 3600, "repetitions": 3},
+    {"algorithm": 3, "mode": "raw", "dataset": 2, "graph": "dataset/dataset/com-amazon.txt", "vectors": "dataset/vectors-256/com-amazon_vectors.bin", "tau": 0.0526286, "threads": 32, "timeout_seconds": 3600, "repetitions": 3},
+    {"algorithm": 4, "mode": "raw", "dataset": 2, "graph": "dataset/dataset/com-amazon.txt", "vectors": "dataset/vectors-256/com-amazon_vectors.bin", "tau": 0.0526286, "threads": 32, "timeout_seconds": 3600, "repetitions": 3},
+    {"algorithm": 2, "mode": "raw", "dataset": 2, "graph": "dataset/dataset/com-amazon.txt", "vectors": "dataset/vectors-256/com-amazon_vectors.bin", "tau": 0.145251, "threads": 32, "timeout_seconds": 3600, "repetitions": 3},
+    {"algorithm": 3, "mode": "raw", "dataset": 2, "graph": "dataset/dataset/com-amazon.txt", "vectors": "dataset/vectors-256/com-amazon_vectors.bin", "tau": 0.145251, "threads": 32, "timeout_seconds": 3600, "repetitions": 3},
+    {"algorithm": 4, "mode": "raw", "dataset": 2, "graph": "dataset/dataset/com-amazon.txt", "vectors": "dataset/vectors-256/com-amazon_vectors.bin", "tau": 0.145251, "threads": 32, "timeout_seconds": 3600, "repetitions": 3}
+  ]
+}

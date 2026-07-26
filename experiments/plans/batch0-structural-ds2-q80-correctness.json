@@ -1,0 +1,7 @@
+{
+  "name": "batch0-structural-ds2-q80-correctness",
+  "tasks": [
+    {"algorithm": 3, "mode": "raw", "dataset": 2, "tau": 0.0527296, "threads": 32, "timeout_seconds": 180, "capture_cliques": true, "repetitions": 1},
+    {"algorithm": 4, "mode": "raw", "dataset": 2, "tau": 0.0527296, "threads": 32, "timeout_seconds": 180, "capture_cliques": true, "repetitions": 1}
+  ]
+}

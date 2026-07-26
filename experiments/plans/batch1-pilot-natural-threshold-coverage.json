@@ -1,0 +1,38 @@
+{
+  "name": "batch1-pilot-natural-threshold-coverage",
+  "tasks": [
+    {"algorithm": 1, "mode": "raw", "dataset": 11, "threads": 32, "timeout_seconds": 180, "repetitions": 1},
+    {"algorithm": 2, "mode": "raw", "dataset": 11, "tau": 0.222284, "threads": 32, "timeout_seconds": 180, "repetitions": 1},
+    {"algorithm": 3, "mode": "raw", "dataset": 11, "tau": 0.222284, "threads": 32, "timeout_seconds": 180, "repetitions": 1},
+    {"algorithm": 4, "mode": "raw", "dataset": 11, "tau": 0.222284, "threads": 32, "timeout_seconds": 180, "repetitions": 1},
+    {"algorithm": 2, "mode": "raw", "dataset": 11, "tau": 0.773547, "threads": 32, "timeout_seconds": 180, "repetitions": 1},
+    {"algorithm": 3, "mode": "raw", "dataset": 11, "tau": 0.773547, "threads": 32, "timeout_seconds": 180, "repetitions": 1},
+    {"algorithm": 4, "mode": "raw", "dataset": 11, "tau": 0.773547, "threads": 32, "timeout_seconds": 180, "repetitions": 1},
+    {"algorithm": 2, "mode": "raw", "dataset": 11, "tau": 0.872133, "threads": 32, "timeout_seconds": 180, "repetitions": 1},
+    {"algorithm": 3, "mode": "raw", "dataset": 11, "tau": 0.872133, "threads": 32, "timeout_seconds": 180, "repetitions": 1},
+    {"algorithm": 4, "mode": "raw", "dataset": 11, "tau": 0.872133, "threads": 32, "timeout_seconds": 180, "repetitions": 1},
+    {"algorithm": 2, "mode": "raw", "dataset": 11, "tau": 0.909257, "threads": 32, "timeout_seconds": 180, "repetitions": 1},
+    {"algorithm": 3, "mode": "raw", "dataset": 11, "tau": 0.909257, "threads": 32, "timeout_seconds": 180, "repetitions": 1},
+    {"algorithm": 4, "mode": "raw", "dataset": 11, "tau": 0.909257, "threads": 32, "timeout_seconds": 180, "repetitions": 1},
+    {"algorithm": 2, "mode": "raw", "dataset": 11, "tau": 0.924347, "threads": 32, "timeout_seconds": 180, "repetitions": 1},
+    {"algorithm": 3, "mode": "raw", "dataset": 11, "tau": 0.924347, "threads": 32, "timeout_seconds": 180, "repetitions": 1},
+    {"algorithm": 4, "mode": "raw", "dataset": 11, "tau": 0.924347, "threads": 32, "timeout_seconds": 180, "repetitions": 1},
+
+    {"algorithm": 1, "mode": "raw", "dataset": 7, "threads": 32, "timeout_seconds": 180, "repetitions": 1},
+    {"algorithm": 2, "mode": "raw", "dataset": 7, "tau": -0.237632, "threads": 32, "timeout_seconds": 180, "repetitions": 1},
+    {"algorithm": 3, "mode": "raw", "dataset": 7, "tau": -0.237632, "threads": 32, "timeout_seconds": 180, "repetitions": 1},
+    {"algorithm": 4, "mode": "raw", "dataset": 7, "tau": -0.237632, "threads": 32, "timeout_seconds": 180, "repetitions": 1},
+    {"algorithm": 2, "mode": "raw", "dataset": 7, "tau": 0.02516, "threads": 32, "timeout_seconds": 180, "repetitions": 1},
+    {"algorithm": 3, "mode": "raw", "dataset": 7, "tau": 0.02516, "threads": 32, "timeout_seconds": 180, "repetitions": 1},
+    {"algorithm": 4, "mode": "raw", "dataset": 7, "tau": 0.02516, "threads": 32, "timeout_seconds": 180, "repetitions": 1},
+    {"algorithm": 2, "mode": "raw", "dataset": 7, "tau": 0.189047, "threads": 32, "timeout_seconds": 180, "repetitions": 1},
+    {"algorithm": 3, "mode": "raw", "dataset": 7, "tau": 0.189047, "threads": 32, "timeout_seconds": 180, "repetitions": 1},
+    {"algorithm": 4, "mode": "raw", "dataset": 7, "tau": 0.189047, "threads": 32, "timeout_seconds": 180, "repetitions": 1},
+    {"algorithm": 2, "mode": "raw", "dataset": 7, "tau": 0.300316, "threads": 32, "timeout_seconds": 180, "repetitions": 1},
+    {"algorithm": 3, "mode": "raw", "dataset": 7, "tau": 0.300316, "threads": 32, "timeout_seconds": 180, "repetitions": 1},
+    {"algorithm": 4, "mode": "raw", "dataset": 7, "tau": 0.300316, "threads": 32, "timeout_seconds": 180, "repetitions": 1},
+    {"algorithm": 2, "mode": "raw", "dataset": 7, "tau": 0.359274, "threads": 32, "timeout_seconds": 180, "repetitions": 1},
+    {"algorithm": 3, "mode": "raw", "dataset": 7, "tau": 0.359274, "threads": 32, "timeout_seconds": 180, "repetitions": 1},
+    {"algorithm": 4, "mode": "raw", "dataset": 7, "tau": 0.359274, "threads": 32, "timeout_seconds": 180, "repetitions": 1}
+  ]
+}

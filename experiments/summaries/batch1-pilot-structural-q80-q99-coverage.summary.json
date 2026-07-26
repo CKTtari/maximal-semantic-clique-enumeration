@@ -1,0 +1,161 @@
+{
+  "schema_version": 1,
+  "source_manifest": "experiments/archive/batch1-pilot-structural-q80-q99-coverage.manifest.json",
+  "source_run": "batch1-pilot-structural-q80-q99-coverage",
+  "source_plan_summary": {
+    "attempts": 4,
+    "planned_tasks": 20,
+    "attempted_tasks": 4,
+    "completed_tasks": 2,
+    "unattempted_tasks": 16,
+    "unattempted_task_ids": [
+      "0144f16b56ee5fe4",
+      "04b21aa72c48d133",
+      "0ef2d9d29a3c5796",
+      "18531683dc00f22d",
+      "1d74319839a19008",
+      "1f62cd817d8eff9c",
+      "39aa9ef73a7fd86a",
+      "4760ace4611e32be",
+      "4dc23a83a0d1c176",
+      "63d6db866a82d667",
+      "7b8a24b170b09ae9",
+      "99c7eb8bb8ac53aa",
+      "bff245a1b8faf3e2",
+      "d597fb236a1d3074",
+      "e9cfd48c42096076",
+      "fbee70765d17141e"
+    ],
+    "plan_complete": false,
+    "status_counts": {
+      "completed": 2,
+      "tle": 2
+    }
+  },
+  "groups": [
+    {
+      "configuration": {
+        "algorithm": 2,
+        "mode": "raw",
+        "dataset": 2,
+        "tau": 0.0527296,
+        "threads": 32,
+        "timeout_seconds": 180,
+        "graph": null,
+        "vectors": null,
+        "capture_cliques": false,
+        "defines": {},
+        "warmup": false
+      },
+      "status_counts": {
+        "tle": 1
+      },
+      "timing": null,
+      "result": null
+    },
+    {
+      "configuration": {
+        "algorithm": 2,
+        "mode": "raw",
+        "dataset": 2,
+        "tau": 0.14503,
+        "threads": 32,
+        "timeout_seconds": 180,
+        "graph": null,
+        "vectors": null,
+        "capture_cliques": false,
+        "defines": {},
+        "warmup": false
+      },
+      "status_counts": {
+        "tle": 1
+      },
+      "timing": null,
+      "result": null
+    },
+    {
+      "configuration": {
+        "algorithm": 3,
+        "mode": "raw",
+        "dataset": 2,
+        "tau": 0.0527296,
+        "threads": 32,
+        "timeout_seconds": 180,
+        "graph": null,
+        "vectors": null,
+        "capture_cliques": false,
+        "defines": {},
+        "warmup": false
+      },
+      "status_counts": {
+        "completed": 1
+      },
+      "timing": {
+        "completed_repetitions": 1,
+        "algorithm_ms_median": 118739,
+        "algorithm_ms_min": 118739,
+        "algorithm_ms_max": 118739,
+        "wall_seconds_median": 119.98255600000266,
+        "peak_memory_gib_median": 0.35,
+        "peak_memory_gib_max": 0.35
+      },
+      "result": {
+        "clique_count": 834914,
+        "size_histogram": {
+          "10": 701,
+          "11": 23,
+          "2": 2923,
+          "3": 47771,
+          "4": 176743,
+          "5": 263770,
+          "6": 207409,
+          "7": 98355,
+          "8": 31317,
+          "9": 5902
+        }
+      }
+    },
+    {
+      "configuration": {
+        "algorithm": 4,
+        "mode": "raw",
+        "dataset": 2,
+        "tau": 0.0527296,
+        "threads": 32,
+        "timeout_seconds": 180,
+        "graph": null,
+        "vectors": null,
+        "capture_cliques": false,
+        "defines": {},
+        "warmup": false
+      },
+      "status_counts": {
+        "completed": 1
+      },
+      "timing": {
+        "completed_repetitions": 1,
+        "algorithm_ms_median": 986,
+        "algorithm_ms_min": 986,
+        "algorithm_ms_max": 986,
+        "wall_seconds_median": 1.7439491000113776,
+        "peak_memory_gib_median": 0.22,
+        "peak_memory_gib_max": 0.22
+      },
+      "result": {
+        "clique_count": 834914,
+        "size_histogram": {
+          "10": 701,
+          "11": 23,
+          "2": 2923,
+          "3": 47771,
+          "4": 176743,
+          "5": 263770,
+          "6": 207409,
+          "7": 98355,
+          "8": 31317,
+          "9": 5902
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,151 @@
+{
+  "schema_version": 1,
+  "source_manifest": "experiments/archive/batch2-ogbn-q97-main.manifest.json",
+  "source_run": "batch2-ogbn-q97-main",
+  "source_plan_summary": {
+    "attempts": 9,
+    "planned_tasks": 9,
+    "attempted_tasks": 9,
+    "completed_tasks": 9,
+    "unattempted_tasks": 0,
+    "unattempted_task_ids": [],
+    "plan_complete": true,
+    "status_counts": {
+      "completed": 9
+    }
+  },
+  "groups": [
+    {
+      "configuration": {
+        "algorithm": 2,
+        "mode": "raw",
+        "dataset": 11,
+        "tau": 0.933471,
+        "threads": 32,
+        "timeout_seconds": 3600,
+        "graph": null,
+        "vectors": null,
+        "capture_cliques": false,
+        "defines": {},
+        "warmup": false
+      },
+      "status_counts": {
+        "completed": 3
+      },
+      "timing": {
+        "completed_repetitions": 3,
+        "algorithm_ms_median": 3272,
+        "algorithm_ms_min": 3159,
+        "algorithm_ms_max": 3456,
+        "wall_seconds_median": 5.345974500000011,
+        "peak_memory_gib_median": 0.47,
+        "peak_memory_gib_max": 0.47
+      },
+      "result": {
+        "clique_count": 31372,
+        "size_histogram": {
+          "10": 479,
+          "11": 337,
+          "12": 138,
+          "13": 26,
+          "2": 18042,
+          "3": 7284,
+          "4": 3010,
+          "5": 1043,
+          "6": 331,
+          "7": 158,
+          "8": 189,
+          "9": 335
+        }
+      }
+    },
+    {
+      "configuration": {
+        "algorithm": 3,
+        "mode": "raw",
+        "dataset": 11,
+        "tau": 0.933471,
+        "threads": 32,
+        "timeout_seconds": 3600,
+        "graph": null,
+        "vectors": null,
+        "capture_cliques": false,
+        "defines": {},
+        "warmup": false
+      },
+      "status_counts": {
+        "completed": 3
+      },
+      "timing": {
+        "completed_repetitions": 3,
+        "algorithm_ms_median": 1083,
+        "algorithm_ms_min": 980,
+        "algorithm_ms_max": 1084,
+        "wall_seconds_median": 2.916030899999896,
+        "peak_memory_gib_median": 0.46,
+        "peak_memory_gib_max": 0.46
+      },
+      "result": {
+        "clique_count": 31372,
+        "size_histogram": {
+          "10": 479,
+          "11": 337,
+          "12": 138,
+          "13": 26,
+          "2": 18042,
+          "3": 7284,
+          "4": 3010,
+          "5": 1043,
+          "6": 331,
+          "7": 158,
+          "8": 189,
+          "9": 335
+        }
+      }
+    },
+    {
+      "configuration": {
+        "algorithm": 4,
+        "mode": "raw",
+        "dataset": 11,
+        "tau": 0.933471,
+        "threads": 32,
+        "timeout_seconds": 3600,
+        "graph": null,
+        "vectors": null,
+        "capture_cliques": false,
+        "defines": {},
+        "warmup": false
+      },
+      "status_counts": {
+        "completed": 3
+      },
+      "timing": {
+        "completed_repetitions": 3,
+        "algorithm_ms_median": 259,
+        "algorithm_ms_min": 256,
+        "algorithm_ms_max": 302,
+        "wall_seconds_median": 1.982192199997371,
+        "peak_memory_gib_median": 0.39,
+        "peak_memory_gib_max": 0.39
+      },
+      "result": {
+        "clique_count": 31372,
+        "size_histogram": {
+          "10": 479,
+          "11": 337,
+          "12": 138,
+          "13": 26,
+          "2": 18042,
+          "3": 7284,
+          "4": 3010,
+          "5": 1043,
+          "6": 331,
+          "7": 158,
+          "8": 189,
+          "9": 335
+        }
+      }
+    }
+  ]
+}

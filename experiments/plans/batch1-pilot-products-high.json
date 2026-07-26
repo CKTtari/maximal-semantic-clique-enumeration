@@ -1,0 +1,13 @@
+{
+  "name": "batch1-pilot-products-high",
+  "tasks": [
+    {
+      "algorithm": 4,
+      "mode": "raw",
+      "dataset": 10,
+      "tau": 0.974898,
+      "threads": 32,
+      "timeout_seconds": 180
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "name": "batch5-scale-ogbn-crossover-main",
+  "tasks": [
+    {"algorithm": 3, "mode": "raw", "dataset": 11, "graph": "dataset/scale_datasets/ogbn-arxiv-degree-prefix/level-25000.graph.txt", "vectors": "dataset/scale_datasets/ogbn-arxiv-degree-prefix/level-25000.vectors.bin", "tau": 0.909257, "threads": 32, "timeout_seconds": 3600, "repetitions": 3},
+    {"algorithm": 4, "mode": "raw", "dataset": 11, "graph": "dataset/scale_datasets/ogbn-arxiv-degree-prefix/level-25000.graph.txt", "vectors": "dataset/scale_datasets/ogbn-arxiv-degree-prefix/level-25000.vectors.bin", "tau": 0.909257, "threads": 32, "timeout_seconds": 3600, "repetitions": 3},
+    {"algorithm": 3, "mode": "raw", "dataset": 11, "graph": "dataset/scale_datasets/ogbn-arxiv-degree-prefix/level-25000.graph.txt", "vectors": "dataset/scale_datasets/ogbn-arxiv-degree-prefix/level-25000.vectors.bin", "tau": 0.924347, "threads": 32, "timeout_seconds": 3600, "repetitions": 3},
+    {"algorithm": 4, "mode": "raw", "dataset": 11, "graph": "dataset/scale_datasets/ogbn-arxiv-degree-prefix/level-25000.graph.txt", "vectors": "dataset/scale_datasets/ogbn-arxiv-degree-prefix/level-25000.vectors.bin", "tau": 0.924347, "threads": 32, "timeout_seconds": 3600, "repetitions": 3},
+
+    {"algorithm": 3, "mode": "raw", "dataset": 11, "graph": "dataset/scale_datasets/ogbn-arxiv-degree-prefix/level-50000.graph.txt", "vectors": "dataset/scale_datasets/ogbn-arxiv-degree-prefix/level-50000.vectors.bin", "tau": 0.909257, "threads": 32, "timeout_seconds": 3600, "repetitions": 3},
+    {"algorithm": 4, "mode": "raw", "dataset": 11, "graph": "dataset/scale_datasets/ogbn-arxiv-degree-prefix/level-50000.graph.txt", "vectors": "dataset/scale_datasets/ogbn-arxiv-degree-prefix/level-50000.vectors.bin", "tau": 0.909257, "threads": 32, "timeout_seconds": 3600, "repetitions": 3},
+    {"algorithm": 3, "mode": "raw", "dataset": 11, "graph": "dataset/scale_datasets/ogbn-arxiv-degree-prefix/level-50000.graph.txt", "vectors": "dataset/scale_datasets/ogbn-arxiv-degree-prefix/level-50000.vectors.bin", "tau": 0.924347, "threads": 32, "timeout_seconds": 3600, "repetitions": 3},
+    {"algorithm": 4, "mode": "raw", "dataset": 11, "graph": "dataset/scale_datasets/ogbn-arxiv-degree-prefix/level-50000.graph.txt", "vectors": "dataset/scale_datasets/ogbn-arxiv-degree-prefix/level-50000.vectors.bin", "tau": 0.924347, "threads": 32, "timeout_seconds": 3600, "repetitions": 3},
+
+    {"algorithm": 3, "mode": "raw", "dataset": 11, "graph": "dataset/scale_datasets/ogbn-arxiv-degree-prefix/level-100000.graph.txt", "vectors": "dataset/scale_datasets/ogbn-arxiv-degree-prefix/level-100000.vectors.bin", "tau": 0.909257, "threads": 32, "timeout_seconds": 3600, "repetitions": 3},
+    {"algorithm": 4, "mode": "raw", "dataset": 11, "graph": "dataset/scale_datasets/ogbn-arxiv-degree-prefix/level-100000.graph.txt", "vectors": "dataset/scale_datasets/ogbn-arxiv-degree-prefix/level-100000.vectors.bin", "tau": 0.909257, "threads": 32, "timeout_seconds": 3600, "repetitions": 3},
+    {"algorithm": 3, "mode": "raw", "dataset": 11, "graph": "dataset/scale_datasets/ogbn-arxiv-degree-prefix/level-100000.graph.txt", "vectors": "dataset/scale_datasets/ogbn-arxiv-degree-prefix/level-100000.vectors.bin", "tau": 0.924347, "threads": 32, "timeout_seconds": 3600, "repetitions": 3},
+    {"algorithm": 4, "mode": "raw", "dataset": 11, "graph": "dataset/scale_datasets/ogbn-arxiv-degree-prefix/level-100000.graph.txt", "vectors": "dataset/scale_datasets/ogbn-arxiv-degree-prefix/level-100000.vectors.bin", "tau": 0.924347, "threads": 32, "timeout_seconds": 3600, "repetitions": 3},
+
+    {"algorithm": 3, "mode": "raw", "dataset": 11, "graph": "dataset/scale_datasets/ogbn-arxiv-degree-prefix/level-169343.graph.txt", "vectors": "dataset/scale_datasets/ogbn-arxiv-degree-prefix/level-169343.vectors.bin", "tau": 0.909257, "threads": 32, "timeout_seconds": 3600, "repetitions": 3},
+    {"algorithm": 4, "mode": "raw", "dataset": 11, "graph": "dataset/scale_datasets/ogbn-arxiv-degree-prefix/level-169343.graph.txt", "vectors": "dataset/scale_datasets/ogbn-arxiv-degree-prefix/level-169343.vectors.bin", "tau": 0.909257, "threads": 32, "timeout_seconds": 3600, "repetitions": 3},
+    {"algorithm": 3, "mode": "raw", "dataset": 11, "graph": "dataset/scale_datasets/ogbn-arxiv-degree-prefix/level-169343.graph.txt", "vectors": "dataset/scale_datasets/ogbn-arxiv-degree-prefix/level-169343.vectors.bin", "tau": 0.924347, "threads": 32, "timeout_seconds": 3600, "repetitions": 3},
+    {"algorithm": 4, "mode": "raw", "dataset": 11, "graph": "dataset/scale_datasets/ogbn-arxiv-degree-prefix/level-169343.graph.txt", "vectors": "dataset/scale_datasets/ogbn-arxiv-degree-prefix/level-169343.vectors.bin", "tau": 0.924347, "threads": 32, "timeout_seconds": 3600, "repetitions": 3}
+  ]
+}

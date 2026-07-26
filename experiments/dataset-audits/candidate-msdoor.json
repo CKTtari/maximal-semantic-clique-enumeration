@@ -1,0 +1,21 @@
+{
+  "schema_version": 1,
+  "graphs": [
+    {
+      "path": "dataset/dataset/sc-msdoor.txt",
+      "vertices": 404785,
+      "header_edges": 9378650,
+      "input_rows": 9378650,
+      "self_loops": 0,
+      "duplicate_edges": 0,
+      "edges": 9378650,
+      "average_degree": 46.33892066,
+      "max_degree": 76,
+      "degeneracy": 34,
+      "max_forward_degree": 34,
+      "wedges": 452653675,
+      "triangles": 86875506,
+      "transitivity": 0.5757746648
+    }
+  ]
+}

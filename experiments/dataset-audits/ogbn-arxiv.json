@@ -1,0 +1,21 @@
+{
+  "schema_version": 1,
+  "graphs": [
+    {
+      "path": "dataset/dataset/ogbn-arxiv.txt",
+      "vertices": 169343,
+      "header_edges": 1157799,
+      "input_rows": 1157799,
+      "self_loops": 0,
+      "duplicate_edges": 0,
+      "edges": 1157799,
+      "average_degree": 13.67401074,
+      "max_degree": 13161,
+      "degeneracy": 29,
+      "max_forward_degree": 29,
+      "wedges": 413577478,
+      "triangles": 2233524,
+      "transitivity": 0.01620149151
+    }
+  ]
+}

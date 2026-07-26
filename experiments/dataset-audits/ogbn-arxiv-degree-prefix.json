@@ -1,0 +1,69 @@
+{
+  "schema_version": 1,
+  "graphs": [
+    {
+      "path": "dataset/scale_datasets/ogbn-arxiv-degree-prefix/level-25000.graph.txt",
+      "vertices": 25000,
+      "header_edges": 443855,
+      "input_rows": 443855,
+      "self_loops": 0,
+      "duplicate_edges": 0,
+      "edges": 443855,
+      "average_degree": 35.5084,
+      "max_degree": 6600,
+      "degeneracy": 29,
+      "max_forward_degree": 29,
+      "wedges": 115407867,
+      "triangles": 1395170,
+      "transitivity": 0.03626711167
+    },
+    {
+      "path": "dataset/scale_datasets/ogbn-arxiv-degree-prefix/level-50000.graph.txt",
+      "vertices": 50000,
+      "header_edges": 725275,
+      "input_rows": 725275,
+      "self_loops": 0,
+      "duplicate_edges": 0,
+      "edges": 725275,
+      "average_degree": 29.011,
+      "max_degree": 9944,
+      "degeneracy": 29,
+      "max_forward_degree": 29,
+      "wedges": 250893145,
+      "triangles": 1911068,
+      "transitivity": 0.02285117834
+    },
+    {
+      "path": "dataset/scale_datasets/ogbn-arxiv-degree-prefix/level-100000.graph.txt",
+      "vertices": 100000,
+      "header_edges": 1015649,
+      "input_rows": 1015649,
+      "self_loops": 0,
+      "duplicate_edges": 0,
+      "edges": 1015649,
+      "average_degree": 20.31298,
+      "max_degree": 12366,
+      "degeneracy": 29,
+      "max_forward_degree": 29,
+      "wedges": 380971765,
+      "triangles": 2192987,
+      "transitivity": 0.01726889393
+    },
+    {
+      "path": "dataset/scale_datasets/ogbn-arxiv-degree-prefix/level-169343.graph.txt",
+      "vertices": 169343,
+      "header_edges": 1157799,
+      "input_rows": 1157799,
+      "self_loops": 0,
+      "duplicate_edges": 0,
+      "edges": 1157799,
+      "average_degree": 13.67401074,
+      "max_degree": 13161,
+      "degeneracy": 29,
+      "max_forward_degree": 29,
+      "wedges": 413577478,
+      "triangles": 2233524,
+      "transitivity": 0.01620149151
+    }
+  ]
+}

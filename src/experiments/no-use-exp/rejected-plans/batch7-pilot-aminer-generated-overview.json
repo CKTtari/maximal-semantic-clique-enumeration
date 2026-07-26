@@ -1,0 +1,71 @@
+{
+  "name": "batch7-pilot-aminer-generated-overview",
+  "tasks": [
+    {
+      "algorithm": 3,
+      "mode": "raw",
+      "dataset": 2,
+      "graph": "dataset/dataset/AMiner-534K_edges.txt",
+      "vectors": "dataset/Processed/aminer-534k/aminer-534k_vectors.bin",
+      "tau": 0.145009,
+      "threads": 32,
+      "timeout_seconds": 180,
+      "repetitions": 1
+    },
+    {
+      "algorithm": 4,
+      "mode": "raw",
+      "dataset": 2,
+      "graph": "dataset/dataset/AMiner-534K_edges.txt",
+      "vectors": "dataset/Processed/aminer-534k/aminer-534k_vectors.bin",
+      "tau": 0.145009,
+      "threads": 32,
+      "timeout_seconds": 180,
+      "repetitions": 1
+    },
+    {
+      "algorithm": 3,
+      "mode": "raw",
+      "dataset": 2,
+      "graph": "dataset/dataset/AMiner-534K_edges.txt",
+      "vectors": "dataset/Processed/aminer-534k/aminer-534k_vectors.bin",
+      "tau": 0.0528161,
+      "threads": 32,
+      "timeout_seconds": 180,
+      "repetitions": 1
+    },
+    {
+      "algorithm": 4,
+      "mode": "raw",
+      "dataset": 2,
+      "graph": "dataset/dataset/AMiner-534K_edges.txt",
+      "vectors": "dataset/Processed/aminer-534k/aminer-534k_vectors.bin",
+      "tau": 0.0528161,
+      "threads": 32,
+      "timeout_seconds": 180,
+      "repetitions": 1
+    },
+    {
+      "algorithm": 3,
+      "mode": "raw",
+      "dataset": 2,
+      "graph": "dataset/dataset/AMiner-534K_edges.txt",
+      "vectors": "dataset/Processed/aminer-534k/aminer-534k_vectors.bin",
+      "tau": -0.0526428,
+      "threads": 32,
+      "timeout_seconds": 180,
+      "repetitions": 1
+    },
+    {
+      "algorithm": 4,
+      "mode": "raw",
+      "dataset": 2,
+      "graph": "dataset/dataset/AMiner-534K_edges.txt",
+      "vectors": "dataset/Processed/aminer-534k/aminer-534k_vectors.bin",
+      "tau": -0.0526428,
+      "threads": 32,
+      "timeout_seconds": 180,
+      "repetitions": 1
+    }
+  ]
+}

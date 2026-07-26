@@ -1,0 +1,35 @@
+{
+  "name": "batch5-scale-dblp-small-alg4-followup",
+  "tasks": [
+    {
+      "algorithm": 4,
+      "mode": "raw",
+      "dataset": 9,
+      "graph": "dataset/scale_datasets/dblp-degree-prefix-small/level-2500.graph.txt",
+      "vectors": "dataset/scale_datasets/dblp-degree-prefix-small/level-2500.vectors.bin",
+      "tau": 0.392207,
+      "threads": 32,
+      "timeout_seconds": 180
+    },
+    {
+      "algorithm": 4,
+      "mode": "raw",
+      "dataset": 9,
+      "graph": "dataset/scale_datasets/dblp-degree-prefix-small/level-5000.graph.txt",
+      "vectors": "dataset/scale_datasets/dblp-degree-prefix-small/level-5000.vectors.bin",
+      "tau": 0.392207,
+      "threads": 32,
+      "timeout_seconds": 180
+    },
+    {
+      "algorithm": 4,
+      "mode": "raw",
+      "dataset": 9,
+      "graph": "dataset/scale_datasets/dblp-degree-prefix-small/level-10000.graph.txt",
+      "vectors": "dataset/scale_datasets/dblp-degree-prefix-small/level-10000.vectors.bin",
+      "tau": 0.392207,
+      "threads": 32,
+      "timeout_seconds": 180
+    }
+  ]
+}

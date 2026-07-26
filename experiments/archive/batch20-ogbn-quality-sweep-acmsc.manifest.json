@@ -1,0 +1,599 @@
+{
+  "schema_version": 2,
+  "run_name": "batch20-ogbn-quality-sweep-acmsc",
+  "archived_utc": "2026-07-25T14:24:16.005428+00:00",
+  "local_result_directory": "experiment-output/batch20-ogbn-quality-sweep-acmsc",
+  "plans": [
+    {
+      "path": "experiments/plans/batch20-ogbn-quality-sweep-acmsc.json",
+      "sha256": "1b8a2f3579211a483f2201429b0eb7fbcab2a325187159ee502d96a86ee8fcee"
+    }
+  ],
+  "summary": {
+    "attempts": 4,
+    "planned_tasks": 4,
+    "attempted_tasks": 4,
+    "completed_tasks": 4,
+    "unattempted_tasks": 0,
+    "unattempted_task_ids": [],
+    "plan_complete": true,
+    "status_counts": {
+      "completed": 4
+    }
+  },
+  "records": [
+    {
+      "task_id": "06d19de4931f3d2d",
+      "attempt": 1,
+      "status": "completed",
+      "rerun_reason": null,
+      "started_utc": "2026-07-25T14:23:09.153790+00:00",
+      "wall_seconds": 2.6511312000002363,
+      "task": {
+        "algorithm": 3,
+        "mode": "raw",
+        "dataset": 11,
+        "tau": 0.840429,
+        "threads": 32,
+        "timeout_seconds": 1200,
+        "graph": null,
+        "vectors": null,
+        "capture_cliques": true,
+        "defines": {},
+        "warmup": false,
+        "repetition": 0,
+        "task_id": "06d19de4931f3d2d"
+      },
+      "parsed": {
+        "algorithm_ms": 1266,
+        "clique_count": 613668,
+        "peak_memory_gib": 0.54,
+        "size_histogram": {
+          "2": 110824,
+          "3": 139775,
+          "4": 133144,
+          "5": 105783,
+          "6": 67075,
+          "7": 34203,
+          "8": 14611,
+          "9": 5215,
+          "10": 1965,
+          "11": 628,
+          "12": 133,
+          "13": 48,
+          "14": 54,
+          "15": 72,
+          "16": 74,
+          "17": 52,
+          "18": 12
+        },
+        "stats": {}
+      },
+      "validation": {
+        "unique_cliques": 613668,
+        "compared_with": [],
+        "exact_match": true
+      },
+      "build": {
+        "fingerprint": "64e4967861b335bf",
+        "executable_sha256": "69c1a62388b882a1a6d832b0ab65b278b84da5c6c64458429e91f214dfaac8f6",
+        "command": [
+          "g++",
+          "-std=c++17",
+          "-fopenmp",
+          "-mavx2",
+          "-O3",
+          "src/alg3-raw.cpp",
+          "src/semantic_graph.cpp",
+          "-o",
+          "no-use/compiled/experiment-runner/alg3-raw-64e4967861b335bf.exe"
+        ],
+        "source_verification": {
+          "status": "verified_current",
+          "observed_current_fingerprint": "64e4967861b335bf",
+          "reason": null
+        },
+        "source_hashes": {
+          "alg3-raw.cpp": "88e7ff339339d8c2fcc15881413cbcbc066dc394d55fdacfdd6c46ac7717a036",
+          "semantic_graph.cpp": "c6d51c9086fbd5c7d264eb411ac04890806744fc4e05dc7eee0b156760a9cd92",
+          "semantic_graph.h": "8192c4e8e02fc8ace59d59365f72643e34ca32ba71faa5bb338381a8cd308078",
+          "experiment_runtime.h": "dc2be362f49932a172aa59e862dbc6dcb3cebec18dfd7950322bf4a7126ab2a1"
+        }
+      },
+      "inputs": {
+        "status": "verified_run_time",
+        "snapshot": {
+          "dataset_catalog": {
+            "path": "experiments/datasets.json",
+            "sha256": "35c6ced15bff76becdc06c670b753fe56ca69122ca7407205c5a0c14a32bb2d0"
+          },
+          "files": [
+            {
+              "role": "graph",
+              "path": "dataset/dataset/ogbn-arxiv.txt",
+              "bytes": 14666179,
+              "sha256": "84e7af17b8cc98889602faad9252337a3198ec0bd396d5db59c8f9971e1708aa"
+            },
+            {
+              "role": "vector_binary",
+              "path": "dataset/vectors/ogbn-arxiv_vectors.bin",
+              "bytes": 173407240,
+              "sha256": "f1544d287e9fd87a523541012ce20fb5de75235f5459b6766ec3905a1f7dd0db"
+            }
+          ]
+        }
+      },
+      "run_environment": {
+        "plan": "experiments/plans/batch20-ogbn-quality-sweep-acmsc.json",
+        "plan_sha256": "1b8a2f3579211a483f2201429b0eb7fbcab2a325187159ee502d96a86ee8fcee",
+        "git": {
+          "commit": "59299fd9164d077d7e04cd97fc9ac89cbf962c9f",
+          "dirty": true
+        },
+        "machine": {
+          "platform": "Windows-11-10.0.26100-SP0",
+          "processor": "AMD64 Family 25 Model 97 Stepping 2, AuthenticAMD",
+          "logical_cpu_count": 32,
+          "python": "3.12.7",
+          "compiler": "g++ (x86_64-posix-seh-rev0, Built by MinGW-Builds project) 13.2.0"
+        },
+        "memory_limit_gib": 16,
+        "external_timeout_policy": "hard per-process TLE from task.timeout_seconds"
+      },
+      "result_json": {
+        "path": "experiment-output/batch20-ogbn-quality-sweep-acmsc/06d19de4931f3d2d.attempt-001.json",
+        "bytes": 4555,
+        "sha256": "abea1e2c71b801df007695674fe6a2f4946e9dcf7acc20d39a5bdb8edf8420da"
+      },
+      "artifacts": {
+        "program_log": {
+          "path": "experiment-output/batch20-ogbn-quality-sweep-acmsc/06d19de4931f3d2d.attempt-001.program.log",
+          "bytes": 1818,
+          "sha256": "da5db11a3176f4526d614f528c6fb86852d68ff9c89d01cf233b145c9ddb1bfe"
+        },
+        "stdout": {
+          "path": "experiment-output/batch20-ogbn-quality-sweep-acmsc/06d19de4931f3d2d.attempt-001.stdout.txt",
+          "bytes": 2017,
+          "sha256": "3d0b744def31288e2aa11cd83bc48c3b2840f425d7fc59102012df62bf9240c5"
+        },
+        "stderr": {
+          "path": "experiment-output/batch20-ogbn-quality-sweep-acmsc/06d19de4931f3d2d.attempt-001.stderr.txt",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "cliques": {
+          "path": "experiment-output/batch20-ogbn-quality-sweep-acmsc/06d19de4931f3d2d.attempt-001.cliques.txt",
+          "bytes": 16718649,
+          "sha256": "7734604ec00b7175feb8ea18d845457c25a024987c3a35c7a8073b17b1375c5c"
+        }
+      }
+    },
+    {
+      "task_id": "70c0b5cd724c883c",
+      "attempt": 1,
+      "status": "completed",
+      "rerun_reason": null,
+      "started_utc": "2026-07-25T14:23:12.787185+00:00",
+      "wall_seconds": 2.132535100000041,
+      "task": {
+        "algorithm": 3,
+        "mode": "raw",
+        "dataset": 11,
+        "tau": 0.924347,
+        "threads": 32,
+        "timeout_seconds": 1200,
+        "graph": null,
+        "vectors": null,
+        "capture_cliques": true,
+        "defines": {},
+        "warmup": false,
+        "repetition": 0,
+        "task_id": "70c0b5cd724c883c"
+      },
+      "parsed": {
+        "algorithm_ms": 783,
+        "clique_count": 53208,
+        "peak_memory_gib": 0.47,
+        "size_histogram": {
+          "2": 25825,
+          "3": 13561,
+          "4": 6700,
+          "5": 2843,
+          "6": 990,
+          "7": 331,
+          "8": 137,
+          "9": 118,
+          "10": 170,
+          "11": 407,
+          "12": 729,
+          "13": 876,
+          "14": 419,
+          "15": 101,
+          "16": 1
+        },
+        "stats": {}
+      },
+      "validation": {
+        "unique_cliques": 53208,
+        "compared_with": [],
+        "exact_match": true
+      },
+      "build": {
+        "fingerprint": "64e4967861b335bf",
+        "executable_sha256": "69c1a62388b882a1a6d832b0ab65b278b84da5c6c64458429e91f214dfaac8f6",
+        "command": [
+          "g++",
+          "-std=c++17",
+          "-fopenmp",
+          "-mavx2",
+          "-O3",
+          "src/alg3-raw.cpp",
+          "src/semantic_graph.cpp",
+          "-o",
+          "no-use/compiled/experiment-runner/alg3-raw-64e4967861b335bf.exe"
+        ],
+        "source_verification": {
+          "status": "verified_current",
+          "observed_current_fingerprint": "64e4967861b335bf",
+          "reason": null
+        },
+        "source_hashes": {
+          "alg3-raw.cpp": "88e7ff339339d8c2fcc15881413cbcbc066dc394d55fdacfdd6c46ac7717a036",
+          "semantic_graph.cpp": "c6d51c9086fbd5c7d264eb411ac04890806744fc4e05dc7eee0b156760a9cd92",
+          "semantic_graph.h": "8192c4e8e02fc8ace59d59365f72643e34ca32ba71faa5bb338381a8cd308078",
+          "experiment_runtime.h": "dc2be362f49932a172aa59e862dbc6dcb3cebec18dfd7950322bf4a7126ab2a1"
+        }
+      },
+      "inputs": {
+        "status": "verified_run_time",
+        "snapshot": {
+          "dataset_catalog": {
+            "path": "experiments/datasets.json",
+            "sha256": "35c6ced15bff76becdc06c670b753fe56ca69122ca7407205c5a0c14a32bb2d0"
+          },
+          "files": [
+            {
+              "role": "graph",
+              "path": "dataset/dataset/ogbn-arxiv.txt",
+              "bytes": 14666179,
+              "sha256": "84e7af17b8cc98889602faad9252337a3198ec0bd396d5db59c8f9971e1708aa"
+            },
+            {
+              "role": "vector_binary",
+              "path": "dataset/vectors/ogbn-arxiv_vectors.bin",
+              "bytes": 173407240,
+              "sha256": "f1544d287e9fd87a523541012ce20fb5de75235f5459b6766ec3905a1f7dd0db"
+            }
+          ]
+        }
+      },
+      "run_environment": {
+        "plan": "experiments/plans/batch20-ogbn-quality-sweep-acmsc.json",
+        "plan_sha256": "1b8a2f3579211a483f2201429b0eb7fbcab2a325187159ee502d96a86ee8fcee",
+        "git": {
+          "commit": "59299fd9164d077d7e04cd97fc9ac89cbf962c9f",
+          "dirty": true
+        },
+        "machine": {
+          "platform": "Windows-11-10.0.26100-SP0",
+          "processor": "AMD64 Family 25 Model 97 Stepping 2, AuthenticAMD",
+          "logical_cpu_count": 32,
+          "python": "3.12.7",
+          "compiler": "g++ (x86_64-posix-seh-rev0, Built by MinGW-Builds project) 13.2.0"
+        },
+        "memory_limit_gib": 16,
+        "external_timeout_policy": "hard per-process TLE from task.timeout_seconds"
+      },
+      "result_json": {
+        "path": "experiment-output/batch20-ogbn-quality-sweep-acmsc/70c0b5cd724c883c.attempt-001.json",
+        "bytes": 4505,
+        "sha256": "25ee9faae454a9a021a2b3c28403390400a81af1cd0f547041d8b60b3cb1560d"
+      },
+      "artifacts": {
+        "program_log": {
+          "path": "experiment-output/batch20-ogbn-quality-sweep-acmsc/70c0b5cd724c883c.attempt-001.program.log",
+          "bytes": 1748,
+          "sha256": "c9c41fd94e2ccfe4a8c808adb7f62ca2bc1f1fe42fe682ece7d76d08cb6df9b9"
+        },
+        "stdout": {
+          "path": "experiment-output/batch20-ogbn-quality-sweep-acmsc/70c0b5cd724c883c.attempt-001.stdout.txt",
+          "bytes": 1947,
+          "sha256": "f2064e49b96bbb7c3ab75f500436590a73ee7066a414493fd1a2085b8bd031ee"
+        },
+        "stderr": {
+          "path": "experiment-output/batch20-ogbn-quality-sweep-acmsc/70c0b5cd724c883c.attempt-001.stderr.txt",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "cliques": {
+          "path": "experiment-output/batch20-ogbn-quality-sweep-acmsc/70c0b5cd724c883c.attempt-001.cliques.txt",
+          "bytes": 1182993,
+          "sha256": "59a2a17d6b89de8419e42f9033ec535a4f3ce73a6bc4dd3cbf81aaeab29b891f"
+        }
+      }
+    },
+    {
+      "task_id": "dc66b67013788742",
+      "attempt": 1,
+      "status": "completed",
+      "rerun_reason": null,
+      "started_utc": "2026-07-25T14:23:15.007916+00:00",
+      "wall_seconds": 1.974061399999755,
+      "task": {
+        "algorithm": 3,
+        "mode": "raw",
+        "dataset": 11,
+        "tau": 0.949708,
+        "threads": 32,
+        "timeout_seconds": 1200,
+        "graph": null,
+        "vectors": null,
+        "capture_cliques": true,
+        "defines": {},
+        "warmup": false,
+        "repetition": 0,
+        "task_id": "dc66b67013788742"
+      },
+      "parsed": {
+        "algorithm_ms": 646,
+        "clique_count": 10261,
+        "peak_memory_gib": 0.45,
+        "size_histogram": {
+          "2": 7701,
+          "3": 1835,
+          "4": 437,
+          "5": 117,
+          "6": 46,
+          "7": 78,
+          "8": 44,
+          "9": 3
+        },
+        "stats": {}
+      },
+      "validation": {
+        "unique_cliques": 10261,
+        "compared_with": [],
+        "exact_match": true
+      },
+      "build": {
+        "fingerprint": "64e4967861b335bf",
+        "executable_sha256": "69c1a62388b882a1a6d832b0ab65b278b84da5c6c64458429e91f214dfaac8f6",
+        "command": [
+          "g++",
+          "-std=c++17",
+          "-fopenmp",
+          "-mavx2",
+          "-O3",
+          "src/alg3-raw.cpp",
+          "src/semantic_graph.cpp",
+          "-o",
+          "no-use/compiled/experiment-runner/alg3-raw-64e4967861b335bf.exe"
+        ],
+        "source_verification": {
+          "status": "verified_current",
+          "observed_current_fingerprint": "64e4967861b335bf",
+          "reason": null
+        },
+        "source_hashes": {
+          "alg3-raw.cpp": "88e7ff339339d8c2fcc15881413cbcbc066dc394d55fdacfdd6c46ac7717a036",
+          "semantic_graph.cpp": "c6d51c9086fbd5c7d264eb411ac04890806744fc4e05dc7eee0b156760a9cd92",
+          "semantic_graph.h": "8192c4e8e02fc8ace59d59365f72643e34ca32ba71faa5bb338381a8cd308078",
+          "experiment_runtime.h": "dc2be362f49932a172aa59e862dbc6dcb3cebec18dfd7950322bf4a7126ab2a1"
+        }
+      },
+      "inputs": {
+        "status": "verified_run_time",
+        "snapshot": {
+          "dataset_catalog": {
+            "path": "experiments/datasets.json",
+            "sha256": "35c6ced15bff76becdc06c670b753fe56ca69122ca7407205c5a0c14a32bb2d0"
+          },
+          "files": [
+            {
+              "role": "graph",
+              "path": "dataset/dataset/ogbn-arxiv.txt",
+              "bytes": 14666179,
+              "sha256": "84e7af17b8cc98889602faad9252337a3198ec0bd396d5db59c8f9971e1708aa"
+            },
+            {
+              "role": "vector_binary",
+              "path": "dataset/vectors/ogbn-arxiv_vectors.bin",
+              "bytes": 173407240,
+              "sha256": "f1544d287e9fd87a523541012ce20fb5de75235f5459b6766ec3905a1f7dd0db"
+            }
+          ]
+        }
+      },
+      "run_environment": {
+        "plan": "experiments/plans/batch20-ogbn-quality-sweep-acmsc.json",
+        "plan_sha256": "1b8a2f3579211a483f2201429b0eb7fbcab2a325187159ee502d96a86ee8fcee",
+        "git": {
+          "commit": "59299fd9164d077d7e04cd97fc9ac89cbf962c9f",
+          "dirty": true
+        },
+        "machine": {
+          "platform": "Windows-11-10.0.26100-SP0",
+          "processor": "AMD64 Family 25 Model 97 Stepping 2, AuthenticAMD",
+          "logical_cpu_count": 32,
+          "python": "3.12.7",
+          "compiler": "g++ (x86_64-posix-seh-rev0, Built by MinGW-Builds project) 13.2.0"
+        },
+        "memory_limit_gib": 16,
+        "external_timeout_policy": "hard per-process TLE from task.timeout_seconds"
+      },
+      "result_json": {
+        "path": "experiment-output/batch20-ogbn-quality-sweep-acmsc/dc66b67013788742.attempt-001.json",
+        "bytes": 4372,
+        "sha256": "688268debaf7f76b4fb3ed4ab8f3e62013f4d646811b5a9d7a6a70a2dd711b57"
+      },
+      "artifacts": {
+        "program_log": {
+          "path": "experiment-output/batch20-ogbn-quality-sweep-acmsc/dc66b67013788742.attempt-001.program.log",
+          "bytes": 1563,
+          "sha256": "0ad2f079e39686e3ec83b014619ad11e4bcf384387883b6067e261e04598ca7d"
+        },
+        "stdout": {
+          "path": "experiment-output/batch20-ogbn-quality-sweep-acmsc/dc66b67013788742.attempt-001.stdout.txt",
+          "bytes": 1762,
+          "sha256": "e0785e27bd90f419f45d634878c1b6bb660b8a657afa86221a6308a3bf871e8f"
+        },
+        "stderr": {
+          "path": "experiment-output/batch20-ogbn-quality-sweep-acmsc/dc66b67013788742.attempt-001.stderr.txt",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "cliques": {
+          "path": "experiment-output/batch20-ogbn-quality-sweep-acmsc/dc66b67013788742.attempt-001.cliques.txt",
+          "bytes": 165518,
+          "sha256": "1966dca7e13708d2184d4abc6e430ce9c97af26b531d6a9b68885a5736f985be"
+        }
+      }
+    },
+    {
+      "task_id": "fddee2c1375b247e",
+      "attempt": 1,
+      "status": "completed",
+      "rerun_reason": null,
+      "started_utc": "2026-07-25T14:23:04.686936+00:00",
+      "wall_seconds": 3.020847799999956,
+      "task": {
+        "algorithm": 3,
+        "mode": "raw",
+        "dataset": 11,
+        "tau": 0.773547,
+        "threads": 32,
+        "timeout_seconds": 1200,
+        "graph": null,
+        "vectors": null,
+        "capture_cliques": true,
+        "defines": {},
+        "warmup": false,
+        "repetition": 0,
+        "task_id": "fddee2c1375b247e"
+      },
+      "parsed": {
+        "algorithm_ms": 1434,
+        "clique_count": 925239,
+        "peak_memory_gib": 0.54,
+        "size_histogram": {
+          "2": 151287,
+          "3": 206416,
+          "4": 200501,
+          "5": 159878,
+          "6": 105935,
+          "7": 57925,
+          "8": 25950,
+          "9": 10197,
+          "10": 4226,
+          "11": 1805,
+          "12": 657,
+          "13": 174,
+          "14": 75,
+          "15": 75,
+          "16": 74,
+          "17": 52,
+          "18": 12
+        },
+        "stats": {}
+      },
+      "validation": {
+        "unique_cliques": 925239,
+        "compared_with": [],
+        "exact_match": true
+      },
+      "build": {
+        "fingerprint": "64e4967861b335bf",
+        "executable_sha256": "69c1a62388b882a1a6d832b0ab65b278b84da5c6c64458429e91f214dfaac8f6",
+        "command": [
+          "g++",
+          "-std=c++17",
+          "-fopenmp",
+          "-mavx2",
+          "-O3",
+          "src/alg3-raw.cpp",
+          "src/semantic_graph.cpp",
+          "-o",
+          "no-use/compiled/experiment-runner/alg3-raw-64e4967861b335bf.exe"
+        ],
+        "source_verification": {
+          "status": "verified_current",
+          "observed_current_fingerprint": "64e4967861b335bf",
+          "reason": null
+        },
+        "source_hashes": {
+          "alg3-raw.cpp": "88e7ff339339d8c2fcc15881413cbcbc066dc394d55fdacfdd6c46ac7717a036",
+          "semantic_graph.cpp": "c6d51c9086fbd5c7d264eb411ac04890806744fc4e05dc7eee0b156760a9cd92",
+          "semantic_graph.h": "8192c4e8e02fc8ace59d59365f72643e34ca32ba71faa5bb338381a8cd308078",
+          "experiment_runtime.h": "dc2be362f49932a172aa59e862dbc6dcb3cebec18dfd7950322bf4a7126ab2a1"
+        }
+      },
+      "inputs": {
+        "status": "verified_run_time",
+        "snapshot": {
+          "dataset_catalog": {
+            "path": "experiments/datasets.json",
+            "sha256": "35c6ced15bff76becdc06c670b753fe56ca69122ca7407205c5a0c14a32bb2d0"
+          },
+          "files": [
+            {
+              "role": "graph",
+              "path": "dataset/dataset/ogbn-arxiv.txt",
+              "bytes": 14666179,
+              "sha256": "84e7af17b8cc98889602faad9252337a3198ec0bd396d5db59c8f9971e1708aa"
+            },
+            {
+              "role": "vector_binary",
+              "path": "dataset/vectors/ogbn-arxiv_vectors.bin",
+              "bytes": 173407240,
+              "sha256": "f1544d287e9fd87a523541012ce20fb5de75235f5459b6766ec3905a1f7dd0db"
+            }
+          ]
+        }
+      },
+      "run_environment": {
+        "plan": "experiments/plans/batch20-ogbn-quality-sweep-acmsc.json",
+        "plan_sha256": "1b8a2f3579211a483f2201429b0eb7fbcab2a325187159ee502d96a86ee8fcee",
+        "git": {
+          "commit": "59299fd9164d077d7e04cd97fc9ac89cbf962c9f",
+          "dirty": true
+        },
+        "machine": {
+          "platform": "Windows-11-10.0.26100-SP0",
+          "processor": "AMD64 Family 25 Model 97 Stepping 2, AuthenticAMD",
+          "logical_cpu_count": 32,
+          "python": "3.12.7",
+          "compiler": "g++ (x86_64-posix-seh-rev0, Built by MinGW-Builds project) 13.2.0"
+        },
+        "memory_limit_gib": 16,
+        "external_timeout_policy": "hard per-process TLE from task.timeout_seconds"
+      },
+      "result_json": {
+        "path": "experiment-output/batch20-ogbn-quality-sweep-acmsc/fddee2c1375b247e.attempt-001.json",
+        "bytes": 4558,
+        "sha256": "22dff3c77c9a342a3ee61be060d65b2682f42f341a33fc784ad25c74e7bcc74b"
+      },
+      "artifacts": {
+        "program_log": {
+          "path": "experiment-output/batch20-ogbn-quality-sweep-acmsc/fddee2c1375b247e.attempt-001.program.log",
+          "bytes": 1823,
+          "sha256": "a3168af4f3d0bc44ef40a36589d04e6ba5f05b04bf170fd2e742be3730ee1ee2"
+        },
+        "stdout": {
+          "path": "experiment-output/batch20-ogbn-quality-sweep-acmsc/fddee2c1375b247e.attempt-001.stdout.txt",
+          "bytes": 2022,
+          "sha256": "28733da8d0ad9cf25c4df4de2cae20dc1af23aba17a2036558f1b761f7fc7334"
+        },
+        "stderr": {
+          "path": "experiment-output/batch20-ogbn-quality-sweep-acmsc/fddee2c1375b247e.attempt-001.stderr.txt",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "cliques": {
+          "path": "experiment-output/batch20-ogbn-quality-sweep-acmsc/fddee2c1375b247e.attempt-001.cliques.txt",
+          "bytes": 25838549,
+          "sha256": "ce13c147f69f1c9a4bb7db80a301c948d21b2bb9b5dee50e9927597fed74ccde"
+        }
+      }
+    }
+  ]
+}

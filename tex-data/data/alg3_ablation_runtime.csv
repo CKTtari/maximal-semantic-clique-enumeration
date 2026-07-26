@@ -1,0 +1,9 @@
+dataset,quantile,variant,seconds,min_seconds,max_seconds,memory_gib,acmsc_count
+FB15K-237,80,Full,8.06,7.799,9.53,0.12,76106
+FB15K-237,80,No Top-Edge,7.462,7.403,7.482,0.12,76106
+FB15K-237,80,No Vertex-Bound,5.898,5.881,6.996,0.12,76106
+FB15K-237,80,No Local-Max,11.685,11.116,12.421,2.26,76106
+sc-nasasrb,99,Full,0.287,0.285,0.293,0.24,12742
+sc-nasasrb,99,No Top-Edge,0.324,0.323,0.329,0.24,12742
+sc-nasasrb,99,No Vertex-Bound,0.312,0.312,0.325,0.24,12742
+sc-nasasrb,99,No Local-Max,0.294,0.289,0.313,0.24,12742

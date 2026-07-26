@@ -1,0 +1,36 @@
+{
+  "name": "batch1-pilot-dblp-high",
+  "tasks": [
+    {
+      "algorithm": 4,
+      "mode": "raw",
+      "dataset": 9,
+      "tau": 0.392207,
+      "threads": 32,
+      "timeout_seconds": 180
+    },
+    {
+      "algorithm": 3,
+      "mode": "raw",
+      "dataset": 9,
+      "tau": 0.392207,
+      "threads": 32,
+      "timeout_seconds": 180
+    },
+    {
+      "algorithm": 2,
+      "mode": "raw",
+      "dataset": 9,
+      "tau": 0.392207,
+      "threads": 32,
+      "timeout_seconds": 180
+    },
+    {
+      "algorithm": 1,
+      "mode": "raw",
+      "dataset": 9,
+      "threads": 32,
+      "timeout_seconds": 180
+    }
+  ]
+}

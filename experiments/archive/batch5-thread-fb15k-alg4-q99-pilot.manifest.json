@@ -1,0 +1,902 @@
+{
+  "schema_version": 2,
+  "run_name": "batch5-thread-fb15k-alg4-q99-pilot",
+  "archived_utc": "2026-07-23T14:54:09.735302+00:00",
+  "local_result_directory": "experiment-output/batch5-thread-fb15k-alg4-q99-pilot",
+  "plans": [
+    {
+      "path": "experiments/plans/batch5-thread-fb15k-alg4-q99-pilot.json",
+      "sha256": "9364850a64c403a9f80cc0e2a5d6379b0340d9783769fa89d53608613d9bcea7"
+    }
+  ],
+  "summary": {
+    "attempts": 6,
+    "planned_tasks": 6,
+    "attempted_tasks": 6,
+    "completed_tasks": 6,
+    "unattempted_tasks": 0,
+    "unattempted_task_ids": [],
+    "plan_complete": true,
+    "status_counts": {
+      "completed": 6
+    }
+  },
+  "records": [
+    {
+      "task_id": "077d5a3bbb55879d",
+      "attempt": 1,
+      "status": "completed",
+      "rerun_reason": null,
+      "started_utc": "2026-07-23T14:48:34.835782+00:00",
+      "wall_seconds": 6.684965199994622,
+      "task": {
+        "algorithm": 4,
+        "mode": "raw",
+        "dataset": 7,
+        "tau": 0.537601,
+        "threads": 16,
+        "timeout_seconds": 180,
+        "graph": null,
+        "vectors": null,
+        "capture_cliques": false,
+        "defines": {},
+        "warmup": false,
+        "repetition": 0,
+        "task_id": "077d5a3bbb55879d"
+      },
+      "parsed": {
+        "algorithm_ms": 6487,
+        "clique_count": 7476,
+        "peak_memory_gib": 0.09,
+        "size_histogram": {
+          "2": 1517,
+          "3": 557,
+          "4": 429,
+          "5": 315,
+          "6": 271,
+          "7": 211,
+          "8": 327,
+          "9": 13,
+          "10": 6,
+          "11": 53,
+          "12": 187,
+          "13": 66,
+          "14": 80,
+          "15": 439,
+          "16": 834,
+          "17": 65,
+          "18": 40,
+          "19": 546,
+          "20": 780,
+          "21": 740
+        },
+        "stats": {}
+      },
+      "validation": null,
+      "build": {
+        "fingerprint": "a5109816b58eb078",
+        "executable_sha256": "9f8deee1713c1d1020ebb49e2332b9e06605a87fae2506d31233faad1f5c3d12",
+        "command": [
+          "g++",
+          "-std=c++17",
+          "-fopenmp",
+          "-mavx2",
+          "-O3",
+          "src/alg4-raw.cpp",
+          "src/semantic_graph.cpp",
+          "-o",
+          "no-use/compiled/experiment-runner/alg4-raw-a5109816b58eb078.exe"
+        ],
+        "source_verification": {
+          "status": "verified_current",
+          "observed_current_fingerprint": "a5109816b58eb078",
+          "reason": null
+        },
+        "source_hashes": {
+          "alg4-raw.cpp": "2a4c3a22b326f5716e381c5dddafdbc21cc1696fc2d80f7e2f87668f3f3f98fe",
+          "semantic_graph.cpp": "c6d51c9086fbd5c7d264eb411ac04890806744fc4e05dc7eee0b156760a9cd92",
+          "semantic_graph.h": "8192c4e8e02fc8ace59d59365f72643e34ca32ba71faa5bb338381a8cd308078",
+          "experiment_runtime.h": "cc5fd4517f8ca2f43f7e7a4fa0f4c9a00ca8778966bc2ab2228d622a070e5354"
+        }
+      },
+      "inputs": {
+        "status": "verified_run_time",
+        "snapshot": {
+          "dataset_catalog": {
+            "path": "experiments/datasets.json",
+            "sha256": "be27e812615b59c62775fb3b129a5f422ad837c4d149311f220e0ad3bca1740b"
+          },
+          "files": [
+            {
+              "role": "graph",
+              "path": "dataset/dataset/FB15K-237_edges.txt",
+              "bytes": 2855908,
+              "sha256": "5bd431d35d19be7f72ba193ab0fe472c5fa60e51db459fed4ab399825e49865c"
+            },
+            {
+              "role": "vector_index",
+              "path": "dataset/vectors/FB15K-237_vectors.index",
+              "bytes": 63,
+              "sha256": "e08bdfbdcbe25c66968f4f2d47f0c699ddca059b470c384c6473ab4d73b04001"
+            },
+            {
+              "role": "vector_chunk",
+              "path": "dataset/vectors/FB15K-237_vectors.json.chunk.0.bin",
+              "bytes": 44669960,
+              "sha256": "044963bbf84a384b4b066d4b434d1206868139660f3d93800f00057990879eac"
+            }
+          ]
+        }
+      },
+      "run_environment": {
+        "plan": "experiments/plans/batch5-thread-fb15k-alg4-q99-pilot.json",
+        "plan_sha256": "9364850a64c403a9f80cc0e2a5d6379b0340d9783769fa89d53608613d9bcea7",
+        "git": {
+          "commit": "59299fd9164d077d7e04cd97fc9ac89cbf962c9f",
+          "dirty": true
+        },
+        "machine": {
+          "platform": "Windows-11-10.0.26100-SP0",
+          "processor": "AMD64 Family 25 Model 97 Stepping 2, AuthenticAMD",
+          "logical_cpu_count": 32,
+          "python": "3.12.7",
+          "compiler": "g++ (x86_64-posix-seh-rev0, Built by MinGW-Builds project) 13.2.0"
+        },
+        "memory_limit_gib": 16,
+        "external_timeout_policy": "hard per-process TLE from task.timeout_seconds"
+      },
+      "result_json": {
+        "path": "experiment-output/batch5-thread-fb15k-alg4-q99-pilot/077d5a3bbb55879d.attempt-001.json",
+        "bytes": 4602,
+        "sha256": "bcf100b2ad06f1053034f4da63e3d4ee49a3cb84af3f4cea1af545b8ac79a6c6"
+      },
+      "artifacts": {
+        "program_log": {
+          "path": "experiment-output/batch5-thread-fb15k-alg4-q99-pilot/077d5a3bbb55879d.attempt-001.program.log",
+          "bytes": 1548,
+          "sha256": "d8b779de6ecde90d0c8f993c66c3491fcdda1fa40f629e69f18655f701829a38"
+        },
+        "stdout": {
+          "path": "experiment-output/batch5-thread-fb15k-alg4-q99-pilot/077d5a3bbb55879d.attempt-001.stdout.txt",
+          "bytes": 1770,
+          "sha256": "3fd93317341ad4f480eb6425552d34fce5246123d84922ea4eaf9c0a8cc595e2"
+        },
+        "stderr": {
+          "path": "experiment-output/batch5-thread-fb15k-alg4-q99-pilot/077d5a3bbb55879d.attempt-001.stderr.txt",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    {
+      "task_id": "1881f38acadadb42",
+      "attempt": 1,
+      "status": "completed",
+      "rerun_reason": null,
+      "started_utc": "2026-07-23T14:48:19.363184+00:00",
+      "wall_seconds": 8.307645200009574,
+      "task": {
+        "algorithm": 4,
+        "mode": "raw",
+        "dataset": 7,
+        "tau": 0.537601,
+        "threads": 4,
+        "timeout_seconds": 180,
+        "graph": null,
+        "vectors": null,
+        "capture_cliques": false,
+        "defines": {},
+        "warmup": false,
+        "repetition": 0,
+        "task_id": "1881f38acadadb42"
+      },
+      "parsed": {
+        "algorithm_ms": 8105,
+        "clique_count": 7476,
+        "peak_memory_gib": 0.09,
+        "size_histogram": {
+          "2": 1517,
+          "3": 557,
+          "4": 429,
+          "5": 315,
+          "6": 271,
+          "7": 211,
+          "8": 327,
+          "9": 13,
+          "10": 6,
+          "11": 53,
+          "12": 187,
+          "13": 66,
+          "14": 80,
+          "15": 439,
+          "16": 834,
+          "17": 65,
+          "18": 40,
+          "19": 546,
+          "20": 780,
+          "21": 740
+        },
+        "stats": {}
+      },
+      "validation": null,
+      "build": {
+        "fingerprint": "a5109816b58eb078",
+        "executable_sha256": "9f8deee1713c1d1020ebb49e2332b9e06605a87fae2506d31233faad1f5c3d12",
+        "command": [
+          "g++",
+          "-std=c++17",
+          "-fopenmp",
+          "-mavx2",
+          "-O3",
+          "src/alg4-raw.cpp",
+          "src/semantic_graph.cpp",
+          "-o",
+          "no-use/compiled/experiment-runner/alg4-raw-a5109816b58eb078.exe"
+        ],
+        "source_verification": {
+          "status": "verified_current",
+          "observed_current_fingerprint": "a5109816b58eb078",
+          "reason": null
+        },
+        "source_hashes": {
+          "alg4-raw.cpp": "2a4c3a22b326f5716e381c5dddafdbc21cc1696fc2d80f7e2f87668f3f3f98fe",
+          "semantic_graph.cpp": "c6d51c9086fbd5c7d264eb411ac04890806744fc4e05dc7eee0b156760a9cd92",
+          "semantic_graph.h": "8192c4e8e02fc8ace59d59365f72643e34ca32ba71faa5bb338381a8cd308078",
+          "experiment_runtime.h": "cc5fd4517f8ca2f43f7e7a4fa0f4c9a00ca8778966bc2ab2228d622a070e5354"
+        }
+      },
+      "inputs": {
+        "status": "verified_run_time",
+        "snapshot": {
+          "dataset_catalog": {
+            "path": "experiments/datasets.json",
+            "sha256": "be27e812615b59c62775fb3b129a5f422ad837c4d149311f220e0ad3bca1740b"
+          },
+          "files": [
+            {
+              "role": "graph",
+              "path": "dataset/dataset/FB15K-237_edges.txt",
+              "bytes": 2855908,
+              "sha256": "5bd431d35d19be7f72ba193ab0fe472c5fa60e51db459fed4ab399825e49865c"
+            },
+            {
+              "role": "vector_index",
+              "path": "dataset/vectors/FB15K-237_vectors.index",
+              "bytes": 63,
+              "sha256": "e08bdfbdcbe25c66968f4f2d47f0c699ddca059b470c384c6473ab4d73b04001"
+            },
+            {
+              "role": "vector_chunk",
+              "path": "dataset/vectors/FB15K-237_vectors.json.chunk.0.bin",
+              "bytes": 44669960,
+              "sha256": "044963bbf84a384b4b066d4b434d1206868139660f3d93800f00057990879eac"
+            }
+          ]
+        }
+      },
+      "run_environment": {
+        "plan": "experiments/plans/batch5-thread-fb15k-alg4-q99-pilot.json",
+        "plan_sha256": "9364850a64c403a9f80cc0e2a5d6379b0340d9783769fa89d53608613d9bcea7",
+        "git": {
+          "commit": "59299fd9164d077d7e04cd97fc9ac89cbf962c9f",
+          "dirty": true
+        },
+        "machine": {
+          "platform": "Windows-11-10.0.26100-SP0",
+          "processor": "AMD64 Family 25 Model 97 Stepping 2, AuthenticAMD",
+          "logical_cpu_count": 32,
+          "python": "3.12.7",
+          "compiler": "g++ (x86_64-posix-seh-rev0, Built by MinGW-Builds project) 13.2.0"
+        },
+        "memory_limit_gib": 16,
+        "external_timeout_policy": "hard per-process TLE from task.timeout_seconds"
+      },
+      "result_json": {
+        "path": "experiment-output/batch5-thread-fb15k-alg4-q99-pilot/1881f38acadadb42.attempt-001.json",
+        "bytes": 4600,
+        "sha256": "1a66eefb165441575d4d043dd064aef23cd17c99452949df158a946a28d71a4d"
+      },
+      "artifacts": {
+        "program_log": {
+          "path": "experiment-output/batch5-thread-fb15k-alg4-q99-pilot/1881f38acadadb42.attempt-001.program.log",
+          "bytes": 1547,
+          "sha256": "29124c36f47af21289b30426bdc40dd63d5828c0c731116f6162a63e14ecfb94"
+        },
+        "stdout": {
+          "path": "experiment-output/batch5-thread-fb15k-alg4-q99-pilot/1881f38acadadb42.attempt-001.stdout.txt",
+          "bytes": 1769,
+          "sha256": "657c113eadf1791932c5bb1651a82ae44bebbe988b77baed7cf23370ee665929"
+        },
+        "stderr": {
+          "path": "experiment-output/batch5-thread-fb15k-alg4-q99-pilot/1881f38acadadb42.attempt-001.stderr.txt",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    {
+      "task_id": "932b501ca039aa49",
+      "attempt": 1,
+      "status": "completed",
+      "rerun_reason": null,
+      "started_utc": "2026-07-23T14:47:50.149019+00:00",
+      "wall_seconds": 17.799187099997653,
+      "task": {
+        "algorithm": 4,
+        "mode": "raw",
+        "dataset": 7,
+        "tau": 0.537601,
+        "threads": 1,
+        "timeout_seconds": 180,
+        "graph": null,
+        "vectors": null,
+        "capture_cliques": false,
+        "defines": {},
+        "warmup": false,
+        "repetition": 0,
+        "task_id": "932b501ca039aa49"
+      },
+      "parsed": {
+        "algorithm_ms": 17586,
+        "clique_count": 7476,
+        "peak_memory_gib": 0.09,
+        "size_histogram": {
+          "2": 1517,
+          "3": 557,
+          "4": 429,
+          "5": 315,
+          "6": 271,
+          "7": 211,
+          "8": 327,
+          "9": 13,
+          "10": 6,
+          "11": 53,
+          "12": 187,
+          "13": 66,
+          "14": 80,
+          "15": 439,
+          "16": 834,
+          "17": 65,
+          "18": 40,
+          "19": 546,
+          "20": 780,
+          "21": 740
+        },
+        "stats": {}
+      },
+      "validation": null,
+      "build": {
+        "fingerprint": "a5109816b58eb078",
+        "executable_sha256": "9f8deee1713c1d1020ebb49e2332b9e06605a87fae2506d31233faad1f5c3d12",
+        "command": [
+          "g++",
+          "-std=c++17",
+          "-fopenmp",
+          "-mavx2",
+          "-O3",
+          "src/alg4-raw.cpp",
+          "src/semantic_graph.cpp",
+          "-o",
+          "no-use/compiled/experiment-runner/alg4-raw-a5109816b58eb078.exe"
+        ],
+        "source_verification": {
+          "status": "verified_current",
+          "observed_current_fingerprint": "a5109816b58eb078",
+          "reason": null
+        },
+        "source_hashes": {
+          "alg4-raw.cpp": "2a4c3a22b326f5716e381c5dddafdbc21cc1696fc2d80f7e2f87668f3f3f98fe",
+          "semantic_graph.cpp": "c6d51c9086fbd5c7d264eb411ac04890806744fc4e05dc7eee0b156760a9cd92",
+          "semantic_graph.h": "8192c4e8e02fc8ace59d59365f72643e34ca32ba71faa5bb338381a8cd308078",
+          "experiment_runtime.h": "cc5fd4517f8ca2f43f7e7a4fa0f4c9a00ca8778966bc2ab2228d622a070e5354"
+        }
+      },
+      "inputs": {
+        "status": "verified_run_time",
+        "snapshot": {
+          "dataset_catalog": {
+            "path": "experiments/datasets.json",
+            "sha256": "be27e812615b59c62775fb3b129a5f422ad837c4d149311f220e0ad3bca1740b"
+          },
+          "files": [
+            {
+              "role": "graph",
+              "path": "dataset/dataset/FB15K-237_edges.txt",
+              "bytes": 2855908,
+              "sha256": "5bd431d35d19be7f72ba193ab0fe472c5fa60e51db459fed4ab399825e49865c"
+            },
+            {
+              "role": "vector_index",
+              "path": "dataset/vectors/FB15K-237_vectors.index",
+              "bytes": 63,
+              "sha256": "e08bdfbdcbe25c66968f4f2d47f0c699ddca059b470c384c6473ab4d73b04001"
+            },
+            {
+              "role": "vector_chunk",
+              "path": "dataset/vectors/FB15K-237_vectors.json.chunk.0.bin",
+              "bytes": 44669960,
+              "sha256": "044963bbf84a384b4b066d4b434d1206868139660f3d93800f00057990879eac"
+            }
+          ]
+        }
+      },
+      "run_environment": {
+        "plan": "experiments/plans/batch5-thread-fb15k-alg4-q99-pilot.json",
+        "plan_sha256": "9364850a64c403a9f80cc0e2a5d6379b0340d9783769fa89d53608613d9bcea7",
+        "git": {
+          "commit": "59299fd9164d077d7e04cd97fc9ac89cbf962c9f",
+          "dirty": true
+        },
+        "machine": {
+          "platform": "Windows-11-10.0.26100-SP0",
+          "processor": "AMD64 Family 25 Model 97 Stepping 2, AuthenticAMD",
+          "logical_cpu_count": 32,
+          "python": "3.12.7",
+          "compiler": "g++ (x86_64-posix-seh-rev0, Built by MinGW-Builds project) 13.2.0"
+        },
+        "memory_limit_gib": 16,
+        "external_timeout_policy": "hard per-process TLE from task.timeout_seconds"
+      },
+      "result_json": {
+        "path": "experiment-output/batch5-thread-fb15k-alg4-q99-pilot/932b501ca039aa49.attempt-001.json",
+        "bytes": 4602,
+        "sha256": "78fb5c2eca897f60b82421f249d213d5c3a4c715d07f0768e257be15e03f7bd4"
+      },
+      "artifacts": {
+        "program_log": {
+          "path": "experiment-output/batch5-thread-fb15k-alg4-q99-pilot/932b501ca039aa49.attempt-001.program.log",
+          "bytes": 1549,
+          "sha256": "bcf988bc314a2acf692257b9af4f8e6405214570ba8fd17e0070e79c23034568"
+        },
+        "stdout": {
+          "path": "experiment-output/batch5-thread-fb15k-alg4-q99-pilot/932b501ca039aa49.attempt-001.stdout.txt",
+          "bytes": 1771,
+          "sha256": "264162e709e076b192b31e029e1fdf439a00a15ccb4f6418b2d5d2785e8ed24f"
+        },
+        "stderr": {
+          "path": "experiment-output/batch5-thread-fb15k-alg4-q99-pilot/932b501ca039aa49.attempt-001.stderr.txt",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    {
+      "task_id": "9e5911ae88a61bdb",
+      "attempt": 1,
+      "status": "completed",
+      "rerun_reason": null,
+      "started_utc": "2026-07-23T14:48:41.526677+00:00",
+      "wall_seconds": 6.783152900010464,
+      "task": {
+        "algorithm": 4,
+        "mode": "raw",
+        "dataset": 7,
+        "tau": 0.537601,
+        "threads": 32,
+        "timeout_seconds": 180,
+        "graph": null,
+        "vectors": null,
+        "capture_cliques": false,
+        "defines": {},
+        "warmup": false,
+        "repetition": 0,
+        "task_id": "9e5911ae88a61bdb"
+      },
+      "parsed": {
+        "algorithm_ms": 6559,
+        "clique_count": 7476,
+        "peak_memory_gib": 0.09,
+        "size_histogram": {
+          "2": 1517,
+          "3": 557,
+          "4": 429,
+          "5": 315,
+          "6": 271,
+          "7": 211,
+          "8": 327,
+          "9": 13,
+          "10": 6,
+          "11": 53,
+          "12": 187,
+          "13": 66,
+          "14": 80,
+          "15": 439,
+          "16": 834,
+          "17": 65,
+          "18": 40,
+          "19": 546,
+          "20": 780,
+          "21": 740
+        },
+        "stats": {}
+      },
+      "validation": null,
+      "build": {
+        "fingerprint": "a5109816b58eb078",
+        "executable_sha256": "9f8deee1713c1d1020ebb49e2332b9e06605a87fae2506d31233faad1f5c3d12",
+        "command": [
+          "g++",
+          "-std=c++17",
+          "-fopenmp",
+          "-mavx2",
+          "-O3",
+          "src/alg4-raw.cpp",
+          "src/semantic_graph.cpp",
+          "-o",
+          "no-use/compiled/experiment-runner/alg4-raw-a5109816b58eb078.exe"
+        ],
+        "source_verification": {
+          "status": "verified_current",
+          "observed_current_fingerprint": "a5109816b58eb078",
+          "reason": null
+        },
+        "source_hashes": {
+          "alg4-raw.cpp": "2a4c3a22b326f5716e381c5dddafdbc21cc1696fc2d80f7e2f87668f3f3f98fe",
+          "semantic_graph.cpp": "c6d51c9086fbd5c7d264eb411ac04890806744fc4e05dc7eee0b156760a9cd92",
+          "semantic_graph.h": "8192c4e8e02fc8ace59d59365f72643e34ca32ba71faa5bb338381a8cd308078",
+          "experiment_runtime.h": "cc5fd4517f8ca2f43f7e7a4fa0f4c9a00ca8778966bc2ab2228d622a070e5354"
+        }
+      },
+      "inputs": {
+        "status": "verified_run_time",
+        "snapshot": {
+          "dataset_catalog": {
+            "path": "experiments/datasets.json",
+            "sha256": "be27e812615b59c62775fb3b129a5f422ad837c4d149311f220e0ad3bca1740b"
+          },
+          "files": [
+            {
+              "role": "graph",
+              "path": "dataset/dataset/FB15K-237_edges.txt",
+              "bytes": 2855908,
+              "sha256": "5bd431d35d19be7f72ba193ab0fe472c5fa60e51db459fed4ab399825e49865c"
+            },
+            {
+              "role": "vector_index",
+              "path": "dataset/vectors/FB15K-237_vectors.index",
+              "bytes": 63,
+              "sha256": "e08bdfbdcbe25c66968f4f2d47f0c699ddca059b470c384c6473ab4d73b04001"
+            },
+            {
+              "role": "vector_chunk",
+              "path": "dataset/vectors/FB15K-237_vectors.json.chunk.0.bin",
+              "bytes": 44669960,
+              "sha256": "044963bbf84a384b4b066d4b434d1206868139660f3d93800f00057990879eac"
+            }
+          ]
+        }
+      },
+      "run_environment": {
+        "plan": "experiments/plans/batch5-thread-fb15k-alg4-q99-pilot.json",
+        "plan_sha256": "9364850a64c403a9f80cc0e2a5d6379b0340d9783769fa89d53608613d9bcea7",
+        "git": {
+          "commit": "59299fd9164d077d7e04cd97fc9ac89cbf962c9f",
+          "dirty": true
+        },
+        "machine": {
+          "platform": "Windows-11-10.0.26100-SP0",
+          "processor": "AMD64 Family 25 Model 97 Stepping 2, AuthenticAMD",
+          "logical_cpu_count": 32,
+          "python": "3.12.7",
+          "compiler": "g++ (x86_64-posix-seh-rev0, Built by MinGW-Builds project) 13.2.0"
+        },
+        "memory_limit_gib": 16,
+        "external_timeout_policy": "hard per-process TLE from task.timeout_seconds"
+      },
+      "result_json": {
+        "path": "experiment-output/batch5-thread-fb15k-alg4-q99-pilot/9e5911ae88a61bdb.attempt-001.json",
+        "bytes": 4602,
+        "sha256": "ab55dbd53ad75470d434c3df5012c2788842b8d3cb97ee2978c067b87c2b700a"
+      },
+      "artifacts": {
+        "program_log": {
+          "path": "experiment-output/batch5-thread-fb15k-alg4-q99-pilot/9e5911ae88a61bdb.attempt-001.program.log",
+          "bytes": 1548,
+          "sha256": "f786b9c056779077ab9ba271e511ace4dc37b3806ef542ad481e34829e1eda6d"
+        },
+        "stdout": {
+          "path": "experiment-output/batch5-thread-fb15k-alg4-q99-pilot/9e5911ae88a61bdb.attempt-001.stdout.txt",
+          "bytes": 1770,
+          "sha256": "e3684ab72eb1a9ecb5f83872f811545b895fad5a4b318025802e02f914c34a11"
+        },
+        "stderr": {
+          "path": "experiment-output/batch5-thread-fb15k-alg4-q99-pilot/9e5911ae88a61bdb.attempt-001.stderr.txt",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    {
+      "task_id": "bfece395c5b68924",
+      "attempt": 1,
+      "status": "completed",
+      "rerun_reason": null,
+      "started_utc": "2026-07-23T14:48:07.973767+00:00",
+      "wall_seconds": 11.38383179999073,
+      "task": {
+        "algorithm": 4,
+        "mode": "raw",
+        "dataset": 7,
+        "tau": 0.537601,
+        "threads": 2,
+        "timeout_seconds": 180,
+        "graph": null,
+        "vectors": null,
+        "capture_cliques": false,
+        "defines": {},
+        "warmup": false,
+        "repetition": 0,
+        "task_id": "bfece395c5b68924"
+      },
+      "parsed": {
+        "algorithm_ms": 11176,
+        "clique_count": 7476,
+        "peak_memory_gib": 0.09,
+        "size_histogram": {
+          "2": 1517,
+          "3": 557,
+          "4": 429,
+          "5": 315,
+          "6": 271,
+          "7": 211,
+          "8": 327,
+          "9": 13,
+          "10": 6,
+          "11": 53,
+          "12": 187,
+          "13": 66,
+          "14": 80,
+          "15": 439,
+          "16": 834,
+          "17": 65,
+          "18": 40,
+          "19": 546,
+          "20": 780,
+          "21": 740
+        },
+        "stats": {}
+      },
+      "validation": null,
+      "build": {
+        "fingerprint": "a5109816b58eb078",
+        "executable_sha256": "9f8deee1713c1d1020ebb49e2332b9e06605a87fae2506d31233faad1f5c3d12",
+        "command": [
+          "g++",
+          "-std=c++17",
+          "-fopenmp",
+          "-mavx2",
+          "-O3",
+          "src/alg4-raw.cpp",
+          "src/semantic_graph.cpp",
+          "-o",
+          "no-use/compiled/experiment-runner/alg4-raw-a5109816b58eb078.exe"
+        ],
+        "source_verification": {
+          "status": "verified_current",
+          "observed_current_fingerprint": "a5109816b58eb078",
+          "reason": null
+        },
+        "source_hashes": {
+          "alg4-raw.cpp": "2a4c3a22b326f5716e381c5dddafdbc21cc1696fc2d80f7e2f87668f3f3f98fe",
+          "semantic_graph.cpp": "c6d51c9086fbd5c7d264eb411ac04890806744fc4e05dc7eee0b156760a9cd92",
+          "semantic_graph.h": "8192c4e8e02fc8ace59d59365f72643e34ca32ba71faa5bb338381a8cd308078",
+          "experiment_runtime.h": "cc5fd4517f8ca2f43f7e7a4fa0f4c9a00ca8778966bc2ab2228d622a070e5354"
+        }
+      },
+      "inputs": {
+        "status": "verified_run_time",
+        "snapshot": {
+          "dataset_catalog": {
+            "path": "experiments/datasets.json",
+            "sha256": "be27e812615b59c62775fb3b129a5f422ad837c4d149311f220e0ad3bca1740b"
+          },
+          "files": [
+            {
+              "role": "graph",
+              "path": "dataset/dataset/FB15K-237_edges.txt",
+              "bytes": 2855908,
+              "sha256": "5bd431d35d19be7f72ba193ab0fe472c5fa60e51db459fed4ab399825e49865c"
+            },
+            {
+              "role": "vector_index",
+              "path": "dataset/vectors/FB15K-237_vectors.index",
+              "bytes": 63,
+              "sha256": "e08bdfbdcbe25c66968f4f2d47f0c699ddca059b470c384c6473ab4d73b04001"
+            },
+            {
+              "role": "vector_chunk",
+              "path": "dataset/vectors/FB15K-237_vectors.json.chunk.0.bin",
+              "bytes": 44669960,
+              "sha256": "044963bbf84a384b4b066d4b434d1206868139660f3d93800f00057990879eac"
+            }
+          ]
+        }
+      },
+      "run_environment": {
+        "plan": "experiments/plans/batch5-thread-fb15k-alg4-q99-pilot.json",
+        "plan_sha256": "9364850a64c403a9f80cc0e2a5d6379b0340d9783769fa89d53608613d9bcea7",
+        "git": {
+          "commit": "59299fd9164d077d7e04cd97fc9ac89cbf962c9f",
+          "dirty": true
+        },
+        "machine": {
+          "platform": "Windows-11-10.0.26100-SP0",
+          "processor": "AMD64 Family 25 Model 97 Stepping 2, AuthenticAMD",
+          "logical_cpu_count": 32,
+          "python": "3.12.7",
+          "compiler": "g++ (x86_64-posix-seh-rev0, Built by MinGW-Builds project) 13.2.0"
+        },
+        "memory_limit_gib": 16,
+        "external_timeout_policy": "hard per-process TLE from task.timeout_seconds"
+      },
+      "result_json": {
+        "path": "experiment-output/batch5-thread-fb15k-alg4-q99-pilot/bfece395c5b68924.attempt-001.json",
+        "bytes": 4601,
+        "sha256": "6065bcc35f93bfd62e1ce1d4d545cdb6b782c31b1468f6bd3ed2687076154f31"
+      },
+      "artifacts": {
+        "program_log": {
+          "path": "experiment-output/batch5-thread-fb15k-alg4-q99-pilot/bfece395c5b68924.attempt-001.program.log",
+          "bytes": 1549,
+          "sha256": "c2b1e25b1dd54ca1504f6a1661a862a47f9a878d4b7643ecc8cf359c263bdafd"
+        },
+        "stdout": {
+          "path": "experiment-output/batch5-thread-fb15k-alg4-q99-pilot/bfece395c5b68924.attempt-001.stdout.txt",
+          "bytes": 1771,
+          "sha256": "f35b576cfcc6054788c889a3b3d2d3551179f79d52f682d7423c3d6e9ad90c3c"
+        },
+        "stderr": {
+          "path": "experiment-output/batch5-thread-fb15k-alg4-q99-pilot/bfece395c5b68924.attempt-001.stderr.txt",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    {
+      "task_id": "d79b072bfb62d5f7",
+      "attempt": 1,
+      "status": "completed",
+      "rerun_reason": null,
+      "started_utc": "2026-07-23T14:48:27.672187+00:00",
+      "wall_seconds": 7.161290199990617,
+      "task": {
+        "algorithm": 4,
+        "mode": "raw",
+        "dataset": 7,
+        "tau": 0.537601,
+        "threads": 8,
+        "timeout_seconds": 180,
+        "graph": null,
+        "vectors": null,
+        "capture_cliques": false,
+        "defines": {},
+        "warmup": false,
+        "repetition": 0,
+        "task_id": "d79b072bfb62d5f7"
+      },
+      "parsed": {
+        "algorithm_ms": 6957,
+        "clique_count": 7476,
+        "peak_memory_gib": 0.09,
+        "size_histogram": {
+          "2": 1517,
+          "3": 557,
+          "4": 429,
+          "5": 315,
+          "6": 271,
+          "7": 211,
+          "8": 327,
+          "9": 13,
+          "10": 6,
+          "11": 53,
+          "12": 187,
+          "13": 66,
+          "14": 80,
+          "15": 439,
+          "16": 834,
+          "17": 65,
+          "18": 40,
+          "19": 546,
+          "20": 780,
+          "21": 740
+        },
+        "stats": {}
+      },
+      "validation": null,
+      "build": {
+        "fingerprint": "a5109816b58eb078",
+        "executable_sha256": "9f8deee1713c1d1020ebb49e2332b9e06605a87fae2506d31233faad1f5c3d12",
+        "command": [
+          "g++",
+          "-std=c++17",
+          "-fopenmp",
+          "-mavx2",
+          "-O3",
+          "src/alg4-raw.cpp",
+          "src/semantic_graph.cpp",
+          "-o",
+          "no-use/compiled/experiment-runner/alg4-raw-a5109816b58eb078.exe"
+        ],
+        "source_verification": {
+          "status": "verified_current",
+          "observed_current_fingerprint": "a5109816b58eb078",
+          "reason": null
+        },
+        "source_hashes": {
+          "alg4-raw.cpp": "2a4c3a22b326f5716e381c5dddafdbc21cc1696fc2d80f7e2f87668f3f3f98fe",
+          "semantic_graph.cpp": "c6d51c9086fbd5c7d264eb411ac04890806744fc4e05dc7eee0b156760a9cd92",
+          "semantic_graph.h": "8192c4e8e02fc8ace59d59365f72643e34ca32ba71faa5bb338381a8cd308078",
+          "experiment_runtime.h": "cc5fd4517f8ca2f43f7e7a4fa0f4c9a00ca8778966bc2ab2228d622a070e5354"
+        }
+      },
+      "inputs": {
+        "status": "verified_run_time",
+        "snapshot": {
+          "dataset_catalog": {
+            "path": "experiments/datasets.json",
+            "sha256": "be27e812615b59c62775fb3b129a5f422ad837c4d149311f220e0ad3bca1740b"
+          },
+          "files": [
+            {
+              "role": "graph",
+              "path": "dataset/dataset/FB15K-237_edges.txt",
+              "bytes": 2855908,
+              "sha256": "5bd431d35d19be7f72ba193ab0fe472c5fa60e51db459fed4ab399825e49865c"
+            },
+            {
+              "role": "vector_index",
+              "path": "dataset/vectors/FB15K-237_vectors.index",
+              "bytes": 63,
+              "sha256": "e08bdfbdcbe25c66968f4f2d47f0c699ddca059b470c384c6473ab4d73b04001"
+            },
+            {
+              "role": "vector_chunk",
+              "path": "dataset/vectors/FB15K-237_vectors.json.chunk.0.bin",
+              "bytes": 44669960,
+              "sha256": "044963bbf84a384b4b066d4b434d1206868139660f3d93800f00057990879eac"
+            }
+          ]
+        }
+      },
+      "run_environment": {
+        "plan": "experiments/plans/batch5-thread-fb15k-alg4-q99-pilot.json",
+        "plan_sha256": "9364850a64c403a9f80cc0e2a5d6379b0340d9783769fa89d53608613d9bcea7",
+        "git": {
+          "commit": "59299fd9164d077d7e04cd97fc9ac89cbf962c9f",
+          "dirty": true
+        },
+        "machine": {
+          "platform": "Windows-11-10.0.26100-SP0",
+          "processor": "AMD64 Family 25 Model 97 Stepping 2, AuthenticAMD",
+          "logical_cpu_count": 32,
+          "python": "3.12.7",
+          "compiler": "g++ (x86_64-posix-seh-rev0, Built by MinGW-Builds project) 13.2.0"
+        },
+        "memory_limit_gib": 16,
+        "external_timeout_policy": "hard per-process TLE from task.timeout_seconds"
+      },
+      "result_json": {
+        "path": "experiment-output/batch5-thread-fb15k-alg4-q99-pilot/d79b072bfb62d5f7.attempt-001.json",
+        "bytes": 4600,
+        "sha256": "e4902073b036ce280f996b6fe3a270096bb19cd63e7ad785a83cd8c430521515"
+      },
+      "artifacts": {
+        "program_log": {
+          "path": "experiment-output/batch5-thread-fb15k-alg4-q99-pilot/d79b072bfb62d5f7.attempt-001.program.log",
+          "bytes": 1547,
+          "sha256": "f907d09e3ad71dba90e603061b5c5c1a1b109395a3a99c1195c418f136a523d7"
+        },
+        "stdout": {
+          "path": "experiment-output/batch5-thread-fb15k-alg4-q99-pilot/d79b072bfb62d5f7.attempt-001.stdout.txt",
+          "bytes": 1769,
+          "sha256": "35124e523e18272b7be5e5150b6e199fa119b214efcbf64473610162934bbd88"
+        },
+        "stderr": {
+          "path": "experiment-output/batch5-thread-fb15k-alg4-q99-pilot/d79b072bfb62d5f7.attempt-001.stderr.txt",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    }
+  ]
+}

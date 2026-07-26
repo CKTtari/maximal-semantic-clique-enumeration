@@ -1,0 +1,272 @@
+{
+  "schema_version": 2,
+  "run_name": "batch5-scale-dblp-small-q99-pilot",
+  "archived_utc": "2026-07-23T10:05:57.468540+00:00",
+  "local_result_directory": "experiment-output/batch5-scale-dblp-small-q99-pilot",
+  "plans": [
+    {
+      "path": "experiments/plans/batch5-scale-dblp-small-q99-pilot.json",
+      "sha256": "77809f120eef03a6d4f31ad45a00eb3e65298261f0e80c40380f089b54aad573"
+    }
+  ],
+  "summary": {
+    "attempts": 2,
+    "status_counts": {
+      "completed": 1,
+      "tle": 1
+    }
+  },
+  "records": [
+    {
+      "task_id": "60deea4db018ba7d",
+      "attempt": 1,
+      "status": "completed",
+      "rerun_reason": null,
+      "started_utc": "2026-07-23T10:02:31.774396+00:00",
+      "wall_seconds": 1.2073852000030456,
+      "task": {
+        "algorithm": 4,
+        "mode": "raw",
+        "dataset": 9,
+        "tau": 0.392207,
+        "threads": 32,
+        "timeout_seconds": 180,
+        "graph": "dataset/scale_datasets/dblp-degree-prefix-small/level-1000.graph.txt",
+        "vectors": "dataset/scale_datasets/dblp-degree-prefix-small/level-1000.vectors.bin",
+        "capture_cliques": false,
+        "defines": {},
+        "warmup": false,
+        "repetition": 0,
+        "task_id": "60deea4db018ba7d"
+      },
+      "parsed": {
+        "algorithm_ms": 1116,
+        "clique_count": 11325,
+        "peak_memory_gib": 0.01,
+        "size_histogram": {
+          "2": 192,
+          "3": 413,
+          "4": 1218,
+          "5": 2010,
+          "6": 2295,
+          "7": 2074,
+          "8": 1133,
+          "9": 591,
+          "10": 245,
+          "11": 82,
+          "12": 47,
+          "13": 80,
+          "14": 169,
+          "15": 220,
+          "16": 249,
+          "17": 226,
+          "18": 74,
+          "19": 7
+        },
+        "stats": {}
+      },
+      "validation": null,
+      "build": {
+        "fingerprint": "a5109816b58eb078",
+        "executable_sha256": "9f8deee1713c1d1020ebb49e2332b9e06605a87fae2506d31233faad1f5c3d12",
+        "command": [
+          "g++",
+          "-std=c++17",
+          "-fopenmp",
+          "-mavx2",
+          "-O3",
+          "src/alg4-raw.cpp",
+          "src/semantic_graph.cpp",
+          "-o",
+          "no-use/compiled/experiment-runner/alg4-raw-a5109816b58eb078.exe"
+        ],
+        "source_verification": {
+          "status": "verified_current",
+          "observed_current_fingerprint": "a5109816b58eb078",
+          "reason": null
+        },
+        "source_hashes": {
+          "alg4-raw.cpp": "2a4c3a22b326f5716e381c5dddafdbc21cc1696fc2d80f7e2f87668f3f3f98fe",
+          "semantic_graph.cpp": "c6d51c9086fbd5c7d264eb411ac04890806744fc4e05dc7eee0b156760a9cd92",
+          "semantic_graph.h": "8192c4e8e02fc8ace59d59365f72643e34ca32ba71faa5bb338381a8cd308078",
+          "experiment_runtime.h": "cc5fd4517f8ca2f43f7e7a4fa0f4c9a00ca8778966bc2ab2228d622a070e5354"
+        }
+      },
+      "inputs": {
+        "status": "verified_run_time",
+        "snapshot": {
+          "dataset_catalog": {
+            "path": "experiments/datasets.json",
+            "sha256": "be27e812615b59c62775fb3b129a5f422ad837c4d149311f220e0ad3bca1740b"
+          },
+          "files": [
+            {
+              "role": "graph",
+              "path": "dataset/scale_datasets/dblp-degree-prefix-small/level-1000.graph.txt",
+              "bytes": 604437,
+              "sha256": "89cde4b02ba55ffe6b55b01fb6faf0bc90574bdcb85ff20e258ed3ba1b090936"
+            },
+            {
+              "role": "vector_binary",
+              "path": "dataset/scale_datasets/dblp-degree-prefix-small/level-1000.vectors.bin",
+              "bytes": 3072008,
+              "sha256": "665cf90a6a9a5fa4373ceb45c91e14d036616b2b977fb317118dfa2474ba31b8"
+            }
+          ]
+        }
+      },
+      "run_environment": {
+        "plan": "experiments/plans/batch5-scale-dblp-small-q99-pilot.json",
+        "plan_sha256": "77809f120eef03a6d4f31ad45a00eb3e65298261f0e80c40380f089b54aad573",
+        "git": {
+          "commit": "59299fd9164d077d7e04cd97fc9ac89cbf962c9f",
+          "dirty": true
+        },
+        "machine": {
+          "platform": "Windows-11-10.0.26100-SP0",
+          "processor": "AMD64 Family 25 Model 97 Stepping 2, AuthenticAMD",
+          "logical_cpu_count": 32,
+          "python": "3.12.7",
+          "compiler": "g++ (x86_64-posix-seh-rev0, Built by MinGW-Builds project) 13.2.0"
+        },
+        "memory_limit_gib": 16,
+        "external_timeout_policy": "hard per-process TLE from task.timeout_seconds"
+      },
+      "result_json": {
+        "path": "experiment-output/batch5-scale-dblp-small-q99-pilot/60deea4db018ba7d.attempt-001.json",
+        "bytes": 4601,
+        "sha256": "63087b2dd6beae29daee4baf597a1aaef859e2bb91c4f7c410c42ba05b9dcd49"
+      },
+      "artifacts": {
+        "program_log": {
+          "path": "experiment-output/batch5-scale-dblp-small-q99-pilot/60deea4db018ba7d.attempt-001.program.log",
+          "bytes": 1534,
+          "sha256": "b89e6a0de23d3d1bdba36ebb702b4fbc5e80783eaa9160214df58afc92e6058b"
+        },
+        "stdout": {
+          "path": "experiment-output/batch5-scale-dblp-small-q99-pilot/60deea4db018ba7d.attempt-001.stdout.txt",
+          "bytes": 1765,
+          "sha256": "6c5804cc1463bb95db8b7afb9c3ae295f3f232f8b77ab95751c757e9146bee55"
+        },
+        "stderr": {
+          "path": "experiment-output/batch5-scale-dblp-small-q99-pilot/60deea4db018ba7d.attempt-001.stderr.txt",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    {
+      "task_id": "6464eb3dfad665f4",
+      "attempt": 1,
+      "status": "tle",
+      "rerun_reason": null,
+      "started_utc": "2026-07-23T10:02:43.968655+00:00",
+      "wall_seconds": 180.04653989999497,
+      "task": {
+        "algorithm": 3,
+        "mode": "raw",
+        "dataset": 9,
+        "tau": 0.392207,
+        "threads": 32,
+        "timeout_seconds": 180,
+        "graph": "dataset/scale_datasets/dblp-degree-prefix-small/level-1000.graph.txt",
+        "vectors": "dataset/scale_datasets/dblp-degree-prefix-small/level-1000.vectors.bin",
+        "capture_cliques": false,
+        "defines": {},
+        "warmup": false,
+        "repetition": 0,
+        "task_id": "6464eb3dfad665f4"
+      },
+      "parsed": null,
+      "validation": null,
+      "build": {
+        "fingerprint": "107cf826e22b1cac",
+        "executable_sha256": "06f973d34edd46b2314f8a4b32082dbae810e304c48dcdf24606fe6fd5d29e6e",
+        "command": [
+          "g++",
+          "-std=c++17",
+          "-fopenmp",
+          "-mavx2",
+          "-O3",
+          "src/alg3-raw.cpp",
+          "src/semantic_graph.cpp",
+          "-o",
+          "no-use/compiled/experiment-runner/alg3-raw-107cf826e22b1cac.exe"
+        ],
+        "source_verification": {
+          "status": "verified_current",
+          "observed_current_fingerprint": "107cf826e22b1cac",
+          "reason": null
+        },
+        "source_hashes": {
+          "alg3-raw.cpp": "656b9a9743483e66a7b5bbf6e006182530c37ad9f1affad3247c8f85b91854f5",
+          "semantic_graph.cpp": "c6d51c9086fbd5c7d264eb411ac04890806744fc4e05dc7eee0b156760a9cd92",
+          "semantic_graph.h": "8192c4e8e02fc8ace59d59365f72643e34ca32ba71faa5bb338381a8cd308078",
+          "experiment_runtime.h": "cc5fd4517f8ca2f43f7e7a4fa0f4c9a00ca8778966bc2ab2228d622a070e5354"
+        }
+      },
+      "inputs": {
+        "status": "verified_run_time",
+        "snapshot": {
+          "dataset_catalog": {
+            "path": "experiments/datasets.json",
+            "sha256": "be27e812615b59c62775fb3b129a5f422ad837c4d149311f220e0ad3bca1740b"
+          },
+          "files": [
+            {
+              "role": "graph",
+              "path": "dataset/scale_datasets/dblp-degree-prefix-small/level-1000.graph.txt",
+              "bytes": 604437,
+              "sha256": "89cde4b02ba55ffe6b55b01fb6faf0bc90574bdcb85ff20e258ed3ba1b090936"
+            },
+            {
+              "role": "vector_binary",
+              "path": "dataset/scale_datasets/dblp-degree-prefix-small/level-1000.vectors.bin",
+              "bytes": 3072008,
+              "sha256": "665cf90a6a9a5fa4373ceb45c91e14d036616b2b977fb317118dfa2474ba31b8"
+            }
+          ]
+        }
+      },
+      "run_environment": {
+        "plan": "experiments/plans/batch5-scale-dblp-small-q99-pilot.json",
+        "plan_sha256": "77809f120eef03a6d4f31ad45a00eb3e65298261f0e80c40380f089b54aad573",
+        "git": {
+          "commit": "59299fd9164d077d7e04cd97fc9ac89cbf962c9f",
+          "dirty": true
+        },
+        "machine": {
+          "platform": "Windows-11-10.0.26100-SP0",
+          "processor": "AMD64 Family 25 Model 97 Stepping 2, AuthenticAMD",
+          "logical_cpu_count": 32,
+          "python": "3.12.7",
+          "compiler": "g++ (x86_64-posix-seh-rev0, Built by MinGW-Builds project) 13.2.0"
+        },
+        "memory_limit_gib": 16,
+        "external_timeout_policy": "hard per-process TLE from task.timeout_seconds"
+      },
+      "result_json": {
+        "path": "experiment-output/batch5-scale-dblp-small-q99-pilot/6464eb3dfad665f4.attempt-001.json",
+        "bytes": 4147,
+        "sha256": "7e7201e84df4451577ebbcf766eea34bfce72a1926c2b971c045aed6780cc57e"
+      },
+      "artifacts": {
+        "program_log": {
+          "path": "experiment-output/batch5-scale-dblp-small-q99-pilot/6464eb3dfad665f4.attempt-001.program.log",
+          "bytes": 786,
+          "sha256": "58cf3a50722c37798c48c1ff8f77bcc58b2cb12989aada7913f8d3e265650d76"
+        },
+        "stdout": {
+          "path": "experiment-output/batch5-scale-dblp-small-q99-pilot/6464eb3dfad665f4.attempt-001.stdout.txt",
+          "bytes": 660,
+          "sha256": "7eacd9ff44cbe9f2701bb8847a3f12a99f200d8789f9b9fd3df2e82ae73d35c2"
+        },
+        "stderr": {
+          "path": "experiment-output/batch5-scale-dblp-small-q99-pilot/6464eb3dfad665f4.attempt-001.stderr.txt",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    }
+  ]
+}
