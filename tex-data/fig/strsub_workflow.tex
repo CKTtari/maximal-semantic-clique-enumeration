@@ -1,53 +1,52 @@
-\documentclass[tikz,border=6pt]{standalone}
+\documentclass[tikz,border=3pt]{standalone}
 \usepackage{newtxtext,newtxmath}
-\usetikzlibrary{arrows.meta,positioning,fit,calc}
+\usetikzlibrary{arrows.meta,positioning}
 \definecolor{paperink}{HTML}{3F4852}
 \definecolor{papergray}{HTML}{EEF1F4}
 \definecolor{paperamber}{HTML}{A66A14}
 \definecolor{papergreen}{HTML}{287A4D}
 \begin{document}
 \begin{tikzpicture}[
-  font=\fontsize{16}{19}\selectfont,
+  font=\scriptsize,
   >=Latex,
-  box/.style={draw=paperink, rounded corners=2pt, line width=1.1pt,
-    align=center, minimum height=14mm, fill=white},
+  box/.style={draw=paperink, rounded corners=1.5pt, line width=0.55pt,
+    align=center, minimum height=9mm, inner sep=1.4mm},
+  wide/.style={box, text width=66mm},
+  branch/.style={box, text width=29mm, minimum height=12mm},
+  accepted/.style={fill=papergreen!11, draw=papergreen},
+  bounded/.style={fill=paperamber!9, draw=paperamber},
   structural/.style={fill=papergray},
-  bounded/.style={fill=paperamber!10, draw=paperamber},
-  accepted/.style={fill=papergreen!12, draw=papergreen},
-  arrow/.style={->, line width=1.5pt, draw=paperink}
+  arrow/.style={->, line width=0.9pt, draw=paperink}
 ]
-\node[box, structural, minimum width=150mm] (bk) at (8,0)
-  {Structural MCE on Figure 1 (independent of $\tau$)\\
-   returns the two host cliques $M_1$ and $M_2$};
+\node[wide, structural] (bk) at (1.85,0)
+  {\textbf{Structural MCE}\quad
+   $M_1=\{v_1,v_2,v_3,v_4\}$,\quad
+   $M_2=\{v_3,v_4,v_5,v_6\}$};
 
-\node[box, accepted, minimum width=69mm] (m1) at (3.7,-2.5)
-  {$M_1=\{v_1,v_2,v_3,v_4\}$\\$\operatorname{avgSim}(M_1)=0.693\geq0.6$};
-\node[box, bounded, minimum width=78mm] (m2) at (12,-2.5)
-  {$M_2=\{v_3,v_4,v_5,v_6\}$\\$\operatorname{avgSim}(M_2)=0.427<0.6$};
-\draw[arrow] (bk.south) -- ++(0,-4mm) -| (m1.north);
-\draw[arrow] (bk.south) -- ++(0,-4mm) -| (m2.north);
+\node[branch, accepted] (m1) at (0,-1.45)
+  {\textbf{$M_1$ is feasible}\\
+   $\operatorname{avgSim}(M_1)=0.693$\\
+   accept $C_1=M_1$};
+\node[branch, bounded] (m2) at (3.70,-1.45)
+  {\textbf{$M_2$ is infeasible}\\
+   $\operatorname{avgSim}(M_2)=0.427$\\
+   bounded subset search};
+\draw[arrow] (bk.south) -- ++(0,-2mm) -| (m1.north);
+\draw[arrow] (bk.south) -- ++(0,-2mm) -| (m2.north);
 
-\node[box, accepted, minimum width=69mm]
-  (c1) at (3.7,-5.0) {Whole host is feasible\\accept $C_1=M_1$};
-\node[box, bounded, minimum width=78mm]
-  (bounds) at (12,-5.0) {Top-Edge and vertex bounds\\retain the size-$3$ layer};
-\draw[arrow] (m1) -- (c1);
-\draw[arrow] (m2) -- (bounds);
+\node[branch, accepted] (c2) at (3.70,-3.05)
+  {\textbf{Feasible subset}\\
+   $C_2=\{v_3,v_5,v_6\}$\\
+   $\operatorname{avgSim}(C_2)=0.693$};
+\draw[arrow] (m2) -- (c2);
 
-\node[box, structural, minimum width=78mm, minimum height=28mm]
-  (layer) at (12,-7.8)
-  {{\color{papergreen}$\{v_3,v_5,v_6\}$: $0.693\geq0.6$ $\Rightarrow C_2$}\\
-   {\color{paperamber}other size-$3$ subsets: $0.373,\ 0.320,\ 0.320<0.6$}\\
-   {\fontsize{14}{17}\selectfont\color{paperamber}contained feasible pairs are skipped after $C_2$ is accepted}};
-\draw[arrow] (bounds) -- (layer);
+\node[wide, structural] (filter) at (1.85,-4.50)
+  {\textbf{Global filter}\quad deduplicate candidates and remove strict subsets};
+\draw[arrow] (m1.south) -- ([xshift=-18mm]filter.north);
+\draw[arrow] (c2.south) -- ([xshift=18mm]filter.north);
 
-\node[box, structural, minimum width=118mm] (filter) at (8,-11.0)
-  {Candidate pool $\mathcal F=\{C_1,C_2\}$\\
-   exact deduplication and global strict-containment filtering};
-\draw[arrow] (c1.south) -- (c1.south |- filter.north);
-\draw[arrow] (layer.south) -- (layer.south |- filter.north);
-\node[box, accepted, minimum width=90mm]
-  (out) at (8,-13.2) {Output $\mathcal R=\{C_1,C_2\}$};
+\node[box, accepted, text width=38mm, minimum height=8mm] (out) at (1.85,-5.55)
+  {\textbf{Output}\quad $\mathcal R=\{C_1,C_2\}$};
 \draw[arrow] (filter) -- (out);
 \end{tikzpicture}
 \end{document}

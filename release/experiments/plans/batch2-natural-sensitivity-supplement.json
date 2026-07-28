@@ -1,0 +1,25 @@
+{
+  "name": "batch2-natural-sensitivity-supplement",
+  "tasks": [
+    {"algorithm": 2, "mode": "raw", "dataset": 11, "tau": 0.68185, "threads": 32, "timeout_seconds": 3600, "repetitions": 3},
+    {"algorithm": 3, "mode": "raw", "dataset": 11, "tau": 0.68185, "threads": 32, "timeout_seconds": 3600, "repetitions": 3},
+    {"algorithm": 4, "mode": "raw", "dataset": 11, "tau": 0.68185, "threads": 32, "timeout_seconds": 3600, "repetitions": 3},
+    {"algorithm": 2, "mode": "raw", "dataset": 11, "tau": 0.773547, "threads": 32, "timeout_seconds": 3600, "repetitions": 3},
+    {"algorithm": 3, "mode": "raw", "dataset": 11, "tau": 0.773547, "threads": 32, "timeout_seconds": 3600, "repetitions": 3},
+    {"algorithm": 4, "mode": "raw", "dataset": 11, "tau": 0.773547, "threads": 32, "timeout_seconds": 3600, "repetitions": 3},
+    {"algorithm": 2, "mode": "raw", "dataset": 11, "tau": 0.872133, "threads": 32, "timeout_seconds": 3600, "repetitions": 3},
+    {"algorithm": 3, "mode": "raw", "dataset": 11, "tau": 0.872133, "threads": 32, "timeout_seconds": 3600, "repetitions": 3},
+    {"algorithm": 4, "mode": "raw", "dataset": 11, "tau": 0.872133, "threads": 32, "timeout_seconds": 3600, "repetitions": 3},
+    {"algorithm": 2, "mode": "raw", "dataset": 11, "tau": 0.909257, "threads": 32, "timeout_seconds": 3600, "repetitions": 3},
+    {"algorithm": 3, "mode": "raw", "dataset": 11, "tau": 0.909257, "threads": 32, "timeout_seconds": 3600, "repetitions": 3},
+    {"algorithm": 4, "mode": "raw", "dataset": 11, "tau": 0.909257, "threads": 32, "timeout_seconds": 3600, "repetitions": 3},
+    {"algorithm": 2, "mode": "raw", "dataset": 11, "tau": 0.924347, "threads": 32, "timeout_seconds": 3600, "repetitions": 3},
+    {"algorithm": 3, "mode": "raw", "dataset": 11, "tau": 0.924347, "threads": 32, "timeout_seconds": 3600, "repetitions": 3},
+    {"algorithm": 4, "mode": "raw", "dataset": 11, "tau": 0.924347, "threads": 32, "timeout_seconds": 3600, "repetitions": 3},
+
+    {"algorithm": 3, "mode": "raw", "dataset": 7, "tau": -0.0452358, "threads": 32, "timeout_seconds": 3600, "repetitions": 3},
+    {"algorithm": 3, "mode": "raw", "dataset": 7, "tau": 0.02516, "threads": 32, "timeout_seconds": 3600, "repetitions": 3},
+    {"algorithm": 3, "mode": "raw", "dataset": 7, "tau": 0.189047, "threads": 32, "timeout_seconds": 3600, "repetitions": 3},
+    {"algorithm": 3, "mode": "raw", "dataset": 7, "tau": 0.300316, "threads": 32, "timeout_seconds": 3600, "repetitions": 3}
+  ]
+}

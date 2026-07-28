@@ -1,0 +1,7 @@
+dataset,quantile,strategy,seconds,min_seconds,max_seconds,memory_gib,acmsc_count
+ogbn-arxiv,95,Canonical,0.388,0.381,0.399,0.39,53208
+ogbn-arxiv,95,Visited DFS,2.432,2.397,2.534,0.53,53208
+ogbn-arxiv,95,Layered,1.635,1.527,1.646,0.49,53208
+sc-nasasrb,80,Canonical,0.729,0.725,0.758,0.22,834914
+sc-nasasrb,80,Visited DFS,3.069,2.928,3.128,0.64,834914
+sc-nasasrb,80,Layered,3.922,3.898,4.015,0.81,834914

@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "name": "email-Enron",
+  "created_utc": "2026-07-24T11:24:20.048648+00:00",
+  "source_url": "https://snap.stanford.edu/data/email-Enron.html",
+  "source": {
+    "path": "dataset/Raw/snap/email-Enron.txt.gz",
+    "bytes": 1055993,
+    "sha256": "55cfead79b1f0161786179a48796c2a119bd7026a246238b257b6be9d8b69b68"
+  },
+  "conversion": {
+    "undirected": true,
+    "self_loops_removed": true,
+    "duplicate_edges_removed": true,
+    "vertex_mapping": "ascending source identifier to contiguous zero-based identifier",
+    "ordered_source_ids_sha256": "f6ffde1712680fe80fb6ad7c20c62371847c8aa22003a9b2fce5e5f4204c5ad9"
+  },
+  "graph": {
+    "path": "dataset/Processed/email-Enron/graph.txt",
+    "vertices": 36692,
+    "edges": 183831,
+    "bytes": 1840740,
+    "sha256": "59ec1e8d2e58095ee73477818298005bf3382a09bb5a694a0497566839f6db31"
+  }
+}

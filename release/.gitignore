@@ -1,0 +1,16 @@
+build/
+dataset/downloads/
+dataset/dataset/
+dataset/vectors/
+dataset/vectors-256/
+dataset/Processed/
+results/runs/
+*.exe
+*.out
+*.log
+*.aux
+*.pyc
+__pycache__/
+.venv/
+.vscode/
+.idea/

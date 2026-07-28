@@ -1,0 +1,465 @@
+{
+  "schema_version": 1,
+  "source_manifest": "experiments/archive/batch2-main-fb15k-current.manifest.json",
+  "source_run": "batch2-main-fb15k-current",
+  "source_plan_summary": {
+    "attempts": 17,
+    "planned_tasks": 16,
+    "attempted_tasks": 16,
+    "completed_tasks": 16,
+    "unattempted_tasks": 0,
+    "unattempted_task_ids": [],
+    "plan_complete": true,
+    "status_counts": {
+      "completed": 16,
+      "tle": 1
+    }
+  },
+  "groups": [
+    {
+      "configuration": {
+        "algorithm": 3,
+        "mode": "raw",
+        "dataset": 7,
+        "tau": 0.117534,
+        "threads": 32,
+        "timeout_seconds": 3600,
+        "graph": null,
+        "vectors": null,
+        "capture_cliques": false,
+        "defines": {},
+        "warmup": false
+      },
+      "status_counts": {
+        "completed": 3
+      },
+      "timing": {
+        "completed_repetitions": 3,
+        "algorithm_ms_median": 289,
+        "algorithm_ms_min": 280,
+        "algorithm_ms_max": 299,
+        "wall_seconds_median": 0.6051615999895148,
+        "peak_memory_gib_median": 0.11,
+        "peak_memory_gib_max": 0.11
+      },
+      "result": {
+        "clique_count": 140645,
+        "size_histogram": {
+          "10": 607,
+          "11": 592,
+          "12": 517,
+          "13": 617,
+          "14": 628,
+          "15": 801,
+          "16": 668,
+          "17": 583,
+          "18": 400,
+          "19": 295,
+          "2": 33184,
+          "20": 349,
+          "21": 332,
+          "22": 366,
+          "23": 478,
+          "24": 695,
+          "25": 389,
+          "26": 120,
+          "27": 21,
+          "28": 4,
+          "3": 47994,
+          "4": 27583,
+          "5": 12451,
+          "6": 6068,
+          "7": 2683,
+          "8": 1491,
+          "9": 729
+        }
+      }
+    },
+    {
+      "configuration": {
+        "algorithm": 3,
+        "mode": "raw",
+        "dataset": 7,
+        "tau": 0.117534,
+        "threads": 32,
+        "timeout_seconds": 3600,
+        "graph": null,
+        "vectors": null,
+        "capture_cliques": false,
+        "defines": {},
+        "warmup": true
+      },
+      "status_counts": {
+        "completed": 1
+      },
+      "timing": {
+        "completed_repetitions": 1,
+        "algorithm_ms_median": 319,
+        "algorithm_ms_min": 319,
+        "algorithm_ms_max": 319,
+        "wall_seconds_median": 0.5916988000099082,
+        "peak_memory_gib_median": 0.11,
+        "peak_memory_gib_max": 0.11
+      },
+      "result": {
+        "clique_count": 140645,
+        "size_histogram": {
+          "10": 607,
+          "11": 592,
+          "12": 517,
+          "13": 617,
+          "14": 628,
+          "15": 801,
+          "16": 668,
+          "17": 583,
+          "18": 400,
+          "19": 295,
+          "2": 33184,
+          "20": 349,
+          "21": 332,
+          "22": 366,
+          "23": 478,
+          "24": 695,
+          "25": 389,
+          "26": 120,
+          "27": 21,
+          "28": 4,
+          "3": 47994,
+          "4": 27583,
+          "5": 12451,
+          "6": 6068,
+          "7": 2683,
+          "8": 1491,
+          "9": 729
+        }
+      }
+    },
+    {
+      "configuration": {
+        "algorithm": 3,
+        "mode": "raw",
+        "dataset": 7,
+        "tau": 0.234886,
+        "threads": 32,
+        "timeout_seconds": 3600,
+        "graph": null,
+        "vectors": null,
+        "capture_cliques": false,
+        "defines": {},
+        "warmup": false
+      },
+      "status_counts": {
+        "completed": 3
+      },
+      "timing": {
+        "completed_repetitions": 3,
+        "algorithm_ms_median": 10556,
+        "algorithm_ms_min": 10538,
+        "algorithm_ms_max": 10817,
+        "wall_seconds_median": 10.864493300003232,
+        "peak_memory_gib_median": 0.11,
+        "peak_memory_gib_max": 0.11
+      },
+      "result": {
+        "clique_count": 76106,
+        "size_histogram": {
+          "10": 1277,
+          "11": 1529,
+          "12": 1400,
+          "13": 1143,
+          "14": 1077,
+          "15": 972,
+          "16": 699,
+          "17": 475,
+          "18": 464,
+          "19": 350,
+          "2": 18212,
+          "20": 328,
+          "21": 332,
+          "22": 362,
+          "23": 475,
+          "24": 694,
+          "25": 388,
+          "26": 120,
+          "27": 21,
+          "28": 4,
+          "3": 19234,
+          "4": 9733,
+          "5": 5293,
+          "6": 4020,
+          "7": 2998,
+          "8": 2499,
+          "9": 2007
+        }
+      }
+    },
+    {
+      "configuration": {
+        "algorithm": 3,
+        "mode": "raw",
+        "dataset": 7,
+        "tau": 0.234886,
+        "threads": 32,
+        "timeout_seconds": 3600,
+        "graph": null,
+        "vectors": null,
+        "capture_cliques": false,
+        "defines": {},
+        "warmup": true
+      },
+      "status_counts": {
+        "completed": 1
+      },
+      "timing": {
+        "completed_repetitions": 1,
+        "algorithm_ms_median": 10625,
+        "algorithm_ms_min": 10625,
+        "algorithm_ms_max": 10625,
+        "wall_seconds_median": 10.888708799990127,
+        "peak_memory_gib_median": 0.11,
+        "peak_memory_gib_max": 0.11
+      },
+      "result": {
+        "clique_count": 76106,
+        "size_histogram": {
+          "10": 1277,
+          "11": 1529,
+          "12": 1400,
+          "13": 1143,
+          "14": 1077,
+          "15": 972,
+          "16": 699,
+          "17": 475,
+          "18": 464,
+          "19": 350,
+          "2": 18212,
+          "20": 328,
+          "21": 332,
+          "22": 362,
+          "23": 475,
+          "24": 694,
+          "25": 388,
+          "26": 120,
+          "27": 21,
+          "28": 4,
+          "3": 19234,
+          "4": 9733,
+          "5": 5293,
+          "6": 4020,
+          "7": 2998,
+          "8": 2499,
+          "9": 2007
+        }
+      }
+    },
+    {
+      "configuration": {
+        "algorithm": 3,
+        "mode": "raw",
+        "dataset": 7,
+        "tau": 0.537601,
+        "threads": 32,
+        "timeout_seconds": 3600,
+        "graph": null,
+        "vectors": null,
+        "capture_cliques": false,
+        "defines": {},
+        "warmup": false
+      },
+      "status_counts": {
+        "completed": 3
+      },
+      "timing": {
+        "completed_repetitions": 3,
+        "algorithm_ms_median": 40806,
+        "algorithm_ms_min": 40663,
+        "algorithm_ms_max": 41773,
+        "wall_seconds_median": 41.01771359999839,
+        "peak_memory_gib_median": 0.1,
+        "peak_memory_gib_max": 0.1
+      },
+      "result": {
+        "clique_count": 7476,
+        "size_histogram": {
+          "10": 6,
+          "11": 53,
+          "12": 187,
+          "13": 66,
+          "14": 80,
+          "15": 439,
+          "16": 834,
+          "17": 65,
+          "18": 40,
+          "19": 546,
+          "2": 1517,
+          "20": 780,
+          "21": 740,
+          "3": 557,
+          "4": 429,
+          "5": 315,
+          "6": 271,
+          "7": 211,
+          "8": 327,
+          "9": 13
+        }
+      }
+    },
+    {
+      "configuration": {
+        "algorithm": 3,
+        "mode": "raw",
+        "dataset": 7,
+        "tau": 0.537601,
+        "threads": 32,
+        "timeout_seconds": 3600,
+        "graph": null,
+        "vectors": null,
+        "capture_cliques": false,
+        "defines": {},
+        "warmup": true
+      },
+      "status_counts": {
+        "completed": 1,
+        "tle": 1
+      },
+      "timing": {
+        "completed_repetitions": 1,
+        "algorithm_ms_median": 40355,
+        "algorithm_ms_min": 40355,
+        "algorithm_ms_max": 40355,
+        "wall_seconds_median": 40.58789370000886,
+        "peak_memory_gib_median": 0.1,
+        "peak_memory_gib_max": 0.1
+      },
+      "result": {
+        "clique_count": 7476,
+        "size_histogram": {
+          "10": 6,
+          "11": 53,
+          "12": 187,
+          "13": 66,
+          "14": 80,
+          "15": 439,
+          "16": 834,
+          "17": 65,
+          "18": 40,
+          "19": 546,
+          "2": 1517,
+          "20": 780,
+          "21": 740,
+          "3": 557,
+          "4": 429,
+          "5": 315,
+          "6": 271,
+          "7": 211,
+          "8": 327,
+          "9": 13
+        }
+      }
+    },
+    {
+      "configuration": {
+        "algorithm": 4,
+        "mode": "raw",
+        "dataset": 7,
+        "tau": 0.537601,
+        "threads": 32,
+        "timeout_seconds": 3600,
+        "graph": null,
+        "vectors": null,
+        "capture_cliques": false,
+        "defines": {},
+        "warmup": false
+      },
+      "status_counts": {
+        "completed": 3
+      },
+      "timing": {
+        "completed_repetitions": 3,
+        "algorithm_ms_median": 6543,
+        "algorithm_ms_min": 6445,
+        "algorithm_ms_max": 6580,
+        "wall_seconds_median": 6.773088700007065,
+        "peak_memory_gib_median": 0.09,
+        "peak_memory_gib_max": 0.09
+      },
+      "result": {
+        "clique_count": 7476,
+        "size_histogram": {
+          "10": 6,
+          "11": 53,
+          "12": 187,
+          "13": 66,
+          "14": 80,
+          "15": 439,
+          "16": 834,
+          "17": 65,
+          "18": 40,
+          "19": 546,
+          "2": 1517,
+          "20": 780,
+          "21": 740,
+          "3": 557,
+          "4": 429,
+          "5": 315,
+          "6": 271,
+          "7": 211,
+          "8": 327,
+          "9": 13
+        }
+      }
+    },
+    {
+      "configuration": {
+        "algorithm": 4,
+        "mode": "raw",
+        "dataset": 7,
+        "tau": 0.537601,
+        "threads": 32,
+        "timeout_seconds": 3600,
+        "graph": null,
+        "vectors": null,
+        "capture_cliques": false,
+        "defines": {},
+        "warmup": true
+      },
+      "status_counts": {
+        "completed": 1
+      },
+      "timing": {
+        "completed_repetitions": 1,
+        "algorithm_ms_median": 6881,
+        "algorithm_ms_min": 6881,
+        "algorithm_ms_max": 6881,
+        "wall_seconds_median": 7.190890300000319,
+        "peak_memory_gib_median": 0.09,
+        "peak_memory_gib_max": 0.09
+      },
+      "result": {
+        "clique_count": 7476,
+        "size_histogram": {
+          "10": 6,
+          "11": 53,
+          "12": 187,
+          "13": 66,
+          "14": 80,
+          "15": 439,
+          "16": 834,
+          "17": 65,
+          "18": 40,
+          "19": 546,
+          "2": 1517,
+          "20": 780,
+          "21": 740,
+          "3": 557,
+          "4": 429,
+          "5": 315,
+          "6": 271,
+          "7": 211,
+          "8": 327,
+          "9": 13
+        }
+      }
+    }
+  ]
+}

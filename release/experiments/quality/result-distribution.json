@@ -1,0 +1,201 @@
+{
+  "schema_version": 1,
+  "datasets": [
+    "FB15K-237",
+    "ogbn-arxiv",
+    "sc-nasasrb",
+    "sc-ldoor"
+  ],
+  "quantiles": [
+    20,
+    50,
+    80,
+    95,
+    99
+  ],
+  "manifests": {
+    "experiments/archive/batch11-main-core-current.manifest.json": "3ad1bf8ab591b1397b9e0fa99d9b8bd246bfea11a91f9063ee1fe6ca0898f0c3",
+    "experiments/archive/batch12-threshold-fb15k-current.manifest.json": "c039db00aae857d17820a2e4446107ac37ef7d08d47ffc2d4a7cb77fcabd7523",
+    "experiments/archive/batch12-threshold-ogbn-current.manifest.json": "d6190dbb70f0f9f6eb5687cb599622a951985c3f2fa242900cb280327951129a",
+    "experiments/archive/batch14-threshold-ldoor-formal-repeats.manifest.json": "40caaf6bfd7f1a810b00ff783477a0faabd49a7ba0c82c13a670b17abedf2654",
+    "experiments/archive/batch11-main-alg3-ldoor-q80-repeat.manifest.json": "1ea70490491ed22ced1cc38b738d848d57ec3a4de3612b10716742fe392db676",
+    "experiments/archive/batch2-main-structural-uniform-ds2.manifest.json": "7e2dfb3897e32de2ec2fc92cc1fe8d4ce60dc2c690e9447a41a1163b37689a8a",
+    "experiments/archive/batch22-nasasrb-result-distribution-q95.manifest.json": "cc9e3851a013cf3ec3ff39dc96f25961e833ec122d6f67d949e30d9668fbec9d",
+    "experiments/archive/batch13-main-structbk-formal-current.manifest.json": "7b7373926924f73ee42759ac202fbe1fbdccd16861cd4452eb3f369fc2b385bc",
+    "experiments/archive/batch18-ogbn-quality-capture.manifest.json": "706d7463d57ddf83b52764c7bbe853138d6ab2f00c679236bf73e763cad7c94c"
+  },
+  "sources": {
+    "FB15K-237-StructBK": {
+      "result_json": "experiment-output/batch13-main-structbk-formal-current/1564e8b601cc2c5c.attempt-001.json",
+      "result_json_sha256": "ac4a20bc73f5e409798d71f3b0617f5cf78e18172dc950e7999ee8fccf06be9d",
+      "task_id": "1564e8b601cc2c5c",
+      "build_fingerprint": "9cd7dde7d8a55e6b",
+      "source_verification": "verified_current"
+    },
+    "FB15K-237-q20": {
+      "result_json": "experiment-output/batch11-main-core-current/2580a09e58097974.attempt-001.json",
+      "result_json_sha256": "a0c202985cea92b903456f16df88d0516b0c5fda4ca1378de8f4bb9cc60f85dc",
+      "task_id": "2580a09e58097974",
+      "build_fingerprint": "64e4967861b335bf",
+      "source_verification": "verified_current"
+    },
+    "FB15K-237-q50": {
+      "result_json": "experiment-output/batch12-threshold-fb15k-current/2a36fa4a8b172e68.attempt-001.json",
+      "result_json_sha256": "74c65ef1c3b8d506ea9a0e7d0c10e7c1c71bcc90cdf488421c9ffd0124baf465",
+      "task_id": "2a36fa4a8b172e68",
+      "build_fingerprint": "64e4967861b335bf",
+      "source_verification": "verified_current"
+    },
+    "FB15K-237-q80": {
+      "result_json": "experiment-output/batch11-main-core-current/4692a30bbdda93c8.attempt-001.json",
+      "result_json_sha256": "112635868207e2d01d3a5efba3968d13879ba2e4b493793f87b6e4cb6657c8cb",
+      "task_id": "4692a30bbdda93c8",
+      "build_fingerprint": "64e4967861b335bf",
+      "source_verification": "verified_current"
+    },
+    "FB15K-237-q95": {
+      "result_json": "experiment-output/batch12-threshold-fb15k-current/0fc17f70079ba33f.attempt-001.json",
+      "result_json_sha256": "d97ae951126151a17d71a3d04aeeebcfb7000bec03f1e16b173705168398829d",
+      "task_id": "0fc17f70079ba33f",
+      "build_fingerprint": "64e4967861b335bf",
+      "source_verification": "verified_current"
+    },
+    "FB15K-237-q99": {
+      "result_json": "experiment-output/batch11-main-core-current/134ac8dccdad2c29.attempt-001.json",
+      "result_json_sha256": "2f5274143b5e24be03ca84450dbaa4489ccea5622fe4724a4c6ec885a5bdc350",
+      "task_id": "134ac8dccdad2c29",
+      "build_fingerprint": "64e4967861b335bf",
+      "source_verification": "verified_current"
+    },
+    "ogbn-arxiv-StructBK": {
+      "result_json": "experiment-output/batch18-ogbn-quality-capture/0c3234eefeff4a17.attempt-001.json",
+      "result_json_sha256": "f6e4e10dd1f2a9a6f2ae70ac6089a93a246cd24faee253a28385a0978f3cbd03",
+      "task_id": "0c3234eefeff4a17",
+      "build_fingerprint": "9cd7dde7d8a55e6b",
+      "source_verification": "verified_current"
+    },
+    "ogbn-arxiv-q20": {
+      "result_json": "experiment-output/batch11-main-core-current/21287018171368b0.attempt-001.json",
+      "result_json_sha256": "0083c0db3a44a975eb690963edd47b12748751efac296112d7570ad377479f95",
+      "task_id": "21287018171368b0",
+      "build_fingerprint": "64e4967861b335bf",
+      "source_verification": "verified_current"
+    },
+    "ogbn-arxiv-q50": {
+      "result_json": "experiment-output/batch12-threshold-ogbn-current/41b4cd4e93fee2e6.attempt-001.json",
+      "result_json_sha256": "324ed726383f75922703d0ec4e144affd76f5183ef35d1091eaf3ddefcd16f4e",
+      "task_id": "41b4cd4e93fee2e6",
+      "build_fingerprint": "64e4967861b335bf",
+      "source_verification": "verified_current"
+    },
+    "ogbn-arxiv-q80": {
+      "result_json": "experiment-output/batch11-main-core-current/4fd8827bf5b27a6e.attempt-001.json",
+      "result_json_sha256": "fdaa0bdea2ffedbabd3cb13e987a8686a4f573e8d9896f2a6eeb779ef2f33b3e",
+      "task_id": "4fd8827bf5b27a6e",
+      "build_fingerprint": "64e4967861b335bf",
+      "source_verification": "verified_current"
+    },
+    "ogbn-arxiv-q95": {
+      "result_json": "experiment-output/batch12-threshold-ogbn-current/a1c55125631ff03b.attempt-001.json",
+      "result_json_sha256": "a6255be3409600bf3dac13f153cb9189d768348dbcbd13122d4a4020a2d446ab",
+      "task_id": "a1c55125631ff03b",
+      "build_fingerprint": "64e4967861b335bf",
+      "source_verification": "verified_current"
+    },
+    "ogbn-arxiv-q99": {
+      "result_json": "experiment-output/batch11-main-core-current/1fb997fa56becaca.attempt-001.json",
+      "result_json_sha256": "f625fa42b087d106f4193e097360aee797ebd19cc10bf4fc9f28ca6ef55adba8",
+      "task_id": "1fb997fa56becaca",
+      "build_fingerprint": "64e4967861b335bf",
+      "source_verification": "verified_current"
+    },
+    "sc-nasasrb-StructBK": {
+      "result_json": "experiment-output/batch13-main-structbk-formal-current/49af67ae0e0140b5.attempt-001.json",
+      "result_json_sha256": "ba1d3cdf49c499fa7d3ac3f8366a8e1cf249be99b4d032ee9c08e7db1ed635db",
+      "task_id": "49af67ae0e0140b5",
+      "build_fingerprint": "9cd7dde7d8a55e6b",
+      "source_verification": "verified_current"
+    },
+    "sc-nasasrb-q20": {
+      "result_json": "experiment-output/batch11-main-core-current/3e6d59b25d1484a5.attempt-001.json",
+      "result_json_sha256": "a9671fc2fb8e897275efab7b8ebd4c13a860f3803e961b546fdd4614e9ac7fb7",
+      "task_id": "3e6d59b25d1484a5",
+      "build_fingerprint": "64e4967861b335bf",
+      "source_verification": "verified_current"
+    },
+    "sc-nasasrb-q50": {
+      "result_json": "experiment-output/batch2-main-structural-uniform-ds2/2f93b121e921a476.attempt-001.json",
+      "result_json_sha256": "6f77c0875bf3bcd4f97232989ee56b154eb4d83767bc3dee30de09c0e99b616a",
+      "task_id": "2f93b121e921a476",
+      "build_fingerprint": "107cf826e22b1cac",
+      "source_verification": "verified_current"
+    },
+    "sc-nasasrb-q80": {
+      "result_json": "experiment-output/batch11-main-core-current/5c903090c09afdf6.attempt-001.json",
+      "result_json_sha256": "ab68160c2aef4af78129135ab8a9e82616cd941ed322f170f6994ff44d54d255",
+      "task_id": "5c903090c09afdf6",
+      "build_fingerprint": "64e4967861b335bf",
+      "source_verification": "verified_current"
+    },
+    "sc-nasasrb-q95": {
+      "result_json": "experiment-output/batch22-nasasrb-result-distribution-q95/19bb89f8b132265a.attempt-001.json",
+      "result_json_sha256": "074d403c08286b3994a1105bceb66dfedc962eb6d5c727100ff9aafd92371c18",
+      "task_id": "19bb89f8b132265a",
+      "build_fingerprint": "64e4967861b335bf",
+      "source_verification": "verified_current"
+    },
+    "sc-nasasrb-q99": {
+      "result_json": "experiment-output/batch11-main-core-current/35efb06ccbb74d5c.attempt-001.json",
+      "result_json_sha256": "151ac16656f827a398410f98d98b2d2bd7e94fede875a9e9d4509c27984cb921",
+      "task_id": "35efb06ccbb74d5c",
+      "build_fingerprint": "64e4967861b335bf",
+      "source_verification": "verified_current"
+    },
+    "sc-ldoor-StructBK": {
+      "result_json": "experiment-output/batch13-main-structbk-formal-current/0d5baecf6aeb8eb2.attempt-001.json",
+      "result_json_sha256": "28273c88a0c98af4392e00485cead3004110bf3cf837c1c7da7113a7e221f4fa",
+      "task_id": "0d5baecf6aeb8eb2",
+      "build_fingerprint": "9cd7dde7d8a55e6b",
+      "source_verification": "verified_current"
+    },
+    "sc-ldoor-q20": {
+      "result_json": "experiment-output/batch11-main-core-current/24e541da8733b2e0.attempt-001.json",
+      "result_json_sha256": "872ef56ff8bd203b0925ce682a471c16a69b0b5cce6ac8ce765f7b65a6545aea",
+      "task_id": "24e541da8733b2e0",
+      "build_fingerprint": "64e4967861b335bf",
+      "source_verification": "verified_current"
+    },
+    "sc-ldoor-q50": {
+      "result_json": "experiment-output/batch14-threshold-ldoor-formal-repeats/3d034384ad4f4eed.attempt-001.json",
+      "result_json_sha256": "f5b267d222d559491489f0dcc796c258e6c79e488cd1939d87ffec58b0615820",
+      "task_id": "3d034384ad4f4eed",
+      "build_fingerprint": "64e4967861b335bf",
+      "source_verification": "verified_current"
+    },
+    "sc-ldoor-q80": {
+      "result_json": "experiment-output/batch11-main-alg3-ldoor-q80-repeat/4271abd7aa5c35a1.attempt-001.json",
+      "result_json_sha256": "3e0819af729be3e9e94dd1ff0912eb6cd32f5eee8a6601806ec4b67e0bf68117",
+      "task_id": "4271abd7aa5c35a1",
+      "build_fingerprint": "64e4967861b335bf",
+      "source_verification": "verified_current"
+    },
+    "sc-ldoor-q95": {
+      "result_json": "experiment-output/batch14-threshold-ldoor-formal-repeats/42a6fb9d82389201.attempt-001.json",
+      "result_json_sha256": "0ea409df15feb175115036404d495499bbf03299fbe28db6b79640a4461661cd",
+      "task_id": "42a6fb9d82389201",
+      "build_fingerprint": "64e4967861b335bf",
+      "source_verification": "verified_current"
+    },
+    "sc-ldoor-q99": {
+      "result_json": "experiment-output/batch11-main-core-current/10d4de3dbfffb312.attempt-001.json",
+      "result_json_sha256": "15a150a039b14feab061366cc91caed380c4f6a87f072ffb185026d031965644",
+      "task_id": "10d4de3dbfffb312",
+      "build_fingerprint": "64e4967861b335bf",
+      "source_verification": "verified_current"
+    }
+  },
+  "normalization": {
+    "count_ratio": "ACMSC count divided by structural maximal-clique count on the same graph",
+    "mean_size_ratio": "mean ACMSC size divided by mean structural maximal-clique size on the same graph"
+  }
+}

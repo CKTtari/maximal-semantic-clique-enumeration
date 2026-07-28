@@ -1,0 +1,11 @@
+{
+  "name": "batch11-main-alg4-open-cells",
+  "tasks": [
+    {"algorithm": 4, "mode": "raw", "dataset": 7, "tau": 0.02516, "threads": 32, "timeout_seconds": 1200, "repetitions": 1},
+    {"algorithm": 4, "mode": "raw", "dataset": 7, "tau": 0.234886, "threads": 32, "timeout_seconds": 1200, "repetitions": 1},
+    {"algorithm": 4, "mode": "raw", "dataset": 2, "tau": -0.0526835, "threads": 32, "timeout_seconds": 1200, "repetitions": 1},
+    {"algorithm": 4, "mode": "raw", "dataset": 3, "tau": -0.0527048, "threads": 32, "timeout_seconds": 1200, "repetitions": 1},
+    {"algorithm": 4, "mode": "raw", "dataset": 14, "tau": -0.0526536, "threads": 32, "timeout_seconds": 1200, "repetitions": 1},
+    {"algorithm": 4, "mode": "raw", "dataset": 1, "tau": -0.0526831, "threads": 32, "timeout_seconds": 1200, "repetitions": 1}
+  ]
+}

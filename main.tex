@@ -27,6 +27,8 @@
 \pgfplotsset{compat=1.17}
 \usepackage{amsthm}
 \usepackage{multirow}
+\usepackage{subcaption}
+\usepackage{placeins}
 \newtheorem{problem}{Problem}
 
 \newtheorem{definition}{Definition}
@@ -52,16 +54,16 @@
 %% ---------------------------------------------------------------
 %% Unified notation macros (single source of truth)
 %%
-%%   \avgsim(C)   — average pairwise similarity of clique C
+%%   \avgsim(C)   闂?average pairwise similarity of clique C
 %%                  = (2 / |C|(|C|-1)) * sum_{u<v in C} sim(u,v)
 %%
-%%   \simsum(C)   — total pairwise similarity sum of clique C
+%%   \simsum(C)   闂?total pairwise similarity sum of clique C
 %%                  = sum_{u<v in C} sim(u,v)
 %%
-%%   \W(C)        — semantic surplus of clique C w.r.t. threshold tau
+%%   \W(C)        闂?semantic surplus of clique C w.r.t. threshold tau
 %%                  = simsum(C) - tau * C(|C|,2)  (positive iff avgsim >= tau)
 %%
-%%   \acc[v]      — accumulated similarity of candidate v to current clique C
+%%   \acc[v]      闂?accumulated similarity of candidate v to current clique C
 %%                  = sum_{u in C} sim(u,v)
 %%
 %%                  = avgsim(C) * C(|C|+1,2) - simsum(C)
@@ -101,7 +103,7 @@
 %% The abstract is a short summary of the work to be presented in the
 %% article.
 \begin{abstract}
-  Maximal clique enumeration (MCE) is a fundamental primitive for discovering cohesive structures in graph data, but structural completeness alone cannot distinguish semantically coherent groups in vector-attributed graphs. Enforcing collective semantic agreement is challenging because a global average-similarity constraint is non-monotone: a feasible clique may have infeasible subsets, invalidating the pivot invariants that make classical MCE scalable. We formalize \emph{average-constrained maximal semantic clique} (ACMSC) enumeration and first establish \semBK, a correct pivot-free baseline. We then develop two exact algorithms. \subEnum\ decouples structural and semantic search, applying Tomita pivoting in a $\tau$-agnostic structural phase and admissible top-edge and vertex-contribution bounds during exact subset enumeration. \monoSemMCE\ specializes in selective thresholds. Its key property is that every feasible clique has a feasible parent obtained by deterministically deleting a minimum-contribution vertex. The resulting reverse search follows only unique-parent edges and generates each feasible state once without visited tables or materialized size layers. Experiments verify exact output equality on all tested configurations. Across eight datasets, \subEnum\ and \monoSemMCE\ jointly complete all 24 common-grid workloads, whereas \semBK\ reaches the 1,200-second limit on 15; at $q_{99}$, \monoSemMCE\ is $2.17\times$--$6.24\times$ faster than \subEnum\ across all eight datasets and reaches $5.62\times$ parallel speedup. Output studies further show that ACMSCs attain higher semantic purity and vertex coverage than pairwise-threshold mining across $q_{50}$--$q_{99}$.
+  Maximal clique enumeration (MCE) is a fundamental primitive for discovering cohesive structures in graph data, but structural completeness alone cannot distinguish semantically coherent groups in vector-attributed graphs. Enforcing collective semantic agreement is challenging because a global average-similarity constraint is non-monotone: a feasible clique may have infeasible subsets, invalidating the pivot invariants that make classical MCE scalable. We formalize \emph{maximal semantic clique} (MSC) enumeration under an average pairwise similarity threshold and first establish \semBK, a correct pivot-free baseline. We then develop two exact algorithms. \subEnum\ decouples structural and semantic search, applying Tomita pivoting in a $\tau$-agnostic structural phase and admissible top-edge and vertex-contribution bounds during exact subset enumeration. \monoSemMCE\ specializes in selective thresholds. Its key property is that every feasible clique has a feasible parent obtained by deterministically deleting a minimum-contribution vertex. The resulting reverse search follows only unique-parent edges and generates each feasible state once without visited tables or materialized size layers. Experiments verify exact output equality on all tested configurations. Across eight datasets, \subEnum\ and \monoSemMCE\ jointly complete all 24 common-grid workloads, whereas \semBK\ reaches the 1,200-second limit on 15; at $q_{99}$, \monoSemMCE\ is $2.17\times$--$6.24\times$ faster than \subEnum\ across all eight datasets and reaches $5.62\times$ parallel speedup. Output studies further show that MSCs attain higher semantic purity and vertex coverage than pairwise-threshold mining across $q_{50}$--$q_{99}$.
 \end{abstract}
 
 \maketitle
@@ -118,16 +120,16 @@ Graphs with rich vertex attributes are ubiquitous in modern data management and 
 
 The maximal clique is a classic structural model of cohesion: every pair of vertices is connected, guaranteeing the highest possible edge density. However, in vector-attributed graphs, a clique may group vertices that are heterogeneous in the attribute space. Conversely, attribute-based community detection methods (e.g., modularity optimization with attribute homogeneity) often sacrifice structural guarantees and produce loosely connected groups. This tension motivates a joint model that enforces both structural completeness and semantic coherence.
 
-\stitle{The ACMSC Problem.}
-We study the problem of enumerating \emph{average-constrained maximal semantic cliques} (ACMSCs) in a vector-attributed graph. Each vertex carries a real-valued attribute vector; pairwise semantic similarity is measured by cosine similarity. Given a threshold $\tau$, a clique $C$ is \emph{average-constrained} if its average pairwise similarity is at least $\tau$. An ACMSC is inclusion-wise maximal: no strict superset of $C$ is both a clique and average-constrained. The task is to enumerate \emph{all} ACMSCs of the input graph.
+\stitle{The MSC Problem.}
+We study the problem of enumerating \emph{maximal semantic cliques} (MSCs) in a vector-attributed graph. Each vertex carries a real-valued attribute vector; pairwise semantic similarity is measured by cosine similarity. Given a threshold $\tau$, a clique is a $\tau$-semantic clique if its average pairwise similarity is at least $\tau$. An MSC is an inclusion-wise maximal $\tau$-semantic clique: no strict superset is also a $\tau$-semantic clique. The task is to enumerate \emph{all} MSCs of the input graph.
 
-This formulation has two salient features. First, the average constraint is a \emph{global} property of the clique: it depends on all $\binom{|C|}{2}$ pairwise similarities, not on any single edge. This makes it fundamentally different from edge-level semantic constraints (e.g., requiring every edge to exceed a threshold), which are local and monotone. Second, the average is non-monotone over the subset lattice: adding a vertex can raise or lower the average, so a partial clique that currently violates the constraint may still grow into a valid ACMSC, while one that satisfies it may admit no feasible extension. This non-monotonicity invalidates the structural invariants that underpin the efficiency of classical maximal clique enumeration (MCE) algorithms.
+This formulation has two salient features. First, the average constraint is a \emph{global} property of the clique: it depends on all $\binom{|C|}{2}$ pairwise similarities, not on any single edge. This makes it fundamentally different from edge-level semantic constraints (e.g., requiring every edge to exceed a threshold), which are local and monotone. Second, the average is non-monotone over the subset lattice: adding a vertex can raise or lower the average, so a partial clique that currently violates the constraint may still grow into a valid MSC, while one that satisfies it may admit no feasible extension. This non-monotonicity invalidates the structural invariants that underpin the efficiency of classical maximal clique enumeration (MCE) algorithms.
 
 \stitle{Why Classical MCE Does Not Suffice.}
-The Bron--Kerbosch (BK) algorithm and its modern variants achieve state-of-the-art performance for MCE through two key techniques: \emph{pivot-based pruning} (Tomita et al.) and \emph{degeneracy ordering} (Eppstein et al.). Pivot pruning relies on the fact that structural maximality is closed under supersets: if a vertex $u$ is adjacent to the current pivot $p$, any maximal clique containing $u$ also contains $p$, so $u$ can be safely suppressed as an expansion root. Under the average constraint, this closure breaks: a clique containing $u$ but not $p$ may satisfy $\avgsim \geq \tau$ while $\{p,u\}$ does not. Consequently, pivoting is not merely ineffective---it is \emph{incorrect} for ACMSC enumeration. A direct BK adaptation must therefore forgo pivoting entirely and defer all semantic evaluation to the leaves, degenerating to exhaustive structural enumeration regardless of $\tau$.
+The Bron--Kerbosch (BK) algorithm and its modern variants achieve state-of-the-art performance for MCE through two key techniques: \emph{pivot-based pruning} (Tomita et al.) and \emph{degeneracy ordering} (Eppstein et al.). Pivot pruning relies on the fact that structural maximality is closed under supersets: if a vertex $u$ is adjacent to the current pivot $p$, any maximal clique containing $u$ also contains $p$, so $u$ can be safely suppressed as an expansion root. Under the average constraint, this closure breaks: a clique containing $u$ but not $p$ may satisfy $\avgsim \geq \tau$ while $\{p,u\}$ does not. Consequently, pivoting is not merely ineffective---it is \emph{incorrect} for MSC enumeration. A direct BK adaptation must therefore forgo pivoting entirely and defer all semantic evaluation to the leaves, degenerating to exhaustive structural enumeration regardless of $\tau$.
 
 \stitle{Our Contributions.}
-This work formalizes ACMSC enumeration under inclusion-wise maximality and
+This work formalizes MSC enumeration under inclusion-wise maximality and
 establishes its computational hardness. It develops \subEnum, which separates
 structural MCE from semantic subset enumeration, and \monoSemMCE, a canonical
 reverse search specialized for selective thresholds. Experiments verify exact
@@ -180,8 +182,12 @@ heterogeneous.  To capture both aspects jointly, we introduce two companion quan
   \]
 \end{definition}
 
-Given a threshold $\tau \in [-1,1]$, we say $C$ is \emph{average-constrained} if
-$\avgsim(C) \geq \tau$.  For algorithmic purposes, we equivalently track the
+\begin{definition}[Semantic Clique]
+  Given a threshold $\tau \in [-1,1]$, a clique $C$ with $|C|\geq2$ is a
+  \emph{$\tau$-semantic clique} if $\avgsim(C) \geq \tau$.
+\end{definition}
+
+For algorithmic purposes, we equivalently track the
 \emph{semantic surplus}
 \[
   \W(C) = \simsum(C) - \tau\tbinom{k}{2},
@@ -190,13 +196,11 @@ which is non-negative if and only if $\avgsim(C) \geq \tau$.  Working with $\sim
 and $\W$ avoids division at every recursive step; $\avgsim$ is used only when a
 human-readable quantity is required.
 
-\begin{definition}[ACMSC]
-  \label{def:acmsc}
-  Given $\mathcal{G}=(V,E,\mathbf{X})$ and threshold $\tau \in [-1,1]$, a clique
-  $C \subseteq V$ is an \emph{average-constrained maximal semantic clique} (ACMSC) if
-  (i) $\avgsim(C) \geq \tau$, and
-  (ii) there is no clique $C' \supsetneq C$ such that
-  $\avgsim(C') \geq \tau$.
+\begin{definition}[MSC]
+  \label{def:msc}
+  Given $\mathcal{G}=(V,E,\mathbf{X})$ and threshold $\tau \in [-1,1]$, a
+  $\tau$-semantic clique $C \subseteq V$ is a \emph{maximal semantic clique}
+  (MSC) if there is no $\tau$-semantic clique $C' \supsetneq C$.
 \end{definition}
 
 This is inclusion-wise maximality, not merely the absence of a feasible
@@ -209,18 +213,18 @@ $\{a,b\}$ has no feasible single-vertex extension, since either three-vertex
 average is $1.6/3<0.6$, but the strict superset $\{a,b,u,v\}$ is feasible
 with average $3.6/6=0.6$.  Consequently, algorithms may use the absence of a
 feasible single extension only to generate candidates; a global containment
-test is still required for ACMSC output.
+test is still required for MSC output.
 
 \begin{figure}[!htb]
   \centering
   \includegraphics[width=0.8\linewidth,page=1]{fig/pictures.pdf}
-  \caption{Example of vector-attributed graph with semantic similarities. Each vertex has a 4-dimensional vector, and edge labels show pairwise similarities.}
+  \caption{Running example with vector attributes and edge similarities.}
   \Description{Two overlapping four-vertex cliques with six vector-labeled vertices and pairwise similarity labels.}
   \label{fig:example}
 \end{figure}
 
 \begin{example}
-  \label{ex:acmsc}
+  \label{ex:msc}
   Figure~\ref{fig:example} shows a vector-attributed graph with six vertices.
   Edge labels give the precomputed pairwise similarities.
   With threshold $\tau=0.6$, consider the two structural cliques
@@ -236,37 +240,37 @@ test is still required for ACMSC output.
     \simsum(C_2)&=2.08, & \avgsim(C_2)&\approx0.693\geq\tau,\\
     \simsum(C_3)&=2.56, & \avgsim(C_3)&\approx0.427<\tau.
   \end{align*}
-  Thus $C_1$ and $C_2$ are average-constrained, whereas the structurally valid
+  Thus $C_1$ and $C_2$ are $\tau$-semantic cliques, whereas the structurally valid
   clique $C_3$ is not.
 
-  Moreover, neither $C_1$ nor $C_2$ has a strict superset that is both a
-  clique and average-constrained, so both are ACMSCs.
+  Moreover, neither $C_1$ nor $C_2$ has a strict superset that is a
+  $\tau$-semantic clique, so both are MSCs.
 \end{example}
 
 \stitle{Problem Statement.}
-\begin{problem}[ACMSC Enumeration]
+\begin{problem}[MSC Enumeration]
 Given a vector-attributed graph $\mathcal{G}=(V,E,\mathbf{X})$ and a threshold
-$\tau \in [-1,1]$, enumerate all ACMSCs of $\mathcal{G}$.
+$\tau \in [-1,1]$, enumerate all MSCs of $\mathcal{G}$.
 \end{problem}
 
 
 \subsection{Challenges}
 \label{sec:challenges}
 \stitle{Hardness.}
-ACMSC enumeration generalizes classical MCE: when $\tau$ is at most the
+MSC enumeration generalizes classical MCE: when $\tau$ is at most the
 minimum pairwise similarity over all edges, every structural maximal
-clique satisfies the average constraint, so ACMSC enumeration coincides
+clique satisfies the average constraint, so MSC enumeration coincides
 with MCE and the $\Omega(3^{n/3})$ lower bound carries over.
 The associated decision problem is NP-complete.
 
 \begin{theorem}
   \label{thm:np-complete}
 Given $\mathcal{G}=(V,E,\mathbf{X})$, threshold $\tau\in[-1,1]$, and integer $k$,
-  deciding whether an ACMSC of size $\geq k$ exists is \emph{NP-complete}.
+  deciding whether an MSC of size $\geq k$ exists is \emph{NP-complete}.
 \end{theorem}
 \begin{proof}
   \textit{NP membership.}  The decision instance is positive if and only if
-  it contains an average-constrained clique $C$ of size at least $k$.  The
+  it contains a $\tau$-semantic clique $C$ of size at least $k$.  The
   forward implication is immediate.  For the reverse implication, the finite
   family of feasible clique supersets of $C$ contains an inclusion-wise
   maximal member, whose size is at least $|C|\geq k$.  A certificate therefore
@@ -281,22 +285,22 @@ Given $\mathcal{G}=(V,E,\mathbf{X})$, threshold $\tau\in[-1,1]$, and integer $k$
   Assign $\mathbf{x}_v = \mathbf{e}_1$ to every vertex, so
   $\mathrm{sim}(u,v) = 1$ for every edge, and set $\tau = 1$.
   Under this assignment $\avgsim(C) = 1 \geq \tau$ for every clique $C$,
-  so every structural maximal clique is an ACMSC and vice versa.
+  so every structural maximal clique is an MSC and vice versa.
   Any clique of size $\geq k$ in $G_0$ is contained in some structural
-  maximal clique of size $\geq k$, which is also an ACMSC of size $\geq k$.
-  Conversely, any ACMSC of size $\geq k$ is a clique of size $\geq k$
-  in $G_0$.  Hence a size-$k$ ACMSC exists if and only if $G_0$ contains
+  maximal clique of size $\geq k$, which is also an MSC of size $\geq k$.
+  Conversely, any MSC of size $\geq k$ is a clique of size $\geq k$
+  in $G_0$.  Hence a size-$k$ MSC exists if and only if $G_0$ contains
   a clique of size $\geq k$, completing the reduction.
 \end{proof}
 
-The output sets of ACMSC enumeration and MCE are incomparable: a structural
+The output sets of MSC enumeration and MCE are incomparable: a structural
 maximal clique with $\avgsim(M)<\tau$ may contain semantically maximal subsets
-that MCE never generates, while valid ACMSCs need not be structurally maximal.
+that MCE never generates, while valid MSCs need not be structurally maximal.
 The output size, and hence the computational cost, is $\tau$-dependent in a
 non-trivial way that we characterize below.
 
 \stitle{Output Distribution and Practical Scope.}
-The number of ACMSCs and their sizes vary substantially with $\tau$.
+The number of MSCs and their sizes vary substantially with $\tau$.
 At sufficiently low $\tau$, almost every clique satisfies the average constraint and the
 output converges toward that of classical MCE.
 As $\tau$ increases, large structural cliques that previously satisfied the
@@ -325,7 +329,7 @@ In classical MCE, structural feasibility is monotone and maximality is enforced
 implicitly by the $P=\emptyset$ invariant at every leaf, so the set of feasible
 extensions can be characterized solely by the current state of $C$.
 Under the average constraint, no such invariant exists: a partial clique with
-$\avgsim(C)<\tau$ may still grow into a valid ACMSC, while one with
+$\avgsim(C)<\tau$ may still grow into a valid MSC, while one with
 $\avgsim(C)\geq\tau$ may admit no feasible extension. Furthermore, whether a
 candidate vertex can participate in a valid extension depends on its accumulated
 similarity to the current partial clique, which evolves throughout the recursion
@@ -342,7 +346,7 @@ rather than guiding the search itself.
 
 \stitle{Framework Overview.}
 We derive a baseline search procedure by adapting the Bron--Kerbosch (BK)
-recursion to the average-constrained semantic clique setting.  The standard
+recursion to the semantic-clique setting under the average constraint.  The standard
 partition $(P,X)$ remains useful for structural enumeration, but the semantic
 constraint is defined at the clique level: whether a partial clique can
 eventually satisfy the threshold depends on $\avgsim$ over all vertex pairs
@@ -407,8 +411,8 @@ pass on $X$ at each leaf.
 \begin{figure}[!htb]
   \centering
   \includegraphics[width=0.8\linewidth,page=2]{fig/pictures.pdf}
-  \caption{Search tree of Algorithm~\ref{alg:semantic-max-clique} on the example graph in Section~2.
-    The traversal follows the degeneracy ordering, and each subtree corresponds to a recursive expansion in Algorithm~1.}
+  \caption{\semBK\ search tree on the running example.}
+
   \Description{A rooted search tree whose branches follow the example graph's degeneracy order and mark feasible and infeasible leaves.}
   \label{fig:alg1}
 \end{figure}
@@ -419,7 +423,7 @@ seed vertex $v$, its later neighbors under $\sigma$ form the candidate set
 $P$, and its earlier neighbors are placed in $X$.  This partition guarantees
 that every structural maximal clique is generated by exactly one seed,
 because the unique vertex of minimum degeneracy index in any clique serves
-as its seed and sees all co-members in its $P$.  Since every ACMSC is contained in at least one structural maximal clique
+as its seed and sees all co-members in its $P$.  Since every MSC is contained in at least one structural maximal clique
 (as established later in Lemma~\ref{lem:containment}), the same
 partition ensures completeness for the semantic problem without
 modification.
@@ -455,7 +459,7 @@ The semantic constraint breaks this closure.  Consider $C = \emptyset$,
 $P = \{p, u\}$ with $\{p,u\} \in E$, and suppose pivot $p$ is chosen so
 that $u$ is suppressed as an expansion root.  The only sub-tree explored is
 rooted at $p$.  If $\avgsim(\{p,u\}) < \tau$, this branch is pruned and
-yields nothing.  If $\{u, w\}$ for some $w \in X$ is a valid ACMSC, it is
+yields nothing.  If $\{u, w\}$ for some $w \in X$ is a valid MSC, it is
 permanently lost: the sub-tree rooted at $u$ was never entered, and the
 \textsc{Check} pass offers no remedy since it operates only on cliques
 already constructed, not on suppressed sub-trees.  The absence of pivoting
@@ -548,7 +552,7 @@ algorithm~\cite{tomita2006}.
   \SetKwProg{Fn}{Function}{:}{}
 
   \KwIn{$G=(V,E)$, similarities $\{\mathrm{sim}(u,v)\}_{(u,v)\in E}$, threshold $\tau$}
-  \KwOut{All ACMSCs $\mathcal{R}$}
+  \KwOut{All MSCs $\mathcal{R}$}
 
   $\mathcal{F} \leftarrow \emptyset$\;
   \tcc{Pipelined structural MCE and semantic processing}
@@ -595,13 +599,18 @@ algorithm~\cite{tomita2006}.
   }
   \Return $\mathcal{R}$\;
 \end{algorithm}
+Figure~\ref{fig:alg2} separates the two host-clique outcomes. Gray marks
+structural or global processing, green marks accepted feasible states, and
+amber marks the bounded search triggered by an infeasible host. Thus $M_1$
+is accepted as $C_1$, whereas subset enumeration within $M_2$ recovers $C_2$.
+
 \begin{figure}[!htb]
   \centering
   \includegraphics[width=0.8\linewidth]{tex-data/fig/strsub_workflow.pdf}
-  \caption{\subEnum\ execution after structural MCE on Figure~\ref{fig:example}.
-    Gray denotes structural or global processing, amber a failed host or bounded
-    search, and green accepted feasible states. The feasible host $M_1$ is
-    accepted directly; bounded enumeration inside $M_2$ recovers $C_2$.}
+  \caption{\subEnum\ execution on the running example.}
+
+
+
   \Description{A flow diagram from two structural maximal cliques through direct acceptance or bounded subset enumeration to the final candidate filter.}
   \label{fig:alg2}
 \end{figure}
@@ -616,16 +625,16 @@ is then enforced in a second, independent pass confined to each
 structural maximal clique.  The theoretical basis for this decoupling
 is the following containment lemma.
 
-\begin{lemma}[Structural Superset of ACMSCs]
+\begin{lemma}[Structural Superset of MSCs]
   \label{lem:containment}
-  Every ACMSC is contained in at least one structural maximal clique of $G$.
-  That is, for every ACMSC $C$, there exists a structural maximal clique
+  Every MSC is contained in at least one structural maximal clique of $G$.
+  That is, for every MSC $C$, there exists a structural maximal clique
   $M$ such that $C \subseteq M$.
 \end{lemma}
 
 \begin{proof}
-  By definition, every ACMSC is a clique of $G$.  Let $C$ be an arbitrary
-  ACMSC, and consider the family
+  By definition, every MSC is a clique of $G$.  Let $C$ be an arbitrary
+  MSC, and consider the family
   \[
     \mathcal{F} = \{D \subseteq V \mid C \subseteq D \text{ and } D
     \text{ is a clique in } G\}.
@@ -639,7 +648,7 @@ is the following containment lemma.
 \end{proof}
 
 Lemma~\ref{lem:containment} establishes that the complete collection of
-ACMSCs can be recovered by (i)~enumerating all structural maximal
+MSCs can be recovered by (i)~enumerating all structural maximal
 cliques, and (ii)~searching within each structural maximal clique for
 semantically feasible maximal subsets.  Step~(i) is a purely structural
 problem to which the full Tomita pivot applies, restoring the
@@ -687,7 +696,7 @@ similarity.  Structural leaves are processed by their owning workers. The candid
 size layers are further reduced by the admissible bounds described below.
 
 \stitle{[Lines 21--28]: Phase~3 -- Global Deduplication.}
-Because the same ACMSC may be structurally contained in multiple
+Because the same MSC may be structurally contained in multiple
 distinct maximal cliques, Phase~2 may emit duplicate or subsumed
 candidates across cliques.  Phase~3 consolidates these candidates into
 the final result set $\mathcal{R}$.
@@ -884,10 +893,10 @@ inclusion-wise maximality.
 
 \begin{theorem}[Feasible Minimum-Contribution Deletion]
   \label{thm:monotone}
-  Let $C$ be an average-constrained clique of size $k\geq3$, with the
+  Let $C$ be a $\tau$-semantic clique of size $k\geq3$, with the
   similarity contribution $a_C(v)$ defined above.
   If $d(C)$ minimizes the pair $(a_C(v),v)$ lexicographically, then
-  $C\setminus\{d(C)\}$ is average-constrained.  Repeated application of
+  $C\setminus\{d(C)\}$ is a $\tau$-semantic clique.  Repeated application of
   this rule therefore reaches a feasible edge, and reversing these
   deletions gives a non-increasing-average insertion path.
 \end{theorem}
@@ -907,11 +916,15 @@ inclusion-wise maximality.
   deletion; reversing the sequence proves the insertion-path claim.
 \end{proof}
 
+Figure~\ref{fig:monotone} applies this rule to the running example. The
+green paths insert the canonical deletion of each child, while the red path
+reaches $C_2$ through a non-owning insertion and stops before recursion.
+
 \begin{figure}[t]
   \centering
-  \includegraphics[width=0.8\linewidth]{tex-data/fig/monosem_workflow.pdf}
-  \caption{Canonical reverse search on the running example. Deleting the vertex with minimum similarity contribution never lowers average similarity, yielding one feasible reverse path to each target; the alternative construction of $C_2$ is rejected by unique-parent ownership.}
-  \Description{Two canonical insertion paths in the running example, with accepted unique-parent expansions in green and a rejected duplicate path in red.}
+  \includegraphics[width=0.96\linewidth]{tex-data/fig/monosem_workflow.pdf}
+  \caption{Canonical ownership on the running example.}
+  \Description{The canonical-parent rule, two accepted insertion paths in green, and a rejected duplicate construction of C2 in red.}
   \label{fig:monotone}
 \end{figure}
 
@@ -922,7 +935,7 @@ inclusion-wise maximality.
   \SetKwFunction{FSearch}{Search}
   \SetKwProg{Fn}{Function}{:}{}
   \textbf{Input}: $G=(V,E)$, semantic vectors $\{x_v\}$, threshold $\tau$\\
-  \textbf{Output}: All ACMSCs $\mathcal{R}$
+  \textbf{Output}: All MSCs $\mathcal{R}$
 
   Precompute $\mathrm{sim}(u,v)$ for all $(u,v)\in E$\;
   $\mathcal{F} \leftarrow \emptyset$\;
@@ -984,17 +997,17 @@ reversing a sequence of floating-point additions.
 
 \stitle{Inclusion-Wise Maximality.}
 A state with no feasible single-vertex extension is added to
-$\mathcal{F}$, but is not yet declared an ACMSC.  If such a candidate
+$\mathcal{F}$, but is not yet declared an MSC.  If such a candidate
 $C$ is not inclusion-wise maximal, the finite family of feasible clique
 supersets of $C$ contains an inclusion-wise maximal member $M$.  The
 canonical search enumerates $M$ exactly once, and $M$ has no feasible
 single extension, so it also belongs to $\mathcal{F}$.  The final
   grouped inverted-index containment filter consequently removes $C$.  Conversely,
-an ACMSC is not contained in any other feasible candidate and is retained.
+an MSC is not contained in any other feasible candidate and is retained.
 
 \begin{theorem}[Enumeration Correctness]
-Algorithm~\ref{alg:monosem-mce} generates every average-constrained clique
-of size at least two exactly once and returns exactly all ACMSCs.
+Algorithm~\ref{alg:monosem-mce} generates every $\tau$-semantic clique
+of size at least two exactly once and returns exactly all MSCs.
 \end{theorem}
 \begin{proof}
 Existence follows by reversing the repeated deterministic deletions in
@@ -1010,7 +1023,7 @@ cliques.
 \stitle{Complexity.}
 \begin{theorem}[Time and Space Complexity of \monoSemMCE]
   \label{thm:monosem-complexity}
-  Let $F_\tau$ be the number of average-constrained cliques of size at
+  Let $F_\tau$ be the number of $\tau$-semantic cliques of size at
   least two, $K$ the maximum clique size, $\Delta$ the maximum degree,
   $T$ the number of worker threads, and $N=|\mathcal{F}|$ the number of
   terminal candidates before containment filtering.  A conservative
@@ -1138,7 +1151,7 @@ misses on the hot working set.
 \stitle{Algorithms.}
 We evaluate four implementations derived from one shared graph and vector
 backend. \StructBK\ is a Tomita-pivot structural MCE implementation and serves
-as the single structural reference; it does not solve ACMSC. \semBK\ is the
+as the single structural reference; it does not solve MSC enumeration. \semBK\ is the
 pivot-free semantic baseline of Section~\ref{sec:sembk}. \subEnum\ and
 \monoSemMCE\ are the exact algorithms of Section~\ref{sec:algorithms}. Runtime
 experiments use instrumentation-free binaries. Search counters use separately
@@ -1174,7 +1187,7 @@ sc-pwtk         & 217,891   & 5,653,221  & 256 & generated, common grid \\
 sc-ldoor        & 909,537   & 20,770,807 & 256 & generated, common grid \\
 \bottomrule
 \end{tabular*}
-\caption{Public graphs, vector dimensions, and fixed evaluation roles. ``Generated'' denotes reproducible vectors assigned to unchanged public graph structures.}
+\caption{Datasets, vector dimensions, and evaluation roles.}
 \label{tab:datasets}
 \end{table*}
 
@@ -1219,14 +1232,14 @@ insertion orders.
 
 Real-data checks compare normalized clique sets and per-size histograms rather
 than aggregate counts alone. All three semantic methods return the same 577
-ACMSCs on WN18RR at $\tau=0.8$ and the same 226,936 ACMSCs on ogbn-arxiv at
+MSCs on WN18RR at $\tau=0.8$ and the same 226,936 MSCs on ogbn-arxiv at
 $q_{80}$. \subEnum\ and \monoSemMCE\ agree on all 7,476 FB15K-237 outputs at
 $q_{99}$ as complete normalized sets. Their aggregate counts and every
 size-layer count also agree on all jointly completed rows in
 Table~\ref{tab:main-runtime}, including 13,473,317 sc-ldoor outputs at
 $q_{80}$. Each \subEnum\ ablation preserves the full 76,106-clique FB15K-237
 result. These checks cover the final strict-containment filter required by
-Definition~\ref{def:acmsc}, not only search-tree ownership.
+Definition~\ref{def:msc}, not only search-tree ownership.
 
 \subsection{Overall Efficiency}
 Table~\ref{tab:main-runtime} is the first end-to-end overview: it applies the
@@ -1240,12 +1253,16 @@ every dataset, and canonical search is $2.17\times$--$6.24\times$ faster. Thus
 the high-threshold specialization is visible across natural and generated
 attributes rather than only on one extreme instance.
 
+Runtime cells report seconds. Green marks the fastest completed MSC method,
+TLE denotes the uniform 1,200-second limit, and \StructBK\ reports only the
+threshold-independent structural enumeration time.
+
 \begin{table*}[t]
 \footnotesize\centering
 \renewcommand{\arraystretch}{1.03}
 \begin{tabular*}{0.96\textwidth}{@{\extracolsep{\fill}}lcrrrrr@{}}
 \toprule
-Dataset & Quantile & ACMSC count & \shortstack{\StructBK\\(structure only)} & \semBK & \subEnum & \monoSemMCE \\
+Dataset & Quantile & MSC count & \shortstack{\StructBK\\(structure only)} & \semBK & \subEnum & \monoSemMCE \\
 \midrule
 FB15K-237  & $q_{20}$ & 206,470 & \multirow{3}{*}{0.103} & TLE & \cellcolor{bestgreen}\textbf{0.221} & TLE \\
               & $q_{80}$ & 76,106  & & TLE & \cellcolor{bestgreen}\textbf{9.132} & TLE \\
@@ -1280,7 +1297,7 @@ sc-ldoor & $q_{20}$ & 274,585 & \multirow{3}{*}{1.679} & TLE & \cellcolor{bestgr
                 & $q_{99}$ & 202,030 & & TLE & 4.845 & \cellcolor{bestgreen}\textbf{1.658} \\
 \bottomrule
 \end{tabular*}
-\caption{Median algorithm time in seconds on the fixed common grid. \StructBK\ is a structural-only reference independent of the quantile. Green marks the fastest completed ACMSC method; TLE denotes the 1,200-second limit.}
+\caption{Median runtime on the fixed common grid (seconds).}
 \label{tab:main-runtime}
 \end{table*}
 
@@ -1306,8 +1323,17 @@ selectivity and structural workload.
 
 \begin{figure}[b]
 \centering
-\includegraphics[width=0.8\linewidth]{tex-data/fig/threshold_runtime.pdf}
-\caption{Runtime over the fixed nine-quantile grid. Crosses mark TLE; both methods use identical thresholds.}
+\begin{subfigure}[t]{0.49\linewidth}
+\centering
+\includegraphics[width=\linewidth]{tex-data/fig/threshold_runtime_arxiv.pdf}
+\caption{ogbn-arxiv}
+\end{subfigure}\hfill
+\begin{subfigure}[t]{0.49\linewidth}
+\centering
+\includegraphics[width=\linewidth]{tex-data/fig/threshold_runtime_ldoor.pdf}
+\caption{sc-ldoor}
+\end{subfigure}
+\caption{Runtime over the fixed nine-quantile grid.}
 \Description{Two log-scale runtime plots across threshold quantiles for ogbn-arxiv and sc-ldoor, comparing the completed algorithms.}
 \label{fig:threshold-runtime}
 \end{figure}
@@ -1318,15 +1344,15 @@ negative cells indicate that \monoSemMCE\ is faster. The crossover remains at
 $q_{95}$ from 25K vertices through the full 169,343-vertex graph. Thus high
 semantic selectivity, rather than a single favorable graph size, drives the
 canonical-search advantage. At $q_{99}$ the full graph takes 0.707 seconds for
-\subEnum\ and 0.200 seconds for \monoSemMCE\ while both return 10,261 ACMSCs.
+\subEnum\ and 0.200 seconds for \monoSemMCE\ while both return 10,261 MSCs.
 
-\begin{figure*}[t]
+\begin{figure}[t]
 \centering
-\includegraphics[width=0.8\textwidth]{tex-data/fig/scale_regime.pdf}
-\caption{Runtime regime map on nested ogbn-arxiv induced subgraphs. Each cell is $\log_2(T_{\mathrm{Mono}}/T_{\mathrm{StrSub}})$; blue favors \subEnum\ and red favors \monoSemMCE.}
+\includegraphics[width=0.96\linewidth]{tex-data/fig/scale_regime.pdf}
+\caption{Runtime regimes on nested ogbn-arxiv subgraphs.}
 \Description{A four-by-six heat map showing the runtime ratio between StrSub and MonoSemMCE across graph sizes and threshold quantiles.}
 \label{fig:scale-regime}
-\end{figure*}
+\end{figure}
 
 \subsection{Parallelism}
 Figure~\ref{fig:parallel-scaling} compares the parallel behavior of both
@@ -1346,8 +1372,8 @@ not final containment filtering.
 
 \begin{figure}[t]
 \centering
-\includegraphics[width=0.8\linewidth]{tex-data/fig/parallel_scaling.pdf}
-\caption{Speedup from 1 to 32 threads for one representative workload per specialized algorithm.}
+\includegraphics[width=0.90\linewidth]{tex-data/fig/parallel_scaling.pdf}
+\caption{Parallel speedup from 1 to 32 threads.}
 \Description{A line chart of StrSub and MonoSemMCE speedup at one, two, four, eight, sixteen, and thirty-two threads.}
 \label{fig:parallel-scaling}
 \end{figure}
@@ -1359,19 +1385,28 @@ On sc-nasasrb at $q_{99}$, the Top-Edge bound reduces subset tests from
 from 80.28 million to 12.95 million. On ogbn-arxiv, increasing the threshold
 from $q_5$ to $q_{99}$ contracts accepted canonical states from 17.08 million
 to 18,011; at $q_{99}$, 10,272 terminal candidates are reduced to 10,261 final
-ACMSCs. The measurements explain why \subEnum\ remains stable across much of
+MSCs. The measurements explain why \subEnum\ remains stable across much of
 the grid and why \monoSemMCE\ changes regime sharply near $q_{95}$.
 
 \begin{figure}[t]
 \centering
-\includegraphics[width=0.8\linewidth]{tex-data/fig/mechanism_summary.pdf}
-\caption{Search counters measured separately from runtime. Left: \subEnum\ bounds. Right: canonical states and ACMSC outputs.}
-\Description{A bar chart of StrSub subset tests by pruning variant and a log-scale line chart of MonoSemMCE states and outputs by threshold.}
+\begin{subfigure}[t]{0.49\linewidth}
+\centering
+\includegraphics[width=0.98\linewidth]{tex-data/fig/mechanism_strsub.pdf}
+\caption{\subEnum\ bounds.}
+\end{subfigure}\hfill
+\begin{subfigure}[t]{0.49\linewidth}
+\centering
+\includegraphics[width=0.98\linewidth]{tex-data/fig/mechanism_monosem.pdf}
+\caption{\monoSemMCE\ states.}
+\end{subfigure}
+\caption{Search counters by algorithm.}
+\Description{A patterned vertical bar chart reports StrSub subset tests by pruning variant; a log-scale line chart reports MonoSemMCE canonical states and MSC outputs by threshold.}
 \label{fig:mechanisms}
 \end{figure}
 
 Table~\ref{tab:ablation} evaluates the three independently removable \subEnum\
-components on two workloads. All four variants preserve 76,106 ACMSCs on
+components on two workloads. All four variants preserve 76,106 MSCs on
 FB15K-237 and 12,742 on sc-nasasrb. On sc-nasasrb, the complete design is the
 fastest; the Top-Edge and vertex-contribution bounds reduce subset tests from
 16.50 and 80.28 million, respectively, to 12.95 million. On FB15K-237, local
@@ -1392,7 +1427,7 @@ No vertex bound & 5.898 / 0.12 & 0.312 / 0.24 \\
 No local containment & 11.685 / 2.26 & 0.294 / 0.24 \\
 \bottomrule
 \end{tabular}
-\caption{Exact \subEnum\ component ablation. Each cell reports time in seconds / peak GiB; all variants return identical outputs.}
+\caption{\subEnum\ component ablation (seconds / peak GiB).}
 \label{tab:ablation}
 \end{table}
 
@@ -1417,7 +1452,7 @@ Visited DFS & 2.432 & 0.53 & 3.069 & 0.64 \\
 Layered & 1.635 & 0.49 & 3.922 & 0.81 \\
 \bottomrule
 \end{tabular}
-\caption{\monoSemMCE\ generation-strategy ablation with identical output sets.}
+\caption{\monoSemMCE\ generation-strategy ablation.}
 \label{tab:generation-ablation}
 \end{table}
 
@@ -1426,7 +1461,7 @@ The final evaluation examines how the threshold changes the returned pattern
 space and whether the patterns align with external semantic labels. We first
 measure exact output distributions on FB15K-237, ogbn-arxiv, sc-nasasrb, and
 sc-ldoor over the fixed $q_{20}$, $q_{50}$, $q_{80}$, $q_{95}$, and $q_{99}$
-grid. For each dataset, both the ACMSC count and mean size are normalized by
+grid. For each dataset, both the MSC count and mean size are normalized by
 the structural maximal cliques returned by \StructBK\ on the same graph.
 
 Figure~\ref{fig:result-distribution} compares the normalized transitions. The
@@ -1440,9 +1475,19 @@ graphs, while the aggregate identifies the threshold-wide distribution shift.
 
 \begin{figure}[b]
 \centering
-\includegraphics[width=0.8\linewidth]{tex-data/fig/result_distribution.pdf}
-\caption{Normalized output distributions on four datasets. Top: ACMSC count relative to \StructBK. Bottom: mean-size ratio. The thick line is the geometric mean.}
-\Description{Two log-scale line plots show per-dataset and geometric-mean ratios over five threshold quantiles.}
+\includegraphics[width=0.94\linewidth]{tex-data/fig/result_distribution_legend.pdf}
+\begin{subfigure}[t]{0.49\linewidth}
+\centering
+\includegraphics[width=0.98\linewidth]{tex-data/fig/result_distribution_count.pdf}
+\caption{Output-count ratio.}
+\end{subfigure}\hfill
+\begin{subfigure}[t]{0.49\linewidth}
+\centering
+\includegraphics[width=0.98\linewidth]{tex-data/fig/result_distribution_size.pdf}
+\caption{Mean-size ratio.}
+\end{subfigure}
+\caption{MSC output distributions relative to \StructBK.}
+\Description{Two side-by-side log-scale plots with a shared legend show output-count and mean-size ratios over five threshold quantiles.}
 \label{fig:result-distribution}
 \end{figure}
 
@@ -1453,19 +1498,19 @@ and then enumerates structural maximal cliques. Subject purity is the largest
 official-category fraction in an output, averaged over non-singleton outputs.
 Figure~\ref{fig:result-quality} reports each threshold as a joint purity and
 vertex-coverage operating point; the distribution analysis above supplies the
-corresponding change in pattern size. Across $q_{50}$--$q_{99}$, ACMSC attains
+corresponding change in pattern size. Across $q_{50}$--$q_{99}$, MSC attains
 both higher mean purity and higher coverage than \pairSim. \StructBK\ provides
 the threshold-independent structural reference at full coverage.
 
 \begin{figure}[t]
 \centering
-\includegraphics[width=0.8\linewidth]{tex-data/fig/result_quality.pdf}
-\caption{Subject purity and vertex coverage on ogbn-arxiv over the fixed five-quantile grid. \StructBK\ is the threshold-independent structural reference.}
-\Description{Two quality-coverage curves compare ACMSC and PairSim-MCE; a separate point marks StructBK.}
+\includegraphics[width=0.96\linewidth]{tex-data/fig/result_quality.pdf}
+\caption{Subject purity and vertex coverage on ogbn-arxiv.}
+\Description{Two quality-coverage curves compare MSC and PairSim-MCE; a separate point marks StructBK.}
 \label{fig:result-quality}
 \end{figure}
 
-Figure~\ref{fig:quality-case} visualizes the largest label-pure ACMSC selected
+Figure~\ref{fig:quality-case} visualizes the largest label-pure MSC selected
 deterministically at $q_{80}$. The 18 papers all belong to \texttt{cs.IT} and
 study private information retrieval, spanning coded databases, cache-aided
 retrieval, private side information, wiretap channels, and private set
@@ -1484,8 +1529,8 @@ label measurements to a concrete collaboration and research topic.
 
 \begin{figure}[t]
 \centering
-\includegraphics[width=0.8\linewidth]{tex-data/fig/quality_case_network.pdf}
-\caption{A real 18-paper ACMSC on ogbn-arxiv. Paper positions follow cosine distance; blue links form the semantic backbone, red dashed links fall below $q_{80}$, and gold links show recurrent authors.}
+\includegraphics[width=0.96\linewidth]{tex-data/fig/quality_case_network.pdf}
+\caption{An 18-paper MSC from ogbn-arxiv.}
 \Description{A point-link network shows eighteen year-colored papers, recurrent authors, semantic-neighbor edges, and twenty below-threshold paper pairs.}
 \label{fig:quality-case}
 \end{figure}
@@ -1505,9 +1550,9 @@ the two search organizations.
 
 \stitle{Algorithms.}
 We evaluate four standard implementations.  \StructBK is a Tomita-pivot
-structural MCE reference and does not solve ACMSC.  \semBK is the direct
+structural MCE reference and does not solve MSC enumeration.  \semBK is the direct
 pivot-free baseline of Section~\ref{sec:sembk}.  \subEnum and
-\monoSemMCE are the two complementary ACMSC algorithms of
+\monoSemMCE are the two complementary MSC algorithms of
 Section~\ref{sec:algorithms}.  Runtime tables use instrumentation-free raw
 binaries.  Mechanism counters use binaries compiled from the same sources
 with statistics enabled; their running times are not mixed with raw timing.
@@ -1614,7 +1659,7 @@ therefore share the double-precision accumulation policy described above.
 These checks compare sets rather than relying only on aggregate counts.
 
 \subsection{Overall Efficiency and Threshold Regimes}
-Table~\ref{tab:main-natural} first compares the three ACMSC algorithms on
+Table~\ref{tab:main-natural} first compares the three MSC algorithms on
 the two natural-attribute workloads.  The ogbn-arxiv rows use one graph and
 three edge-similarity quantiles, so their change in ranking isolates the
 effect of semantic selectivity.  At $\tau_{50}$, all three methods finish
@@ -1637,7 +1682,7 @@ tractability screen, not a completed formal run.}
 \setlength{\tabcolsep}{3.5pt}
 \begin{tabular}{llrrrr}
 \toprule
-Dataset & Threshold & \semBK & \subEnum & \monoSemMCE & ACMSC count \\
+Dataset & Threshold & \semBK & \subEnum & \monoSemMCE & MSC count \\
 \midrule
 ogbn-arxiv & $\tau_{50}=0.840429$
  & \textbf{1.248 $[1.245,1.309]$/0.47}
@@ -1666,7 +1711,7 @@ FB15K-237 & $\tau_{99}=0.537601$
 The single structural reference is deliberately kept outside this ranking:
 \StructBK enumerates 1,041,789 structural maximal cliques on ogbn-arxiv in
 0.309 seconds and 155,111 on FB15K-237 in 0.059 seconds, but it neither tests
-the average constraint nor returns the ACMSC output in
+the average constraint nor returns the MSC output in
 Table~\ref{tab:main-natural}.  Its role is to expose the structural workload,
 not to provide an interchangeable semantic baseline.
 
@@ -1687,7 +1732,7 @@ are raw seconds with $[\min,\max]$/peak GiB.}
 \label{tab:structural-current}
 \begin{tabular}{lrrrll}
 \toprule
-Graph & $|V|$ & $|E|$ & ACMSC count & \subEnum & \monoSemMCE \\
+Graph & $|V|$ & $|E|$ & MSC count & \subEnum & \monoSemMCE \\
 \midrule
 sc-nasasrb & 54,870 & 1,311,227 & 12,742
  & 0.414 $[0.410,0.459]$/0.23 & \textbf{0.092 $[0.091,0.094]$/0.19} \\
@@ -1775,7 +1820,7 @@ than timing claims from the instrumented build.
 For \monoSemMCE, increasing the threshold from $\tau_{50}$ to $\tau_{99}$
 reduces accepted canonical states from 9.76 million to 18,011.  At the high
 threshold, the 10,272 raw candidates are already close to the 10,261 final
-ACMSCs.  This contraction connects the q99 timing advantage in
+MSCs.  This contraction connects the q99 timing advantage in
 Table~\ref{tab:main-natural} to the intended mechanism: feasibility pruning
 shrinks the canonical tree before states are materialized, while ownership
 prevents alternative insertion paths from recreating them.
@@ -1820,12 +1865,12 @@ algorithm that integrates degeneracy ordering to reduce candidate set
 size, pivot-based pruning as in the Tomita algorithm to limit
 branching, bitmap-based set representations to accelerate intersection
 operations, and multi-threaded parallelization for efficiency.
-It does not solve the ACMSC problem; it enumerates
+It does not solve the MSC problem; it enumerates
 all maximal cliques without considering semantic constraints,
 and serves as a structural reference for understanding the
 additional cost introduced by the average-similarity constraint.
 \textbf{\semBK}, \textbf{\subEnum}, and \textbf{\monoSemMCE}
-are our proposed ACMSC algorithms described in
+are our proposed MSC algorithms described in
 Sections~\ref{sec:sembk}--\ref{sec:monosem-mce}.
 
 \stitle{Datasets.}
@@ -2033,7 +2078,7 @@ sensitivity analysis in Section~\ref{sec:monosem-mce}.
 Figure~\ref{fig:exp5} reports running time as $\tau$ sweeps the 50th
 to 95th percentile on datasets~1, 5, 7, and~8.
 
-\begin{figure*}[t]
+\begin{figure}[t]
   \centering
   \resizebox{0.96\linewidth}{!}{
     \begin{tikzpicture}
@@ -2119,7 +2164,7 @@ to 95th percentile on datasets~1, 5, 7, and~8.
   }
   \caption{Running time (lines) and output count (bars, right axis) vs.\ $\tau$ percentile on datasets~1, 5, 7, and~8.}
   \label{fig:exp5}
-\end{figure*}
+\end{figure}
 
 \monoSemMCE\ exhibits the steepest runtime decrease with increasing
 $\tau$, consistent with the monotone-path analysis: higher $\tau$
@@ -2128,7 +2173,7 @@ moderate sensitivity, as its Phase~1 structural enumeration is
 $\tau$-agnostic while Phase~2 decreases with $\tau$.  \semBK\ shows
 similar sensitivity to \subEnum.
 
-Figure~\ref{fig:exp5-output} reports the number of ACMSCs and the
+Figure~\ref{fig:exp5-output} reports the number of MSCs and the
 average clique size as $\tau$ increases.  At low $\tau$ the output
 converges to that of classical MCE; in the mid-range ($\tau_{60}$ to
 $\tau_{80}$) the fragmentation effect inflates the output by orders of
@@ -2136,7 +2181,7 @@ magnitude as large structural cliques break into many smaller semantic
 subsets; at high $\tau$ the output shrinks again because few cliques
 meet the strict average constraint.
 
-\begin{figure*}[t]
+\begin{figure}[t]
   \centering
   \resizebox{0.96\linewidth}{!}{
     \begin{tikzpicture}
@@ -2163,9 +2208,9 @@ meet the strict average constraint.
       \end{semilogyaxis}
     \end{tikzpicture}
   }
-  \caption{ACMSC output count and average clique size vs.\ $\tau$ percentile.}
+  \caption{MSC output count and average clique size vs.\ $\tau$ percentile.}
   \label{fig:exp5-output}
-\end{figure*}
+\end{figure}
 
 For every completed configuration, the three semantic algorithms are
 required to produce exactly the same sorted output set and size
@@ -2183,7 +2228,7 @@ Table~\ref{tab:exp6} reports internal search statistics for \semBK,
 \caption{Search process statistics at $\tau_{80}$.
 Exp.: expansion calls.
 Sim.: similarity lookups ($\times 10^6$).
-Out.: output ACMSC count.
+Out.: output MSC count.
 $W$: $W$-prune triggers ($\times 10^3$).
 Canon.: feasible children rejected by the canonical-parent test
 ($\times 10^3$).
@@ -2326,7 +2371,7 @@ level-synchronous scheduler are carried forward.
 This study compares the retired level-synchronous implementation, the
 per-root visited DFS prototype, and canonical DFS on identical inputs.
 It is an internal mechanism study rather than an external baseline:
-the three variants share the ACMSC model, similarity cache, and final
+the three variants share the MSC model, similarity cache, and final
 containment filter.  We report runtime, peak resident memory, generated
 states, terminal candidates, and exact output equality by clique size.
 
@@ -2465,11 +2510,12 @@ Structurally maximal cliques (\StructBK) capture dense collaboration
 patterns but mix researchers across unrelated subfields, yielding low
 average semantic similarity.  \monoSemMCE\ finds smaller but
 semantically tight groups with average similarities exceeding $0.8$,
-demonstrating that ACMSCs identify a qualitatively different and more
+demonstrating that MSCs identify a qualitatively different and more
 coherent notion of research community than purely structural cliques.
 
 \fi
 
+\FloatBarrier
 \section{Related Work}
 \label{sec:related}
 
@@ -2500,7 +2546,7 @@ CoPaM enumerates dense connected subgraphs homogeneous in a feature subspace
 \cite{gunnemann2010}, and structural-correlation patterns associate attribute
 sets with quasi-cliques~\cite{silva2012}. Query-oriented systems instead return
 communities containing specified nodes or attributes under core or truss
-constraints~\cite{fang2016,huang2017}. ACMSC differs at the contract level: it
+constraints~\cite{fang2016,huang2017}. MSC differs at the contract level: it
 enumerates all structurally complete, inclusion-wise maximal sets under one
 group-average vector constraint. Consequently, these methods motivate result
 quality comparisons, but are not interchangeable efficiency baselines.
@@ -2515,7 +2561,7 @@ features~\cite{wang2020ogb}, with FB15K-237 following the filtered knowledge-bas
 split~\cite{toutanova2015observed}. Approximate vector search accelerates
 unconstrained nearest-neighbor retrieval through hashing or navigable graphs
 \cite{indyk1998,andoni2006,malkov2020}, and GPU indexes extend this approach to
-billion-scale collections~\cite{johnson2021}. ACMSC needs similarities only on
+billion-scale collections~\cite{johnson2021}. MSC needs similarities only on
 graph edges and must preserve an inclusive threshold exactly, so the
 implementation computes those edge similarities once and does not introduce
 approximate-neighbor error into enumeration.
@@ -2532,7 +2578,7 @@ present work.
 \section{Conclusion}
 \label{sec:conclusion}
 
-We introduced the average-constrained maximal semantic clique (ACMSC) problem, which identifies structurally complete cliques with guaranteed average pairwise semantic similarity. The problem generalizes classical MCE and is NP-complete. Its defining challenge is the non-monotonicity of the average-similarity constraint over the subset lattice, which invalidates the structural invariants that underpin the efficiency of standard Bron--Kerbosch algorithms.
+We introduced maximal semantic clique (MSC) enumeration under an average pairwise similarity threshold, which identifies structurally complete cliques with guaranteed average pairwise semantic similarity. The problem generalizes classical MCE and is NP-complete. Its defining challenge is the non-monotonicity of the average-similarity constraint over the subset lattice, which invalidates the structural invariants that underpin the efficiency of standard Bron--Kerbosch algorithms.
 
 We used \semBK\ as a direct pivot-free baseline and proposed two exact
 algorithms with distinct operating regions. \subEnum\ decouples structural and semantic search,
@@ -2556,7 +2602,7 @@ to exact layer bounds in \subEnum\ and the rapid high-threshold contraction of
 the canonical tree in \monoSemMCE. The fixed five-threshold output study also
 captures the intermediate pattern-count expansion and high-threshold
 contraction, while external labels and a real paper group establish the
-semantic content of the returned ACMSCs. Future directions include stronger
+semantic content of the returned MSCs. Future directions include stronger
 admissible multi-step bounds, finer canonical-subtree scheduling, and
 dynamic-graph extensions.
 \bibliographystyle{ACM-Reference-Format}

@@ -1,0 +1,1418 @@
+{
+  "schema_version": 2,
+  "run_name": "batch13-threshold-ldoor-missing-current",
+  "archived_utc": "2026-07-25T11:33:42.991341+00:00",
+  "local_result_directory": "experiment-output/batch13-threshold-ldoor-missing-current",
+  "plans": [
+    {
+      "path": "experiments/plans/batch13-threshold-ldoor-missing-current.json",
+      "sha256": "2da81fc798e11a058c26307c7229280d09189d00dc3da338d9aadcd6f1b96c52"
+    }
+  ],
+  "summary": {
+    "attempts": 11,
+    "planned_tasks": 12,
+    "attempted_tasks": 11,
+    "completed_tasks": 9,
+    "unattempted_tasks": 1,
+    "unattempted_task_ids": [
+      "0f6d02549b3f4d6e"
+    ],
+    "plan_complete": false,
+    "status_counts": {
+      "completed": 9,
+      "tle": 2
+    }
+  },
+  "records": [
+    {
+      "task_id": "16928ce5bcc32a68",
+      "attempt": 1,
+      "status": "tle",
+      "rerun_reason": null,
+      "started_utc": "2026-07-25T10:45:38.874047+00:00",
+      "wall_seconds": 1200.1248808999999,
+      "task": {
+        "algorithm": 4,
+        "mode": "raw",
+        "dataset": 1,
+        "tau": 2.56971e-05,
+        "threads": 32,
+        "timeout_seconds": 1200,
+        "graph": null,
+        "vectors": null,
+        "capture_cliques": false,
+        "defines": {},
+        "warmup": false,
+        "repetition": 0,
+        "task_id": "16928ce5bcc32a68"
+      },
+      "parsed": null,
+      "validation": null,
+      "build": {
+        "fingerprint": "ce709501bca23d5a",
+        "executable_sha256": "8f2e7e4f0ae7d2e3755fe8b79ac466df67e5f57d6c7187d34a41afa3a3b1834b",
+        "command": [
+          "g++",
+          "-std=c++17",
+          "-fopenmp",
+          "-mavx2",
+          "-O3",
+          "src/alg4-raw.cpp",
+          "src/semantic_graph.cpp",
+          "-o",
+          "no-use/compiled/experiment-runner/alg4-raw-ce709501bca23d5a.exe"
+        ],
+        "source_verification": {
+          "status": "verified_current",
+          "observed_current_fingerprint": "ce709501bca23d5a",
+          "reason": null
+        },
+        "source_hashes": {
+          "alg4-raw.cpp": "55e6eb74060ad4f21e60b3da4f4307b779d70f9356f593d53cc05abae2c085ed",
+          "semantic_graph.cpp": "c6d51c9086fbd5c7d264eb411ac04890806744fc4e05dc7eee0b156760a9cd92",
+          "semantic_graph.h": "8192c4e8e02fc8ace59d59365f72643e34ca32ba71faa5bb338381a8cd308078",
+          "experiment_runtime.h": "dc2be362f49932a172aa59e862dbc6dcb3cebec18dfd7950322bf4a7126ab2a1"
+        }
+      },
+      "inputs": {
+        "status": "verified_run_time",
+        "snapshot": {
+          "dataset_catalog": {
+            "path": "experiments/datasets.json",
+            "sha256": "35c6ced15bff76becdc06c670b753fe56ca69122ca7407205c5a0c14a32bb2d0"
+          },
+          "files": [
+            {
+              "role": "graph",
+              "path": "dataset/dataset/sc-ldoor.txt",
+              "bytes": 285761999,
+              "sha256": "840bdd1718e7e122a2c11347c3edd26e75a04c75c3ba82a8592abb626480d993"
+            },
+            {
+              "role": "vector_binary",
+              "path": "dataset/vectors-256/sc-ldoor_vectors.bin",
+              "bytes": 1862731784,
+              "sha256": "89b598ea62df53b4ba2bb2521affdf527ef0d4b7c28fa211e4962cb14a2a3d7e"
+            }
+          ]
+        }
+      },
+      "run_environment": {
+        "plan": "experiments/plans/batch13-threshold-ldoor-missing-current.json",
+        "plan_sha256": "2da81fc798e11a058c26307c7229280d09189d00dc3da338d9aadcd6f1b96c52",
+        "git": {
+          "commit": "59299fd9164d077d7e04cd97fc9ac89cbf962c9f",
+          "dirty": true
+        },
+        "machine": {
+          "platform": "Windows-11-10.0.26100-SP0",
+          "processor": "AMD64 Family 25 Model 97 Stepping 2, AuthenticAMD",
+          "logical_cpu_count": 32,
+          "python": "3.12.7",
+          "compiler": "g++ (x86_64-posix-seh-rev0, Built by MinGW-Builds project) 13.2.0"
+        },
+        "memory_limit_gib": 16,
+        "external_timeout_policy": "hard per-process TLE from task.timeout_seconds"
+      },
+      "result_json": {
+        "path": "experiment-output/batch13-threshold-ldoor-missing-current/16928ce5bcc32a68.attempt-001.json",
+        "bytes": 3911,
+        "sha256": "2a4baebac0460bab88c6079f3702ea8419bcfc621b489e979adb6f401141890d"
+      },
+      "artifacts": {
+        "program_log": {
+          "path": "experiment-output/batch13-threshold-ldoor-missing-current/16928ce5bcc32a68.attempt-001.program.log",
+          "bytes": 712,
+          "sha256": "28f226e4755c46a9cce999eba6bb52609ae8b6d8f0a92b73ee3a0427c060a450"
+        },
+        "stdout": {
+          "path": "experiment-output/batch13-threshold-ldoor-missing-current/16928ce5bcc32a68.attempt-001.stdout.txt",
+          "bytes": 664,
+          "sha256": "a28fa8ace31a4c3ef026a3c14ea3a5360deefdedd9c427e521d8c9d643f8e177"
+        },
+        "stderr": {
+          "path": "experiment-output/batch13-threshold-ldoor-missing-current/16928ce5bcc32a68.attempt-001.stderr.txt",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    {
+      "task_id": "26bf60a1cc6b11ce",
+      "attempt": 1,
+      "status": "completed",
+      "rerun_reason": null,
+      "started_utc": "2026-07-25T09:57:47.108991+00:00",
+      "wall_seconds": 26.5420146999968,
+      "task": {
+        "algorithm": 3,
+        "mode": "raw",
+        "dataset": 1,
+        "tau": 0.117587,
+        "threads": 32,
+        "timeout_seconds": 1200,
+        "graph": null,
+        "vectors": null,
+        "capture_cliques": false,
+        "defines": {},
+        "warmup": false,
+        "repetition": 0,
+        "task_id": "26bf60a1cc6b11ce"
+      },
+      "parsed": {
+        "algorithm_ms": 7400,
+        "clique_count": 573906,
+        "peak_memory_gib": 3.72,
+        "size_histogram": {
+          "2": 433257,
+          "3": 133131,
+          "4": 7404,
+          "5": 114
+        },
+        "stats": {}
+      },
+      "validation": null,
+      "build": {
+        "fingerprint": "64e4967861b335bf",
+        "executable_sha256": "69c1a62388b882a1a6d832b0ab65b278b84da5c6c64458429e91f214dfaac8f6",
+        "command": [
+          "g++",
+          "-std=c++17",
+          "-fopenmp",
+          "-mavx2",
+          "-O3",
+          "src/alg3-raw.cpp",
+          "src/semantic_graph.cpp",
+          "-o",
+          "no-use/compiled/experiment-runner/alg3-raw-64e4967861b335bf.exe"
+        ],
+        "source_verification": {
+          "status": "verified_current",
+          "observed_current_fingerprint": "64e4967861b335bf",
+          "reason": null
+        },
+        "source_hashes": {
+          "alg3-raw.cpp": "88e7ff339339d8c2fcc15881413cbcbc066dc394d55fdacfdd6c46ac7717a036",
+          "semantic_graph.cpp": "c6d51c9086fbd5c7d264eb411ac04890806744fc4e05dc7eee0b156760a9cd92",
+          "semantic_graph.h": "8192c4e8e02fc8ace59d59365f72643e34ca32ba71faa5bb338381a8cd308078",
+          "experiment_runtime.h": "dc2be362f49932a172aa59e862dbc6dcb3cebec18dfd7950322bf4a7126ab2a1"
+        }
+      },
+      "inputs": {
+        "status": "verified_run_time",
+        "snapshot": {
+          "dataset_catalog": {
+            "path": "experiments/datasets.json",
+            "sha256": "35c6ced15bff76becdc06c670b753fe56ca69122ca7407205c5a0c14a32bb2d0"
+          },
+          "files": [
+            {
+              "role": "graph",
+              "path": "dataset/dataset/sc-ldoor.txt",
+              "bytes": 285761999,
+              "sha256": "840bdd1718e7e122a2c11347c3edd26e75a04c75c3ba82a8592abb626480d993"
+            },
+            {
+              "role": "vector_binary",
+              "path": "dataset/vectors-256/sc-ldoor_vectors.bin",
+              "bytes": 1862731784,
+              "sha256": "89b598ea62df53b4ba2bb2521affdf527ef0d4b7c28fa211e4962cb14a2a3d7e"
+            }
+          ]
+        }
+      },
+      "run_environment": {
+        "plan": "experiments/plans/batch13-threshold-ldoor-missing-current.json",
+        "plan_sha256": "2da81fc798e11a058c26307c7229280d09189d00dc3da338d9aadcd6f1b96c52",
+        "git": {
+          "commit": "59299fd9164d077d7e04cd97fc9ac89cbf962c9f",
+          "dirty": true
+        },
+        "machine": {
+          "platform": "Windows-11-10.0.26100-SP0",
+          "processor": "AMD64 Family 25 Model 97 Stepping 2, AuthenticAMD",
+          "logical_cpu_count": 32,
+          "python": "3.12.7",
+          "compiler": "g++ (x86_64-posix-seh-rev0, Built by MinGW-Builds project) 13.2.0"
+        },
+        "memory_limit_gib": 16,
+        "external_timeout_policy": "hard per-process TLE from task.timeout_seconds"
+      },
+      "result_json": {
+        "path": "experiment-output/batch13-threshold-ldoor-missing-current/26bf60a1cc6b11ce.attempt-001.json",
+        "bytes": 4121,
+        "sha256": "f4added363a200d28573674b6f2adab02f4e25382a03a95e56001159b597d5e3"
+      },
+      "artifacts": {
+        "program_log": {
+          "path": "experiment-output/batch13-threshold-ldoor-missing-current/26bf60a1cc6b11ce.attempt-001.program.log",
+          "bytes": 1332,
+          "sha256": "165201430ee7536263279d21de16aacd4cb3985ef8eba56fa933b3cf19e93279"
+        },
+        "stdout": {
+          "path": "experiment-output/batch13-threshold-ldoor-missing-current/26bf60a1cc6b11ce.attempt-001.stdout.txt",
+          "bytes": 1533,
+          "sha256": "78fec4d0e098283f150227d0bd07dae04fc39ba61e72a22e9c0afd6719ed9ea2"
+        },
+        "stderr": {
+          "path": "experiment-output/batch13-threshold-ldoor-missing-current/26bf60a1cc6b11ce.attempt-001.stderr.txt",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    {
+      "task_id": "342161f9fd190dc4",
+      "attempt": 1,
+      "status": "completed",
+      "rerun_reason": null,
+      "started_utc": "2026-07-25T10:01:05.044089+00:00",
+      "wall_seconds": 20.35921480000252,
+      "task": {
+        "algorithm": 4,
+        "mode": "raw",
+        "dataset": 1,
+        "tau": 0.080211,
+        "threads": 32,
+        "timeout_seconds": 1200,
+        "graph": null,
+        "vectors": null,
+        "capture_cliques": false,
+        "defines": {},
+        "warmup": false,
+        "repetition": 0,
+        "task_id": "342161f9fd190dc4"
+      },
+      "parsed": {
+        "algorithm_ms": 4628,
+        "clique_count": 2466236,
+        "peak_memory_gib": 3.11,
+        "size_histogram": {
+          "2": 310222,
+          "3": 1133506,
+          "4": 800574,
+          "5": 198245,
+          "6": 22397,
+          "7": 1257,
+          "8": 35
+        },
+        "stats": {}
+      },
+      "validation": null,
+      "build": {
+        "fingerprint": "ce709501bca23d5a",
+        "executable_sha256": "8f2e7e4f0ae7d2e3755fe8b79ac466df67e5f57d6c7187d34a41afa3a3b1834b",
+        "command": [
+          "g++",
+          "-std=c++17",
+          "-fopenmp",
+          "-mavx2",
+          "-O3",
+          "src/alg4-raw.cpp",
+          "src/semantic_graph.cpp",
+          "-o",
+          "no-use/compiled/experiment-runner/alg4-raw-ce709501bca23d5a.exe"
+        ],
+        "source_verification": {
+          "status": "verified_current",
+          "observed_current_fingerprint": "ce709501bca23d5a",
+          "reason": null
+        },
+        "source_hashes": {
+          "alg4-raw.cpp": "55e6eb74060ad4f21e60b3da4f4307b779d70f9356f593d53cc05abae2c085ed",
+          "semantic_graph.cpp": "c6d51c9086fbd5c7d264eb411ac04890806744fc4e05dc7eee0b156760a9cd92",
+          "semantic_graph.h": "8192c4e8e02fc8ace59d59365f72643e34ca32ba71faa5bb338381a8cd308078",
+          "experiment_runtime.h": "dc2be362f49932a172aa59e862dbc6dcb3cebec18dfd7950322bf4a7126ab2a1"
+        }
+      },
+      "inputs": {
+        "status": "verified_run_time",
+        "snapshot": {
+          "dataset_catalog": {
+            "path": "experiments/datasets.json",
+            "sha256": "35c6ced15bff76becdc06c670b753fe56ca69122ca7407205c5a0c14a32bb2d0"
+          },
+          "files": [
+            {
+              "role": "graph",
+              "path": "dataset/dataset/sc-ldoor.txt",
+              "bytes": 285761999,
+              "sha256": "840bdd1718e7e122a2c11347c3edd26e75a04c75c3ba82a8592abb626480d993"
+            },
+            {
+              "role": "vector_binary",
+              "path": "dataset/vectors-256/sc-ldoor_vectors.bin",
+              "bytes": 1862731784,
+              "sha256": "89b598ea62df53b4ba2bb2521affdf527ef0d4b7c28fa211e4962cb14a2a3d7e"
+            }
+          ]
+        }
+      },
+      "run_environment": {
+        "plan": "experiments/plans/batch13-threshold-ldoor-missing-current.json",
+        "plan_sha256": "2da81fc798e11a058c26307c7229280d09189d00dc3da338d9aadcd6f1b96c52",
+        "git": {
+          "commit": "59299fd9164d077d7e04cd97fc9ac89cbf962c9f",
+          "dirty": true
+        },
+        "machine": {
+          "platform": "Windows-11-10.0.26100-SP0",
+          "processor": "AMD64 Family 25 Model 97 Stepping 2, AuthenticAMD",
+          "logical_cpu_count": 32,
+          "python": "3.12.7",
+          "compiler": "g++ (x86_64-posix-seh-rev0, Built by MinGW-Builds project) 13.2.0"
+        },
+        "memory_limit_gib": 16,
+        "external_timeout_policy": "hard per-process TLE from task.timeout_seconds"
+      },
+      "result_json": {
+        "path": "experiment-output/batch13-threshold-ldoor-missing-current/342161f9fd190dc4.attempt-001.json",
+        "bytes": 4182,
+        "sha256": "632b19c5d42945d7cbee0c7494830899f0c5a20a309bedb9d550bb9c96a3a1a4"
+      },
+      "artifacts": {
+        "program_log": {
+          "path": "experiment-output/batch13-threshold-ldoor-missing-current/342161f9fd190dc4.attempt-001.program.log",
+          "bytes": 1267,
+          "sha256": "20645a8735f4d7b997b43c390fb8ec3e56d1317afb44deadca217ef59bf3d126"
+        },
+        "stdout": {
+          "path": "experiment-output/batch13-threshold-ldoor-missing-current/342161f9fd190dc4.attempt-001.stdout.txt",
+          "bytes": 1468,
+          "sha256": "db878781525b3ddb369ab425e7f23bb073fa0a0adf7bd3ed0e2345287c165d2f"
+        },
+        "stderr": {
+          "path": "experiment-output/batch13-threshold-ldoor-missing-current/342161f9fd190dc4.attempt-001.stderr.txt",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    {
+      "task_id": "3d034384ad4f4eed",
+      "attempt": 1,
+      "status": "completed",
+      "rerun_reason": null,
+      "started_utc": "2026-07-25T10:36:59.786977+00:00",
+      "wall_seconds": 519.0849179000002,
+      "task": {
+        "algorithm": 3,
+        "mode": "raw",
+        "dataset": 1,
+        "tau": 2.56971e-05,
+        "threads": 32,
+        "timeout_seconds": 1200,
+        "graph": null,
+        "vectors": null,
+        "capture_cliques": false,
+        "defines": {},
+        "warmup": false,
+        "repetition": 0,
+        "task_id": "3d034384ad4f4eed"
+      },
+      "parsed": {
+        "algorithm_ms": 500755,
+        "clique_count": 24330757,
+        "peak_memory_gib": 10.19,
+        "size_histogram": {
+          "2": 751,
+          "3": 2096,
+          "4": 376,
+          "5": 234,
+          "6": 1559,
+          "7": 11505,
+          "8": 58806,
+          "9": 215161,
+          "10": 605954,
+          "11": 1341381,
+          "12": 2413785,
+          "13": 3557396,
+          "14": 4289131,
+          "15": 4246665,
+          "16": 3450882,
+          "17": 2256479,
+          "18": 1178976,
+          "19": 480620,
+          "20": 160603,
+          "21": 58397
+        },
+        "stats": {}
+      },
+      "validation": null,
+      "build": {
+        "fingerprint": "64e4967861b335bf",
+        "executable_sha256": "69c1a62388b882a1a6d832b0ab65b278b84da5c6c64458429e91f214dfaac8f6",
+        "command": [
+          "g++",
+          "-std=c++17",
+          "-fopenmp",
+          "-mavx2",
+          "-O3",
+          "src/alg3-raw.cpp",
+          "src/semantic_graph.cpp",
+          "-o",
+          "no-use/compiled/experiment-runner/alg3-raw-64e4967861b335bf.exe"
+        ],
+        "source_verification": {
+          "status": "verified_current",
+          "observed_current_fingerprint": "64e4967861b335bf",
+          "reason": null
+        },
+        "source_hashes": {
+          "alg3-raw.cpp": "88e7ff339339d8c2fcc15881413cbcbc066dc394d55fdacfdd6c46ac7717a036",
+          "semantic_graph.cpp": "c6d51c9086fbd5c7d264eb411ac04890806744fc4e05dc7eee0b156760a9cd92",
+          "semantic_graph.h": "8192c4e8e02fc8ace59d59365f72643e34ca32ba71faa5bb338381a8cd308078",
+          "experiment_runtime.h": "dc2be362f49932a172aa59e862dbc6dcb3cebec18dfd7950322bf4a7126ab2a1"
+        }
+      },
+      "inputs": {
+        "status": "verified_run_time",
+        "snapshot": {
+          "dataset_catalog": {
+            "path": "experiments/datasets.json",
+            "sha256": "35c6ced15bff76becdc06c670b753fe56ca69122ca7407205c5a0c14a32bb2d0"
+          },
+          "files": [
+            {
+              "role": "graph",
+              "path": "dataset/dataset/sc-ldoor.txt",
+              "bytes": 285761999,
+              "sha256": "840bdd1718e7e122a2c11347c3edd26e75a04c75c3ba82a8592abb626480d993"
+            },
+            {
+              "role": "vector_binary",
+              "path": "dataset/vectors-256/sc-ldoor_vectors.bin",
+              "bytes": 1862731784,
+              "sha256": "89b598ea62df53b4ba2bb2521affdf527ef0d4b7c28fa211e4962cb14a2a3d7e"
+            }
+          ]
+        }
+      },
+      "run_environment": {
+        "plan": "experiments/plans/batch13-threshold-ldoor-missing-current.json",
+        "plan_sha256": "2da81fc798e11a058c26307c7229280d09189d00dc3da338d9aadcd6f1b96c52",
+        "git": {
+          "commit": "59299fd9164d077d7e04cd97fc9ac89cbf962c9f",
+          "dirty": true
+        },
+        "machine": {
+          "platform": "Windows-11-10.0.26100-SP0",
+          "processor": "AMD64 Family 25 Model 97 Stepping 2, AuthenticAMD",
+          "logical_cpu_count": 32,
+          "python": "3.12.7",
+          "compiler": "g++ (x86_64-posix-seh-rev0, Built by MinGW-Builds project) 13.2.0"
+        },
+        "memory_limit_gib": 16,
+        "external_timeout_policy": "hard per-process TLE from task.timeout_seconds"
+      },
+      "result_json": {
+        "path": "experiment-output/batch13-threshold-ldoor-missing-current/3d034384ad4f4eed.attempt-001.json",
+        "bytes": 4459,
+        "sha256": "2df4a8ad62777c030be38118557a2fec436c3b91f70aa537228c77ec2c049618"
+      },
+      "artifacts": {
+        "program_log": {
+          "path": "experiment-output/batch13-threshold-ldoor-missing-current/3d034384ad4f4eed.attempt-001.program.log",
+          "bytes": 7652,
+          "sha256": "00902741b5dd2f66b93dc0886fdf2c80873e59cafd985eeda6fd2b0cd2fe0f7e"
+        },
+        "stdout": {
+          "path": "experiment-output/batch13-threshold-ldoor-missing-current/3d034384ad4f4eed.attempt-001.stdout.txt",
+          "bytes": 7853,
+          "sha256": "d1db94d9eac9d950e7d700c59ba5fd436d8c9fece4085ab3da0537345dd8366e"
+        },
+        "stderr": {
+          "path": "experiment-output/batch13-threshold-ldoor-missing-current/3d034384ad4f4eed.attempt-001.stderr.txt",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    {
+      "task_id": "499f3a1c79e02539",
+      "attempt": 1,
+      "status": "completed",
+      "rerun_reason": null,
+      "started_utc": "2026-07-25T09:58:13.670475+00:00",
+      "wall_seconds": 18.297156800006633,
+      "task": {
+        "algorithm": 4,
+        "mode": "raw",
+        "dataset": 1,
+        "tau": 0.117587,
+        "threads": 32,
+        "timeout_seconds": 1200,
+        "graph": null,
+        "vectors": null,
+        "capture_cliques": false,
+        "defines": {},
+        "warmup": false,
+        "repetition": 0,
+        "task_id": "499f3a1c79e02539"
+      },
+      "parsed": {
+        "algorithm_ms": 2213,
+        "clique_count": 573906,
+        "peak_memory_gib": 3.11,
+        "size_histogram": {
+          "2": 433257,
+          "3": 133131,
+          "4": 7404,
+          "5": 114
+        },
+        "stats": {}
+      },
+      "validation": null,
+      "build": {
+        "fingerprint": "ce709501bca23d5a",
+        "executable_sha256": "8f2e7e4f0ae7d2e3755fe8b79ac466df67e5f57d6c7187d34a41afa3a3b1834b",
+        "command": [
+          "g++",
+          "-std=c++17",
+          "-fopenmp",
+          "-mavx2",
+          "-O3",
+          "src/alg4-raw.cpp",
+          "src/semantic_graph.cpp",
+          "-o",
+          "no-use/compiled/experiment-runner/alg4-raw-ce709501bca23d5a.exe"
+        ],
+        "source_verification": {
+          "status": "verified_current",
+          "observed_current_fingerprint": "ce709501bca23d5a",
+          "reason": null
+        },
+        "source_hashes": {
+          "alg4-raw.cpp": "55e6eb74060ad4f21e60b3da4f4307b779d70f9356f593d53cc05abae2c085ed",
+          "semantic_graph.cpp": "c6d51c9086fbd5c7d264eb411ac04890806744fc4e05dc7eee0b156760a9cd92",
+          "semantic_graph.h": "8192c4e8e02fc8ace59d59365f72643e34ca32ba71faa5bb338381a8cd308078",
+          "experiment_runtime.h": "dc2be362f49932a172aa59e862dbc6dcb3cebec18dfd7950322bf4a7126ab2a1"
+        }
+      },
+      "inputs": {
+        "status": "verified_run_time",
+        "snapshot": {
+          "dataset_catalog": {
+            "path": "experiments/datasets.json",
+            "sha256": "35c6ced15bff76becdc06c670b753fe56ca69122ca7407205c5a0c14a32bb2d0"
+          },
+          "files": [
+            {
+              "role": "graph",
+              "path": "dataset/dataset/sc-ldoor.txt",
+              "bytes": 285761999,
+              "sha256": "840bdd1718e7e122a2c11347c3edd26e75a04c75c3ba82a8592abb626480d993"
+            },
+            {
+              "role": "vector_binary",
+              "path": "dataset/vectors-256/sc-ldoor_vectors.bin",
+              "bytes": 1862731784,
+              "sha256": "89b598ea62df53b4ba2bb2521affdf527ef0d4b7c28fa211e4962cb14a2a3d7e"
+            }
+          ]
+        }
+      },
+      "run_environment": {
+        "plan": "experiments/plans/batch13-threshold-ldoor-missing-current.json",
+        "plan_sha256": "2da81fc798e11a058c26307c7229280d09189d00dc3da338d9aadcd6f1b96c52",
+        "git": {
+          "commit": "59299fd9164d077d7e04cd97fc9ac89cbf962c9f",
+          "dirty": true
+        },
+        "machine": {
+          "platform": "Windows-11-10.0.26100-SP0",
+          "processor": "AMD64 Family 25 Model 97 Stepping 2, AuthenticAMD",
+          "logical_cpu_count": 32,
+          "python": "3.12.7",
+          "compiler": "g++ (x86_64-posix-seh-rev0, Built by MinGW-Builds project) 13.2.0"
+        },
+        "memory_limit_gib": 16,
+        "external_timeout_policy": "hard per-process TLE from task.timeout_seconds"
+      },
+      "result_json": {
+        "path": "experiment-output/batch13-threshold-ldoor-missing-current/499f3a1c79e02539.attempt-001.json",
+        "bytes": 4123,
+        "sha256": "c5810123286d27b5c9734cde750ee70ca066c4ccd6480c7f18668db922e24405"
+      },
+      "artifacts": {
+        "program_log": {
+          "path": "experiment-output/batch13-threshold-ldoor-missing-current/499f3a1c79e02539.attempt-001.program.log",
+          "bytes": 1174,
+          "sha256": "c705101469827d6f76421f790d9c3b05bb3d3eb6f741c53c35d43210d90553ee"
+        },
+        "stdout": {
+          "path": "experiment-output/batch13-threshold-ldoor-missing-current/499f3a1c79e02539.attempt-001.stdout.txt",
+          "bytes": 1375,
+          "sha256": "c0c65fb892796aa7c306390be75fab77b33f07bcb5169a2a45d09b970668d441"
+        },
+        "stderr": {
+          "path": "experiment-output/batch13-threshold-ldoor-missing-current/499f3a1c79e02539.attempt-001.stderr.txt",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    {
+      "task_id": "50ec11d6be140d4a",
+      "attempt": 1,
+      "status": "completed",
+      "rerun_reason": null,
+      "started_utc": "2026-07-25T09:58:31.970492+00:00",
+      "wall_seconds": 34.335409300008905,
+      "task": {
+        "algorithm": 3,
+        "mode": "raw",
+        "dataset": 1,
+        "tau": 0.102893,
+        "threads": 32,
+        "timeout_seconds": 1200,
+        "graph": null,
+        "vectors": null,
+        "capture_cliques": false,
+        "defines": {},
+        "warmup": false,
+        "repetition": 0,
+        "task_id": "50ec11d6be140d4a"
+      },
+      "parsed": {
+        "algorithm_ms": 14473,
+        "clique_count": 959532,
+        "peak_memory_gib": 3.8,
+        "size_histogram": {
+          "2": 498785,
+          "3": 396890,
+          "4": 60902,
+          "5": 2912,
+          "6": 43
+        },
+        "stats": {}
+      },
+      "validation": null,
+      "build": {
+        "fingerprint": "64e4967861b335bf",
+        "executable_sha256": "69c1a62388b882a1a6d832b0ab65b278b84da5c6c64458429e91f214dfaac8f6",
+        "command": [
+          "g++",
+          "-std=c++17",
+          "-fopenmp",
+          "-mavx2",
+          "-O3",
+          "src/alg3-raw.cpp",
+          "src/semantic_graph.cpp",
+          "-o",
+          "no-use/compiled/experiment-runner/alg3-raw-64e4967861b335bf.exe"
+        ],
+        "source_verification": {
+          "status": "verified_current",
+          "observed_current_fingerprint": "64e4967861b335bf",
+          "reason": null
+        },
+        "source_hashes": {
+          "alg3-raw.cpp": "88e7ff339339d8c2fcc15881413cbcbc066dc394d55fdacfdd6c46ac7717a036",
+          "semantic_graph.cpp": "c6d51c9086fbd5c7d264eb411ac04890806744fc4e05dc7eee0b156760a9cd92",
+          "semantic_graph.h": "8192c4e8e02fc8ace59d59365f72643e34ca32ba71faa5bb338381a8cd308078",
+          "experiment_runtime.h": "dc2be362f49932a172aa59e862dbc6dcb3cebec18dfd7950322bf4a7126ab2a1"
+        }
+      },
+      "inputs": {
+        "status": "verified_run_time",
+        "snapshot": {
+          "dataset_catalog": {
+            "path": "experiments/datasets.json",
+            "sha256": "35c6ced15bff76becdc06c670b753fe56ca69122ca7407205c5a0c14a32bb2d0"
+          },
+          "files": [
+            {
+              "role": "graph",
+              "path": "dataset/dataset/sc-ldoor.txt",
+              "bytes": 285761999,
+              "sha256": "840bdd1718e7e122a2c11347c3edd26e75a04c75c3ba82a8592abb626480d993"
+            },
+            {
+              "role": "vector_binary",
+              "path": "dataset/vectors-256/sc-ldoor_vectors.bin",
+              "bytes": 1862731784,
+              "sha256": "89b598ea62df53b4ba2bb2521affdf527ef0d4b7c28fa211e4962cb14a2a3d7e"
+            }
+          ]
+        }
+      },
+      "run_environment": {
+        "plan": "experiments/plans/batch13-threshold-ldoor-missing-current.json",
+        "plan_sha256": "2da81fc798e11a058c26307c7229280d09189d00dc3da338d9aadcd6f1b96c52",
+        "git": {
+          "commit": "59299fd9164d077d7e04cd97fc9ac89cbf962c9f",
+          "dirty": true
+        },
+        "machine": {
+          "platform": "Windows-11-10.0.26100-SP0",
+          "processor": "AMD64 Family 25 Model 97 Stepping 2, AuthenticAMD",
+          "logical_cpu_count": 32,
+          "python": "3.12.7",
+          "compiler": "g++ (x86_64-posix-seh-rev0, Built by MinGW-Builds project) 13.2.0"
+        },
+        "memory_limit_gib": 16,
+        "external_timeout_policy": "hard per-process TLE from task.timeout_seconds"
+      },
+      "result_json": {
+        "path": "experiment-output/batch13-threshold-ldoor-missing-current/50ec11d6be140d4a.attempt-001.json",
+        "bytes": 4141,
+        "sha256": "f3a483a714611c4055fd7f64da71f6fe4f3fa8182b3e0d4e383454b1f0a0fa62"
+      },
+      "artifacts": {
+        "program_log": {
+          "path": "experiment-output/batch13-threshold-ldoor-missing-current/50ec11d6be140d4a.attempt-001.program.log",
+          "bytes": 1421,
+          "sha256": "d28eb3c1d5b4197534b2f498d1b3142222717eecb46950dd4d05c865edc54a8d"
+        },
+        "stdout": {
+          "path": "experiment-output/batch13-threshold-ldoor-missing-current/50ec11d6be140d4a.attempt-001.stdout.txt",
+          "bytes": 1622,
+          "sha256": "622809ee37c15e59db02044ca51a71e0c6ffd1973f60508225bb6bf2dda2857a"
+        },
+        "stderr": {
+          "path": "experiment-output/batch13-threshold-ldoor-missing-current/50ec11d6be140d4a.attempt-001.stderr.txt",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    {
+      "task_id": "62ecfffe39d8f5d7",
+      "attempt": 1,
+      "status": "completed",
+      "rerun_reason": null,
+      "started_utc": "2026-07-25T09:59:06.307482+00:00",
+      "wall_seconds": 20.768084199997247,
+      "task": {
+        "algorithm": 4,
+        "mode": "raw",
+        "dataset": 1,
+        "tau": 0.102893,
+        "threads": 32,
+        "timeout_seconds": 1200,
+        "graph": null,
+        "vectors": null,
+        "capture_cliques": false,
+        "defines": {},
+        "warmup": false,
+        "repetition": 0,
+        "task_id": "62ecfffe39d8f5d7"
+      },
+      "parsed": {
+        "algorithm_ms": 3276,
+        "clique_count": 959532,
+        "peak_memory_gib": 3.12,
+        "size_histogram": {
+          "2": 498785,
+          "3": 396890,
+          "4": 60902,
+          "5": 2912,
+          "6": 43
+        },
+        "stats": {}
+      },
+      "validation": null,
+      "build": {
+        "fingerprint": "ce709501bca23d5a",
+        "executable_sha256": "8f2e7e4f0ae7d2e3755fe8b79ac466df67e5f57d6c7187d34a41afa3a3b1834b",
+        "command": [
+          "g++",
+          "-std=c++17",
+          "-fopenmp",
+          "-mavx2",
+          "-O3",
+          "src/alg4-raw.cpp",
+          "src/semantic_graph.cpp",
+          "-o",
+          "no-use/compiled/experiment-runner/alg4-raw-ce709501bca23d5a.exe"
+        ],
+        "source_verification": {
+          "status": "verified_current",
+          "observed_current_fingerprint": "ce709501bca23d5a",
+          "reason": null
+        },
+        "source_hashes": {
+          "alg4-raw.cpp": "55e6eb74060ad4f21e60b3da4f4307b779d70f9356f593d53cc05abae2c085ed",
+          "semantic_graph.cpp": "c6d51c9086fbd5c7d264eb411ac04890806744fc4e05dc7eee0b156760a9cd92",
+          "semantic_graph.h": "8192c4e8e02fc8ace59d59365f72643e34ca32ba71faa5bb338381a8cd308078",
+          "experiment_runtime.h": "dc2be362f49932a172aa59e862dbc6dcb3cebec18dfd7950322bf4a7126ab2a1"
+        }
+      },
+      "inputs": {
+        "status": "verified_run_time",
+        "snapshot": {
+          "dataset_catalog": {
+            "path": "experiments/datasets.json",
+            "sha256": "35c6ced15bff76becdc06c670b753fe56ca69122ca7407205c5a0c14a32bb2d0"
+          },
+          "files": [
+            {
+              "role": "graph",
+              "path": "dataset/dataset/sc-ldoor.txt",
+              "bytes": 285761999,
+              "sha256": "840bdd1718e7e122a2c11347c3edd26e75a04c75c3ba82a8592abb626480d993"
+            },
+            {
+              "role": "vector_binary",
+              "path": "dataset/vectors-256/sc-ldoor_vectors.bin",
+              "bytes": 1862731784,
+              "sha256": "89b598ea62df53b4ba2bb2521affdf527ef0d4b7c28fa211e4962cb14a2a3d7e"
+            }
+          ]
+        }
+      },
+      "run_environment": {
+        "plan": "experiments/plans/batch13-threshold-ldoor-missing-current.json",
+        "plan_sha256": "2da81fc798e11a058c26307c7229280d09189d00dc3da338d9aadcd6f1b96c52",
+        "git": {
+          "commit": "59299fd9164d077d7e04cd97fc9ac89cbf962c9f",
+          "dirty": true
+        },
+        "machine": {
+          "platform": "Windows-11-10.0.26100-SP0",
+          "processor": "AMD64 Family 25 Model 97 Stepping 2, AuthenticAMD",
+          "logical_cpu_count": 32,
+          "python": "3.12.7",
+          "compiler": "g++ (x86_64-posix-seh-rev0, Built by MinGW-Builds project) 13.2.0"
+        },
+        "memory_limit_gib": 16,
+        "external_timeout_policy": "hard per-process TLE from task.timeout_seconds"
+      },
+      "result_json": {
+        "path": "experiment-output/batch13-threshold-ldoor-missing-current/62ecfffe39d8f5d7.attempt-001.json",
+        "bytes": 4141,
+        "sha256": "df31a9357207e038e1a8266b3510af0b8719684b8bfb39be27c25a5e9f89fcd1"
+      },
+      "artifacts": {
+        "program_log": {
+          "path": "experiment-output/batch13-threshold-ldoor-missing-current/62ecfffe39d8f5d7.attempt-001.program.log",
+          "bytes": 1204,
+          "sha256": "1c96c58b494b45194a1d6890c40211d88b50ab3e2b71e94cfb99736c7ef1a8ed"
+        },
+        "stdout": {
+          "path": "experiment-output/batch13-threshold-ldoor-missing-current/62ecfffe39d8f5d7.attempt-001.stdout.txt",
+          "bytes": 1405,
+          "sha256": "1c0123fc99dd6763cd31bd088d1827ce46f1b2abded1a57adb55057d07cee726"
+        },
+        "stderr": {
+          "path": "experiment-output/batch13-threshold-ldoor-missing-current/62ecfffe39d8f5d7.attempt-001.stderr.txt",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    {
+      "task_id": "6d5fda10c81414fa",
+      "attempt": 1,
+      "status": "completed",
+      "rerun_reason": null,
+      "started_utc": "2026-07-25T09:59:27.081226+00:00",
+      "wall_seconds": 97.95994369999971,
+      "task": {
+        "algorithm": 3,
+        "mode": "raw",
+        "dataset": 1,
+        "tau": 0.080211,
+        "threads": 32,
+        "timeout_seconds": 1200,
+        "graph": null,
+        "vectors": null,
+        "capture_cliques": false,
+        "defines": {},
+        "warmup": false,
+        "repetition": 0,
+        "task_id": "6d5fda10c81414fa"
+      },
+      "parsed": {
+        "algorithm_ms": 78185,
+        "clique_count": 2466236,
+        "peak_memory_gib": 4.03,
+        "size_histogram": {
+          "2": 310222,
+          "3": 1133506,
+          "4": 800574,
+          "5": 198245,
+          "6": 22397,
+          "7": 1257,
+          "8": 35
+        },
+        "stats": {}
+      },
+      "validation": null,
+      "build": {
+        "fingerprint": "64e4967861b335bf",
+        "executable_sha256": "69c1a62388b882a1a6d832b0ab65b278b84da5c6c64458429e91f214dfaac8f6",
+        "command": [
+          "g++",
+          "-std=c++17",
+          "-fopenmp",
+          "-mavx2",
+          "-O3",
+          "src/alg3-raw.cpp",
+          "src/semantic_graph.cpp",
+          "-o",
+          "no-use/compiled/experiment-runner/alg3-raw-64e4967861b335bf.exe"
+        ],
+        "source_verification": {
+          "status": "verified_current",
+          "observed_current_fingerprint": "64e4967861b335bf",
+          "reason": null
+        },
+        "source_hashes": {
+          "alg3-raw.cpp": "88e7ff339339d8c2fcc15881413cbcbc066dc394d55fdacfdd6c46ac7717a036",
+          "semantic_graph.cpp": "c6d51c9086fbd5c7d264eb411ac04890806744fc4e05dc7eee0b156760a9cd92",
+          "semantic_graph.h": "8192c4e8e02fc8ace59d59365f72643e34ca32ba71faa5bb338381a8cd308078",
+          "experiment_runtime.h": "dc2be362f49932a172aa59e862dbc6dcb3cebec18dfd7950322bf4a7126ab2a1"
+        }
+      },
+      "inputs": {
+        "status": "verified_run_time",
+        "snapshot": {
+          "dataset_catalog": {
+            "path": "experiments/datasets.json",
+            "sha256": "35c6ced15bff76becdc06c670b753fe56ca69122ca7407205c5a0c14a32bb2d0"
+          },
+          "files": [
+            {
+              "role": "graph",
+              "path": "dataset/dataset/sc-ldoor.txt",
+              "bytes": 285761999,
+              "sha256": "840bdd1718e7e122a2c11347c3edd26e75a04c75c3ba82a8592abb626480d993"
+            },
+            {
+              "role": "vector_binary",
+              "path": "dataset/vectors-256/sc-ldoor_vectors.bin",
+              "bytes": 1862731784,
+              "sha256": "89b598ea62df53b4ba2bb2521affdf527ef0d4b7c28fa211e4962cb14a2a3d7e"
+            }
+          ]
+        }
+      },
+      "run_environment": {
+        "plan": "experiments/plans/batch13-threshold-ldoor-missing-current.json",
+        "plan_sha256": "2da81fc798e11a058c26307c7229280d09189d00dc3da338d9aadcd6f1b96c52",
+        "git": {
+          "commit": "59299fd9164d077d7e04cd97fc9ac89cbf962c9f",
+          "dirty": true
+        },
+        "machine": {
+          "platform": "Windows-11-10.0.26100-SP0",
+          "processor": "AMD64 Family 25 Model 97 Stepping 2, AuthenticAMD",
+          "logical_cpu_count": 32,
+          "python": "3.12.7",
+          "compiler": "g++ (x86_64-posix-seh-rev0, Built by MinGW-Builds project) 13.2.0"
+        },
+        "memory_limit_gib": 16,
+        "external_timeout_policy": "hard per-process TLE from task.timeout_seconds"
+      },
+      "result_json": {
+        "path": "experiment-output/batch13-threshold-ldoor-missing-current/6d5fda10c81414fa.attempt-001.json",
+        "bytes": 4183,
+        "sha256": "83ff12e76e5c2d662403169e897dac0c9bf97165117108e01d22e716ae6db2ff"
+      },
+      "artifacts": {
+        "program_log": {
+          "path": "experiment-output/batch13-threshold-ldoor-missing-current/6d5fda10c81414fa.attempt-001.program.log",
+          "bytes": 2274,
+          "sha256": "87bb15f2abd7b2cc6f25dcc2fc2c7905de84b73314cafb4e40fe1a0df8754e43"
+        },
+        "stdout": {
+          "path": "experiment-output/batch13-threshold-ldoor-missing-current/6d5fda10c81414fa.attempt-001.stdout.txt",
+          "bytes": 2475,
+          "sha256": "7e7b951676e59674f47030300d5574ff429621c8a9873ce6c360a6d77c01b9d9"
+        },
+        "stderr": {
+          "path": "experiment-output/batch13-threshold-ldoor-missing-current/6d5fda10c81414fa.attempt-001.stderr.txt",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    {
+      "task_id": "ab809b2e760b39ea",
+      "attempt": 1,
+      "status": "completed",
+      "rerun_reason": null,
+      "started_utc": "2026-07-25T10:35:05.128533+00:00",
+      "wall_seconds": 114.65177030000018,
+      "task": {
+        "algorithm": 4,
+        "mode": "raw",
+        "dataset": 1,
+        "tau": 0.0328792,
+        "threads": 32,
+        "timeout_seconds": 1200,
+        "graph": null,
+        "vectors": null,
+        "capture_cliques": false,
+        "defines": {},
+        "warmup": false,
+        "repetition": 0,
+        "task_id": "ab809b2e760b39ea"
+      },
+      "parsed": {
+        "algorithm_ms": 92550,
+        "clique_count": 66619604,
+        "peak_memory_gib": 12.74,
+        "size_histogram": {
+          "2": 1114,
+          "3": 50628,
+          "4": 760550,
+          "5": 3892153,
+          "6": 10036863,
+          "7": 15547289,
+          "8": 15917339,
+          "9": 11392867,
+          "10": 5912180,
+          "11": 2281250,
+          "12": 657344,
+          "13": 142996,
+          "14": 22995,
+          "15": 3621,
+          "16": 381,
+          "17": 28,
+          "18": 6
+        },
+        "stats": {}
+      },
+      "validation": null,
+      "build": {
+        "fingerprint": "ce709501bca23d5a",
+        "executable_sha256": "8f2e7e4f0ae7d2e3755fe8b79ac466df67e5f57d6c7187d34a41afa3a3b1834b",
+        "command": [
+          "g++",
+          "-std=c++17",
+          "-fopenmp",
+          "-mavx2",
+          "-O3",
+          "src/alg4-raw.cpp",
+          "src/semantic_graph.cpp",
+          "-o",
+          "no-use/compiled/experiment-runner/alg4-raw-ce709501bca23d5a.exe"
+        ],
+        "source_verification": {
+          "status": "verified_current",
+          "observed_current_fingerprint": "ce709501bca23d5a",
+          "reason": null
+        },
+        "source_hashes": {
+          "alg4-raw.cpp": "55e6eb74060ad4f21e60b3da4f4307b779d70f9356f593d53cc05abae2c085ed",
+          "semantic_graph.cpp": "c6d51c9086fbd5c7d264eb411ac04890806744fc4e05dc7eee0b156760a9cd92",
+          "semantic_graph.h": "8192c4e8e02fc8ace59d59365f72643e34ca32ba71faa5bb338381a8cd308078",
+          "experiment_runtime.h": "dc2be362f49932a172aa59e862dbc6dcb3cebec18dfd7950322bf4a7126ab2a1"
+        }
+      },
+      "inputs": {
+        "status": "verified_run_time",
+        "snapshot": {
+          "dataset_catalog": {
+            "path": "experiments/datasets.json",
+            "sha256": "35c6ced15bff76becdc06c670b753fe56ca69122ca7407205c5a0c14a32bb2d0"
+          },
+          "files": [
+            {
+              "role": "graph",
+              "path": "dataset/dataset/sc-ldoor.txt",
+              "bytes": 285761999,
+              "sha256": "840bdd1718e7e122a2c11347c3edd26e75a04c75c3ba82a8592abb626480d993"
+            },
+            {
+              "role": "vector_binary",
+              "path": "dataset/vectors-256/sc-ldoor_vectors.bin",
+              "bytes": 1862731784,
+              "sha256": "89b598ea62df53b4ba2bb2521affdf527ef0d4b7c28fa211e4962cb14a2a3d7e"
+            }
+          ]
+        }
+      },
+      "run_environment": {
+        "plan": "experiments/plans/batch13-threshold-ldoor-missing-current.json",
+        "plan_sha256": "2da81fc798e11a058c26307c7229280d09189d00dc3da338d9aadcd6f1b96c52",
+        "git": {
+          "commit": "59299fd9164d077d7e04cd97fc9ac89cbf962c9f",
+          "dirty": true
+        },
+        "machine": {
+          "platform": "Windows-11-10.0.26100-SP0",
+          "processor": "AMD64 Family 25 Model 97 Stepping 2, AuthenticAMD",
+          "logical_cpu_count": 32,
+          "python": "3.12.7",
+          "compiler": "g++ (x86_64-posix-seh-rev0, Built by MinGW-Builds project) 13.2.0"
+        },
+        "memory_limit_gib": 16,
+        "external_timeout_policy": "hard per-process TLE from task.timeout_seconds"
+      },
+      "result_json": {
+        "path": "experiment-output/batch13-threshold-ldoor-missing-current/ab809b2e760b39ea.attempt-001.json",
+        "bytes": 4395,
+        "sha256": "e333120c9214cd5eba4a84bea3b987ced286098dfc93c14c3596bf5c65b4c0f6"
+      },
+      "artifacts": {
+        "program_log": {
+          "path": "experiment-output/batch13-threshold-ldoor-missing-current/ab809b2e760b39ea.attempt-001.program.log",
+          "bytes": 1555,
+          "sha256": "09204bfd19b0a974df4ac8daa4c13c09f85f0c1011be2dd1458f240579d57faf"
+        },
+        "stdout": {
+          "path": "experiment-output/batch13-threshold-ldoor-missing-current/ab809b2e760b39ea.attempt-001.stdout.txt",
+          "bytes": 1756,
+          "sha256": "1463473d9562dcebef51caeecb87e56d1d74825fce218b05db6f914b6f6c3f89"
+        },
+        "stderr": {
+          "path": "experiment-output/batch13-threshold-ldoor-missing-current/ab809b2e760b39ea.attempt-001.stderr.txt",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    {
+      "task_id": "d7ecf6dba505e3a2",
+      "attempt": 1,
+      "status": "tle",
+      "rerun_reason": null,
+      "started_utc": "2026-07-25T10:15:04.504600+00:00",
+      "wall_seconds": 1200.5408087,
+      "task": {
+        "algorithm": 3,
+        "mode": "raw",
+        "dataset": 1,
+        "tau": 0.0328792,
+        "threads": 32,
+        "timeout_seconds": 1200,
+        "graph": null,
+        "vectors": null,
+        "capture_cliques": false,
+        "defines": {},
+        "warmup": false,
+        "repetition": 0,
+        "task_id": "d7ecf6dba505e3a2"
+      },
+      "parsed": null,
+      "validation": null,
+      "build": {
+        "fingerprint": "64e4967861b335bf",
+        "executable_sha256": "69c1a62388b882a1a6d832b0ab65b278b84da5c6c64458429e91f214dfaac8f6",
+        "command": [
+          "g++",
+          "-std=c++17",
+          "-fopenmp",
+          "-mavx2",
+          "-O3",
+          "src/alg3-raw.cpp",
+          "src/semantic_graph.cpp",
+          "-o",
+          "no-use/compiled/experiment-runner/alg3-raw-64e4967861b335bf.exe"
+        ],
+        "source_verification": {
+          "status": "verified_current",
+          "observed_current_fingerprint": "64e4967861b335bf",
+          "reason": null
+        },
+        "source_hashes": {
+          "alg3-raw.cpp": "88e7ff339339d8c2fcc15881413cbcbc066dc394d55fdacfdd6c46ac7717a036",
+          "semantic_graph.cpp": "c6d51c9086fbd5c7d264eb411ac04890806744fc4e05dc7eee0b156760a9cd92",
+          "semantic_graph.h": "8192c4e8e02fc8ace59d59365f72643e34ca32ba71faa5bb338381a8cd308078",
+          "experiment_runtime.h": "dc2be362f49932a172aa59e862dbc6dcb3cebec18dfd7950322bf4a7126ab2a1"
+        }
+      },
+      "inputs": {
+        "status": "verified_run_time",
+        "snapshot": {
+          "dataset_catalog": {
+            "path": "experiments/datasets.json",
+            "sha256": "35c6ced15bff76becdc06c670b753fe56ca69122ca7407205c5a0c14a32bb2d0"
+          },
+          "files": [
+            {
+              "role": "graph",
+              "path": "dataset/dataset/sc-ldoor.txt",
+              "bytes": 285761999,
+              "sha256": "840bdd1718e7e122a2c11347c3edd26e75a04c75c3ba82a8592abb626480d993"
+            },
+            {
+              "role": "vector_binary",
+              "path": "dataset/vectors-256/sc-ldoor_vectors.bin",
+              "bytes": 1862731784,
+              "sha256": "89b598ea62df53b4ba2bb2521affdf527ef0d4b7c28fa211e4962cb14a2a3d7e"
+            }
+          ]
+        }
+      },
+      "run_environment": {
+        "plan": "experiments/plans/batch13-threshold-ldoor-missing-current.json",
+        "plan_sha256": "2da81fc798e11a058c26307c7229280d09189d00dc3da338d9aadcd6f1b96c52",
+        "git": {
+          "commit": "59299fd9164d077d7e04cd97fc9ac89cbf962c9f",
+          "dirty": true
+        },
+        "machine": {
+          "platform": "Windows-11-10.0.26100-SP0",
+          "processor": "AMD64 Family 25 Model 97 Stepping 2, AuthenticAMD",
+          "logical_cpu_count": 32,
+          "python": "3.12.7",
+          "compiler": "g++ (x86_64-posix-seh-rev0, Built by MinGW-Builds project) 13.2.0"
+        },
+        "memory_limit_gib": 16,
+        "external_timeout_policy": "hard per-process TLE from task.timeout_seconds"
+      },
+      "result_json": {
+        "path": "experiment-output/batch13-threshold-ldoor-missing-current/d7ecf6dba505e3a2.attempt-001.json",
+        "bytes": 3903,
+        "sha256": "5e1ae1340e438c53af83a2ac497c5a087be79c214ccd46af739b82a91b74f162"
+      },
+      "artifacts": {
+        "program_log": {
+          "path": "experiment-output/batch13-threshold-ldoor-missing-current/d7ecf6dba505e3a2.attempt-001.program.log",
+          "bytes": 15252,
+          "sha256": "892e3b63bf51100d9d8a693b6c090a538282bdd6b7ac0bcd26858ea3e0201092"
+        },
+        "stdout": {
+          "path": "experiment-output/batch13-threshold-ldoor-missing-current/d7ecf6dba505e3a2.attempt-001.stdout.txt",
+          "bytes": 13094,
+          "sha256": "750124b62f58a77d019e9e6119352708d11b313f3c054c514fe1adeb2cfaf603"
+        },
+        "stderr": {
+          "path": "experiment-output/batch13-threshold-ldoor-missing-current/d7ecf6dba505e3a2.attempt-001.stderr.txt",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    {
+      "task_id": "f4641ca33f7392bc",
+      "attempt": 1,
+      "status": "completed",
+      "rerun_reason": null,
+      "started_utc": "2026-07-25T11:05:39.003354+00:00",
+      "wall_seconds": 17.215532299999722,
+      "task": {
+        "algorithm": 3,
+        "mode": "raw",
+        "dataset": 1,
+        "tau": -0.102847,
+        "threads": 32,
+        "timeout_seconds": 1200,
+        "graph": null,
+        "vectors": null,
+        "capture_cliques": false,
+        "defines": {},
+        "warmup": false,
+        "repetition": 0,
+        "task_id": "f4641ca33f7392bc"
+      },
+      "parsed": {
+        "algorithm_ms": 4028,
+        "clique_count": 274768,
+        "peak_memory_gib": 3.65,
+        "size_histogram": {
+          "2": 1,
+          "3": 3981,
+          "4": 512,
+          "5": 150,
+          "6": 5,
+          "7": 15,
+          "8": 5,
+          "15": 65,
+          "16": 70,
+          "17": 172,
+          "18": 28195,
+          "19": 49470,
+          "20": 72571,
+          "21": 119556
+        },
+        "stats": {}
+      },
+      "validation": null,
+      "build": {
+        "fingerprint": "64e4967861b335bf",
+        "executable_sha256": "69c1a62388b882a1a6d832b0ab65b278b84da5c6c64458429e91f214dfaac8f6",
+        "command": [
+          "g++",
+          "-std=c++17",
+          "-fopenmp",
+          "-mavx2",
+          "-O3",
+          "src/alg3-raw.cpp",
+          "src/semantic_graph.cpp",
+          "-o",
+          "no-use/compiled/experiment-runner/alg3-raw-64e4967861b335bf.exe"
+        ],
+        "source_verification": {
+          "status": "verified_current",
+          "observed_current_fingerprint": "64e4967861b335bf",
+          "reason": null
+        },
+        "source_hashes": {
+          "alg3-raw.cpp": "88e7ff339339d8c2fcc15881413cbcbc066dc394d55fdacfdd6c46ac7717a036",
+          "semantic_graph.cpp": "c6d51c9086fbd5c7d264eb411ac04890806744fc4e05dc7eee0b156760a9cd92",
+          "semantic_graph.h": "8192c4e8e02fc8ace59d59365f72643e34ca32ba71faa5bb338381a8cd308078",
+          "experiment_runtime.h": "dc2be362f49932a172aa59e862dbc6dcb3cebec18dfd7950322bf4a7126ab2a1"
+        }
+      },
+      "inputs": {
+        "status": "verified_run_time",
+        "snapshot": {
+          "dataset_catalog": {
+            "path": "experiments/datasets.json",
+            "sha256": "35c6ced15bff76becdc06c670b753fe56ca69122ca7407205c5a0c14a32bb2d0"
+          },
+          "files": [
+            {
+              "role": "graph",
+              "path": "dataset/dataset/sc-ldoor.txt",
+              "bytes": 285761999,
+              "sha256": "840bdd1718e7e122a2c11347c3edd26e75a04c75c3ba82a8592abb626480d993"
+            },
+            {
+              "role": "vector_binary",
+              "path": "dataset/vectors-256/sc-ldoor_vectors.bin",
+              "bytes": 1862731784,
+              "sha256": "89b598ea62df53b4ba2bb2521affdf527ef0d4b7c28fa211e4962cb14a2a3d7e"
+            }
+          ]
+        }
+      },
+      "run_environment": {
+        "plan": "experiments/plans/batch13-threshold-ldoor-missing-current.json",
+        "plan_sha256": "2da81fc798e11a058c26307c7229280d09189d00dc3da338d9aadcd6f1b96c52",
+        "git": {
+          "commit": "59299fd9164d077d7e04cd97fc9ac89cbf962c9f",
+          "dirty": true
+        },
+        "machine": {
+          "platform": "Windows-11-10.0.26100-SP0",
+          "processor": "AMD64 Family 25 Model 97 Stepping 2, AuthenticAMD",
+          "logical_cpu_count": 32,
+          "python": "3.12.7",
+          "compiler": "g++ (x86_64-posix-seh-rev0, Built by MinGW-Builds project) 13.2.0"
+        },
+        "memory_limit_gib": 16,
+        "external_timeout_policy": "hard per-process TLE from task.timeout_seconds"
+      },
+      "result_json": {
+        "path": "experiment-output/batch13-threshold-ldoor-missing-current/f4641ca33f7392bc.attempt-001.json",
+        "bytes": 4295,
+        "sha256": "301d2ceb1b87720e933335fc909039d3f880a90d182789f77a9401bccb22b841"
+      },
+      "artifacts": {
+        "program_log": {
+          "path": "experiment-output/batch13-threshold-ldoor-missing-current/f4641ca33f7392bc.attempt-001.program.log",
+          "bytes": 1575,
+          "sha256": "2202ec11df0bae784f7c9ac822eba527ec970e46e70bb314d35645dbfb3887a5"
+        },
+        "stdout": {
+          "path": "experiment-output/batch13-threshold-ldoor-missing-current/f4641ca33f7392bc.attempt-001.stdout.txt",
+          "bytes": 1776,
+          "sha256": "75ef2b060ae9eec42a2b89f0d3bf9f19dc67fcb6ee2b8abb8de8a23a8b98371f"
+        },
+        "stderr": {
+          "path": "experiment-output/batch13-threshold-ldoor-missing-current/f4641ca33f7392bc.attempt-001.stderr.txt",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    }
+  ]
+}

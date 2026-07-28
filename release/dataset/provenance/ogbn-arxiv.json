@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "dataset": "ogbn-arxiv",
+  "created_utc": "2026-07-23T09:22:04.336127+00:00",
+  "source": {
+    "url": "https://snap.stanford.edu/ogb/data/nodeproppred/arxiv.zip",
+    "documentation": "https://ogb.stanford.edu/docs/nodeprop/#ogbn-arxiv",
+    "license": "ODC-BY",
+    "archive_path": "dataset/downloads/ogbn-arxiv/arxiv.zip",
+    "archive_bytes": 83058288,
+    "archive_sha256": "49f85c801589ecdcc52cfaca99693aaea7b8af16a9ac3f41dd85a5f3193fe276"
+  },
+  "transformation": {
+    "graph": "drop self-loops, ignore citation direction, deduplicate, sort by endpoint IDs",
+    "vectors": "preserve official float32 values and store as little-endian float64 rows",
+    "normalization": "none during conversion; algorithms apply their shared L2 normalization",
+    "directed_input_rows": 1166243,
+    "removed_self_loops": 0,
+    "collapsed_duplicate_or_reciprocal_rows": 8444,
+    "undirected_simple_edges": 1157799
+  },
+  "output": {
+    "vertices": 169343,
+    "edges": 1157799,
+    "dimension": 128,
+    "graph": {
+      "path": "dataset/dataset/ogbn-arxiv.txt",
+      "bytes": 14666179,
+      "sha256": "84e7af17b8cc98889602faad9252337a3198ec0bd396d5db59c8f9971e1708aa"
+    },
+    "vectors": {
+      "path": "dataset/vectors/ogbn-arxiv_vectors.bin",
+      "bytes": 173407240,
+      "sha256": "f1544d287e9fd87a523541012ce20fb5de75235f5459b6766ec3905a1f7dd0db"
+    }
+  }
+}

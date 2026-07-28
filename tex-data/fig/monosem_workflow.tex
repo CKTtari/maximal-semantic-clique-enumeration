@@ -1,51 +1,56 @@
-\documentclass[tikz,border=6pt]{standalone}
+\documentclass[tikz,border=3pt]{standalone}
 \usepackage{newtxtext,newtxmath}
-\usetikzlibrary{arrows.meta,positioning,fit,calc}
+\newcommand{\avgsim}{\operatorname{avgSim}}
+\usetikzlibrary{arrows.meta,positioning}
 \definecolor{paperblue}{HTML}{2F6DB0}
 \definecolor{paperred}{HTML}{C83E4D}
 \definecolor{papergold}{HTML}{E3A008}
 \definecolor{papergreen}{HTML}{2E8B57}
 \begin{document}
 \begin{tikzpicture}[
-  font=\fontsize{16}{19}\selectfont,
+  font=\scriptsize,
   >=Latex,
-  state/.style={draw=black, rounded corners=2pt, line width=1.1pt,
-    minimum height=15mm, minimum width=52mm, align=center, fill=white},
-  accepted/.style={->, draw=paperblue, line width=1.8pt},
-  deletion/.style={->, draw=papergreen, line width=1.6pt},
-  rejected/.style={->, draw=paperred, line width=1.6pt, dashed},
-  note/.style={font=\fontsize{14}{17}\selectfont, align=center}
+  rule/.style={draw=black, rounded corners=1.5pt, line width=0.55pt,
+    minimum height=11mm, text width=31mm, align=left, inner sep=1.6mm},
+  state/.style={draw=black, rounded corners=1.5pt, line width=0.55pt,
+    minimum height=8mm, text width=16mm, align=center, fill=white,
+    inner sep=1.0mm},
+  route/.style={draw=black, rounded corners=1.5pt, line width=0.55pt,
+    minimum height=10mm, text width=31mm, align=center, inner sep=1.4mm},
+  accepted/.style={->, draw=papergreen, line width=1.0pt},
+  phase/.style={font=\scriptsize\bfseries, anchor=west}
 ]
-\node[state, fill=papergold!12, minimum width=176mm] (theorem) at (8.5,0)
-  {Deterministic minimum-contribution deletion\\
-   $d(C)=\arg\min_{v\in C}\left(\sum_{u\in C\setminus\{v\}}\operatorname{sim}(u,v),v\right)$,
-   \quad $\operatorname{avgSim}(C\setminus\{d(C)\})\geq\operatorname{avgSim}(C)$};
+\node[rule, fill=paperblue!8] (parent) at (0,0)
+  {\textbf{Feasible parent.} For feasible $D$, delete the vertex $d(D)$
+   with minimum total similarity. Then
+   $\avgsim(D\setminus\{d(D)\})\geq\avgsim(D)$.};
+\node[rule, fill=papergold!11] (owner) at (3.75,0)
+  {\textbf{Unique ownership.} Traverse $C\rightarrow D=C\cup\{x\}$ only
+   if $x=d(D)$. Thus each state has one parent and needs no visited table.};
 
-\node[note] at (8.5,-2.0) {Running example: the unique reverse paths to $C_1$ and $C_2$};
-\node[state, fill=paperblue!7] (e24) at (0,-4.3)
-  {$\{v_2,v_4\}$\\avg. $1.000$};
-\node[state, fill=paperblue!7] (t124) at (8.5,-4.3)
-  {$\{v_1,v_2,v_4\}$\\avg. $0.867$};
-\node[state, fill=papergreen!16] (c1) at (17,-4.3)
-  {$C_1=\{v_1,v_2,v_3,v_4\}$\\avg. $0.693$};
-\draw[accepted] (e24) -- node[above,note] {$+v_1$ accepted} (t124);
-\draw[accepted] (t124) -- node[above,note] {$+v_3$ accepted} (c1);
-\draw[deletion, bend left=22] (c1.south) to node[below,note] {$d(C_1)=v_3$} (t124.south);
-\draw[deletion, bend left=22] (t124.south) to node[below,note] {$d(\{v_1,v_2,v_4\})=v_1$} (e24.south);
+\node[phase] at (-1.67,-1.02) {Owned path to $C_1$};
+\node[state, fill=paperblue!7] (e24) at (-0.70,-1.72)
+  {$\{v_2,v_4\}$\\$1.000$};
+\node[state, fill=paperblue!7] (t124) at (1.82,-1.72)
+  {$\{v_1,v_2,v_4\}$\\$0.867$};
+\node[state, fill=papergreen!15] (c1) at (4.34,-1.72)
+  {$C_1$\\$0.693$};
+\draw[accepted] (e24) -- node[above,font=\tiny,align=center] {$+v_1$\\owned} (t124);
+\draw[accepted] (t124) -- node[above,font=\tiny,align=center] {$+v_3$\\owned} (c1);
 
-\node[state, fill=paperblue!7] (e56) at (0,-9.3)
-  {$\{v_5,v_6\}$\\avg. $0.960$};
-\node[state, fill=papergreen!16] (c2) at (8.5,-9.3)
-  {$C_2=\{v_3,v_5,v_6\}$\\avg. $0.693$};
-\node[state, fill=paperred!5] (e35) at (17,-9.3)
-  {$\{v_3,v_5\}$\\avg. $0.640$};
-\draw[accepted] (e56) -- node[above,note] {$+v_3$ accepted} (c2);
-\draw[deletion, bend left=22] (c2.south) to node[below,note] {$d(C_2)=v_3$} (e56.south);
-\draw[rejected] (e35) -- node[above,note,text=paperred] {$+v_6$ rejected} (c2);
-\node[note, text=paperred] at (12.75,-10.7) {$v_6\neq d(C_2)$};
+\node[phase] at (-1.67,-2.53) {Two paths to $C_2$};
+\node[route, fill=papergreen!10] (keep) at (0,-3.22)
+  {\textbf{Traverse}\\
+   $\{v_5,v_6\}+v_3\rightarrow C_2$\\
+   $v_3=d(C_2)$};
+\node[route, fill=paperred!7] (drop) at (3.75,-3.22)
+  {\textbf{Stop duplicate path}\\
+   $\{v_3,v_5\}+v_6\rightarrow C_2$\\
+   $v_6\neq d(C_2)=v_3$};
 
-\node[state, fill=paperblue!8, minimum width=176mm] (result) at (8.5,-13.3)
-  {Reverse DFS accepts only unique-parent insertions. The second construction of $C_2$ is rejected\\
-   without a visited table; after strict-containment filtering, $C_1$ and $C_2$ are returned.};
+\node[route, fill=paperblue!7, text width=67mm, minimum height=8mm]
+  (result) at (1.88,-4.30)
+  {Reverse search reaches each feasible state once; the final containment
+   filter returns $C_1$ and $C_2$.};
 \end{tikzpicture}
 \end{document}

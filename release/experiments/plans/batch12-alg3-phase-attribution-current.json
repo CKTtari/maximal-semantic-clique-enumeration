@@ -1,0 +1,7 @@
+{
+  "name": "batch12-alg3-phase-attribution-current",
+  "tasks": [
+    {"algorithm": 3, "mode": "stats", "dataset": 7, "tau": 0.234886, "threads": 1, "timeout_seconds": 1200, "repetitions": 1},
+    {"algorithm": 3, "mode": "stats", "dataset": 7, "tau": 0.234886, "threads": 32, "timeout_seconds": 1200, "repetitions": 1}
+  ]
+}

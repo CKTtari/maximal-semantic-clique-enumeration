@@ -1,0 +1,11 @@
+{
+  "name": "batch13-main-structbk-formal-current",
+  "tasks": [
+    {"algorithm": 1, "mode": "raw", "dataset": 7, "threads": 32, "timeout_seconds": 1200, "repetitions": 3},
+    {"algorithm": 1, "mode": "raw", "dataset": 16, "threads": 32, "timeout_seconds": 1200, "repetitions": 3},
+    {"algorithm": 1, "mode": "raw", "dataset": 2, "threads": 32, "timeout_seconds": 1200, "repetitions": 3},
+    {"algorithm": 1, "mode": "raw", "dataset": 3, "threads": 32, "timeout_seconds": 1200, "repetitions": 3},
+    {"algorithm": 1, "mode": "raw", "dataset": 14, "threads": 32, "timeout_seconds": 1200, "repetitions": 3},
+    {"algorithm": 1, "mode": "raw", "dataset": 1, "threads": 32, "timeout_seconds": 1200, "repetitions": 3}
+  ]
+}
