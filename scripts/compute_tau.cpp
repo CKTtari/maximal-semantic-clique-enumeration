@@ -83,7 +83,8 @@ vector<DatasetConfig> DATASETS = {
     {12, "com-amazon", "dataset/dataset/com-amazon.txt", "dataset/vectors-256/com-amazon_vectors.bin"},
     {13, "ca-dblp-2012", "dataset/dataset/ca-dblp-2012.txt", "dataset/vectors-256/ca-dblp-2012_vectors.bin"},
     {14, "sc-pwtk", "dataset/dataset/sc-pwtk.txt", "dataset/vectors-256/sc-pwtk_vectors.bin"},
-    {16, "email-Enron", "dataset/Processed/email-Enron/graph.txt", "dataset/Processed/email-Enron/email-Enron_vectors.bin"}
+    {16, "email-Enron", "dataset/Processed/email-Enron/graph.txt", "dataset/Processed/email-Enron/email-Enron_vectors.bin"},
+    {17, "GitHub-Social", "dataset/dataset/github-social.txt", "dataset/vectors/github-social_vectors.bin"}
 };
 
 int main(int argc, char* argv[]) {

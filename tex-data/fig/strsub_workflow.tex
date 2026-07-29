@@ -31,8 +31,8 @@
   {\textbf{$M_2$ is infeasible}\\
    $\operatorname{avgSim}(M_2)=0.427$\\
    bounded subset search};
-\draw[arrow] (bk.south) -- ++(0,-2mm) -| (m1.north);
-\draw[arrow] (bk.south) -- ++(0,-2mm) -| (m2.north);
+\draw[arrow] ([xshift=-18.5mm]bk.south) -- (m1.north);
+\draw[arrow] ([xshift=18.5mm]bk.south) -- (m2.north);
 
 \node[branch, accepted] (c2) at (3.70,-3.05)
   {\textbf{Feasible subset}\\
@@ -42,8 +42,8 @@
 
 \node[wide, structural] (filter) at (1.85,-4.50)
   {\textbf{Global filter}\quad deduplicate candidates and remove strict subsets};
-\draw[arrow] (m1.south) -- ([xshift=-18mm]filter.north);
-\draw[arrow] (c2.south) -- ([xshift=18mm]filter.north);
+\draw[arrow] (m1.south) -- (m1.south |- filter.north);
+\draw[arrow] (c2.south) -- (c2.south |- filter.north);
 
 \node[box, accepted, text width=38mm, minimum height=8mm] (out) at (1.85,-5.55)
   {\textbf{Output}\quad $\mathcal R=\{C_1,C_2\}$};

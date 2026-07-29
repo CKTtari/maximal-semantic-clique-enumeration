@@ -132,6 +132,10 @@ inline void select_dataset(int id, std::string& graph_file,
             graph_file = "dataset/Processed/email-Enron/graph.txt";
             vector_file = "dataset/Processed/email-Enron/email-Enron_vectors.bin";
             break;
+        case 17:
+            graph_file = "dataset/dataset/github-social.txt";
+            vector_file = "dataset/vectors/github-social_vectors.bin";
+            break;
         default:
             select_dataset(2, graph_file, vector_file);
             break;

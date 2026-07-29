@@ -1,0 +1,7 @@
+{
+  "name": "github-social-quality-q20-sembk-capture",
+  "description": "Output-only q20 MSC capture through the exact SemBK implementation.",
+  "tasks": [
+    {"algorithm": 2, "dataset": 17, "tau": 0.25049, "threads": 32, "timeout_seconds": 1200, "capture_cliques": true}
+  ]
+}

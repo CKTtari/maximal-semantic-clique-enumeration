@@ -1,0 +1,13 @@
+{
+  "name": "github-social-quality-sweep-recovery",
+  "description": "Output-only captures for the fixed quality grid; StrSub uses one thread because capture time is not evaluated.",
+  "tasks": [
+    {"algorithm": 3, "dataset": 17, "tau": 0.25049, "threads": 1, "timeout_seconds": 1200, "capture_cliques": true},
+    {"algorithm": 1, "dataset": 17, "graph": "dataset/derived/github-social-pairsim-q50.txt", "threads": 32, "timeout_seconds": 1200, "capture_cliques": true},
+    {"algorithm": 3, "dataset": 17, "tau": 0.333849, "threads": 1, "timeout_seconds": 1200, "capture_cliques": true},
+    {"algorithm": 1, "dataset": 17, "graph": "dataset/derived/github-social-pairsim-q95.txt", "threads": 32, "timeout_seconds": 1200, "capture_cliques": true},
+    {"algorithm": 3, "dataset": 17, "tau": 0.500773, "threads": 1, "timeout_seconds": 1200, "capture_cliques": true},
+    {"algorithm": 1, "dataset": 17, "graph": "dataset/derived/github-social-pairsim-q99.txt", "threads": 32, "timeout_seconds": 1200, "capture_cliques": true},
+    {"algorithm": 3, "dataset": 17, "tau": 0.571662, "threads": 1, "timeout_seconds": 1200, "capture_cliques": true}
+  ]
+}

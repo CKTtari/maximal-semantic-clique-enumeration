@@ -7,6 +7,7 @@
 /build/
 /no-use/
 /experiment-output/
+/tmp/
 
 # LaTeX intermediate files
 /main.pdf
@@ -18,8 +19,22 @@
 /main.log
 /main.out
 /main.synctex.gz
+*.aux
+*.log
+*.fdb_latexmk
+*.fls
+
+# Local manuscript copies
+/acmsc-draft.pdf
+/main - 鍓湰.pdf
 
 # Editor, OS, and Python caches
 .DS_Store
 __pycache__/
 *.py[cod]
+# Generated review snapshots and superseded figures
+/src/test/test_data/
+/tex-data/fig/multi_baseline_quality_*
+/tex-data/fig/quality_threshold_sweep.*
+/tex-data/fig/*.svg
+/main - *.pdf

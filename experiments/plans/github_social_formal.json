@@ -1,0 +1,16 @@
+{
+  "name": "github-social-formal",
+  "description": "Three-run formal common-grid measurements on GitHub-Social.",
+  "tasks": [
+    {"algorithm": 1, "dataset": 17, "threads": 32, "timeout_seconds": 1200, "repetitions": 3},
+    {"algorithm": 2, "dataset": 17, "tau": 0.25049, "threads": 32, "timeout_seconds": 1200, "repetitions": 3},
+    {"algorithm": 2, "dataset": 17, "tau": 0.417029, "threads": 32, "timeout_seconds": 1200, "repetitions": 3},
+    {"algorithm": 2, "dataset": 17, "tau": 0.571662, "threads": 32, "timeout_seconds": 1200, "repetitions": 3},
+    {"algorithm": 3, "dataset": 17, "tau": 0.25049, "threads": 32, "timeout_seconds": 1200, "repetitions": 3},
+    {"algorithm": 3, "dataset": 17, "tau": 0.417029, "threads": 32, "timeout_seconds": 1200, "repetitions": 3},
+    {"algorithm": 3, "dataset": 17, "tau": 0.571662, "threads": 32, "timeout_seconds": 1200, "repetitions": 3},
+    {"algorithm": 4, "dataset": 17, "tau": 0.25049, "threads": 32, "timeout_seconds": 1200, "repetitions": 3},
+    {"algorithm": 4, "dataset": 17, "tau": 0.417029, "threads": 32, "timeout_seconds": 1200, "repetitions": 3},
+    {"algorithm": 4, "dataset": 17, "tau": 0.571662, "threads": 32, "timeout_seconds": 1200, "repetitions": 3}
+  ]
+}

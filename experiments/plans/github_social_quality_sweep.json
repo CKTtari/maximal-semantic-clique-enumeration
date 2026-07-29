@@ -1,0 +1,14 @@
+{
+  "name": "github-social-quality-sweep",
+  "description": "Captured outputs for the fixed q20/q50/q95/q99 quality sweep; q80 is reused from the registered capture.",
+  "tasks": [
+    {"algorithm": 1, "dataset": 17, "graph": "dataset/derived/github-social-pairsim-q20.txt", "threads": 32, "timeout_seconds": 1200, "capture_cliques": true},
+    {"algorithm": 3, "dataset": 17, "tau": 0.25049, "threads": 32, "timeout_seconds": 1200, "capture_cliques": true},
+    {"algorithm": 1, "dataset": 17, "graph": "dataset/derived/github-social-pairsim-q50.txt", "threads": 32, "timeout_seconds": 1200, "capture_cliques": true},
+    {"algorithm": 3, "dataset": 17, "tau": 0.333849, "threads": 32, "timeout_seconds": 1200, "capture_cliques": true},
+    {"algorithm": 1, "dataset": 17, "graph": "dataset/derived/github-social-pairsim-q95.txt", "threads": 32, "timeout_seconds": 1200, "capture_cliques": true},
+    {"algorithm": 3, "dataset": 17, "tau": 0.500773, "threads": 32, "timeout_seconds": 1200, "capture_cliques": true},
+    {"algorithm": 1, "dataset": 17, "graph": "dataset/derived/github-social-pairsim-q99.txt", "threads": 32, "timeout_seconds": 1200, "capture_cliques": true},
+    {"algorithm": 3, "dataset": 17, "tau": 0.571662, "threads": 32, "timeout_seconds": 1200, "capture_cliques": true}
+  ]
+}

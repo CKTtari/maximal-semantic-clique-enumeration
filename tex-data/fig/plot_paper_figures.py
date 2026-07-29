@@ -1,6 +1,6 @@
 """Generate the paper's data-driven figures from canonical experiment CSVs.
 
-The figures are drawn at their final PVLDB single-column size. Multi-panel
+The figures use high-resolution source canvases for PVLDB single-column placement. Multi-panel
 figures are exported as independent panels and composed with LaTeX subfigures.
 """
 
@@ -26,7 +26,7 @@ ROOT = HERE.parents[1]
 QUALITY = ROOT / "experiments" / "quality"
 QA_DIR = ROOT / "tmp" / "figure-qa"
 
-# The requested SciPilot skill is kept repo-local while figures are generated.
+# Repo-local export helpers provide deterministic PDF/SVG/PNG output and layout audits.
 SCIPILOT_SCRIPTS = ROOT / "tmp" / "scipilot-figure-skill" / "scripts"
 if SCIPILOT_SCRIPTS.is_dir():
     sys.path.insert(0, str(SCIPILOT_SCRIPTS))
@@ -43,10 +43,14 @@ except ImportError as exc:  # pragma: no cover - only used without the local ski
     ) from exc
 
 
-COLUMN_WIDTH = 3.32
-HALF_COLUMN_WIDTH = 1.60
-INSET_COLUMN_WIDTH = 3.02
+COLUMN_WIDTH = 7.10
+RQ5_COLUMN_WIDTH = 3.25
+RQ5_PANEL_WIDTH = 1.60
+FINAL_WIDTH_MM = 89
+HALF_COLUMN_WIDTH = 3.42
+INSET_COLUMN_WIDTH = 6.40
 TIMEOUT_SECONDS = 1200.0
+EXPORT_SUFFIXES = (".svg", ".pdf", ".png")
 
 # Okabe-Ito-derived colors with line/marker redundancy for grayscale printing.
 BLUE = "#0072B2"
@@ -65,24 +69,26 @@ def configure_style() -> None:
     setup_style(journal="ieee", lang="en", use_sciplots=False, constrained_layout=True)
     plt.rcParams.update(
         {
-            "figure.figsize": (COLUMN_WIDTH, 2.35),
+            "figure.figsize": (COLUMN_WIDTH, 4.60),
             "font.family": "serif",
             "font.serif": ["Times New Roman", "Times", "DejaVu Serif"],
+            "font.sans-serif": ["Arial", "Helvetica", "DejaVu Sans"],
             "mathtext.fontset": "stix",
-            "font.size": 8.5,
-            "axes.labelsize": 9.0,
-            "axes.titlesize": 9.0,
-            "xtick.labelsize": 8.0,
-            "ytick.labelsize": 8.0,
-            "legend.fontsize": 8.0,
-            "axes.linewidth": 0.75,
-            "lines.linewidth": 1.35,
-            "lines.markersize": 4.5,
-            "xtick.major.width": 0.7,
-            "ytick.major.width": 0.7,
-            "xtick.major.size": 3.0,
-            "ytick.major.size": 3.0,
+            "font.size": 20.0,
+            "axes.labelsize": 21.0,
+            "axes.titlesize": 21.0,
+            "xtick.labelsize": 20.0,
+            "ytick.labelsize": 20.0,
+            "legend.fontsize": 20.0,
+            "axes.linewidth": 1.35,
+            "lines.linewidth": 2.60,
+            "lines.markersize": 9.0,
+            "xtick.major.width": 1.25,
+            "ytick.major.width": 1.25,
+            "xtick.major.size": 5.5,
+            "ytick.major.size": 5.5,
             "pdf.fonttype": 42,
+            "svg.fonttype": "none",
             "ps.fonttype": 42,
             "savefig.dpi": 600,
             "axes.unicode_minus": False,
@@ -119,12 +125,22 @@ def legend_above(ax: plt.Axes, handles=None, labels=None, ncol: int = 2) -> None
     )
 
 
-def save(fig: plt.Figure, stem: str, size: tuple[float, float]) -> None:
+def save(
+    fig: plt.Figure,
+    stem: str,
+    size: tuple[float, float],
+    *,
+    adaptive_layout: bool = True,
+) -> None:
     fig.set_size_inches(*size)
-    finalize_figure(fig)
-    layout_engine = fig.get_layout_engine()
-    if layout_engine is not None:
-        layout_engine.set(w_pad=0.055, h_pad=0.055)
+    if adaptive_layout:
+        finalize_figure(fig)
+        layout_engine = fig.get_layout_engine()
+        if layout_engine is not None:
+            layout_engine.set(w_pad=0.055, h_pad=0.055)
+            fig.canvas.draw()
+    else:
+        fig.set_layout_engine(None)
         fig.canvas.draw()
     issues = audit_layout(fig)
     failures = [message for severity, message in issues if severity == "FAIL"]
@@ -134,11 +150,11 @@ def save(fig: plt.Figure, stem: str, size: tuple[float, float]) -> None:
         print(f"[{stem}] {severity}: {message}")
 
     QA_DIR.mkdir(parents=True, exist_ok=True)
-    render_preview(fig, str(QA_DIR / f"{stem}.png"), dpi=180)
+    render_preview(fig, str(QA_DIR / f"{stem}.png"), dpi=600)
     export_figure(
         fig,
         str(HERE / stem),
-        formats=("pdf", "png"),
+        formats=("svg", "pdf", "png"),
         dpi=600,
         size_inches=size,
         tight=False,
@@ -150,7 +166,8 @@ def threshold_panel(dataset: str, stem: str, show_ylabel: bool) -> None:
     rows = [row for row in read_csv("threshold_sensitivity.csv") if row["dataset"] == dataset]
     quantiles = sorted({int(row["quantile"]) for row in rows})
     positions = {quantile: index for index, quantile in enumerate(quantiles)}
-    fig, ax = plt.subplots(figsize=(HALF_COLUMN_WIDTH, 1.88))
+    panel_size = (3.52, 2.35)
+    fig, ax = plt.subplots(figsize=panel_size)
 
     for method in ("StrSub", "MonoSemMCE"):
         by_quantile = {int(row["quantile"]): row for row in rows if row["algorithm"] == method}
@@ -183,10 +200,11 @@ def threshold_panel(dataset: str, stem: str, show_ylabel: bool) -> None:
                 zorder=5,
             )
 
+    # Every plotted runtime/count is strictly positive; TLE points use TIMEOUT_SECONDS.
     ax.set_yscale("log")
-    shown = [q for q in quantiles if q in {5, 50, 80, 95, 99}]
+    shown = [q for q in quantiles if q in {5, 50, 80, 99}]
     ax.set_xticks([positions[q] for q in shown], [str(q) for q in shown])
-    ax.set_xlabel("Threshold quantile (%)", labelpad=2)
+    ax.set_xlabel("Quantile (%)", labelpad=1)
     if show_ylabel:
         ax.set_ylabel("Time (s)", labelpad=2)
     if dataset == "sc-ldoor":
@@ -194,11 +212,20 @@ def threshold_panel(dataset: str, stem: str, show_ylabel: bool) -> None:
     else:
         ax.set_ylim(0.14, 4.5)
     clean_axis(ax)
-    legend_above(ax, ncol=1)
-    save(fig, stem, (HALF_COLUMN_WIDTH, 1.88))
+    save(fig, stem, panel_size)
 
 
 def threshold_runtime() -> None:
+    handles = [
+        Line2D([0], [0], color=COLORS[method], marker=MARKERS[method],
+               linestyle=LINESTYLES[method], markerfacecolor="white", label=method)
+        for method in ("StrSub", "MonoSemMCE")
+    ]
+    legend_fig, legend_ax = plt.subplots(figsize=(COLUMN_WIDTH, 0.52))
+    legend_ax.axis("off")
+    legend_ax.legend(handles=handles, loc="center", ncol=2, frameon=False,
+                     handlelength=1.8, columnspacing=0.9, handletextpad=0.4)
+    save(legend_fig, "threshold_runtime_legend", (COLUMN_WIDTH, 0.52))
     threshold_panel("ogbn-arxiv", "threshold_runtime_arxiv", show_ylabel=True)
     threshold_panel("sc-ldoor", "threshold_runtime_ldoor", show_ylabel=False)
 
@@ -212,7 +239,7 @@ def scale_regime() -> None:
         [[float(by_key[(size, q)]["log2_t4_over_t3"]) for q in quantiles] for size in sizes]
     )
 
-    fig, ax = plt.subplots(figsize=(COLUMN_WIDTH, 2.28))
+    fig, ax = plt.subplots(figsize=(COLUMN_WIDTH, 4.35))
     limit = max(abs(float(matrix.min())), abs(float(matrix.max())))
     image = ax.imshow(
         matrix,
@@ -229,16 +256,16 @@ def scale_regime() -> None:
         for j in range(matrix.shape[1]):
             value = float(matrix[i, j])
             color = "white" if abs(value) > 0.58 * limit else "black"
-            ax.text(j, i, f"{value:+.2f}", ha="center", va="center", fontsize=7.3, color=color)
+            ax.text(j, i, f"{value:+.2f}", ha="center", va="center", fontsize=20.0, color=color)
     colorbar = fig.colorbar(image, ax=ax, orientation="horizontal", location="top", pad=0.07, fraction=0.10)
     colorbar.set_label(r"$\log_2(T_{\mathrm{Mono}}/T_{\mathrm{StrSub}})$", labelpad=2)
     colorbar.ax.tick_params(labelsize=7.5, length=2)
-    save(fig, "scale_regime", (COLUMN_WIDTH, 2.28))
+    save(fig, "scale_regime", (COLUMN_WIDTH, 4.35))
 
 
 def parallel_scaling() -> None:
     rows = read_csv("parallel_scaling.csv")
-    fig, ax = plt.subplots(figsize=(INSET_COLUMN_WIDTH, 1.72))
+    fig, ax = plt.subplots(figsize=(INSET_COLUMN_WIDTH, 3.45))
     threads = np.asarray([1, 2, 4, 8, 16, 32], dtype=float)
     for algorithm in ("StrSub", "MonoSemMCE"):
         selected = sorted(
@@ -262,14 +289,15 @@ def parallel_scaling() -> None:
     ax.set_ylim(0.8, 6.05)
     clean_axis(ax)
     legend_above(ax, ncol=2)
-    save(fig, "parallel_scaling", (INSET_COLUMN_WIDTH, 1.72))
+    save(fig, "parallel_scaling", (INSET_COLUMN_WIDTH, 3.45))
 
 
 def mechanism_summary() -> None:
     alg3_rows = [row for row in read_csv("alg3_mechanism_counters.csv") if row["variant"] != "No Local-Max"]
-    labels = ["Full", "No\nTop-Edge", "No\nVertex\nBound"]
+    labels = ["Full", "-Top", "-Vertex"]
     tests = np.asarray([float(row["subset_tests"]) / 1e6 for row in alg3_rows])
-    fig, ax = plt.subplots(figsize=(HALF_COLUMN_WIDTH, 1.42))
+    panel_size = (3.52, 2.35)
+    fig, ax = plt.subplots(figsize=panel_size)
     bars = ax.bar(
         np.arange(len(labels)),
         tests,
@@ -280,20 +308,17 @@ def mechanism_summary() -> None:
     )
     for bar, hatch in zip(bars, ("///", "...", "xxx")):
         bar.set_hatch(hatch)
-    ax.set_xticks(np.arange(len(labels)), labels)
+    ax.set_xticks(np.arange(len(labels)), labels, rotation=30, ha="right")
     ax.set_ylabel("Subset tests (M)")
     ax.set_ylim(0, max(tests) * 1.17)
-    ax.bar_label(bars, fmt="%.1f", fontsize=7.7, padding=2.0)
+    ax.bar_label(bars, fmt="%.1f", fontsize=20.0, padding=2.0)
     clean_axis(ax)
-    # Reserve the same two-line legend band used by the adjacent panel.
-    spacers = [Line2D([], [], color="none"), Line2D([], [], color="none")]
-    legend_above(ax, handles=spacers, labels=[" ", " "], ncol=1)
-    save(fig, "mechanism_strsub", (HALF_COLUMN_WIDTH, 1.42))
+    save(fig, "mechanism_strsub", panel_size)
 
     rows = read_csv("alg4_state_contraction.csv")
     quantiles = np.asarray([int(row["quantile"]) for row in rows])
     positions = np.arange(len(quantiles))
-    fig, ax = plt.subplots(figsize=(HALF_COLUMN_WIDTH, 1.42))
+    fig, ax = plt.subplots(figsize=panel_size)
     ax.plot(
         positions,
         [int(row["states"]) for row in rows],
@@ -302,7 +327,7 @@ def mechanism_summary() -> None:
         linestyle="--",
         markerfacecolor="white",
         markeredgecolor=RED,
-        label="Canonical states",
+        label="States",
     )
     ax.plot(
         positions,
@@ -314,16 +339,26 @@ def mechanism_summary() -> None:
         markeredgecolor=BLUE,
         label="MSCs",
     )
+    # Every plotted runtime/count is strictly positive; TLE points use TIMEOUT_SECONDS.
     ax.set_yscale("log")
     shown = [i for i, q in enumerate(quantiles) if q in {5, 50, 80, 95, 99}]
     ax.set_xticks(shown, [str(quantiles[i]) for i in shown])
-    ax.set_xlabel("Threshold quantile (%)", labelpad=2)
+    ax.set_xlabel("Quantile (%)", labelpad=1)
     ax.set_ylabel("Count")
     ax.yaxis.set_minor_locator(LogLocator(base=10, subs=()))
     ax.yaxis.set_minor_formatter(NullFormatter())
+    ax.set_ylim(top=max(int(row["states"]) for row in rows) * 8.0)
     clean_axis(ax)
-    legend_above(ax, ncol=1)
-    save(fig, "mechanism_monosem", (HALF_COLUMN_WIDTH, 1.42))
+    legend_handles, legend_labels = ax.get_legend_handles_labels()
+    fig.set_layout_engine(None)
+    fig.subplots_adjust(left=0.19, right=0.98, bottom=0.25, top=0.76)
+    fig.legend(
+        legend_handles, legend_labels, loc="upper center", ncol=2,
+        bbox_to_anchor=(0.58, 0.99), frameon=False,
+        handlelength=1.5, handletextpad=0.35, columnspacing=0.8,
+        borderaxespad=0.0,
+    )
+    save(fig, "mechanism_monosem", panel_size)
 
 
 def result_distribution() -> None:
@@ -368,7 +403,7 @@ def result_distribution() -> None:
         )
         for dataset in datasets + ["Geometric mean"]
     ]
-    legend_fig, legend_ax = plt.subplots(figsize=(COLUMN_WIDTH, 0.46))
+    legend_fig, legend_ax = plt.subplots(figsize=(COLUMN_WIDTH, 0.88))
     legend_ax.axis("off")
     legend_ax.legend(
         handles=handles,
@@ -380,13 +415,14 @@ def result_distribution() -> None:
         columnspacing=0.85,
         handletextpad=0.38,
     )
-    save(legend_fig, "result_distribution_legend", (COLUMN_WIDTH, 0.46))
+    save(legend_fig, "result_distribution_legend", (COLUMN_WIDTH, 0.88))
 
     for field, ylabel, stem in (
         ("count_ratio", "Output-count ratio", "result_distribution_count"),
         ("mean_size_ratio", "Mean-size ratio", "result_distribution_size"),
     ):
-        fig, ax = plt.subplots(figsize=(HALF_COLUMN_WIDTH, 1.42))
+        panel_size = (3.52, 2.35)
+        fig, ax = plt.subplots(figsize=panel_size)
         for dataset in datasets + ["Geometric mean"]:
             selected = {int(row["quantile"]): row for row in rows if row["dataset"] == dataset}
             aggregate = dataset == "Geometric mean"
@@ -403,66 +439,243 @@ def result_distribution() -> None:
                 markeredgecolor=colors[dataset],
                 label=dataset,
             )
+        # Every plotted runtime/count is strictly positive; TLE points use TIMEOUT_SECONDS.
         ax.set_yscale("log")
         ax.axhline(1.0, color="black", linewidth=0.75, linestyle=(0, (1.5, 2.0)))
         ax.set_xticks(positions, [f"q{q}" for q in quantiles])
         ax.set_ylabel(ylabel)
         clean_axis(ax)
-        save(fig, stem, (HALF_COLUMN_WIDTH, 1.42))
+        save(fig, stem, panel_size)
 
 
-def result_quality() -> None:
-    rows = read_csv("result_quality_sweep.csv")
-    colors = {"StructBK": BLUE, "PairSim-MCE": GOLD, "ACMSC": GREEN}
-    markers = {"StructBK": "D", "PairSim-MCE": "s", "ACMSC": "o"}
-    styles = {"PairSim-MCE": "--", "ACMSC": "-"}
-    fig, ax = plt.subplots(figsize=(COLUMN_WIDTH, 2.52))
-    for algorithm in ("PairSim-MCE", "ACMSC"):
-        selected = sorted(
-            (row for row in rows if row["algorithm"] == algorithm), key=lambda row: int(row["quantile"])
+def rq5_style() -> dict[str, float]:
+    return {
+        "font.size": 8.0,
+        "axes.labelsize": 9.0,
+        "axes.titlesize": 9.0,
+        "xtick.labelsize": 8.0,
+        "ytick.labelsize": 8.0,
+        "legend.fontsize": 8.0,
+        "axes.linewidth": 0.8,
+        "lines.linewidth": 1.5,
+        "lines.markersize": 5.5,
+        "xtick.major.width": 0.8,
+        "ytick.major.width": 0.8,
+        "xtick.major.size": 3.0,
+        "ytick.major.size": 3.0,
+    }
+
+
+def definition_recovery() -> None:
+    """Plot published fragmentation metrics for MSC versus PairSim-MCE."""
+    summaries = [
+        row for row in read_csv("group-recovery.csv")
+        if row["comparison"] == "definition"
+    ]
+    details = [
+        row for row in read_csv("group-recovery-detail.csv")
+        if row["comparison"] == "definition"
+    ]
+    datasets = ["GitHub-Social", "ogbn-arxiv-25K"]
+    colors = {"GitHub-Social": BLUE, "ogbn-arxiv-25K": GOLD}
+    markers = {"GitHub-Social": "o", "ogbn-arxiv-25K": "s"}
+    size = (RQ5_PANEL_WIDTH, 1.20)
+
+    definition_style = {
+        **rq5_style(),
+        "font.size": 7.0,
+        "axes.labelsize": 7.5,
+        "xtick.labelsize": 7.0,
+        "ytick.labelsize": 7.0,
+        "legend.fontsize": 7.0,
+        "lines.markersize": 4.8,
+    }
+    with plt.rc_context(definition_style):
+        handles = [
+            Line2D(
+                [0], [0], color=colors[dataset], marker=markers[dataset],
+                linestyle="none", markeredgecolor="black", markeredgewidth=0.55,
+                label=dataset,
+            )
+            for dataset in datasets
+        ]
+        handles.append(
+            Line2D(
+                [0], [0], color=GRAY, linestyle=(0, (2.2, 2.0)),
+                linewidth=1.0, label="MSC ref.",
+            )
         )
-        x = [100.0 * float(row["coverage_fraction"]) for row in selected]
-        y = [float(row["mean_purity"]) for row in selected]
-        ax.plot(
-            x,
-            y,
-            color=colors[algorithm],
-            marker=markers[algorithm],
-            linestyle=styles[algorithm],
-            markerfacecolor="white",
-            markeredgecolor=colors[algorithm],
-            markeredgewidth=0.85,
-            label="MSC" if algorithm == "ACMSC" else algorithm,
+        legend_size = (RQ5_COLUMN_WIDTH, 0.42)
+        legend_fig, legend_ax = plt.subplots(figsize=legend_size)
+        legend_ax.axis("off")
+        legend_ax.legend(
+            handles=handles, loc="center", ncol=3, frameon=False,
+            handlelength=1.8, columnspacing=0.8, handletextpad=0.35,
         )
-        if algorithm == "ACMSC":
-            offsets = [(2, 6), (2, 3), (2, 3), (2, 3), (-18, -10)]
-            for row, x_value, y_value, offset in zip(selected, x, y, offsets):
-                ax.annotate(
-                    f"q{row['quantile']}",
-                    (x_value, y_value),
-                    xytext=offset,
-                    textcoords="offset points",
-                    fontsize=7.3,
+        save(legend_fig, "definition_recovery_legend", legend_size)
+
+        fig, ax = plt.subplots(figsize=size, layout="none")
+        ax.set_position([0.30, 0.29, 0.67, 0.65])
+        positions = np.arange(2, dtype=float)
+        fields = ["bcubed_recall", "best_match_recall"]
+        for offset, dataset in zip((-0.10, 0.10), datasets):
+            row = next(item for item in summaries if item["dataset"] == dataset)
+            values = [float(row[field]) for field in fields]
+            ax.scatter(
+                positions + offset,
+                values,
+                s=52,
+                color=colors[dataset],
+                marker=markers[dataset],
+                edgecolor="black",
+                linewidth=0.55,
+                label=dataset,
+                clip_on=False,
+                zorder=4,
+            )
+        ax.axhline(
+            1.0, color=GRAY, linestyle=(0, (2.2, 2.0)), linewidth=1.0,
+
+        )
+        ax.set_xticks(
+            positions,
+            [r"B$^3$", "Best-match"],
+        )
+        ax.set_ylabel("Recall")
+        ax.yaxis.labelpad = 1.0
+        ax.set_ylim(0.0, 1.08)
+        ax.set_yticks([0.0, 0.25, 0.5, 0.75, 1.0])
+        ax.set_xlim(-0.42, 1.42)
+        clean_axis(ax)
+        save(
+            fig, "definition_recovery_summary", size,
+            adaptive_layout=False,
+        )
+
+        fig, ax = plt.subplots(figsize=size, layout="none")
+        ax.set_position([0.30, 0.29, 0.67, 0.65])
+        for dataset in datasets:
+            values = sorted(
+                float(row["best_match_recall"])
+                for row in details if row["dataset"] == dataset
+            )
+            cumulative = np.arange(1, len(values) + 1, dtype=float) / len(values)
+            ax.step(
+                values,
+                cumulative,
+                where="post",
+                color=colors[dataset],
+                marker=markers[dataset],
+                markevery=max(1, len(values) // 7),
+                markerfacecolor="white",
+                markeredgecolor=colors[dataset],
+                label=dataset,
+                clip_on=False,
+            )
+        ax.axvline(0.8, color=GRAY, linestyle=":", linewidth=1.0)
+        ax.set_xlabel("Best-match recall")
+        ax.set_ylabel("MSC fraction")
+        ax.xaxis.labelpad = 1.0
+        ax.yaxis.labelpad = 1.0
+        ax.set_xlim(-0.03, 1.04)
+        ax.set_ylim(-0.03, 1.05)
+        ax.set_xticks([0.0, 0.25, 0.5, 0.75, 1.0])
+        ax.set_yticks([0.0, 0.25, 0.5, 0.75, 1.0])
+        clean_axis(ax, grid_axis="both")
+        save(
+            fig, "definition_recovery_cdf", size,
+            adaptive_layout=False,
+        )
+
+
+def external_recovery() -> None:
+    """Compare directional cover agreement for structural and relaxed baselines."""
+    recovery_rows = [
+        row for row in read_csv("group-recovery.csv")
+        if row["comparison"] == "external"
+    ]
+    methods = ["MSC", "StructBK", "FastQC", "FaPlex"]
+    labels = {
+        "MSC": "MSC ref.", "StructBK": "StructBK",
+        "FastQC": "FastQC", "FaPlex": "FaPlex",
+    }
+    colors = {"MSC": GRAY, "StructBK": GREEN, "FastQC": RED, "FaPlex": BLUE}
+    markers = {"MSC": "D", "StructBK": "o", "FastQC": "^", "FaPlex": "v"}
+    offsets = {"MSC": -0.24, "StructBK": -0.08, "FastQC": 0.08, "FaPlex": 0.24}
+    panel_specs = [
+        ("GitHub-Social", "external_recovery_github"),
+        ("ogbn-arxiv-25K", "external_recovery_ogbn25k"),
+    ]
+    size = (RQ5_PANEL_WIDTH, 1.20)
+
+    external_style = {
+        **rq5_style(),
+        "font.size": 7.0,
+        "axes.labelsize": 7.5,
+        "xtick.labelsize": 7.0,
+        "ytick.labelsize": 7.0,
+        "legend.fontsize": 7.0,
+        "lines.markersize": 4.8,
+    }
+
+    with plt.rc_context(external_style):
+        handles = [
+            Line2D(
+                [0], [0], color=colors[method], marker=markers[method],
+                linestyle="none", markeredgecolor="black", markeredgewidth=0.65,
+                label=labels[method],
+            )
+            for method in methods
+        ]
+        legend_size = (RQ5_COLUMN_WIDTH, 0.42)
+        legend_fig, legend_ax = plt.subplots(figsize=legend_size)
+        legend_ax.axis("off")
+        legend_ax.legend(
+            handles=handles, loc="center", ncol=4, frameon=False,
+            handlelength=1.1, columnspacing=0.65, handletextpad=0.30,
+        )
+        save(legend_fig, "external_recovery_legend", legend_size)
+
+        for dataset, stem in panel_specs:
+            recovery = {
+                row["method"]: row for row in recovery_rows
+                if row["dataset"] == dataset
+            }
+
+            fig, ax = plt.subplots(figsize=size, layout="none")
+            ax.set_position([0.30, 0.29, 0.67, 0.65])
+            positions = np.arange(2, dtype=float)
+            for method in methods:
+                values = (
+                    [1.0, 1.0]
+                    if method == "MSC"
+                    else [
+                        float(recovery[method]["best_match_f1"]),
+                        float(recovery[method]["candidate_best_f1"]),
+                    ]
                 )
-
-    structural = next(row for row in rows if row["algorithm"] == "StructBK")
-    ax.scatter(
-        [100.0 * float(structural["coverage_fraction"])],
-        [float(structural["mean_purity"])],
-        color=colors["StructBK"],
-        marker=markers["StructBK"],
-        s=26,
-        edgecolor=colors["StructBK"],
-        label="StructBK",
-        zorder=5,
-    )
-    ax.set_xlabel("Covered vertices (%)")
-    ax.set_ylabel("Mean subject purity")
-    ax.set_xlim(4, 104)
-    ax.set_ylim(0.81, 0.925)
-    clean_axis(ax)
-    legend_above(ax, ncol=3)
-    save(fig, "result_quality", (COLUMN_WIDTH, 2.52))
+                ax.scatter(
+                    positions + offsets[method],
+                    values,
+                    s=50,
+                    color=colors[method],
+                    marker=markers[method],
+                    edgecolor="black",
+                    linewidth=0.65,
+                    label=labels[method],
+                    clip_on=False,
+                    zorder=4,
+                )
+            ax.set_xticks(
+                positions,
+                ["Recovery", "Fidelity"],
+            )
+            ax.set_ylabel("Best-match F1")
+            ax.set_ylim(0.0, 1.08)
+            ax.set_yticks([0.0, 0.25, 0.5, 0.75, 1.0])
+            ax.set_xlim(-0.42, 1.42)
+            clean_axis(ax)
+            save(fig, stem, size, adaptive_layout=False)
 
 
 def case_network() -> None:
@@ -517,7 +730,7 @@ def case_network() -> None:
         for author, angle in zip(recurrent_authors, angles)
     }
 
-    fig, ax = plt.subplots(figsize=(COLUMN_WIDTH, 3.22))
+    fig, ax = plt.subplots(figsize=(COLUMN_WIDTH, 5.80))
     tau = 0.888756
     semantic_backbone = set()
     for left in range(len(vertices)):
@@ -561,7 +774,7 @@ def case_network() -> None:
         ax.scatter(
             coordinates[selected, 0],
             coordinates[selected, 1],
-            s=75,
+            s=290,
             color=color,
             edgecolor="black",
             linewidth=0.55,
@@ -574,7 +787,7 @@ def case_network() -> None:
             str(paper["case_index"]),
             ha="center",
             va="center",
-            fontsize=7.2,
+            fontsize=20.0,
             color="white" if int(paper["year"]) in (2016, 2017, 2019) else "black",
             zorder=5,
         )
@@ -583,13 +796,13 @@ def case_network() -> None:
             [position[0]],
             [position[1]],
             marker="s",
-            s=85,
+            s=310,
             color="white",
             edgecolor=GOLD,
             linewidth=1.2,
             zorder=5,
         )
-        ax.text(position[0], position[1] - 0.13, author, ha="center", va="top", fontsize=7.4, zorder=6)
+        ax.text(position[0], position[1] - 0.13, author, ha="center", va="top", fontsize=20.0, zorder=6)
 
     handles = [
         Line2D(
@@ -599,13 +812,13 @@ def case_network() -> None:
             color="none",
             markerfacecolor=color,
             markeredgecolor="black",
-            markersize=5.5,
+            markersize=11.0,
             label=str(year),
         )
         for year, color in year_colors.items()
     ]
     handles.append(
-        Line2D([0], [0], marker="s", color=GOLD, markerfacecolor="white", markersize=5.5, label="Author")
+        Line2D([0], [0], marker="s", color=GOLD, markerfacecolor="white", markersize=11.0, label="Author")
     )
     ax.legend(
         handles=handles,
@@ -621,7 +834,7 @@ def case_network() -> None:
     ax.set_ylim(-1.40, 1.40)
     ax.set_aspect("equal")
     ax.axis("off")
-    save(fig, "quality_case_network", (COLUMN_WIDTH, 3.22))
+    save(fig, "quality_case_network", (COLUMN_WIDTH, 5.80))
 
 
 def main() -> None:
@@ -631,7 +844,8 @@ def main() -> None:
     parallel_scaling()
     mechanism_summary()
     result_distribution()
-    result_quality()
+    definition_recovery()
+    external_recovery()
     case_network()
     print(f"Generated final-size figures in {HERE}")
 

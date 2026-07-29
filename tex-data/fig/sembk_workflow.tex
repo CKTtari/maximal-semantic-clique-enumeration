@@ -1,0 +1,53 @@
+\documentclass[tikz,border=3pt]{standalone}
+\usepackage{newtxtext,newtxmath}
+\usetikzlibrary{arrows.meta,positioning}
+\definecolor{paperblue}{HTML}{2F6DB0}
+\definecolor{paperred}{HTML}{C83E4D}
+\definecolor{papergold}{HTML}{E3A008}
+\definecolor{papergreen}{HTML}{2E8B57}
+\begin{document}
+\begin{tikzpicture}[
+  font=\scriptsize,
+  >=Latex,
+  state/.style={draw=black, rounded corners=1.4pt, line width=0.55pt,
+    minimum width=26mm, minimum height=8mm, text width=26mm, align=center, fill=white},
+  flow/.style={->, line width=0.7pt, draw=paperblue},
+  fail/.style={->, line width=0.8pt, draw=paperred},
+  check/.style={draw=black, rounded corners=1.4pt, line width=0.55pt,
+    minimum width=26mm, minimum height=8mm, text width=26mm, align=center,
+    fill=papergold!12},
+  label/.style={font=\scriptsize\bfseries, text=black}
+]
+\node[label] at (-2.5,0.62) {Seed $v_1$};
+\node[state, fill=paperblue!8] (v1) at (-2.5,0) {$\{v_1\}$};
+\node[state] (v12) at (-2.5,-0.9) {$\{v_1,v_2\}$};
+\node[state] (v123) at (-2.5,-1.8) {$\{v_1,v_2,v_3\}$};
+\node[state, fill=papergreen!15] (c1) at (-2.5,-2.7)
+  {$C_1$ feasible\\$\operatorname{avgSim}=0.693$};
+\node[state, fill=paperred!9] (f1) at (-0.25,-0.9)
+  {$\{v_1,v_4\}$\\fails $\tau$};
+\draw[flow] (v1) -- (v12);
+\draw[flow] (v12) -- (v123);
+\draw[flow] (v123) -- (c1);
+\draw[fail] (v12.east) -- (f1.west);
+\node[check] (check1) at (-2.5,-3.65) {\textsc{Check} on $X$};
+\node[check, fill=papergreen!13] (emit1) at (-2.5,-4.6) {emit $C_1$};
+\draw[flow] (c1) -- (check1);
+\draw[->, draw=papergreen, line width=0.9pt] (check1) -- (emit1);
+
+\node[label] at (2.5,0.62) {Seed $v_5$};
+\node[state, fill=paperblue!8] (v5) at (2.5,0) {$\{v_5\}$};
+\node[state] (v35) at (2.5,-1.35) {$\{v_3,v_5\}$};
+\node[state, fill=papergreen!15] (c2) at (2.5,-2.7)
+  {$C_2$ feasible\\$\operatorname{avgSim}=0.693$};
+\node[state, fill=paperred!9] (f2) at (5.25,-1.35)
+  {$\{v_5,v_6\}$\\fails $\tau$};
+\draw[flow] (v5) -- (v35);
+\draw[flow] (v35) -- (c2);
+\draw[fail] (v35.east) -- (f2.west);
+\node[check] (check2) at (2.5,-3.65) {\textsc{Check} on $X$};
+\node[check, fill=papergreen!13] (emit2) at (2.5,-4.6) {emit $C_2$};
+\draw[flow] (c2) -- (check2);
+\draw[->, draw=papergreen, line width=0.9pt] (check2) -- (emit2);
+\end{tikzpicture}
+\end{document}

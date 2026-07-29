@@ -11,12 +11,12 @@
   font=\scriptsize,
   >=Latex,
   rule/.style={draw=black, rounded corners=1.5pt, line width=0.55pt,
-    minimum height=11mm, text width=31mm, align=left, inner sep=1.6mm},
+    minimum height=11mm, text width=32mm, align=left, inner sep=1.6mm},
   state/.style={draw=black, rounded corners=1.5pt, line width=0.55pt,
     minimum height=8mm, text width=16mm, align=center, fill=white,
     inner sep=1.0mm},
   route/.style={draw=black, rounded corners=1.5pt, line width=0.55pt,
-    minimum height=10mm, text width=31mm, align=center, inner sep=1.4mm},
+    minimum height=10mm, text width=32mm, align=center, inner sep=1.4mm},
   accepted/.style={->, draw=papergreen, line width=1.0pt},
   phase/.style={font=\scriptsize\bfseries, anchor=west}
 ]
@@ -24,7 +24,7 @@
   {\textbf{Feasible parent.} For feasible $D$, delete the vertex $d(D)$
    with minimum total similarity. Then
    $\avgsim(D\setminus\{d(D)\})\geq\avgsim(D)$.};
-\node[rule, fill=papergold!11] (owner) at (3.75,0)
+\node[rule, fill=papergold!11] (owner) at (3.65,0)
   {\textbf{Unique ownership.} Traverse $C\rightarrow D=C\cup\{x\}$ only
    if $x=d(D)$. Thus each state has one parent and needs no visited table.};
 
@@ -43,13 +43,13 @@
   {\textbf{Traverse}\\
    $\{v_5,v_6\}+v_3\rightarrow C_2$\\
    $v_3=d(C_2)$};
-\node[route, fill=paperred!7] (drop) at (3.75,-3.22)
+\node[route, fill=paperred!7] (drop) at (3.65,-3.22)
   {\textbf{Stop duplicate path}\\
    $\{v_3,v_5\}+v_6\rightarrow C_2$\\
    $v_6\neq d(C_2)=v_3$};
 
-\node[route, fill=paperblue!7, text width=67mm, minimum height=8mm]
-  (result) at (1.88,-4.30)
+\node[route, fill=paperblue!7, text width=68.5mm, minimum height=8mm]
+  (result) at (1.825,-4.30)
   {Reverse search reaches each feasible state once; the final containment
    filter returns $C_1$ and $C_2$.};
 \end{tikzpicture}

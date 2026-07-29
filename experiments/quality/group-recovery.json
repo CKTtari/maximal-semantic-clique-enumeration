@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "reference_family": "MSC outputs with size at least 10",
+  "definition_candidates": "all non-singleton PairSim-MCE outputs",
+  "external_candidates": "StructBK, FastQC, and FaPlex outputs with size at least 10",
+  "metrics": {
+    "extended_bcubed": "Amigo et al., Information Retrieval 12(4), 2009",
+    "symmetric_best_f1": "Yang and Leskovec, WSDM 2013",
+    "best_match_jaccard": "Hric et al., Physical Review E 90, 2014"
+  },
+  "inputs_sha256": {
+    "GitHub-Social": {
+      "MSC": "2022c4052959952547afb91b790e6901b30d4919001ea93a77b64480a10b9058",
+      "PairSim-MCE": "66e1d258942e9f9f7ee681cac2ea4f612e2fe7e53fa661a1d1d45c7d496bb55b",
+      "StructBK": "6e4b957da77bec28e57d03f2222719de5a72489e1dd00e19acf9a4b116f98387",
+      "FastQC": "2e18c65bb455a5e8a668641e919d4cea281a1b0e46b1ae5e3dc5732442b6b240",
+      "FaPlex": "ffc7601c8635cc3f4c12ded2bc5a3902012f9b59001ebf2b8c440d2fa1515c89"
+    },
+    "ogbn-arxiv-25K": {
+      "MSC": "0f593a2691f4743447260a254fa0e2f9bacba91395fd6b5ab12d91ccedc77a48",
+      "PairSim-MCE": "2b415be6783875bbea8426c5076ed8a64b0e7aacc9836d665d3ce0b2dd8674c9",
+      "StructBK": "c4c10dbf80dece323a65190e5926a6b967bfc97ae33a56df6f2930796e9d8f12",
+      "FastQC": "f3a455be139d6becb31cbb5916600945fc338386e193e40bba1bd26f41829402",
+      "FaPlex": "6c5c98b04ad49fe880e27f53d8d83f02c7352f740a93ce96720458892a4498a9"
+    }
+  },
+  "summary_csv": "tex-data/data/group-recovery.csv",
+  "summary_csv_sha256": "9b44569cc101a97637c74d95745263a932af122142ff56babeb24aef9616f1dc",
+  "detail_csv": "tex-data/data/group-recovery-detail.csv",
+  "detail_csv_sha256": "39a04ef19b04c1445529c81f1d09c0126017e60afff60e4a91733cb02f6e4460"
+}

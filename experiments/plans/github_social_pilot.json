@@ -1,0 +1,16 @@
+{
+  "name": "github-social-pilot",
+  "description": "Single-run 180 s pilot on the SNAP GitHub-Social graph.",
+  "tasks": [
+    {"algorithm": 1, "dataset": 17, "threads": 32, "timeout_seconds": 180},
+    {"algorithm": 2, "dataset": 17, "tau": 0.25049, "threads": 32, "timeout_seconds": 180},
+    {"algorithm": 2, "dataset": 17, "tau": 0.417029, "threads": 32, "timeout_seconds": 180},
+    {"algorithm": 2, "dataset": 17, "tau": 0.571662, "threads": 32, "timeout_seconds": 180, "capture_cliques": true},
+    {"algorithm": 3, "dataset": 17, "tau": 0.25049, "threads": 32, "timeout_seconds": 180},
+    {"algorithm": 3, "dataset": 17, "tau": 0.417029, "threads": 32, "timeout_seconds": 180},
+    {"algorithm": 3, "dataset": 17, "tau": 0.571662, "threads": 32, "timeout_seconds": 180, "capture_cliques": true},
+    {"algorithm": 4, "dataset": 17, "tau": 0.25049, "threads": 32, "timeout_seconds": 180},
+    {"algorithm": 4, "dataset": 17, "tau": 0.417029, "threads": 32, "timeout_seconds": 180},
+    {"algorithm": 4, "dataset": 17, "tau": 0.571662, "threads": 32, "timeout_seconds": 180, "capture_cliques": true}
+  ]
+}

@@ -70,6 +70,11 @@
       "name": "email-Enron",
       "graph": "dataset/Processed/email-Enron/graph.txt",
       "vectors": "dataset/Processed/email-Enron/email-Enron_vectors.bin"
+    },
+    "17": {
+      "name": "GitHub-Social",
+      "graph": "dataset/dataset/github-social.txt",
+      "vectors": "dataset/vectors/github-social_vectors.bin"
     }
   }
 }

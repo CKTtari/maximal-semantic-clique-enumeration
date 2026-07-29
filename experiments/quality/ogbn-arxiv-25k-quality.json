@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "dataset": "ogbn-arxiv-25K",
+  "source_archive": "dataset/downloads/ogbn-arxiv/arxiv.zip",
+  "source_archive_sha256": "49f85c801589ecdcc52cfaca99693aaea7b8af16a9ac3f41dd85a5f3193fe276",
+  "mapping_sha256": "6ddcbdc2c1987a282a1a7ec57a5f4eb490bf6ace9cfb5a6366c79f0a27ba4a01",
+  "comparison": {
+    "quantile": 80,
+    "tau": 0.888756,
+    "minimum_output_size": 10,
+    "fastqc_gamma": 0.9,
+    "fastqc_commit": "488af494dcc9fa23093b99d36c639453e7c24ced",
+    "fastqc_enumeration_seconds": 75.22381370000005,
+    "fastqc_postprocessing_seconds": 1.1835421999999198
+  },
+  "metrics": {
+    "mean_purity": "mean majority-label fraction over outputs",
+    "mean_pair_agreement": "mean same-label pair fraction over outputs",
+    "coverage_fraction": "vertices covered by retained outputs divided by 25,000"
+  },
+  "inputs": {
+    "StructBK": {
+      "path": "experiment-output/ogbn-arxiv-25k-quality-capture/f04befe0b0919922.attempt-001.cliques.txt",
+      "sha256": "c4c10dbf80dece323a65190e5926a6b967bfc97ae33a56df6f2930796e9d8f12",
+      "all_output_rows": 527119,
+      "task_id": "f04befe0b0919922",
+      "build_fingerprint": "e9dfa844f9faa14e"
+    },
+    "PairSim-MCE": {
+      "path": "experiment-output/ogbn-arxiv-25k-quality-capture/670878682e96f7f5.attempt-001.cliques.txt",
+      "sha256": "2b415be6783875bbea8426c5076ed8a64b0e7aacc9836d665d3ce0b2dd8674c9",
+      "all_output_rows": 56173,
+      "task_id": "670878682e96f7f5",
+      "build_fingerprint": "e9dfa844f9faa14e"
+    },
+    "FastQC": {
+      "path": "experiment-output/external-baselines/ogbn-arxiv-25k/fastqc-g090-u10-mapped/maximal-output.txt",
+      "sha256": "f3a455be139d6becb31cbb5916600945fc338386e193e40bba1bd26f41829402",
+      "all_output_rows": 208879
+    },
+    "MSC": {
+      "path": "experiment-output/ogbn-arxiv-25k-quality-capture/a76c81f8c0653e04.attempt-001.cliques.txt",
+      "sha256": "0f593a2691f4743447260a254fa0e2f9bacba91395fd6b5ab12d91ccedc77a48",
+      "all_output_rows": 93352,
+      "task_id": "a76c81f8c0653e04",
+      "build_fingerprint": "a11d41bfd6aad02d"
+    }
+  },
+  "output_csv": "tex-data/data/ogbn-arxiv-25k-quality.csv"
+}

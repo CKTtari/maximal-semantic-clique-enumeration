@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "dataset": "GitHub-Social",
+  "source_archive": "dataset/downloads/github-social.zip",
+  "source_archive_sha256": "56c0c1c2c460dc4c7bf89357b1fec020f45e2ecebab81d131d073b10e28ec031",
+  "labels_sha256": "9e9b1384c63504b420d38bbd97df208e84271a0b512fa60eb34e3227cd91c7f5",
+  "comparison": {
+    "quantile": 80,
+    "tau": 0.417029,
+    "minimum_output_size": 10,
+    "fastqc_gamma": 0.9,
+    "fastqc_commit": "488af494dcc9fa23093b99d36c639453e7c24ced",
+    "fastqc_enumeration_seconds": 153.73957500000006,
+    "fastqc_postprocessing_seconds": 0.2701602999999295
+  },
+  "metrics": {
+    "mean_purity": "mean majority-label fraction over outputs",
+    "mean_pair_agreement": "mean same-label pair fraction over outputs",
+    "coverage_fraction": "vertices covered by retained outputs divided by 37,700"
+  },
+  "inputs": {
+    "StructBK": {
+      "path": "experiment-output/github-social-quality-capture/234a5a9ae45690d6.attempt-001.cliques.txt",
+      "sha256": "6e4b957da77bec28e57d03f2222719de5a72489e1dd00e19acf9a4b116f98387",
+      "all_output_rows": 287618,
+      "task_id": "234a5a9ae45690d6",
+      "build_fingerprint": "e9dfa844f9faa14e"
+    },
+    "PairSim-MCE": {
+      "path": "experiment-output/github-social-quality-capture/612a077590b5406d.attempt-001.cliques.txt",
+      "sha256": "66e1d258942e9f9f7ee681cac2ea4f612e2fe7e53fa661a1d1d45c7d496bb55b",
+      "all_output_rows": 63127,
+      "task_id": "612a077590b5406d",
+      "build_fingerprint": "e9dfa844f9faa14e"
+    },
+    "FastQC": {
+      "path": "experiment-output/external-baselines/github-social/fastqc-g090-u10-mapped/maximal-output.txt",
+      "sha256": "2e18c65bb455a5e8a668641e919d4cea281a1b0e46b1ae5e3dc5732442b6b240",
+      "all_output_rows": 43938
+    },
+    "MSC": {
+      "path": "experiment-output/github-social-quality-capture/e15726f773cb2df8.attempt-001.cliques.txt",
+      "sha256": "2022c4052959952547afb91b790e6901b30d4919001ea93a77b64480a10b9058",
+      "all_output_rows": 71118,
+      "task_id": "e15726f773cb2df8",
+      "build_fingerprint": "a11d41bfd6aad02d"
+    }
+  },
+  "output_csv": "tex-data/data/github-social-quality.csv",
+  "output_csv_sha256": "c8adce12ba8d934d3c7074047a3e5c2e552222efe5eba62cf3d58bb5bdd74c2a"
+}

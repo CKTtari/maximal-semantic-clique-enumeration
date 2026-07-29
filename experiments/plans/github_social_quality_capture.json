@@ -1,0 +1,9 @@
+{
+  "name": "github-social-quality-capture",
+  "description": "Captured outputs for label-based quality analysis at q80.",
+  "tasks": [
+    {"algorithm": 1, "dataset": 17, "threads": 32, "timeout_seconds": 1200, "capture_cliques": true},
+    {"algorithm": 1, "dataset": 17, "threads": 32, "timeout_seconds": 1200, "capture_cliques": true, "graph": "dataset/derived/github-social-pairsim-q80.txt"},
+    {"algorithm": 3, "dataset": 17, "tau": 0.417029, "threads": 32, "timeout_seconds": 1200, "capture_cliques": true}
+  ]
+}
