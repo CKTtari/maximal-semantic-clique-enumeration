@@ -1,7 +1,0 @@
-{
-  "name": "batch11-main-alg3-q80-pwtk-ldoor",
-  "tasks": [
-    {"algorithm": 3, "mode": "raw", "dataset": 14, "tau": 0.0526251, "threads": 32, "timeout_seconds": 1200, "repetitions": 1},
-    {"algorithm": 3, "mode": "raw", "dataset": 1, "tau": 0.0527128, "threads": 32, "timeout_seconds": 1200, "repetitions": 1}
-  ]
-}

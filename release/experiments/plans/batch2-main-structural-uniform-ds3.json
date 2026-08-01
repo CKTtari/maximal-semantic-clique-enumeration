@@ -1,8 +1,0 @@
-{
-  "name": "batch2-main-structural-uniform-ds3",
-  "tasks": [
-    {"algorithm": 3, "mode": "raw", "dataset": 3, "tau": -0.102866, "threads": 32, "timeout_seconds": 3600, "repetitions": 3},
-    {"algorithm": 3, "mode": "raw", "dataset": 3, "tau": -0.0527048, "threads": 32, "timeout_seconds": 3600, "repetitions": 3},
-    {"algorithm": 4, "mode": "raw", "dataset": 3, "tau": 0.0526216, "threads": 32, "timeout_seconds": 3600, "repetitions": 3}
-  ]
-}

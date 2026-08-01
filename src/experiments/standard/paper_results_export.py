@@ -22,6 +22,8 @@ OUT_DIR = ROOT / "tex-data" / "data"
 TAU_FILE = ROOT / "scripts" / "tau_values.json"
 
 FORMAL_SUMMARIES = [
+    "batch32-sembk-github-q20-completion",
+    "batch31-sembk-main-refresh-30s",
     "batch11-main-core-current",
     "batch11-main-alg3-ldoor-q80-repeat",
     "batch11-main-alg3-q80-long",
@@ -52,6 +54,11 @@ FORMAL_SUMMARIES = [
 ]
 
 PILOT_SUMMARIES: list[str] = []
+
+ENGINEERING_SUMMARIES = [
+    "batch29-sembk-engineering-correctness-30s",
+    "batch30-engineering-profile-selection-30s",
+]
 
 ALGORITHM_NAMES = {1: "StructBK", 2: "SemBK", 3: "StrSub", 4: "MonoSemMCE"}
 
@@ -259,12 +266,12 @@ def emit_dataset_inventory() -> None:
         3: ("generated", "common grid", 256),
         14: ("generated", "common grid", 256),
         7: ("natural", "common grid", 384),
-        8: ("natural", "common grid", 384),
+        17: ("natural", "common grid", 4005),
         11: ("natural", "common grid", 128),
         16: ("generated", "common grid", 256),
     }
     rows = []
-    for dataset in [7, 8, 11, 16, 2, 3, 14, 1]:
+    for dataset in [7, 17, 11, 16, 2, 3, 14, 1]:
         meta = TAUS[str(dataset)]
         attribute, role, dimension = roles[dataset]
         rows.append(
@@ -286,8 +293,44 @@ def emit_dataset_inventory() -> None:
 
 
 def emit_main_runtime() -> None:
+    # GitHub-Social entered the paper after the original main-grid archive was
+    # frozen. Preserve its canonical StructBK/StrSub/MonoSemMCE fields while
+    # replacing SemBK from the new hash-verified summaries below.
+    canonical_path = OUT_DIR / "main_runtime.csv"
+    canonical_rows: dict[tuple[int, int], dict[str, Any]] = {}
+    if canonical_path.exists():
+        with canonical_path.open(newline="", encoding="utf-8") as handle:
+            for existing in csv.DictReader(handle):
+                canonical_rows[(int(existing["dataset_id"]), int(existing["quantile"]))] = existing
+
     rows = []
-    for dataset in [7, 8, 11, 16, 2, 3, 14, 1]:
+    for dataset in [7, 17, 11, 16, 2, 3, 14, 1]:
+        if dataset == 17:
+            for quantile in [20, 80, 99]:
+                prior = canonical_rows.get((dataset, quantile))
+                if prior is None:
+                    raise ValueError("missing canonical GitHub-Social main-runtime row")
+                row = dict(prior)
+                group = select_group(
+                    FORMAL_GROUPS,
+                    dataset=dataset,
+                    algorithm=2,
+                    quantile=quantile,
+                    stats=False,
+                )
+                if group is None or status_of(group) != "completed":
+                    raise ValueError(f"missing refreshed SemBK result for GitHub-Social q{quantile}")
+                count = int((group.get("result") or {})["clique_count"])
+                if count != int(row["acmsc_count"]):
+                    raise ValueError(f"count mismatch for GitHub-Social q{quantile}")
+                row["alg2_status"] = "completed"
+                row["alg2_seconds"] = seconds(group)
+                row["alg2_min_seconds"] = float(group["timing"]["algorithm_ms_min"]) / 1000.0
+                row["alg2_max_seconds"] = float(group["timing"]["algorithm_ms_max"]) / 1000.0
+                row["alg2_memory_gib"] = group["timing"].get("peak_memory_gib_median")
+                rows.append(row)
+            continue
+
         structural = select_group(
             FORMAL_GROUPS,
             dataset=dataset,
@@ -733,6 +776,8 @@ def emit_provenance() -> None:
         "exporter": "src/experiments/standard/paper_results_export.py",
         "formal_summaries": [f"experiments/summaries/{name}.summary.json" for name in FORMAL_SUMMARIES],
         "pilot_status_summaries": [f"experiments/summaries/{name}.summary.json" for name in PILOT_SUMMARIES],
+        "engineering_summaries": [f"experiments/summaries/{name}.summary.json" for name in ENGINEERING_SUMMARIES],
+        "engineering_exporter": "src/experiments/standard/export_engineering_ablation.py",
         "quality_analysis": {
             "path": quality_path.relative_to(ROOT).as_posix(),
             "sha256": sha256_file(quality_path),

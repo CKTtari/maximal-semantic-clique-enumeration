@@ -1,0 +1,14 @@
+{
+  "name": "batch31-sembk-main-refresh-30s",
+  "tasks": [
+    {"algorithm": 2, "mode": "raw", "dataset": 17, "tau": 0.25049, "threads": 32, "timeout_seconds": 30, "repetitions": 3},
+    {"algorithm": 2, "mode": "raw", "dataset": 17, "tau": 0.417029, "threads": 32, "timeout_seconds": 30, "repetitions": 3},
+    {"algorithm": 2, "mode": "raw", "dataset": 17, "tau": 0.571662, "threads": 32, "timeout_seconds": 30, "repetitions": 3},
+    {"algorithm": 2, "mode": "raw", "dataset": 11, "tau": 0.773547, "threads": 32, "timeout_seconds": 30, "repetitions": 3},
+    {"algorithm": 2, "mode": "raw", "dataset": 11, "tau": 0.888756, "threads": 32, "timeout_seconds": 30, "repetitions": 3},
+    {"algorithm": 2, "mode": "raw", "dataset": 11, "tau": 0.949708, "threads": 32, "timeout_seconds": 30, "repetitions": 3},
+    {"algorithm": 2, "mode": "raw", "dataset": 16, "tau": -0.0525222, "threads": 32, "timeout_seconds": 30, "repetitions": 3},
+    {"algorithm": 2, "mode": "raw", "dataset": 16, "tau": 0.0525957, "threads": 32, "timeout_seconds": 30, "repetitions": 3},
+    {"algorithm": 2, "mode": "raw", "dataset": 16, "tau": 0.145164, "threads": 32, "timeout_seconds": 30, "repetitions": 3}
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "name": "batch26-engineering-representative",
+  "tasks": [
+    {"algorithm": 3, "mode": "raw", "dataset": 7, "tau": 0.234886, "threads": 32, "timeout_seconds": 1200, "repetitions": 3},
+    {"algorithm": 3, "mode": "raw", "dataset": 7, "tau": 0.234886, "threads": 32, "timeout_seconds": 1200, "repetitions": 3, "defines": {"ACMSC_ENGINE_REORDER": 0}},
+    {"algorithm": 3, "mode": "raw", "dataset": 7, "tau": 0.234886, "threads": 32, "timeout_seconds": 1200, "repetitions": 3, "defines": {"ACMSC_ENGINE_BITMAP": 0}},
+    {"algorithm": 4, "mode": "raw", "dataset": 1, "tau": 0.0527128, "threads": 32, "timeout_seconds": 1200, "repetitions": 3},
+    {"algorithm": 4, "mode": "raw", "dataset": 1, "tau": 0.0527128, "threads": 32, "timeout_seconds": 1200, "repetitions": 3, "defines": {"ACMSC_ENGINE_REORDER": 0}},
+    {"algorithm": 4, "mode": "raw", "dataset": 1, "tau": 0.0527128, "threads": 32, "timeout_seconds": 1200, "repetitions": 3, "defines": {"ACMSC_ENGINE_INCREMENTAL_ACC": 0}}
+  ]
+}

@@ -21,12 +21,4 @@ endfunction()
 
 foreach(algorithm RANGE 1 4)
   add_msc_target(alg${algorithm}-raw src/alg${algorithm}-raw.cpp)
-  add_msc_target(alg${algorithm}-stats src/alg${algorithm}-stats.cpp)
 endforeach()
-
-add_executable(audit-graph scripts/audit_graph.cpp)
-target_include_directories(audit-graph PRIVATE src)
-target_link_libraries(audit-graph PRIVATE OpenMP::OpenMP_CXX)
-
-add_msc_target(compute-tau scripts/compute_tau.cpp)
-add_msc_target(build-pairsim-graph scripts/build_pairsim_graph.cpp)

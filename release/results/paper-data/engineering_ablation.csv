@@ -1,0 +1,6 @@
+method,workload,design_choice,chosen_seconds,alternative_seconds,speedup,output_count,repetitions,source_summary
+SemBK,email-Enron q80,sparse_rows,8.106,10.572,1.304,60352,3,batch30-engineering-profile-selection-30s
+SemBK,email-Enron q80,direct_sum,10.572,22.935,2.169,60352,3,batch30-engineering-profile-selection-30s
+StrSub,FB15K-237 q80,sparse_blocked_bitmap,7.084,11.255,1.589,76106,3,batch30-engineering-profile-selection-30s
+StrSub,FB15K-237 q80,vector_reorder,7.084,8.792,1.241,76106,3,batch30-engineering-profile-selection-30s
+MonoSemMCE,FB15K-237 q99,incremental_accumulator,8.630,15.534,1.800,7476,3,batch30-engineering-profile-selection-30s

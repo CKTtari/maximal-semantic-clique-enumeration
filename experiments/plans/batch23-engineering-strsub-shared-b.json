@@ -1,0 +1,6 @@
+{
+  "name": "batch23-engineering-strsub-shared-b",
+  "tasks": [
+    {"algorithm": 3, "mode": "raw", "dataset": 1, "tau": 0.145162, "threads": 32, "timeout_seconds": 1200, "repetitions": 3, "defines": {"ACMSC_ENGINE_BITMAP": 0}}
+  ]
+}

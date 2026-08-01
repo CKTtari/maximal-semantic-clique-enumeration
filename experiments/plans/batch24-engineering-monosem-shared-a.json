@@ -1,0 +1,7 @@
+{
+  "name": "batch24-engineering-monosem-shared-a",
+  "tasks": [
+    {"algorithm": 4, "mode": "raw", "dataset": 1, "tau": 0.145162, "threads": 32, "timeout_seconds": 1200, "repetitions": 3},
+    {"algorithm": 4, "mode": "raw", "dataset": 1, "tau": 0.145162, "threads": 32, "timeout_seconds": 1200, "repetitions": 3, "defines": {"ACMSC_ENGINE_REORDER": 0}}
+  ]
+}

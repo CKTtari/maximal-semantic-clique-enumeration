@@ -1,0 +1,7 @@
+{
+  "name": "batch25-engineering-monosem-accumulator",
+  "tasks": [
+    {"algorithm": 4, "mode": "raw", "dataset": 17, "tau": 0.417029, "threads": 32, "timeout_seconds": 1200, "repetitions": 3},
+    {"algorithm": 4, "mode": "raw", "dataset": 17, "tau": 0.417029, "threads": 32, "timeout_seconds": 1200, "repetitions": 3, "defines": {"ACMSC_ENGINE_INCREMENTAL_ACC": 0}}
+  ]
+}

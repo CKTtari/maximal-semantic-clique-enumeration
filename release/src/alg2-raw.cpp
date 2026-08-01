@@ -3,6 +3,15 @@
 #ifndef ACMSC_ENABLE_STATS
 #define ACMSC_ENABLE_STATS 0
 #endif
+#ifndef ACMSC_ENGINE_REORDER
+#define ACMSC_ENGINE_REORDER 1
+#endif
+#ifndef ACMSC_ENGINE_BITMAP
+#define ACMSC_ENGINE_BITMAP 0
+#endif
+#ifndef ACMSC_ENGINE_INCREMENTAL_ACC
+#define ACMSC_ENGINE_INCREMENTAL_ACC 0
+#endif
 // ALG2 standard: pivot-free semantic BK baseline.
 //
 // 特性：
@@ -195,6 +204,11 @@ struct GraphReorder {
         int n = g.V;
         old_to_new.assign(n, -1);
         new_to_old.assign(n, -1);
+#if !ACMSC_ENGINE_REORDER
+        iota(old_to_new.begin(), old_to_new.end(), 0);
+        iota(new_to_old.begin(), new_to_old.end(), 0);
+        return;
+#endif
         vector<int> order(n);
         iota(order.begin(), order.end(), 0);
         sort(order.begin(), order.end(),
@@ -291,18 +305,59 @@ private:
         return it != sim_map_[u].end() ? it->second : 0.0f;
     }
 
+    inline bool adjacent(int u, int v) const {
+#if ACMSC_ENGINE_BITMAP
+        return bitmap_->contains(u, v);
+#else
+        return sim_map_[u].find(v) != sim_map_[u].end();
+#endif
+    }
+
+    void intersect_neighbors(int v, const vector<int>& vertices,
+                             vector<int>& output) const {
+        output.clear();
+        output.reserve(vertices.size());
+#if ACMSC_ENGINE_BITMAP
+        const auto& row = bitmap_->get_row(v);
+        if (vertices.size() >= 64) {
+            BlockedSparseBitmap::Row vertex_row;
+            vertex_row.build(vertices);
+            row.intersect_to(vertex_row, output);
+            return;
+        }
+#endif
+        for (int u : vertices)
+            if (adjacent(v, u)) output.push_back(u);
+    }
+
     struct AccStore {
         vector<double>   val;
         vector<uint32_t> gen;
         uint32_t         cur = 0;
-        void init(int n) { val.assign(n, 0.0); gen.assign(n, 0); cur = 1; }
+        void init(int n) {
+#if ACMSC_ENGINE_INCREMENTAL_ACC
+            val.assign(n, 0.0);
+            gen.assign(n, 0);
+#else
+            (void)n;
+#endif
+            cur = 1;
+        }
         inline double get(int w) const { return gen[w]==cur ? val[w] : 0.0; }
         inline void  add(int w, float s) {
+#if ACMSC_ENGINE_INCREMENTAL_ACC
             if (gen[w] != cur) { val[w] = 0.0; gen[w] = cur; }
             val[w] += static_cast<double>(s);
+#else
+            (void)w; (void)s;
+#endif
         }
         inline void  sub(int w, float s) {
+#if ACMSC_ENGINE_INCREMENTAL_ACC
             if (gen[w] == cur) val[w] -= static_cast<double>(s);
+#else
+            (void)w; (void)s;
+#endif
         }
     };
 
@@ -331,26 +386,15 @@ private:
 #endif
             cands.erase(find(cands.begin(), cands.end(), v));
 
-            const auto& v_row = bitmap_->get_row(v);
-
             vector<int> cands_new;
             cands_new.reserve(cands.size());
             for (int u : cands)
-                if (v_row.contains(u)) cands_new.push_back(u);
+                if (adjacent(v, u)) cands_new.push_back(u);
 
             vector<int> excl_new;
-            if (!excl.empty()) {
-                if ((int)excl.size() < 64) {
-                    excl_new.reserve(excl.size());
-                    for (int u : excl)
-                        if (v_row.contains(u)) excl_new.push_back(u);
-                } else {
-                    BlockedSparseBitmap::Row excl_row;
-                    excl_row.build(excl);
-                    v_row.intersect_to(excl_row, excl_new);
-                }
-            }
+            if (!excl.empty()) intersect_neighbors(v, excl, excl_new);
 
+#if ACMSC_ENGINE_INCREMENTAL_ACC
             vector<pair<int,float>> undo;
             undo.reserve(cands_new.size() + excl_new.size());
             for (int w : cands_new) {
@@ -363,6 +407,7 @@ private:
                 acc.add(w, s);
                 undo.push_back({w, s});
             }
+#endif
 
             double sim_sum_new = sim_sum;
             for (int u : C) {
@@ -374,7 +419,9 @@ private:
                               acc, is_check, min_size);
             C.pop_back();
 
+#if ACMSC_ENGINE_INCREMENTAL_ACC
             for (auto& [w, s] : undo) acc.sub(w, s);
+#endif
 
             if (timed_out_.load(std::memory_order_relaxed)) return false;
 
@@ -456,6 +503,7 @@ private:
             for (auto& [v, s] : nb_[u]) sim_map_[u][v] = s;
         }
 
+#if ACMSC_ENGINE_BITMAP
         bitmap_ = new BlockedSparseBitmap(n);
         #pragma omp parallel for schedule(static)
         for (int u = 0; u < n; u++) {
@@ -464,6 +512,9 @@ private:
             for (auto& [v, s] : nb_[u]) ids.push_back(v);
             bitmap_->build(u, ids);
         }
+#else
+        bitmap_ = nullptr;
+#endif
 
         logger.print("  [Stage1] Done: %lld ms\n",
                      (long long)chrono::duration_cast<chrono::milliseconds>(
@@ -553,11 +604,13 @@ private:
             int tid = omp_get_thread_num();
             AccStore& acc = stores[tid];
 
+#if ACMSC_ENGINE_INCREMENTAL_ACC
             acc.cur++;
             if (acc.cur == 0) {
                 fill(acc.gen.begin(), acc.gen.end(), 0);
                 acc.cur = 1;
             }
+#endif
 
             vector<int> cands, excl;
             cands.reserve(nb_[v].size());
@@ -566,7 +619,9 @@ private:
                 if (order_pos[u] > i)      cands.push_back(u);
                 else if (order_pos[u] < i) excl.push_back(u);
             }
+#if ACMSC_ENGINE_INCREMENTAL_ACC
             for (auto& [u, s] : nb_[v]) acc.add(u, s);
+#endif
 
             vector<int> C = {v};
             search(C, 0.0f, cands, excl, acc, false);

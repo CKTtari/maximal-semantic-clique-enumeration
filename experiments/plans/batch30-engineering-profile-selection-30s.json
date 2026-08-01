@@ -1,0 +1,38 @@
+{
+  "name": "batch30-engineering-profile-selection-30s",
+  "tasks": [
+    {"algorithm": 2, "mode": "raw", "dataset": 16, "tau": -0.0525222, "threads": 32, "timeout_seconds": 30, "repetitions": 3},
+    {"algorithm": 2, "mode": "raw", "dataset": 16, "tau": -0.0525222, "threads": 32, "timeout_seconds": 30, "repetitions": 3, "defines": {"ACMSC_ENGINE_BITMAP": 0}},
+    {"algorithm": 2, "mode": "raw", "dataset": 16, "tau": -0.0525222, "threads": 32, "timeout_seconds": 30, "repetitions": 3, "defines": {"ACMSC_ENGINE_REORDER": 0}},
+    {"algorithm": 2, "mode": "raw", "dataset": 16, "tau": -0.0525222, "threads": 32, "timeout_seconds": 30, "repetitions": 3, "defines": {"ACMSC_ENGINE_BITMAP": 0, "ACMSC_ENGINE_REORDER": 0}},
+    {"algorithm": 2, "mode": "raw", "dataset": 16, "tau": 0.0525957, "threads": 32, "timeout_seconds": 30, "repetitions": 3},
+    {"algorithm": 2, "mode": "raw", "dataset": 16, "tau": 0.0525957, "threads": 32, "timeout_seconds": 30, "repetitions": 3, "defines": {"ACMSC_ENGINE_BITMAP": 0}},
+    {"algorithm": 2, "mode": "raw", "dataset": 16, "tau": 0.0525957, "threads": 32, "timeout_seconds": 30, "repetitions": 3, "defines": {"ACMSC_ENGINE_REORDER": 0}},
+    {"algorithm": 2, "mode": "raw", "dataset": 16, "tau": 0.0525957, "threads": 32, "timeout_seconds": 30, "repetitions": 3, "defines": {"ACMSC_ENGINE_BITMAP": 0, "ACMSC_ENGINE_REORDER": 0}},
+    {"algorithm": 2, "mode": "raw", "dataset": 16, "tau": 0.145164, "threads": 32, "timeout_seconds": 30, "repetitions": 3},
+    {"algorithm": 2, "mode": "raw", "dataset": 16, "tau": 0.145164, "threads": 32, "timeout_seconds": 30, "repetitions": 3, "defines": {"ACMSC_ENGINE_BITMAP": 0}},
+    {"algorithm": 2, "mode": "raw", "dataset": 16, "tau": 0.145164, "threads": 32, "timeout_seconds": 30, "repetitions": 3, "defines": {"ACMSC_ENGINE_REORDER": 0}},
+    {"algorithm": 2, "mode": "raw", "dataset": 16, "tau": 0.145164, "threads": 32, "timeout_seconds": 30, "repetitions": 3, "defines": {"ACMSC_ENGINE_BITMAP": 0, "ACMSC_ENGINE_REORDER": 0}},
+    {"algorithm": 2, "mode": "raw", "dataset": 16, "tau": 0.0525957, "threads": 32, "timeout_seconds": 30, "repetitions": 3, "defines": {"ACMSC_ENGINE_INCREMENTAL_ACC": 1}},
+
+    {"algorithm": 3, "mode": "raw", "dataset": 7, "tau": 0.234886, "threads": 32, "timeout_seconds": 30, "repetitions": 3},
+    {"algorithm": 3, "mode": "raw", "dataset": 7, "tau": 0.234886, "threads": 32, "timeout_seconds": 30, "repetitions": 3, "defines": {"ACMSC_ENGINE_BITMAP": 0}},
+    {"algorithm": 3, "mode": "raw", "dataset": 7, "tau": 0.234886, "threads": 32, "timeout_seconds": 30, "repetitions": 3, "defines": {"ACMSC_ENGINE_REORDER": 0}},
+    {"algorithm": 3, "mode": "raw", "dataset": 7, "tau": 0.234886, "threads": 32, "timeout_seconds": 30, "repetitions": 3, "defines": {"ACMSC_ENGINE_BITMAP": 0, "ACMSC_ENGINE_REORDER": 0}},
+    {"algorithm": 3, "mode": "raw", "dataset": 1, "tau": 0.117587, "threads": 32, "timeout_seconds": 30, "repetitions": 3},
+    {"algorithm": 3, "mode": "raw", "dataset": 1, "tau": 0.117587, "threads": 32, "timeout_seconds": 30, "repetitions": 3, "defines": {"ACMSC_ENGINE_BITMAP": 0}},
+    {"algorithm": 3, "mode": "raw", "dataset": 1, "tau": 0.117587, "threads": 32, "timeout_seconds": 30, "repetitions": 3, "defines": {"ACMSC_ENGINE_REORDER": 0}},
+    {"algorithm": 3, "mode": "raw", "dataset": 1, "tau": 0.117587, "threads": 32, "timeout_seconds": 30, "repetitions": 3, "defines": {"ACMSC_ENGINE_BITMAP": 0, "ACMSC_ENGINE_REORDER": 0}},
+
+    {"algorithm": 4, "mode": "raw", "dataset": 7, "tau": 0.537601, "threads": 32, "timeout_seconds": 30, "repetitions": 3},
+    {"algorithm": 4, "mode": "raw", "dataset": 7, "tau": 0.537601, "threads": 32, "timeout_seconds": 30, "repetitions": 3, "defines": {"ACMSC_ENGINE_BITMAP": 0}},
+    {"algorithm": 4, "mode": "raw", "dataset": 7, "tau": 0.537601, "threads": 32, "timeout_seconds": 30, "repetitions": 3, "defines": {"ACMSC_ENGINE_REORDER": 0}},
+    {"algorithm": 4, "mode": "raw", "dataset": 7, "tau": 0.537601, "threads": 32, "timeout_seconds": 30, "repetitions": 3, "defines": {"ACMSC_ENGINE_BITMAP": 0, "ACMSC_ENGINE_REORDER": 0}},
+    {"algorithm": 4, "mode": "raw", "dataset": 7, "tau": 0.537601, "threads": 32, "timeout_seconds": 30, "repetitions": 3, "defines": {"ACMSC_ENGINE_INCREMENTAL_ACC": 0}},
+    {"algorithm": 4, "mode": "raw", "dataset": 16, "tau": -0.0525222, "threads": 32, "timeout_seconds": 30, "repetitions": 3},
+    {"algorithm": 4, "mode": "raw", "dataset": 16, "tau": -0.0525222, "threads": 32, "timeout_seconds": 30, "repetitions": 3, "defines": {"ACMSC_ENGINE_BITMAP": 0}},
+    {"algorithm": 4, "mode": "raw", "dataset": 16, "tau": -0.0525222, "threads": 32, "timeout_seconds": 30, "repetitions": 3, "defines": {"ACMSC_ENGINE_REORDER": 0}},
+    {"algorithm": 4, "mode": "raw", "dataset": 16, "tau": -0.0525222, "threads": 32, "timeout_seconds": 30, "repetitions": 3, "defines": {"ACMSC_ENGINE_BITMAP": 0, "ACMSC_ENGINE_REORDER": 0}},
+    {"algorithm": 4, "mode": "raw", "dataset": 16, "tau": -0.0525222, "threads": 32, "timeout_seconds": 30, "repetitions": 3, "defines": {"ACMSC_ENGINE_INCREMENTAL_ACC": 0}}
+  ]
+}

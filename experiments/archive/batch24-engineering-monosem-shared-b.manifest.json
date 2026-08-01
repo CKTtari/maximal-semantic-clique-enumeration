@@ -1,0 +1,404 @@
+{
+  "schema_version": 2,
+  "run_name": "batch24-engineering-monosem-shared-b",
+  "archived_utc": "2026-07-30T10:04:51.154273+00:00",
+  "local_result_directory": "experiment-output/batch24-engineering-monosem-shared-b",
+  "plans": [
+    {
+      "path": "experiments/plans/batch24-engineering-monosem-shared-b.json",
+      "sha256": "fde4617ef3fcc2c7aea5206abb0c1844a37fe9908df61ed95f06a12f16ddf959"
+    }
+  ],
+  "summary": {
+    "attempts": 3,
+    "planned_tasks": 3,
+    "attempted_tasks": 3,
+    "completed_tasks": 3,
+    "unattempted_tasks": 0,
+    "unattempted_task_ids": [],
+    "plan_complete": true,
+    "status_counts": {
+      "completed": 3
+    }
+  },
+  "records": [
+    {
+      "task_id": "69a6c34929d6be9f",
+      "attempt": 1,
+      "status": "completed",
+      "rerun_reason": null,
+      "started_utc": "2026-07-30T09:58:05.958301+00:00",
+      "wall_seconds": 13.12842960000853,
+      "task": {
+        "algorithm": 4,
+        "mode": "raw",
+        "dataset": 1,
+        "tau": 0.145162,
+        "threads": 32,
+        "timeout_seconds": 1200,
+        "graph": null,
+        "vectors": null,
+        "capture_cliques": false,
+        "defines": {
+          "ACMSC_ENGINE_BITMAP": 0
+        },
+        "warmup": false,
+        "repetition": 2,
+        "task_id": "69a6c34929d6be9f"
+      },
+      "parsed": {
+        "algorithm_ms": 1020,
+        "clique_count": 202030,
+        "peak_memory_gib": 3.11,
+        "size_histogram": {
+          "2": 192349,
+          "3": 9597,
+          "4": 84
+        },
+        "stats": {}
+      },
+      "validation": null,
+      "build": {
+        "fingerprint": "af2c6139bb8d93a6",
+        "executable_sha256": "c7d6864b5c1b87bd8804e51cebbe900dc53e688bda6aded92a7dfe02af769f63",
+        "command": [
+          "g++",
+          "-std=c++17",
+          "-fopenmp",
+          "-mavx2",
+          "-O3",
+          "-DACMSC_ENGINE_BITMAP=0",
+          "src/alg4-raw.cpp",
+          "src/semantic_graph.cpp",
+          "-o",
+          "no-use/compiled/experiment-runner/alg4-raw-af2c6139bb8d93a6.exe"
+        ],
+        "source_verification": {
+          "status": "verified_current",
+          "observed_current_fingerprint": "af2c6139bb8d93a6",
+          "reason": null
+        },
+        "source_hashes": {
+          "alg4-raw.cpp": "4d8e6dcc65150c7ac4b6e8a5501412af4581b704a5191ffd34813f0ea45a12b8",
+          "semantic_graph.cpp": "c6d51c9086fbd5c7d264eb411ac04890806744fc4e05dc7eee0b156760a9cd92",
+          "semantic_graph.h": "8192c4e8e02fc8ace59d59365f72643e34ca32ba71faa5bb338381a8cd308078",
+          "experiment_runtime.h": "2970c483cd31152adc0a39278340822337daeb312c073b67a8eb49a030a4f35d"
+        }
+      },
+      "inputs": {
+        "status": "verified_run_time",
+        "snapshot": {
+          "dataset_catalog": {
+            "path": "experiments/datasets.json",
+            "sha256": "6b56d1151911b15582d62bee8c4a90f6e08218c1079f09f7b08d618327468fcd"
+          },
+          "files": [
+            {
+              "role": "graph",
+              "path": "dataset/dataset/sc-ldoor.txt",
+              "bytes": 285761999,
+              "sha256": "840bdd1718e7e122a2c11347c3edd26e75a04c75c3ba82a8592abb626480d993"
+            },
+            {
+              "role": "vector_binary",
+              "path": "dataset/vectors-256/sc-ldoor_vectors.bin",
+              "bytes": 1862731784,
+              "sha256": "89b598ea62df53b4ba2bb2521affdf527ef0d4b7c28fa211e4962cb14a2a3d7e"
+            }
+          ]
+        }
+      },
+      "run_environment": {
+        "plan": "experiments/plans/batch24-engineering-monosem-shared-b.json",
+        "plan_sha256": "fde4617ef3fcc2c7aea5206abb0c1844a37fe9908df61ed95f06a12f16ddf959",
+        "git": {
+          "commit": "924eddbac109d2ddf830b0f1509954c0422d1544",
+          "dirty": true
+        },
+        "machine": {
+          "platform": "Windows-11-10.0.26100-SP0",
+          "processor": "AMD64 Family 25 Model 97 Stepping 2, AuthenticAMD",
+          "logical_cpu_count": 32,
+          "python": "3.12.7",
+          "compiler": "g++ (x86_64-posix-seh-rev0, Built by MinGW-Builds project) 13.2.0"
+        },
+        "memory_limit_gib": 16,
+        "external_timeout_policy": "hard per-process TLE from task.timeout_seconds"
+      },
+      "result_json": {
+        "path": "experiment-output/batch24-engineering-monosem-shared-b/69a6c34929d6be9f.attempt-001.json",
+        "bytes": 4158,
+        "sha256": "580c41824005c5edc50103af5109882c66177679f2dfb6b04ca9f4738f11618c"
+      },
+      "artifacts": {
+        "program_log": {
+          "path": "experiment-output/batch24-engineering-monosem-shared-b/69a6c34929d6be9f.attempt-001.program.log",
+          "bytes": 1144,
+          "sha256": "ae6d5e50673173042d627cb9aa5a8b339b9512d7b4692f97b21ada42613e127b"
+        },
+        "stdout": {
+          "path": "experiment-output/batch24-engineering-monosem-shared-b/69a6c34929d6be9f.attempt-001.stdout.txt",
+          "bytes": 1345,
+          "sha256": "39429318900625af268e1cae70c8e1b2ce61c46475c20be33c580c112f8700cb"
+        },
+        "stderr": {
+          "path": "experiment-output/batch24-engineering-monosem-shared-b/69a6c34929d6be9f.attempt-001.stderr.txt",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    {
+      "task_id": "8558dbfdea8048a2",
+      "attempt": 1,
+      "status": "completed",
+      "rerun_reason": null,
+      "started_utc": "2026-07-30T09:57:39.337411+00:00",
+      "wall_seconds": 13.303806700001587,
+      "task": {
+        "algorithm": 4,
+        "mode": "raw",
+        "dataset": 1,
+        "tau": 0.145162,
+        "threads": 32,
+        "timeout_seconds": 1200,
+        "graph": null,
+        "vectors": null,
+        "capture_cliques": false,
+        "defines": {
+          "ACMSC_ENGINE_BITMAP": 0
+        },
+        "warmup": false,
+        "repetition": 0,
+        "task_id": "8558dbfdea8048a2"
+      },
+      "parsed": {
+        "algorithm_ms": 1026,
+        "clique_count": 202030,
+        "peak_memory_gib": 3.11,
+        "size_histogram": {
+          "2": 192349,
+          "3": 9597,
+          "4": 84
+        },
+        "stats": {}
+      },
+      "validation": null,
+      "build": {
+        "fingerprint": "af2c6139bb8d93a6",
+        "executable_sha256": "c7d6864b5c1b87bd8804e51cebbe900dc53e688bda6aded92a7dfe02af769f63",
+        "command": [
+          "g++",
+          "-std=c++17",
+          "-fopenmp",
+          "-mavx2",
+          "-O3",
+          "-DACMSC_ENGINE_BITMAP=0",
+          "src/alg4-raw.cpp",
+          "src/semantic_graph.cpp",
+          "-o",
+          "no-use/compiled/experiment-runner/alg4-raw-af2c6139bb8d93a6.exe"
+        ],
+        "source_verification": {
+          "status": "verified_current",
+          "observed_current_fingerprint": "af2c6139bb8d93a6",
+          "reason": null
+        },
+        "source_hashes": {
+          "alg4-raw.cpp": "4d8e6dcc65150c7ac4b6e8a5501412af4581b704a5191ffd34813f0ea45a12b8",
+          "semantic_graph.cpp": "c6d51c9086fbd5c7d264eb411ac04890806744fc4e05dc7eee0b156760a9cd92",
+          "semantic_graph.h": "8192c4e8e02fc8ace59d59365f72643e34ca32ba71faa5bb338381a8cd308078",
+          "experiment_runtime.h": "2970c483cd31152adc0a39278340822337daeb312c073b67a8eb49a030a4f35d"
+        }
+      },
+      "inputs": {
+        "status": "verified_run_time",
+        "snapshot": {
+          "dataset_catalog": {
+            "path": "experiments/datasets.json",
+            "sha256": "6b56d1151911b15582d62bee8c4a90f6e08218c1079f09f7b08d618327468fcd"
+          },
+          "files": [
+            {
+              "role": "graph",
+              "path": "dataset/dataset/sc-ldoor.txt",
+              "bytes": 285761999,
+              "sha256": "840bdd1718e7e122a2c11347c3edd26e75a04c75c3ba82a8592abb626480d993"
+            },
+            {
+              "role": "vector_binary",
+              "path": "dataset/vectors-256/sc-ldoor_vectors.bin",
+              "bytes": 1862731784,
+              "sha256": "89b598ea62df53b4ba2bb2521affdf527ef0d4b7c28fa211e4962cb14a2a3d7e"
+            }
+          ]
+        }
+      },
+      "run_environment": {
+        "plan": "experiments/plans/batch24-engineering-monosem-shared-b.json",
+        "plan_sha256": "fde4617ef3fcc2c7aea5206abb0c1844a37fe9908df61ed95f06a12f16ddf959",
+        "git": {
+          "commit": "924eddbac109d2ddf830b0f1509954c0422d1544",
+          "dirty": true
+        },
+        "machine": {
+          "platform": "Windows-11-10.0.26100-SP0",
+          "processor": "AMD64 Family 25 Model 97 Stepping 2, AuthenticAMD",
+          "logical_cpu_count": 32,
+          "python": "3.12.7",
+          "compiler": "g++ (x86_64-posix-seh-rev0, Built by MinGW-Builds project) 13.2.0"
+        },
+        "memory_limit_gib": 16,
+        "external_timeout_policy": "hard per-process TLE from task.timeout_seconds"
+      },
+      "result_json": {
+        "path": "experiment-output/batch24-engineering-monosem-shared-b/8558dbfdea8048a2.attempt-001.json",
+        "bytes": 4159,
+        "sha256": "1a66af243d8df2a41209674bbefb7be9710b68f7fa6c4bf72231ba6408a7998b"
+      },
+      "artifacts": {
+        "program_log": {
+          "path": "experiment-output/batch24-engineering-monosem-shared-b/8558dbfdea8048a2.attempt-001.program.log",
+          "bytes": 1144,
+          "sha256": "226789c0fca7812894cec8aea6ba75df07fd3e848c244db05d103dbcbaca06b6"
+        },
+        "stdout": {
+          "path": "experiment-output/batch24-engineering-monosem-shared-b/8558dbfdea8048a2.attempt-001.stdout.txt",
+          "bytes": 1345,
+          "sha256": "c2604f422f90e9756f27180316eed883d45fccd5fb02130b5d59ff0368762faf"
+        },
+        "stderr": {
+          "path": "experiment-output/batch24-engineering-monosem-shared-b/8558dbfdea8048a2.attempt-001.stderr.txt",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    {
+      "task_id": "c8211abcbb815c82",
+      "attempt": 1,
+      "status": "completed",
+      "rerun_reason": null,
+      "started_utc": "2026-07-30T09:57:52.643957+00:00",
+      "wall_seconds": 13.305699000004097,
+      "task": {
+        "algorithm": 4,
+        "mode": "raw",
+        "dataset": 1,
+        "tau": 0.145162,
+        "threads": 32,
+        "timeout_seconds": 1200,
+        "graph": null,
+        "vectors": null,
+        "capture_cliques": false,
+        "defines": {
+          "ACMSC_ENGINE_BITMAP": 0
+        },
+        "warmup": false,
+        "repetition": 1,
+        "task_id": "c8211abcbb815c82"
+      },
+      "parsed": {
+        "algorithm_ms": 1027,
+        "clique_count": 202030,
+        "peak_memory_gib": 3.11,
+        "size_histogram": {
+          "2": 192349,
+          "3": 9597,
+          "4": 84
+        },
+        "stats": {}
+      },
+      "validation": null,
+      "build": {
+        "fingerprint": "af2c6139bb8d93a6",
+        "executable_sha256": "c7d6864b5c1b87bd8804e51cebbe900dc53e688bda6aded92a7dfe02af769f63",
+        "command": [
+          "g++",
+          "-std=c++17",
+          "-fopenmp",
+          "-mavx2",
+          "-O3",
+          "-DACMSC_ENGINE_BITMAP=0",
+          "src/alg4-raw.cpp",
+          "src/semantic_graph.cpp",
+          "-o",
+          "no-use/compiled/experiment-runner/alg4-raw-af2c6139bb8d93a6.exe"
+        ],
+        "source_verification": {
+          "status": "verified_current",
+          "observed_current_fingerprint": "af2c6139bb8d93a6",
+          "reason": null
+        },
+        "source_hashes": {
+          "alg4-raw.cpp": "4d8e6dcc65150c7ac4b6e8a5501412af4581b704a5191ffd34813f0ea45a12b8",
+          "semantic_graph.cpp": "c6d51c9086fbd5c7d264eb411ac04890806744fc4e05dc7eee0b156760a9cd92",
+          "semantic_graph.h": "8192c4e8e02fc8ace59d59365f72643e34ca32ba71faa5bb338381a8cd308078",
+          "experiment_runtime.h": "2970c483cd31152adc0a39278340822337daeb312c073b67a8eb49a030a4f35d"
+        }
+      },
+      "inputs": {
+        "status": "verified_run_time",
+        "snapshot": {
+          "dataset_catalog": {
+            "path": "experiments/datasets.json",
+            "sha256": "6b56d1151911b15582d62bee8c4a90f6e08218c1079f09f7b08d618327468fcd"
+          },
+          "files": [
+            {
+              "role": "graph",
+              "path": "dataset/dataset/sc-ldoor.txt",
+              "bytes": 285761999,
+              "sha256": "840bdd1718e7e122a2c11347c3edd26e75a04c75c3ba82a8592abb626480d993"
+            },
+            {
+              "role": "vector_binary",
+              "path": "dataset/vectors-256/sc-ldoor_vectors.bin",
+              "bytes": 1862731784,
+              "sha256": "89b598ea62df53b4ba2bb2521affdf527ef0d4b7c28fa211e4962cb14a2a3d7e"
+            }
+          ]
+        }
+      },
+      "run_environment": {
+        "plan": "experiments/plans/batch24-engineering-monosem-shared-b.json",
+        "plan_sha256": "fde4617ef3fcc2c7aea5206abb0c1844a37fe9908df61ed95f06a12f16ddf959",
+        "git": {
+          "commit": "924eddbac109d2ddf830b0f1509954c0422d1544",
+          "dirty": true
+        },
+        "machine": {
+          "platform": "Windows-11-10.0.26100-SP0",
+          "processor": "AMD64 Family 25 Model 97 Stepping 2, AuthenticAMD",
+          "logical_cpu_count": 32,
+          "python": "3.12.7",
+          "compiler": "g++ (x86_64-posix-seh-rev0, Built by MinGW-Builds project) 13.2.0"
+        },
+        "memory_limit_gib": 16,
+        "external_timeout_policy": "hard per-process TLE from task.timeout_seconds"
+      },
+      "result_json": {
+        "path": "experiment-output/batch24-engineering-monosem-shared-b/c8211abcbb815c82.attempt-001.json",
+        "bytes": 4159,
+        "sha256": "1aa1dada6a5d4f5ab96af7d94a0eb7555e5f9a4be9f374261d97babd4529d1de"
+      },
+      "artifacts": {
+        "program_log": {
+          "path": "experiment-output/batch24-engineering-monosem-shared-b/c8211abcbb815c82.attempt-001.program.log",
+          "bytes": 1144,
+          "sha256": "cd0867c0f4600fd786e6bd7be0e6897661f9e7bf936a45d2cde9cf5e584863ba"
+        },
+        "stdout": {
+          "path": "experiment-output/batch24-engineering-monosem-shared-b/c8211abcbb815c82.attempt-001.stdout.txt",
+          "bytes": 1345,
+          "sha256": "c20afaf1672186531caa789e855ac6489700841206e982198b96623f9edbcd63"
+        },
+        "stderr": {
+          "path": "experiment-output/batch24-engineering-monosem-shared-b/c8211abcbb815c82.attempt-001.stderr.txt",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    }
+  ]
+}

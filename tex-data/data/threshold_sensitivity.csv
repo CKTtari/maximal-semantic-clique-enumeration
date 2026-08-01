@@ -2,7 +2,7 @@ dataset,dataset_id,quantile,tau,algorithm,algorithm_id,status,seconds,acmsc_coun
 ogbn-arxiv,11,5,0.68185,SemBK,2,completed,2.902,1024377
 ogbn-arxiv,11,5,0.68185,StrSub,3,completed,1.082,1024377
 ogbn-arxiv,11,5,0.68185,MonoSemMCE,4,completed,2.649,1024377
-ogbn-arxiv,11,20,0.773547,SemBK,2,completed,2.783,925239
+ogbn-arxiv,11,20,0.773547,SemBK,2,completed,1.59,925239
 ogbn-arxiv,11,20,0.773547,StrSub,3,completed,1.233,925239
 ogbn-arxiv,11,20,0.773547,MonoSemMCE,4,completed,3.357,925239
 ogbn-arxiv,11,50,0.840429,SemBK,2,completed,1.248,613668
@@ -11,7 +11,7 @@ ogbn-arxiv,11,50,0.840429,MonoSemMCE,4,completed,1.937,613668
 ogbn-arxiv,11,70,0.872133,SemBK,2,completed,2.637,357196
 ogbn-arxiv,11,70,0.872133,StrSub,3,completed,1.069,357196
 ogbn-arxiv,11,70,0.872133,MonoSemMCE,4,completed,1.571,357196
-ogbn-arxiv,11,80,0.888756,SemBK,2,completed,1.206,226936
+ogbn-arxiv,11,80,0.888756,SemBK,2,completed,1.165,226936
 ogbn-arxiv,11,80,0.888756,StrSub,3,completed,0.872,226936
 ogbn-arxiv,11,80,0.888756,MonoSemMCE,4,completed,1.61,226936
 ogbn-arxiv,11,90,0.909257,SemBK,2,completed,2.003,106356
@@ -22,7 +22,7 @@ ogbn-arxiv,11,95,0.924347,StrSub,3,completed,0.942,53208
 ogbn-arxiv,11,95,0.924347,MonoSemMCE,4,completed,0.435,53208
 ogbn-arxiv,11,97,0.933471,StrSub,3,completed,0.963,31372
 ogbn-arxiv,11,97,0.933471,MonoSemMCE,4,completed,0.233,31372
-ogbn-arxiv,11,99,0.949708,SemBK,2,completed,1.318,10261
+ogbn-arxiv,11,99,0.949708,SemBK,2,completed,1.249,10261
 ogbn-arxiv,11,99,0.949708,StrSub,3,completed,0.843,10261
 ogbn-arxiv,11,99,0.949708,MonoSemMCE,4,completed,0.197,10261
 sc-ldoor,1,5,-0.102847,StrSub,3,completed,3.856,274768

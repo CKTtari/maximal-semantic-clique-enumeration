@@ -55,6 +55,7 @@ EXPORT_SUFFIXES = (".svg", ".pdf", ".png")
 # Okabe-Ito-derived colors with line/marker redundancy for grayscale printing.
 BLUE = "#0072B2"
 RED = "#D55E00"
+CRIMSON = "#C83E4D"
 GOLD = "#E69F00"
 GREEN = "#009E73"
 GRAY = "#5B5B5B"
@@ -140,7 +141,6 @@ def save(
             layout_engine.set(w_pad=0.055, h_pad=0.055)
             fig.canvas.draw()
     else:
-        fig.set_layout_engine(None)
         fig.canvas.draw()
     issues = audit_layout(fig)
     failures = [message for severity, message in issues if severity == "FAIL"]
@@ -166,7 +166,7 @@ def threshold_panel(dataset: str, stem: str, show_ylabel: bool) -> None:
     rows = [row for row in read_csv("threshold_sensitivity.csv") if row["dataset"] == dataset]
     quantiles = sorted({int(row["quantile"]) for row in rows})
     positions = {quantile: index for index, quantile in enumerate(quantiles)}
-    panel_size = (3.52, 2.35)
+    panel_size = (3.52, 2.65)
     fig, ax = plt.subplots(figsize=panel_size)
 
     for method in ("StrSub", "MonoSemMCE"):
@@ -263,6 +263,75 @@ def scale_regime() -> None:
     save(fig, "scale_regime", (COLUMN_WIDTH, 4.35))
 
 
+def scale_runtime() -> None:
+    """Show absolute runtime growth for each exact search organization."""
+    rows = read_csv("scale_regime.csv")
+    sizes = [25000, 50000, 100000, 169343]
+    positions = np.log2(np.asarray(sizes, dtype=float))
+    quantiles = [20, 50, 80, 90, 95, 99]
+    by_key = {(int(row["vertices"]), int(row["quantile"])): row for row in rows}
+    colors = [BLUE, GOLD, GREEN, "#CC79A7", RED, GRAY]
+    markers = ["o", "s", "^", "D", "P", "X"]
+
+    handles = [
+        Line2D(
+            [0], [0], color=color, marker=marker, linestyle="-",
+            markerfacecolor="white", markeredgewidth=0.75,
+            label=f"$q_{{{quantile}}}$",
+        )
+        for quantile, color, marker in zip(quantiles, colors, markers)
+    ]
+    legend_fig, legend_ax = plt.subplots(figsize=(COLUMN_WIDTH, 0.52))
+    legend_ax.axis("off")
+    legend_ax.legend(
+        handles=handles,
+        loc="center",
+        ncol=6,
+        frameon=False,
+        fontsize=24.0,
+        handlelength=1.20,
+        columnspacing=0.55,
+        handletextpad=0.25,
+    )
+    save(legend_fig, "scale_runtime_legend", (COLUMN_WIDTH, 0.52))
+
+    for method, stem, show_ylabel in (
+        ("StrSub", "scale_runtime_strsub", True),
+        ("MonoSemMCE", "scale_runtime_monosem", False),
+    ):
+        fig, axis = plt.subplots(figsize=(HALF_COLUMN_WIDTH, 2.55))
+        for quantile, color, marker in zip(quantiles, colors, markers):
+            values = []
+            for size in sizes:
+                row = by_key[(size, quantile)]
+                field = "strsub_seconds" if method == "StrSub" else "monosemmce_seconds"
+                values.append(float(row[field]))
+            axis.plot(
+                positions,
+                values,
+                color=color,
+                marker=marker,
+                linestyle="-",
+                linewidth=2.20,
+                markersize=7.2,
+                markerfacecolor="white",
+                markeredgewidth=0.75,
+                label=f"$q_{{{quantile}}}$",
+            )
+        axis.set_xlim(float(positions[0]) - 0.12, float(positions[-1]) + 0.12)
+        axis.set_xticks(positions, ["25", "50", "100", "169"])
+        axis.set_yscale("log")
+        axis.set_ylim(0.04, 4.1)
+        axis.set_xlabel("Vertices (K)", fontsize=23.0)
+        axis.tick_params(labelsize=22.0, length=4.0, width=1.0)
+        if show_ylabel:
+            axis.set_ylabel("Time (s)", fontsize=23.0)
+        else:
+            axis.tick_params(axis="y", labelleft=False)
+        clean_axis(axis)
+        save(fig, stem, (HALF_COLUMN_WIDTH, 2.55))
+
+
 def parallel_scaling() -> None:
     rows = read_csv("parallel_scaling.csv")
     fig, ax = plt.subplots(figsize=(INSET_COLUMN_WIDTH, 3.45))
@@ -294,9 +363,10 @@ def parallel_scaling() -> None:
 
 def mechanism_summary() -> None:
     alg3_rows = [row for row in read_csv("alg3_mechanism_counters.csv") if row["variant"] != "No Local-Max"]
-    labels = ["Full", "-Top", "-Vertex"]
+    labels = ["Full", "No edge", "No vertex"]
     tests = np.asarray([float(row["subset_tests"]) / 1e6 for row in alg3_rows])
-    panel_size = (3.52, 2.35)
+    panel_size = (3.52, 2.92)
+    fig, ax = plt.subplots(figsize=panel_size)
     fig, ax = plt.subplots(figsize=panel_size)
     bars = ax.bar(
         np.arange(len(labels)),
@@ -311,14 +381,54 @@ def mechanism_summary() -> None:
     ax.set_xticks(np.arange(len(labels)), labels, rotation=30, ha="right")
     ax.set_ylabel("Subset tests (M)")
     ax.set_ylim(0, max(tests) * 1.17)
-    ax.bar_label(bars, fmt="%.1f", fontsize=20.0, padding=2.0)
+    ax.bar_label(bars, fmt="%.1f", fontsize=13.5, padding=2.0)
     clean_axis(ax)
-    save(fig, "mechanism_strsub", panel_size)
+    fig._layout_engine = None  # lock manual geometry for paired panels
+    fig.subplots_adjust(left=0.27, right=0.98, bottom=0.23, top=0.65)
+    save(fig, "mechanism_strsub", panel_size, adaptive_layout=False)
 
     rows = read_csv("alg4_state_contraction.csv")
     quantiles = np.asarray([int(row["quantile"]) for row in rows])
     positions = np.arange(len(quantiles))
-    fig, ax = plt.subplots(figsize=panel_size)
+    mono_panel_size = (RQ5_PANEL_WIDTH, 1.30)
+    mono_style = {
+        "font.size": 7.0,
+        "axes.labelsize": 7.5,
+        "xtick.labelsize": 7.0,
+        "ytick.labelsize": 7.0,
+        "legend.fontsize": 7.0,
+        "lines.linewidth": 1.35,
+        "lines.markersize": 4.6,
+        "axes.linewidth": 0.8,
+        "xtick.major.width": 0.8,
+        "ytick.major.width": 0.8,
+        "xtick.major.size": 3.0,
+        "ytick.major.size": 3.0,
+    }
+
+    legend_handles = [
+        Line2D([0], [0], color=RED, marker="s", linestyle="--",
+               markerfacecolor="white", label="Accepted"),
+        Line2D([0], [0], color=BLUE, marker="o", linestyle="-",
+               markerfacecolor="white", label="MSCs"),
+        Line2D([0], [0], color=CRIMSON, marker="^", linestyle="-",
+               markerfacecolor="white", label=r"$W$ prune"),
+        Line2D([0], [0], color=GREEN, marker="D", linestyle="--",
+               markerfacecolor="white", label="Canonical reject"),
+    ]
+    with plt.rc_context(mono_style):
+        legend_size = (RQ5_COLUMN_WIDTH, 0.30)
+        legend_fig, legend_ax = plt.subplots(figsize=legend_size)
+        legend_ax.axis("off")
+        legend_ax.legend(
+            handles=legend_handles, loc="center", ncol=4, frameon=False,
+            bbox_to_anchor=(0.08, 0.0, 0.84, 1.0), mode="expand",
+            borderaxespad=0.0, fontsize=7.0, markerscale=0.8,
+            handlelength=1.45, columnspacing=0.55, handletextpad=0.36,
+        )
+        save(legend_fig, "mechanism_monosem_legend", legend_size)
+
+    fig, ax = plt.subplots(figsize=mono_panel_size)
     ax.plot(
         positions,
         [int(row["states"]) for row in rows],
@@ -327,7 +437,9 @@ def mechanism_summary() -> None:
         linestyle="--",
         markerfacecolor="white",
         markeredgecolor=RED,
-        label="States",
+        linewidth=1.35,
+        markersize=4.6,
+        label="Accepted states",
     )
     ax.plot(
         positions,
@@ -337,28 +449,54 @@ def mechanism_summary() -> None:
         linestyle="-",
         markerfacecolor="white",
         markeredgecolor=BLUE,
-        label="MSCs",
+        linewidth=1.35,
+        markersize=4.6,
+        label="Emitted MSCs",
     )
-    # Every plotted runtime/count is strictly positive; TLE points use TIMEOUT_SECONDS.
     ax.set_yscale("log")
     shown = [i for i, q in enumerate(quantiles) if q in {5, 50, 80, 95, 99}]
     ax.set_xticks(shown, [str(quantiles[i]) for i in shown])
-    ax.set_xlabel("Quantile (%)", labelpad=1)
-    ax.set_ylabel("Count")
+    ax.set_xlabel("Quantile (%)", labelpad=1, fontsize=7.5)
+    ax.set_ylabel("Count", labelpad=1, fontsize=7.5)
+    ax.tick_params(labelsize=7.0, length=3.0, width=0.8)
     ax.yaxis.set_minor_locator(LogLocator(base=10, subs=()))
     ax.yaxis.set_minor_formatter(NullFormatter())
-    ax.set_ylim(top=max(int(row["states"]) for row in rows) * 8.0)
+    ax.set_xlim(-0.40, len(positions) - 0.60)
+    ax.set_ylim(7.0e3, max(int(row["states"]) for row in rows) * 1.9)
     clean_axis(ax)
-    legend_handles, legend_labels = ax.get_legend_handles_labels()
-    fig.set_layout_engine(None)
-    fig.subplots_adjust(left=0.19, right=0.98, bottom=0.25, top=0.76)
-    fig.legend(
-        legend_handles, legend_labels, loc="upper center", ncol=2,
-        bbox_to_anchor=(0.58, 0.99), frameon=False,
-        handlelength=1.5, handletextpad=0.35, columnspacing=0.8,
-        borderaxespad=0.0,
+    fig._layout_engine = None
+    fig.subplots_adjust(left=0.28, right=0.97, bottom=0.27, top=0.95)
+    save(fig, "mechanism_monosem_states", mono_panel_size, adaptive_layout=False)
+
+    fig, ax = plt.subplots(figsize=mono_panel_size)
+    candidate_tests = np.asarray([float(row["candidate_tests"]) for row in rows])
+    w_prune_share = 100.0 * np.asarray(
+        [float(row["w_prunes"]) for row in rows]
+    ) / candidate_tests
+    canonical_share = 100.0 * np.asarray(
+        [float(row["canonical_rejects"]) for row in rows]
+    ) / candidate_tests
+    ax.plot(
+        positions, w_prune_share, color=CRIMSON, marker="^", linestyle="-",
+        markerfacecolor="white", markeredgecolor=CRIMSON,
+        linewidth=1.35, markersize=4.6,
     )
-    save(fig, "mechanism_monosem", panel_size)
+    ax.plot(
+        positions, canonical_share, color=GREEN, marker="D", linestyle="--",
+        markerfacecolor="white", markeredgecolor=GREEN,
+        linewidth=1.35, markersize=4.6,
+    )
+    ax.set_xticks(shown, [str(quantiles[i]) for i in shown])
+    ax.set_xlabel("Quantile (%)", labelpad=1, fontsize=7.5)
+    ax.set_ylabel("Candidate share (%)", labelpad=1, fontsize=7.5)
+    ax.tick_params(labelsize=7.0, length=3.0, width=0.8)
+    ax.set_xlim(-0.40, len(positions) - 0.60)
+    ax.set_ylim(-3.0, 103.0)
+    ax.set_yticks([0, 25, 50, 75, 100])
+    clean_axis(ax)
+    fig._layout_engine = None
+    fig.subplots_adjust(left=0.30, right=0.97, bottom=0.27, top=0.95)
+    save(fig, "mechanism_monosem_rejections", mono_panel_size, adaptive_layout=False)
 
 
 def result_distribution() -> None:
@@ -396,13 +534,19 @@ def result_distribution() -> None:
             marker=markers[dataset],
             linestyle=linestyles[dataset],
             linewidth=2.0 if dataset == "Geometric mean" else 1.05,
-            markersize=4.8 if dataset == "Geometric mean" else 3.8,
+            markersize=6.72 if dataset == "Geometric mean" else 5.32,
             markerfacecolor=colors[dataset] if dataset == "Geometric mean" else "white",
             markeredgecolor=colors[dataset],
             label=dataset,
         )
         for dataset in datasets + ["Geometric mean"]
     ]
+    handles.append(
+        Line2D(
+            [0], [0], color="black", linestyle=(0, (1.5, 2.0)),
+            linewidth=0.75, label="StructBK = 1",
+        )
+    )
     legend_fig, legend_ax = plt.subplots(figsize=(COLUMN_WIDTH, 0.88))
     legend_ax.axis("off")
     legend_ax.legend(
@@ -411,6 +555,7 @@ def result_distribution() -> None:
         loc="center",
         ncol=3,
         frameon=False,
+        fontsize=20.0,
         handlelength=1.9,
         columnspacing=0.85,
         handletextpad=0.38,
@@ -421,7 +566,7 @@ def result_distribution() -> None:
         ("count_ratio", "Output-count ratio", "result_distribution_count"),
         ("mean_size_ratio", "Mean-size ratio", "result_distribution_size"),
     ):
-        panel_size = (3.52, 2.35)
+        panel_size = (3.52, 2.65)
         fig, ax = plt.subplots(figsize=panel_size)
         for dataset in datasets + ["Geometric mean"]:
             selected = {int(row["quantile"]): row for row in rows if row["dataset"] == dataset}
@@ -433,7 +578,7 @@ def result_distribution() -> None:
                 marker=markers[dataset],
                 linestyle=linestyles[dataset],
                 linewidth=2.0 if aggregate else 1.05,
-                markersize=4.8 if aggregate else 3.8,
+                markersize=6.72 if aggregate else 5.32,
                 alpha=1.0 if aggregate else 0.82,
                 markerfacecolor="white" if not aggregate else colors[dataset],
                 markeredgecolor=colors[dataset],
@@ -477,8 +622,8 @@ def definition_recovery() -> None:
         if row["comparison"] == "definition"
     ]
     datasets = ["GitHub-Social", "ogbn-arxiv-25K"]
-    colors = {"GitHub-Social": BLUE, "ogbn-arxiv-25K": GOLD}
-    markers = {"GitHub-Social": "o", "ogbn-arxiv-25K": "s"}
+    colors = {"GitHub-Social": BLUE, "ogbn-arxiv-25K": CRIMSON}
+    markers = {"GitHub-Social": "o", "ogbn-arxiv-25K": "D"}
     size = (RQ5_PANEL_WIDTH, 1.20)
 
     definition_style = {
@@ -502,20 +647,26 @@ def definition_recovery() -> None:
         handles.append(
             Line2D(
                 [0], [0], color=GRAY, linestyle=(0, (2.2, 2.0)),
-                linewidth=1.0, label="MSC ref.",
+                linewidth=1.0, label="MSC self-match = 1",
             )
         )
-        legend_size = (RQ5_COLUMN_WIDTH, 0.42)
+        handles.append(
+            Line2D(
+                [0], [0], color=GRAY, linestyle=":",
+                linewidth=1.0, label="80% retained",
+            )
+        )
+        legend_size = (RQ5_COLUMN_WIDTH, 0.52)
         legend_fig, legend_ax = plt.subplots(figsize=legend_size)
         legend_ax.axis("off")
         legend_ax.legend(
-            handles=handles, loc="center", ncol=3, frameon=False,
+            handles=handles, loc="center", ncol=2, frameon=False,
             handlelength=1.8, columnspacing=0.8, handletextpad=0.35,
         )
         save(legend_fig, "definition_recovery_legend", legend_size)
 
         fig, ax = plt.subplots(figsize=size, layout="none")
-        ax.set_position([0.30, 0.29, 0.67, 0.65])
+        ax.set_position([0.29, 0.29, 0.64, 0.65])
         positions = np.arange(2, dtype=float)
         fields = ["bcubed_recall", "best_match_recall"]
         for offset, dataset in zip((-0.10, 0.10), datasets):
@@ -530,7 +681,7 @@ def definition_recovery() -> None:
                 edgecolor="black",
                 linewidth=0.55,
                 label=dataset,
-                clip_on=False,
+                clip_on=True,
                 zorder=4,
             )
         ax.axhline(
@@ -545,7 +696,7 @@ def definition_recovery() -> None:
         ax.yaxis.labelpad = 1.0
         ax.set_ylim(0.0, 1.08)
         ax.set_yticks([0.0, 0.25, 0.5, 0.75, 1.0])
-        ax.set_xlim(-0.42, 1.42)
+        ax.set_xlim(-0.50, 1.50)
         clean_axis(ax)
         save(
             fig, "definition_recovery_summary", size,
@@ -553,7 +704,7 @@ def definition_recovery() -> None:
         )
 
         fig, ax = plt.subplots(figsize=size, layout="none")
-        ax.set_position([0.30, 0.29, 0.67, 0.65])
+        ax.set_position([0.29, 0.29, 0.64, 0.65])
         for dataset in datasets:
             values = sorted(
                 float(row["best_match_recall"])
@@ -570,14 +721,14 @@ def definition_recovery() -> None:
                 markerfacecolor="white",
                 markeredgecolor=colors[dataset],
                 label=dataset,
-                clip_on=False,
+                clip_on=True,
             )
         ax.axvline(0.8, color=GRAY, linestyle=":", linewidth=1.0)
         ax.set_xlabel("Best-match recall")
         ax.set_ylabel("MSC fraction")
         ax.xaxis.labelpad = 1.0
         ax.yaxis.labelpad = 1.0
-        ax.set_xlim(-0.03, 1.04)
+        ax.set_xlim(-0.05, 1.08)
         ax.set_ylim(-0.03, 1.05)
         ax.set_xticks([0.0, 0.25, 0.5, 0.75, 1.0])
         ax.set_yticks([0.0, 0.25, 0.5, 0.75, 1.0])
@@ -594,19 +745,16 @@ def external_recovery() -> None:
         row for row in read_csv("group-recovery.csv")
         if row["comparison"] == "external"
     ]
-    methods = ["MSC", "StructBK", "FastQC", "FaPlex"]
-    labels = {
-        "MSC": "MSC ref.", "StructBK": "StructBK",
-        "FastQC": "FastQC", "FaPlex": "FaPlex",
-    }
-    colors = {"MSC": GRAY, "StructBK": GREEN, "FastQC": RED, "FaPlex": BLUE}
-    markers = {"MSC": "D", "StructBK": "o", "FastQC": "^", "FaPlex": "v"}
-    offsets = {"MSC": -0.24, "StructBK": -0.08, "FastQC": 0.08, "FaPlex": 0.24}
+    methods = ["StructBK", "FastQC", "FaPlex"]
+    datasets = ["GitHub-Social", "ogbn-arxiv-25K"]
+    colors = {"GitHub-Social": BLUE, "ogbn-arxiv-25K": CRIMSON}
+    markers = {"GitHub-Social": "o", "ogbn-arxiv-25K": "D"}
+    offsets = {"GitHub-Social": -0.09, "ogbn-arxiv-25K": 0.09}
     panel_specs = [
-        ("GitHub-Social", "external_recovery_github"),
-        ("ogbn-arxiv-25K", "external_recovery_ogbn25k"),
+        ("best_match_f1", "external_recovery_recovery"),
+        ("candidate_best_f1", "external_recovery_fidelity"),
     ]
-    size = (RQ5_PANEL_WIDTH, 1.20)
+    size = (RQ5_PANEL_WIDTH, 1.26)
 
     external_style = {
         **rq5_style(),
@@ -621,59 +769,53 @@ def external_recovery() -> None:
     with plt.rc_context(external_style):
         handles = [
             Line2D(
-                [0], [0], color=colors[method], marker=markers[method],
+                [0], [0], color=colors[dataset], marker=markers[dataset],
                 linestyle="none", markeredgecolor="black", markeredgewidth=0.65,
-                label=labels[method],
+                label=dataset,
             )
-            for method in methods
+            for dataset in datasets
         ]
+        handles.append(Line2D(
+            [0], [0], color=GRAY, linestyle=(0, (2.2, 2.0)),
+            linewidth=1.0, label="MSC self-match",
+        ))
         legend_size = (RQ5_COLUMN_WIDTH, 0.42)
         legend_fig, legend_ax = plt.subplots(figsize=legend_size)
         legend_ax.axis("off")
         legend_ax.legend(
-            handles=handles, loc="center", ncol=4, frameon=False,
-            handlelength=1.1, columnspacing=0.65, handletextpad=0.30,
+            handles=handles, loc="center", ncol=3, frameon=False,
+            handlelength=1.5, columnspacing=0.75, handletextpad=0.30,
         )
         save(legend_fig, "external_recovery_legend", legend_size)
 
-        for dataset, stem in panel_specs:
-            recovery = {
-                row["method"]: row for row in recovery_rows
-                if row["dataset"] == dataset
-            }
-
+        for metric, stem in panel_specs:
             fig, ax = plt.subplots(figsize=size, layout="none")
-            ax.set_position([0.30, 0.29, 0.67, 0.65])
-            positions = np.arange(2, dtype=float)
-            for method in methods:
-                values = (
-                    [1.0, 1.0]
-                    if method == "MSC"
-                    else [
-                        float(recovery[method]["best_match_f1"]),
-                        float(recovery[method]["candidate_best_f1"]),
-                    ]
-                )
+            ax.set_position([0.27, 0.31, 0.69, 0.62])
+            positions = np.arange(len(methods), dtype=float)
+            for dataset in datasets:
+                recovery = {
+                    row["method"]: row for row in recovery_rows
+                    if row["dataset"] == dataset
+                }
+                values = [float(recovery[method][metric]) for method in methods]
                 ax.scatter(
-                    positions + offsets[method],
+                    positions + offsets[dataset],
                     values,
                     s=50,
-                    color=colors[method],
-                    marker=markers[method],
+                    color=colors[dataset],
+                    marker=markers[dataset],
                     edgecolor="black",
                     linewidth=0.65,
-                    label=labels[method],
-                    clip_on=False,
+                    label=dataset,
+                    clip_on=True,
                     zorder=4,
                 )
-            ax.set_xticks(
-                positions,
-                ["Recovery", "Fidelity"],
-            )
+            ax.axhline(1.0, color=GRAY, linestyle=(0, (2.2, 2.0)), linewidth=1.0)
+            ax.set_xticks(positions, methods, rotation=18, ha="right")
             ax.set_ylabel("Best-match F1")
-            ax.set_ylim(0.0, 1.08)
+            ax.set_ylim(0.0, 1.10)
             ax.set_yticks([0.0, 0.25, 0.5, 0.75, 1.0])
-            ax.set_xlim(-0.42, 1.42)
+            ax.set_xlim(-0.48, 2.48)
             clean_axis(ax)
             save(fig, stem, size, adaptive_layout=False)
 
@@ -841,6 +983,7 @@ def main() -> None:
     configure_style()
     threshold_runtime()
     scale_regime()
+    scale_runtime()
     parallel_scaling()
     mechanism_summary()
     result_distribution()

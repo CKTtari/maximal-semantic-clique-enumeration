@@ -12,6 +12,11 @@ def main() -> None:
     parser.add_argument("input", type=Path)
     parser.add_argument("output", type=Path)
     parser.add_argument("--force", action="store_true")
+    parser.add_argument(
+        "--sanitize",
+        action="store_true",
+        help="drop self-loops and duplicate undirected edges for simple-graph baselines",
+    )
     args = parser.parse_args()
 
     source = args.input.resolve()
@@ -34,24 +39,29 @@ def main() -> None:
             if not (0 <= u < vertex_count and 0 <= v < vertex_count):
                 raise ValueError(f"Endpoint out of range at line {line_number}")
             if u == v:
+                if args.sanitize:
+                    continue
                 raise ValueError(f"Self-loop at line {line_number}")
             edge = (u, v) if u < v else (v, u)
             if edge in seen:
+                if args.sanitize:
+                    continue
                 raise ValueError(f"Duplicate undirected edge at line {line_number}")
             seen.add(edge)
             adjacency[u].append(v)
             adjacency[v].append(u)
 
-    if len(seen) != expected_edges:
+    if len(seen) != expected_edges and not args.sanitize:
         raise ValueError(f"Header declares {expected_edges} edges, found {len(seen)}")
+    edge_count = len(seen)
     target.parent.mkdir(parents=True, exist_ok=True)
     with target.open("w", encoding="ascii", newline="\n") as writer:
-        writer.write(f"{vertex_count} {expected_edges}\n")
+        writer.write(f"{vertex_count} {edge_count}\n")
         for vertex, neighbors in enumerate(adjacency):
             suffix = "" if not neighbors else " " + " ".join(map(str, sorted(neighbors)))
             writer.write(f"{vertex}{suffix}\n")
     isolated = sum(not neighbors for neighbors in adjacency)
-    print(f"wrote {vertex_count} adjacency rows, {expected_edges} edges, {isolated} isolates")
+    print(f"wrote {vertex_count} adjacency rows, {edge_count} edges, {isolated} isolates")
 
 
 if __name__ == "__main__":

@@ -1,0 +1,11 @@
+{
+  "name": "batch34-thread-fb15k-alg4-q99-current",
+  "tasks": [
+    {"algorithm": 4, "mode": "raw", "dataset": 7, "tau": 0.537601, "threads": 1, "timeout_seconds": 1200, "repetitions": 3},
+    {"algorithm": 4, "mode": "raw", "dataset": 7, "tau": 0.537601, "threads": 2, "timeout_seconds": 1200, "repetitions": 3},
+    {"algorithm": 4, "mode": "raw", "dataset": 7, "tau": 0.537601, "threads": 4, "timeout_seconds": 1200, "repetitions": 3},
+    {"algorithm": 4, "mode": "raw", "dataset": 7, "tau": 0.537601, "threads": 8, "timeout_seconds": 1200, "repetitions": 3},
+    {"algorithm": 4, "mode": "raw", "dataset": 7, "tau": 0.537601, "threads": 16, "timeout_seconds": 1200, "repetitions": 3},
+    {"algorithm": 4, "mode": "raw", "dataset": 7, "tau": 0.537601, "threads": 32, "timeout_seconds": 1200, "repetitions": 3}
+  ]
+}

@@ -1,0 +1,6 @@
+{
+  "name": "batch32-sembk-github-q20-completion",
+  "tasks": [
+    {"algorithm": 2, "mode": "raw", "dataset": 17, "tau": 0.25049, "threads": 32, "timeout_seconds": 120, "repetitions": 3}
+  ]
+}

@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "source_manifest": "experiments/archive/batch23-engineering-strsub-shared-b.manifest.json",
+  "source_run": "batch23-engineering-strsub-shared-b",
+  "source_plan_summary": {
+    "attempts": 3,
+    "planned_tasks": 3,
+    "attempted_tasks": 3,
+    "completed_tasks": 3,
+    "unattempted_tasks": 0,
+    "unattempted_task_ids": [],
+    "plan_complete": true,
+    "status_counts": {
+      "completed": 3
+    }
+  },
+  "groups": [
+    {
+      "configuration": {
+        "algorithm": 3,
+        "mode": "raw",
+        "dataset": 1,
+        "tau": 0.145162,
+        "threads": 32,
+        "timeout_seconds": 1200,
+        "graph": null,
+        "vectors": null,
+        "capture_cliques": false,
+        "defines": {
+          "ACMSC_ENGINE_BITMAP": 0
+        },
+        "warmup": false
+      },
+      "status_counts": {
+        "completed": 3
+      },
+      "timing": {
+        "completed_repetitions": 3,
+        "algorithm_ms_median": 4701,
+        "algorithm_ms_min": 4624,
+        "algorithm_ms_max": 4733,
+        "wall_seconds_median": 18.44912179998937,
+        "peak_memory_gib_median": 3.6,
+        "peak_memory_gib_max": 3.6
+      },
+      "result": {
+        "clique_count": 202030,
+        "size_histogram": {
+          "2": 192349,
+          "3": 9597,
+          "4": 84
+        }
+      }
+    }
+  ]
+}

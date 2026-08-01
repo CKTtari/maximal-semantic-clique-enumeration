@@ -1,0 +1,455 @@
+{
+  "schema_version": 2,
+  "run_name": "batch32-sembk-github-q20-completion",
+  "archived_utc": "2026-07-31T19:25:52.078272+00:00",
+  "local_result_directory": "experiment-output/batch32-sembk-github-q20-completion",
+  "plans": [
+    {
+      "path": "experiments/plans/batch32-sembk-github-q20-completion.json",
+      "sha256": "addddb6d70ddd9b11562538e05321b12a0c6366fed003319f11e3df7e178540f"
+    }
+  ],
+  "summary": {
+    "attempts": 3,
+    "planned_tasks": 3,
+    "attempted_tasks": 3,
+    "completed_tasks": 3,
+    "unattempted_tasks": 0,
+    "unattempted_task_ids": [],
+    "plan_complete": true,
+    "status_counts": {
+      "completed": 3
+    }
+  },
+  "records": [
+    {
+      "task_id": "0ef5bc4cef455f94",
+      "attempt": 1,
+      "status": "completed",
+      "rerun_reason": null,
+      "started_utc": "2026-07-31T19:25:02.002672+00:00",
+      "wall_seconds": 34.92599689999952,
+      "task": {
+        "algorithm": 2,
+        "mode": "raw",
+        "dataset": 17,
+        "tau": 0.25049,
+        "threads": 32,
+        "timeout_seconds": 120,
+        "graph": null,
+        "vectors": null,
+        "capture_cliques": false,
+        "defines": {},
+        "warmup": false,
+        "repetition": 2,
+        "task_id": "0ef5bc4cef455f94"
+      },
+      "parsed": {
+        "algorithm_ms": 33897,
+        "clique_count": 263721,
+        "peak_memory_gib": 1.73,
+        "size_histogram": {
+          "2": 53162,
+          "3": 61424,
+          "4": 54592,
+          "5": 40349,
+          "6": 26033,
+          "7": 15538,
+          "8": 7971,
+          "9": 3156,
+          "10": 991,
+          "11": 235,
+          "12": 116,
+          "13": 30,
+          "14": 18,
+          "15": 16,
+          "16": 24,
+          "17": 23,
+          "18": 9,
+          "19": 1,
+          "20": 7,
+          "21": 5,
+          "22": 13,
+          "23": 4,
+          "24": 4
+        },
+        "stats": {}
+      },
+      "validation": null,
+      "build": {
+        "fingerprint": "c531e0eba1dbad35",
+        "executable_sha256": "50df2cab22c9f88da39e2ad216b540ae5f0c6641b6b39e2fb142982911ea8923",
+        "command": [
+          "g++",
+          "-std=c++17",
+          "-fopenmp",
+          "-mavx2",
+          "-O3",
+          "src/alg2-raw.cpp",
+          "src/semantic_graph.cpp",
+          "-o",
+          "no-use/compiled/experiment-runner/alg2-raw-c531e0eba1dbad35.exe"
+        ],
+        "source_verification": {
+          "status": "verified_current",
+          "observed_current_fingerprint": "c531e0eba1dbad35",
+          "reason": null
+        },
+        "source_hashes": {
+          "alg2-raw.cpp": "19c9c62b945f94ed62c037afe2b9b77a9fc2145ad5b5020a43ab3ca3b9939bda",
+          "semantic_graph.cpp": "c6d51c9086fbd5c7d264eb411ac04890806744fc4e05dc7eee0b156760a9cd92",
+          "semantic_graph.h": "8192c4e8e02fc8ace59d59365f72643e34ca32ba71faa5bb338381a8cd308078",
+          "experiment_runtime.h": "2970c483cd31152adc0a39278340822337daeb312c073b67a8eb49a030a4f35d"
+        }
+      },
+      "inputs": {
+        "status": "verified_run_time",
+        "snapshot": {
+          "dataset_catalog": {
+            "path": "experiments/datasets.json",
+            "sha256": "6b56d1151911b15582d62bee8c4a90f6e08218c1079f09f7b08d618327468fcd"
+          },
+          "files": [
+            {
+              "role": "graph",
+              "path": "dataset/dataset/github-social.txt",
+              "bytes": 3306142,
+              "sha256": "d499e49dbd13a0a6b68fc4c73542bd40494f77ae377086e4f8ad3481aba1fdf3"
+            },
+            {
+              "role": "vector_binary",
+              "path": "dataset/vectors/github-social_vectors.bin",
+              "bytes": 1207908008,
+              "sha256": "1def64822605ee066bb917b3ddf990e60be0be8c4b32cdcab6ccf9b03e170d7f"
+            }
+          ]
+        }
+      },
+      "run_environment": {
+        "plan": "experiments/plans/batch32-sembk-github-q20-completion.json",
+        "plan_sha256": "addddb6d70ddd9b11562538e05321b12a0c6366fed003319f11e3df7e178540f",
+        "git": {
+          "commit": "924eddbac109d2ddf830b0f1509954c0422d1544",
+          "dirty": true
+        },
+        "machine": {
+          "platform": "Windows-11-10.0.26100-SP0",
+          "processor": "AMD64 Family 25 Model 97 Stepping 2, AuthenticAMD",
+          "logical_cpu_count": 32,
+          "python": "3.12.7",
+          "compiler": "g++ (x86_64-posix-seh-rev0, Built by MinGW-Builds project) 13.2.0"
+        },
+        "memory_limit_gib": 16,
+        "external_timeout_policy": "hard per-process TLE from task.timeout_seconds"
+      },
+      "result_json": {
+        "path": "experiment-output/batch32-sembk-github-q20-completion/0ef5bc4cef455f94.attempt-001.json",
+        "bytes": 4440,
+        "sha256": "5ce1960c6028eba65ea9f59c1fe57064065670bf76975b80eda039392049a47c"
+      },
+      "artifacts": {
+        "program_log": {
+          "path": "experiment-output/batch32-sembk-github-q20-completion/0ef5bc4cef455f94.attempt-001.program.log",
+          "bytes": 1754,
+          "sha256": "0359c4cca8bb8340ce1e2dcf655a498f252c5e521d68d3e2a1860a0f8bf56c66"
+        },
+        "stdout": {
+          "path": "experiment-output/batch32-sembk-github-q20-completion/0ef5bc4cef455f94.attempt-001.stdout.txt",
+          "bytes": 1957,
+          "sha256": "0abec313f51cb5605ca93a70514848d131269606a0673c820aa233805599e6c2"
+        },
+        "stderr": {
+          "path": "experiment-output/batch32-sembk-github-q20-completion/0ef5bc4cef455f94.attempt-001.stderr.txt",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    {
+      "task_id": "2ee8f85c62f6c59e",
+      "attempt": 1,
+      "status": "completed",
+      "rerun_reason": null,
+      "started_utc": "2026-07-31T19:24:25.163665+00:00",
+      "wall_seconds": 36.832132399999864,
+      "task": {
+        "algorithm": 2,
+        "mode": "raw",
+        "dataset": 17,
+        "tau": 0.25049,
+        "threads": 32,
+        "timeout_seconds": 120,
+        "graph": null,
+        "vectors": null,
+        "capture_cliques": false,
+        "defines": {},
+        "warmup": false,
+        "repetition": 1,
+        "task_id": "2ee8f85c62f6c59e"
+      },
+      "parsed": {
+        "algorithm_ms": 35818,
+        "clique_count": 263721,
+        "peak_memory_gib": 1.73,
+        "size_histogram": {
+          "2": 53162,
+          "3": 61424,
+          "4": 54592,
+          "5": 40349,
+          "6": 26033,
+          "7": 15538,
+          "8": 7971,
+          "9": 3156,
+          "10": 991,
+          "11": 235,
+          "12": 116,
+          "13": 30,
+          "14": 18,
+          "15": 16,
+          "16": 24,
+          "17": 23,
+          "18": 9,
+          "19": 1,
+          "20": 7,
+          "21": 5,
+          "22": 13,
+          "23": 4,
+          "24": 4
+        },
+        "stats": {}
+      },
+      "validation": null,
+      "build": {
+        "fingerprint": "c531e0eba1dbad35",
+        "executable_sha256": "50df2cab22c9f88da39e2ad216b540ae5f0c6641b6b39e2fb142982911ea8923",
+        "command": [
+          "g++",
+          "-std=c++17",
+          "-fopenmp",
+          "-mavx2",
+          "-O3",
+          "src/alg2-raw.cpp",
+          "src/semantic_graph.cpp",
+          "-o",
+          "no-use/compiled/experiment-runner/alg2-raw-c531e0eba1dbad35.exe"
+        ],
+        "source_verification": {
+          "status": "verified_current",
+          "observed_current_fingerprint": "c531e0eba1dbad35",
+          "reason": null
+        },
+        "source_hashes": {
+          "alg2-raw.cpp": "19c9c62b945f94ed62c037afe2b9b77a9fc2145ad5b5020a43ab3ca3b9939bda",
+          "semantic_graph.cpp": "c6d51c9086fbd5c7d264eb411ac04890806744fc4e05dc7eee0b156760a9cd92",
+          "semantic_graph.h": "8192c4e8e02fc8ace59d59365f72643e34ca32ba71faa5bb338381a8cd308078",
+          "experiment_runtime.h": "2970c483cd31152adc0a39278340822337daeb312c073b67a8eb49a030a4f35d"
+        }
+      },
+      "inputs": {
+        "status": "verified_run_time",
+        "snapshot": {
+          "dataset_catalog": {
+            "path": "experiments/datasets.json",
+            "sha256": "6b56d1151911b15582d62bee8c4a90f6e08218c1079f09f7b08d618327468fcd"
+          },
+          "files": [
+            {
+              "role": "graph",
+              "path": "dataset/dataset/github-social.txt",
+              "bytes": 3306142,
+              "sha256": "d499e49dbd13a0a6b68fc4c73542bd40494f77ae377086e4f8ad3481aba1fdf3"
+            },
+            {
+              "role": "vector_binary",
+              "path": "dataset/vectors/github-social_vectors.bin",
+              "bytes": 1207908008,
+              "sha256": "1def64822605ee066bb917b3ddf990e60be0be8c4b32cdcab6ccf9b03e170d7f"
+            }
+          ]
+        }
+      },
+      "run_environment": {
+        "plan": "experiments/plans/batch32-sembk-github-q20-completion.json",
+        "plan_sha256": "addddb6d70ddd9b11562538e05321b12a0c6366fed003319f11e3df7e178540f",
+        "git": {
+          "commit": "924eddbac109d2ddf830b0f1509954c0422d1544",
+          "dirty": true
+        },
+        "machine": {
+          "platform": "Windows-11-10.0.26100-SP0",
+          "processor": "AMD64 Family 25 Model 97 Stepping 2, AuthenticAMD",
+          "logical_cpu_count": 32,
+          "python": "3.12.7",
+          "compiler": "g++ (x86_64-posix-seh-rev0, Built by MinGW-Builds project) 13.2.0"
+        },
+        "memory_limit_gib": 16,
+        "external_timeout_policy": "hard per-process TLE from task.timeout_seconds"
+      },
+      "result_json": {
+        "path": "experiment-output/batch32-sembk-github-q20-completion/2ee8f85c62f6c59e.attempt-001.json",
+        "bytes": 4441,
+        "sha256": "e4053d671e9d39060dd28af3cb85253c97cdaee1ebf8b6f3450ee1a63a32a9b9"
+      },
+      "artifacts": {
+        "program_log": {
+          "path": "experiment-output/batch32-sembk-github-q20-completion/2ee8f85c62f6c59e.attempt-001.program.log",
+          "bytes": 1754,
+          "sha256": "36c7664e7b181c7634058d5b2eccf72d72d8c821ab43cf29af53ee03c3bd8da3"
+        },
+        "stdout": {
+          "path": "experiment-output/batch32-sembk-github-q20-completion/2ee8f85c62f6c59e.attempt-001.stdout.txt",
+          "bytes": 1957,
+          "sha256": "f369ada4c76aee73d0b97119c9ecbccbe328aaae19b59ed4e5cc63fc7e06c12d"
+        },
+        "stderr": {
+          "path": "experiment-output/batch32-sembk-github-q20-completion/2ee8f85c62f6c59e.attempt-001.stderr.txt",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    {
+      "task_id": "d21071d47fca0274",
+      "attempt": 1,
+      "status": "completed",
+      "rerun_reason": null,
+      "started_utc": "2026-07-31T19:23:49.410849+00:00",
+      "wall_seconds": 35.746335900000304,
+      "task": {
+        "algorithm": 2,
+        "mode": "raw",
+        "dataset": 17,
+        "tau": 0.25049,
+        "threads": 32,
+        "timeout_seconds": 120,
+        "graph": null,
+        "vectors": null,
+        "capture_cliques": false,
+        "defines": {},
+        "warmup": false,
+        "repetition": 0,
+        "task_id": "d21071d47fca0274"
+      },
+      "parsed": {
+        "algorithm_ms": 34777,
+        "clique_count": 263721,
+        "peak_memory_gib": 1.73,
+        "size_histogram": {
+          "2": 53162,
+          "3": 61424,
+          "4": 54592,
+          "5": 40349,
+          "6": 26033,
+          "7": 15538,
+          "8": 7971,
+          "9": 3156,
+          "10": 991,
+          "11": 235,
+          "12": 116,
+          "13": 30,
+          "14": 18,
+          "15": 16,
+          "16": 24,
+          "17": 23,
+          "18": 9,
+          "19": 1,
+          "20": 7,
+          "21": 5,
+          "22": 13,
+          "23": 4,
+          "24": 4
+        },
+        "stats": {}
+      },
+      "validation": null,
+      "build": {
+        "fingerprint": "c531e0eba1dbad35",
+        "executable_sha256": "50df2cab22c9f88da39e2ad216b540ae5f0c6641b6b39e2fb142982911ea8923",
+        "command": [
+          "g++",
+          "-std=c++17",
+          "-fopenmp",
+          "-mavx2",
+          "-O3",
+          "src/alg2-raw.cpp",
+          "src/semantic_graph.cpp",
+          "-o",
+          "no-use/compiled/experiment-runner/alg2-raw-c531e0eba1dbad35.exe"
+        ],
+        "source_verification": {
+          "status": "verified_current",
+          "observed_current_fingerprint": "c531e0eba1dbad35",
+          "reason": null
+        },
+        "source_hashes": {
+          "alg2-raw.cpp": "19c9c62b945f94ed62c037afe2b9b77a9fc2145ad5b5020a43ab3ca3b9939bda",
+          "semantic_graph.cpp": "c6d51c9086fbd5c7d264eb411ac04890806744fc4e05dc7eee0b156760a9cd92",
+          "semantic_graph.h": "8192c4e8e02fc8ace59d59365f72643e34ca32ba71faa5bb338381a8cd308078",
+          "experiment_runtime.h": "2970c483cd31152adc0a39278340822337daeb312c073b67a8eb49a030a4f35d"
+        }
+      },
+      "inputs": {
+        "status": "verified_run_time",
+        "snapshot": {
+          "dataset_catalog": {
+            "path": "experiments/datasets.json",
+            "sha256": "6b56d1151911b15582d62bee8c4a90f6e08218c1079f09f7b08d618327468fcd"
+          },
+          "files": [
+            {
+              "role": "graph",
+              "path": "dataset/dataset/github-social.txt",
+              "bytes": 3306142,
+              "sha256": "d499e49dbd13a0a6b68fc4c73542bd40494f77ae377086e4f8ad3481aba1fdf3"
+            },
+            {
+              "role": "vector_binary",
+              "path": "dataset/vectors/github-social_vectors.bin",
+              "bytes": 1207908008,
+              "sha256": "1def64822605ee066bb917b3ddf990e60be0be8c4b32cdcab6ccf9b03e170d7f"
+            }
+          ]
+        }
+      },
+      "run_environment": {
+        "plan": "experiments/plans/batch32-sembk-github-q20-completion.json",
+        "plan_sha256": "addddb6d70ddd9b11562538e05321b12a0c6366fed003319f11e3df7e178540f",
+        "git": {
+          "commit": "924eddbac109d2ddf830b0f1509954c0422d1544",
+          "dirty": true
+        },
+        "machine": {
+          "platform": "Windows-11-10.0.26100-SP0",
+          "processor": "AMD64 Family 25 Model 97 Stepping 2, AuthenticAMD",
+          "logical_cpu_count": 32,
+          "python": "3.12.7",
+          "compiler": "g++ (x86_64-posix-seh-rev0, Built by MinGW-Builds project) 13.2.0"
+        },
+        "memory_limit_gib": 16,
+        "external_timeout_policy": "hard per-process TLE from task.timeout_seconds"
+      },
+      "result_json": {
+        "path": "experiment-output/batch32-sembk-github-q20-completion/d21071d47fca0274.attempt-001.json",
+        "bytes": 4441,
+        "sha256": "57c4251278f8f39705417b7deb8777a5852aef3213b7f250c7330f7f1008f8fe"
+      },
+      "artifacts": {
+        "program_log": {
+          "path": "experiment-output/batch32-sembk-github-q20-completion/d21071d47fca0274.attempt-001.program.log",
+          "bytes": 1754,
+          "sha256": "104be685664b8f7a75df98821ba0245843be107948398c6d33b8ec9b2f4c595a"
+        },
+        "stdout": {
+          "path": "experiment-output/batch32-sembk-github-q20-completion/d21071d47fca0274.attempt-001.stdout.txt",
+          "bytes": 1957,
+          "sha256": "22a1d8fa556ac4ca31cf2388875d3e633544a04050a83de0e6a5e7002bdaec2d"
+        },
+        "stderr": {
+          "path": "experiment-output/batch32-sembk-github-q20-completion/d21071d47fca0274.attempt-001.stderr.txt",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    }
+  ]
+}

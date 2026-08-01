@@ -22,6 +22,15 @@
 #ifndef ACMSC_ALG4_GENERATION
 #define ACMSC_ALG4_GENERATION 0
 #endif
+#ifndef ACMSC_ENGINE_REORDER
+#define ACMSC_ENGINE_REORDER 1
+#endif
+#ifndef ACMSC_ENGINE_BITMAP
+#define ACMSC_ENGINE_BITMAP 1
+#endif
+#ifndef ACMSC_ENGINE_INCREMENTAL_ACC
+#define ACMSC_ENGINE_INCREMENTAL_ACC 1
+#endif
 
 static_assert(ACMSC_ALG4_GENERATION >= 0 && ACMSC_ALG4_GENERATION <= 2,
               "ACMSC_ALG4_GENERATION must be 0, 1, or 2");
@@ -226,6 +235,11 @@ struct GraphReorder {
         const int n = graph.V;
         old_to_new.assign(n, -1);
         new_to_old.assign(n, -1);
+#if !ACMSC_ENGINE_REORDER
+        iota(old_to_new.begin(), old_to_new.end(), 0);
+        iota(new_to_old.begin(), new_to_old.end(), 0);
+        return;
+#endif
         vector<int> by_degree(n);
         iota(by_degree.begin(), by_degree.end(), 0);
         sort(by_degree.begin(), by_degree.end(), [&](int a, int b) {
@@ -271,15 +285,21 @@ struct AccStore {
     uint32_t generation = 1;
 
     void init(int n) {
+#if ACMSC_ENGINE_INCREMENTAL_ACC
         values.assign(n, 0.0);
         generations.assign(n, 0);
+#else
+        (void)n;
+#endif
     }
 
     void next_generation() {
+#if ACMSC_ENGINE_INCREMENTAL_ACC
         if (++generation == 0) {
             fill(generations.begin(), generations.end(), 0);
             generation = 1;
         }
+#endif
     }
 
     double get(int v) const {
@@ -418,6 +438,8 @@ public:
         build_similarity_graph();
         if (deadline_reached()) return report_timeout(all_start);
 
+        bitmap_.reset();
+#if ACMSC_ENGINE_BITMAP
         bitmap_ = make_unique<BlockedSparseBitmap>(graph_.V);
 #pragma omp parallel for schedule(static)
         for (int u = 0; u < graph_.V; ++u) {
@@ -426,6 +448,7 @@ public:
             for (const auto& edge : neighbors_[u]) ids.push_back(edge.first);
             bitmap_->build(u, ids);
         }
+#endif
 
 #if ACMSC_ALG4_GENERATION == 0
         run_canonical_search();
@@ -501,6 +524,56 @@ private:
                 hi = mid - 1;
         }
         return 0.0f;
+    }
+
+    bool adjacent(int u, int v) const {
+#if ACMSC_ENGINE_BITMAP
+        return bitmap_->row(u).contains(v);
+#else
+        const auto& row = neighbors_[u];
+        const auto it = lower_bound(row.begin(), row.end(), v,
+                                    [](const pair<int, float>& edge, int target) {
+                                        return edge.first < target;
+                                    });
+        return it != row.end() && it->first == v;
+#endif
+    }
+
+    void common_neighbors(int u, int v, vector<int>& output) const {
+#if ACMSC_ENGINE_BITMAP
+        bitmap_->row(u).intersect_to(bitmap_->row(v), output);
+#else
+        output.clear();
+        const auto& left = neighbors_[u];
+        const auto& right = neighbors_[v];
+        size_t i = 0;
+        size_t j = 0;
+        while (i < left.size() && j < right.size()) {
+            if (left[i].first == right[j].first) {
+                output.push_back(left[i].first);
+                ++i;
+                ++j;
+            } else if (left[i].first < right[j].first) {
+                ++i;
+            } else {
+                ++j;
+            }
+        }
+#endif
+    }
+
+    double candidate_delta(const vector<int>& clique, int candidate,
+                           const AccStore& accumulator) const {
+#if ACMSC_ENGINE_INCREMENTAL_ACC
+        (void)clique;
+        return accumulator.get(candidate);
+#else
+        (void)accumulator;
+        double total = 0.0;
+        for (int member : clique)
+            total += static_cast<double>(lookup_similarity(member, candidate));
+        return total;
+#endif
     }
 
     void build_similarity_graph() {
@@ -607,7 +680,7 @@ private:
                 deadline_reached())
                 return;
 
-            const double delta = accumulator.get(v);
+            const double delta = candidate_delta(clique, v, accumulator);
             if (surplus + delta - tau_k < 0.0) {
                 stats.record_w_prune();
                 continue;
@@ -622,10 +695,10 @@ private:
 
             vector<int>& child_candidates = scratch.candidate_buffer(depth);
             child_candidates.reserve(candidates.size());
-            const auto& vrow = bitmap_->row(v);
             for (int w : candidates)
-                if (w != v && vrow.contains(w)) child_candidates.push_back(w);
+                if (w != v && adjacent(v, w)) child_candidates.push_back(w);
 
+#if ACMSC_ENGINE_INCREMENTAL_ACC
             vector<pair<int, double>>& undo = scratch.undo_buffer(depth);
             undo.reserve(child_candidates.size());
             for (int w : child_candidates) {
@@ -634,6 +707,7 @@ private:
                 undo.push_back({w, old_value});
                 accumulator.set(w, old_value + sim);
             }
+#endif
 
             vector<long double>& old_incident = scratch.member_old_buffer(depth);
             old_incident.assign(member_incident.begin(), member_incident.end());
@@ -653,7 +727,9 @@ private:
             member_incident.pop_back();
             for (int i = 0; i < k; ++i)
                 member_incident[i] = old_incident[i];
+#if ACMSC_ENGINE_INCREMENTAL_ACC
             for (const auto& entry : undo) accumulator.set(entry.first, entry.second);
+#endif
         }
 
         if (!timed_out_.load() && !has_valid_extension && k >= 2 && surplus >= 0.0)
@@ -690,7 +766,7 @@ private:
                 deadline_reached())
                 return;
 
-            const double delta = accumulator.get(v);
+            const double delta = candidate_delta(clique, v, accumulator);
             if (surplus + delta - tau_k < 0.0) {
                 stats.record_w_prune();
                 continue;
@@ -707,10 +783,10 @@ private:
 
             vector<int>& child_candidates = scratch.candidate_buffer(depth);
             child_candidates.reserve(candidates.size());
-            const auto& vrow = bitmap_->row(v);
             for (int w : candidates)
-                if (w != v && vrow.contains(w)) child_candidates.push_back(w);
+                if (w != v && adjacent(v, w)) child_candidates.push_back(w);
 
+#if ACMSC_ENGINE_INCREMENTAL_ACC
             vector<pair<int, double>>& undo = scratch.undo_buffer(depth);
             undo.reserve(child_candidates.size());
             for (int w : child_candidates) {
@@ -718,13 +794,16 @@ private:
                 undo.push_back({w, old_value});
                 accumulator.set(w, old_value + lookup_similarity(w, v));
             }
+#endif
 
             clique.push_back(v);
             search_visited(clique, sim_sum + delta, child_candidates,
                            accumulator, scratch, visited, output, stats,
                            depth + 1, deadline_tick);
             clique.pop_back();
+#if ACMSC_ENGINE_INCREMENTAL_ACC
             for (const auto& entry : undo) accumulator.set(entry.first, entry.second);
+#endif
         }
 
         if (!timed_out_.load() && !has_valid_extension && k >= 2 && surplus >= 0.0)
@@ -763,11 +842,13 @@ private:
             accumulator.next_generation();
 
             vector<int> root_candidates;
-            bitmap_->row(root.u).intersect_to(bitmap_->row(root.v), root_candidates);
+            common_neighbors(root.u, root.v, root_candidates);
+#if ACMSC_ENGINE_INCREMENTAL_ACC
             for (int w : root_candidates) {
                 accumulator.add(w, lookup_similarity(w, root.u));
                 accumulator.add(w, lookup_similarity(w, root.v));
             }
+#endif
 
             vector<int> clique{root.u, root.v};
             vector<long double> incident{static_cast<long double>(root.similarity),
@@ -850,11 +931,13 @@ private:
             accumulator.next_generation();
 
             vector<int> root_candidates;
-            bitmap_->row(root.u).intersect_to(bitmap_->row(root.v), root_candidates);
+            common_neighbors(root.u, root.v, root_candidates);
+#if ACMSC_ENGINE_INCREMENTAL_ACC
             for (int w : root_candidates) {
                 accumulator.add(w, lookup_similarity(w, root.u));
                 accumulator.add(w, lookup_similarity(w, root.v));
             }
+#endif
 
             vector<int> clique{root.u, root.v};
             unordered_set<vector<int>, VectorHash> visited;
@@ -937,7 +1020,7 @@ private:
                     const int v = edge.first;
                     bool common = true;
                     for (size_t ci = 1; ci < state.clique.size(); ++ci) {
-                        if (!bitmap_->row(state.clique[ci]).contains(v)) {
+                    if (!adjacent(state.clique[ci], v)) {
                             common = false;
                             break;
                         }

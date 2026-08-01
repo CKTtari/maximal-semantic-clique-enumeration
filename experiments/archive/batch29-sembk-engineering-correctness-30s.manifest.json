@@ -1,0 +1,799 @@
+{
+  "schema_version": 2,
+  "run_name": "batch29-sembk-engineering-correctness-30s",
+  "archived_utc": "2026-07-31T18:33:02.532591+00:00",
+  "local_result_directory": "experiment-output/batch29-sembk-engineering-correctness-30s",
+  "plans": [
+    {
+      "path": "experiments/plans/batch29-sembk-engineering-correctness-30s.json",
+      "sha256": "987f8ab282c9bb826bdb3ec444b2899297f390de0299b830e85384a3e069bbfb"
+    }
+  ],
+  "summary": {
+    "attempts": 5,
+    "planned_tasks": 5,
+    "attempted_tasks": 5,
+    "completed_tasks": 5,
+    "unattempted_tasks": 0,
+    "unattempted_task_ids": [],
+    "plan_complete": true,
+    "status_counts": {
+      "completed": 5
+    }
+  },
+  "records": [
+    {
+      "task_id": "00bdda9f0fa879da",
+      "attempt": 1,
+      "status": "completed",
+      "rerun_reason": null,
+      "started_utc": "2026-07-31T18:05:51.011553+00:00",
+      "wall_seconds": 0.26129439999999704,
+      "task": {
+        "algorithm": 2,
+        "mode": "raw",
+        "dataset": 8,
+        "tau": 0.786825,
+        "threads": 32,
+        "timeout_seconds": 30,
+        "graph": null,
+        "vectors": null,
+        "capture_cliques": true,
+        "defines": {
+          "ACMSC_ENGINE_BITMAP": 0
+        },
+        "warmup": false,
+        "repetition": 0,
+        "task_id": "00bdda9f0fa879da"
+      },
+      "parsed": {
+        "algorithm_ms": 28,
+        "clique_count": 750,
+        "peak_memory_gib": 0.19,
+        "size_histogram": {
+          "2": 735,
+          "3": 15
+        },
+        "stats": {}
+      },
+      "validation": {
+        "unique_cliques": 750,
+        "compared_with": [
+          {
+            "task_id": "73193b4aabf590f3",
+            "algorithm": 2,
+            "exact_match": true,
+            "only_current": 0,
+            "only_previous": 0
+          },
+          {
+            "task_id": "77f6e0f4b88c84f2",
+            "algorithm": 2,
+            "exact_match": true,
+            "only_current": 0,
+            "only_previous": 0
+          }
+        ],
+        "exact_match": true
+      },
+      "build": {
+        "fingerprint": "635690850359884b",
+        "executable_sha256": "8b0680717644f3f0a334dcc1ad835af84334f2965b8010bec0bd34043ae4bfd1",
+        "command": [
+          "g++",
+          "-std=c++17",
+          "-fopenmp",
+          "-mavx2",
+          "-O3",
+          "-DACMSC_ENGINE_BITMAP=0",
+          "src/alg2-raw.cpp",
+          "src/semantic_graph.cpp",
+          "-o",
+          "no-use/compiled/experiment-runner/alg2-raw-635690850359884b.exe"
+        ],
+        "source_verification": {
+          "status": "verified_current",
+          "observed_current_fingerprint": "635690850359884b",
+          "reason": null
+        },
+        "source_hashes": {
+          "alg2-raw.cpp": "6534bf8fca9a2074dab0a91aa2ebc94931b85cf740930dce23018ca6fa5408cf",
+          "semantic_graph.cpp": "c6d51c9086fbd5c7d264eb411ac04890806744fc4e05dc7eee0b156760a9cd92",
+          "semantic_graph.h": "8192c4e8e02fc8ace59d59365f72643e34ca32ba71faa5bb338381a8cd308078",
+          "experiment_runtime.h": "2970c483cd31152adc0a39278340822337daeb312c073b67a8eb49a030a4f35d"
+        }
+      },
+      "inputs": {
+        "status": "verified_run_time",
+        "snapshot": {
+          "dataset_catalog": {
+            "path": "experiments/datasets.json",
+            "sha256": "6b56d1151911b15582d62bee8c4a90f6e08218c1079f09f7b08d618327468fcd"
+          },
+          "files": [
+            {
+              "role": "graph",
+              "path": "dataset/dataset/WN18RR_edges.txt",
+              "bytes": 937949,
+              "sha256": "876c6143d5d2433f6722a8ce3f7662dce91b44ef687c34c4b885dc4cfa1127ec"
+            },
+            {
+              "role": "vector_index",
+              "path": "dataset/vectors/WN18RR_vectors.index",
+              "bytes": 60,
+              "sha256": "d8115fc7c0baa8ace7c327b8b29620863ab16df65816c52cd021f664355afd04"
+            },
+            {
+              "role": "vector_chunk",
+              "path": "dataset/vectors/WN18RR_vectors.json.chunk.0.bin",
+              "bytes": 125776904,
+              "sha256": "d828bb5eec810ac2189c62669ccd7e63453733345077319d013e8ec4cae5ac37"
+            }
+          ]
+        }
+      },
+      "run_environment": {
+        "plan": "experiments/plans/batch29-sembk-engineering-correctness-30s.json",
+        "plan_sha256": "987f8ab282c9bb826bdb3ec444b2899297f390de0299b830e85384a3e069bbfb",
+        "git": {
+          "commit": "924eddbac109d2ddf830b0f1509954c0422d1544",
+          "dirty": true
+        },
+        "machine": {
+          "platform": "Windows-11-10.0.26100-SP0",
+          "processor": "AMD64 Family 25 Model 97 Stepping 2, AuthenticAMD",
+          "logical_cpu_count": 32,
+          "python": "3.12.7",
+          "compiler": "g++ (x86_64-posix-seh-rev0, Built by MinGW-Builds project) 13.2.0"
+        },
+        "memory_limit_gib": 16,
+        "external_timeout_policy": "hard per-process TLE from task.timeout_seconds"
+      },
+      "result_json": {
+        "path": "experiment-output/batch29-sembk-engineering-correctness-30s/00bdda9f0fa879da.attempt-001.json",
+        "bytes": 4961,
+        "sha256": "611889bbc316d36a206b89bec38a78c1f4305042ad73478d6cb0724abb5cd169"
+      },
+      "artifacts": {
+        "program_log": {
+          "path": "experiment-output/batch29-sembk-engineering-correctness-30s/00bdda9f0fa879da.attempt-001.program.log",
+          "bytes": 1373,
+          "sha256": "31a06a76c499db05fcab3100158aa355f31e990db1f03b94d68df76d469c9053"
+        },
+        "stdout": {
+          "path": "experiment-output/batch29-sembk-engineering-correctness-30s/00bdda9f0fa879da.attempt-001.stdout.txt",
+          "bytes": 1592,
+          "sha256": "cacac727d50447c7c0e46b38ab81d3092cffef3b04cc0ef989061fb0fa4fc2ad"
+        },
+        "stderr": {
+          "path": "experiment-output/batch29-sembk-engineering-correctness-30s/00bdda9f0fa879da.attempt-001.stderr.txt",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "cliques": {
+          "path": "experiment-output/batch29-sembk-engineering-correctness-30s/00bdda9f0fa879da.attempt-001.cliques.txt",
+          "bytes": 9521,
+          "sha256": "098c2424926e855daee619667b15ffe276c08d9f0cfe1eec27d1e743d6417377"
+        }
+      }
+    },
+    {
+      "task_id": "08ab8680427f7452",
+      "attempt": 1,
+      "status": "completed",
+      "rerun_reason": null,
+      "started_utc": "2026-07-31T18:05:54.457603+00:00",
+      "wall_seconds": 0.2887739000000238,
+      "task": {
+        "algorithm": 2,
+        "mode": "raw",
+        "dataset": 8,
+        "tau": 0.786825,
+        "threads": 32,
+        "timeout_seconds": 30,
+        "graph": null,
+        "vectors": null,
+        "capture_cliques": true,
+        "defines": {
+          "ACMSC_ENGINE_REORDER": 0
+        },
+        "warmup": false,
+        "repetition": 0,
+        "task_id": "08ab8680427f7452"
+      },
+      "parsed": {
+        "algorithm_ms": 34,
+        "clique_count": 750,
+        "peak_memory_gib": 0.19,
+        "size_histogram": {
+          "2": 735,
+          "3": 15
+        },
+        "stats": {}
+      },
+      "validation": {
+        "unique_cliques": 750,
+        "compared_with": [
+          {
+            "task_id": "00bdda9f0fa879da",
+            "algorithm": 2,
+            "exact_match": true,
+            "only_current": 0,
+            "only_previous": 0
+          },
+          {
+            "task_id": "73193b4aabf590f3",
+            "algorithm": 2,
+            "exact_match": true,
+            "only_current": 0,
+            "only_previous": 0
+          },
+          {
+            "task_id": "77f6e0f4b88c84f2",
+            "algorithm": 2,
+            "exact_match": true,
+            "only_current": 0,
+            "only_previous": 0
+          }
+        ],
+        "exact_match": true
+      },
+      "build": {
+        "fingerprint": "0a77cd267260cbf0",
+        "executable_sha256": "8173d2559c4766f1f675d03ff86aa654b7de5e50838ba5df60b297914ddb35e5",
+        "command": [
+          "g++",
+          "-std=c++17",
+          "-fopenmp",
+          "-mavx2",
+          "-O3",
+          "-DACMSC_ENGINE_REORDER=0",
+          "src/alg2-raw.cpp",
+          "src/semantic_graph.cpp",
+          "-o",
+          "no-use/compiled/experiment-runner/alg2-raw-0a77cd267260cbf0.exe"
+        ],
+        "source_verification": {
+          "status": "verified_current",
+          "observed_current_fingerprint": "0a77cd267260cbf0",
+          "reason": null
+        },
+        "source_hashes": {
+          "alg2-raw.cpp": "6534bf8fca9a2074dab0a91aa2ebc94931b85cf740930dce23018ca6fa5408cf",
+          "semantic_graph.cpp": "c6d51c9086fbd5c7d264eb411ac04890806744fc4e05dc7eee0b156760a9cd92",
+          "semantic_graph.h": "8192c4e8e02fc8ace59d59365f72643e34ca32ba71faa5bb338381a8cd308078",
+          "experiment_runtime.h": "2970c483cd31152adc0a39278340822337daeb312c073b67a8eb49a030a4f35d"
+        }
+      },
+      "inputs": {
+        "status": "verified_run_time",
+        "snapshot": {
+          "dataset_catalog": {
+            "path": "experiments/datasets.json",
+            "sha256": "6b56d1151911b15582d62bee8c4a90f6e08218c1079f09f7b08d618327468fcd"
+          },
+          "files": [
+            {
+              "role": "graph",
+              "path": "dataset/dataset/WN18RR_edges.txt",
+              "bytes": 937949,
+              "sha256": "876c6143d5d2433f6722a8ce3f7662dce91b44ef687c34c4b885dc4cfa1127ec"
+            },
+            {
+              "role": "vector_index",
+              "path": "dataset/vectors/WN18RR_vectors.index",
+              "bytes": 60,
+              "sha256": "d8115fc7c0baa8ace7c327b8b29620863ab16df65816c52cd021f664355afd04"
+            },
+            {
+              "role": "vector_chunk",
+              "path": "dataset/vectors/WN18RR_vectors.json.chunk.0.bin",
+              "bytes": 125776904,
+              "sha256": "d828bb5eec810ac2189c62669ccd7e63453733345077319d013e8ec4cae5ac37"
+            }
+          ]
+        }
+      },
+      "run_environment": {
+        "plan": "experiments/plans/batch29-sembk-engineering-correctness-30s.json",
+        "plan_sha256": "987f8ab282c9bb826bdb3ec444b2899297f390de0299b830e85384a3e069bbfb",
+        "git": {
+          "commit": "924eddbac109d2ddf830b0f1509954c0422d1544",
+          "dirty": true
+        },
+        "machine": {
+          "platform": "Windows-11-10.0.26100-SP0",
+          "processor": "AMD64 Family 25 Model 97 Stepping 2, AuthenticAMD",
+          "logical_cpu_count": 32,
+          "python": "3.12.7",
+          "compiler": "g++ (x86_64-posix-seh-rev0, Built by MinGW-Builds project) 13.2.0"
+        },
+        "memory_limit_gib": 16,
+        "external_timeout_policy": "hard per-process TLE from task.timeout_seconds"
+      },
+      "result_json": {
+        "path": "experiment-output/batch29-sembk-engineering-correctness-30s/08ab8680427f7452.attempt-001.json",
+        "bytes": 5132,
+        "sha256": "1f2007a75737518ac34cdaedba669dc076bf6545941fcbdcdf126a348dabb0ef"
+      },
+      "artifacts": {
+        "program_log": {
+          "path": "experiment-output/batch29-sembk-engineering-correctness-30s/08ab8680427f7452.attempt-001.program.log",
+          "bytes": 1373,
+          "sha256": "94b24d7ba1864761a305c3680a4c92bb92fd910b8ed4ea9465be5b10feb445f4"
+        },
+        "stdout": {
+          "path": "experiment-output/batch29-sembk-engineering-correctness-30s/08ab8680427f7452.attempt-001.stdout.txt",
+          "bytes": 1592,
+          "sha256": "70a16567fa1c3b9082d1f4e4886b371c2005c9dd49fe45d37d10be8ed2bc7c83"
+        },
+        "stderr": {
+          "path": "experiment-output/batch29-sembk-engineering-correctness-30s/08ab8680427f7452.attempt-001.stderr.txt",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "cliques": {
+          "path": "experiment-output/batch29-sembk-engineering-correctness-30s/08ab8680427f7452.attempt-001.cliques.txt",
+          "bytes": 9521,
+          "sha256": "27ed29fc3891216b513406316ff3954653b45a938a212188578788c6b2ad89c7"
+        }
+      }
+    },
+    {
+      "task_id": "51aa119b1bf1e935",
+      "attempt": 1,
+      "status": "completed",
+      "rerun_reason": null,
+      "started_utc": "2026-07-31T18:06:52.522500+00:00",
+      "wall_seconds": 0.24447040000006837,
+      "task": {
+        "algorithm": 2,
+        "mode": "raw",
+        "dataset": 8,
+        "tau": 0.786825,
+        "threads": 32,
+        "timeout_seconds": 30,
+        "graph": null,
+        "vectors": null,
+        "capture_cliques": true,
+        "defines": {
+          "ACMSC_ENGINE_BITMAP": 0,
+          "ACMSC_ENGINE_REORDER": 0
+        },
+        "warmup": false,
+        "repetition": 0,
+        "task_id": "51aa119b1bf1e935"
+      },
+      "parsed": {
+        "algorithm_ms": 23,
+        "clique_count": 750,
+        "peak_memory_gib": 0.19,
+        "size_histogram": {
+          "2": 735,
+          "3": 15
+        },
+        "stats": {}
+      },
+      "validation": {
+        "unique_cliques": 750,
+        "compared_with": [
+          {
+            "task_id": "00bdda9f0fa879da",
+            "algorithm": 2,
+            "exact_match": true,
+            "only_current": 0,
+            "only_previous": 0
+          },
+          {
+            "task_id": "08ab8680427f7452",
+            "algorithm": 2,
+            "exact_match": true,
+            "only_current": 0,
+            "only_previous": 0
+          },
+          {
+            "task_id": "73193b4aabf590f3",
+            "algorithm": 2,
+            "exact_match": true,
+            "only_current": 0,
+            "only_previous": 0
+          },
+          {
+            "task_id": "77f6e0f4b88c84f2",
+            "algorithm": 2,
+            "exact_match": true,
+            "only_current": 0,
+            "only_previous": 0
+          }
+        ],
+        "exact_match": true
+      },
+      "build": {
+        "fingerprint": "8e3ee875bf181c96",
+        "executable_sha256": "9bc75729e6b94a02eeb6c29695ba144d0642e8555da3c7ea69510f810b52bcca",
+        "command": [
+          "g++",
+          "-std=c++17",
+          "-fopenmp",
+          "-mavx2",
+          "-O3",
+          "-DACMSC_ENGINE_BITMAP=0",
+          "-DACMSC_ENGINE_REORDER=0",
+          "src/alg2-raw.cpp",
+          "src/semantic_graph.cpp",
+          "-o",
+          "no-use/compiled/experiment-runner/alg2-raw-8e3ee875bf181c96.exe"
+        ],
+        "source_verification": {
+          "status": "verified_current",
+          "observed_current_fingerprint": "8e3ee875bf181c96",
+          "reason": null
+        },
+        "source_hashes": {
+          "alg2-raw.cpp": "6534bf8fca9a2074dab0a91aa2ebc94931b85cf740930dce23018ca6fa5408cf",
+          "semantic_graph.cpp": "c6d51c9086fbd5c7d264eb411ac04890806744fc4e05dc7eee0b156760a9cd92",
+          "semantic_graph.h": "8192c4e8e02fc8ace59d59365f72643e34ca32ba71faa5bb338381a8cd308078",
+          "experiment_runtime.h": "2970c483cd31152adc0a39278340822337daeb312c073b67a8eb49a030a4f35d"
+        }
+      },
+      "inputs": {
+        "status": "verified_run_time",
+        "snapshot": {
+          "dataset_catalog": {
+            "path": "experiments/datasets.json",
+            "sha256": "6b56d1151911b15582d62bee8c4a90f6e08218c1079f09f7b08d618327468fcd"
+          },
+          "files": [
+            {
+              "role": "graph",
+              "path": "dataset/dataset/WN18RR_edges.txt",
+              "bytes": 937949,
+              "sha256": "876c6143d5d2433f6722a8ce3f7662dce91b44ef687c34c4b885dc4cfa1127ec"
+            },
+            {
+              "role": "vector_index",
+              "path": "dataset/vectors/WN18RR_vectors.index",
+              "bytes": 60,
+              "sha256": "d8115fc7c0baa8ace7c327b8b29620863ab16df65816c52cd021f664355afd04"
+            },
+            {
+              "role": "vector_chunk",
+              "path": "dataset/vectors/WN18RR_vectors.json.chunk.0.bin",
+              "bytes": 125776904,
+              "sha256": "d828bb5eec810ac2189c62669ccd7e63453733345077319d013e8ec4cae5ac37"
+            }
+          ]
+        }
+      },
+      "run_environment": {
+        "plan": "experiments/plans/batch29-sembk-engineering-correctness-30s.json",
+        "plan_sha256": "987f8ab282c9bb826bdb3ec444b2899297f390de0299b830e85384a3e069bbfb",
+        "git": {
+          "commit": "924eddbac109d2ddf830b0f1509954c0422d1544",
+          "dirty": true
+        },
+        "machine": {
+          "platform": "Windows-11-10.0.26100-SP0",
+          "processor": "AMD64 Family 25 Model 97 Stepping 2, AuthenticAMD",
+          "logical_cpu_count": 32,
+          "python": "3.12.7",
+          "compiler": "g++ (x86_64-posix-seh-rev0, Built by MinGW-Builds project) 13.2.0"
+        },
+        "memory_limit_gib": 16,
+        "external_timeout_policy": "hard per-process TLE from task.timeout_seconds"
+      },
+      "result_json": {
+        "path": "experiment-output/batch29-sembk-engineering-correctness-30s/51aa119b1bf1e935.attempt-001.json",
+        "bytes": 5370,
+        "sha256": "d61a327a1c58759caf269a0a647f0945a95621883cc136a77c8d6cde186e3f10"
+      },
+      "artifacts": {
+        "program_log": {
+          "path": "experiment-output/batch29-sembk-engineering-correctness-30s/51aa119b1bf1e935.attempt-001.program.log",
+          "bytes": 1373,
+          "sha256": "b3ce9105ea6d5d9927ad2ce2d6d77604796357a06d05241ae07b47a0b6167ba5"
+        },
+        "stdout": {
+          "path": "experiment-output/batch29-sembk-engineering-correctness-30s/51aa119b1bf1e935.attempt-001.stdout.txt",
+          "bytes": 1592,
+          "sha256": "af7251b11fc483c2f767979e4d78f711606e8fd7b3a738407ff5235d9a58c284"
+        },
+        "stderr": {
+          "path": "experiment-output/batch29-sembk-engineering-correctness-30s/51aa119b1bf1e935.attempt-001.stderr.txt",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "cliques": {
+          "path": "experiment-output/batch29-sembk-engineering-correctness-30s/51aa119b1bf1e935.attempt-001.cliques.txt",
+          "bytes": 9521,
+          "sha256": "857ddae33e2f0c9cb03e60d9ccfa814bd9b7aa9c7d5b0f905b63e75196d1d802"
+        }
+      }
+    },
+    {
+      "task_id": "73193b4aabf590f3",
+      "attempt": 1,
+      "status": "completed",
+      "rerun_reason": null,
+      "started_utc": "2026-07-31T18:05:47.609303+00:00",
+      "wall_seconds": 0.2753754000000299,
+      "task": {
+        "algorithm": 2,
+        "mode": "raw",
+        "dataset": 8,
+        "tau": 0.786825,
+        "threads": 32,
+        "timeout_seconds": 30,
+        "graph": null,
+        "vectors": null,
+        "capture_cliques": true,
+        "defines": {
+          "ACMSC_ENGINE_INCREMENTAL_ACC": 1
+        },
+        "warmup": false,
+        "repetition": 0,
+        "task_id": "73193b4aabf590f3"
+      },
+      "parsed": {
+        "algorithm_ms": 35,
+        "clique_count": 750,
+        "peak_memory_gib": 0.19,
+        "size_histogram": {
+          "2": 735,
+          "3": 15
+        },
+        "stats": {}
+      },
+      "validation": {
+        "unique_cliques": 750,
+        "compared_with": [
+          {
+            "task_id": "77f6e0f4b88c84f2",
+            "algorithm": 2,
+            "exact_match": true,
+            "only_current": 0,
+            "only_previous": 0
+          }
+        ],
+        "exact_match": true
+      },
+      "build": {
+        "fingerprint": "135c0ba5c470a02a",
+        "executable_sha256": "6a2ad4b9406075ee2cf64e401e4db528f7ee3bca96c824cee070192e59471e29",
+        "command": [
+          "g++",
+          "-std=c++17",
+          "-fopenmp",
+          "-mavx2",
+          "-O3",
+          "-DACMSC_ENGINE_INCREMENTAL_ACC=1",
+          "src/alg2-raw.cpp",
+          "src/semantic_graph.cpp",
+          "-o",
+          "no-use/compiled/experiment-runner/alg2-raw-135c0ba5c470a02a.exe"
+        ],
+        "source_verification": {
+          "status": "verified_current",
+          "observed_current_fingerprint": "135c0ba5c470a02a",
+          "reason": null
+        },
+        "source_hashes": {
+          "alg2-raw.cpp": "6534bf8fca9a2074dab0a91aa2ebc94931b85cf740930dce23018ca6fa5408cf",
+          "semantic_graph.cpp": "c6d51c9086fbd5c7d264eb411ac04890806744fc4e05dc7eee0b156760a9cd92",
+          "semantic_graph.h": "8192c4e8e02fc8ace59d59365f72643e34ca32ba71faa5bb338381a8cd308078",
+          "experiment_runtime.h": "2970c483cd31152adc0a39278340822337daeb312c073b67a8eb49a030a4f35d"
+        }
+      },
+      "inputs": {
+        "status": "verified_run_time",
+        "snapshot": {
+          "dataset_catalog": {
+            "path": "experiments/datasets.json",
+            "sha256": "6b56d1151911b15582d62bee8c4a90f6e08218c1079f09f7b08d618327468fcd"
+          },
+          "files": [
+            {
+              "role": "graph",
+              "path": "dataset/dataset/WN18RR_edges.txt",
+              "bytes": 937949,
+              "sha256": "876c6143d5d2433f6722a8ce3f7662dce91b44ef687c34c4b885dc4cfa1127ec"
+            },
+            {
+              "role": "vector_index",
+              "path": "dataset/vectors/WN18RR_vectors.index",
+              "bytes": 60,
+              "sha256": "d8115fc7c0baa8ace7c327b8b29620863ab16df65816c52cd021f664355afd04"
+            },
+            {
+              "role": "vector_chunk",
+              "path": "dataset/vectors/WN18RR_vectors.json.chunk.0.bin",
+              "bytes": 125776904,
+              "sha256": "d828bb5eec810ac2189c62669ccd7e63453733345077319d013e8ec4cae5ac37"
+            }
+          ]
+        }
+      },
+      "run_environment": {
+        "plan": "experiments/plans/batch29-sembk-engineering-correctness-30s.json",
+        "plan_sha256": "987f8ab282c9bb826bdb3ec444b2899297f390de0299b830e85384a3e069bbfb",
+        "git": {
+          "commit": "924eddbac109d2ddf830b0f1509954c0422d1544",
+          "dirty": true
+        },
+        "machine": {
+          "platform": "Windows-11-10.0.26100-SP0",
+          "processor": "AMD64 Family 25 Model 97 Stepping 2, AuthenticAMD",
+          "logical_cpu_count": 32,
+          "python": "3.12.7",
+          "compiler": "g++ (x86_64-posix-seh-rev0, Built by MinGW-Builds project) 13.2.0"
+        },
+        "memory_limit_gib": 16,
+        "external_timeout_policy": "hard per-process TLE from task.timeout_seconds"
+      },
+      "result_json": {
+        "path": "experiment-output/batch29-sembk-engineering-correctness-30s/73193b4aabf590f3.attempt-001.json",
+        "bytes": 4808,
+        "sha256": "951238ad987a2f7fbc06806e81dc6d9343ead8df50e6359a4fa2453f619e2d30"
+      },
+      "artifacts": {
+        "program_log": {
+          "path": "experiment-output/batch29-sembk-engineering-correctness-30s/73193b4aabf590f3.attempt-001.program.log",
+          "bytes": 1373,
+          "sha256": "33c07e6d5e611aeff0d59b5a2d431006bcbc59dd666441825c12a320d009159d"
+        },
+        "stdout": {
+          "path": "experiment-output/batch29-sembk-engineering-correctness-30s/73193b4aabf590f3.attempt-001.stdout.txt",
+          "bytes": 1592,
+          "sha256": "a2747dbf21fe21dd0e7480e8d889c4697795860adf774989efed1e2bf9a08d12"
+        },
+        "stderr": {
+          "path": "experiment-output/batch29-sembk-engineering-correctness-30s/73193b4aabf590f3.attempt-001.stderr.txt",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "cliques": {
+          "path": "experiment-output/batch29-sembk-engineering-correctness-30s/73193b4aabf590f3.attempt-001.cliques.txt",
+          "bytes": 9521,
+          "sha256": "f9c0f7c00f00c2b0816e1a8e665afab8abb015369ef432659fdb52b93015a781"
+        }
+      }
+    },
+    {
+      "task_id": "77f6e0f4b88c84f2",
+      "attempt": 1,
+      "status": "completed",
+      "rerun_reason": null,
+      "started_utc": "2026-07-31T18:05:43.767673+00:00",
+      "wall_seconds": 0.39147620000005645,
+      "task": {
+        "algorithm": 2,
+        "mode": "raw",
+        "dataset": 8,
+        "tau": 0.786825,
+        "threads": 32,
+        "timeout_seconds": 30,
+        "graph": null,
+        "vectors": null,
+        "capture_cliques": true,
+        "defines": {},
+        "warmup": false,
+        "repetition": 0,
+        "task_id": "77f6e0f4b88c84f2"
+      },
+      "parsed": {
+        "algorithm_ms": 38,
+        "clique_count": 750,
+        "peak_memory_gib": 0.19,
+        "size_histogram": {
+          "2": 735,
+          "3": 15
+        },
+        "stats": {}
+      },
+      "validation": {
+        "unique_cliques": 750,
+        "compared_with": [],
+        "exact_match": true
+      },
+      "build": {
+        "fingerprint": "86d299c353d35a84",
+        "executable_sha256": "8797f0ace3a338114c505b7e2e8f874a20eb66ef6a7fb7fa323e63c80d915f4e",
+        "command": [
+          "g++",
+          "-std=c++17",
+          "-fopenmp",
+          "-mavx2",
+          "-O3",
+          "src/alg2-raw.cpp",
+          "src/semantic_graph.cpp",
+          "-o",
+          "no-use/compiled/experiment-runner/alg2-raw-86d299c353d35a84.exe"
+        ],
+        "source_verification": {
+          "status": "verified_current",
+          "observed_current_fingerprint": "86d299c353d35a84",
+          "reason": null
+        },
+        "source_hashes": {
+          "alg2-raw.cpp": "6534bf8fca9a2074dab0a91aa2ebc94931b85cf740930dce23018ca6fa5408cf",
+          "semantic_graph.cpp": "c6d51c9086fbd5c7d264eb411ac04890806744fc4e05dc7eee0b156760a9cd92",
+          "semantic_graph.h": "8192c4e8e02fc8ace59d59365f72643e34ca32ba71faa5bb338381a8cd308078",
+          "experiment_runtime.h": "2970c483cd31152adc0a39278340822337daeb312c073b67a8eb49a030a4f35d"
+        }
+      },
+      "inputs": {
+        "status": "verified_run_time",
+        "snapshot": {
+          "dataset_catalog": {
+            "path": "experiments/datasets.json",
+            "sha256": "6b56d1151911b15582d62bee8c4a90f6e08218c1079f09f7b08d618327468fcd"
+          },
+          "files": [
+            {
+              "role": "graph",
+              "path": "dataset/dataset/WN18RR_edges.txt",
+              "bytes": 937949,
+              "sha256": "876c6143d5d2433f6722a8ce3f7662dce91b44ef687c34c4b885dc4cfa1127ec"
+            },
+            {
+              "role": "vector_index",
+              "path": "dataset/vectors/WN18RR_vectors.index",
+              "bytes": 60,
+              "sha256": "d8115fc7c0baa8ace7c327b8b29620863ab16df65816c52cd021f664355afd04"
+            },
+            {
+              "role": "vector_chunk",
+              "path": "dataset/vectors/WN18RR_vectors.json.chunk.0.bin",
+              "bytes": 125776904,
+              "sha256": "d828bb5eec810ac2189c62669ccd7e63453733345077319d013e8ec4cae5ac37"
+            }
+          ]
+        }
+      },
+      "run_environment": {
+        "plan": "experiments/plans/batch29-sembk-engineering-correctness-30s.json",
+        "plan_sha256": "987f8ab282c9bb826bdb3ec444b2899297f390de0299b830e85384a3e069bbfb",
+        "git": {
+          "commit": "924eddbac109d2ddf830b0f1509954c0422d1544",
+          "dirty": true
+        },
+        "machine": {
+          "platform": "Windows-11-10.0.26100-SP0",
+          "processor": "AMD64 Family 25 Model 97 Stepping 2, AuthenticAMD",
+          "logical_cpu_count": 32,
+          "python": "3.12.7",
+          "compiler": "g++ (x86_64-posix-seh-rev0, Built by MinGW-Builds project) 13.2.0"
+        },
+        "memory_limit_gib": 16,
+        "external_timeout_policy": "hard per-process TLE from task.timeout_seconds"
+      },
+      "result_json": {
+        "path": "experiment-output/batch29-sembk-engineering-correctness-30s/77f6e0f4b88c84f2.attempt-001.json",
+        "bytes": 4544,
+        "sha256": "bd10d020df8571b401364e278d90f70fa6334ea355671490fc81d7ce5e8efbdb"
+      },
+      "artifacts": {
+        "program_log": {
+          "path": "experiment-output/batch29-sembk-engineering-correctness-30s/77f6e0f4b88c84f2.attempt-001.program.log",
+          "bytes": 1373,
+          "sha256": "c8cc88fdc282b0e56b7c3d545c4741e170e8aa8ff37ff7a8ad823ba6a716ff52"
+        },
+        "stdout": {
+          "path": "experiment-output/batch29-sembk-engineering-correctness-30s/77f6e0f4b88c84f2.attempt-001.stdout.txt",
+          "bytes": 1592,
+          "sha256": "e01f36f8e78967474187ceddd9a0145ec116f953bbdbf6892d455f7f8d7cb793"
+        },
+        "stderr": {
+          "path": "experiment-output/batch29-sembk-engineering-correctness-30s/77f6e0f4b88c84f2.attempt-001.stderr.txt",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "cliques": {
+          "path": "experiment-output/batch29-sembk-engineering-correctness-30s/77f6e0f4b88c84f2.attempt-001.cliques.txt",
+          "bytes": 9521,
+          "sha256": "a2be4f02947c76223e16b0f2cab286bd4324962d7b2a23a0620aa88e9388d2bc"
+        }
+      }
+    }
+  ]
+}

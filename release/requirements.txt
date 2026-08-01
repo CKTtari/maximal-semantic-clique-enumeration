@@ -1,7 +1,0 @@
-numpy==1.26.4
-matplotlib>=3.7,<4
-pandas>=2.0,<3
-scipy>=1.10,<2
-Pillow>=10,<12
-seaborn>=0.13,<1
-plotly>=5.18,<7

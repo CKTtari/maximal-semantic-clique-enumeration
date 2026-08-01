@@ -55,6 +55,12 @@
 #ifndef ACMSC_STRSUB_LOCAL_MAX
 #define ACMSC_STRSUB_LOCAL_MAX 1
 #endif
+#ifndef ACMSC_ENGINE_REORDER
+#define ACMSC_ENGINE_REORDER 1
+#endif
+#ifndef ACMSC_ENGINE_BITMAP
+#define ACMSC_ENGINE_BITMAP 1
+#endif
 
 using namespace std;
 namespace fs = std::filesystem;
@@ -176,6 +182,11 @@ struct GraphReorder {
         int n = g.V;
         old_to_new.assign(n, -1);
         new_to_old.assign(n, -1);
+#if !ACMSC_ENGINE_REORDER
+        iota(old_to_new.begin(), old_to_new.end(), 0);
+        iota(new_to_old.begin(), new_to_old.end(), 0);
+        return;
+#endif
         vector<int> order(n);
         iota(order.begin(), order.end(), 0);
         sort(order.begin(), order.end(),
@@ -288,6 +299,14 @@ private:
     inline float lookup_sim(int u, int v) const {
         auto it = sim_map_[u].find(v);
         return it != sim_map_[u].end() ? it->second : 0.0f;
+    }
+
+    inline bool adjacent(int u, int v) const {
+#if ACMSC_ENGINE_BITMAP
+        return bitmap_->contains(u, v);
+#else
+        return sim_map_[u].find(v) != sim_map_[u].end();
+#endif
     }
 
     // ============================================================
@@ -921,19 +940,19 @@ private:
         int pivot = -1, pivot_cover = -1;
         for (int p : excl) {
             int cover = 0;
-            for (int c : cands) if (bitmap_->contains(p, c)) cover++;
+            for (int c : cands) if (adjacent(p, c)) cover++;
             if (cover > pivot_cover) { pivot_cover = cover; pivot = p; }
         }
         for (int p : cands) {
             int cover = 0;
-            for (int c : cands) if (c != p && bitmap_->contains(p, c)) cover++;
+            for (int c : cands) if (c != p && adjacent(p, c)) cover++;
             if (cover > pivot_cover) { pivot_cover = cover; pivot = p; }
         }
 
         vector<int> to_enum;
         to_enum.reserve(cands.size());
         for (int v : cands)
-            if (pivot == -1 || !bitmap_->contains(pivot, v))
+            if (pivot == -1 || !adjacent(pivot, v))
                 to_enum.push_back(v);
 
         for (int v : to_enum) {
@@ -944,8 +963,8 @@ private:
             vector<int> cands_new, excl_new;
             cands_new.reserve(cands.size());
             excl_new.reserve(excl.size());
-            for (int u : cands) if (bitmap_->contains(v, u)) cands_new.push_back(u);
-            for (int u : excl)  if (bitmap_->contains(v, u)) excl_new.push_back(u);
+            for (int u : cands) if (adjacent(v, u)) cands_new.push_back(u);
+            for (int u : excl)  if (adjacent(v, u)) excl_new.push_back(u);
 
             vector<pair<int,float>> undo;
             undo.reserve(cands_new.size() + excl_new.size());
@@ -999,6 +1018,7 @@ private:
             for (auto& [v, s] : nb_[u]) sim_map_[u][v] = s;
         }
 
+#if ACMSC_ENGINE_BITMAP
         bitmap_ = new BlockedSparseBitmap(n);
         #pragma omp parallel for schedule(static)
         for (int u = 0; u < n; u++) {
@@ -1007,6 +1027,9 @@ private:
             for (auto& [v, s] : nb_[u]) ids.push_back(v);
             bitmap_->build(u, ids);
         }
+#else
+        bitmap_ = nullptr;
+#endif
 
         logger.print("  [Stage1 build_graph]: %lld ms\n",
             (long long)chrono::duration_cast<chrono::milliseconds>(

@@ -1,0 +1,7 @@
+{
+  "name": "batch28-engineering-strsub-bitmap-30s",
+  "tasks": [
+    {"algorithm": 3, "mode": "raw", "dataset": 1, "tau": 0.117587, "threads": 32, "timeout_seconds": 30, "repetitions": 3},
+    {"algorithm": 3, "mode": "raw", "dataset": 1, "tau": 0.117587, "threads": 32, "timeout_seconds": 30, "repetitions": 3, "defines": {"ACMSC_ENGINE_BITMAP": 0}}
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "name": "batch29-sembk-engineering-correctness-30s",
+  "tasks": [
+    {"algorithm": 2, "mode": "raw", "dataset": 8, "tau": 0.786825, "threads": 32, "timeout_seconds": 30, "repetitions": 1, "capture_cliques": true},
+    {"algorithm": 2, "mode": "raw", "dataset": 8, "tau": 0.786825, "threads": 32, "timeout_seconds": 30, "repetitions": 1, "capture_cliques": true, "defines": {"ACMSC_ENGINE_INCREMENTAL_ACC": 1}},
+    {"algorithm": 2, "mode": "raw", "dataset": 8, "tau": 0.786825, "threads": 32, "timeout_seconds": 30, "repetitions": 1, "capture_cliques": true, "defines": {"ACMSC_ENGINE_BITMAP": 0}},
+    {"algorithm": 2, "mode": "raw", "dataset": 8, "tau": 0.786825, "threads": 32, "timeout_seconds": 30, "repetitions": 1, "capture_cliques": true, "defines": {"ACMSC_ENGINE_REORDER": 0}},
+    {"algorithm": 2, "mode": "raw", "dataset": 8, "tau": 0.786825, "threads": 32, "timeout_seconds": 30, "repetitions": 1, "capture_cliques": true, "defines": {"ACMSC_ENGINE_BITMAP": 0, "ACMSC_ENGINE_REORDER": 0}}
+  ]
+}

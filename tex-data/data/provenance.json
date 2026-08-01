@@ -2,6 +2,8 @@
   "schema_version": 1,
   "exporter": "src/experiments/standard/paper_results_export.py",
   "formal_summaries": [
+    "experiments/summaries/batch32-sembk-github-q20-completion.summary.json",
+    "experiments/summaries/batch31-sembk-main-refresh-30s.summary.json",
     "experiments/summaries/batch11-main-core-current.summary.json",
     "experiments/summaries/batch11-main-alg3-ldoor-q80-repeat.summary.json",
     "experiments/summaries/batch11-main-alg3-q80-long.summary.json",
@@ -31,9 +33,14 @@
     "experiments/summaries/batch7-main-email-enron.summary.json"
   ],
   "pilot_status_summaries": [],
+  "engineering_summaries": [
+    "experiments/summaries/batch29-sembk-engineering-correctness-30s.summary.json",
+    "experiments/summaries/batch30-engineering-profile-selection-30s.summary.json"
+  ],
+  "engineering_exporter": "src/experiments/standard/export_engineering_ablation.py",
   "quality_analysis": {
     "path": "experiments/quality/ogbn-arxiv-result-quality.json",
-    "sha256": "78a2b8c9387ce770b4bd90858bf6b09edc160bf4fa694a4fea3e1aec15415b71"
+    "sha256": "13741ad5648e8fd0a90335ba4918054ccd38ce82df47fcf8d9c787550edf1e2e"
   },
   "note": "CSV values are copied or derived deterministically from archived formal summaries and hash-verified artifacts referenced by their manifests; no pilot timing enters paper data."
 }

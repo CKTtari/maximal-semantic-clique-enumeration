@@ -1,9 +1,0 @@
-{
-  "name": "batch17-nasasrb-alg3-ablation-formal",
-  "tasks": [
-    {"algorithm": 3, "mode": "raw", "dataset": 2, "tau": 0.14503, "threads": 32, "timeout_seconds": 1200, "repetitions": 3},
-    {"algorithm": 3, "mode": "raw", "dataset": 2, "tau": 0.14503, "threads": 32, "timeout_seconds": 1200, "repetitions": 3, "defines": {"ACMSC_STRSUB_TOP_EDGE": 0}},
-    {"algorithm": 3, "mode": "raw", "dataset": 2, "tau": 0.14503, "threads": 32, "timeout_seconds": 1200, "repetitions": 3, "defines": {"ACMSC_STRSUB_VERTEX_BOUND": 0}},
-    {"algorithm": 3, "mode": "raw", "dataset": 2, "tau": 0.14503, "threads": 32, "timeout_seconds": 1200, "repetitions": 3, "defines": {"ACMSC_STRSUB_LOCAL_MAX": 0}}
-  ]
-}

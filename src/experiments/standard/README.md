@@ -15,6 +15,12 @@ The exporter reads the archived JSON summaries listed in
 paper results come from the formal summaries. Temporary output from future
 standard runs belongs in `src/experiments/standard/tmp-output`.
 
+The engineering-ablation export is run with:
+
+```powershell
+python src/experiments/standard/export_engineering_ablation.py
+```
+
 The runtime executables remain separate from statistics executables. Runtime
 tables and curves must use raw builds; search-state and pruning counters must
 use stats builds and are reported only as mechanism measurements.

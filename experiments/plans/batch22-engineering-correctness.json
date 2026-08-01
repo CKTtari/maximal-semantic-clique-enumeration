@@ -1,0 +1,12 @@
+{
+  "name": "batch22-engineering-correctness",
+  "tasks": [
+    {"algorithm": 3, "mode": "raw", "dataset": 8, "tau": 0.786825, "threads": 32, "timeout_seconds": 180, "capture_cliques": true},
+    {"algorithm": 3, "mode": "raw", "dataset": 8, "tau": 0.786825, "threads": 32, "timeout_seconds": 180, "capture_cliques": true, "defines": {"ACMSC_ENGINE_REORDER": 0}},
+    {"algorithm": 3, "mode": "raw", "dataset": 8, "tau": 0.786825, "threads": 32, "timeout_seconds": 180, "capture_cliques": true, "defines": {"ACMSC_ENGINE_BITMAP": 0}},
+    {"algorithm": 4, "mode": "raw", "dataset": 8, "tau": 0.786825, "threads": 32, "timeout_seconds": 180, "capture_cliques": true},
+    {"algorithm": 4, "mode": "raw", "dataset": 8, "tau": 0.786825, "threads": 32, "timeout_seconds": 180, "capture_cliques": true, "defines": {"ACMSC_ENGINE_REORDER": 0}},
+    {"algorithm": 4, "mode": "raw", "dataset": 8, "tau": 0.786825, "threads": 32, "timeout_seconds": 180, "capture_cliques": true, "defines": {"ACMSC_ENGINE_BITMAP": 0}},
+    {"algorithm": 4, "mode": "raw", "dataset": 8, "tau": 0.786825, "threads": 32, "timeout_seconds": 180, "capture_cliques": true, "defines": {"ACMSC_ENGINE_INCREMENTAL_ACC": 0}}
+  ]
+}

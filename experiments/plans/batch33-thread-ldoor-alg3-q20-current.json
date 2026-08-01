@@ -1,0 +1,11 @@
+{
+  "name": "batch33-thread-ldoor-alg3-q20-current",
+  "tasks": [
+    {"algorithm": 3, "mode": "raw", "dataset": 1, "tau": -0.0526831, "threads": 1, "timeout_seconds": 1200, "repetitions": 3},
+    {"algorithm": 3, "mode": "raw", "dataset": 1, "tau": -0.0526831, "threads": 2, "timeout_seconds": 1200, "repetitions": 3},
+    {"algorithm": 3, "mode": "raw", "dataset": 1, "tau": -0.0526831, "threads": 4, "timeout_seconds": 1200, "repetitions": 3},
+    {"algorithm": 3, "mode": "raw", "dataset": 1, "tau": -0.0526831, "threads": 8, "timeout_seconds": 1200, "repetitions": 3},
+    {"algorithm": 3, "mode": "raw", "dataset": 1, "tau": -0.0526831, "threads": 16, "timeout_seconds": 1200, "repetitions": 3},
+    {"algorithm": 3, "mode": "raw", "dataset": 1, "tau": -0.0526831, "threads": 32, "timeout_seconds": 1200, "repetitions": 3}
+  ]
+}
