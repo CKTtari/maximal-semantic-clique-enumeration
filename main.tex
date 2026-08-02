@@ -28,6 +28,7 @@
 \usepackage{amsthm}
 \usepackage{multirow}
 \usepackage{subcaption}
+\captionsetup[subfigure]{font=scriptsize,skip=1pt}
 \usepackage{placeins}
 \newtheorem{problem}{Problem}
 
@@ -43,7 +44,7 @@
 
 \newcommand{\kw}[1]{{\ensuremath {\mathsf{#1}}}\xspace}
 \newcommand{\kwnospace}[1]{{\ensuremath {\mathsf{#1}}}}
-\newcommand{\stitleunderline}[1]{\vspace{0.7ex}\noindent\underline{{\bf #1}}}
+\newcommand{\stitleunderline}[1]{\vspace{0.5ex}\noindent\underline{{\bf #1}}}
 %\newcommand{\stitleunderline}[1]{\vspace{1ex} \noindent{\bf #1}}
 \newcommand{\stitle}[1]{\vspace{0.7ex} \noindent{\bf #1}}
 \long\def\comment#1{}
@@ -69,9 +70,9 @@
 %%                  = avgsim(C) * C(|C|+1,2) - simsum(C)
 %% ---------------------------------------------------------------
 \newcommand{\StructBK}{\textsc{Struct\-BK}}
-\newcommand{\semBK}{\textsc{SemBK}}
-\newcommand{\subEnum}{\textsc{StrSub}}
-\newcommand{\monoSemMCE}{\textsc{Mono\-Sem\-MCE}}
+\newcommand{\semBK}{MSC-\textsc{BKBasic}}
+\newcommand{\subEnum}{MSC-\textsc{BKPlus}}
+\newcommand{\monoSemMCE}{MSC-\textsc{HighSim}}
 \newcommand{\pairSim}{\textsc{PairSim-MCE}}
 \newcommand{\avgsim}{\mathrm{avgSim}}
 \newcommand{\simsum}{\mathit{simSum}}
@@ -97,35 +98,38 @@
   \city{Beijing}
   \country{China}
 }
-\email{qhc\_neu@gmail.com}
+\email{qhc.neu@gmail.com}
 
 %%
 %% The abstract is a short summary of the work to be presented in the
 %% article.
 \begin{abstract}
-Vector-attributed graphs encode two complementary forms of group cohesion:
-edges record structural relations, while vertex vectors describe semantic
-compatibility. Maximal clique enumeration captures the former but provides no
-criterion for the latter. We study maximal semantic clique (MSC) enumeration,
-which retains complete connectivity and requires the average pairwise vector
-similarity to reach a threshold. Unlike an every-pair threshold, this aggregate
-criterion tolerates a small number of atypical pairs when the group remains
-collectively coherent. It is also non-monotone over clique containment, so
-structural pivot pruning and early rejection of infeasible partial cliques are
-not directly applicable. We propose two efficient algorithms with different
-advantageous regimes under this constraint. \subEnum\ restores structural pivoting by
-separating structural MCE from bounded semantic subset enumeration.
-\monoSemMCE\ uses a feasible-parent theorem: deleting a deterministic
-minimum-contribution vertex from any feasible clique preserves feasibility.
-The induced canonical forest generates each feasible state once without a
-visited table or materialized size layers. Across three naturally attributed
-and five controlled vector-attributed graphs, the two specialized methods
-jointly complete all 24 workloads, whereas the \semBK\ baseline reaches
-the 1,200-second limit on 15. At $q_{99}$, \monoSemMCE\ is
-$2.92\times$--$6.24\times$ faster than \subEnum. On two real graphs,
-pairwise-threshold MCE retains no reference MSC of size at least ten on GitHub-Social and
-only 0.32\% on ogbn-arxiv-25K, demonstrating the model-level fragmentation
-avoided by the average constraint.
+Large language model applications increasingly use GraphRAG to answer global
+questions over corpora whose evidence spans many documents. A typical pipeline
+constructs an entity--relation graph, organizes it through hierarchical
+community detection, and summarizes the resulting groups; group quality thus
+directly affects evidence coverage and coherence. Yet existing primitives do
+not yield groups that are both relation-complete and collectively coherent:
+community partitions allow missing links and suppress overlap, maximal cliques
+ignore vectors, and pairwise semantic thresholds fragment groups because of
+atypical pairs. We formulate \emph{maximal semantic clique} (MSC) enumeration,
+which requires complete connectivity, constrains average pairwise vector
+similarity, and reports every inclusion-wise maximal qualifying clique. This
+aggregate constraint is non-monotone: an infeasible clique may have a feasible
+strict superset. Consequently, filtering only structural maximal cliques is
+incomplete, while standard Bron--Kerbosch pivoting and infeasibility pruning are
+unsound. We develop two complementary exact algorithms. \subEnum\ combines
+structural maximal-clique enumeration with bounded semantic subset search. We
+prove that deterministically deleting a minimum-contribution vertex from a
+feasible clique of size at least three preserves feasibility. The theorem
+induces a canonical forest in which \monoSemMCE\ generates every feasible clique
+exactly once without a visited-state table or materialized size layers. Across
+eight vector-attributed graphs and 24 workloads, at least one proposed method
+completes every workload, whereas the direct semantic Bron--Kerbosch baseline
+times out on 12. At $q_{99}$, \monoSemMCE\ is
+$1.69\times$--$6.24\times$ faster than \subEnum. On three naturally attributed
+graphs, pairwise-threshold MCE attains only 0.156--0.556 Extended B$^3$ member
+recall, quantifying the group fragmentation avoided by the average constraint.
 \end{abstract}
 \maketitle
 
@@ -137,90 +141,117 @@ avoided by the average constraint.
 \section{Introduction}
 \label{sec:intro}
 
-Graphs with vector-valued attributes are increasingly common in data management:
-social networks associate users with profile features, knowledge graphs attach
-text embeddings to entities, and citation graphs represent papers by content
-vectors~\cite{rozemberczki2021musae,toutanova2015observed,wang2020ogb}.
-Existing models combine dense structure with attributes through
-correlated patterns and similarity-constrained bipartite
-subgraphs~\cite{silva2012,yao2022similarbiclique}. These tasks expose a basic modeling
-gap: adjacency establishes interaction, whereas vector similarity establishes
-semantic compatibility, and neither signal alone identifies groups satisfying
-both requirements.
+Large language models increasingly answer questions over private, scientific,
+and enterprise corpora whose relevant evidence is distributed across many
+documents. Conventional vector retrieval is effective for local questions, but
+global questions require a system to identify recurring themes, connect
+multi-hop evidence, and summarize relationships at corpus scale. GraphRAG makes
+this group-discovery step explicit: it constructs an entity--relation graph,
+applies hierarchical community detection to organize closely related entities,
+and generates community summaries at multiple levels for global
+reasoning~\cite{edge2024graphrag}. Related graph-based RAG systems expand and
+organize retrieved evidence through knowledge-graph
+relations~\cite{zhu2025kg2rag}. Group quality therefore becomes an indexing concern, not
+merely a graph-analytics detail. An overly loose group produces an incoherent
+summary, an overly fragmented group misses distributed evidence, and a
+non-overlapping partition can hide entities that participate in multiple
+contexts. Modern AI applications consequently need compact, interpretable
+groups supported by both explicit relations and semantic signals.
 
-The maximal clique is the strongest structural model of cohesion: every pair of
-vertices is connected. In a vector-attributed graph, this structural contract
-provides a natural candidate group, and the attributes then determine whether
-its members are collectively compatible. Partitioning and query-oriented
-attributed-community methods answer different tasks because they need not
-preserve pairwise adjacency or enumerate every qualifying
-group~\cite{fang2016,huang2017,ruan2013codicil}. Our objective
-is therefore to retain the clique contract while adding a group-level semantic
-criterion to each reported pattern.
+Existing community and dense-pattern primitives do not provide such groups
+exactly. Hierarchical community detection is well suited to scalable,
+coarse-grained organization, but its communities may contain missing edges and
+its partition-oriented output can assign an entity to only one group at a given
+resolution. Query-oriented attributed-community search returns a community
+around a supplied seed rather than enumerating every qualifying
+group~\cite{fang2016,huang2017,ruan2013codicil}. At the other extreme, maximal
+clique enumeration (MCE) guarantees that every pair of vertices is connected,
+but ignores vector attributes. Requiring every connected pair to exceed a
+semantic threshold is also brittle: a single atypical pair can split a group
+whose members remain coherent in aggregate. This is particularly problematic
+for cross-topic or cross-document evidence, where a semantically distant bridge
+may be essential even though the complete group remains structurally explicit
+and collectively meaningful.
 
-\stitle{The MSC Problem.}
-We study the problem of enumerating \emph{maximal semantic cliques} (MSCs) in a vector-attributed graph. Each vertex carries a real-valued attribute vector; pairwise semantic similarity is measured by cosine similarity. Given a threshold $\tau$, a clique is a $\tau$-semantic clique if its average pairwise similarity is at least $\tau$. An MSC is an inclusion-wise maximal $\tau$-semantic clique: no strict superset is also a $\tau$-semantic clique. The task is to enumerate \emph{all} MSCs of the input graph.
+We introduce \emph{maximal semantic clique} (MSC) enumeration on a
+vector-attributed graph. Each vertex carries a real-valued vector, and a clique
+is semantically feasible when its average pairwise cosine similarity is at
+least a threshold $\tau$. An MSC is an inclusion-wise maximal feasible clique:
+no feasible clique strictly contains it. The task is to enumerate all MSCs.
+Averaging captures collective semantic compatibility and tolerates a limited
+number of atypical pairs, while complete connectivity retains an unambiguous
+relation-level guarantee. Exact enumeration also preserves overlapping groups,
+allowing the same entity to support multiple retrieval or summarization
+contexts.
 
-We use average pairwise similarity to express compatibility at the group level.
-An every-pair threshold rejects a group whenever one pair falls below the
-threshold and can fragment a
-structurally complete group even when the remaining pairs provide strong
-collective evidence. The average permits
-a limited number of atypical pairs while expressing the total semantic requirement
-through a single group-level statistic. This robustness changes the algorithmic problem:
-adding a vertex may raise or lower the average, and an infeasible clique may have
-a feasible strict superset. Feasibility is therefore neither downward nor upward
-closed over clique containment.
+The aggregate semantic constraint fundamentally changes the enumeration
+problem. An MSC need not be a structural maximal clique, so enumerating
+structural maximal cliques and filtering them can miss valid answers. More
+importantly, average feasibility is non-monotone over clique containment:
+adding a vertex may raise or lower the average, and an infeasible clique may
+become feasible after further insertions. Pruning an infeasible partial clique
+can therefore discard a valid MSC. The structural argument underlying
+Bron--Kerbosch (BK) pivoting~\cite{bron1973} also fails because a pivot may
+suppress a branch containing a semantic-maximal clique that cannot be safely
+extended by that pivot. We formalize these incompatibilities and prove that the
+associated size decision problem is NP-complete.
 
-For example, a cross-disciplinary co-authorship clique may contain one
-low-similarity author pair while its remaining pairs provide enough semantic
-evidence for the complete team to satisfy the average threshold.
+Our first algorithm, \subEnum, restores structural pivoting by separating the
+structural and semantic searches. It first enumerates structural maximal
+cliques, using the fact that every MSC is contained in at least one such host.
+Within each host, it examines semantic subsets in decreasing size order. A
+sorted-edge upper bound and a vertex-contribution upper bound eliminate size
+layers that cannot contain a feasible subset, while local and global
+containment filters remove non-maximal and duplicate candidates. This
+decomposition amortizes semantic processing effectively when the threshold is
+permissive.
 
-\stitle{Why Classical MCE Does Not Suffice.}
-Classical maximal clique enumeration (MCE) reports only cliques that are
-maximal under adjacency. An MSC, however, may be a proper subset of a structural
-maximal clique: adding another adjacent vertex preserves the clique but can
-lower its average similarity below $\tau$. Consequently, filtering the MCE
-output omits valid MSCs that are never reported as structural maxima. The same
-distinction invalidates a direct transfer of the Bron--Kerbosch (BK)
-search~\cite{bron1973} and its pivot rule.
-The pivot suppresses branches whose structural answers can be extended by the
-pivot, whereas that extension need not remain semantically feasible. Moreover,
-an infeasible partial clique cannot be discarded because subsequent additions
-may restore its average. Thus the average constraint changes both the search space
-and the cost of validating a structural answer: a direct adaptation must
-explore pivot-suppressed subcliques and postpone threshold-based rejection until
-semantic feasibility can be established safely.
-
-These observations also imply that no single search organization dominates all
-thresholds. At permissive thresholds, structural decomposition amortizes
-semantic work over relatively few host cliques. At selective thresholds,
-enumerating every structural maximal clique incurs work in regions containing
-few feasible semantic cliques, while a feasibility-driven search can contract rapidly. Our algorithms
-are designed around this threshold-dependent change in the search space.
+Our second algorithm, \monoSemMCE, directly exploits the semantic threshold
+through canonical reverse search. For a feasible clique, define a vertex's
+contribution as its total similarity to the other members. We prove that
+deleting a minimum-contribution vertex never decreases the remaining average
+below $\tau$. Deterministic tie-breaking therefore assigns every feasible
+clique of size at least three a unique feasible parent, and repeated deletion
+reaches a feasible edge. The feasible cliques consequently form a canonical
+forest rooted at feasible edges. By reversing the parent relation,
+\monoSemMCE\ reaches every feasible clique through feasible prefixes, rejects
+infeasible extensions and non-owned duplicate constructions before recursion,
+and requires neither a visited-state table nor materialized size layers. The
+two algorithms target complementary regimes: \subEnum\ retains the benefits of
+structural decomposition at permissive thresholds, whereas \monoSemMCE\ gains
+from contraction of the feasible state space at selective thresholds.
 
 We make the following contributions.
 
-\stitleunderline{Problem formulation.}
-We formalize exact MSC enumeration under inclusion-wise maximal average
-similarity, prove the associated size decision problem NP-complete, and
-characterize why neither structural MCE followed by filtering nor direct BK
-pivoting is complete for this output family.
+\stitleunderline{Novel problem.}
+We formulate exact MSC enumeration, a pattern-mining problem that combines
+complete connectivity with average pairwise semantic coherence while preserving
+overlapping, inclusion-wise maximal groups. We establish NP-completeness, prove
+that filtering structural maximal cliques is incomplete, and show why
+non-monotone average feasibility invalidates BK pivoting and conventional
+infeasibility pruning.
 
-\stitleunderline{Enumeration algorithms.}
-We develop \subEnum, which separates structural MCE from bounded semantic
-subset enumeration, and \monoSemMCE, which turns the feasible
-minimum-contribution deletion property into a canonical reverse-search forest.
-They target permissive and selective thresholds, respectively, while returning
-the same complete MSC output set.
+\stitleunderline{Exact algorithms.}
+We develop two complementary exact algorithms with correctness guarantees.
+\subEnum\ combines structural maximal-clique decomposition, two admissible
+upper bounds based on sorted edges and vertex contributions, and
+containment-aware subset enumeration. \monoSemMCE\ follows from our feasible
+minimum-contribution deletion theorem, which exposes a unique-parent canonical
+forest inside the non-monotone search space. We prove that its reverse search
+generates every feasible clique exactly once and returns exactly all MSCs
+without a visited-state table or materialized size layers.
 
-\stitleunderline{Large-scale evaluation.}
-We evaluate exactness, runtime, memory, scalability, search-space reduction, and
-output behavior on three naturally attributed and five controlled
-vector-attributed graphs under a fixed similarity-quantile protocol. The
-experiments identify the operating regions of both searches, isolate their
-mechanisms, and compare the MSC definition with pairwise-threshold and relaxed
-structural pattern families.
+\stitleunderline{Comprehensive evaluation.}
+We evaluate exactness, end-to-end efficiency, memory consumption, threshold sensitivity,
+graph-size and parallel scalability, mechanism ablations, and
+output quality on three naturally attributed and five controlled graphs. At
+least one proposed method finishes all 24 primary workloads, whereas \semBK\
+times out on 12. At $q_{99}$, \monoSemMCE\ is $1.69\times$--$6.24\times$ faster
+than \subEnum. Across the four-graph ablation panel, canonical ownership is
+$3.64\times$--$4.38\times$ faster and uses $1.53\times$--$1.73\times$ less
+peak memory than duplicate-state organizations.
+Pairwise-threshold member recall is
+0.156--0.556 on the three naturally attributed graphs.
 
 \section{Preliminaries}
 \label{sec:pre}
@@ -264,6 +295,7 @@ clique? We express this semantic condition through two companion quantities.
 \end{definition}
 
 \begin{definition}[Semantic Clique]
+  \label{def:semantic-clique}
   Given a threshold $\tau \in [-1,1]$, a clique $C$ with $|C|\geq2$ is a
   \emph{$\tau$-semantic clique} if $\avgsim(C) \geq \tau$.
 \end{definition}
@@ -277,7 +309,7 @@ which is non-negative if and only if $\avgsim(C) \geq \tau$.  Working with $\sim
 and $\W$ avoids division at every recursive step; $\avgsim$ is used only when a
 human-readable quantity is required.
 
-\begin{definition}[MSC]
+\begin{definition}[Maximal Semantic Clique (MSC)]
   \label{def:msc}
   Given $\mathcal{G}=(V,E,\mathbf{X})$ and threshold $\tau \in [-1,1]$, a
   $\tau$-semantic clique $C \subseteq V$ is a \emph{maximal semantic clique}
@@ -296,9 +328,10 @@ with average $3.6/6=0.6$.  Consequently, algorithms may use the absence of a
 feasible single extension only to generate candidates; a global containment
 test is still required for MSC output.
 
-\begin{figure}[!htb]
+\begin{figure}[t]
   \centering
-  \includegraphics[width=0.8\linewidth,page=1]{fig/pictures.pdf}
+  \includegraphics[width=0.85\linewidth]{fig/msc-draw-example1-legacy.pdf}
+  \vspace{-3mm}
   \caption{Running example with vector attributes and edge similarities.}
   \Description{Two overlapping four-vertex cliques with six vector-labeled vertices and pairwise similarity labels.}
   \label{fig:example}
@@ -342,7 +375,8 @@ MSC enumeration contains classical MCE as a special case.  When singleton
 outputs are excluded and $\tau$ does not exceed the minimum similarity on any
 edge, every structural maximal clique of size at least two satisfies the
 semantic constraint, so the $\Omega(3^{n/3})$ output lower bound carries over.
-The associated decision problem is NP-complete.
+The associated decision problem is NP-complete under finite-precision rational
+similarities and thresholds of polynomial encoding length.
 \begin{theorem}
   \label{thm:np-complete}
 Given $\mathcal{G}=(V,E,\mathbf{X})$, threshold $\tau\in[-1,1]$, and integer $k$,
@@ -359,7 +393,6 @@ Given $\mathcal{G}=(V,E,\mathbf{X})$, threshold $\tau\in[-1,1]$, and integer $k$
   requires only this feasibility certificate. If maximality were tested
   separately, examining only single-vertex extensions would be insufficient
   under the non-monotone constraint.
-
   \textit{NP-hardness.}  We reduce from the \textsc{Clique} decision
   problem~\cite{karp1972}, which asks whether $G_0=(V,E)$ contains a
   clique of size $\geq k$.
@@ -411,6 +444,7 @@ structural recursion itself.
 
 
 \section{Framework}
+\label{sec:framework}
 
 \stitle{Framework Overview.}
 \semBK\ is a direct BK baseline that retains degeneracy-ordered $(P,X)$
@@ -420,7 +454,7 @@ maximality.
 
 \begin{algorithm}[t]
   \small
-  \caption{Semantic BK with Check}
+  \caption{\semBK}
   \label{alg:semantic-max-clique}
   \SetKwFunction{FSearch}{Search}
   \SetKwProg{Fn}{Function}{:}{}
@@ -470,9 +504,10 @@ maximality.
   }
 \end{algorithm}
 
-\begin{figure}[!htb]
+\begin{figure}[t]
   \centering
   \includegraphics[width=0.95\linewidth]{tex-data/fig/sembk_graph_workflow.pdf}
+  \vspace{-3mm}
   \caption{Selected \semBK\ branches on the running example.}
 
   \Description{Graph states on selected semantic BK branches, showing an exclusion-set check that suppresses a feasible non-maximal terminal and an infeasible intermediate state that remains expandable.}
@@ -529,7 +564,7 @@ required for the direct semantic BK baseline.
   $O^*(n2^{d_G}+\sum_{C\in\mathcal{L}}2^{|X_C|})$, where $O^*$ suppresses
   polynomial set-intersection costs.  A graph-independent upper bound is
   $O^*(3^n)$. With $T$ workers, the implementation uses
-  $O(m+nD+Tn^2)$ worst-case space.
+  $O(m+nD+Tn^2+\sum_{C\in\mathcal R}|C|)$ worst-case space.
 \end{theorem}
 \begin{proof}
   A degeneracy seed has at most $d_G$ later neighbors.  Without pivoting, its
@@ -538,7 +573,8 @@ required for the direct semantic BK baseline.
   independently visit every subset of $X_C$.  The same earlier extension can
   be reconsidered for several terminals; charging a state to a pair of nested
   vertex sets gives the safe $O^*(3^n)$ bound.  Similarities and sparse
-  adjacency require $O(m+nD)$ storage.  Each worker owns an $O(n)$
+  adjacency and stored outputs require
+  $O(m+nD+\sum_{C\in\mathcal R}|C|)$ storage. Each worker owns an $O(n)$
   accumulator, while decreasing candidate arrays retained by a worst-case
   \textsc{Check} stack total $O(n^2)$.
 \end{proof}
@@ -577,7 +613,7 @@ selective high-$\tau$ workloads.
 \subsection{\subEnum: Structural Decomposition and Subset Enumeration}
 \label{sec:strsub}
 
-\stitle{Structural--Semantic Decoupling and Containment.}
+\stitle{Structural--Semantic Decoupling.}
 \subEnum\ restores the Tomita pivot by separating structural enumeration from
 semantic subset search. Pivoted BK first produces structural maximal cliques;
 the average constraint is then evaluated only within each resulting host.
@@ -594,7 +630,7 @@ these bounds below.
 
 \begin{algorithm}[t]
   \small
-  \caption{\subEnum: Structural Decomposition and Subset Enumeration}
+  \caption{\subEnum}
   \label{alg:strsub}
   \SetKwFunction{FBK}{BK}
   \SetKwProg{Fn}{Function}{:}{}
@@ -647,9 +683,10 @@ these bounds below.
   }
   \Return $\mathcal{R}$\;
 \end{algorithm}
-\begin{figure}[!htb]
+\begin{figure}[t]
   \centering
   \includegraphics[width=0.95\linewidth]{tex-data/fig/strsub_graph_workflow.pdf}
+  \vspace{-3mm}
   \caption{\subEnum\ execution on the running example.}
 
 
@@ -781,7 +818,7 @@ The prefix means $\bar e_k$ are non-increasing in $k$. The algorithm identifies
 and skips every larger layer. For each remaining $k$, it also skips the layer
 when $\bar q_k<\tau$. Both bounds are admissible independently, so their joint
 use cannot remove a feasible subset. Sorting the edge and per-vertex
-similarity lists costs $O(m^2\log m)$ per host.
+similarity lists costs $O(|M|^2\log |M|)$ per host.
 
 \stitle{Applicable Regime.}
 \subEnum\ applies Tomita pivoting during structural MCE, whose cost is
@@ -836,6 +873,9 @@ cost.  More fundamentally, the BK framework offers no mechanism to
 incorporate $\tau$ into branching decisions---the threshold appears only
 in validation, never in the search logic itself.  This structural
 overhead motivates abandoning the BK skeleton entirely.
+We call the resulting method \monoSemMCE\ because increasing $\tau$ directly
+contracts its feasible canonical-state space, making selective high-$\tau$
+workloads its intended operating regime.
 
 The obstacle to integrating $\tau$ directly into search is the
 non-monotonicity of $\avgsim$: an infeasible clique can have a feasible
@@ -897,6 +937,7 @@ vertex is not $d(C_2)$.
 \begin{figure}[t]
   \centering
   \includegraphics[width=0.95\linewidth]{tex-data/fig/monosem_graph_workflow.pdf}
+  \vspace{-3mm}
   \caption{Canonical ownership on the running example.}
   \Description{Clique graphs illustrating the canonical-parent rule, the owned insertion paths to C1 and C2, and a duplicate construction of C2 rejected before recursion.}
   \label{fig:monotone}
@@ -904,7 +945,7 @@ vertex is not $d(C_2)$.
 
 \begin{algorithm}[t]
   \small
-  \caption{\monoSemMCE: Canonical Reverse Search}
+  \caption{\monoSemMCE}
   \label{alg:monosem-mce}
   \SetKwFunction{FSearch}{Search}
   \SetKwProg{Fn}{Function}{:}{}
@@ -1028,113 +1069,82 @@ Canonical search is governed by the feasible-state family $F_\tau$ rather than
 structural maximal cliques. This family can exceed the structural output at
 intermediate thresholds but contracts sharply as $\tau$ becomes selective;
 \subEnum\ instead continues to pay the structural MCE cost.
-\section{Implementation}
-\label{sec:opt}
-All methods use a common C++17 loader, timing policy, and edge-similarity cache,
-while their adjacency representation follows the access pattern of each search.
-\StructBK\ and \subEnum\ repeatedly evaluate pivot neighborhoods and therefore
-store each row as a sparse blocked bitmap: only nonempty 64-bit blocks are kept,
-and intersections merge block identifiers before applying word-level AND.
-\monoSemMCE\ retains the same representation for common-neighbor construction
-at feasible edge roots. In contrast, the pivot-free \semBK\ scans its evolving
-candidate and exclusion lists against sorted sparse adjacency rows; on these
-short, irregular probes, constructing and searching block indices adds work.
-The three semantic methods place vectors in a degree-descending breadth-first
-layout for similarity-cache construction while preserving graph vertex IDs.
-
-\stitle{Similarity Representation.}
-Input vectors are normalized once into 64-byte-aligned float32 arrays, and
-Advanced Vector Extensions~2 (AVX2) dot products populate the sparse
-edge-similarity cache shared by all semantic methods. Similarity sums, semantic
-surplus, and threshold products use double precision, and all algorithms apply
-the same inclusive comparison
-$\simsum(C)\geq\tau\binom{|C|}{2}$ and no method-specific tolerance. Within a
-structural host $M$, \subEnum\ materializes an $|M|\times|M|$ float32 matrix so
-that repeated subset tests avoid graph-level similarity lookups.
-End-to-end timing includes this preprocessing, search, and result consolidation;
-optional text serialization is disabled, while phase counters separately report
-search work.
-
-\stitle{Incremental Search State.}
-\monoSemMCE\ maintains
-$\acc[w]=\sum_{u\in C}\mathrm{sim}(u,w)$ because every child-feasibility test
-reads this marginal contribution. Extending $C$ by $v$ updates only surviving
-candidates as $\acc'[w]=\acc[w]+\mathrm{sim}(w,v)$, reducing an
-$O(|P'|\,|C|)$ recomputation to $O(|P'|)$. Each worker owns a generation-tagged
-array and reuses depth-indexed buffers; logical resets avoid clearing $O(n)$
-entries, and backtracking restores modified values. \semBK\ instead computes
-the marginal sum directly from $C$;
-its terminal-only semantic test provides no pruning rule that would consume a
-per-candidate accumulator. \subEnum\ evaluates semantic subsets against the
-host-local float32 matrix and reuses its size-layer buffers.
-
-\stitle{Parallel Ownership.}
-OpenMP scheduling follows disjoint units already established by the algorithms.
-\StructBK, \semBK, and \subEnum\ dynamically assign degeneracy roots to workers.
-For a large fixed-size subset layer, \subEnum\ further partitions combinations
-by their smallest selected vertex; workers read the frozen larger-size local
-maxima and merge their same-size results after the layer. \monoSemMCE\ dynamically
-assigns feasible edge roots, each of which owns one canonical tree. Mutable
-recursion buffers, counters, and candidate output remain thread-local during
-search.
-
-\stitle{Result Consolidation.}
-Both proposed methods use the grouped containment filter from
-Algorithm~\ref{alg:strsub}. Candidates are sorted once by decreasing size and
-deduplicated lexicographically. Queries within one equal-size group read a frozen
-inverted index and run in parallel; retained candidates are inserted only after
-the group completes. Consequently, synchronization occurs at result merging and
-between size groups rather than on recursive search states.
 \section{Experiments}
 \label{sec:exp}
 
-Seven research questions cover end-to-end efficiency and output agreement (RQ1),
-threshold and graph-size scalability (RQ2--RQ3), parallelism and mechanisms
-(RQ4--RQ5), the MSC output space (RQ6), and definition and pattern-family
-comparisons (RQ7).
+Eight research questions cover end-to-end efficiency (RQ1), threshold and
+graph-size scalability (RQ2--RQ3), parallelism and mechanisms (RQ4--RQ5), the
+MSC output space (RQ6), definition and pattern-family comparisons (RQ7), and a
+real publication case study (RQ8).
 
 \subsection{Experimental Setup}
 \label{sec:exp-setup}
 
-\stitle{Methods and comparison scope.}
-\StructBK\ implements BK with Tomita pivoting and degeneracy-ordered
-roots~\cite{bron1973,tomita2006,eppstein2010,eppstein2013}; it supplies a
-threshold-independent structural-time reference. \semBK\ is the direct
-baseline: it uses the same MSC definition, threshold, similarity values, and
-strict-containment filter as \subEnum\ and \monoSemMCE. Consequently, runtime
-speedups are claimed only among these three exact MSC methods. \pairSim\ keeps
-edges whose endpoint similarity reaches $\tau$ and then runs structural MCE; it
-represents the every-pair similarity contract used by related constrained
-enumeration models~\cite{yao2022similarbiclique}. FastQC enumerates maximal quasi-cliques under a degree-density
-constraint~\cite{yu2023fastqc}, while FaPlex enumerates maximal $2$-plexes that
-may omit one incident edge per vertex~\cite{zhou2020faplex}. These methods
-define different pattern families and are used only for output-family
-comparisons.
+We compare against the following representative algorithms:
+\begin{itemize}[leftmargin=1.25em,itemsep=0.25ex,topsep=0.4ex,parsep=0pt]
+  \item \StructBK\ implements Bron--Kerbosch search with Tomita pivoting and
+  degeneracy-ordered roots~\cite{bron1973,tomita2006,eppstein2010,eppstein2013}.
+  Because it ignores semantic thresholds and enumerates structural maximal
+  cliques, it provides a threshold-independent reference for structural search
+  time and output size.
+
+  \item FastQC enumerates maximal quasi-cliques satisfying a degree-density
+  constraint~\cite{yu2023fastqc}. We use it to compare MSCs with a widely used
+  relaxed dense-subgraph family rather than as a same-definition runtime
+  competitor.
+
+  \item FaPlex enumerates maximal $2$-plexes, in which each vertex may be
+  nonadjacent to at most one other vertex~\cite{zhou2020faplex}. It provides a
+  second relaxed structural family for evaluating recovery, fidelity, density,
+  and semantic coherence of the returned patterns.
+  
+  \item \semBK\ is the direct exact baseline developed in
+  Section~\ref{sec:framework}. It uses the same MSC definition, threshold,
+  pairwise similarities, and strict-containment maximality criterion as
+  \subEnum\ and \monoSemMCE, but retains pivot-free BK recursion and invokes a
+  secondary \textsc{Check} search to validate semantic maximality.
+
+  \item \pairSim\ removes every edge whose endpoint similarity is below
+  $\tau$ and then applies structural maximal-clique enumeration. It represents
+  the every-pair similarity requirement used by related constrained
+  enumeration models~\cite{yao2022similarbiclique}. We use it only as a
+  definition-level result-family comparison to measure the group structure
+  lost when aggregate coherence is replaced by a pairwise rule.
+  
+\end{itemize}
+
 \stitle{Datasets.}
 The evaluation contains three graphs with natural attributes and five public
-graphs with reproducibly generated attributes. FB15K-237 descriptions use
-all-MiniLM-L6-v2 embeddings; GitHub-Social uses its official 4,005-dimensional
-developer features; and ogbn-arxiv retains its official 128-dimensional node
-features~\cite{rozemberczki2021musae,toutanova2015observed,wang2020ogb}. For email-Enron and the four
+graphs with reproducibly generated attributes. Flickr uses its official
+500-dimensional user features~\cite{zeng2020graphsaint}; GitHub-Social uses its
+official 4,005-dimensional developer features; and ogbn-arxiv retains its
+official 128-dimensional node features~\cite{rozemberczki2021musae,wang2020ogb}. For email-Enron and the four
 SuiteSparse graphs~\cite{leskovec2014snap,davis2011uf}, the PCG64 pseudorandom
 generator draws 256
 coordinates independently from $U[-1,1)$ under fixed dataset seeds, followed
 by $\ell_2$ normalization. Every graph topology is extracted directly from its
 public source dataset. Generated vectors provide controlled inputs for runtime,
 scale, and mechanism experiments; the semantic-output analyses in RQ7 use only
-the two graphs with official natural attributes.
+the three graphs with official natural attributes.
+Unless stated otherwise, subsequent multi-dataset analyses use the fixed panel
+of GitHub-Social, ogbn-arxiv, sc-nasasrb, and sc-ldoor. RQ3 instead uses nested
+subgraphs of ogbn-arxiv for controlled size scaling, and RQ7 uses the three
+graphs with observed attributes.
 
 \begin{table}[t]
 \footnotesize
 \centering
+\caption{Datasets.}
+\label{tab:datasets}
+\vspace{-3mm}
 \setlength{\tabcolsep}{3.6pt}
 \begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}lrrrl@{}}
 \toprule
 Dataset & $|V|$ & $|E|$ & $D$ & Attributes \\
 \midrule
-FB15K-237 & 14,541 & 248,611 & 384 & natural \\
 GitHub-Social & 37,700 & 289,003 & 4,005 & natural \\
 ogbn-arxiv & 169,343 & 1,157,799 & 128 & natural \\
+Flickr & 89,249 & 449,794 & 500 & natural \\
 email-Enron & 36,692 & 183,831 & 256 & generated \\
 sc-nasasrb & 54,870 & 1,311,227 & 256 & generated \\
 sc-pkustk11 & 87,804 & 2,565,054 & 256 & generated \\
@@ -1142,25 +1152,29 @@ sc-pwtk & 217,891 & 5,653,221 & 256 & generated \\
 sc-ldoor & 909,537 & 20,770,807 & 256 & generated \\
 \bottomrule
 \end{tabular*}
-\caption{Public graphs and vector attributes used in the evaluation.}
-\label{tab:datasets}
 \end{table}
 
 \stitle{Protocol.}
 Experiments run on an AMD Ryzen~9 7945HX workstation with 16 physical cores,
-32 hardware threads, and 32\,GiB memory. We compile with GCC~13.2 and OpenMP.
+32 logical processors via simultaneous multithreading (SMT), and 32\,GiB
+memory. We compile with GCC~13.2 and OpenMP.
 Each process is limited to 16\,GiB and 32 OpenMP threads. The uniform timeout is
 1,200 seconds. Completed runtime configurations are repeated three times and
-reported by the median; time-limit exceeded (TLE) denotes one complete
-1,200-second limit window.
-Runtime binaries contain no statistics counters, and the reported in-memory
-end-to-end time excludes optional text serialization.
+reported by the median; a configuration is marked time-limit exceeded (TLE)
+only if all three runs exceed the 1,200-second limit.
+Runtime and counter-instrumented runs are separated; end-to-end time covers the
+in-memory pipeline with optional text serialization disabled.
 
-Absolute cosine values are not comparable across vector sources. We therefore
-derive thresholds from the edge-similarity distribution of each dataset. The
-primary grid fixes $q_{20}$, $q_{80}$, and $q_{99}$ before execution; sensitivity
-experiments use $q_{5}$, $q_{20}$, $q_{50}$, $q_{70}$, $q_{80}$, $q_{90}$,
-$q_{95}$, $q_{97}$, and $q_{99}$.
+Absolute cosine similarities are not directly comparable across vector sources.
+We therefore calibrate the threshold separately for each dataset using the
+empirical distribution of cosine similarities over its edges. Specifically,
+$q_p$ denotes the $p$th percentile of these edgewise similarities, and we set
+$\tau=q_p$. Thus, $q_{20}$ is the similarity value that exceeds approximately
+20\% of adjacent node-pair similarities (equivalently, approximately 80\% are
+at least $q_{20}$). All thresholds are computed and fixed before execution. The
+primary grid uses $q_{20}$, $q_{80}$, and $q_{99}$; sensitivity experiments
+additionally evaluate $q_{5}$, $q_{50}$, $q_{70}$, $q_{90}$, $q_{95}$, and
+$q_{97}$.
 
 \subsection{RQ1: Exactness and End-to-End Efficiency}
 This experiment answers RQ1 by comparing complete MSC output sets and total
@@ -1173,101 +1187,130 @@ counts, and size histograms. In particular, all three exact methods return
 $q_{99}$, respectively; \subEnum\ and \monoSemMCE\ also agree on every jointly
 completed row of Table~\ref{tab:main-runtime}.
 Across the eight graphs, the structural reference enumerates between 22,612 and 1,041,789 structural maximal cliques; these counts quantify the structural enumeration workload underlying the runtime comparisons.
+For the threshold-independent runtime references, FastQC uses
+$\gamma=0.95$ with minimum size 10, while FaPlex uses $k=2$ with minimum
+size 20; each parameterization is fixed across all eight graphs.
 
-\begin{table*}[t]
-\scriptsize
+\begin{figure}[!t]
+\refstepcounter{table}
+\footnotesize
 \centering
-\setlength{\tabcolsep}{2.5pt}
+\label{tab:main-runtime}
+\caption*{\textbf{Table~\thetable:} [RQ1] Median end-to-end runtime (s) for structural, external, and exact MSC methods. TLE means all three runs exceed the 1,200-second limit.}
+\vspace{-3mm}
+\setlength{\tabcolsep}{1.55pt}
 \renewcommand{\arraystretch}{1.02}
-\begin{tabular*}{0.98\textwidth}{@{\extracolsep{\fill}}lrcrrrr@{}}
+\begin{tabular*}{0.99\columnwidth}{@{\extracolsep{\fill}}lrrrcrrr@{}}
 \toprule
-Dataset & \shortstack{\StructBK\\structure} & $q$ & MSCs & \semBK & \subEnum & \monoSemMCE \\
+\multirow{2}{*}{Dataset} & \multicolumn{3}{c}{Structural / external} & \multicolumn{4}{c}{MSC methods} \\
+\cmidrule(lr){2-4}\cmidrule(lr){5-8}
+& \StructBK & FastQC & FaPlex & $q$ & \textsc{BKBasic} & \textsc{BKPlus} & \textsc{HighSim} \\
 \midrule
-FB15K-237 & \multirow{3}{*}{0.103} & 20 & 206,470 & TLE & \cellcolor{bestgreen}\textbf{0.221} & TLE \\
- & & 80 & 76,106 & TLE & \cellcolor{bestgreen}\textbf{9.132} & TLE \\
- & & 99 & 7,476 & TLE & 45.234 & \cellcolor{bestgreen}\textbf{10.091} \\
+GitHub-Social & \multirow{3}{*}{0.110} & \multirow{3}{*}{5.74} & \multirow{3}{*}{4.28} & 20 & 34.777 & \cellcolor{bestgreen}\textbf{0.327} & 29.315 \\
+ & & & & 80 & 27.548 & \cellcolor{bestgreen}\textbf{0.314} & 20.551 \\
+ & & & & 99 & 21.495 & 0.391 & \cellcolor{bestgreen}\textbf{0.118} \\
 \midrule
-GitHub-Social & \multirow{3}{*}{0.110} & 20 & 263,721 & 34.777 & \cellcolor{bestgreen}\textbf{0.327} & 29.315 \\
- & & 80 & 71,118 & 27.548 & \cellcolor{bestgreen}\textbf{0.314} & 20.551 \\
- & & 99 & 2,636 & 21.495 & 0.391 & \cellcolor{bestgreen}\textbf{0.118} \\
+ogbn-arxiv & \multirow{3}{*}{0.309} & \multirow{3}{*}{35.26} & \multirow{3}{*}{28.43} & 20 & 1.590 & \cellcolor{bestgreen}\textbf{1.233} & 3.357 \\
+ & & & & 80 & 1.165 & \cellcolor{bestgreen}\textbf{0.872} & 1.610 \\
+ & & & & 99 & 1.249 & 0.843 & \cellcolor{bestgreen}\textbf{0.197} \\
 \midrule
-ogbn-arxiv & \multirow{3}{*}{0.309} & 20 & 925,239 & 1.590 & \cellcolor{bestgreen}\textbf{1.233} & 3.357 \\
- & & 80 & 226,936 & 1.165 & \cellcolor{bestgreen}\textbf{0.872} & 1.610 \\
- & & 99 & 10,261 & 1.249 & 0.843 & \cellcolor{bestgreen}\textbf{0.197} \\
+Flickr & \multirow{3}{*}{0.117} & \multirow{3}{*}{0.27} & \multirow{3}{*}{0.17} & 20 & 2.751 & \cellcolor{bestgreen}\textbf{1.152} & 1.612 \\
+ & & & & 80 & 2.910 & 0.760 & \cellcolor{bestgreen}\textbf{0.599} \\
+ & & & & 99 & 0.454 & 0.285 & \cellcolor{bestgreen}\textbf{0.169} \\
 \midrule
-email-Enron & \multirow{3}{*}{0.090} & 20 & 223,703 & 9.196 & \cellcolor{bestgreen}\textbf{0.259} & 16.739 \\
- & & 80 & 60,352 & 8.312 & 1.266 & \cellcolor{bestgreen}\textbf{0.083} \\
- & & 99 & 1,819 & 4.084 & 0.206 & \cellcolor{bestgreen}\textbf{0.033} \\
+email-Enron & \multirow{3}{*}{0.090} & \multirow{3}{*}{20.47} & \multirow{3}{*}{1.44} & 20 & 9.196 & \cellcolor{bestgreen}\textbf{0.259} & 16.739 \\
+ & & & & 80 & 8.312 & 1.266 & \cellcolor{bestgreen}\textbf{0.083} \\
+ & & & & 99 & 4.084 & 0.206 & \cellcolor{bestgreen}\textbf{0.033} \\
 \midrule
-sc-nasasrb & \multirow{3}{*}{0.090} & 20 & 28,154 & TLE & \cellcolor{bestgreen}\textbf{0.301} & TLE \\
- & & 80 & 834,914 & TLE & 102.820 & \cellcolor{bestgreen}\textbf{0.759} \\
- & & 99 & 12,742 & TLE & 0.415 & \cellcolor{bestgreen}\textbf{0.079} \\
+sc-nasasrb & \multirow{3}{*}{0.090} & \multirow{3}{*}{7.10} & \multirow{3}{*}{67.30} & 20 & TLE & \cellcolor{bestgreen}\textbf{0.301} & TLE \\
+ & & & & 80 & TLE & 102.820 & \cellcolor{bestgreen}\textbf{0.759} \\
+ & & & & 99 & TLE & 0.415 & \cellcolor{bestgreen}\textbf{0.079} \\
 \midrule
-sc-pkustk11 & \multirow{3}{*}{0.143} & 20 & 22,612 & TLE & \cellcolor{bestgreen}\textbf{0.645} & TLE \\
- & & 80 & 2,214,411 & TLE & TLE & \cellcolor{bestgreen}\textbf{2.219} \\
- & & 99 & 24,891 & TLE & 0.611 & \cellcolor{bestgreen}\textbf{0.167} \\
+sc-pkustk11 & \multirow{3}{*}{0.143} & \multirow{3}{*}{51.80} & \multirow{3}{*}{216.85} & 20 & TLE & \cellcolor{bestgreen}\textbf{0.645} & TLE \\
+ & & & & 80 & TLE & TLE & \cellcolor{bestgreen}\textbf{2.219} \\
+ & & & & 99 & TLE & 0.611 & \cellcolor{bestgreen}\textbf{0.167} \\
 \midrule
-sc-pwtk & \multirow{3}{*}{0.286} & 20 & 58,523 & TLE & \cellcolor{bestgreen}\textbf{1.093} & TLE \\
- & & 80 & 4,483,887 & TLE & TLE & \cellcolor{bestgreen}\textbf{3.977} \\
- & & 99 & 54,907 & TLE & 1.364 & \cellcolor{bestgreen}\textbf{0.421} \\
+sc-pwtk & \multirow{3}{*}{0.286} & \multirow{3}{*}{37.97} & \multirow{3}{*}{1190.44} & 20 & TLE & \cellcolor{bestgreen}\textbf{1.093} & TLE \\
+ & & & & 80 & TLE & TLE & \cellcolor{bestgreen}\textbf{3.977} \\
+ & & & & 99 & TLE & 1.364 & \cellcolor{bestgreen}\textbf{0.421} \\
 \midrule
-sc-ldoor & \multirow{3}{*}{1.679} & 20 & 274,585 & TLE & \cellcolor{bestgreen}\textbf{4.870} & TLE \\
- & & 80 & 13,473,317 & TLE & 563.996 & \cellcolor{bestgreen}\textbf{14.944} \\
- & & 99 & 202,030 & TLE & 4.845 & \cellcolor{bestgreen}\textbf{1.658} \\
+sc-ldoor & \multirow{3}{*}{1.679} & \multirow{3}{*}{267.83} & \multirow{3}{*}{TLE} & 20 & TLE & \cellcolor{bestgreen}\textbf{4.870} & TLE \\
+ & & & & 80 & TLE & 563.996 & \cellcolor{bestgreen}\textbf{14.944} \\
+ & & & & 99 & TLE & 4.845 & \cellcolor{bestgreen}\textbf{1.658} \\
 \bottomrule
 \end{tabular*}
-\caption{Median in-memory end-to-end runtime across 24 dataset-threshold workloads.}
-\label{tab:main-runtime}
-\end{table*}
+\end{figure}
 
-Table~\ref{tab:main-runtime} shows that \subEnum\ completes 22 of 24 workloads
-and every $q_{20}$ row, while \monoSemMCE\ resolves the two intermediate rows
-where host-clique subset enumeration reaches TLE. At $q_{99}$, canonical search
-is faster on all eight graphs, with speedups from $2.92\times$ on sc-ldoor to
-$6.24\times$ on email-Enron. \semBK\ completes all nine rows on GitHub-Social,
-ogbn-arxiv, and email-Enron but reaches TLE on all three FB15K-237 rows; its pivot-free search is slower than the faster of
-\subEnum\ and \monoSemMCE\ on every completed row. The \StructBK\ column is reported only to
-separate structural enumeration cost from semantic processing. Its
-$0.090$--$1.679$ second range is much smaller than the hardest semantic runs,
-showing that the dominant work comes from enforcing average feasibility and
-inclusion maximality within the structural search space. The jointly completed
-rows therefore establish both exact output agreement and the intended division
-of labor: structural decomposition is effective when entire host cliques or
-large size layers can be resolved together, whereas canonical traversal is
-effective after semantic selectivity has contracted the feasible-state forest.
+\begin{figure}[!t]
+\centering
+\includegraphics[width=\linewidth]{tex-data/fig/runtime_baseline_comparison.pdf}
+\vspace{-4mm}
+\caption{[RQ1] Runtime across structural, relaxed-family, and MSC methods. Crosses mark the 1,200-second limit.}
+\Description{Log-scale runtime bars for StructBK, FastQC, FaPlex, MSC-BKBasic at q20, MSC-BKPlus at q20, and MSC-HighSim at q99 on eight datasets.}
+\label{fig:runtime-baseline-comparison}
+\end{figure}
+
+Table~\ref{tab:main-runtime} first establishes the gain over the same-definition
+\semBK\ baseline. On every jointly completed row, the faster proposed method is
+$1.29\times$--$182\times$ faster; \semBK\ additionally reaches TLE on all twelve
+workloads from the four larger generated-attribute graphs. \subEnum\ completes
+every $q_{20}$ workload and 22 of 24 rows, while \monoSemMCE\ completes the two
+intermediate rows where host-clique subset enumeration reaches TLE. These
+results isolate the benefit of the two search organizations because all three
+methods enumerate exactly the same MSC family.
+
+Figure~\ref{fig:runtime-baseline-comparison} then selects the operating point
+targeted by each organization: $q_{20}$ for \semBK\ and \subEnum, and $q_{99}$
+for \monoSemMCE. \subEnum\ completes all eight low-threshold workloads in
+0.259--4.870 seconds; on seven graphs its runtime is within $4.6\times$ of
+threshold-independent structural MCE. \monoSemMCE\ completes all eight
+high-threshold workloads in 0.033--1.658 seconds, corresponding to
+$0.37\times$--$1.47\times$ the structural runtime. Thus exact MSC enumeration
+approaches structural-enumeration efficiency in each method's intended regime,
+despite the additional non-monotone semantic and maximality constraints.
+FastQC and FaPlex enumerate different relaxed pattern families, so their fixed
+parameter columns provide runtime context rather than same-output speedups.
 
 \subsection{RQ2: Threshold Sensitivity}
-This experiment varies semantic selectivity while holding each graph fixed, so
-a reversal in runtime ordering can be attributed to the threshold-induced
-search space. Figure~\ref{fig:threshold-runtime} uses the full fixed quantile
-grid. On ogbn-arxiv, \subEnum\ remains between 0.843 and 1.233 seconds across
-the sweep, whereas \monoSemMCE\ decreases from 3.357 seconds at $q_{20}$ to
-0.435 at $q_{95}$ and 0.197 at $q_{99}$; the methods cross near $q_{95}$. On
-sc-ldoor, \subEnum\ completes the low-threshold cases, but the intermediate
-fragmentation region produces 66.6 million MSCs at $q_{70}$ and exhausts its
-host-clique subset search. As $q$ increases further, infeasible insertions
-truncate the canonical forest, and \monoSemMCE\ falls from 91.945 seconds at
-$q_{70}$ to 1.658 seconds at $q_{99}$. These trajectories match the mechanisms
-developed in Sections~\ref{sec:strsub} and~\ref{sec:monosem-mce}: \subEnum\ amortizes
-decisions over structural hosts, while \monoSemMCE\ visits only feasible,
-canonically owned states. TLE points are shown at the fixed limit and are not
-interpolated.
+Figure~\ref{fig:threshold-runtime} applies a nine-point quantile grid to the
+fixed four graphs. \subEnum\ leads at low and intermediate thresholds, whereas
+\monoSemMCE\ takes over at $q_{90}$ on GitHub-Social and $q_{80}$ on Flickr.
+The generated graphs exhibit a larger intermediate output region: at $q_{70}$,
+sc-nasasrb and sc-ldoor produce 4.38 and 66.6 million MSCs. As $q$ rises,
+infeasible insertions contract the canonical forest, reducing \monoSemMCE\ to
+0.079 and 1.658 seconds at $q_{99}$. \semBK\ is shown on the two
+natural-attribute graphs with complete curves; the specialized method remains
+faster in its favorable regime. These trajectories reflect the search designs:
+\subEnum\ amortizes decisions within structural hosts, whereas \monoSemMCE\
+visits feasible states with canonical ownership.
 
 \begin{figure}[t]
 \centering
-\includegraphics[width=0.72\linewidth]{tex-data/fig/threshold_runtime_legend.pdf}
+\includegraphics[width=\linewidth]{tex-data/fig/threshold_runtime_legend.pdf}
+\vskip -5pt
 \begin{subfigure}[t]{0.495\linewidth}
 \centering
-\includegraphics[width=\linewidth]{tex-data/fig/threshold_runtime_arxiv.pdf}
-\caption{ogbn-arxiv}
+\includegraphics[width=\linewidth]{tex-data/fig/threshold_runtime_github.pdf}
+\caption{GitHub-Social}
+\end{subfigure}\hfill
+\begin{subfigure}[t]{0.495\linewidth}
+\centering
+\includegraphics[width=\linewidth]{tex-data/fig/threshold_runtime_flickr.pdf}
+\caption{Flickr}
+\end{subfigure}
+\begin{subfigure}[t]{0.495\linewidth}
+\centering
+\includegraphics[width=\linewidth]{tex-data/fig/threshold_runtime_nasasrb.pdf}
+\caption{sc-nasasrb}
 \end{subfigure}\hfill
 \begin{subfigure}[t]{0.495\linewidth}
 \centering
 \includegraphics[width=\linewidth]{tex-data/fig/threshold_runtime_ldoor.pdf}
 \caption{sc-ldoor}
 \end{subfigure}
-\caption{Threshold sweeps reveal complementary runtime regimes.}
-\Description{Runtime over nine fixed threshold quantiles on ogbn-arxiv and sc-ldoor.}
+\vspace{-3mm}
+\caption{[RQ2] Increasing semantic selectivity reverses the runtime ordering of the exact search organizations.}
+\Description{Runtime over fixed threshold quantiles on GitHub-Social, Flickr, sc-nasasrb, and sc-ldoor.}
 \label{fig:threshold-runtime}
 \end{figure}
 
@@ -1275,26 +1318,26 @@ interpolated.
 Figure~\ref{fig:scale-runtime} reports absolute end-to-end runtime on shared
 logarithmic axes as the graph
 grows through nested induced ogbn-arxiv graphs whose vertices follow one fixed
-degree order. The construction changes the number of vertices and outputs while
-preserving the graph family and all six threshold quantiles. Both exact methods
-remain executable across the four sizes: at $q_{20}$, \subEnum\ increases from
+degree order. We use this single graph because it is both the largest observed
+semantic graph and supports a controlled nested expansion. The construction changes the number of vertices and outputs while
+preserving the graph family and all six threshold quantiles. Across the four
+sizes, at $q_{20}$, \subEnum\ increases from
 0.516 to 1.216 seconds and \monoSemMCE\ from 2.130 to 3.320 seconds; at
 $q_{99}$, the corresponding increases are 0.340 to 0.707 and 0.057 to 0.200
-seconds. Thus the experiment directly measures how each search organization
-responds to graph growth, rather than treating one method as a universal
-reference. Figure~\ref{fig:scale-regime} complements these absolute curves with
-the runtime ratio across all size--threshold combinations. Its sign boundary
-remains at $q_{95}$: \subEnum\ is faster through $q_{90}$, while
+seconds. The runtime
+ordering changes consistently at $q_{95}$, with \subEnum\ faster through
+$q_{90}$, while
 \monoSemMCE\ becomes faster at $q_{95}$ and $q_{99}$. The latter's $q_{99}$
 advantage is $6.0\times$, $5.6\times$, $4.4\times$, and $3.5\times$ at 25K,
 50K, 100K, and 169K vertices, respectively, so the selective-threshold benefit
 persists as the graph grows by $6.8\times$.
+Thus, the high-selectivity advantage persists under controlled graph growth
+rather than arising from one graph size.
 
 \begin{figure}[t]
 \centering
-\begin{minipage}{0.85\linewidth}
-\centering
-\includegraphics[width=0.94\linewidth]{tex-data/fig/scale_runtime_legend.pdf}
+\includegraphics[width=\linewidth]{tex-data/fig/scale_runtime_legend.pdf}
+\vskip -5pt
 \begin{subfigure}[t]{0.495\linewidth}
 \centering
 \includegraphics[width=\linewidth]{tex-data/fig/scale_runtime_strsub.pdf}
@@ -1305,189 +1348,104 @@ persists as the graph grows by $6.8\times$.
 \includegraphics[width=\linewidth]{tex-data/fig/scale_runtime_monosem.pdf}
 \caption{\monoSemMCE}
 \end{subfigure}
-\end{minipage}
-\caption{Absolute runtime growth for both methods on logarithmic axes.}
-\Description{End-to-end runtime of StrSub and MonoSemMCE over four nested graph sizes and six threshold quantiles.}
+\vspace{-3mm}
+\caption{[RQ3] Both exact methods scale across graph sizes while the high-threshold crossover persists.}
+\Description{End-to-end runtime of MSC-BKPlus and MSC-HighSim over four nested graph sizes and six threshold quantiles.}
 \label{fig:scale-runtime}
 \end{figure}
 
-\begin{figure}[t]
-\centering
-\includegraphics[width=0.75\linewidth]{tex-data/fig/scale_regime.pdf}
-\caption{Relative runtime regimes remain stable across graph sizes.}
-\Description{Log2 runtime ratio between MonoSemMCE and StrSub over four nested graph sizes and six threshold quantiles.}
-\label{fig:scale-regime}
-\end{figure}
-
 \subsection{RQ4: Parallel Scalability}
-Figure~\ref{fig:parallel-scaling} reports FB15K-237 at $q_{80}$ for \subEnum
-and ogbn-arxiv at $q_{50}$ for \monoSemMCE. Dynamic edge-root scheduling reduces
-\monoSemMCE\ from 13.054 seconds on one thread to 2.323 seconds on 32 threads,
-a $5.62\times$ speedup. The gain continues from 16 to 32 threads because
-canonical ownership exposes independent root subtrees without a shared visited
-table. Fixed-size subset partitioning reduces \subEnum\ from 19.662 seconds to
-8.232 seconds at 16 threads, a $2.39\times$ speedup, and reaches $2.26\times$
-at 32 threads. Separately collected phase counters attribute 98.88\% of its
-32-thread work to host-clique subset processing, while the final global filter
-takes only 65 ms. The saturation therefore arises inside the dominant search
-phase: structural maximal cliques induce tasks of unequal size, so a few large
-hosts determine the completion time even though equal-size subsets within each
-host are partitioned. The two curves consequently validate the parallelization
-choices described in Section~\ref{sec:opt}: fine-grained canonical
-roots provide more uniform concurrency than host-clique decomposition.
+Figure~\ref{fig:parallel-scaling} evaluates 1--32 threads at $q_{20}$ for
+\semBK\ and \subEnum\ and $q_{99}$ for \monoSemMCE. Speedups are computed per
+graph before their geometric mean. The proposed methods use four graphs;
+\semBK\ uses the two completing natural-attribute graphs. Their one-thread
+ranges are 1.054--13.044, 0.140--2.443, and 13.841--84.999 seconds for
+\subEnum, \monoSemMCE, and \semBK, respectively.
+
+At 16 threads,
+\semBK, \subEnum, and \monoSemMCE\ reach $5.49\times$, $3.86\times$, and
+$2.39\times$ speedup, respectively. Longer \semBK\ searches amortize scheduling
+and merging most effectively. Host roots in \subEnum\ expose more parallel work,
+whereas \monoSemMCE's selective canonical forests finish quickly and leave less
+work per root. All curves peak at 16 physical cores; 32 SMT threads add
+shared-resource contention without adding cores.
 
 \begin{figure}[t]
 \centering
-\includegraphics[width=0.80\linewidth]{tex-data/fig/parallel_scaling.pdf}
-\caption{Parallel speedup under method-specific task scheduling.}
-\Description{Speedup from one to 32 threads for StrSub on FB15K-237 at q80 and MonoSemMCE on ogbn-arxiv at q50.}
+\includegraphics[width=0.86\linewidth]{tex-data/fig/parallel_scaling.pdf}
+\vspace{-2mm}
+\caption{[RQ4] Root-level scheduling accelerates all three exact MSC searches.}
+\Description{Geometric-mean speedup from one to 32 threads. BKPlus and HighSim average four graphs; BKBasic averages the two naturally attributed graphs that complete.}
 \label{fig:parallel-scaling}
 \end{figure}
 
-\subsection{RQ5: Search and Engineering Mechanisms}
-Figure~\ref{fig:mechanisms} traces canonical-search diagnostics collected
-outside timing runs. Accepted states contract from 17.08 million at $q_5$ to
-18,011 at $q_{99}$. At the same time, canonical rejection accounts for 83.6\%
-of candidate tests at $q_5$, whereas the $W$-based feasibility test prunes
-86.1\% at $q_{99}$. Thus high selectivity reduces work before child-state
-construction, matching the regime in which \monoSemMCE\ becomes dominant.
-The ablations proceed hierarchically: they first
-isolate semantic pruning in \subEnum, then duplicate-state organization in
-\monoSemMCE, and finally two method-specific engine primitives while holding the
-exact output fixed.
+\subsection{RQ5: Mechanism Ablations}
+Table~\ref{tab:ablation} changes one mechanism at a time; completed variants
+return identical MSC sets, and instrumented counters are excluded from timing.
+Ablations use $q_{20}$ except for BKPlus's $q_{99}$ vertex-bound row and
+HighSim's $q_{90}$ state-generation rows.
+In \subEnum, sorted-edge and local-containment pruning reduce subset tests by
+$1.08\times$ and $1.51\times$. Removing the vertex bound increases tests by
+$1.27\times$--$6.20\times$ on three graphs; on sc-ldoor, the full method takes
+6.04 seconds while the ablation exceeds 30 seconds. In \monoSemMCE,
+canonical ownership reduces candidate tests by $1.50\times$ and avoids 18,942
+layered duplicate states. Against Visited DFS and Layered traversal at $q_{90}$,
+it is $4.38\times$ and $3.64\times$ faster and uses $1.73\times$ and
+$1.53\times$ less peak memory. The memory difference is largest when
+duplicate-state storage grows beyond the shared graph and vector representation.
 
-\begin{figure}[t]
-\centering
-\includegraphics[width=0.96\linewidth]{tex-data/fig/mechanism_monosem_legend.pdf}
-\begin{subfigure}[t]{0.495\linewidth}
-\centering
-\includegraphics[width=\linewidth]{tex-data/fig/mechanism_monosem_states.pdf}
-\caption{Search contraction}
-\end{subfigure}\hfill
-\begin{subfigure}[t]{0.495\linewidth}
-\centering
-\includegraphics[width=\linewidth]{tex-data/fig/mechanism_monosem_rejections.pdf}
-\caption{Candidate rejection}
-\end{subfigure}
-\caption{Canonical search contracts and shifts toward feasibility pruning.}
-\Description{Accepted states and emitted MSCs, followed by the shares of candidate tests rejected by canonical ownership and the W-based feasibility test, over nine ogbn-arxiv thresholds.}
-\label{fig:mechanisms}
-\end{figure}
+Sparse rows and direct marginal sums improve \semBK\ by $1.12\times$ and
+$1.39\times$; local containment improves \subEnum\ by $1.19\times$.
 
-Table~\ref{tab:ablation} isolates the three \subEnum\ pruning mechanisms on
-their appropriate metrics. On sc-nasasrb at $q_{99}$, the sorted-edge bound
-reduces subset tests from 16.50 to 12.95 million, and the vertex bound reduces
-them from 80.28 to 12.95 million. Local containment is measured separately on
-FB15K $q_{80}$ because its primary effect is peak memory rather than subset-test
-count, reducing 2.26 to 0.12~GiB.
-
-\begin{table}[t]
-\footnotesize
+\begin{table}[h]
+\scriptsize
 \centering
-\setlength{\tabcolsep}{4.0pt}
-\begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}llrr@{}}
-\toprule
-Component & Metric / workload & Full & Removed \\
-\midrule
-Sorted-edge bound & tests (M) / nasa $q_{99}$ & \cellcolor{bestgreen}\textbf{12.95} & 16.50 \\
-Vertex bound & tests (M) / nasa $q_{99}$ & \cellcolor{bestgreen}\textbf{12.95} & 80.28 \\
-Local containment & GiB / FB15K $q_{80}$ & \cellcolor{bestgreen}\textbf{0.12} & 2.26 \\
-\bottomrule
-\end{tabular*}
-\caption{Effect of the three \subEnum\ pruning mechanisms.}
+\caption{[RQ5] Search and engineering ablations; each row changes only the stated mechanism.}
 \label{tab:ablation}
-\end{table}
-
-The corresponding runtimes are 0.287 versus 0.324 seconds for the sorted-edge bound,
-0.287 versus 0.312 seconds for the vertex bound, and 8.060 versus 11.685
-seconds for local containment. Every variant retains the same 12,742 outputs,
-so the measured changes follow from pruning and local maximality checks while
-preserving enumeration semantics. Table~\ref{tab:generation-ablation} then holds
-the feasibility test, similarity cache, and final filter fixed while replacing
-only duplicate-state organization. \emph{Visited DFS} suppresses duplicates
-with a global state table, whereas \emph{Layered} materializes and deduplicates
-all feasible cliques of one size before generating the next. Canonical ownership
-is $4.2\times$--$6.3\times$ faster and uses $1.3\times$--$3.7\times$ less
-memory than these alternatives across the two workloads. Every variant returns
-the same normalized MSC set and size histogram, directly connecting the gain to
-unique-parent state generation rather than feasibility pruning.
-
-\begin{table}[t]
-\footnotesize
-\centering
-\setlength{\tabcolsep}{4.0pt}
-\begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}lrrrr@{}}
+\setlength{\tabcolsep}{2.2pt}
+\begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}lllr@{}}
 \toprule
-& \multicolumn{2}{c}{ogbn $q_{95}$} & \multicolumn{2}{c}{nasa $q_{80}$} \\
-\cmidrule(lr){2-3}\cmidrule(lr){4-5}
-Generation & s & GiB & s & GiB \\
+Method & Mechanism / comparison & Metric & Effect \\
 \midrule
-\rowcolor{bestgreen}Canonical & \textbf{0.388} & \textbf{0.39} & \textbf{0.729} & \textbf{0.22} \\
-Visited DFS & 2.432 & 0.53 & 3.069 & 0.64 \\
-Layered & 1.635 & 0.49 & 3.922 & 0.81 \\
+\multicolumn{4}{l}{\emph{(a) Semantic pruning}} \\
+\textsc{BKPlus} & Sorted-edge bound & tests / 4-graph GM & $1.08\times$ fewer \\
+\textsc{BKPlus} & Vertex-contribution bound & tests / 4 graphs & $1.27$--$6.20\times$; one $>30$ s \\
+\textsc{BKPlus} & Local containment & tests / 4-graph GM & $1.51\times$ fewer \\
+\midrule
+\multicolumn{4}{l}{\emph{(b) State generation}} \\
+\textsc{HighSim} & Canonical / Visited DFS & candidate tests / 4-graph GM & $1.50\times$ fewer \\
+\textsc{HighSim} & Canonical / Layered & duplicates / 4-graph sum & 18,942 avoided \\
+\textsc{HighSim} & Canonical / Visited DFS & time; peak GiB / 4-graph GM & $4.38\times$; $1.73\times$ \\
+\textsc{HighSim} & Canonical / Layered & time; peak GiB / 4-graph GM & $3.64\times$; $1.53\times$ \\
+\midrule
+\multicolumn{4}{l}{\emph{(c) Engineering choices}} \\
+\textsc{BKBasic} & Sparse rows & runtime / GM$^\ast$ & $1.12\times$ faster \\
+\textsc{BKBasic} & Direct sum & runtime / GM$^\ast$ & $1.39\times$ faster \\
+\textsc{BKPlus} & Local containment & runtime / 4-graph GM & $1.19\times$ faster \\
 \bottomrule
 \end{tabular*}
-\caption{Canonical ownership versus duplicate-state organizations.}
-\label{tab:generation-ablation}
+\vspace{1pt}\parbox{\linewidth}{\scriptsize $^\ast$Geometric mean over GitHub-Social and ogbn-arxiv, where complete BKBasic runs are available.}
 \end{table}
-
-Table~\ref{tab:engineering-ablation} isolates the representation and state
-updates selected for each search. Each row changes one choice while preserving
-the remaining configuration; values are medians of three complete runs, and all
-variants return identical counts. Sparse lists fit \semBK's irregular candidate
-probes, while removing accumulator updates that its terminal-only test never
-reads eliminates redundant work. Blocked bitmaps and vector reordering support
-\subEnum's repeated pivot-neighborhood operations. For \monoSemMCE, incremental
-accumulation directly supplies the marginal contribution used by every child
-feasibility test. Complete results for all 31 evaluated configurations are
-archived with the artifact.
-
-\begin{table}[t]
-\footnotesize
-\centering
-\setlength{\tabcolsep}{3.4pt}
-\begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}lllrrr@{}}
-\toprule
-Method & Workload & Choice & With (s) & Without (s) & Speedup \\
-\midrule
-\semBK & Enron $q_{80}$ & Sparse rows & 8.106 & 10.572 & $1.30\times$ \\
-\semBK & Enron $q_{80}$ & Direct sum & 10.572 & 22.935 & $2.17\times$ \\
-\subEnum & FB15K $q_{80}$ & Bitmap & 7.084 & 11.255 & $1.59\times$ \\
-\subEnum & FB15K $q_{80}$ & Reorder & 7.084 & 8.792 & $1.24\times$ \\
-\monoSemMCE & FB15K $q_{99}$ & Accumulator & 8.630 & 15.534 & $1.80\times$ \\
-\bottomrule
-\end{tabular*}
-\caption{Paired engineering choices; other switches are fixed within each row, and speedup is without/with.}
-\label{tab:engineering-ablation}
-\end{table}
-
-The paired speedups range from $1.24\times$ to $2.17\times$. More importantly,
-they follow the access pattern of each algorithm: sparse rows and direct sums
-avoid unused maintenance in \semBK, bitmap intersections and reordering serve
-\subEnum's repeated neighborhood operations, and accumulators serve the
-marginal tests performed at every \monoSemMCE\ insertion. The ablation therefore
-supports method-specific engine configurations while keeping the mathematical
-search procedures and outputs fixed.
 
 \subsection{RQ6: MSC Output Space}
-This experiment measures exact output counts and mean sizes on four graphs:
-FB15K-237, ogbn-arxiv, sc-nasasrb, and sc-ldoor. It uses five quantiles from
+This experiment measures size-at-least-two output counts and mean sizes on four graphs:
+GitHub-Social, ogbn-arxiv, sc-nasasrb, and sc-ldoor. It uses five quantiles from
 $q_{20}$ through $q_{99}$. Figure~\ref{fig:result-distribution}
 normalizes each value by \StructBK\ on the same graph. The geometric-mean count
-ratios are 1.04, 7.50, 3.53, 0.61, and 0.11: intermediate thresholds split
+ratios are 0.95, 6.89, 2.97, 0.39, and 0.07: intermediate thresholds split
 large structural cliques into many feasible subsets that are maximal by
 inclusion. Selective thresholds instead contract the result family. Mean size decreases
-from 1.06 to 0.39 of the structural reference over the same grid. The count
+from 1.01 to 0.25 of the structural reference over the same grid. The count
 peak and size decline describe the non-monotone search difficulty more precisely
 than either statistic alone: one structural host can yield many smaller MSCs in
 the intermediate regime, whereas high thresholds eliminate most extensions and
-leave fewer, smaller outputs. This expansion--contraction pattern explains both
-the intermediate \subEnum\ workload in RQ2 and the rapid contraction of the
-\monoSemMCE\ state space at selective thresholds in RQ5.
+leave fewer, smaller outputs. This expansion--contraction pattern explains the
+threshold-dependent runtime regimes observed in RQ2.
 
 \begin{figure}[t]
 \centering
-\includegraphics[width=0.94\linewidth]{tex-data/fig/result_distribution_legend.pdf}
+\includegraphics[width=\linewidth]{tex-data/fig/result_distribution_legend.pdf}
+\vskip -5pt
 \begin{subfigure}[t]{0.495\linewidth}
 \centering
 \includegraphics[width=\linewidth]{tex-data/fig/result_distribution_count.pdf}
@@ -1498,165 +1456,163 @@ the intermediate \subEnum\ workload in RQ2 and the rapid contraction of the
 \includegraphics[width=\linewidth]{tex-data/fig/result_distribution_size.pdf}
 \caption{Mean size}
 \end{subfigure}
-\caption{MSC output expands and then contracts as selectivity increases.}
+\vspace{-3mm}
+\caption{[RQ6] MSC output expands at intermediate thresholds and contracts under high selectivity.}
 \Description{Normalized MSC count and mean size over five threshold quantiles on four datasets.}
 \label{fig:result-distribution}
 \end{figure}
 
 \subsection{RQ7: Group Preservation and External Pattern Families}
-RQ7 first compares MSC with the every-pair definition. The reference cover
-contains all size-at-least-ten MSCs at $q_{80}$ on GitHub-Social and the 25K
-induced ogbn-arxiv graph used in RQ3; the response cover contains every non-singleton \pairSim\
-output at the same $\tau$. For these overlapping covers, Extended B$^3$ Recall
-is the overlap-aware, entity-level recall of the reference cover and measures
-collective fragmentation~\cite{amigo2009bcubed}. Best-match recall
-$R_{\max}(C)=\max_{P\in\mathcal P}|C\cap P|/|C|$ measures the largest
-fraction of MSC $C$ retained by one
-output~\cite{yang2013bigclam,hric2014recovery}.
+Because this experiment evaluates semantic group preservation, it uses the
+three graphs with observed vector attributes: GitHub-Social, ogbn-arxiv, and
+Flickr. The reference cover contains all size-at-least-ten $q_{80}$ MSCs.
+PairSim uses the same threshold, FastQC uses $\gamma=0.95$ and minimum size 10,
+and FaPlex uses $k=2$ and minimum size 20. We evaluate every baseline with
+Extended B$^3$, an overlap-aware entity-level measure~\cite{amigo2009bcubed}.
+For each vertex, it measures how many reference co-members remain grouped with
+that vertex (recall) and how many reported co-members are supported by the
+reference cover (precision), then averages over vertices. This construction
+handles overlapping result families without imposing a one-to-one group
+matching; MSC self-comparison equals one on both axes.
 
-Figure~\ref{fig:definition-recovery} shows the definition effect. \pairSim\
-obtains B$^3$ Recall/best-match recall of 0.156/0.450 on GitHub-Social and
-0.544/0.680 on ogbn-arxiv-25K. None of 605 GitHub-Social MSCs and only 0.32\%
-of 624 ogbn-arxiv-25K MSCs is retained intact; respectively, 100\% and 84.9\%
-lose at least 20\% of their members. The every-pair constraint therefore
-fragments groups that remain complete and collectively feasible.
+Figure~\ref{fig:rq7-comparison} exposes complementary losses under one metric.
+PairSim attains high precision on GitHub-Social and Flickr (0.920 and 0.907),
+but recall is only 0.156 and 0.169 because one weak pair fragments a
+collectively feasible group. StructBK and FastQC recover more MSC
+co-memberships, reaching recall 0.988 on ogbn-arxiv, while their precision on
+that graph is 0.626 and 0.598 because structural or relaxed maximality admits
+additional group relations. FaPlex is highly precise but, under the fixed
+minimum-size-20 protocol, recalls only 0.041--0.379. Thus none of the four
+alternative result families preserves both aspects of the MSC cover.
 
 \begin{figure}[t]
 \centering
-\includegraphics[width=0.94\linewidth]{tex-data/fig/definition_recovery_legend.pdf}
-\vspace{-1.5ex}
+\includegraphics[width=\linewidth]{tex-data/fig/rq7_comparison_legend.pdf}
+\vskip -5pt
 \begin{subfigure}[t]{0.495\linewidth}
 \centering
 \includegraphics[width=\linewidth]{tex-data/fig/definition_recovery_summary.pdf}
-\caption{Aggregate recovery}
+\caption{MSC member recall}
 \end{subfigure}\hfill
 \begin{subfigure}[t]{0.495\linewidth}
 \centering
-\includegraphics[width=\linewidth]{tex-data/fig/definition_recovery_cdf.pdf}
-\caption{Per-group recovery}
+\includegraphics[width=\linewidth]{tex-data/fig/rq7_external_comparison.pdf}
+\caption{MSC member precision}
 \end{subfigure}
-\caption{Pairwise thresholding fragments collectively feasible MSCs.}
-\Description{The first panel compares Extended B-cubed and best-match recall
-on two datasets; its dashed horizontal line is the MSC self-match reference.
-The second panel shows cumulative distributions of best-match recall over
-reference MSCs; its dotted vertical line marks 80\% retained.}
-\label{fig:definition-recovery}
+\vspace{-3mm}
+\caption{[RQ7] Alternative pattern families lose complementary aspects of MSC group structure.}
+\Description{Extended B-cubed recall and precision for PairSim, StructBK, FastQC, and FaPlex against the MSC cover on three semantic vector graphs.}
+\label{fig:rq7-comparison}
 \end{figure}
 
-A size-18 ogbn-arxiv MSC consists entirely of \texttt{cs.IT} papers on private
-information retrieval. Its average is 0.919 at $\tau=0.889$, although 20 of 153
-pairs fall below $\tau$. Thus 13.1\% of its within-group pairs violate the
-every-pair threshold while the complete group remains collectively coherent;
-this case instantiates the fragmentation measured by the cover-based metrics.
 
-The external comparison fixes FastQC at $\gamma=0.9$, FaPlex at $k=2$, and
-uses \StructBK as the structural reference on the same $q_{80}$ graphs. For two
-groups $A$ and $B$, their match score is
-$F_1(A,B)=2|A\cap B|/(|A|+|B|)$~\cite{yang2013bigclam}. \emph{Recovery}
-averages each MSC's best match in the baseline family, whereas \emph{fidelity}
-averages each baseline result's best match in the MSC family. This directional
-pair measures output-family agreement rather than ground-truth clustering.
-
-Figure~\ref{fig:external-quality} separates the two matching directions. The
-left panel shows high MSC-to-baseline recovery on both datasets, whereas the
-right panel shows substantially lower baseline-to-MSC fidelity. MSC self-matching
-has score one by definition and appears only as the reference line. Recovery
-spans 0.851--0.992, whereas fidelity spans 0.123--0.269. The high recovery follows
-because every MSC is contained in some maximal clique, maximal quasi-clique, and
-maximal 2-plex; fidelity exposes the additional patterns introduced by those extensions.
-FastQC and FaPlex also differ from structural MCE: their mean induced edge densities
-are 0.942--0.952, and fewer than 0.05\% of their outputs are cliques. Relative to
-the MSC family, their result unions cover $12.5\times$--$27.6\times$ as many
-distinct vertices and have lower mean pairwise cosine similarity.
+\subsection{RQ8: Case Study}
+We examine the largest label-consistent $q_{80}$ MSC containing a
+below-threshold pair on ogbn-arxiv. The OGB mapping resolves its 18 vertices to
+2016--2019 \texttt{cs.IT} publications forming a structural clique
+~\cite{wang2020ogb}. Their titles connect PIR capacity, coded and cache-aided
+storage, side information, colluding and wiretapped databases, asymmetric
+traffic, and private set intersection. Table~\ref{tab:pir-case} gives one
+representative publication per thematic strand in Figure~\ref{fig:pir-case}.
 
 \begin{figure}[t]
 \centering
-\includegraphics[width=0.94\linewidth]{tex-data/fig/external_recovery_legend.pdf}
-\vspace{-1.5ex}
-\begin{subfigure}[t]{0.495\linewidth}
-\centering
-\includegraphics[width=\linewidth]{tex-data/fig/external_recovery_recovery.pdf}
-\caption{MSC-to-baseline recovery}
-\end{subfigure}\hfill
-\begin{subfigure}[t]{0.495\linewidth}
-\centering
-\includegraphics[width=\linewidth]{tex-data/fig/external_recovery_fidelity.pdf}
-\caption{Baseline-to-MSC fidelity}
-\end{subfigure}
-\caption{Structural and relaxed families achieve high MSC recovery but lower family fidelity.}
-\Description{Two dot plots separate MSC-to-baseline recovery from baseline-to-MSC fidelity for StructBK, FastQC, and FaPlex on two real graphs.}
-\label{fig:external-quality}
+\includegraphics[width=\linewidth]{tex-data/fig/case_study_pir.pdf}
+\vspace{-4mm}
+\caption{[RQ8] MSC recovers one 18-paper PIR research lineage that PairSim disperses across hundreds of overlapping outputs.}
+\Description{Eighteen private-information-retrieval papers form one MSC across four related themes. Although 820 PairSim outputs intersect it, no one output retains more than twelve papers.}
+\label{fig:pir-case}
 \end{figure}
+
+\begin{table}[t]
+\scriptsize
+\centering
+\caption{One representative publication from each thematic strand in the PIR MSC.}
+\label{tab:pir-case}
+\setlength{\tabcolsep}{3.2pt}
+\begin{tabular}{@{}p{0.21\linewidth}p{0.72\linewidth}@{}}
+\toprule
+Theme in Figure~\ref{fig:pir-case} & Representative publication \\
+\midrule
+Capacity / storage & P14: \emph{The Capacity of Private Information Retrieval} (Sun and Jafar, 2016; arXiv:1602.09134) \\
+Caching / side information & P3: \emph{Fundamental Limits of Cache-Aided Private Information Retrieval with Unknown and Uncoded Prefetching} (Wei, Banawan, and Ulukus, 2017; arXiv:1709.01056) \\
+Security / constraints & P8: \emph{Private Information Retrieval Through Wiretap Channel II: Privacy Meets Security} (Banawan and Ulukus, 2018; arXiv:1801.06171) \\
+PSI extension & P17: \emph{Private Set Intersection: A Multi-Message Symmetric PIR Perspective} (Wang, Banawan, and Ulukus, 2019; arXiv:1912.13501) \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+At $\tau=0.8888$, the group has $\avgsim=0.9185$, although 20 of 153 pairs
+fall below $\tau$ (minimum 0.8214). Among 820 intersecting PairSim outputs, the
+best retains only 12 papers. MSC instead yields one reviewable PIR lineage for
+topic overview and expert discovery.
+
 
 \section{Related Work}
 \label{sec:related}
 
 \stitle{Clique Enumeration and Listing.}
-BK backtracking~\cite{bron1973}, Tomita pivoting~\cite{tomita2006}, and
-degeneracy ordering~\cite{eppstein2010,eppstein2013} underpin exact MCE.
-The classical output bound and reporting perspective were established by
-Moon--Moser and subsequent maximal-clique analyses~\cite{moon1965,cazals2008}.
-Recent methods reduce BK subproblems~\cite{deng2024rmce,wang2025hbbmc} or
-summarize clique families~\cite{li2025cliquecomparator}; these methods preserve
-structural maximality and do not impose a group-level vector constraint.
-Large-graph implementations also exploit specialized search structures and
-parallel execution~\cite{cheng2011,lessley2016,das2019}.
+Exact MCE builds on BK backtracking and pivoting~\cite{bron1973,tomita2006},
+output bounds~\cite{moon1965,cazals2008}, polynomial-delay and output-sensitive
+enumeration~\cite{tsukiyama1977,makino2004}, and sparse-graph
+ordering~\cite{chang2013,eppstein2010,eppstein2013}. Recent work reduces search
+subproblems or summarizes clique families~\cite{deng2024rmce,wang2025hbbmc,
+li2025cliquecomparator}, while large-graph implementations exploit specialized
+structures and parallelism~\cite{cheng2011,lessley2016,das2019}. Related
+variants address maximum-clique optimization~\cite{rossi2015}, uncertain-graph
+MCE~\cite{dai2022uncertain}, signed-clique search~\cite{li2018signedclique}, and
+fixed-size $k$-clique listing~\cite{wang2024kclique}; none enumerates
+inclusion-wise maximal cliques under an aggregate vector constraint.
 
 \stitle{Constrained Cohesive Subgraphs.}
 FastQC~\cite{yu2023fastqc} and FaPlex~\cite{zhou2020faplex} enumerate maximal
-quasi-cliques and $k$-plexes, respectively, while biplex methods relax complete
-bipartite structure~\cite{dai2024biplex}. They change the adjacency contract,
-whereas MSC retains a complete induced subgraph.
-
-Earlier maximal similarity cliques threshold every pairwise similarity before
-applying structural MCE~\cite{fang2013network}; this is the contract represented
-by \pairSim\ in our evaluation. Average edge weight has also been used to select
-one high-scoring structural maximal clique for short-text
-segmentation~\cite{hua2015shorttext}. Fairness-aware MCE constrains counts or
-balance among categorical vertex attributes~\cite{pan2022fairclique}. The MSC
-contract enumerates all inclusion-wise maximal complete groups satisfying an
-aggregate threshold over real-valued vectors.
-
-The closest constrained-enumeration model is maximal similar-biclique
-enumeration~\cite{yao2022similarbiclique}: its hereditary constraint requires
-every vertex pair on one side to satisfy a similarity threshold. Similar-weight
-bicliques likewise constrain edge weights in a bipartite
-pattern~\cite{yang2025similarweight}. MSC differs along both axes: it operates on
-cliques in a general graph and constrains the average of all pairwise vector
-similarities. This aggregate condition admits low-similarity pairs and is
-non-monotone under vertex insertion and deletion, which is precisely the source
-of the search problem studied here.
+quasi-cliques and $k$-plexes, biplex methods relax bipartite
+completeness~\cite{dai2024biplex}, and maximum $k$-plex search returns one
+optimum~\cite{gao2024kplex}. Pair-thresholded similarity cliques and weighted
+short-text cliques use different semantic contracts~\cite{fang2013network,
+hua2015shorttext}; fairness-aware methods constrain categorical
+balance~\cite{pan2022fairclique,zhang2025fairclique}. Similar and similar-weight
+bicliques impose hereditary pairwise or edge-weight conditions in bipartite
+graphs~\cite{yao2022similarbiclique,yang2025similarweight}. In contrast, MSC
+retains a complete general graph, enumerates every inclusion-wise maximal
+solution, and applies a non-hereditary average over real-valued vectors.
 
 \stitle{Attributed Community Search.}
-Attributed-graph methods return partitions, such as
-CODICIL~\cite{silva2012,zhou2009,ruan2013codicil}, or query-specific dense groups,
-such as attributed truss communities~\cite{fang2016,huang2017}. Subspace and cross-graph variants likewise
-optimize partition- or query-oriented
-objectives~\cite{moser2009,gunnemann2010,fang2024iacs}. These tasks do not enumerate
-inclusion-wise maximal complete groups under a vector aggregate, which gives MSC
-a distinct enumeration contract.
+Classical community models motivate cohesive grouping through minimum-degree
+structure, modularity, and density~\cite{seidman1983,newman2006,fortunato2010};
+attributed-community surveys further distinguish how topology and attributes
+are fused~\cite{bothorel2015,chunaev2020}. Representative methods return
+partitions~\cite{silva2012,zhou2009,ruan2013codicil,yang2013}, focused clusters
+or outliers~\cite{perozzi2014focused}, and query-specific influential,
+attributed, or inductive communities~\cite{li2015,fang2016,huang2017,
+wang2024transzero,fang2024iacs}. Subspace objectives~\cite{moser2009,
+gunnemann2010}, directed truss search~\cite{liu2020directedtruss}, and directed
+densest-subgraph discovery~\cite{ma2020directeddense} likewise relax
+completeness or return partition/query/optimization results rather than all
+maximal complete groups under an aggregate threshold.
 
 \stitle{Vector Attributes.}
 Representation models~\cite{bordes2013,sun2019,perozzi2014deepwalk,kipf2017}
-can supply the vectors.
-Given these fixed attributes, MSC evaluates the aggregate threshold exactly;
-approximate vector retrieval addresses a separate nearest-neighbor
-task~\cite{andoni2006,malkov2020,johnson2021}.
+can supply the vectors, but approximate vector retrieval addresses a separate
+nearest-neighbor task~\cite{andoni2006,malkov2020,johnson2021}; MSC instead
+evaluates its aggregate threshold exactly on fixed attributes.
 \section{Conclusion}
 \label{sec:conclusion}
-We formulated exact MSC enumeration under an average pairwise-similarity
-constraint and showed that its associated size decision problem is NP-complete.
-\subEnum\ combines structural decomposition with admissible semantic bounds;
-\monoSemMCE\ turns feasible minimum-contribution deletion into a canonical
-reverse-search forest. Their complementary threshold regimes jointly complete
-all 24 fixed dataset--threshold workloads, with \monoSemMCE\
-$2.92\times$--$6.24\times$ faster than \subEnum\ on every $q_{99}$ row.
-Ablations connect these gains to layer pruning and canonical-state contraction,
-while natural-attribute results show when averaging preserves complete groups
-fragmented by pairwise thresholding. These results connect the group-level
-semantic definition to complementary exact search organizations.
+We formulated exact MSC enumeration under average pairwise similarity and
+proved its size decision problem NP-complete. \subEnum\ combines structural
+decomposition with admissible semantic bounds; \monoSemMCE\ turns feasible
+minimum-contribution deletion into a canonical reverse-search forest. Their
+complementary threshold regimes jointly complete all 24 fixed
+dataset--threshold workloads, with \monoSemMCE\ $1.69\times$--$6.24\times$
+faster than \subEnum\ on every $q_{99}$ row. Ablations attribute these gains to
+semantic pruning and canonical-state contraction; natural-attribute results
+show that averaging preserves complete groups fragmented by pairwise
+thresholding.
+
+\clearpage
 \bibliographystyle{ACM-Reference-Format}
 \bibliography{references}
+
 
 \end{document}
 \endinput

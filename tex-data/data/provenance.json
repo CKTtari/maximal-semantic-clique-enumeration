@@ -38,9 +38,75 @@
     "experiments/summaries/batch30-engineering-profile-selection-30s.summary.json"
   ],
   "engineering_exporter": "src/experiments/standard/export_engineering_ablation.py",
+  "external_runtime_records": [
+    {
+      "path": "experiment-output/external-baselines/challenge-grid-calibration/fb15k-237/faplex-k2-u20/run.json",
+      "sha256": "ae0f26acecf5d254dbce61636bd54fc5aa974ab3e8315e049610a955770e77d6"
+    },
+    {
+      "path": "experiment-output/external-baselines/challenge-grid-calibration/sc-pkustk11/faplex-k2-u20/run.json",
+      "sha256": "12d96d461ddbdf3946905e70a936272c4099ffe4d69b3c3db1cb1ea440994ab1"
+    },
+    {
+      "path": "experiment-output/external-baselines/challenge-grid-final/email-enron/faplex-k2-u20/run.json",
+      "sha256": "150d95d9516db1d2f805e31548d10de93fd70ee92dff175911afcc78cc401920"
+    },
+    {
+      "path": "experiment-output/external-baselines/challenge-grid-final/github-social/faplex-k2-u20/run.json",
+      "sha256": "42058aabcae60bbf830287b3a2d5a9cde7cb602f899eba12290f310a31173129"
+    },
+    {
+      "path": "experiment-output/external-baselines/challenge-grid-final/ogbn-arxiv/faplex-k2-u20/run.json",
+      "sha256": "61ef11c7de5caa696b68e21c97b764a27cec25cb2bd41576a9074e6d2bd853cf"
+    },
+    {
+      "path": "experiment-output/external-baselines/challenge-grid-final/sc-ldoor/faplex-k2-u20/run.json",
+      "sha256": "ff68c6d896d9f408c7371d225e9fa0ecadab084e10c053115f3efb766ee2dfcd"
+    },
+    {
+      "path": "experiment-output/external-baselines/challenge-grid-final/sc-nasasrb/faplex-k2-u20/run.json",
+      "sha256": "13376559832618fe5f099ff96267335f68359530008847ab3d50bbdc79a0ca67"
+    },
+    {
+      "path": "experiment-output/external-baselines/challenge-grid-final/sc-pwtk/faplex-k2-u20/run.json",
+      "sha256": "5546d467b0e77104017a9ab672fbe3196c7c3b611b3b39755975e570db210c62"
+    },
+    {
+      "path": "experiment-output/external-baselines/challenge-grid/email-enron/fastqc-g095-u10/run.json",
+      "sha256": "d739bc3abce3893dd7b4826966ff2c5c220b6e360420f8fea03c7bf0767c9504"
+    },
+    {
+      "path": "experiment-output/external-baselines/challenge-grid/fb15k-237/fastqc-g095-u10/run.json",
+      "sha256": "f0ee600b49d55c7eb5cd98c2f04a65d6e3f9eb65f2ec1d5dda5f29f5b5e770f5"
+    },
+    {
+      "path": "experiment-output/external-baselines/challenge-grid/ogbn-arxiv/fastqc-g095-u10/run.json",
+      "sha256": "b762a48e9aad659beebf94009e32aa68ba7926a1ce880b4f975da31e09599743"
+    },
+    {
+      "path": "experiment-output/external-baselines/challenge-grid/sc-ldoor/fastqc-g095-u10/run.json",
+      "sha256": "48643d8fc6bd9b367254f3cfa496c68fe36637ae37b06132d93d37df02f66719"
+    },
+    {
+      "path": "experiment-output/external-baselines/challenge-grid/sc-nasasrb/fastqc-g095-u10/run.json",
+      "sha256": "6827f671f44b9aae10d5b9876b5be86427f63a170a0f81da4980ed9a7f205d49"
+    },
+    {
+      "path": "experiment-output/external-baselines/challenge-grid/sc-pkustk11/fastqc-g095-u10/run.json",
+      "sha256": "50dca4c77675a61445bd63331335ea6f1cccf32ae0ced81a90323a0469f8dd58"
+    },
+    {
+      "path": "experiment-output/external-baselines/challenge-grid/sc-pwtk/fastqc-g095-u10/run.json",
+      "sha256": "bcac892f4808bffc530eb750dcd836a9b9b41a8df8f34fd7220c0369332492aa"
+    },
+    {
+      "path": "experiment-output/external-baselines/github-social/fastqc-g095-u10-mapped/run.json",
+      "sha256": "56d8c6eb53516cc5ab1ed9a8782d234fc817cf58167598da234608a4f3106b01"
+    }
+  ],
   "quality_analysis": {
     "path": "experiments/quality/ogbn-arxiv-result-quality.json",
     "sha256": "13741ad5648e8fd0a90335ba4918054ccd38ce82df47fcf8d9c787550edf1e2e"
   },
-  "note": "CSV values are copied or derived deterministically from archived formal summaries and hash-verified artifacts referenced by their manifests; no pilot timing enters paper data."
+  "note": "CSV values are copied or derived deterministically from archived formal summaries and hash-verified external run records; no pilot timing enters paper data."
 }

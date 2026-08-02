@@ -1,0 +1,10 @@
+{
+  "name": "pilot-flickr-admission",
+  "tasks": [
+    {"algorithm": 1, "mode": "raw", "dataset": 11, "graph": "dataset/Processed/Flickr/graph.txt", "vectors": "dataset/Processed/Flickr/vectors.bin", "threads": 32, "timeout_seconds": 30},
+    {"algorithm": 2, "mode": "raw", "dataset": 11, "graph": "dataset/Processed/Flickr/graph.txt", "vectors": "dataset/Processed/Flickr/vectors.bin", "tau": 0.2230047137, "threads": 32, "timeout_seconds": 30},
+    {"algorithm": 3, "mode": "raw", "dataset": 11, "graph": "dataset/Processed/Flickr/graph.txt", "vectors": "dataset/Processed/Flickr/vectors.bin", "tau": 0.2230047137, "threads": 32, "timeout_seconds": 30},
+    {"algorithm": 3, "mode": "raw", "dataset": 11, "graph": "dataset/Processed/Flickr/graph.txt", "vectors": "dataset/Processed/Flickr/vectors.bin", "tau": 0.4140804708, "threads": 32, "timeout_seconds": 30},
+    {"algorithm": 4, "mode": "raw", "dataset": 11, "graph": "dataset/Processed/Flickr/graph.txt", "vectors": "dataset/Processed/Flickr/vectors.bin", "tau": 0.6016358733, "threads": 32, "timeout_seconds": 30}
+  ]
+}

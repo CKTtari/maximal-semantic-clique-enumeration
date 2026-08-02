@@ -1,14 +1,18 @@
 # Paper figures
 
 `plot_paper_figures.py` reads only canonical CSV files from `tex-data/data` and
-generates the four experimental PDFs and PNG previews in this directory:
+generates the experimental PDF/SVG/PNG panels composed by `main.tex`:
 
 | Output | Canonical input |
 | --- | --- |
+| `runtime_baseline_comparison.pdf` | `main_runtime.csv`; fixed structural/external runs and method-specific MSC operating points |
 | `threshold_runtime.pdf` | `threshold_sensitivity.csv`; ogbn-arxiv transition grid and sc-ldoor common-grid points |
-| `scale_regime.pdf` | `scale_regime.csv`; four nested ogbn-arxiv induced graphs |
+| `scale_runtime_*.pdf` | `scale_regime.csv`; absolute runtime on four nested ogbn-arxiv induced graphs |
 | `parallel_scaling.pdf` | `parallel_scaling.csv` |
-| `mechanism_summary.pdf` | `alg3_mechanism_counters.csv`, `alg4_state_contraction.csv` |
+| `mechanism_monosem_*.pdf` | `alg4_state_contraction.csv` |
+| `result_distribution_*.pdf` | `result_distribution.csv` |
+| `definition_recovery_summary.pdf` | `group-recovery.csv` |
+| `rq7_external_comparison.pdf` | `group-recovery.csv`; paired recovery/fidelity endpoints |
 
 Regenerate from the repository root with:
 

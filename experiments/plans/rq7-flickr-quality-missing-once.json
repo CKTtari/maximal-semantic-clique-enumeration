@@ -1,0 +1,36 @@
+{
+  "name": "rq7-flickr-quality-missing-once",
+  "tasks": [
+    {
+      "algorithm": 1,
+      "mode": "raw",
+      "dataset": 11,
+      "graph": "dataset/Processed/Flickr/graph.txt",
+      "vectors": "dataset/Processed/Flickr/vectors.bin",
+      "threads": 32,
+      "timeout_seconds": 1200,
+      "capture_cliques": true
+    },
+    {
+      "algorithm": 1,
+      "mode": "raw",
+      "dataset": 11,
+      "graph": "dataset/derived/flickr-pairsim-q80.txt",
+      "vectors": "dataset/Processed/Flickr/vectors.bin",
+      "threads": 32,
+      "timeout_seconds": 1200,
+      "capture_cliques": true
+    },
+    {
+      "algorithm": 3,
+      "mode": "raw",
+      "dataset": 11,
+      "graph": "dataset/Processed/Flickr/graph.txt",
+      "vectors": "dataset/Processed/Flickr/vectors.bin",
+      "tau": 0.4140804708,
+      "threads": 32,
+      "timeout_seconds": 1200,
+      "capture_cliques": true
+    }
+  ]
+}

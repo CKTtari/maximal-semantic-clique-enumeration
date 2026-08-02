@@ -1,0 +1,125 @@
+{
+  "schema_version": 1,
+  "purpose": "Fixed-four-dataset RQ2 and RQ6 export",
+  "datasets": [
+    "GitHub-Social",
+    "ogbn-arxiv",
+    "sc-nasasrb",
+    "sc-ldoor"
+  ],
+  "sources": [
+    {
+      "path": "experiment-output/batch-rq2-github-nasasrb-admission-once/1838ebfba39a7154.attempt-001.json",
+      "sha256": "edde6e58f19efe8e503f6e9a44aac37054d2d2934c9392877096641323a1f31f"
+    },
+    {
+      "path": "experiment-output/batch-rq2-github-nasasrb-admission-once/19bf491d4d97ffa1.attempt-001.json",
+      "sha256": "6ef2702d0bc63144bec47252813ca9c9e692f8a8aacb090e32ed56f7297ff370"
+    },
+    {
+      "path": "experiment-output/batch-rq2-github-nasasrb-admission-once/23020f083bb9f0ca.attempt-001.json",
+      "sha256": "1ea0d2333237ab80de8ffdf2fc195d576bcee65629711cf37b0440a5266a93f2"
+    },
+    {
+      "path": "experiment-output/batch-rq2-github-nasasrb-admission-once/266787649ad9c5d9.attempt-001.json",
+      "sha256": "6f4f7040c7a7031082af9c78bcf7c4c74d223cda4c8553981fe63e0d170a48d3"
+    },
+    {
+      "path": "experiment-output/batch-rq2-github-nasasrb-admission-once/3b8d741a1e385c33.attempt-001.json",
+      "sha256": "b115119452d391b309f93abd81b017a6daa354ff4d72475debc1e2cf8ae3bf2a"
+    },
+    {
+      "path": "experiment-output/batch-rq2-github-nasasrb-admission-once/4c28107be7879a6a.attempt-001.json",
+      "sha256": "f4a0de1c787d98ecf196f74d9ae1140f332ae56bf5a0b26e24739ca41ff17e6a"
+    },
+    {
+      "path": "experiment-output/batch-rq2-github-nasasrb-admission-once/6942afc6729946a3.attempt-001.json",
+      "sha256": "86593e6e4bc2b0086393b8fda3546007f8a521cd403af3a6301b3a56c956b9d3"
+    },
+    {
+      "path": "experiment-output/batch-rq2-github-nasasrb-admission-once/6ce0c35cca18d9c0.attempt-001.json",
+      "sha256": "b5f8d6c998b022fc8d052cdb2946711f0876488e0fe921beac67c516b978ae16"
+    },
+    {
+      "path": "experiment-output/batch-rq2-github-nasasrb-admission-once/6fdce8930ce47bbe.attempt-001.json",
+      "sha256": "8c39f95a622bab2eb3b5cc6854527db41ad0cbc88a0ccdfa691413bde9476d04"
+    },
+    {
+      "path": "experiment-output/batch-rq2-github-nasasrb-admission-once/787d17ef968a8f6f.attempt-001.json",
+      "sha256": "7cb45ffe538eb55b3fafc81b22cbb9a3d9532d131ce820a2936223fa5b6f56e5"
+    },
+    {
+      "path": "experiment-output/batch-rq2-github-nasasrb-admission-once/81bb3a064b125a68.attempt-001.json",
+      "sha256": "151b8a34a68d084b19e45adfedaa300d88545ef261f281cb2818536511ec15ff"
+    },
+    {
+      "path": "experiment-output/batch-rq2-github-nasasrb-admission-once/91c5c91e5b6934c7.attempt-001.json",
+      "sha256": "c2fd1b8bbc56002094801fd4c56ab8056e288b475aee8fe72f04cb7c5c4fd0d6"
+    },
+    {
+      "path": "experiment-output/batch-rq2-github-nasasrb-admission-once/bdec697a313f7f50.attempt-001.json",
+      "sha256": "d54209be8a478ed5e62c45ad5f41275121914b2f3a1b5ecc90b9d9ad9db23563"
+    },
+    {
+      "path": "experiment-output/batch-rq2-github-nasasrb-admission-once/d282a69301b0454a.attempt-001.json",
+      "sha256": "536a30b651f6e07991d02b923a4f962a54239db3e1dc6248d09e2e2ce7e7815a"
+    },
+    {
+      "path": "experiment-output/batch-rq2-github-nasasrb-admission-once/d7bdfc113195ef6e.attempt-001.json",
+      "sha256": "d51aeece1779ba3ab5321c9459d605346ab57bf6d03e6e3ee8ade467b7185ae7"
+    },
+    {
+      "path": "experiment-output/batch-rq2-github-nasasrb-admission-once/ee066af693fc0aa1.attempt-001.json",
+      "sha256": "2dab68076ab758d7d1bc386873bdf0296af1b5dc446ae384fc7934c25ca09587"
+    },
+    {
+      "path": "experiment-output/batch-rq2-github-nasasrb-admission-once/f6c879f825e7f180.attempt-001.json",
+      "sha256": "8c601ac802028307407af3ceafd4bd8403ea936d03d2bb0d7830e7d2403ee7dd"
+    },
+    {
+      "path": "experiment-output/batch-rq2-longpoints-once/3c92db129eebaf76.attempt-001.json",
+      "sha256": "8307da06417c3a7fc3c04cb6c43d230d8c9d1d6c999e36a7f01e74a15b6c7069"
+    },
+    {
+      "path": "experiment-output/batch-rq2-longpoints-once/4289e63e0125d921.attempt-001.json",
+      "sha256": "9056185bb8227d3dbb320a76fd6cc29400cc8d7fc14b1aafe9561532a2e672cb"
+    },
+    {
+      "path": "experiment-output/batch-rq2-longpoints-once/5c88c97f52d3b405.attempt-001.json",
+      "sha256": "a13ae6f521787aaa36f5e5e12e8a777f94ce5d8f64b46437ac81e5a6a50fa799"
+    },
+    {
+      "path": "experiment-output/batch-rq2-longpoints-once/a99e4bb6ab5ce638.attempt-001.json",
+      "sha256": "1626091d0b747f4ec41933f57965cae09f6b119263e290ea2a1b21af12b0e999"
+    },
+    {
+      "path": "experiment-output/batch-rq2-longpoints-once/eecc1d220dcef4d4.attempt-001.json",
+      "sha256": "5d1dfd4d72354d0abac05e40153f1a7b3da8cf4707ad51402ba634633e39b6b0"
+    },
+    {
+      "path": "experiment-output/batch-rq2-longpoints-once/f726affcf3310db8.attempt-001.json",
+      "sha256": "489aaf16e67e22ce84bee17729d95d461ac0939d942768013becef99d3631809"
+    },
+    {
+      "path": "experiment-output/github-social-formal/131fd4c230dd7c75.attempt-001.json",
+      "sha256": "906840774223a25ac579ac8ea486b246aff4277778039442a46a2938d17a7195"
+    },
+    {
+      "path": "experiment-output/github-social-formal/2baaf129304aa174.attempt-001.json",
+      "sha256": "9b4c8f66dc07b14a154ae9423d3604e39d279a7da7979f550828870c802436b5"
+    },
+    {
+      "path": "experiment-output/github-social-formal/448185c6b004b16a.attempt-001.json",
+      "sha256": "d875472c597b12ab51abebb210109b8b314941aa205e723b502c4aada41cc3ce"
+    },
+    {
+      "path": "experiment-output/github-social-formal/4b60ed0f446630f3.attempt-001.json",
+      "sha256": "9db9c2b6acaa470d48cca1f5b21acc26fb73b1fb57cfa1c980e40450225d57a2"
+    }
+  ],
+  "derived_files": [
+    "tex-data/data/threshold_sensitivity.csv",
+    "tex-data/data/result_distribution.csv"
+  ],
+  "note": "One completed run is used for newly added batch-2 configurations; existing paper rows retain their archived values."
+}

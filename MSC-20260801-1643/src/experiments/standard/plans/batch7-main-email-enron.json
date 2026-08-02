@@ -1,0 +1,14 @@
+{
+  "name": "batch7-main-email-enron",
+  "tasks": [
+    {"algorithm": 2, "mode": "raw", "dataset": 2, "graph": "dataset/Processed/email-Enron/graph.txt", "vectors": "dataset/Processed/email-Enron/email-Enron_vectors.bin", "tau": -0.0525222, "threads": 32, "timeout_seconds": 3600, "repetitions": 3},
+    {"algorithm": 3, "mode": "raw", "dataset": 2, "graph": "dataset/Processed/email-Enron/graph.txt", "vectors": "dataset/Processed/email-Enron/email-Enron_vectors.bin", "tau": -0.0525222, "threads": 32, "timeout_seconds": 3600, "repetitions": 3},
+    {"algorithm": 4, "mode": "raw", "dataset": 2, "graph": "dataset/Processed/email-Enron/graph.txt", "vectors": "dataset/Processed/email-Enron/email-Enron_vectors.bin", "tau": -0.0525222, "threads": 32, "timeout_seconds": 3600, "repetitions": 3},
+    {"algorithm": 2, "mode": "raw", "dataset": 2, "graph": "dataset/Processed/email-Enron/graph.txt", "vectors": "dataset/Processed/email-Enron/email-Enron_vectors.bin", "tau": 0.0525957, "threads": 32, "timeout_seconds": 3600, "repetitions": 3},
+    {"algorithm": 3, "mode": "raw", "dataset": 2, "graph": "dataset/Processed/email-Enron/graph.txt", "vectors": "dataset/Processed/email-Enron/email-Enron_vectors.bin", "tau": 0.0525957, "threads": 32, "timeout_seconds": 3600, "repetitions": 3},
+    {"algorithm": 4, "mode": "raw", "dataset": 2, "graph": "dataset/Processed/email-Enron/graph.txt", "vectors": "dataset/Processed/email-Enron/email-Enron_vectors.bin", "tau": 0.0525957, "threads": 32, "timeout_seconds": 3600, "repetitions": 3},
+    {"algorithm": 2, "mode": "raw", "dataset": 2, "graph": "dataset/Processed/email-Enron/graph.txt", "vectors": "dataset/Processed/email-Enron/email-Enron_vectors.bin", "tau": 0.145164, "threads": 32, "timeout_seconds": 3600, "repetitions": 3},
+    {"algorithm": 3, "mode": "raw", "dataset": 2, "graph": "dataset/Processed/email-Enron/graph.txt", "vectors": "dataset/Processed/email-Enron/email-Enron_vectors.bin", "tau": 0.145164, "threads": 32, "timeout_seconds": 3600, "repetitions": 3},
+    {"algorithm": 4, "mode": "raw", "dataset": 2, "graph": "dataset/Processed/email-Enron/graph.txt", "vectors": "dataset/Processed/email-Enron/email-Enron_vectors.bin", "tau": 0.145164, "threads": 32, "timeout_seconds": 3600, "repetitions": 3}
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "name": "pilot-wikics-admission",
+  "tasks": [
+    {"algorithm": 1, "mode": "raw", "dataset": 11, "graph": "dataset/Processed/WikiCS/graph.txt", "vectors": "dataset/Processed/WikiCS/vectors.bin", "threads": 32, "timeout_seconds": 30},
+    {"algorithm": 2, "mode": "raw", "dataset": 11, "graph": "dataset/Processed/WikiCS/graph.txt", "vectors": "dataset/Processed/WikiCS/vectors.bin", "tau": 0.8450632691, "threads": 32, "timeout_seconds": 30},
+    {"algorithm": 3, "mode": "raw", "dataset": 11, "graph": "dataset/Processed/WikiCS/graph.txt", "vectors": "dataset/Processed/WikiCS/vectors.bin", "tau": 0.8450632691, "threads": 32, "timeout_seconds": 30},
+    {"algorithm": 3, "mode": "raw", "dataset": 11, "graph": "dataset/Processed/WikiCS/graph.txt", "vectors": "dataset/Processed/WikiCS/vectors.bin", "tau": 0.9353793859, "threads": 32, "timeout_seconds": 30},
+    {"algorithm": 4, "mode": "raw", "dataset": 11, "graph": "dataset/Processed/WikiCS/graph.txt", "vectors": "dataset/Processed/WikiCS/vectors.bin", "tau": 0.9738662839, "threads": 32, "timeout_seconds": 30}
+  ]
+}

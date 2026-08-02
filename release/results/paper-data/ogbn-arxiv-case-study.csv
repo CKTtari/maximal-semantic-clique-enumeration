@@ -1,0 +1,2 @@
+dataset,quantile,tau,msc_size,average_similarity,minimum_similarity,total_pairs,below_threshold_pairs,pairsim_outputs_intersecting,distinct_case_intersections,largest_retained,induced_pairwise_maximal_groups
+ogbn-arxiv,80,0.888756,18,0.9185091121,0.8213705420,153,20,820,488,12,22

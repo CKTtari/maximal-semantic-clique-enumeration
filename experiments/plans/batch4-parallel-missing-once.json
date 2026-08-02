@@ -1,0 +1,334 @@
+{
+  "name": "batch4-parallel-missing-once",
+  "tasks": [
+    {
+      "algorithm": 2,
+      "mode": "raw",
+      "dataset": 17,
+      "tau": 0.25049,
+      "threads": 1,
+      "timeout_seconds": 1200
+    },
+    {
+      "algorithm": 3,
+      "mode": "raw",
+      "dataset": 17,
+      "tau": 0.25049,
+      "threads": 2,
+      "timeout_seconds": 1200
+    },
+    {
+      "algorithm": 4,
+      "mode": "raw",
+      "dataset": 17,
+      "tau": 0.571662,
+      "threads": 2,
+      "timeout_seconds": 1200
+    },
+    {
+      "algorithm": 3,
+      "mode": "raw",
+      "dataset": 17,
+      "tau": 0.25049,
+      "threads": 4,
+      "timeout_seconds": 1200
+    },
+    {
+      "algorithm": 4,
+      "mode": "raw",
+      "dataset": 17,
+      "tau": 0.571662,
+      "threads": 4,
+      "timeout_seconds": 1200
+    },
+    {
+      "algorithm": 3,
+      "mode": "raw",
+      "dataset": 17,
+      "tau": 0.25049,
+      "threads": 8,
+      "timeout_seconds": 1200
+    },
+    {
+      "algorithm": 4,
+      "mode": "raw",
+      "dataset": 17,
+      "tau": 0.571662,
+      "threads": 8,
+      "timeout_seconds": 1200
+    },
+    {
+      "algorithm": 3,
+      "mode": "raw",
+      "dataset": 17,
+      "tau": 0.25049,
+      "threads": 16,
+      "timeout_seconds": 1200
+    },
+    {
+      "algorithm": 4,
+      "mode": "raw",
+      "dataset": 17,
+      "tau": 0.571662,
+      "threads": 16,
+      "timeout_seconds": 1200
+    },
+    {
+      "algorithm": 3,
+      "mode": "raw",
+      "dataset": 11,
+      "tau": 0.773547,
+      "threads": 2,
+      "timeout_seconds": 1200
+    },
+    {
+      "algorithm": 4,
+      "mode": "raw",
+      "dataset": 11,
+      "tau": 0.949708,
+      "threads": 2,
+      "timeout_seconds": 1200
+    },
+    {
+      "algorithm": 3,
+      "mode": "raw",
+      "dataset": 11,
+      "tau": 0.773547,
+      "threads": 4,
+      "timeout_seconds": 1200
+    },
+    {
+      "algorithm": 4,
+      "mode": "raw",
+      "dataset": 11,
+      "tau": 0.949708,
+      "threads": 4,
+      "timeout_seconds": 1200
+    },
+    {
+      "algorithm": 3,
+      "mode": "raw",
+      "dataset": 11,
+      "tau": 0.773547,
+      "threads": 8,
+      "timeout_seconds": 1200
+    },
+    {
+      "algorithm": 4,
+      "mode": "raw",
+      "dataset": 11,
+      "tau": 0.949708,
+      "threads": 8,
+      "timeout_seconds": 1200
+    },
+    {
+      "algorithm": 3,
+      "mode": "raw",
+      "dataset": 11,
+      "tau": 0.773547,
+      "threads": 16,
+      "timeout_seconds": 1200
+    },
+    {
+      "algorithm": 4,
+      "mode": "raw",
+      "dataset": 11,
+      "tau": 0.949708,
+      "threads": 16,
+      "timeout_seconds": 1200
+    },
+    {
+      "algorithm": 3,
+      "mode": "raw",
+      "dataset": 2,
+      "tau": -0.0526835,
+      "threads": 2,
+      "timeout_seconds": 1200
+    },
+    {
+      "algorithm": 4,
+      "mode": "raw",
+      "dataset": 2,
+      "tau": 0.14503,
+      "threads": 2,
+      "timeout_seconds": 1200
+    },
+    {
+      "algorithm": 3,
+      "mode": "raw",
+      "dataset": 2,
+      "tau": -0.0526835,
+      "threads": 4,
+      "timeout_seconds": 1200
+    },
+    {
+      "algorithm": 4,
+      "mode": "raw",
+      "dataset": 2,
+      "tau": 0.14503,
+      "threads": 4,
+      "timeout_seconds": 1200
+    },
+    {
+      "algorithm": 3,
+      "mode": "raw",
+      "dataset": 2,
+      "tau": -0.0526835,
+      "threads": 8,
+      "timeout_seconds": 1200
+    },
+    {
+      "algorithm": 4,
+      "mode": "raw",
+      "dataset": 2,
+      "tau": 0.14503,
+      "threads": 8,
+      "timeout_seconds": 1200
+    },
+    {
+      "algorithm": 3,
+      "mode": "raw",
+      "dataset": 2,
+      "tau": -0.0526835,
+      "threads": 16,
+      "timeout_seconds": 1200
+    },
+    {
+      "algorithm": 4,
+      "mode": "raw",
+      "dataset": 2,
+      "tau": 0.14503,
+      "threads": 16,
+      "timeout_seconds": 1200
+    },
+    {
+      "algorithm": 3,
+      "mode": "raw",
+      "dataset": 1,
+      "tau": -0.0526831,
+      "threads": 2,
+      "timeout_seconds": 1200
+    },
+    {
+      "algorithm": 4,
+      "mode": "raw",
+      "dataset": 1,
+      "tau": 0.145162,
+      "threads": 2,
+      "timeout_seconds": 1200
+    },
+    {
+      "algorithm": 3,
+      "mode": "raw",
+      "dataset": 1,
+      "tau": -0.0526831,
+      "threads": 4,
+      "timeout_seconds": 1200
+    },
+    {
+      "algorithm": 4,
+      "mode": "raw",
+      "dataset": 1,
+      "tau": 0.145162,
+      "threads": 4,
+      "timeout_seconds": 1200
+    },
+    {
+      "algorithm": 3,
+      "mode": "raw",
+      "dataset": 1,
+      "tau": -0.0526831,
+      "threads": 8,
+      "timeout_seconds": 1200
+    },
+    {
+      "algorithm": 4,
+      "mode": "raw",
+      "dataset": 1,
+      "tau": 0.145162,
+      "threads": 8,
+      "timeout_seconds": 1200
+    },
+    {
+      "algorithm": 3,
+      "mode": "raw",
+      "dataset": 1,
+      "tau": -0.0526831,
+      "threads": 16,
+      "timeout_seconds": 1200
+    },
+    {
+      "algorithm": 4,
+      "mode": "raw",
+      "dataset": 1,
+      "tau": 0.145162,
+      "threads": 16,
+      "timeout_seconds": 1200
+    },
+    {
+      "algorithm": 2,
+      "mode": "raw",
+      "dataset": 17,
+      "tau": 0.25049,
+      "threads": 2,
+      "timeout_seconds": 1200
+    },
+    {
+      "algorithm": 2,
+      "mode": "raw",
+      "dataset": 17,
+      "tau": 0.25049,
+      "threads": 4,
+      "timeout_seconds": 1200
+    },
+    {
+      "algorithm": 2,
+      "mode": "raw",
+      "dataset": 17,
+      "tau": 0.25049,
+      "threads": 8,
+      "timeout_seconds": 1200
+    },
+    {
+      "algorithm": 2,
+      "mode": "raw",
+      "dataset": 17,
+      "tau": 0.25049,
+      "threads": 16,
+      "timeout_seconds": 1200
+    },
+    {
+      "algorithm": 2,
+      "mode": "raw",
+      "dataset": 11,
+      "tau": 0.773547,
+      "threads": 2,
+      "timeout_seconds": 1200
+    },
+    {
+      "algorithm": 2,
+      "mode": "raw",
+      "dataset": 11,
+      "tau": 0.773547,
+      "threads": 4,
+      "timeout_seconds": 1200
+    },
+    {
+      "algorithm": 2,
+      "mode": "raw",
+      "dataset": 11,
+      "tau": 0.773547,
+      "threads": 8,
+      "timeout_seconds": 1200
+    },
+    {
+      "algorithm": 2,
+      "mode": "raw",
+      "dataset": 11,
+      "tau": 0.773547,
+      "threads": 16,
+      "timeout_seconds": 1200
+    }
+  ]
+}
+

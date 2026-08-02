@@ -1,0 +1,15 @@
+{
+  "name": "batch4-parallel-admission-once",
+  "tasks": [
+    {"algorithm": 2, "mode": "raw", "dataset": 17, "tau": 0.25049, "threads": 1, "timeout_seconds": 30},
+    {"algorithm": 3, "mode": "raw", "dataset": 17, "tau": 0.25049, "threads": 1, "timeout_seconds": 30},
+    {"algorithm": 4, "mode": "raw", "dataset": 17, "tau": 0.571662, "threads": 1, "timeout_seconds": 30},
+    {"algorithm": 2, "mode": "raw", "dataset": 11, "tau": 0.773547, "threads": 1, "timeout_seconds": 30},
+    {"algorithm": 3, "mode": "raw", "dataset": 11, "tau": 0.773547, "threads": 1, "timeout_seconds": 30},
+    {"algorithm": 4, "mode": "raw", "dataset": 11, "tau": 0.949708, "threads": 1, "timeout_seconds": 30},
+    {"algorithm": 3, "mode": "raw", "dataset": 2, "tau": -0.0526835, "threads": 1, "timeout_seconds": 30},
+    {"algorithm": 4, "mode": "raw", "dataset": 2, "tau": 0.14503, "threads": 1, "timeout_seconds": 30},
+    {"algorithm": 3, "mode": "raw", "dataset": 1, "tau": -0.0526831, "threads": 1, "timeout_seconds": 30},
+    {"algorithm": 4, "mode": "raw", "dataset": 1, "tau": 0.145162, "threads": 1, "timeout_seconds": 30}
+  ]
+}

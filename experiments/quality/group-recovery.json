@@ -13,19 +13,26 @@
       "MSC": "2022c4052959952547afb91b790e6901b30d4919001ea93a77b64480a10b9058",
       "PairSim-MCE": "66e1d258942e9f9f7ee681cac2ea4f612e2fe7e53fa661a1d1d45c7d496bb55b",
       "StructBK": "6e4b957da77bec28e57d03f2222719de5a72489e1dd00e19acf9a4b116f98387",
-      "FastQC": "2e18c65bb455a5e8a668641e919d4cea281a1b0e46b1ae5e3dc5732442b6b240",
-      "FaPlex": "ffc7601c8635cc3f4c12ded2bc5a3902012f9b59001ebf2b8c440d2fa1515c89"
+      "FastQC": "67fc5f6a6a2041447c783933ab0aceeb7603fe7a7b45a6e472734ddd43bc3601",
+      "FaPlex": "2e8d5ae350cf57cf82521237003bc940ddb188f89d681ee221f0ca6221d4c1bd"
     },
-    "ogbn-arxiv-25K": {
-      "MSC": "0f593a2691f4743447260a254fa0e2f9bacba91395fd6b5ab12d91ccedc77a48",
-      "PairSim-MCE": "2b415be6783875bbea8426c5076ed8a64b0e7aacc9836d665d3ce0b2dd8674c9",
-      "StructBK": "c4c10dbf80dece323a65190e5926a6b967bfc97ae33a56df6f2930796e9d8f12",
-      "FastQC": "f3a455be139d6becb31cbb5916600945fc338386e193e40bba1bd26f41829402",
-      "FaPlex": "6c5c98b04ad49fe880e27f53d8d83f02c7352f740a93ce96720458892a4498a9"
+    "ogbn-arxiv": {
+      "MSC": "b938122d3ddb74d9e66c6bc70b4534838860bea6f52465e0eaeb5dd306a6c0b4",
+      "PairSim-MCE": "29e203fa14fb41540d4a30cbe009b6dc7ef6a9b7b53057e490a71b116bc9bdc7",
+      "StructBK": "2242aaa9c761e6030b5112be4c11e13ad3a8eaf6bb7bc377f32d3490f706d505",
+      "FastQC": "31e09fadad0aa0642fe7407aa06bda14926eb547fa55afbe680b782a2c97e96a",
+      "FaPlex": "a2df7804757a15e742af73260ff9cd86c57fda88cb60b5f54115e37954ab2762"
+    },
+    "Flickr": {
+      "MSC": "8a4f05e0967c03d8e56ea2b08ec31e3f674d0b502c6043d81fee822433197620",
+      "PairSim-MCE": "486f0ffb80dd5c5cd584e74ef9e5f6f4d025ff72572162af32cfa4cb7a08c66c",
+      "StructBK": "ab6804348518fd4fd634553532ae537e0f6d02624039acc81554ef95ed4e52ee",
+      "FastQC": "70ed7ef68e63bb3b00f0fac8669e7d03186fca2c51834942439ded3d0440736a",
+      "FaPlex": "0aa8a6e1084941acbe4b9e32e4585d165caff755fdc2c6f10e6bc06e457b9555"
     }
   },
   "summary_csv": "tex-data/data/group-recovery.csv",
-  "summary_csv_sha256": "9b44569cc101a97637c74d95745263a932af122142ff56babeb24aef9616f1dc",
+  "summary_csv_sha256": "ac88d2ef25cb49934db0ae708c9a9905e87634a388a6f4ead4ddb16c5898b521",
   "detail_csv": "tex-data/data/group-recovery-detail.csv",
-  "detail_csv_sha256": "39a04ef19b04c1445529c81f1d09c0126017e60afff60e4a91733cb02f6e4460"
+  "detail_csv_sha256": "cb7a98edd68eaa7df2e8b5629a172c4be333908a1309ab8b8b0bd4f04689f758"
 }

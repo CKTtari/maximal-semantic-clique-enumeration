@@ -16,15 +16,6 @@ StrSub,sc-ldoor,0.117587,0,0,,6.633,6.591,6.788,3.68,573906,3,batch30-engineerin
 StrSub,sc-ldoor,0.117587,0,1,,5.784,5.711,5.812,3.68,573906,3,batch30-engineering-profile-selection-30s
 StrSub,sc-ldoor,0.117587,1,0,,6.089,5.603,6.469,3.72,573906,3,batch30-engineering-profile-selection-30s
 StrSub,sc-ldoor,0.117587,1,1,,5.575,5.561,5.756,3.72,573906,3,batch30-engineering-profile-selection-30s
-StrSub,FB15K-237,0.234886,0,0,,5.614,5.384,7.302,0.11,76106,3,batch30-engineering-profile-selection-30s
-StrSub,FB15K-237,0.234886,0,1,,11.255,6.311,11.465,0.11,76106,3,batch30-engineering-profile-selection-30s
-StrSub,FB15K-237,0.234886,1,0,,8.792,7.966,10.764,0.12,76106,3,batch30-engineering-profile-selection-30s
-StrSub,FB15K-237,0.234886,1,1,,7.084,7.080,7.320,0.11,76106,3,batch30-engineering-profile-selection-30s
-MonoSemMCE,FB15K-237,0.537601,0,0,1,8.695,8.567,8.851,0.09,7476,3,batch30-engineering-profile-selection-30s
-MonoSemMCE,FB15K-237,0.537601,0,1,1,7.775,7.698,8.890,0.09,7476,3,batch30-engineering-profile-selection-30s
-MonoSemMCE,FB15K-237,0.537601,1,1,0,15.534,15.157,16.842,0.09,7476,3,batch30-engineering-profile-selection-30s
-MonoSemMCE,FB15K-237,0.537601,1,0,1,8.748,8.289,8.779,0.09,7476,3,batch30-engineering-profile-selection-30s
-MonoSemMCE,FB15K-237,0.537601,1,1,1,8.630,8.448,8.677,0.09,7476,3,batch30-engineering-profile-selection-30s
 MonoSemMCE,email-Enron,-0.0525222,0,0,1,16.170,15.674,16.182,0.13,223703,3,batch30-engineering-profile-selection-30s
 MonoSemMCE,email-Enron,-0.0525222,0,1,1,16.380,15.627,16.528,0.13,223703,3,batch30-engineering-profile-selection-30s
 MonoSemMCE,email-Enron,-0.0525222,1,1,0,20.192,20.059,20.199,0.13,223703,3,batch30-engineering-profile-selection-30s

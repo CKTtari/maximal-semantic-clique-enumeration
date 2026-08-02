@@ -1,0 +1,13 @@
+dataset,quantile,strategy,status,seconds,peak_memory_gib
+GitHub-Social,90,Canonical,completed,1.818,1.73
+GitHub-Social,90,Visited DFS,completed,20.116,2.99
+GitHub-Social,90,Layered,completed,12.039,1.99
+ogbn-arxiv,90,Canonical,completed,0.840,0.39
+ogbn-arxiv,90,Visited DFS,completed,15.077,2.05
+ogbn-arxiv,90,Layered,completed,12.001,1.86
+sc-nasasrb,90,Canonical,completed,0.172,0.19
+sc-nasasrb,90,Visited DFS,completed,0.226,0.19
+sc-nasasrb,90,Layered,completed,0.222,0.19
+sc-ldoor,90,Canonical,completed,2.935,3.12
+sc-ldoor,90,Visited DFS,completed,4.143,3.11
+sc-ldoor,90,Layered,completed,4.227,3.12

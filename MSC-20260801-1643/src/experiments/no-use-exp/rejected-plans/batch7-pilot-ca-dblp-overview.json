@@ -1,0 +1,71 @@
+{
+  "name": "batch7-pilot-ca-dblp-overview",
+  "tasks": [
+    {
+      "algorithm": 3,
+      "mode": "raw",
+      "dataset": 2,
+      "graph": "dataset/dataset/ca-dblp-2012.txt",
+      "vectors": "dataset/Processed/ca-dblp-2012/ca-dblp-2012_vectors.bin",
+      "tau": 0.144852,
+      "threads": 32,
+      "timeout_seconds": 180,
+      "repetitions": 1
+    },
+    {
+      "algorithm": 4,
+      "mode": "raw",
+      "dataset": 2,
+      "graph": "dataset/dataset/ca-dblp-2012.txt",
+      "vectors": "dataset/Processed/ca-dblp-2012/ca-dblp-2012_vectors.bin",
+      "tau": 0.144852,
+      "threads": 32,
+      "timeout_seconds": 180,
+      "repetitions": 1
+    },
+    {
+      "algorithm": 3,
+      "mode": "raw",
+      "dataset": 2,
+      "graph": "dataset/dataset/ca-dblp-2012.txt",
+      "vectors": "dataset/Processed/ca-dblp-2012/ca-dblp-2012_vectors.bin",
+      "tau": 0.0527576,
+      "threads": 32,
+      "timeout_seconds": 180,
+      "repetitions": 1
+    },
+    {
+      "algorithm": 4,
+      "mode": "raw",
+      "dataset": 2,
+      "graph": "dataset/dataset/ca-dblp-2012.txt",
+      "vectors": "dataset/Processed/ca-dblp-2012/ca-dblp-2012_vectors.bin",
+      "tau": 0.0527576,
+      "threads": 32,
+      "timeout_seconds": 180,
+      "repetitions": 1
+    },
+    {
+      "algorithm": 3,
+      "mode": "raw",
+      "dataset": 2,
+      "graph": "dataset/dataset/ca-dblp-2012.txt",
+      "vectors": "dataset/Processed/ca-dblp-2012/ca-dblp-2012_vectors.bin",
+      "tau": -0.0527015,
+      "threads": 32,
+      "timeout_seconds": 180,
+      "repetitions": 1
+    },
+    {
+      "algorithm": 4,
+      "mode": "raw",
+      "dataset": 2,
+      "graph": "dataset/dataset/ca-dblp-2012.txt",
+      "vectors": "dataset/Processed/ca-dblp-2012/ca-dblp-2012_vectors.bin",
+      "tau": -0.0527015,
+      "threads": 32,
+      "timeout_seconds": 180,
+      "repetitions": 1
+    }
+  ]
+}

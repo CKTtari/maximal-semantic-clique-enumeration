@@ -21,6 +21,10 @@ ogbn-arxiv at its q99 threshold:
     mine 0.949708
     quit
 
+For Flickr workloads, use the same command with `graph PATH` and `vectors PATH`
+arguments for the processed files described in DATASETS.md rather than a
+built-in dataset ID.
+
 The interactive command stream is identical for StructBK (`alg1-raw`), SemBK
 (`alg2-raw`), StrSub (`alg3-raw`), and MonoSemMCE (`alg4-raw`). `timeout 0`
 disables the program's internal timeout; enforce the paper limit externally

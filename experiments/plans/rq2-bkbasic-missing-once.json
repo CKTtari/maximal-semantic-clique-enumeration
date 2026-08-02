@@ -1,0 +1,19 @@
+{
+  "name": "rq2-bkbasic-missing-once",
+  "tasks": [
+    {"algorithm":2,"mode":"raw","dataset":17,"tau":0.173494,"threads":32,"timeout_seconds":1200,"repetitions":1},
+    {"algorithm":2,"mode":"raw","dataset":17,"tau":0.333849,"threads":32,"timeout_seconds":1200,"repetitions":1},
+    {"algorithm":2,"mode":"raw","dataset":17,"tau":0.387298,"threads":32,"timeout_seconds":1200,"repetitions":1},
+    {"algorithm":2,"mode":"raw","dataset":17,"tau":0.46225,"threads":32,"timeout_seconds":1200,"repetitions":1},
+    {"algorithm":2,"mode":"raw","dataset":17,"tau":0.500773,"threads":32,"timeout_seconds":1200,"repetitions":1},
+    {"algorithm":2,"mode":"raw","dataset":17,"tau":0.524891,"threads":32,"timeout_seconds":1200,"repetitions":1},
+    {"algorithm":2,"mode":"raw","dataset":11,"graph":"dataset/Processed/Flickr/graph.txt","vectors":"dataset/Processed/Flickr/vectors.bin","tau":0.115454848,"threads":32,"timeout_seconds":1200,"repetitions":1},
+    {"algorithm":2,"mode":"raw","dataset":11,"graph":"dataset/Processed/Flickr/graph.txt","vectors":"dataset/Processed/Flickr/vectors.bin","tau":0.327872560,"threads":32,"timeout_seconds":1200,"repetitions":1},
+    {"algorithm":2,"mode":"raw","dataset":11,"graph":"dataset/Processed/Flickr/graph.txt","vectors":"dataset/Processed/Flickr/vectors.bin","tau":0.382886676,"threads":32,"timeout_seconds":1200,"repetitions":1},
+    {"algorithm":2,"mode":"raw","dataset":11,"graph":"dataset/Processed/Flickr/graph.txt","vectors":"dataset/Processed/Flickr/vectors.bin","tau":0.456989889,"threads":32,"timeout_seconds":1200,"repetitions":1},
+    {"algorithm":2,"mode":"raw","dataset":11,"graph":"dataset/Processed/Flickr/graph.txt","vectors":"dataset/Processed/Flickr/vectors.bin","tau":0.494371377,"threads":32,"timeout_seconds":1200,"repetitions":1},
+    {"algorithm":2,"mode":"raw","dataset":11,"graph":"dataset/Processed/Flickr/graph.txt","vectors":"dataset/Processed/Flickr/vectors.bin","tau":0.522812674,"threads":32,"timeout_seconds":1200,"repetitions":1},
+    {"algorithm":2,"mode":"raw","dataset":2,"tau":-0.102883,"threads":32,"timeout_seconds":30,"repetitions":1},
+    {"algorithm":2,"mode":"raw","dataset":1,"tau":-0.102847,"threads":32,"timeout_seconds":30,"repetitions":1}
+  ]
+}

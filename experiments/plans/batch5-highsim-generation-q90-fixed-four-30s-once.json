@@ -1,0 +1,17 @@
+{
+  "name": "batch5-highsim-generation-q90-fixed-four-30s-once",
+  "tasks": [
+    {"algorithm":4,"mode":"raw","dataset":17,"tau":0.46225,"threads":32,"timeout_seconds":30,"repetitions":1,"defines":{"ACMSC_ALG4_GENERATION":0}},
+    {"algorithm":4,"mode":"raw","dataset":17,"tau":0.46225,"threads":32,"timeout_seconds":30,"repetitions":1,"defines":{"ACMSC_ALG4_GENERATION":1}},
+    {"algorithm":4,"mode":"raw","dataset":17,"tau":0.46225,"threads":32,"timeout_seconds":30,"repetitions":1,"defines":{"ACMSC_ALG4_GENERATION":2}},
+    {"algorithm":4,"mode":"raw","dataset":11,"tau":0.909257,"threads":32,"timeout_seconds":30,"repetitions":1,"defines":{"ACMSC_ALG4_GENERATION":0}},
+    {"algorithm":4,"mode":"raw","dataset":11,"tau":0.909257,"threads":32,"timeout_seconds":30,"repetitions":1,"defines":{"ACMSC_ALG4_GENERATION":1}},
+    {"algorithm":4,"mode":"raw","dataset":11,"tau":0.909257,"threads":32,"timeout_seconds":30,"repetitions":1,"defines":{"ACMSC_ALG4_GENERATION":2}},
+    {"algorithm":4,"mode":"raw","dataset":2,"tau":0.0801885,"threads":32,"timeout_seconds":30,"repetitions":1,"defines":{"ACMSC_ALG4_GENERATION":0}},
+    {"algorithm":4,"mode":"raw","dataset":2,"tau":0.0801885,"threads":32,"timeout_seconds":30,"repetitions":1,"defines":{"ACMSC_ALG4_GENERATION":1}},
+    {"algorithm":4,"mode":"raw","dataset":2,"tau":0.0801885,"threads":32,"timeout_seconds":30,"repetitions":1,"defines":{"ACMSC_ALG4_GENERATION":2}},
+    {"algorithm":4,"mode":"raw","dataset":1,"tau":0.080211,"threads":32,"timeout_seconds":30,"repetitions":1,"defines":{"ACMSC_ALG4_GENERATION":0}},
+    {"algorithm":4,"mode":"raw","dataset":1,"tau":0.080211,"threads":32,"timeout_seconds":30,"repetitions":1,"defines":{"ACMSC_ALG4_GENERATION":1}},
+    {"algorithm":4,"mode":"raw","dataset":1,"tau":0.080211,"threads":32,"timeout_seconds":30,"repetitions":1,"defines":{"ACMSC_ALG4_GENERATION":2}}
+  ]
+}

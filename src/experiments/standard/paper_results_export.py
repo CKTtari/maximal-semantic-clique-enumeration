@@ -62,6 +62,41 @@ ENGINEERING_SUMMARIES = [
 
 ALGORITHM_NAMES = {1: "StructBK", 2: "SemBK", 3: "StrSub", 4: "MonoSemMCE"}
 
+EXTERNAL_RUNTIME_RUNS = {
+    7: {
+        "fastqc": "experiment-output/external-baselines/challenge-grid/fb15k-237/fastqc-g095-u10/run.json",
+        "faplex": "experiment-output/external-baselines/challenge-grid-calibration/fb15k-237/faplex-k2-u20/run.json",
+    },
+    17: {
+        "fastqc": "experiment-output/external-baselines/github-social/fastqc-g095-u10-mapped/run.json",
+        "faplex": "experiment-output/external-baselines/challenge-grid-final/github-social/faplex-k2-u20/run.json",
+    },
+    11: {
+        "fastqc": "experiment-output/external-baselines/challenge-grid/ogbn-arxiv/fastqc-g095-u10/run.json",
+        "faplex": "experiment-output/external-baselines/challenge-grid-final/ogbn-arxiv/faplex-k2-u20/run.json",
+    },
+    16: {
+        "fastqc": "experiment-output/external-baselines/challenge-grid/email-enron/fastqc-g095-u10/run.json",
+        "faplex": "experiment-output/external-baselines/challenge-grid-final/email-enron/faplex-k2-u20/run.json",
+    },
+    2: {
+        "fastqc": "experiment-output/external-baselines/challenge-grid/sc-nasasrb/fastqc-g095-u10/run.json",
+        "faplex": "experiment-output/external-baselines/challenge-grid-final/sc-nasasrb/faplex-k2-u20/run.json",
+    },
+    3: {
+        "fastqc": "experiment-output/external-baselines/challenge-grid/sc-pkustk11/fastqc-g095-u10/run.json",
+        "faplex": "experiment-output/external-baselines/challenge-grid-calibration/sc-pkustk11/faplex-k2-u20/run.json",
+    },
+    14: {
+        "fastqc": "experiment-output/external-baselines/challenge-grid/sc-pwtk/fastqc-g095-u10/run.json",
+        "faplex": "experiment-output/external-baselines/challenge-grid-final/sc-pwtk/faplex-k2-u20/run.json",
+    },
+    1: {
+        "fastqc": "experiment-output/external-baselines/challenge-grid/sc-ldoor/fastqc-g095-u10/run.json",
+        "faplex": "experiment-output/external-baselines/challenge-grid-final/sc-ldoor/faplex-k2-u20/run.json",
+    },
+}
+
 
 def load_summary(name: str) -> dict[str, Any]:
     path = SUMMARY_DIR / f"{name}.summary.json"
@@ -92,6 +127,20 @@ def write_csv(name: str, fieldnames: list[str], rows: Iterable[dict[str, Any]]) 
         writer = csv.DictWriter(handle, fieldnames=fieldnames)
         writer.writeheader()
         writer.writerows(rows)
+
+
+def external_runtime(dataset: int, method: str) -> tuple[str, float | None]:
+    path = ROOT / EXTERNAL_RUNTIME_RUNS[dataset][method]
+    with path.open("r", encoding="utf-8") as handle:
+        record = json.load(handle)
+    status = str(record["status"]).lower()
+    if status == "completed":
+        return "completed", float(record["wall_seconds"])
+    if status == "tle":
+        return "TLE", None
+    if status == "oom":
+        return "OOM", None
+    raise ValueError(f"unsupported external runtime status in {path}: {status}")
 
 
 def graph_level(group: dict[str, Any]) -> int | None:
@@ -305,6 +354,8 @@ def emit_main_runtime() -> None:
 
     rows = []
     for dataset in [7, 17, 11, 16, 2, 3, 14, 1]:
+        fastqc_status, fastqc_seconds = external_runtime(dataset, "fastqc")
+        faplex_status, faplex_seconds = external_runtime(dataset, "faplex")
         if dataset == 17:
             for quantile in [20, 80, 99]:
                 prior = canonical_rows.get((dataset, quantile))
@@ -328,6 +379,10 @@ def emit_main_runtime() -> None:
                 row["alg2_min_seconds"] = float(group["timing"]["algorithm_ms_min"]) / 1000.0
                 row["alg2_max_seconds"] = float(group["timing"]["algorithm_ms_max"]) / 1000.0
                 row["alg2_memory_gib"] = group["timing"].get("peak_memory_gib_median")
+                row["fastqc_status"] = fastqc_status
+                row["fastqc_seconds"] = fastqc_seconds
+                row["faplex_status"] = faplex_status
+                row["faplex_seconds"] = faplex_seconds
                 rows.append(row)
             continue
 
@@ -352,6 +407,10 @@ def emit_main_runtime() -> None:
                 "alg1_min_seconds": float(structural["timing"]["algorithm_ms_min"]) / 1000.0,
                 "alg1_max_seconds": float(structural["timing"]["algorithm_ms_max"]) / 1000.0,
                 "alg1_memory_gib": (structural.get("timing") or {}).get("peak_memory_gib_median"),
+                "fastqc_status": fastqc_status,
+                "fastqc_seconds": fastqc_seconds,
+                "faplex_status": faplex_status,
+                "faplex_seconds": faplex_seconds,
             }
             result_count = None
             for algorithm in [2, 3, 4]:
@@ -399,6 +458,10 @@ def emit_main_runtime() -> None:
         "alg1_min_seconds",
         "alg1_max_seconds",
         "alg1_memory_gib",
+        "fastqc_status",
+        "fastqc_seconds",
+        "faplex_status",
+        "faplex_seconds",
     ]
     for algorithm in [2, 3, 4]:
         fields.extend(
@@ -771,6 +834,9 @@ def emit_alg4_generation_ablation() -> None:
 
 def emit_provenance() -> None:
     quality_path = ROOT / "experiments" / "quality" / "ogbn-arxiv-result-quality.json"
+    external_paths = sorted(
+        {path for methods in EXTERNAL_RUNTIME_RUNS.values() for path in methods.values()}
+    )
     payload = {
         "schema_version": 1,
         "exporter": "src/experiments/standard/paper_results_export.py",
@@ -778,11 +844,14 @@ def emit_provenance() -> None:
         "pilot_status_summaries": [f"experiments/summaries/{name}.summary.json" for name in PILOT_SUMMARIES],
         "engineering_summaries": [f"experiments/summaries/{name}.summary.json" for name in ENGINEERING_SUMMARIES],
         "engineering_exporter": "src/experiments/standard/export_engineering_ablation.py",
+        "external_runtime_records": [
+            {"path": path, "sha256": sha256_file(ROOT / path)} for path in external_paths
+        ],
         "quality_analysis": {
             "path": quality_path.relative_to(ROOT).as_posix(),
             "sha256": sha256_file(quality_path),
         },
-        "note": "CSV values are copied or derived deterministically from archived formal summaries and hash-verified artifacts referenced by their manifests; no pilot timing enters paper data.",
+        "note": "CSV values are copied or derived deterministically from archived formal summaries and hash-verified external run records; no pilot timing enters paper data.",
     }
     with (OUT_DIR / "provenance.json").open("w", encoding="utf-8") as handle:
         json.dump(payload, handle, indent=2, ensure_ascii=True)

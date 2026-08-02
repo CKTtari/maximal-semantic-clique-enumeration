@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "comparison": {
+    "datasets": ["GitHub-Social", "ogbn-arxiv", "Flickr"],
+    "msc_and_pairsim_quantile": 80,
+    "reference_minimum_size": 10,
+    "fastqc_gamma": 0.95,
+    "fastqc_minimum_size": 10,
+    "faplex_k": 2,
+    "faplex_minimum_size": 20
+  },
+  "inputs": {
+    "GitHub-Social": {
+      "MSC": {"path": "experiment-output/github-social-quality-capture/e15726f773cb2df8.attempt-001.cliques.txt"},
+      "PairSim-MCE": {"path": "experiment-output/github-social-quality-capture/612a077590b5406d.attempt-001.cliques.txt"},
+      "StructBK": {"path": "experiment-output/github-social-quality-capture/234a5a9ae45690d6.attempt-001.cliques.txt"},
+      "FastQC": {"path": "experiment-output/rq7-unified-baselines/github-fastqc-g095-u10/output"},
+      "FaPlex": {"path": "experiment-output/rq7-unified-baselines/github-faplex-k2-u20/run.stdout.txt"}
+    },
+    "ogbn-arxiv": {
+      "MSC": {"path": "experiment-output/batch18-ogbn-quality-capture/accad77b97aa651f.attempt-001.cliques.txt"},
+      "PairSim-MCE": {"path": "experiment-output/batch19-ogbn-pairsim-quality-capture/5c8258272ca27aef.attempt-001.cliques.txt"},
+      "StructBK": {"path": "experiment-output/batch18-ogbn-quality-capture/0c3234eefeff4a17.attempt-001.cliques.txt"},
+      "FastQC": {"path": "experiment-output/external-baselines/challenge-grid/ogbn-arxiv/fastqc-g095-u10/output"},
+      "FaPlex": {"path": "experiment-output/rq7-unified-baselines/ogbn-faplex-k2-u20/run.stdout.txt"}
+    },
+    "Flickr": {
+      "MSC": {"path": "experiment-output/rq7-flickr-quality-missing-once/bd5d6a42b835839a.attempt-001.cliques.txt"},
+      "PairSim-MCE": {"path": "experiment-output/rq7-flickr-quality-missing-once/89a61218c3646b32.attempt-001.cliques.txt"},
+      "StructBK": {"path": "experiment-output/rq7-flickr-quality-missing-once/97ecdf0ebc1c4016.attempt-001.cliques.txt"},
+      "FastQC": {"path": "experiment-output/external-baselines/challenge-grid-final/flickr/fastqc-g095-u10/output"},
+      "FaPlex": {"path": "experiment-output/rq7-unified-baselines/flickr-faplex-k2-u20/run.stdout.txt"}
+    }
+  }
+}

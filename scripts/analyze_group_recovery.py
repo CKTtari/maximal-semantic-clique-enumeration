@@ -12,7 +12,7 @@ from typing import Iterable, Iterator
 
 
 ROOT = Path(__file__).resolve().parents[1]
-MANIFEST = ROOT / "experiments" / "quality" / "multi-baseline-quality.json"
+MANIFEST = ROOT / "experiments" / "quality" / "multi-baseline-quality-unified.json"
 QUALITY_CSV = ROOT / "tex-data" / "data" / "quality-comparison.csv"
 SUMMARY_CSV = ROOT / "tex-data" / "data" / "group-recovery.csv"
 DETAIL_CSV = ROOT / "tex-data" / "data" / "group-recovery-detail.csv"

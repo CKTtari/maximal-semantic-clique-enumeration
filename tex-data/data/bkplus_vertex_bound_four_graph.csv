@@ -1,0 +1,9 @@
+dataset,quantile,variant,status,seconds,subset_tests,output_count
+GitHub-Social,99,Full,completed,0.430,17890194,2636
+GitHub-Social,99,No Vertex-Bound,completed,0.808,41370107,2636
+ogbn-arxiv,99,Full,completed,0.635,11794753,10261
+ogbn-arxiv,99,No Vertex-Bound,completed,0.690,14984447,10261
+sc-nasasrb,99,Full,completed,0.398,12950731,12742
+sc-nasasrb,99,No Vertex-Bound,completed,1.428,80278402,12742
+sc-ldoor,99,Full,completed,6.041,174949740,202030
+sc-ldoor,99,No Vertex-Bound,TLE,,,

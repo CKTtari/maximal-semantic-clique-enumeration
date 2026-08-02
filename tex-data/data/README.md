@@ -9,7 +9,7 @@ values by hand.
 | File | Paper use |
 | --- | --- |
 | `dataset_inventory.csv` | Dataset table and evaluation roles |
-| `main_runtime.csv` | Primary-grid runtime and output-count table |
+| `main_runtime.csv` | Primary-grid MSC runtimes plus fixed FastQC and FaPlex runtime references |
 | `threshold_sensitivity.csv` | Threshold-regime figure |
 | `scale_regime.csv` | Graph-size/threshold regime map |
 | `parallel_scaling.csv` | Thread-scaling figure |

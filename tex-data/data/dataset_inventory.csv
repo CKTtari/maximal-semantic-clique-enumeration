@@ -1,5 +1,5 @@
 dataset_id,dataset,vertices,edges,dimension,attribute_type,paper_role
-7,FB15K-237,14541,248611,384,natural,common grid
+18,Flickr,89249,449794,500,natural,common grid
 17,GitHub-Social,37700,289003,4005,natural,common grid
 11,ogbn-arxiv,169343,1157799,128,natural,common grid
 16,email-Enron,36692,183831,256,generated,common grid

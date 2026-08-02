@@ -1,0 +1,17 @@
+{
+  "name": "rq2-flickr-proposed-missing-once",
+  "tasks": [
+    {"algorithm":3,"mode":"raw","dataset":11,"graph":"dataset/Processed/Flickr/graph.txt","vectors":"dataset/Processed/Flickr/vectors.bin","tau":0.115454848,"threads":32,"timeout_seconds":30,"repetitions":1},
+    {"algorithm":4,"mode":"raw","dataset":11,"graph":"dataset/Processed/Flickr/graph.txt","vectors":"dataset/Processed/Flickr/vectors.bin","tau":0.115454848,"threads":32,"timeout_seconds":30,"repetitions":1},
+    {"algorithm":3,"mode":"raw","dataset":11,"graph":"dataset/Processed/Flickr/graph.txt","vectors":"dataset/Processed/Flickr/vectors.bin","tau":0.327872560,"threads":32,"timeout_seconds":30,"repetitions":1},
+    {"algorithm":4,"mode":"raw","dataset":11,"graph":"dataset/Processed/Flickr/graph.txt","vectors":"dataset/Processed/Flickr/vectors.bin","tau":0.327872560,"threads":32,"timeout_seconds":30,"repetitions":1},
+    {"algorithm":3,"mode":"raw","dataset":11,"graph":"dataset/Processed/Flickr/graph.txt","vectors":"dataset/Processed/Flickr/vectors.bin","tau":0.382886676,"threads":32,"timeout_seconds":30,"repetitions":1},
+    {"algorithm":4,"mode":"raw","dataset":11,"graph":"dataset/Processed/Flickr/graph.txt","vectors":"dataset/Processed/Flickr/vectors.bin","tau":0.382886676,"threads":32,"timeout_seconds":30,"repetitions":1},
+    {"algorithm":3,"mode":"raw","dataset":11,"graph":"dataset/Processed/Flickr/graph.txt","vectors":"dataset/Processed/Flickr/vectors.bin","tau":0.456989889,"threads":32,"timeout_seconds":30,"repetitions":1},
+    {"algorithm":4,"mode":"raw","dataset":11,"graph":"dataset/Processed/Flickr/graph.txt","vectors":"dataset/Processed/Flickr/vectors.bin","tau":0.456989889,"threads":32,"timeout_seconds":30,"repetitions":1},
+    {"algorithm":3,"mode":"raw","dataset":11,"graph":"dataset/Processed/Flickr/graph.txt","vectors":"dataset/Processed/Flickr/vectors.bin","tau":0.494371377,"threads":32,"timeout_seconds":30,"repetitions":1},
+    {"algorithm":4,"mode":"raw","dataset":11,"graph":"dataset/Processed/Flickr/graph.txt","vectors":"dataset/Processed/Flickr/vectors.bin","tau":0.494371377,"threads":32,"timeout_seconds":30,"repetitions":1},
+    {"algorithm":3,"mode":"raw","dataset":11,"graph":"dataset/Processed/Flickr/graph.txt","vectors":"dataset/Processed/Flickr/vectors.bin","tau":0.522812674,"threads":32,"timeout_seconds":30,"repetitions":1},
+    {"algorithm":4,"mode":"raw","dataset":11,"graph":"dataset/Processed/Flickr/graph.txt","vectors":"dataset/Processed/Flickr/vectors.bin","tau":0.522812674,"threads":32,"timeout_seconds":30,"repetitions":1}
+  ]
+}

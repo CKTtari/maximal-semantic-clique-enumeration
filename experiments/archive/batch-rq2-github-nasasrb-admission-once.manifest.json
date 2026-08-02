@@ -1,0 +1,3079 @@
+{
+  "schema_version": 2,
+  "run_name": "batch-rq2-github-nasasrb-admission-once",
+  "archived_utc": "2026-08-01T16:52:43.146080+00:00",
+  "local_result_directory": "experiment-output/batch-rq2-github-nasasrb-admission-once",
+  "plans": [
+    {
+      "path": "experiments/plans/batch-rq2-github-nasasrb-admission-once.json",
+      "sha256": "65603f3d0383b0b1e412d62b048488e9da5560636d9ad3537d129bb9c69f10c3"
+    }
+  ],
+  "summary": {
+    "attempts": 24,
+    "planned_tasks": 24,
+    "attempted_tasks": 24,
+    "completed_tasks": 17,
+    "unattempted_tasks": 0,
+    "unattempted_task_ids": [],
+    "plan_complete": true,
+    "status_counts": {
+      "completed": 17,
+      "tle": 7
+    }
+  },
+  "records": [
+    {
+      "task_id": "00d71319d0e7e6ff",
+      "attempt": 1,
+      "status": "tle",
+      "rerun_reason": null,
+      "started_utc": "2026-08-01T15:43:29.760258+00:00",
+      "wall_seconds": 30.050208000000566,
+      "task": {
+        "algorithm": 4,
+        "mode": "raw",
+        "dataset": 17,
+        "tau": 0.333849,
+        "threads": 32,
+        "timeout_seconds": 30,
+        "graph": null,
+        "vectors": null,
+        "capture_cliques": false,
+        "defines": {},
+        "warmup": false,
+        "repetition": 0,
+        "task_id": "00d71319d0e7e6ff"
+      },
+      "parsed": null,
+      "validation": null,
+      "build": {
+        "fingerprint": "dc3d3c5b805d2305",
+        "executable_sha256": "b45f4fa2da08f652aa25bb30f8b3f492a49c453eb20d570cf4f7f4cf49f722cd",
+        "command": [
+          "g++",
+          "-std=c++17",
+          "-fopenmp",
+          "-mavx2",
+          "-O3",
+          "src/alg4-raw.cpp",
+          "src/semantic_graph.cpp",
+          "-o",
+          "no-use/compiled/experiment-runner/alg4-raw-dc3d3c5b805d2305.exe"
+        ],
+        "source_verification": {
+          "status": "verified_current",
+          "observed_current_fingerprint": "dc3d3c5b805d2305",
+          "reason": null
+        },
+        "source_hashes": {
+          "alg4-raw.cpp": "4d8e6dcc65150c7ac4b6e8a5501412af4581b704a5191ffd34813f0ea45a12b8",
+          "semantic_graph.cpp": "c6d51c9086fbd5c7d264eb411ac04890806744fc4e05dc7eee0b156760a9cd92",
+          "semantic_graph.h": "8192c4e8e02fc8ace59d59365f72643e34ca32ba71faa5bb338381a8cd308078",
+          "experiment_runtime.h": "2970c483cd31152adc0a39278340822337daeb312c073b67a8eb49a030a4f35d"
+        }
+      },
+      "inputs": {
+        "status": "verified_run_time",
+        "snapshot": {
+          "dataset_catalog": {
+            "path": "experiments/datasets.json",
+            "sha256": "6b56d1151911b15582d62bee8c4a90f6e08218c1079f09f7b08d618327468fcd"
+          },
+          "files": [
+            {
+              "role": "graph",
+              "path": "dataset/dataset/github-social.txt",
+              "bytes": 3306142,
+              "sha256": "d499e49dbd13a0a6b68fc4c73542bd40494f77ae377086e4f8ad3481aba1fdf3"
+            },
+            {
+              "role": "vector_binary",
+              "path": "dataset/vectors/github-social_vectors.bin",
+              "bytes": 1207908008,
+              "sha256": "1def64822605ee066bb917b3ddf990e60be0be8c4b32cdcab6ccf9b03e170d7f"
+            }
+          ]
+        }
+      },
+      "run_environment": {
+        "plan": "experiments/plans/batch-rq2-github-nasasrb-admission-once.json",
+        "plan_sha256": "65603f3d0383b0b1e412d62b048488e9da5560636d9ad3537d129bb9c69f10c3",
+        "git": {
+          "commit": "9d1922b873378eae6a3110dbca467e30256c53e4",
+          "dirty": true
+        },
+        "machine": {
+          "platform": "Windows-11-10.0.26100-SP0",
+          "processor": "AMD64 Family 25 Model 97 Stepping 2, AuthenticAMD",
+          "logical_cpu_count": 32,
+          "python": "3.12.7",
+          "compiler": "g++ (x86_64-posix-seh-rev0, Built by MinGW-Builds project) 13.2.0"
+        },
+        "memory_limit_gib": 16,
+        "external_timeout_policy": "hard per-process TLE from task.timeout_seconds"
+      },
+      "result_json": {
+        "path": "experiment-output/batch-rq2-github-nasasrb-admission-once/00d71319d0e7e6ff.attempt-001.json",
+        "bytes": 3918,
+        "sha256": "ef2d372cb258d4391e756a36b550eca453540f4f18a4cfd2eebd5e8cd08b72bf"
+      },
+      "artifacts": {
+        "program_log": {
+          "path": "experiment-output/batch-rq2-github-nasasrb-admission-once/00d71319d0e7e6ff.attempt-001.program.log",
+          "bytes": 712,
+          "sha256": "2d57af3c448c413efda679fab7737fd5fa3c6c58e904f8dfb573d4bf4777ac93"
+        },
+        "stdout": {
+          "path": "experiment-output/batch-rq2-github-nasasrb-admission-once/00d71319d0e7e6ff.attempt-001.stdout.txt",
+          "bytes": 668,
+          "sha256": "d5dae4d9ac43c59a16e1d7d3fe9e050e3b2ffcf0b5ddad8e1ef8fdfe0c7dbbc3"
+        },
+        "stderr": {
+          "path": "experiment-output/batch-rq2-github-nasasrb-admission-once/00d71319d0e7e6ff.attempt-001.stderr.txt",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    {
+      "task_id": "05a5c0e47725b115",
+      "attempt": 1,
+      "status": "tle",
+      "rerun_reason": null,
+      "started_utc": "2026-08-01T15:46:16.901479+00:00",
+      "wall_seconds": 30.02769430000626,
+      "task": {
+        "algorithm": 4,
+        "mode": "raw",
+        "dataset": 2,
+        "tau": 3.30061e-05,
+        "threads": 32,
+        "timeout_seconds": 30,
+        "graph": null,
+        "vectors": null,
+        "capture_cliques": false,
+        "defines": {},
+        "warmup": false,
+        "repetition": 0,
+        "task_id": "05a5c0e47725b115"
+      },
+      "parsed": null,
+      "validation": null,
+      "build": {
+        "fingerprint": "dc3d3c5b805d2305",
+        "executable_sha256": "b45f4fa2da08f652aa25bb30f8b3f492a49c453eb20d570cf4f7f4cf49f722cd",
+        "command": [
+          "g++",
+          "-std=c++17",
+          "-fopenmp",
+          "-mavx2",
+          "-O3",
+          "src/alg4-raw.cpp",
+          "src/semantic_graph.cpp",
+          "-o",
+          "no-use/compiled/experiment-runner/alg4-raw-dc3d3c5b805d2305.exe"
+        ],
+        "source_verification": {
+          "status": "verified_current",
+          "observed_current_fingerprint": "dc3d3c5b805d2305",
+          "reason": null
+        },
+        "source_hashes": {
+          "alg4-raw.cpp": "4d8e6dcc65150c7ac4b6e8a5501412af4581b704a5191ffd34813f0ea45a12b8",
+          "semantic_graph.cpp": "c6d51c9086fbd5c7d264eb411ac04890806744fc4e05dc7eee0b156760a9cd92",
+          "semantic_graph.h": "8192c4e8e02fc8ace59d59365f72643e34ca32ba71faa5bb338381a8cd308078",
+          "experiment_runtime.h": "2970c483cd31152adc0a39278340822337daeb312c073b67a8eb49a030a4f35d"
+        }
+      },
+      "inputs": {
+        "status": "verified_run_time",
+        "snapshot": {
+          "dataset_catalog": {
+            "path": "experiments/datasets.json",
+            "sha256": "6b56d1151911b15582d62bee8c4a90f6e08218c1079f09f7b08d618327468fcd"
+          },
+          "files": [
+            {
+              "role": "graph",
+              "path": "dataset/dataset/sc-nasasrb.txt",
+              "bytes": 15163675,
+              "sha256": "ebaebd0857d5414dc67b4fac1cb12bed76bf1f099a75595c15cc149d7eeaf771"
+            },
+            {
+              "role": "vector_binary",
+              "path": "dataset/vectors-256/sc-nasasrb_vectors.bin",
+              "bytes": 112373768,
+              "sha256": "1d50c72a6830901856e869477e3241d4d2b9911282d09fc4d121f0d057f280cf"
+            }
+          ]
+        }
+      },
+      "run_environment": {
+        "plan": "experiments/plans/batch-rq2-github-nasasrb-admission-once.json",
+        "plan_sha256": "65603f3d0383b0b1e412d62b048488e9da5560636d9ad3537d129bb9c69f10c3",
+        "git": {
+          "commit": "9d1922b873378eae6a3110dbca467e30256c53e4",
+          "dirty": true
+        },
+        "machine": {
+          "platform": "Windows-11-10.0.26100-SP0",
+          "processor": "AMD64 Family 25 Model 97 Stepping 2, AuthenticAMD",
+          "logical_cpu_count": 32,
+          "python": "3.12.7",
+          "compiler": "g++ (x86_64-posix-seh-rev0, Built by MinGW-Builds project) 13.2.0"
+        },
+        "memory_limit_gib": 16,
+        "external_timeout_policy": "hard per-process TLE from task.timeout_seconds"
+      },
+      "result_json": {
+        "path": "experiment-output/batch-rq2-github-nasasrb-admission-once/05a5c0e47725b115.attempt-001.json",
+        "bytes": 3914,
+        "sha256": "2b440e269593ccb381e0322d00fbeb1e14386b75a58086c563cab5a933de602f"
+      },
+      "artifacts": {
+        "program_log": {
+          "path": "experiment-output/batch-rq2-github-nasasrb-admission-once/05a5c0e47725b115.attempt-001.program.log",
+          "bytes": 707,
+          "sha256": "06cd81a65db89baa0fc7508033b765bf2935f66cf3da973ebe2f4adaa914ca8a"
+        },
+        "stdout": {
+          "path": "experiment-output/batch-rq2-github-nasasrb-admission-once/05a5c0e47725b115.attempt-001.stdout.txt",
+          "bytes": 663,
+          "sha256": "805c9be6f5d7c7a8749ae2201eee68b783f350f1c750acb519fd23e6aa85bca9"
+        },
+        "stderr": {
+          "path": "experiment-output/batch-rq2-github-nasasrb-admission-once/05a5c0e47725b115.attempt-001.stderr.txt",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    {
+      "task_id": "1838ebfba39a7154",
+      "attempt": 1,
+      "status": "completed",
+      "rerun_reason": null,
+      "started_utc": "2026-08-01T15:45:15.523373+00:00",
+      "wall_seconds": 1.227376800001366,
+      "task": {
+        "algorithm": 3,
+        "mode": "raw",
+        "dataset": 2,
+        "tau": -0.102883,
+        "threads": 32,
+        "timeout_seconds": 30,
+        "graph": null,
+        "vectors": null,
+        "capture_cliques": false,
+        "defines": {},
+        "warmup": false,
+        "repetition": 0,
+        "task_id": "1838ebfba39a7154"
+      },
+      "parsed": {
+        "algorithm_ms": 438,
+        "clique_count": 28154,
+        "peak_memory_gib": 0.23,
+        "size_histogram": {
+          "4": 10,
+          "5": 10,
+          "6": 65,
+          "7": 70,
+          "8": 444,
+          "9": 180,
+          "10": 514,
+          "11": 1422,
+          "12": 4708,
+          "13": 1432,
+          "14": 1222,
+          "15": 2507,
+          "16": 2489,
+          "17": 454,
+          "18": 777,
+          "19": 771,
+          "20": 5139,
+          "21": 1968,
+          "22": 1648,
+          "23": 385,
+          "24": 1939
+        },
+        "stats": {}
+      },
+      "validation": null,
+      "build": {
+        "fingerprint": "7562da09c43d7518",
+        "executable_sha256": "c4bc362d2a076910ff63260f3a2693a8f01b489c7c8514b5e6617a386bec4817",
+        "command": [
+          "g++",
+          "-std=c++17",
+          "-fopenmp",
+          "-mavx2",
+          "-O3",
+          "src/alg3-raw.cpp",
+          "src/semantic_graph.cpp",
+          "-o",
+          "no-use/compiled/experiment-runner/alg3-raw-7562da09c43d7518.exe"
+        ],
+        "source_verification": {
+          "status": "verified_current",
+          "observed_current_fingerprint": "7562da09c43d7518",
+          "reason": null
+        },
+        "source_hashes": {
+          "alg3-raw.cpp": "54be44ba5e5958f887bc86c684bb8c0a129f44f9c3078b929fb89ace32062c60",
+          "semantic_graph.cpp": "c6d51c9086fbd5c7d264eb411ac04890806744fc4e05dc7eee0b156760a9cd92",
+          "semantic_graph.h": "8192c4e8e02fc8ace59d59365f72643e34ca32ba71faa5bb338381a8cd308078",
+          "experiment_runtime.h": "2970c483cd31152adc0a39278340822337daeb312c073b67a8eb49a030a4f35d"
+        }
+      },
+      "inputs": {
+        "status": "verified_run_time",
+        "snapshot": {
+          "dataset_catalog": {
+            "path": "experiments/datasets.json",
+            "sha256": "6b56d1151911b15582d62bee8c4a90f6e08218c1079f09f7b08d618327468fcd"
+          },
+          "files": [
+            {
+              "role": "graph",
+              "path": "dataset/dataset/sc-nasasrb.txt",
+              "bytes": 15163675,
+              "sha256": "ebaebd0857d5414dc67b4fac1cb12bed76bf1f099a75595c15cc149d7eeaf771"
+            },
+            {
+              "role": "vector_binary",
+              "path": "dataset/vectors-256/sc-nasasrb_vectors.bin",
+              "bytes": 112373768,
+              "sha256": "1d50c72a6830901856e869477e3241d4d2b9911282d09fc4d121f0d057f280cf"
+            }
+          ]
+        }
+      },
+      "run_environment": {
+        "plan": "experiments/plans/batch-rq2-github-nasasrb-admission-once.json",
+        "plan_sha256": "65603f3d0383b0b1e412d62b048488e9da5560636d9ad3537d129bb9c69f10c3",
+        "git": {
+          "commit": "9d1922b873378eae6a3110dbca467e30256c53e4",
+          "dirty": true
+        },
+        "machine": {
+          "platform": "Windows-11-10.0.26100-SP0",
+          "processor": "AMD64 Family 25 Model 97 Stepping 2, AuthenticAMD",
+          "logical_cpu_count": 32,
+          "python": "3.12.7",
+          "compiler": "g++ (x86_64-posix-seh-rev0, Built by MinGW-Builds project) 13.2.0"
+        },
+        "memory_limit_gib": 16,
+        "external_timeout_policy": "hard per-process TLE from task.timeout_seconds"
+      },
+      "result_json": {
+        "path": "experiment-output/batch-rq2-github-nasasrb-admission-once/1838ebfba39a7154.attempt-001.json",
+        "bytes": 4428,
+        "sha256": "edde6e58f19efe8e503f6e9a44aac37054d2d2934c9392877096641323a1f31f"
+      },
+      "artifacts": {
+        "program_log": {
+          "path": "experiment-output/batch-rq2-github-nasasrb-admission-once/1838ebfba39a7154.attempt-001.program.log",
+          "bytes": 1739,
+          "sha256": "4b91f4edf1d20476647c94e8dbf5b3a5bd0a97ecd17b4eae2103ee03a6c78842"
+        },
+        "stdout": {
+          "path": "experiment-output/batch-rq2-github-nasasrb-admission-once/1838ebfba39a7154.attempt-001.stdout.txt",
+          "bytes": 1942,
+          "sha256": "9bf92e1c5096a4d6e490d35a075bc57b1b41b22505df49f5eeb425b8b41a91dc"
+        },
+        "stderr": {
+          "path": "experiment-output/batch-rq2-github-nasasrb-admission-once/1838ebfba39a7154.attempt-001.stderr.txt",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    {
+      "task_id": "19bf491d4d97ffa1",
+      "attempt": 1,
+      "status": "completed",
+      "rerun_reason": null,
+      "started_utc": "2026-08-01T15:43:59.838508+00:00",
+      "wall_seconds": 1.7776542999927187,
+      "task": {
+        "algorithm": 3,
+        "mode": "raw",
+        "dataset": 17,
+        "tau": 0.387298,
+        "threads": 32,
+        "timeout_seconds": 30,
+        "graph": null,
+        "vectors": null,
+        "capture_cliques": false,
+        "defines": {},
+        "warmup": false,
+        "repetition": 0,
+        "task_id": "19bf491d4d97ffa1"
+      },
+      "parsed": {
+        "algorithm_ms": 373,
+        "clique_count": 111566,
+        "peak_memory_gib": 1.73,
+        "size_histogram": {
+          "2": 32148,
+          "3": 28250,
+          "4": 21372,
+          "5": 14275,
+          "6": 8681,
+          "7": 4396,
+          "8": 1667,
+          "9": 444,
+          "10": 107,
+          "11": 45,
+          "12": 37,
+          "13": 20,
+          "14": 19,
+          "15": 15,
+          "16": 24,
+          "17": 23,
+          "18": 9,
+          "19": 1,
+          "20": 7,
+          "21": 5,
+          "22": 13,
+          "23": 4,
+          "24": 4
+        },
+        "stats": {}
+      },
+      "validation": null,
+      "build": {
+        "fingerprint": "7562da09c43d7518",
+        "executable_sha256": "c4bc362d2a076910ff63260f3a2693a8f01b489c7c8514b5e6617a386bec4817",
+        "command": [
+          "g++",
+          "-std=c++17",
+          "-fopenmp",
+          "-mavx2",
+          "-O3",
+          "src/alg3-raw.cpp",
+          "src/semantic_graph.cpp",
+          "-o",
+          "no-use/compiled/experiment-runner/alg3-raw-7562da09c43d7518.exe"
+        ],
+        "source_verification": {
+          "status": "verified_current",
+          "observed_current_fingerprint": "7562da09c43d7518",
+          "reason": null
+        },
+        "source_hashes": {
+          "alg3-raw.cpp": "54be44ba5e5958f887bc86c684bb8c0a129f44f9c3078b929fb89ace32062c60",
+          "semantic_graph.cpp": "c6d51c9086fbd5c7d264eb411ac04890806744fc4e05dc7eee0b156760a9cd92",
+          "semantic_graph.h": "8192c4e8e02fc8ace59d59365f72643e34ca32ba71faa5bb338381a8cd308078",
+          "experiment_runtime.h": "2970c483cd31152adc0a39278340822337daeb312c073b67a8eb49a030a4f35d"
+        }
+      },
+      "inputs": {
+        "status": "verified_run_time",
+        "snapshot": {
+          "dataset_catalog": {
+            "path": "experiments/datasets.json",
+            "sha256": "6b56d1151911b15582d62bee8c4a90f6e08218c1079f09f7b08d618327468fcd"
+          },
+          "files": [
+            {
+              "role": "graph",
+              "path": "dataset/dataset/github-social.txt",
+              "bytes": 3306142,
+              "sha256": "d499e49dbd13a0a6b68fc4c73542bd40494f77ae377086e4f8ad3481aba1fdf3"
+            },
+            {
+              "role": "vector_binary",
+              "path": "dataset/vectors/github-social_vectors.bin",
+              "bytes": 1207908008,
+              "sha256": "1def64822605ee066bb917b3ddf990e60be0be8c4b32cdcab6ccf9b03e170d7f"
+            }
+          ]
+        }
+      },
+      "run_environment": {
+        "plan": "experiments/plans/batch-rq2-github-nasasrb-admission-once.json",
+        "plan_sha256": "65603f3d0383b0b1e412d62b048488e9da5560636d9ad3537d129bb9c69f10c3",
+        "git": {
+          "commit": "9d1922b873378eae6a3110dbca467e30256c53e4",
+          "dirty": true
+        },
+        "machine": {
+          "platform": "Windows-11-10.0.26100-SP0",
+          "processor": "AMD64 Family 25 Model 97 Stepping 2, AuthenticAMD",
+          "logical_cpu_count": 32,
+          "python": "3.12.7",
+          "compiler": "g++ (x86_64-posix-seh-rev0, Built by MinGW-Builds project) 13.2.0"
+        },
+        "memory_limit_gib": 16,
+        "external_timeout_policy": "hard per-process TLE from task.timeout_seconds"
+      },
+      "result_json": {
+        "path": "experiment-output/batch-rq2-github-nasasrb-admission-once/19bf491d4d97ffa1.attempt-001.json",
+        "bytes": 4454,
+        "sha256": "6ef2702d0bc63144bec47252813ca9c9e692f8a8aacb090e32ed56f7297ff370"
+      },
+      "artifacts": {
+        "program_log": {
+          "path": "experiment-output/batch-rq2-github-nasasrb-admission-once/19bf491d4d97ffa1.attempt-001.program.log",
+          "bytes": 1785,
+          "sha256": "35d66522ee03afa05653766be152bc317c36419ca199a036e50b53526ce0333f"
+        },
+        "stdout": {
+          "path": "experiment-output/batch-rq2-github-nasasrb-admission-once/19bf491d4d97ffa1.attempt-001.stdout.txt",
+          "bytes": 1988,
+          "sha256": "2387cc955d53e63384be232e5b74bbfcb90bd6689e6c8e26390785e7b1b9a5c4"
+        },
+        "stderr": {
+          "path": "experiment-output/batch-rq2-github-nasasrb-admission-once/19bf491d4d97ffa1.attempt-001.stderr.txt",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    {
+      "task_id": "200db4079debdff5",
+      "attempt": 1,
+      "status": "tle",
+      "rerun_reason": null,
+      "started_utc": "2026-08-01T15:44:01.642985+00:00",
+      "wall_seconds": 30.035676400002558,
+      "task": {
+        "algorithm": 4,
+        "mode": "raw",
+        "dataset": 17,
+        "tau": 0.387298,
+        "threads": 32,
+        "timeout_seconds": 30,
+        "graph": null,
+        "vectors": null,
+        "capture_cliques": false,
+        "defines": {},
+        "warmup": false,
+        "repetition": 0,
+        "task_id": "200db4079debdff5"
+      },
+      "parsed": null,
+      "validation": null,
+      "build": {
+        "fingerprint": "dc3d3c5b805d2305",
+        "executable_sha256": "b45f4fa2da08f652aa25bb30f8b3f492a49c453eb20d570cf4f7f4cf49f722cd",
+        "command": [
+          "g++",
+          "-std=c++17",
+          "-fopenmp",
+          "-mavx2",
+          "-O3",
+          "src/alg4-raw.cpp",
+          "src/semantic_graph.cpp",
+          "-o",
+          "no-use/compiled/experiment-runner/alg4-raw-dc3d3c5b805d2305.exe"
+        ],
+        "source_verification": {
+          "status": "verified_current",
+          "observed_current_fingerprint": "dc3d3c5b805d2305",
+          "reason": null
+        },
+        "source_hashes": {
+          "alg4-raw.cpp": "4d8e6dcc65150c7ac4b6e8a5501412af4581b704a5191ffd34813f0ea45a12b8",
+          "semantic_graph.cpp": "c6d51c9086fbd5c7d264eb411ac04890806744fc4e05dc7eee0b156760a9cd92",
+          "semantic_graph.h": "8192c4e8e02fc8ace59d59365f72643e34ca32ba71faa5bb338381a8cd308078",
+          "experiment_runtime.h": "2970c483cd31152adc0a39278340822337daeb312c073b67a8eb49a030a4f35d"
+        }
+      },
+      "inputs": {
+        "status": "verified_run_time",
+        "snapshot": {
+          "dataset_catalog": {
+            "path": "experiments/datasets.json",
+            "sha256": "6b56d1151911b15582d62bee8c4a90f6e08218c1079f09f7b08d618327468fcd"
+          },
+          "files": [
+            {
+              "role": "graph",
+              "path": "dataset/dataset/github-social.txt",
+              "bytes": 3306142,
+              "sha256": "d499e49dbd13a0a6b68fc4c73542bd40494f77ae377086e4f8ad3481aba1fdf3"
+            },
+            {
+              "role": "vector_binary",
+              "path": "dataset/vectors/github-social_vectors.bin",
+              "bytes": 1207908008,
+              "sha256": "1def64822605ee066bb917b3ddf990e60be0be8c4b32cdcab6ccf9b03e170d7f"
+            }
+          ]
+        }
+      },
+      "run_environment": {
+        "plan": "experiments/plans/batch-rq2-github-nasasrb-admission-once.json",
+        "plan_sha256": "65603f3d0383b0b1e412d62b048488e9da5560636d9ad3537d129bb9c69f10c3",
+        "git": {
+          "commit": "9d1922b873378eae6a3110dbca467e30256c53e4",
+          "dirty": true
+        },
+        "machine": {
+          "platform": "Windows-11-10.0.26100-SP0",
+          "processor": "AMD64 Family 25 Model 97 Stepping 2, AuthenticAMD",
+          "logical_cpu_count": 32,
+          "python": "3.12.7",
+          "compiler": "g++ (x86_64-posix-seh-rev0, Built by MinGW-Builds project) 13.2.0"
+        },
+        "memory_limit_gib": 16,
+        "external_timeout_policy": "hard per-process TLE from task.timeout_seconds"
+      },
+      "result_json": {
+        "path": "experiment-output/batch-rq2-github-nasasrb-admission-once/200db4079debdff5.attempt-001.json",
+        "bytes": 3918,
+        "sha256": "e114faa68ac5bff9529d4b2e683a30ae1b9914802970301ab2119ff7fbbd55a9"
+      },
+      "artifacts": {
+        "program_log": {
+          "path": "experiment-output/batch-rq2-github-nasasrb-admission-once/200db4079debdff5.attempt-001.program.log",
+          "bytes": 709,
+          "sha256": "37e560c680bb6a9def7fd06717437d36e8723ef9bbd2ee4d104e3ac84ceac8fb"
+        },
+        "stdout": {
+          "path": "experiment-output/batch-rq2-github-nasasrb-admission-once/200db4079debdff5.attempt-001.stdout.txt",
+          "bytes": 667,
+          "sha256": "c1981b3b8d5f15393c4b0457cc450f181a49d8d0d46344974a146221126f8cac"
+        },
+        "stderr": {
+          "path": "experiment-output/batch-rq2-github-nasasrb-admission-once/200db4079debdff5.attempt-001.stderr.txt",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    {
+      "task_id": "23020f083bb9f0ca",
+      "attempt": 1,
+      "status": "completed",
+      "rerun_reason": null,
+      "started_utc": "2026-08-01T15:48:48.618134+00:00",
+      "wall_seconds": 0.812107499994454,
+      "task": {
+        "algorithm": 4,
+        "mode": "raw",
+        "dataset": 2,
+        "tau": 0.102769,
+        "threads": 32,
+        "timeout_seconds": 30,
+        "graph": null,
+        "vectors": null,
+        "capture_cliques": false,
+        "defines": {},
+        "warmup": false,
+        "repetition": 0,
+        "task_id": "23020f083bb9f0ca"
+      },
+      "parsed": {
+        "algorithm_ms": 136,
+        "clique_count": 61028,
+        "peak_memory_gib": 0.19,
+        "size_histogram": {
+          "2": 32367,
+          "3": 24641,
+          "4": 3840,
+          "5": 175,
+          "6": 5
+        },
+        "stats": {}
+      },
+      "validation": null,
+      "build": {
+        "fingerprint": "dc3d3c5b805d2305",
+        "executable_sha256": "b45f4fa2da08f652aa25bb30f8b3f492a49c453eb20d570cf4f7f4cf49f722cd",
+        "command": [
+          "g++",
+          "-std=c++17",
+          "-fopenmp",
+          "-mavx2",
+          "-O3",
+          "src/alg4-raw.cpp",
+          "src/semantic_graph.cpp",
+          "-o",
+          "no-use/compiled/experiment-runner/alg4-raw-dc3d3c5b805d2305.exe"
+        ],
+        "source_verification": {
+          "status": "verified_current",
+          "observed_current_fingerprint": "dc3d3c5b805d2305",
+          "reason": null
+        },
+        "source_hashes": {
+          "alg4-raw.cpp": "4d8e6dcc65150c7ac4b6e8a5501412af4581b704a5191ffd34813f0ea45a12b8",
+          "semantic_graph.cpp": "c6d51c9086fbd5c7d264eb411ac04890806744fc4e05dc7eee0b156760a9cd92",
+          "semantic_graph.h": "8192c4e8e02fc8ace59d59365f72643e34ca32ba71faa5bb338381a8cd308078",
+          "experiment_runtime.h": "2970c483cd31152adc0a39278340822337daeb312c073b67a8eb49a030a4f35d"
+        }
+      },
+      "inputs": {
+        "status": "verified_run_time",
+        "snapshot": {
+          "dataset_catalog": {
+            "path": "experiments/datasets.json",
+            "sha256": "6b56d1151911b15582d62bee8c4a90f6e08218c1079f09f7b08d618327468fcd"
+          },
+          "files": [
+            {
+              "role": "graph",
+              "path": "dataset/dataset/sc-nasasrb.txt",
+              "bytes": 15163675,
+              "sha256": "ebaebd0857d5414dc67b4fac1cb12bed76bf1f099a75595c15cc149d7eeaf771"
+            },
+            {
+              "role": "vector_binary",
+              "path": "dataset/vectors-256/sc-nasasrb_vectors.bin",
+              "bytes": 112373768,
+              "sha256": "1d50c72a6830901856e869477e3241d4d2b9911282d09fc4d121f0d057f280cf"
+            }
+          ]
+        }
+      },
+      "run_environment": {
+        "plan": "experiments/plans/batch-rq2-github-nasasrb-admission-once.json",
+        "plan_sha256": "65603f3d0383b0b1e412d62b048488e9da5560636d9ad3537d129bb9c69f10c3",
+        "git": {
+          "commit": "9d1922b873378eae6a3110dbca467e30256c53e4",
+          "dirty": true
+        },
+        "machine": {
+          "platform": "Windows-11-10.0.26100-SP0",
+          "processor": "AMD64 Family 25 Model 97 Stepping 2, AuthenticAMD",
+          "logical_cpu_count": 32,
+          "python": "3.12.7",
+          "compiler": "g++ (x86_64-posix-seh-rev0, Built by MinGW-Builds project) 13.2.0"
+        },
+        "memory_limit_gib": 16,
+        "external_timeout_policy": "hard per-process TLE from task.timeout_seconds"
+      },
+      "result_json": {
+        "path": "experiment-output/batch-rq2-github-nasasrb-admission-once/23020f083bb9f0ca.attempt-001.json",
+        "bytes": 4137,
+        "sha256": "1ea0d2333237ab80de8ffdf2fc195d576bcee65629711cf37b0440a5266a93f2"
+      },
+      "artifacts": {
+        "program_log": {
+          "path": "experiment-output/batch-rq2-github-nasasrb-admission-once/23020f083bb9f0ca.attempt-001.program.log",
+          "bytes": 1185,
+          "sha256": "ec57c43b4565ce3dc6616e99ec2a3162b0e255324afe5a75af1396dad4871e3a"
+        },
+        "stdout": {
+          "path": "experiment-output/batch-rq2-github-nasasrb-admission-once/23020f083bb9f0ca.attempt-001.stdout.txt",
+          "bytes": 1388,
+          "sha256": "77b21bc0d210e540073ba16a8ea3a59d72057723689ac2282e2f385ed5d14e96"
+        },
+        "stderr": {
+          "path": "experiment-output/batch-rq2-github-nasasrb-admission-once/23020f083bb9f0ca.attempt-001.stderr.txt",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    {
+      "task_id": "266787649ad9c5d9",
+      "attempt": 1,
+      "status": "completed",
+      "rerun_reason": null,
+      "started_utc": "2026-08-01T15:42:56.136584+00:00",
+      "wall_seconds": 1.8238251000002492,
+      "task": {
+        "algorithm": 3,
+        "mode": "raw",
+        "dataset": 17,
+        "tau": 0.173494,
+        "threads": 32,
+        "timeout_seconds": 30,
+        "graph": null,
+        "vectors": null,
+        "capture_cliques": false,
+        "defines": {},
+        "warmup": false,
+        "repetition": 0,
+        "task_id": "266787649ad9c5d9"
+      },
+      "parsed": {
+        "algorithm_ms": 393,
+        "clique_count": 283883,
+        "peak_memory_gib": 1.73,
+        "size_histogram": {
+          "2": 60895,
+          "3": 68084,
+          "4": 57968,
+          "5": 41849,
+          "6": 26620,
+          "7": 15787,
+          "8": 8023,
+          "9": 3161,
+          "10": 991,
+          "11": 235,
+          "12": 116,
+          "13": 30,
+          "14": 18,
+          "15": 16,
+          "16": 24,
+          "17": 23,
+          "18": 9,
+          "19": 1,
+          "20": 7,
+          "21": 5,
+          "22": 13,
+          "23": 4,
+          "24": 4
+        },
+        "stats": {}
+      },
+      "validation": null,
+      "build": {
+        "fingerprint": "7562da09c43d7518",
+        "executable_sha256": "c4bc362d2a076910ff63260f3a2693a8f01b489c7c8514b5e6617a386bec4817",
+        "command": [
+          "g++",
+          "-std=c++17",
+          "-fopenmp",
+          "-mavx2",
+          "-O3",
+          "src/alg3-raw.cpp",
+          "src/semantic_graph.cpp",
+          "-o",
+          "no-use/compiled/experiment-runner/alg3-raw-7562da09c43d7518.exe"
+        ],
+        "source_verification": {
+          "status": "verified_current",
+          "observed_current_fingerprint": "7562da09c43d7518",
+          "reason": null
+        },
+        "source_hashes": {
+          "alg3-raw.cpp": "54be44ba5e5958f887bc86c684bb8c0a129f44f9c3078b929fb89ace32062c60",
+          "semantic_graph.cpp": "c6d51c9086fbd5c7d264eb411ac04890806744fc4e05dc7eee0b156760a9cd92",
+          "semantic_graph.h": "8192c4e8e02fc8ace59d59365f72643e34ca32ba71faa5bb338381a8cd308078",
+          "experiment_runtime.h": "2970c483cd31152adc0a39278340822337daeb312c073b67a8eb49a030a4f35d"
+        }
+      },
+      "inputs": {
+        "status": "verified_run_time",
+        "snapshot": {
+          "dataset_catalog": {
+            "path": "experiments/datasets.json",
+            "sha256": "6b56d1151911b15582d62bee8c4a90f6e08218c1079f09f7b08d618327468fcd"
+          },
+          "files": [
+            {
+              "role": "graph",
+              "path": "dataset/dataset/github-social.txt",
+              "bytes": 3306142,
+              "sha256": "d499e49dbd13a0a6b68fc4c73542bd40494f77ae377086e4f8ad3481aba1fdf3"
+            },
+            {
+              "role": "vector_binary",
+              "path": "dataset/vectors/github-social_vectors.bin",
+              "bytes": 1207908008,
+              "sha256": "1def64822605ee066bb917b3ddf990e60be0be8c4b32cdcab6ccf9b03e170d7f"
+            }
+          ]
+        }
+      },
+      "run_environment": {
+        "plan": "experiments/plans/batch-rq2-github-nasasrb-admission-once.json",
+        "plan_sha256": "65603f3d0383b0b1e412d62b048488e9da5560636d9ad3537d129bb9c69f10c3",
+        "git": {
+          "commit": "9d1922b873378eae6a3110dbca467e30256c53e4",
+          "dirty": true
+        },
+        "machine": {
+          "platform": "Windows-11-10.0.26100-SP0",
+          "processor": "AMD64 Family 25 Model 97 Stepping 2, AuthenticAMD",
+          "logical_cpu_count": 32,
+          "python": "3.12.7",
+          "compiler": "g++ (x86_64-posix-seh-rev0, Built by MinGW-Builds project) 13.2.0"
+        },
+        "memory_limit_gib": 16,
+        "external_timeout_policy": "hard per-process TLE from task.timeout_seconds"
+      },
+      "result_json": {
+        "path": "experiment-output/batch-rq2-github-nasasrb-admission-once/266787649ad9c5d9.attempt-001.json",
+        "bytes": 4459,
+        "sha256": "6f4f7040c7a7031082af9c78bcf7c4c74d223cda4c8553981fe63e0d170a48d3"
+      },
+      "artifacts": {
+        "program_log": {
+          "path": "experiment-output/batch-rq2-github-nasasrb-admission-once/266787649ad9c5d9.attempt-001.program.log",
+          "bytes": 1789,
+          "sha256": "dd031210291367ba084fa5819a9dd747d07f8f2d569b7d9cbbb0844fa4a2a6e7"
+        },
+        "stdout": {
+          "path": "experiment-output/batch-rq2-github-nasasrb-admission-once/266787649ad9c5d9.attempt-001.stdout.txt",
+          "bytes": 1992,
+          "sha256": "c1363276d47323fbc361ad70c28680cc913030edf2a60da65925d6a5362223c5"
+        },
+        "stderr": {
+          "path": "experiment-output/batch-rq2-github-nasasrb-admission-once/266787649ad9c5d9.attempt-001.stderr.txt",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    {
+      "task_id": "3b8d741a1e385c33",
+      "attempt": 1,
+      "status": "completed",
+      "rerun_reason": null,
+      "started_utc": "2026-08-01T15:45:14.187527+00:00",
+      "wall_seconds": 1.2342889999999898,
+      "task": {
+        "algorithm": 4,
+        "mode": "raw",
+        "dataset": 17,
+        "tau": 0.524891,
+        "threads": 32,
+        "timeout_seconds": 30,
+        "graph": null,
+        "vectors": null,
+        "capture_cliques": false,
+        "defines": {},
+        "warmup": false,
+        "repetition": 0,
+        "task_id": "3b8d741a1e385c33"
+      },
+      "parsed": {
+        "algorithm_ms": 153,
+        "clique_count": 8861,
+        "peak_memory_gib": 1.73,
+        "size_histogram": {
+          "2": 6149,
+          "3": 1693,
+          "4": 361,
+          "5": 76,
+          "6": 51,
+          "7": 76,
+          "8": 178,
+          "9": 194,
+          "10": 76,
+          "11": 7
+        },
+        "stats": {}
+      },
+      "validation": null,
+      "build": {
+        "fingerprint": "dc3d3c5b805d2305",
+        "executable_sha256": "b45f4fa2da08f652aa25bb30f8b3f492a49c453eb20d570cf4f7f4cf49f722cd",
+        "command": [
+          "g++",
+          "-std=c++17",
+          "-fopenmp",
+          "-mavx2",
+          "-O3",
+          "src/alg4-raw.cpp",
+          "src/semantic_graph.cpp",
+          "-o",
+          "no-use/compiled/experiment-runner/alg4-raw-dc3d3c5b805d2305.exe"
+        ],
+        "source_verification": {
+          "status": "verified_current",
+          "observed_current_fingerprint": "dc3d3c5b805d2305",
+          "reason": null
+        },
+        "source_hashes": {
+          "alg4-raw.cpp": "4d8e6dcc65150c7ac4b6e8a5501412af4581b704a5191ffd34813f0ea45a12b8",
+          "semantic_graph.cpp": "c6d51c9086fbd5c7d264eb411ac04890806744fc4e05dc7eee0b156760a9cd92",
+          "semantic_graph.h": "8192c4e8e02fc8ace59d59365f72643e34ca32ba71faa5bb338381a8cd308078",
+          "experiment_runtime.h": "2970c483cd31152adc0a39278340822337daeb312c073b67a8eb49a030a4f35d"
+        }
+      },
+      "inputs": {
+        "status": "verified_run_time",
+        "snapshot": {
+          "dataset_catalog": {
+            "path": "experiments/datasets.json",
+            "sha256": "6b56d1151911b15582d62bee8c4a90f6e08218c1079f09f7b08d618327468fcd"
+          },
+          "files": [
+            {
+              "role": "graph",
+              "path": "dataset/dataset/github-social.txt",
+              "bytes": 3306142,
+              "sha256": "d499e49dbd13a0a6b68fc4c73542bd40494f77ae377086e4f8ad3481aba1fdf3"
+            },
+            {
+              "role": "vector_binary",
+              "path": "dataset/vectors/github-social_vectors.bin",
+              "bytes": 1207908008,
+              "sha256": "1def64822605ee066bb917b3ddf990e60be0be8c4b32cdcab6ccf9b03e170d7f"
+            }
+          ]
+        }
+      },
+      "run_environment": {
+        "plan": "experiments/plans/batch-rq2-github-nasasrb-admission-once.json",
+        "plan_sha256": "65603f3d0383b0b1e412d62b048488e9da5560636d9ad3537d129bb9c69f10c3",
+        "git": {
+          "commit": "9d1922b873378eae6a3110dbca467e30256c53e4",
+          "dirty": true
+        },
+        "machine": {
+          "platform": "Windows-11-10.0.26100-SP0",
+          "processor": "AMD64 Family 25 Model 97 Stepping 2, AuthenticAMD",
+          "logical_cpu_count": 32,
+          "python": "3.12.7",
+          "compiler": "g++ (x86_64-posix-seh-rev0, Built by MinGW-Builds project) 13.2.0"
+        },
+        "memory_limit_gib": 16,
+        "external_timeout_policy": "hard per-process TLE from task.timeout_seconds"
+      },
+      "result_json": {
+        "path": "experiment-output/batch-rq2-github-nasasrb-admission-once/3b8d741a1e385c33.attempt-001.json",
+        "bytes": 4223,
+        "sha256": "b115119452d391b309f93abd81b017a6daa354ff4d72475debc1e2cf8ae3bf2a"
+      },
+      "artifacts": {
+        "program_log": {
+          "path": "experiment-output/batch-rq2-github-nasasrb-admission-once/3b8d741a1e385c33.attempt-001.program.log",
+          "bytes": 1298,
+          "sha256": "4375874ba3ac409ca40b037fda0b10d12fbd7630dd33b25f9e931d26469ec085"
+        },
+        "stdout": {
+          "path": "experiment-output/batch-rq2-github-nasasrb-admission-once/3b8d741a1e385c33.attempt-001.stdout.txt",
+          "bytes": 1501,
+          "sha256": "72274b3d6682beb390e5191cf042f0116050ee87707b13d0a8582d4718134feb"
+        },
+        "stderr": {
+          "path": "experiment-output/batch-rq2-github-nasasrb-admission-once/3b8d741a1e385c33.attempt-001.stderr.txt",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    {
+      "task_id": "44be516609c4afa1",
+      "attempt": 1,
+      "status": "tle",
+      "rerun_reason": null,
+      "started_utc": "2026-08-01T15:42:57.987470+00:00",
+      "wall_seconds": 30.091456800000742,
+      "task": {
+        "algorithm": 4,
+        "mode": "raw",
+        "dataset": 17,
+        "tau": 0.173494,
+        "threads": 32,
+        "timeout_seconds": 30,
+        "graph": null,
+        "vectors": null,
+        "capture_cliques": false,
+        "defines": {},
+        "warmup": false,
+        "repetition": 0,
+        "task_id": "44be516609c4afa1"
+      },
+      "parsed": null,
+      "validation": null,
+      "build": {
+        "fingerprint": "dc3d3c5b805d2305",
+        "executable_sha256": "b45f4fa2da08f652aa25bb30f8b3f492a49c453eb20d570cf4f7f4cf49f722cd",
+        "command": [
+          "g++",
+          "-std=c++17",
+          "-fopenmp",
+          "-mavx2",
+          "-O3",
+          "src/alg4-raw.cpp",
+          "src/semantic_graph.cpp",
+          "-o",
+          "no-use/compiled/experiment-runner/alg4-raw-dc3d3c5b805d2305.exe"
+        ],
+        "source_verification": {
+          "status": "verified_current",
+          "observed_current_fingerprint": "dc3d3c5b805d2305",
+          "reason": null
+        },
+        "source_hashes": {
+          "alg4-raw.cpp": "4d8e6dcc65150c7ac4b6e8a5501412af4581b704a5191ffd34813f0ea45a12b8",
+          "semantic_graph.cpp": "c6d51c9086fbd5c7d264eb411ac04890806744fc4e05dc7eee0b156760a9cd92",
+          "semantic_graph.h": "8192c4e8e02fc8ace59d59365f72643e34ca32ba71faa5bb338381a8cd308078",
+          "experiment_runtime.h": "2970c483cd31152adc0a39278340822337daeb312c073b67a8eb49a030a4f35d"
+        }
+      },
+      "inputs": {
+        "status": "verified_run_time",
+        "snapshot": {
+          "dataset_catalog": {
+            "path": "experiments/datasets.json",
+            "sha256": "6b56d1151911b15582d62bee8c4a90f6e08218c1079f09f7b08d618327468fcd"
+          },
+          "files": [
+            {
+              "role": "graph",
+              "path": "dataset/dataset/github-social.txt",
+              "bytes": 3306142,
+              "sha256": "d499e49dbd13a0a6b68fc4c73542bd40494f77ae377086e4f8ad3481aba1fdf3"
+            },
+            {
+              "role": "vector_binary",
+              "path": "dataset/vectors/github-social_vectors.bin",
+              "bytes": 1207908008,
+              "sha256": "1def64822605ee066bb917b3ddf990e60be0be8c4b32cdcab6ccf9b03e170d7f"
+            }
+          ]
+        }
+      },
+      "run_environment": {
+        "plan": "experiments/plans/batch-rq2-github-nasasrb-admission-once.json",
+        "plan_sha256": "65603f3d0383b0b1e412d62b048488e9da5560636d9ad3537d129bb9c69f10c3",
+        "git": {
+          "commit": "9d1922b873378eae6a3110dbca467e30256c53e4",
+          "dirty": true
+        },
+        "machine": {
+          "platform": "Windows-11-10.0.26100-SP0",
+          "processor": "AMD64 Family 25 Model 97 Stepping 2, AuthenticAMD",
+          "logical_cpu_count": 32,
+          "python": "3.12.7",
+          "compiler": "g++ (x86_64-posix-seh-rev0, Built by MinGW-Builds project) 13.2.0"
+        },
+        "memory_limit_gib": 16,
+        "external_timeout_policy": "hard per-process TLE from task.timeout_seconds"
+      },
+      "result_json": {
+        "path": "experiment-output/batch-rq2-github-nasasrb-admission-once/44be516609c4afa1.attempt-001.json",
+        "bytes": 3918,
+        "sha256": "73ecfc3e605244c8b31371d82261bc8b783d45f04eaa2bd7d54682dd76eb1dcd"
+      },
+      "artifacts": {
+        "program_log": {
+          "path": "experiment-output/batch-rq2-github-nasasrb-admission-once/44be516609c4afa1.attempt-001.program.log",
+          "bytes": 711,
+          "sha256": "5b15cb72024d5b4803ebee667733001cccba67ea550b16a83a708727abf1592b"
+        },
+        "stdout": {
+          "path": "experiment-output/batch-rq2-github-nasasrb-admission-once/44be516609c4afa1.attempt-001.stdout.txt",
+          "bytes": 667,
+          "sha256": "b18c69ba81d1da9783f8b00a81be31181abe425018f30a99faddc3b323e04a6b"
+        },
+        "stderr": {
+          "path": "experiment-output/batch-rq2-github-nasasrb-admission-once/44be516609c4afa1.attempt-001.stderr.txt",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    {
+      "task_id": "4c28107be7879a6a",
+      "attempt": 1,
+      "status": "completed",
+      "rerun_reason": null,
+      "started_utc": "2026-08-01T15:48:23.940066+00:00",
+      "wall_seconds": 8.590857800008962,
+      "task": {
+        "algorithm": 4,
+        "mode": "raw",
+        "dataset": 2,
+        "tau": 0.0328913,
+        "threads": 32,
+        "timeout_seconds": 30,
+        "graph": null,
+        "vectors": null,
+        "capture_cliques": false,
+        "defines": {},
+        "warmup": false,
+        "repetition": 0,
+        "task_id": "4c28107be7879a6a"
+      },
+      "parsed": {
+        "algorithm_ms": 7483,
+        "clique_count": 4376047,
+        "peak_memory_gib": 0.85,
+        "size_histogram": {
+          "2": 254,
+          "3": 6284,
+          "4": 52999,
+          "5": 224675,
+          "6": 552050,
+          "7": 884555,
+          "8": 992817,
+          "9": 805232,
+          "10": 497540,
+          "11": 241361,
+          "12": 89197,
+          "13": 24118,
+          "14": 4508,
+          "15": 434,
+          "16": 23
+        },
+        "stats": {}
+      },
+      "validation": null,
+      "build": {
+        "fingerprint": "dc3d3c5b805d2305",
+        "executable_sha256": "b45f4fa2da08f652aa25bb30f8b3f492a49c453eb20d570cf4f7f4cf49f722cd",
+        "command": [
+          "g++",
+          "-std=c++17",
+          "-fopenmp",
+          "-mavx2",
+          "-O3",
+          "src/alg4-raw.cpp",
+          "src/semantic_graph.cpp",
+          "-o",
+          "no-use/compiled/experiment-runner/alg4-raw-dc3d3c5b805d2305.exe"
+        ],
+        "source_verification": {
+          "status": "verified_current",
+          "observed_current_fingerprint": "dc3d3c5b805d2305",
+          "reason": null
+        },
+        "source_hashes": {
+          "alg4-raw.cpp": "4d8e6dcc65150c7ac4b6e8a5501412af4581b704a5191ffd34813f0ea45a12b8",
+          "semantic_graph.cpp": "c6d51c9086fbd5c7d264eb411ac04890806744fc4e05dc7eee0b156760a9cd92",
+          "semantic_graph.h": "8192c4e8e02fc8ace59d59365f72643e34ca32ba71faa5bb338381a8cd308078",
+          "experiment_runtime.h": "2970c483cd31152adc0a39278340822337daeb312c073b67a8eb49a030a4f35d"
+        }
+      },
+      "inputs": {
+        "status": "verified_run_time",
+        "snapshot": {
+          "dataset_catalog": {
+            "path": "experiments/datasets.json",
+            "sha256": "6b56d1151911b15582d62bee8c4a90f6e08218c1079f09f7b08d618327468fcd"
+          },
+          "files": [
+            {
+              "role": "graph",
+              "path": "dataset/dataset/sc-nasasrb.txt",
+              "bytes": 15163675,
+              "sha256": "ebaebd0857d5414dc67b4fac1cb12bed76bf1f099a75595c15cc149d7eeaf771"
+            },
+            {
+              "role": "vector_binary",
+              "path": "dataset/vectors-256/sc-nasasrb_vectors.bin",
+              "bytes": 112373768,
+              "sha256": "1d50c72a6830901856e869477e3241d4d2b9911282d09fc4d121f0d057f280cf"
+            }
+          ]
+        }
+      },
+      "run_environment": {
+        "plan": "experiments/plans/batch-rq2-github-nasasrb-admission-once.json",
+        "plan_sha256": "65603f3d0383b0b1e412d62b048488e9da5560636d9ad3537d129bb9c69f10c3",
+        "git": {
+          "commit": "9d1922b873378eae6a3110dbca467e30256c53e4",
+          "dirty": true
+        },
+        "machine": {
+          "platform": "Windows-11-10.0.26100-SP0",
+          "processor": "AMD64 Family 25 Model 97 Stepping 2, AuthenticAMD",
+          "logical_cpu_count": 32,
+          "python": "3.12.7",
+          "compiler": "g++ (x86_64-posix-seh-rev0, Built by MinGW-Builds project) 13.2.0"
+        },
+        "memory_limit_gib": 16,
+        "external_timeout_policy": "hard per-process TLE from task.timeout_seconds"
+      },
+      "result_json": {
+        "path": "experiment-output/batch-rq2-github-nasasrb-admission-once/4c28107be7879a6a.attempt-001.json",
+        "bytes": 4343,
+        "sha256": "f4a0de1c787d98ecf196f74d9ae1140f332ae56bf5a0b26e24739ca41ff17e6a"
+      },
+      "artifacts": {
+        "program_log": {
+          "path": "experiment-output/batch-rq2-github-nasasrb-admission-once/4c28107be7879a6a.attempt-001.program.log",
+          "bytes": 1479,
+          "sha256": "a7e9c31339f9ba6a82ae9ea75c863fa24022e58cf9b9c9836a55ed8b0405540a"
+        },
+        "stdout": {
+          "path": "experiment-output/batch-rq2-github-nasasrb-admission-once/4c28107be7879a6a.attempt-001.stdout.txt",
+          "bytes": 1682,
+          "sha256": "0a3af93ff83bb5168d69290ecb122c10278bde3d85d513d799fed15c2be67cbe"
+        },
+        "stderr": {
+          "path": "experiment-output/batch-rq2-github-nasasrb-admission-once/4c28107be7879a6a.attempt-001.stderr.txt",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    {
+      "task_id": "621d868e20220221",
+      "attempt": 1,
+      "status": "tle",
+      "rerun_reason": null,
+      "started_utc": "2026-08-01T15:45:16.777584+00:00",
+      "wall_seconds": 30.024443199989037,
+      "task": {
+        "algorithm": 4,
+        "mode": "raw",
+        "dataset": 2,
+        "tau": -0.102883,
+        "threads": 32,
+        "timeout_seconds": 30,
+        "graph": null,
+        "vectors": null,
+        "capture_cliques": false,
+        "defines": {},
+        "warmup": false,
+        "repetition": 0,
+        "task_id": "621d868e20220221"
+      },
+      "parsed": null,
+      "validation": null,
+      "build": {
+        "fingerprint": "dc3d3c5b805d2305",
+        "executable_sha256": "b45f4fa2da08f652aa25bb30f8b3f492a49c453eb20d570cf4f7f4cf49f722cd",
+        "command": [
+          "g++",
+          "-std=c++17",
+          "-fopenmp",
+          "-mavx2",
+          "-O3",
+          "src/alg4-raw.cpp",
+          "src/semantic_graph.cpp",
+          "-o",
+          "no-use/compiled/experiment-runner/alg4-raw-dc3d3c5b805d2305.exe"
+        ],
+        "source_verification": {
+          "status": "verified_current",
+          "observed_current_fingerprint": "dc3d3c5b805d2305",
+          "reason": null
+        },
+        "source_hashes": {
+          "alg4-raw.cpp": "4d8e6dcc65150c7ac4b6e8a5501412af4581b704a5191ffd34813f0ea45a12b8",
+          "semantic_graph.cpp": "c6d51c9086fbd5c7d264eb411ac04890806744fc4e05dc7eee0b156760a9cd92",
+          "semantic_graph.h": "8192c4e8e02fc8ace59d59365f72643e34ca32ba71faa5bb338381a8cd308078",
+          "experiment_runtime.h": "2970c483cd31152adc0a39278340822337daeb312c073b67a8eb49a030a4f35d"
+        }
+      },
+      "inputs": {
+        "status": "verified_run_time",
+        "snapshot": {
+          "dataset_catalog": {
+            "path": "experiments/datasets.json",
+            "sha256": "6b56d1151911b15582d62bee8c4a90f6e08218c1079f09f7b08d618327468fcd"
+          },
+          "files": [
+            {
+              "role": "graph",
+              "path": "dataset/dataset/sc-nasasrb.txt",
+              "bytes": 15163675,
+              "sha256": "ebaebd0857d5414dc67b4fac1cb12bed76bf1f099a75595c15cc149d7eeaf771"
+            },
+            {
+              "role": "vector_binary",
+              "path": "dataset/vectors-256/sc-nasasrb_vectors.bin",
+              "bytes": 112373768,
+              "sha256": "1d50c72a6830901856e869477e3241d4d2b9911282d09fc4d121f0d057f280cf"
+            }
+          ]
+        }
+      },
+      "run_environment": {
+        "plan": "experiments/plans/batch-rq2-github-nasasrb-admission-once.json",
+        "plan_sha256": "65603f3d0383b0b1e412d62b048488e9da5560636d9ad3537d129bb9c69f10c3",
+        "git": {
+          "commit": "9d1922b873378eae6a3110dbca467e30256c53e4",
+          "dirty": true
+        },
+        "machine": {
+          "platform": "Windows-11-10.0.26100-SP0",
+          "processor": "AMD64 Family 25 Model 97 Stepping 2, AuthenticAMD",
+          "logical_cpu_count": 32,
+          "python": "3.12.7",
+          "compiler": "g++ (x86_64-posix-seh-rev0, Built by MinGW-Builds project) 13.2.0"
+        },
+        "memory_limit_gib": 16,
+        "external_timeout_policy": "hard per-process TLE from task.timeout_seconds"
+      },
+      "result_json": {
+        "path": "experiment-output/batch-rq2-github-nasasrb-admission-once/621d868e20220221.attempt-001.json",
+        "bytes": 3913,
+        "sha256": "538e1a3233aefdc07d0c3e03257eb12cea640ea0be9b619ddee63af47b15e021"
+      },
+      "artifacts": {
+        "program_log": {
+          "path": "experiment-output/batch-rq2-github-nasasrb-admission-once/621d868e20220221.attempt-001.program.log",
+          "bytes": 712,
+          "sha256": "c7f7291a8c51fe9f1893623c54a80a7d31a4b9a60392d3f6ead7437fffeffa68"
+        },
+        "stdout": {
+          "path": "experiment-output/batch-rq2-github-nasasrb-admission-once/621d868e20220221.attempt-001.stdout.txt",
+          "bytes": 663,
+          "sha256": "6b2a1b4b2f2ecb1606212b4754708dd13b74c913bdca7131c592577df841151b"
+        },
+        "stderr": {
+          "path": "experiment-output/batch-rq2-github-nasasrb-admission-once/621d868e20220221.attempt-001.stderr.txt",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    {
+      "task_id": "663d9ae7c0b2ccf3",
+      "attempt": 1,
+      "status": "tle",
+      "rerun_reason": null,
+      "started_utc": "2026-08-01T15:45:46.829306+00:00",
+      "wall_seconds": 30.044367100010277,
+      "task": {
+        "algorithm": 3,
+        "mode": "raw",
+        "dataset": 2,
+        "tau": 3.30061e-05,
+        "threads": 32,
+        "timeout_seconds": 30,
+        "graph": null,
+        "vectors": null,
+        "capture_cliques": false,
+        "defines": {},
+        "warmup": false,
+        "repetition": 0,
+        "task_id": "663d9ae7c0b2ccf3"
+      },
+      "parsed": null,
+      "validation": null,
+      "build": {
+        "fingerprint": "7562da09c43d7518",
+        "executable_sha256": "c4bc362d2a076910ff63260f3a2693a8f01b489c7c8514b5e6617a386bec4817",
+        "command": [
+          "g++",
+          "-std=c++17",
+          "-fopenmp",
+          "-mavx2",
+          "-O3",
+          "src/alg3-raw.cpp",
+          "src/semantic_graph.cpp",
+          "-o",
+          "no-use/compiled/experiment-runner/alg3-raw-7562da09c43d7518.exe"
+        ],
+        "source_verification": {
+          "status": "verified_current",
+          "observed_current_fingerprint": "7562da09c43d7518",
+          "reason": null
+        },
+        "source_hashes": {
+          "alg3-raw.cpp": "54be44ba5e5958f887bc86c684bb8c0a129f44f9c3078b929fb89ace32062c60",
+          "semantic_graph.cpp": "c6d51c9086fbd5c7d264eb411ac04890806744fc4e05dc7eee0b156760a9cd92",
+          "semantic_graph.h": "8192c4e8e02fc8ace59d59365f72643e34ca32ba71faa5bb338381a8cd308078",
+          "experiment_runtime.h": "2970c483cd31152adc0a39278340822337daeb312c073b67a8eb49a030a4f35d"
+        }
+      },
+      "inputs": {
+        "status": "verified_run_time",
+        "snapshot": {
+          "dataset_catalog": {
+            "path": "experiments/datasets.json",
+            "sha256": "6b56d1151911b15582d62bee8c4a90f6e08218c1079f09f7b08d618327468fcd"
+          },
+          "files": [
+            {
+              "role": "graph",
+              "path": "dataset/dataset/sc-nasasrb.txt",
+              "bytes": 15163675,
+              "sha256": "ebaebd0857d5414dc67b4fac1cb12bed76bf1f099a75595c15cc149d7eeaf771"
+            },
+            {
+              "role": "vector_binary",
+              "path": "dataset/vectors-256/sc-nasasrb_vectors.bin",
+              "bytes": 112373768,
+              "sha256": "1d50c72a6830901856e869477e3241d4d2b9911282d09fc4d121f0d057f280cf"
+            }
+          ]
+        }
+      },
+      "run_environment": {
+        "plan": "experiments/plans/batch-rq2-github-nasasrb-admission-once.json",
+        "plan_sha256": "65603f3d0383b0b1e412d62b048488e9da5560636d9ad3537d129bb9c69f10c3",
+        "git": {
+          "commit": "9d1922b873378eae6a3110dbca467e30256c53e4",
+          "dirty": true
+        },
+        "machine": {
+          "platform": "Windows-11-10.0.26100-SP0",
+          "processor": "AMD64 Family 25 Model 97 Stepping 2, AuthenticAMD",
+          "logical_cpu_count": 32,
+          "python": "3.12.7",
+          "compiler": "g++ (x86_64-posix-seh-rev0, Built by MinGW-Builds project) 13.2.0"
+        },
+        "memory_limit_gib": 16,
+        "external_timeout_policy": "hard per-process TLE from task.timeout_seconds"
+      },
+      "result_json": {
+        "path": "experiment-output/batch-rq2-github-nasasrb-admission-once/663d9ae7c0b2ccf3.attempt-001.json",
+        "bytes": 3915,
+        "sha256": "f7a7fe365fd71a08249955c1705b42a3f5cf18d970e0224c6439a5bfad6181d1"
+      },
+      "artifacts": {
+        "program_log": {
+          "path": "experiment-output/batch-rq2-github-nasasrb-admission-once/663d9ae7c0b2ccf3.attempt-001.program.log",
+          "bytes": 996,
+          "sha256": "4ac7ba8cc43517cef2c33fd41cc027497df48cb5ff95446453ebd6b96bf28e5e"
+        },
+        "stdout": {
+          "path": "experiment-output/batch-rq2-github-nasasrb-admission-once/663d9ae7c0b2ccf3.attempt-001.stdout.txt",
+          "bytes": 599,
+          "sha256": "ae12008f6652fab7ee298454a7639c4f444c1d5c1f8bb3bd1c6a7ef9c751add0"
+        },
+        "stderr": {
+          "path": "experiment-output/batch-rq2-github-nasasrb-admission-once/663d9ae7c0b2ccf3.attempt-001.stderr.txt",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    {
+      "task_id": "6942afc6729946a3",
+      "attempt": 1,
+      "status": "completed",
+      "rerun_reason": null,
+      "started_utc": "2026-08-01T15:45:04.215792+00:00",
+      "wall_seconds": 5.771695999996155,
+      "task": {
+        "algorithm": 3,
+        "mode": "raw",
+        "dataset": 17,
+        "tau": 0.500773,
+        "threads": 32,
+        "timeout_seconds": 30,
+        "graph": null,
+        "vectors": null,
+        "capture_cliques": false,
+        "defines": {},
+        "warmup": false,
+        "repetition": 0,
+        "task_id": "6942afc6729946a3"
+      },
+      "parsed": {
+        "algorithm_ms": 4534,
+        "clique_count": 16701,
+        "peak_memory_gib": 1.73,
+        "size_histogram": {
+          "2": 9377,
+          "3": 3524,
+          "4": 1070,
+          "5": 250,
+          "6": 90,
+          "7": 109,
+          "8": 98,
+          "9": 274,
+          "10": 568,
+          "11": 722,
+          "12": 466,
+          "13": 144,
+          "14": 9
+        },
+        "stats": {}
+      },
+      "validation": null,
+      "build": {
+        "fingerprint": "7562da09c43d7518",
+        "executable_sha256": "c4bc362d2a076910ff63260f3a2693a8f01b489c7c8514b5e6617a386bec4817",
+        "command": [
+          "g++",
+          "-std=c++17",
+          "-fopenmp",
+          "-mavx2",
+          "-O3",
+          "src/alg3-raw.cpp",
+          "src/semantic_graph.cpp",
+          "-o",
+          "no-use/compiled/experiment-runner/alg3-raw-7562da09c43d7518.exe"
+        ],
+        "source_verification": {
+          "status": "verified_current",
+          "observed_current_fingerprint": "7562da09c43d7518",
+          "reason": null
+        },
+        "source_hashes": {
+          "alg3-raw.cpp": "54be44ba5e5958f887bc86c684bb8c0a129f44f9c3078b929fb89ace32062c60",
+          "semantic_graph.cpp": "c6d51c9086fbd5c7d264eb411ac04890806744fc4e05dc7eee0b156760a9cd92",
+          "semantic_graph.h": "8192c4e8e02fc8ace59d59365f72643e34ca32ba71faa5bb338381a8cd308078",
+          "experiment_runtime.h": "2970c483cd31152adc0a39278340822337daeb312c073b67a8eb49a030a4f35d"
+        }
+      },
+      "inputs": {
+        "status": "verified_run_time",
+        "snapshot": {
+          "dataset_catalog": {
+            "path": "experiments/datasets.json",
+            "sha256": "6b56d1151911b15582d62bee8c4a90f6e08218c1079f09f7b08d618327468fcd"
+          },
+          "files": [
+            {
+              "role": "graph",
+              "path": "dataset/dataset/github-social.txt",
+              "bytes": 3306142,
+              "sha256": "d499e49dbd13a0a6b68fc4c73542bd40494f77ae377086e4f8ad3481aba1fdf3"
+            },
+            {
+              "role": "vector_binary",
+              "path": "dataset/vectors/github-social_vectors.bin",
+              "bytes": 1207908008,
+              "sha256": "1def64822605ee066bb917b3ddf990e60be0be8c4b32cdcab6ccf9b03e170d7f"
+            }
+          ]
+        }
+      },
+      "run_environment": {
+        "plan": "experiments/plans/batch-rq2-github-nasasrb-admission-once.json",
+        "plan_sha256": "65603f3d0383b0b1e412d62b048488e9da5560636d9ad3537d129bb9c69f10c3",
+        "git": {
+          "commit": "9d1922b873378eae6a3110dbca467e30256c53e4",
+          "dirty": true
+        },
+        "machine": {
+          "platform": "Windows-11-10.0.26100-SP0",
+          "processor": "AMD64 Family 25 Model 97 Stepping 2, AuthenticAMD",
+          "logical_cpu_count": 32,
+          "python": "3.12.7",
+          "compiler": "g++ (x86_64-posix-seh-rev0, Built by MinGW-Builds project) 13.2.0"
+        },
+        "memory_limit_gib": 16,
+        "external_timeout_policy": "hard per-process TLE from task.timeout_seconds"
+      },
+      "result_json": {
+        "path": "experiment-output/batch-rq2-github-nasasrb-admission-once/6942afc6729946a3.attempt-001.json",
+        "bytes": 4281,
+        "sha256": "86593e6e4bc2b0086393b8fda3546007f8a521cd403af3a6301b3a56c956b9d3"
+      },
+      "artifacts": {
+        "program_log": {
+          "path": "experiment-output/batch-rq2-github-nasasrb-admission-once/6942afc6729946a3.attempt-001.program.log",
+          "bytes": 1537,
+          "sha256": "1e15e5cc2885e0bb967fad54314141d736cf41fe9d6df671954cb8616f8805ce"
+        },
+        "stdout": {
+          "path": "experiment-output/batch-rq2-github-nasasrb-admission-once/6942afc6729946a3.attempt-001.stdout.txt",
+          "bytes": 1740,
+          "sha256": "72ab2577311cbc6f9fd1c04d0cfbd8a1337e2ee821200e8a0e1b8a1359290467"
+        },
+        "stderr": {
+          "path": "experiment-output/batch-rq2-github-nasasrb-admission-once/6942afc6729946a3.attempt-001.stderr.txt",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    {
+      "task_id": "6ce0c35cca18d9c0",
+      "attempt": 1,
+      "status": "completed",
+      "rerun_reason": null,
+      "started_utc": "2026-08-01T15:48:51.008519+00:00",
+      "wall_seconds": 0.887178999997559,
+      "task": {
+        "algorithm": 4,
+        "mode": "raw",
+        "dataset": 2,
+        "tau": 0.117326,
+        "threads": 32,
+        "timeout_seconds": 30,
+        "graph": null,
+        "vectors": null,
+        "capture_cliques": false,
+        "defines": {},
+        "warmup": false,
+        "repetition": 0,
+        "task_id": "6ce0c35cca18d9c0"
+      },
+      "parsed": {
+        "algorithm_ms": 124,
+        "clique_count": 36355,
+        "peak_memory_gib": 0.19,
+        "size_histogram": {
+          "2": 27388,
+          "3": 8512,
+          "4": 446,
+          "5": 9
+        },
+        "stats": {}
+      },
+      "validation": null,
+      "build": {
+        "fingerprint": "dc3d3c5b805d2305",
+        "executable_sha256": "b45f4fa2da08f652aa25bb30f8b3f492a49c453eb20d570cf4f7f4cf49f722cd",
+        "command": [
+          "g++",
+          "-std=c++17",
+          "-fopenmp",
+          "-mavx2",
+          "-O3",
+          "src/alg4-raw.cpp",
+          "src/semantic_graph.cpp",
+          "-o",
+          "no-use/compiled/experiment-runner/alg4-raw-dc3d3c5b805d2305.exe"
+        ],
+        "source_verification": {
+          "status": "verified_current",
+          "observed_current_fingerprint": "dc3d3c5b805d2305",
+          "reason": null
+        },
+        "source_hashes": {
+          "alg4-raw.cpp": "4d8e6dcc65150c7ac4b6e8a5501412af4581b704a5191ffd34813f0ea45a12b8",
+          "semantic_graph.cpp": "c6d51c9086fbd5c7d264eb411ac04890806744fc4e05dc7eee0b156760a9cd92",
+          "semantic_graph.h": "8192c4e8e02fc8ace59d59365f72643e34ca32ba71faa5bb338381a8cd308078",
+          "experiment_runtime.h": "2970c483cd31152adc0a39278340822337daeb312c073b67a8eb49a030a4f35d"
+        }
+      },
+      "inputs": {
+        "status": "verified_run_time",
+        "snapshot": {
+          "dataset_catalog": {
+            "path": "experiments/datasets.json",
+            "sha256": "6b56d1151911b15582d62bee8c4a90f6e08218c1079f09f7b08d618327468fcd"
+          },
+          "files": [
+            {
+              "role": "graph",
+              "path": "dataset/dataset/sc-nasasrb.txt",
+              "bytes": 15163675,
+              "sha256": "ebaebd0857d5414dc67b4fac1cb12bed76bf1f099a75595c15cc149d7eeaf771"
+            },
+            {
+              "role": "vector_binary",
+              "path": "dataset/vectors-256/sc-nasasrb_vectors.bin",
+              "bytes": 112373768,
+              "sha256": "1d50c72a6830901856e869477e3241d4d2b9911282d09fc4d121f0d057f280cf"
+            }
+          ]
+        }
+      },
+      "run_environment": {
+        "plan": "experiments/plans/batch-rq2-github-nasasrb-admission-once.json",
+        "plan_sha256": "65603f3d0383b0b1e412d62b048488e9da5560636d9ad3537d129bb9c69f10c3",
+        "git": {
+          "commit": "9d1922b873378eae6a3110dbca467e30256c53e4",
+          "dirty": true
+        },
+        "machine": {
+          "platform": "Windows-11-10.0.26100-SP0",
+          "processor": "AMD64 Family 25 Model 97 Stepping 2, AuthenticAMD",
+          "logical_cpu_count": 32,
+          "python": "3.12.7",
+          "compiler": "g++ (x86_64-posix-seh-rev0, Built by MinGW-Builds project) 13.2.0"
+        },
+        "memory_limit_gib": 16,
+        "external_timeout_policy": "hard per-process TLE from task.timeout_seconds"
+      },
+      "result_json": {
+        "path": "experiment-output/batch-rq2-github-nasasrb-admission-once/6ce0c35cca18d9c0.attempt-001.json",
+        "bytes": 4118,
+        "sha256": "b5f8d6c998b022fc8d052cdb2946711f0876488e0fe921beac67c516b978ae16"
+      },
+      "artifacts": {
+        "program_log": {
+          "path": "experiment-output/batch-rq2-github-nasasrb-admission-once/6ce0c35cca18d9c0.attempt-001.program.log",
+          "bytes": 1156,
+          "sha256": "074a7bfc8ab620a04aa2d66db9ce90643268bb54648ddc3a5900c83432cb7a08"
+        },
+        "stdout": {
+          "path": "experiment-output/batch-rq2-github-nasasrb-admission-once/6ce0c35cca18d9c0.attempt-001.stdout.txt",
+          "bytes": 1359,
+          "sha256": "887049f884571d4d628e81d88a604bbbb5550d07e0ee902de3c16d9bf95edf56"
+        },
+        "stderr": {
+          "path": "experiment-output/batch-rq2-github-nasasrb-admission-once/6ce0c35cca18d9c0.attempt-001.stderr.txt",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    {
+      "task_id": "6fdce8930ce47bbe",
+      "attempt": 1,
+      "status": "completed",
+      "rerun_reason": null,
+      "started_utc": "2026-08-01T15:44:49.005240+00:00",
+      "wall_seconds": 3.468901800006279,
+      "task": {
+        "algorithm": 4,
+        "mode": "raw",
+        "dataset": 17,
+        "tau": 0.46225,
+        "threads": 32,
+        "timeout_seconds": 30,
+        "graph": null,
+        "vectors": null,
+        "capture_cliques": false,
+        "defines": {},
+        "warmup": false,
+        "repetition": 0,
+        "task_id": "6fdce8930ce47bbe"
+      },
+      "parsed": {
+        "algorithm_ms": 2209,
+        "clique_count": 38205,
+        "peak_memory_gib": 1.73,
+        "size_histogram": {
+          "2": 15449,
+          "3": 8762,
+          "4": 4329,
+          "5": 1862,
+          "6": 466,
+          "7": 136,
+          "8": 161,
+          "9": 236,
+          "10": 260,
+          "11": 334,
+          "12": 492,
+          "13": 714,
+          "14": 950,
+          "15": 1268,
+          "16": 1353,
+          "17": 958,
+          "18": 416,
+          "19": 55,
+          "20": 4
+        },
+        "stats": {}
+      },
+      "validation": null,
+      "build": {
+        "fingerprint": "dc3d3c5b805d2305",
+        "executable_sha256": "b45f4fa2da08f652aa25bb30f8b3f492a49c453eb20d570cf4f7f4cf49f722cd",
+        "command": [
+          "g++",
+          "-std=c++17",
+          "-fopenmp",
+          "-mavx2",
+          "-O3",
+          "src/alg4-raw.cpp",
+          "src/semantic_graph.cpp",
+          "-o",
+          "no-use/compiled/experiment-runner/alg4-raw-dc3d3c5b805d2305.exe"
+        ],
+        "source_verification": {
+          "status": "verified_current",
+          "observed_current_fingerprint": "dc3d3c5b805d2305",
+          "reason": null
+        },
+        "source_hashes": {
+          "alg4-raw.cpp": "4d8e6dcc65150c7ac4b6e8a5501412af4581b704a5191ffd34813f0ea45a12b8",
+          "semantic_graph.cpp": "c6d51c9086fbd5c7d264eb411ac04890806744fc4e05dc7eee0b156760a9cd92",
+          "semantic_graph.h": "8192c4e8e02fc8ace59d59365f72643e34ca32ba71faa5bb338381a8cd308078",
+          "experiment_runtime.h": "2970c483cd31152adc0a39278340822337daeb312c073b67a8eb49a030a4f35d"
+        }
+      },
+      "inputs": {
+        "status": "verified_run_time",
+        "snapshot": {
+          "dataset_catalog": {
+            "path": "experiments/datasets.json",
+            "sha256": "6b56d1151911b15582d62bee8c4a90f6e08218c1079f09f7b08d618327468fcd"
+          },
+          "files": [
+            {
+              "role": "graph",
+              "path": "dataset/dataset/github-social.txt",
+              "bytes": 3306142,
+              "sha256": "d499e49dbd13a0a6b68fc4c73542bd40494f77ae377086e4f8ad3481aba1fdf3"
+            },
+            {
+              "role": "vector_binary",
+              "path": "dataset/vectors/github-social_vectors.bin",
+              "bytes": 1207908008,
+              "sha256": "1def64822605ee066bb917b3ddf990e60be0be8c4b32cdcab6ccf9b03e170d7f"
+            }
+          ]
+        }
+      },
+      "run_environment": {
+        "plan": "experiments/plans/batch-rq2-github-nasasrb-admission-once.json",
+        "plan_sha256": "65603f3d0383b0b1e412d62b048488e9da5560636d9ad3537d129bb9c69f10c3",
+        "git": {
+          "commit": "9d1922b873378eae6a3110dbca467e30256c53e4",
+          "dirty": true
+        },
+        "machine": {
+          "platform": "Windows-11-10.0.26100-SP0",
+          "processor": "AMD64 Family 25 Model 97 Stepping 2, AuthenticAMD",
+          "logical_cpu_count": 32,
+          "python": "3.12.7",
+          "compiler": "g++ (x86_64-posix-seh-rev0, Built by MinGW-Builds project) 13.2.0"
+        },
+        "memory_limit_gib": 16,
+        "external_timeout_policy": "hard per-process TLE from task.timeout_seconds"
+      },
+      "result_json": {
+        "path": "experiment-output/batch-rq2-github-nasasrb-admission-once/6fdce8930ce47bbe.attempt-001.json",
+        "bytes": 4393,
+        "sha256": "8c39f95a622bab2eb3b5cc6854527db41ad0cbc88a0ccdfa691413bde9476d04"
+      },
+      "artifacts": {
+        "program_log": {
+          "path": "experiment-output/batch-rq2-github-nasasrb-admission-once/6fdce8930ce47bbe.attempt-001.program.log",
+          "bytes": 1543,
+          "sha256": "5fbf6fa3e0886f2e1a64c2df940e8e1dd08d8961fc9b6d6bfaf5a525fc15b5c8"
+        },
+        "stdout": {
+          "path": "experiment-output/batch-rq2-github-nasasrb-admission-once/6fdce8930ce47bbe.attempt-001.stdout.txt",
+          "bytes": 1746,
+          "sha256": "a53829fd5852fd50ecf68481b7eeb9930ed3dea213c4951c8b33ec9b002bd2e5"
+        },
+        "stderr": {
+          "path": "experiment-output/batch-rq2-github-nasasrb-admission-once/6fdce8930ce47bbe.attempt-001.stderr.txt",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    {
+      "task_id": "787d17ef968a8f6f",
+      "attempt": 1,
+      "status": "completed",
+      "rerun_reason": null,
+      "started_utc": "2026-08-01T15:43:28.109844+00:00",
+      "wall_seconds": 1.624022200005129,
+      "task": {
+        "algorithm": 3,
+        "mode": "raw",
+        "dataset": 17,
+        "tau": 0.333849,
+        "threads": 32,
+        "timeout_seconds": 30,
+        "graph": null,
+        "vectors": null,
+        "capture_cliques": false,
+        "defines": {},
+        "warmup": false,
+        "repetition": 0,
+        "task_id": "787d17ef968a8f6f"
+      },
+      "parsed": {
+        "algorithm_ms": 405,
+        "clique_count": 185402,
+        "peak_memory_gib": 1.73,
+        "size_histogram": {
+          "2": 40583,
+          "3": 43362,
+          "4": 37371,
+          "5": 27424,
+          "6": 17656,
+          "7": 10722,
+          "8": 5308,
+          "9": 1953,
+          "10": 570,
+          "11": 199,
+          "12": 103,
+          "13": 27,
+          "14": 18,
+          "15": 16,
+          "16": 24,
+          "17": 23,
+          "18": 9,
+          "19": 1,
+          "20": 7,
+          "21": 5,
+          "22": 13,
+          "23": 4,
+          "24": 4
+        },
+        "stats": {}
+      },
+      "validation": null,
+      "build": {
+        "fingerprint": "7562da09c43d7518",
+        "executable_sha256": "c4bc362d2a076910ff63260f3a2693a8f01b489c7c8514b5e6617a386bec4817",
+        "command": [
+          "g++",
+          "-std=c++17",
+          "-fopenmp",
+          "-mavx2",
+          "-O3",
+          "src/alg3-raw.cpp",
+          "src/semantic_graph.cpp",
+          "-o",
+          "no-use/compiled/experiment-runner/alg3-raw-7562da09c43d7518.exe"
+        ],
+        "source_verification": {
+          "status": "verified_current",
+          "observed_current_fingerprint": "7562da09c43d7518",
+          "reason": null
+        },
+        "source_hashes": {
+          "alg3-raw.cpp": "54be44ba5e5958f887bc86c684bb8c0a129f44f9c3078b929fb89ace32062c60",
+          "semantic_graph.cpp": "c6d51c9086fbd5c7d264eb411ac04890806744fc4e05dc7eee0b156760a9cd92",
+          "semantic_graph.h": "8192c4e8e02fc8ace59d59365f72643e34ca32ba71faa5bb338381a8cd308078",
+          "experiment_runtime.h": "2970c483cd31152adc0a39278340822337daeb312c073b67a8eb49a030a4f35d"
+        }
+      },
+      "inputs": {
+        "status": "verified_run_time",
+        "snapshot": {
+          "dataset_catalog": {
+            "path": "experiments/datasets.json",
+            "sha256": "6b56d1151911b15582d62bee8c4a90f6e08218c1079f09f7b08d618327468fcd"
+          },
+          "files": [
+            {
+              "role": "graph",
+              "path": "dataset/dataset/github-social.txt",
+              "bytes": 3306142,
+              "sha256": "d499e49dbd13a0a6b68fc4c73542bd40494f77ae377086e4f8ad3481aba1fdf3"
+            },
+            {
+              "role": "vector_binary",
+              "path": "dataset/vectors/github-social_vectors.bin",
+              "bytes": 1207908008,
+              "sha256": "1def64822605ee066bb917b3ddf990e60be0be8c4b32cdcab6ccf9b03e170d7f"
+            }
+          ]
+        }
+      },
+      "run_environment": {
+        "plan": "experiments/plans/batch-rq2-github-nasasrb-admission-once.json",
+        "plan_sha256": "65603f3d0383b0b1e412d62b048488e9da5560636d9ad3537d129bb9c69f10c3",
+        "git": {
+          "commit": "9d1922b873378eae6a3110dbca467e30256c53e4",
+          "dirty": true
+        },
+        "machine": {
+          "platform": "Windows-11-10.0.26100-SP0",
+          "processor": "AMD64 Family 25 Model 97 Stepping 2, AuthenticAMD",
+          "logical_cpu_count": 32,
+          "python": "3.12.7",
+          "compiler": "g++ (x86_64-posix-seh-rev0, Built by MinGW-Builds project) 13.2.0"
+        },
+        "memory_limit_gib": 16,
+        "external_timeout_policy": "hard per-process TLE from task.timeout_seconds"
+      },
+      "result_json": {
+        "path": "experiment-output/batch-rq2-github-nasasrb-admission-once/787d17ef968a8f6f.attempt-001.json",
+        "bytes": 4458,
+        "sha256": "7cb45ffe538eb55b3fafc81b22cbb9a3d9532d131ce820a2936223fa5b6f56e5"
+      },
+      "artifacts": {
+        "program_log": {
+          "path": "experiment-output/batch-rq2-github-nasasrb-admission-once/787d17ef968a8f6f.attempt-001.program.log",
+          "bytes": 1789,
+          "sha256": "271a119217d99e66c7eee135f742d450dab2c129f5fef26185cbf47bde40243a"
+        },
+        "stdout": {
+          "path": "experiment-output/batch-rq2-github-nasasrb-admission-once/787d17ef968a8f6f.attempt-001.stdout.txt",
+          "bytes": 1992,
+          "sha256": "5d9894e831e85b5ecc7f0d5143ec90e1fb1ffd0d64388bb97ae53539ac581cbd"
+        },
+        "stderr": {
+          "path": "experiment-output/batch-rq2-github-nasasrb-admission-once/787d17ef968a8f6f.attempt-001.stderr.txt",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    {
+      "task_id": "81bb3a064b125a68",
+      "attempt": 1,
+      "status": "completed",
+      "rerun_reason": null,
+      "started_utc": "2026-08-01T15:48:32.561855+00:00",
+      "wall_seconds": 12.71063439999125,
+      "task": {
+        "algorithm": 3,
+        "mode": "raw",
+        "dataset": 2,
+        "tau": 0.0801885,
+        "threads": 32,
+        "timeout_seconds": 30,
+        "graph": null,
+        "vectors": null,
+        "capture_cliques": false,
+        "defines": {},
+        "warmup": false,
+        "repetition": 0,
+        "task_id": "81bb3a064b125a68"
+      },
+      "parsed": {
+        "algorithm_ms": 11929,
+        "clique_count": 155916,
+        "peak_memory_gib": 0.26,
+        "size_histogram": {
+          "2": 21874,
+          "3": 71554,
+          "4": 48863,
+          "5": 12250,
+          "6": 1279,
+          "7": 89,
+          "8": 7
+        },
+        "stats": {}
+      },
+      "validation": null,
+      "build": {
+        "fingerprint": "7562da09c43d7518",
+        "executable_sha256": "c4bc362d2a076910ff63260f3a2693a8f01b489c7c8514b5e6617a386bec4817",
+        "command": [
+          "g++",
+          "-std=c++17",
+          "-fopenmp",
+          "-mavx2",
+          "-O3",
+          "src/alg3-raw.cpp",
+          "src/semantic_graph.cpp",
+          "-o",
+          "no-use/compiled/experiment-runner/alg3-raw-7562da09c43d7518.exe"
+        ],
+        "source_verification": {
+          "status": "verified_current",
+          "observed_current_fingerprint": "7562da09c43d7518",
+          "reason": null
+        },
+        "source_hashes": {
+          "alg3-raw.cpp": "54be44ba5e5958f887bc86c684bb8c0a129f44f9c3078b929fb89ace32062c60",
+          "semantic_graph.cpp": "c6d51c9086fbd5c7d264eb411ac04890806744fc4e05dc7eee0b156760a9cd92",
+          "semantic_graph.h": "8192c4e8e02fc8ace59d59365f72643e34ca32ba71faa5bb338381a8cd308078",
+          "experiment_runtime.h": "2970c483cd31152adc0a39278340822337daeb312c073b67a8eb49a030a4f35d"
+        }
+      },
+      "inputs": {
+        "status": "verified_run_time",
+        "snapshot": {
+          "dataset_catalog": {
+            "path": "experiments/datasets.json",
+            "sha256": "6b56d1151911b15582d62bee8c4a90f6e08218c1079f09f7b08d618327468fcd"
+          },
+          "files": [
+            {
+              "role": "graph",
+              "path": "dataset/dataset/sc-nasasrb.txt",
+              "bytes": 15163675,
+              "sha256": "ebaebd0857d5414dc67b4fac1cb12bed76bf1f099a75595c15cc149d7eeaf771"
+            },
+            {
+              "role": "vector_binary",
+              "path": "dataset/vectors-256/sc-nasasrb_vectors.bin",
+              "bytes": 112373768,
+              "sha256": "1d50c72a6830901856e869477e3241d4d2b9911282d09fc4d121f0d057f280cf"
+            }
+          ]
+        }
+      },
+      "run_environment": {
+        "plan": "experiments/plans/batch-rq2-github-nasasrb-admission-once.json",
+        "plan_sha256": "65603f3d0383b0b1e412d62b048488e9da5560636d9ad3537d129bb9c69f10c3",
+        "git": {
+          "commit": "9d1922b873378eae6a3110dbca467e30256c53e4",
+          "dirty": true
+        },
+        "machine": {
+          "platform": "Windows-11-10.0.26100-SP0",
+          "processor": "AMD64 Family 25 Model 97 Stepping 2, AuthenticAMD",
+          "logical_cpu_count": 32,
+          "python": "3.12.7",
+          "compiler": "g++ (x86_64-posix-seh-rev0, Built by MinGW-Builds project) 13.2.0"
+        },
+        "memory_limit_gib": 16,
+        "external_timeout_policy": "hard per-process TLE from task.timeout_seconds"
+      },
+      "result_json": {
+        "path": "experiment-output/batch-rq2-github-nasasrb-admission-once/81bb3a064b125a68.attempt-001.json",
+        "bytes": 4178,
+        "sha256": "151b8a34a68d084b19e45adfedaa300d88545ef261f281cb2818536511ec15ff"
+      },
+      "artifacts": {
+        "program_log": {
+          "path": "experiment-output/batch-rq2-github-nasasrb-admission-once/81bb3a064b125a68.attempt-001.program.log",
+          "bytes": 1517,
+          "sha256": "9570effe4497f5409a011e22d47731eec9c7878001737598e34f1be9e1f0a819"
+        },
+        "stdout": {
+          "path": "experiment-output/batch-rq2-github-nasasrb-admission-once/81bb3a064b125a68.attempt-001.stdout.txt",
+          "bytes": 1720,
+          "sha256": "952acc6e65071874afdbd75ce85bbf9e3d88b79384fb1df67b034eb023392342"
+        },
+        "stderr": {
+          "path": "experiment-output/batch-rq2-github-nasasrb-admission-once/81bb3a064b125a68.attempt-001.stderr.txt",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    {
+      "task_id": "91c5c91e5b6934c7",
+      "attempt": 1,
+      "status": "completed",
+      "rerun_reason": null,
+      "started_utc": "2026-08-01T15:44:31.706460+00:00",
+      "wall_seconds": 17.26919999999518,
+      "task": {
+        "algorithm": 3,
+        "mode": "raw",
+        "dataset": 17,
+        "tau": 0.46225,
+        "threads": 32,
+        "timeout_seconds": 30,
+        "graph": null,
+        "vectors": null,
+        "capture_cliques": false,
+        "defines": {},
+        "warmup": false,
+        "repetition": 0,
+        "task_id": "91c5c91e5b6934c7"
+      },
+      "parsed": {
+        "algorithm_ms": 15990,
+        "clique_count": 38205,
+        "peak_memory_gib": 1.73,
+        "size_histogram": {
+          "2": 15449,
+          "3": 8762,
+          "4": 4329,
+          "5": 1862,
+          "6": 466,
+          "7": 136,
+          "8": 161,
+          "9": 236,
+          "10": 260,
+          "11": 334,
+          "12": 492,
+          "13": 714,
+          "14": 950,
+          "15": 1268,
+          "16": 1353,
+          "17": 958,
+          "18": 416,
+          "19": 55,
+          "20": 4
+        },
+        "stats": {}
+      },
+      "validation": null,
+      "build": {
+        "fingerprint": "7562da09c43d7518",
+        "executable_sha256": "c4bc362d2a076910ff63260f3a2693a8f01b489c7c8514b5e6617a386bec4817",
+        "command": [
+          "g++",
+          "-std=c++17",
+          "-fopenmp",
+          "-mavx2",
+          "-O3",
+          "src/alg3-raw.cpp",
+          "src/semantic_graph.cpp",
+          "-o",
+          "no-use/compiled/experiment-runner/alg3-raw-7562da09c43d7518.exe"
+        ],
+        "source_verification": {
+          "status": "verified_current",
+          "observed_current_fingerprint": "7562da09c43d7518",
+          "reason": null
+        },
+        "source_hashes": {
+          "alg3-raw.cpp": "54be44ba5e5958f887bc86c684bb8c0a129f44f9c3078b929fb89ace32062c60",
+          "semantic_graph.cpp": "c6d51c9086fbd5c7d264eb411ac04890806744fc4e05dc7eee0b156760a9cd92",
+          "semantic_graph.h": "8192c4e8e02fc8ace59d59365f72643e34ca32ba71faa5bb338381a8cd308078",
+          "experiment_runtime.h": "2970c483cd31152adc0a39278340822337daeb312c073b67a8eb49a030a4f35d"
+        }
+      },
+      "inputs": {
+        "status": "verified_run_time",
+        "snapshot": {
+          "dataset_catalog": {
+            "path": "experiments/datasets.json",
+            "sha256": "6b56d1151911b15582d62bee8c4a90f6e08218c1079f09f7b08d618327468fcd"
+          },
+          "files": [
+            {
+              "role": "graph",
+              "path": "dataset/dataset/github-social.txt",
+              "bytes": 3306142,
+              "sha256": "d499e49dbd13a0a6b68fc4c73542bd40494f77ae377086e4f8ad3481aba1fdf3"
+            },
+            {
+              "role": "vector_binary",
+              "path": "dataset/vectors/github-social_vectors.bin",
+              "bytes": 1207908008,
+              "sha256": "1def64822605ee066bb917b3ddf990e60be0be8c4b32cdcab6ccf9b03e170d7f"
+            }
+          ]
+        }
+      },
+      "run_environment": {
+        "plan": "experiments/plans/batch-rq2-github-nasasrb-admission-once.json",
+        "plan_sha256": "65603f3d0383b0b1e412d62b048488e9da5560636d9ad3537d129bb9c69f10c3",
+        "git": {
+          "commit": "9d1922b873378eae6a3110dbca467e30256c53e4",
+          "dirty": true
+        },
+        "machine": {
+          "platform": "Windows-11-10.0.26100-SP0",
+          "processor": "AMD64 Family 25 Model 97 Stepping 2, AuthenticAMD",
+          "logical_cpu_count": 32,
+          "python": "3.12.7",
+          "compiler": "g++ (x86_64-posix-seh-rev0, Built by MinGW-Builds project) 13.2.0"
+        },
+        "memory_limit_gib": 16,
+        "external_timeout_policy": "hard per-process TLE from task.timeout_seconds"
+      },
+      "result_json": {
+        "path": "experiment-output/batch-rq2-github-nasasrb-admission-once/91c5c91e5b6934c7.attempt-001.json",
+        "bytes": 4394,
+        "sha256": "c2fd1b8bbc56002094801fd4c56ab8056e288b475aee8fe72f04cb7c5c4fd0d6"
+      },
+      "artifacts": {
+        "program_log": {
+          "path": "experiment-output/batch-rq2-github-nasasrb-admission-once/91c5c91e5b6934c7.attempt-001.program.log",
+          "bytes": 1696,
+          "sha256": "53f1d777be94528a47a679f469fa020afca37ba15e9563be536cb8e453b8b75a"
+        },
+        "stdout": {
+          "path": "experiment-output/batch-rq2-github-nasasrb-admission-once/91c5c91e5b6934c7.attempt-001.stdout.txt",
+          "bytes": 1899,
+          "sha256": "f901009433f6725b6aea85062df13ec3a81fe48d9d0bc531b1c40ee198170cef"
+        },
+        "stderr": {
+          "path": "experiment-output/batch-rq2-github-nasasrb-admission-once/91c5c91e5b6934c7.attempt-001.stderr.txt",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    {
+      "task_id": "bdec697a313f7f50",
+      "attempt": 1,
+      "status": "completed",
+      "rerun_reason": null,
+      "started_utc": "2026-08-01T15:48:46.236855+00:00",
+      "wall_seconds": 2.351892400009092,
+      "task": {
+        "algorithm": 3,
+        "mode": "raw",
+        "dataset": 2,
+        "tau": 0.102769,
+        "threads": 32,
+        "timeout_seconds": 30,
+        "graph": null,
+        "vectors": null,
+        "capture_cliques": false,
+        "defines": {},
+        "warmup": false,
+        "repetition": 0,
+        "task_id": "bdec697a313f7f50"
+      },
+      "parsed": {
+        "algorithm_ms": 1565,
+        "clique_count": 61028,
+        "peak_memory_gib": 0.24,
+        "size_histogram": {
+          "2": 32367,
+          "3": 24641,
+          "4": 3840,
+          "5": 175,
+          "6": 5
+        },
+        "stats": {}
+      },
+      "validation": null,
+      "build": {
+        "fingerprint": "7562da09c43d7518",
+        "executable_sha256": "c4bc362d2a076910ff63260f3a2693a8f01b489c7c8514b5e6617a386bec4817",
+        "command": [
+          "g++",
+          "-std=c++17",
+          "-fopenmp",
+          "-mavx2",
+          "-O3",
+          "src/alg3-raw.cpp",
+          "src/semantic_graph.cpp",
+          "-o",
+          "no-use/compiled/experiment-runner/alg3-raw-7562da09c43d7518.exe"
+        ],
+        "source_verification": {
+          "status": "verified_current",
+          "observed_current_fingerprint": "7562da09c43d7518",
+          "reason": null
+        },
+        "source_hashes": {
+          "alg3-raw.cpp": "54be44ba5e5958f887bc86c684bb8c0a129f44f9c3078b929fb89ace32062c60",
+          "semantic_graph.cpp": "c6d51c9086fbd5c7d264eb411ac04890806744fc4e05dc7eee0b156760a9cd92",
+          "semantic_graph.h": "8192c4e8e02fc8ace59d59365f72643e34ca32ba71faa5bb338381a8cd308078",
+          "experiment_runtime.h": "2970c483cd31152adc0a39278340822337daeb312c073b67a8eb49a030a4f35d"
+        }
+      },
+      "inputs": {
+        "status": "verified_run_time",
+        "snapshot": {
+          "dataset_catalog": {
+            "path": "experiments/datasets.json",
+            "sha256": "6b56d1151911b15582d62bee8c4a90f6e08218c1079f09f7b08d618327468fcd"
+          },
+          "files": [
+            {
+              "role": "graph",
+              "path": "dataset/dataset/sc-nasasrb.txt",
+              "bytes": 15163675,
+              "sha256": "ebaebd0857d5414dc67b4fac1cb12bed76bf1f099a75595c15cc149d7eeaf771"
+            },
+            {
+              "role": "vector_binary",
+              "path": "dataset/vectors-256/sc-nasasrb_vectors.bin",
+              "bytes": 112373768,
+              "sha256": "1d50c72a6830901856e869477e3241d4d2b9911282d09fc4d121f0d057f280cf"
+            }
+          ]
+        }
+      },
+      "run_environment": {
+        "plan": "experiments/plans/batch-rq2-github-nasasrb-admission-once.json",
+        "plan_sha256": "65603f3d0383b0b1e412d62b048488e9da5560636d9ad3537d129bb9c69f10c3",
+        "git": {
+          "commit": "9d1922b873378eae6a3110dbca467e30256c53e4",
+          "dirty": true
+        },
+        "machine": {
+          "platform": "Windows-11-10.0.26100-SP0",
+          "processor": "AMD64 Family 25 Model 97 Stepping 2, AuthenticAMD",
+          "logical_cpu_count": 32,
+          "python": "3.12.7",
+          "compiler": "g++ (x86_64-posix-seh-rev0, Built by MinGW-Builds project) 13.2.0"
+        },
+        "memory_limit_gib": 16,
+        "external_timeout_policy": "hard per-process TLE from task.timeout_seconds"
+      },
+      "result_json": {
+        "path": "experiment-output/batch-rq2-github-nasasrb-admission-once/bdec697a313f7f50.attempt-001.json",
+        "bytes": 4138,
+        "sha256": "d54209be8a478ed5e62c45ad5f41275121914b2f3a1b5ecc90b9d9ad9db23563"
+      },
+      "artifacts": {
+        "program_log": {
+          "path": "experiment-output/batch-rq2-github-nasasrb-admission-once/bdec697a313f7f50.attempt-001.program.log",
+          "bytes": 1340,
+          "sha256": "78b29ec3cfb920ce2ffcc1554fa6175eb99e740742e0fcbc03967eb2ef6b7fbb"
+        },
+        "stdout": {
+          "path": "experiment-output/batch-rq2-github-nasasrb-admission-once/bdec697a313f7f50.attempt-001.stdout.txt",
+          "bytes": 1543,
+          "sha256": "033629bb85687810bc0744c4995c08f0041067cee27427813734297a8f72eca0"
+        },
+        "stderr": {
+          "path": "experiment-output/batch-rq2-github-nasasrb-admission-once/bdec697a313f7f50.attempt-001.stderr.txt",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    {
+      "task_id": "d282a69301b0454a",
+      "attempt": 1,
+      "status": "completed",
+      "rerun_reason": null,
+      "started_utc": "2026-08-01T15:45:11.425610+00:00",
+      "wall_seconds": 2.736792499999865,
+      "task": {
+        "algorithm": 3,
+        "mode": "raw",
+        "dataset": 17,
+        "tau": 0.524891,
+        "threads": 32,
+        "timeout_seconds": 30,
+        "graph": null,
+        "vectors": null,
+        "capture_cliques": false,
+        "defines": {},
+        "warmup": false,
+        "repetition": 0,
+        "task_id": "d282a69301b0454a"
+      },
+      "parsed": {
+        "algorithm_ms": 1512,
+        "clique_count": 8861,
+        "peak_memory_gib": 1.73,
+        "size_histogram": {
+          "2": 6149,
+          "3": 1693,
+          "4": 361,
+          "5": 76,
+          "6": 51,
+          "7": 76,
+          "8": 178,
+          "9": 194,
+          "10": 76,
+          "11": 7
+        },
+        "stats": {}
+      },
+      "validation": null,
+      "build": {
+        "fingerprint": "7562da09c43d7518",
+        "executable_sha256": "c4bc362d2a076910ff63260f3a2693a8f01b489c7c8514b5e6617a386bec4817",
+        "command": [
+          "g++",
+          "-std=c++17",
+          "-fopenmp",
+          "-mavx2",
+          "-O3",
+          "src/alg3-raw.cpp",
+          "src/semantic_graph.cpp",
+          "-o",
+          "no-use/compiled/experiment-runner/alg3-raw-7562da09c43d7518.exe"
+        ],
+        "source_verification": {
+          "status": "verified_current",
+          "observed_current_fingerprint": "7562da09c43d7518",
+          "reason": null
+        },
+        "source_hashes": {
+          "alg3-raw.cpp": "54be44ba5e5958f887bc86c684bb8c0a129f44f9c3078b929fb89ace32062c60",
+          "semantic_graph.cpp": "c6d51c9086fbd5c7d264eb411ac04890806744fc4e05dc7eee0b156760a9cd92",
+          "semantic_graph.h": "8192c4e8e02fc8ace59d59365f72643e34ca32ba71faa5bb338381a8cd308078",
+          "experiment_runtime.h": "2970c483cd31152adc0a39278340822337daeb312c073b67a8eb49a030a4f35d"
+        }
+      },
+      "inputs": {
+        "status": "verified_run_time",
+        "snapshot": {
+          "dataset_catalog": {
+            "path": "experiments/datasets.json",
+            "sha256": "6b56d1151911b15582d62bee8c4a90f6e08218c1079f09f7b08d618327468fcd"
+          },
+          "files": [
+            {
+              "role": "graph",
+              "path": "dataset/dataset/github-social.txt",
+              "bytes": 3306142,
+              "sha256": "d499e49dbd13a0a6b68fc4c73542bd40494f77ae377086e4f8ad3481aba1fdf3"
+            },
+            {
+              "role": "vector_binary",
+              "path": "dataset/vectors/github-social_vectors.bin",
+              "bytes": 1207908008,
+              "sha256": "1def64822605ee066bb917b3ddf990e60be0be8c4b32cdcab6ccf9b03e170d7f"
+            }
+          ]
+        }
+      },
+      "run_environment": {
+        "plan": "experiments/plans/batch-rq2-github-nasasrb-admission-once.json",
+        "plan_sha256": "65603f3d0383b0b1e412d62b048488e9da5560636d9ad3537d129bb9c69f10c3",
+        "git": {
+          "commit": "9d1922b873378eae6a3110dbca467e30256c53e4",
+          "dirty": true
+        },
+        "machine": {
+          "platform": "Windows-11-10.0.26100-SP0",
+          "processor": "AMD64 Family 25 Model 97 Stepping 2, AuthenticAMD",
+          "logical_cpu_count": 32,
+          "python": "3.12.7",
+          "compiler": "g++ (x86_64-posix-seh-rev0, Built by MinGW-Builds project) 13.2.0"
+        },
+        "memory_limit_gib": 16,
+        "external_timeout_policy": "hard per-process TLE from task.timeout_seconds"
+      },
+      "result_json": {
+        "path": "experiment-output/batch-rq2-github-nasasrb-admission-once/d282a69301b0454a.attempt-001.json",
+        "bytes": 4223,
+        "sha256": "536a30b651f6e07991d02b923a4f962a54239db3e1dc6248d09e2e2ce7e7815a"
+      },
+      "artifacts": {
+        "program_log": {
+          "path": "experiment-output/batch-rq2-github-nasasrb-admission-once/d282a69301b0454a.attempt-001.program.log",
+          "bytes": 1454,
+          "sha256": "c80cd99b3ce8bebed0cff12941401cfc1125ee887f5a8eee7a29fa32844e9d4d"
+        },
+        "stdout": {
+          "path": "experiment-output/batch-rq2-github-nasasrb-admission-once/d282a69301b0454a.attempt-001.stdout.txt",
+          "bytes": 1657,
+          "sha256": "789a5c41745eb2bc5712f32c6bace9dabbb25b35760f3ce8dd5a7cb06d5d8a46"
+        },
+        "stderr": {
+          "path": "experiment-output/batch-rq2-github-nasasrb-admission-once/d282a69301b0454a.attempt-001.stderr.txt",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    {
+      "task_id": "d7bdfc113195ef6e",
+      "attempt": 1,
+      "status": "completed",
+      "rerun_reason": null,
+      "started_utc": "2026-08-01T15:45:10.003389+00:00",
+      "wall_seconds": 1.3925947999960044,
+      "task": {
+        "algorithm": 4,
+        "mode": "raw",
+        "dataset": 17,
+        "tau": 0.500773,
+        "threads": 32,
+        "timeout_seconds": 30,
+        "graph": null,
+        "vectors": null,
+        "capture_cliques": false,
+        "defines": {},
+        "warmup": false,
+        "repetition": 0,
+        "task_id": "d7bdfc113195ef6e"
+      },
+      "parsed": {
+        "algorithm_ms": 208,
+        "clique_count": 16701,
+        "peak_memory_gib": 1.73,
+        "size_histogram": {
+          "2": 9377,
+          "3": 3524,
+          "4": 1070,
+          "5": 250,
+          "6": 90,
+          "7": 109,
+          "8": 98,
+          "9": 274,
+          "10": 568,
+          "11": 722,
+          "12": 466,
+          "13": 144,
+          "14": 9
+        },
+        "stats": {}
+      },
+      "validation": null,
+      "build": {
+        "fingerprint": "dc3d3c5b805d2305",
+        "executable_sha256": "b45f4fa2da08f652aa25bb30f8b3f492a49c453eb20d570cf4f7f4cf49f722cd",
+        "command": [
+          "g++",
+          "-std=c++17",
+          "-fopenmp",
+          "-mavx2",
+          "-O3",
+          "src/alg4-raw.cpp",
+          "src/semantic_graph.cpp",
+          "-o",
+          "no-use/compiled/experiment-runner/alg4-raw-dc3d3c5b805d2305.exe"
+        ],
+        "source_verification": {
+          "status": "verified_current",
+          "observed_current_fingerprint": "dc3d3c5b805d2305",
+          "reason": null
+        },
+        "source_hashes": {
+          "alg4-raw.cpp": "4d8e6dcc65150c7ac4b6e8a5501412af4581b704a5191ffd34813f0ea45a12b8",
+          "semantic_graph.cpp": "c6d51c9086fbd5c7d264eb411ac04890806744fc4e05dc7eee0b156760a9cd92",
+          "semantic_graph.h": "8192c4e8e02fc8ace59d59365f72643e34ca32ba71faa5bb338381a8cd308078",
+          "experiment_runtime.h": "2970c483cd31152adc0a39278340822337daeb312c073b67a8eb49a030a4f35d"
+        }
+      },
+      "inputs": {
+        "status": "verified_run_time",
+        "snapshot": {
+          "dataset_catalog": {
+            "path": "experiments/datasets.json",
+            "sha256": "6b56d1151911b15582d62bee8c4a90f6e08218c1079f09f7b08d618327468fcd"
+          },
+          "files": [
+            {
+              "role": "graph",
+              "path": "dataset/dataset/github-social.txt",
+              "bytes": 3306142,
+              "sha256": "d499e49dbd13a0a6b68fc4c73542bd40494f77ae377086e4f8ad3481aba1fdf3"
+            },
+            {
+              "role": "vector_binary",
+              "path": "dataset/vectors/github-social_vectors.bin",
+              "bytes": 1207908008,
+              "sha256": "1def64822605ee066bb917b3ddf990e60be0be8c4b32cdcab6ccf9b03e170d7f"
+            }
+          ]
+        }
+      },
+      "run_environment": {
+        "plan": "experiments/plans/batch-rq2-github-nasasrb-admission-once.json",
+        "plan_sha256": "65603f3d0383b0b1e412d62b048488e9da5560636d9ad3537d129bb9c69f10c3",
+        "git": {
+          "commit": "9d1922b873378eae6a3110dbca467e30256c53e4",
+          "dirty": true
+        },
+        "machine": {
+          "platform": "Windows-11-10.0.26100-SP0",
+          "processor": "AMD64 Family 25 Model 97 Stepping 2, AuthenticAMD",
+          "logical_cpu_count": 32,
+          "python": "3.12.7",
+          "compiler": "g++ (x86_64-posix-seh-rev0, Built by MinGW-Builds project) 13.2.0"
+        },
+        "memory_limit_gib": 16,
+        "external_timeout_policy": "hard per-process TLE from task.timeout_seconds"
+      },
+      "result_json": {
+        "path": "experiment-output/batch-rq2-github-nasasrb-admission-once/d7bdfc113195ef6e.attempt-001.json",
+        "bytes": 4281,
+        "sha256": "d51aeece1779ba3ab5321c9459d605346ab57bf6d03e6e3ee8ade467b7185ae7"
+      },
+      "artifacts": {
+        "program_log": {
+          "path": "experiment-output/batch-rq2-github-nasasrb-admission-once/d7bdfc113195ef6e.attempt-001.program.log",
+          "bytes": 1382,
+          "sha256": "74ee283998b4c0330617faed1b7178052272a5eddd336a68f1cf7f80cd91c8aa"
+        },
+        "stdout": {
+          "path": "experiment-output/batch-rq2-github-nasasrb-admission-once/d7bdfc113195ef6e.attempt-001.stdout.txt",
+          "bytes": 1585,
+          "sha256": "bc547417cd26864630b8e2300ac938c974c795e47fd0268354e3d0b80ce0ccb1"
+        },
+        "stderr": {
+          "path": "experiment-output/batch-rq2-github-nasasrb-admission-once/d7bdfc113195ef6e.attempt-001.stderr.txt",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    {
+      "task_id": "ee066af693fc0aa1",
+      "attempt": 1,
+      "status": "completed",
+      "rerun_reason": null,
+      "started_utc": "2026-08-01T15:48:49.435604+00:00",
+      "wall_seconds": 1.54365510000207,
+      "task": {
+        "algorithm": 3,
+        "mode": "raw",
+        "dataset": 2,
+        "tau": 0.117326,
+        "threads": 32,
+        "timeout_seconds": 30,
+        "graph": null,
+        "vectors": null,
+        "capture_cliques": false,
+        "defines": {},
+        "warmup": false,
+        "repetition": 0,
+        "task_id": "ee066af693fc0aa1"
+      },
+      "parsed": {
+        "algorithm_ms": 766,
+        "clique_count": 36355,
+        "peak_memory_gib": 0.24,
+        "size_histogram": {
+          "2": 27388,
+          "3": 8512,
+          "4": 446,
+          "5": 9
+        },
+        "stats": {}
+      },
+      "validation": null,
+      "build": {
+        "fingerprint": "7562da09c43d7518",
+        "executable_sha256": "c4bc362d2a076910ff63260f3a2693a8f01b489c7c8514b5e6617a386bec4817",
+        "command": [
+          "g++",
+          "-std=c++17",
+          "-fopenmp",
+          "-mavx2",
+          "-O3",
+          "src/alg3-raw.cpp",
+          "src/semantic_graph.cpp",
+          "-o",
+          "no-use/compiled/experiment-runner/alg3-raw-7562da09c43d7518.exe"
+        ],
+        "source_verification": {
+          "status": "verified_current",
+          "observed_current_fingerprint": "7562da09c43d7518",
+          "reason": null
+        },
+        "source_hashes": {
+          "alg3-raw.cpp": "54be44ba5e5958f887bc86c684bb8c0a129f44f9c3078b929fb89ace32062c60",
+          "semantic_graph.cpp": "c6d51c9086fbd5c7d264eb411ac04890806744fc4e05dc7eee0b156760a9cd92",
+          "semantic_graph.h": "8192c4e8e02fc8ace59d59365f72643e34ca32ba71faa5bb338381a8cd308078",
+          "experiment_runtime.h": "2970c483cd31152adc0a39278340822337daeb312c073b67a8eb49a030a4f35d"
+        }
+      },
+      "inputs": {
+        "status": "verified_run_time",
+        "snapshot": {
+          "dataset_catalog": {
+            "path": "experiments/datasets.json",
+            "sha256": "6b56d1151911b15582d62bee8c4a90f6e08218c1079f09f7b08d618327468fcd"
+          },
+          "files": [
+            {
+              "role": "graph",
+              "path": "dataset/dataset/sc-nasasrb.txt",
+              "bytes": 15163675,
+              "sha256": "ebaebd0857d5414dc67b4fac1cb12bed76bf1f099a75595c15cc149d7eeaf771"
+            },
+            {
+              "role": "vector_binary",
+              "path": "dataset/vectors-256/sc-nasasrb_vectors.bin",
+              "bytes": 112373768,
+              "sha256": "1d50c72a6830901856e869477e3241d4d2b9911282d09fc4d121f0d057f280cf"
+            }
+          ]
+        }
+      },
+      "run_environment": {
+        "plan": "experiments/plans/batch-rq2-github-nasasrb-admission-once.json",
+        "plan_sha256": "65603f3d0383b0b1e412d62b048488e9da5560636d9ad3537d129bb9c69f10c3",
+        "git": {
+          "commit": "9d1922b873378eae6a3110dbca467e30256c53e4",
+          "dirty": true
+        },
+        "machine": {
+          "platform": "Windows-11-10.0.26100-SP0",
+          "processor": "AMD64 Family 25 Model 97 Stepping 2, AuthenticAMD",
+          "logical_cpu_count": 32,
+          "python": "3.12.7",
+          "compiler": "g++ (x86_64-posix-seh-rev0, Built by MinGW-Builds project) 13.2.0"
+        },
+        "memory_limit_gib": 16,
+        "external_timeout_policy": "hard per-process TLE from task.timeout_seconds"
+      },
+      "result_json": {
+        "path": "experiment-output/batch-rq2-github-nasasrb-admission-once/ee066af693fc0aa1.attempt-001.json",
+        "bytes": 4117,
+        "sha256": "2dab68076ab758d7d1bc386873bdf0296af1b5dc446ae384fc7934c25ca09587"
+      },
+      "artifacts": {
+        "program_log": {
+          "path": "experiment-output/batch-rq2-github-nasasrb-admission-once/ee066af693fc0aa1.attempt-001.program.log",
+          "bytes": 1310,
+          "sha256": "94f90074b1dcc0b6a2a8e4bb99b1bd2943a9aee015e94e52ecd277e522a468b6"
+        },
+        "stdout": {
+          "path": "experiment-output/batch-rq2-github-nasasrb-admission-once/ee066af693fc0aa1.attempt-001.stdout.txt",
+          "bytes": 1513,
+          "sha256": "797efd5c968361dff27627c98ffaea38e4f31a50df153d787b753118600f8a6d"
+        },
+        "stderr": {
+          "path": "experiment-output/batch-rq2-github-nasasrb-admission-once/ee066af693fc0aa1.attempt-001.stderr.txt",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    {
+      "task_id": "f38f035a8839acdc",
+      "attempt": 1,
+      "status": "tle",
+      "rerun_reason": null,
+      "started_utc": "2026-08-01T15:47:53.859795+00:00",
+      "wall_seconds": 30.040113399998518,
+      "task": {
+        "algorithm": 3,
+        "mode": "raw",
+        "dataset": 2,
+        "tau": 0.0328913,
+        "threads": 32,
+        "timeout_seconds": 30,
+        "graph": null,
+        "vectors": null,
+        "capture_cliques": false,
+        "defines": {},
+        "warmup": false,
+        "repetition": 0,
+        "task_id": "f38f035a8839acdc"
+      },
+      "parsed": null,
+      "validation": null,
+      "build": {
+        "fingerprint": "7562da09c43d7518",
+        "executable_sha256": "c4bc362d2a076910ff63260f3a2693a8f01b489c7c8514b5e6617a386bec4817",
+        "command": [
+          "g++",
+          "-std=c++17",
+          "-fopenmp",
+          "-mavx2",
+          "-O3",
+          "src/alg3-raw.cpp",
+          "src/semantic_graph.cpp",
+          "-o",
+          "no-use/compiled/experiment-runner/alg3-raw-7562da09c43d7518.exe"
+        ],
+        "source_verification": {
+          "status": "verified_current",
+          "observed_current_fingerprint": "7562da09c43d7518",
+          "reason": null
+        },
+        "source_hashes": {
+          "alg3-raw.cpp": "54be44ba5e5958f887bc86c684bb8c0a129f44f9c3078b929fb89ace32062c60",
+          "semantic_graph.cpp": "c6d51c9086fbd5c7d264eb411ac04890806744fc4e05dc7eee0b156760a9cd92",
+          "semantic_graph.h": "8192c4e8e02fc8ace59d59365f72643e34ca32ba71faa5bb338381a8cd308078",
+          "experiment_runtime.h": "2970c483cd31152adc0a39278340822337daeb312c073b67a8eb49a030a4f35d"
+        }
+      },
+      "inputs": {
+        "status": "verified_run_time",
+        "snapshot": {
+          "dataset_catalog": {
+            "path": "experiments/datasets.json",
+            "sha256": "6b56d1151911b15582d62bee8c4a90f6e08218c1079f09f7b08d618327468fcd"
+          },
+          "files": [
+            {
+              "role": "graph",
+              "path": "dataset/dataset/sc-nasasrb.txt",
+              "bytes": 15163675,
+              "sha256": "ebaebd0857d5414dc67b4fac1cb12bed76bf1f099a75595c15cc149d7eeaf771"
+            },
+            {
+              "role": "vector_binary",
+              "path": "dataset/vectors-256/sc-nasasrb_vectors.bin",
+              "bytes": 112373768,
+              "sha256": "1d50c72a6830901856e869477e3241d4d2b9911282d09fc4d121f0d057f280cf"
+            }
+          ]
+        }
+      },
+      "run_environment": {
+        "plan": "experiments/plans/batch-rq2-github-nasasrb-admission-once.json",
+        "plan_sha256": "65603f3d0383b0b1e412d62b048488e9da5560636d9ad3537d129bb9c69f10c3",
+        "git": {
+          "commit": "9d1922b873378eae6a3110dbca467e30256c53e4",
+          "dirty": true
+        },
+        "machine": {
+          "platform": "Windows-11-10.0.26100-SP0",
+          "processor": "AMD64 Family 25 Model 97 Stepping 2, AuthenticAMD",
+          "logical_cpu_count": 32,
+          "python": "3.12.7",
+          "compiler": "g++ (x86_64-posix-seh-rev0, Built by MinGW-Builds project) 13.2.0"
+        },
+        "memory_limit_gib": 16,
+        "external_timeout_policy": "hard per-process TLE from task.timeout_seconds"
+      },
+      "result_json": {
+        "path": "experiment-output/batch-rq2-github-nasasrb-admission-once/f38f035a8839acdc.attempt-001.json",
+        "bytes": 3913,
+        "sha256": "286b32822d647fe533fd0a0cd1f2cb49c27c5dd2a2c85c5a06e3252fff804e35"
+      },
+      "artifacts": {
+        "program_log": {
+          "path": "experiment-output/batch-rq2-github-nasasrb-admission-once/f38f035a8839acdc.attempt-001.program.log",
+          "bytes": 994,
+          "sha256": "63058e7de42a33603834eb454ecd03e0942298c69f69924b44a6392c9461501b"
+        },
+        "stdout": {
+          "path": "experiment-output/batch-rq2-github-nasasrb-admission-once/f38f035a8839acdc.attempt-001.stdout.txt",
+          "bytes": 599,
+          "sha256": "d68ea9f950b1b5a00676dc105d7d73c7fb5e9f287a376d8d7162c0b31985734d"
+        },
+        "stderr": {
+          "path": "experiment-output/batch-rq2-github-nasasrb-admission-once/f38f035a8839acdc.attempt-001.stderr.txt",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    {
+      "task_id": "f6c879f825e7f180",
+      "attempt": 1,
+      "status": "completed",
+      "rerun_reason": null,
+      "started_utc": "2026-08-01T15:48:45.297760+00:00",
+      "wall_seconds": 0.913990900007775,
+      "task": {
+        "algorithm": 4,
+        "mode": "raw",
+        "dataset": 2,
+        "tau": 0.0801885,
+        "threads": 32,
+        "timeout_seconds": 30,
+        "graph": null,
+        "vectors": null,
+        "capture_cliques": false,
+        "defines": {},
+        "warmup": false,
+        "repetition": 0,
+        "task_id": "f6c879f825e7f180"
+      },
+      "parsed": {
+        "algorithm_ms": 230,
+        "clique_count": 155916,
+        "peak_memory_gib": 0.19,
+        "size_histogram": {
+          "2": 21874,
+          "3": 71554,
+          "4": 48863,
+          "5": 12250,
+          "6": 1279,
+          "7": 89,
+          "8": 7
+        },
+        "stats": {}
+      },
+      "validation": null,
+      "build": {
+        "fingerprint": "dc3d3c5b805d2305",
+        "executable_sha256": "b45f4fa2da08f652aa25bb30f8b3f492a49c453eb20d570cf4f7f4cf49f722cd",
+        "command": [
+          "g++",
+          "-std=c++17",
+          "-fopenmp",
+          "-mavx2",
+          "-O3",
+          "src/alg4-raw.cpp",
+          "src/semantic_graph.cpp",
+          "-o",
+          "no-use/compiled/experiment-runner/alg4-raw-dc3d3c5b805d2305.exe"
+        ],
+        "source_verification": {
+          "status": "verified_current",
+          "observed_current_fingerprint": "dc3d3c5b805d2305",
+          "reason": null
+        },
+        "source_hashes": {
+          "alg4-raw.cpp": "4d8e6dcc65150c7ac4b6e8a5501412af4581b704a5191ffd34813f0ea45a12b8",
+          "semantic_graph.cpp": "c6d51c9086fbd5c7d264eb411ac04890806744fc4e05dc7eee0b156760a9cd92",
+          "semantic_graph.h": "8192c4e8e02fc8ace59d59365f72643e34ca32ba71faa5bb338381a8cd308078",
+          "experiment_runtime.h": "2970c483cd31152adc0a39278340822337daeb312c073b67a8eb49a030a4f35d"
+        }
+      },
+      "inputs": {
+        "status": "verified_run_time",
+        "snapshot": {
+          "dataset_catalog": {
+            "path": "experiments/datasets.json",
+            "sha256": "6b56d1151911b15582d62bee8c4a90f6e08218c1079f09f7b08d618327468fcd"
+          },
+          "files": [
+            {
+              "role": "graph",
+              "path": "dataset/dataset/sc-nasasrb.txt",
+              "bytes": 15163675,
+              "sha256": "ebaebd0857d5414dc67b4fac1cb12bed76bf1f099a75595c15cc149d7eeaf771"
+            },
+            {
+              "role": "vector_binary",
+              "path": "dataset/vectors-256/sc-nasasrb_vectors.bin",
+              "bytes": 112373768,
+              "sha256": "1d50c72a6830901856e869477e3241d4d2b9911282d09fc4d121f0d057f280cf"
+            }
+          ]
+        }
+      },
+      "run_environment": {
+        "plan": "experiments/plans/batch-rq2-github-nasasrb-admission-once.json",
+        "plan_sha256": "65603f3d0383b0b1e412d62b048488e9da5560636d9ad3537d129bb9c69f10c3",
+        "git": {
+          "commit": "9d1922b873378eae6a3110dbca467e30256c53e4",
+          "dirty": true
+        },
+        "machine": {
+          "platform": "Windows-11-10.0.26100-SP0",
+          "processor": "AMD64 Family 25 Model 97 Stepping 2, AuthenticAMD",
+          "logical_cpu_count": 32,
+          "python": "3.12.7",
+          "compiler": "g++ (x86_64-posix-seh-rev0, Built by MinGW-Builds project) 13.2.0"
+        },
+        "memory_limit_gib": 16,
+        "external_timeout_policy": "hard per-process TLE from task.timeout_seconds"
+      },
+      "result_json": {
+        "path": "experiment-output/batch-rq2-github-nasasrb-admission-once/f6c879f825e7f180.attempt-001.json",
+        "bytes": 4176,
+        "sha256": "8c601ac802028307407af3ceafd4bd8403ea936d03d2bb0d7830e7d2403ee7dd"
+      },
+      "artifacts": {
+        "program_log": {
+          "path": "experiment-output/batch-rq2-github-nasasrb-admission-once/f6c879f825e7f180.attempt-001.program.log",
+          "bytes": 1246,
+          "sha256": "6713facb8e90e3791cced3ef00aeea66304af53c0c37c9297927dc6f2745e057"
+        },
+        "stdout": {
+          "path": "experiment-output/batch-rq2-github-nasasrb-admission-once/f6c879f825e7f180.attempt-001.stdout.txt",
+          "bytes": 1449,
+          "sha256": "67a59bf6742bb50b6800e96710764db9b8bd69da5d4891fe1fe724aeb2703b0c"
+        },
+        "stderr": {
+          "path": "experiment-output/batch-rq2-github-nasasrb-admission-once/f6c879f825e7f180.attempt-001.stderr.txt",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    }
+  ]
+}

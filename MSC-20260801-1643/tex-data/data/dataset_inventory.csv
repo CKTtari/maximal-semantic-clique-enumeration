@@ -1,0 +1,9 @@
+dataset_id,dataset,vertices,edges,dimension,attribute_type,paper_role
+7,FB15K-237,14541,248611,384,natural,common grid
+17,GitHub-Social,37700,289003,4005,natural,common grid
+11,ogbn-arxiv,169343,1157799,128,natural,common grid
+16,email-Enron,36692,183831,256,generated,common grid
+2,sc-nasasrb,54870,1311227,256,generated,common grid
+3,sc-pkustk11,87804,2565054,256,generated,common grid
+14,sc-pwtk,217891,5653221,256,generated,common grid
+1,sc-ldoor,909537,20770807,256,generated,common grid

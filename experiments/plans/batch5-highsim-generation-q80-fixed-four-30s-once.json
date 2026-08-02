@@ -1,0 +1,13 @@
+{
+  "name": "batch5-highsim-generation-q80-fixed-four-30s-once",
+  "tasks": [
+    {"algorithm":4,"mode":"raw","dataset":17,"tau":0.417029,"threads":32,"timeout_seconds":30,"repetitions":1,"defines":{"ACMSC_ALG4_GENERATION":1}},
+    {"algorithm":4,"mode":"raw","dataset":17,"tau":0.417029,"threads":32,"timeout_seconds":30,"repetitions":1,"defines":{"ACMSC_ALG4_GENERATION":2}},
+    {"algorithm":4,"mode":"raw","dataset":11,"tau":0.888756,"threads":32,"timeout_seconds":30,"repetitions":1,"defines":{"ACMSC_ALG4_GENERATION":1}},
+    {"algorithm":4,"mode":"raw","dataset":11,"tau":0.888756,"threads":32,"timeout_seconds":30,"repetitions":1,"defines":{"ACMSC_ALG4_GENERATION":2}},
+    {"algorithm":4,"mode":"raw","dataset":2,"tau":0.0527296,"threads":32,"timeout_seconds":30,"repetitions":1,"defines":{"ACMSC_ALG4_GENERATION":1}},
+    {"algorithm":4,"mode":"raw","dataset":2,"tau":0.0527296,"threads":32,"timeout_seconds":30,"repetitions":1,"defines":{"ACMSC_ALG4_GENERATION":2}},
+    {"algorithm":4,"mode":"raw","dataset":1,"tau":0.0527128,"threads":32,"timeout_seconds":30,"repetitions":1,"defines":{"ACMSC_ALG4_GENERATION":1}},
+    {"algorithm":4,"mode":"raw","dataset":1,"tau":0.0527128,"threads":32,"timeout_seconds":30,"repetitions":1,"defines":{"ACMSC_ALG4_GENERATION":2}}
+  ]
+}

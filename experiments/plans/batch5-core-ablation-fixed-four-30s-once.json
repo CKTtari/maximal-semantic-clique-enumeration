@@ -1,0 +1,28 @@
+{
+  "name": "batch5-core-ablation-fixed-four-30s-once",
+  "tasks": [
+    {"algorithm":3,"mode":"raw","dataset":17,"tau":0.25049,"threads":32,"timeout_seconds":30,"repetitions":1,"defines":{"ACMSC_STRSUB_TOP_EDGE":0}},
+    {"algorithm":3,"mode":"raw","dataset":17,"tau":0.25049,"threads":32,"timeout_seconds":30,"repetitions":1,"defines":{"ACMSC_STRSUB_VERTEX_BOUND":0}},
+    {"algorithm":3,"mode":"raw","dataset":17,"tau":0.25049,"threads":32,"timeout_seconds":30,"repetitions":1,"defines":{"ACMSC_STRSUB_LOCAL_MAX":0}},
+    {"algorithm":4,"mode":"raw","dataset":17,"tau":0.571662,"threads":32,"timeout_seconds":30,"repetitions":1,"defines":{"ACMSC_ALG4_GENERATION":1}},
+    {"algorithm":4,"mode":"raw","dataset":17,"tau":0.571662,"threads":32,"timeout_seconds":30,"repetitions":1,"defines":{"ACMSC_ALG4_GENERATION":2}},
+
+    {"algorithm":3,"mode":"raw","dataset":11,"tau":0.773547,"threads":32,"timeout_seconds":30,"repetitions":1,"defines":{"ACMSC_STRSUB_TOP_EDGE":0}},
+    {"algorithm":3,"mode":"raw","dataset":11,"tau":0.773547,"threads":32,"timeout_seconds":30,"repetitions":1,"defines":{"ACMSC_STRSUB_VERTEX_BOUND":0}},
+    {"algorithm":3,"mode":"raw","dataset":11,"tau":0.773547,"threads":32,"timeout_seconds":30,"repetitions":1,"defines":{"ACMSC_STRSUB_LOCAL_MAX":0}},
+    {"algorithm":4,"mode":"raw","dataset":11,"tau":0.949708,"threads":32,"timeout_seconds":30,"repetitions":1,"defines":{"ACMSC_ALG4_GENERATION":1}},
+    {"algorithm":4,"mode":"raw","dataset":11,"tau":0.949708,"threads":32,"timeout_seconds":30,"repetitions":1,"defines":{"ACMSC_ALG4_GENERATION":2}},
+
+    {"algorithm":3,"mode":"raw","dataset":2,"tau":-0.0526835,"threads":32,"timeout_seconds":30,"repetitions":1,"defines":{"ACMSC_STRSUB_TOP_EDGE":0}},
+    {"algorithm":3,"mode":"raw","dataset":2,"tau":-0.0526835,"threads":32,"timeout_seconds":30,"repetitions":1,"defines":{"ACMSC_STRSUB_VERTEX_BOUND":0}},
+    {"algorithm":3,"mode":"raw","dataset":2,"tau":-0.0526835,"threads":32,"timeout_seconds":30,"repetitions":1,"defines":{"ACMSC_STRSUB_LOCAL_MAX":0}},
+    {"algorithm":4,"mode":"raw","dataset":2,"tau":0.14503,"threads":32,"timeout_seconds":30,"repetitions":1,"defines":{"ACMSC_ALG4_GENERATION":1}},
+    {"algorithm":4,"mode":"raw","dataset":2,"tau":0.14503,"threads":32,"timeout_seconds":30,"repetitions":1,"defines":{"ACMSC_ALG4_GENERATION":2}},
+
+    {"algorithm":3,"mode":"raw","dataset":1,"tau":-0.0526831,"threads":32,"timeout_seconds":30,"repetitions":1,"defines":{"ACMSC_STRSUB_TOP_EDGE":0}},
+    {"algorithm":3,"mode":"raw","dataset":1,"tau":-0.0526831,"threads":32,"timeout_seconds":30,"repetitions":1,"defines":{"ACMSC_STRSUB_VERTEX_BOUND":0}},
+    {"algorithm":3,"mode":"raw","dataset":1,"tau":-0.0526831,"threads":32,"timeout_seconds":30,"repetitions":1,"defines":{"ACMSC_STRSUB_LOCAL_MAX":0}},
+    {"algorithm":4,"mode":"raw","dataset":1,"tau":0.145162,"threads":32,"timeout_seconds":30,"repetitions":1,"defines":{"ACMSC_ALG4_GENERATION":1}},
+    {"algorithm":4,"mode":"raw","dataset":1,"tau":0.145162,"threads":32,"timeout_seconds":30,"repetitions":1,"defines":{"ACMSC_ALG4_GENERATION":2}}
+  ]
+}
