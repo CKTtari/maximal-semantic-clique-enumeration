@@ -155,12 +155,12 @@ def canonical_task(task: dict[str, Any], repetition: int) -> dict[str, Any]:
         "warmup": bool(task.get("warmup", False)),
         "repetition": repetition,
     }
-    if normalized["algorithm"] not in (1, 2, 3, 4, 5):
-        raise ValueError("algorithm must be one of 1, 2, 3, 4, 5")
+    if normalized["algorithm"] not in (1, 2, 3, 4, 5, 6):
+        raise ValueError("algorithm must be one of 1, 2, 3, 4, 5, 6")
     if normalized["mode"] not in ("raw", "stats"):
         raise ValueError("mode must be raw or stats")
     if normalized["algorithm"] != 1 and normalized["tau"] is None:
-        raise ValueError("tau is required for algorithms 2-5")
+        raise ValueError("tau is required for algorithms 2-6")
     if not (1 <= normalized["threads"] <= 32):
         raise ValueError("threads must be in [1, 32]")
     if normalized["timeout_seconds"] <= 0:
@@ -190,7 +190,12 @@ def build_key(task: dict[str, Any]) -> tuple[int, str, tuple[tuple[str, Any], ..
 
 def build_executable(task: dict[str, Any]) -> tuple[Path, dict[str, Any]]:
     algorithm, mode, defines_tuple = build_key(task)
-    source_name = "alg5-unified.cpp" if algorithm == 5 else f"alg{algorithm}-{mode}.cpp"
+    if algorithm == 5:
+        source_name = "alg5-unified.cpp"
+    elif algorithm == 6:
+        source_name = "alg6-framework.cpp"
+    else:
+        source_name = f"alg{algorithm}-{mode}.cpp"
     source = SOURCE_DIR / source_name
     if not source.exists():
         raise FileNotFoundError(source)
@@ -205,6 +210,8 @@ def build_executable(task: dict[str, Any]) -> tuple[Path, dict[str, Any]]:
                 for path in (
                     source,
                     SOURCE_DIR / f"alg{algorithm}-raw.cpp",
+                    *( [SOURCE_DIR / "alg3-raw.cpp"]
+                       if algorithm in (5, 6) else [] ),
                     SOURCE_DIR / "semantic_graph.cpp",
                     SOURCE_DIR / "semantic_graph.h",
                     SOURCE_DIR / "experiment_runtime.h",

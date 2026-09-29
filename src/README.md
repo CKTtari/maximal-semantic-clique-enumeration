@@ -13,6 +13,10 @@ The standard experiment entry points are:
 - `alg5-unified.cpp`: current unified-algorithm research candidate; it is not
   part of the paper's archived Alg1--Alg4 runtime tables. Earlier Alg5
   variants are retained in `no-use/archive-20260929/source-legacy/alg5-explorations/`.
+- `alg6-framework.cpp`: exact MSC framework baseline. It keeps structural host
+  decomposition and canonical ownership while disabling the optional Unified
+  pruning certificates; it is intended for mechanism ablations, not as a new
+  result-family definition.
 - `semantic_graph.cpp` / `semantic_graph.h`: shared graph and vector loading.
 
 Files named `*-stats.cpp` are thin instrumentation entry points that compile
