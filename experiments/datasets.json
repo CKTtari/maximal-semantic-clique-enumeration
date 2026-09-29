@@ -75,6 +75,21 @@
       "name": "GitHub-Social",
       "graph": "dataset/dataset/github-social.txt",
       "vectors": "dataset/vectors/github-social_vectors.bin"
+    },
+    "18": {
+      "name": "Flickr",
+      "graph": "dataset/Processed/Flickr/graph.txt",
+      "vectors": "dataset/Processed/Flickr/vectors.bin"
+    },
+    "19": {
+      "name": "WikiCS",
+      "graph": "dataset/Processed/WikiCS/graph.txt",
+      "vectors": "dataset/Processed/WikiCS/vectors.bin"
+    },
+    "20": {
+      "name": "AMiner-534K",
+      "graph": "dataset/dataset/AMiner-534K_edges.txt",
+      "vectors": "dataset/vectors/AMiner-534K_vectors.index"
     }
   }
 }

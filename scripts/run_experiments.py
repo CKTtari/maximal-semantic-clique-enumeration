@@ -155,12 +155,12 @@ def canonical_task(task: dict[str, Any], repetition: int) -> dict[str, Any]:
         "warmup": bool(task.get("warmup", False)),
         "repetition": repetition,
     }
-    if normalized["algorithm"] not in (1, 2, 3, 4):
-        raise ValueError("algorithm must be one of 1, 2, 3, 4")
+    if normalized["algorithm"] not in (1, 2, 3, 4, 5):
+        raise ValueError("algorithm must be one of 1, 2, 3, 4, 5")
     if normalized["mode"] not in ("raw", "stats"):
         raise ValueError("mode must be raw or stats")
     if normalized["algorithm"] != 1 and normalized["tau"] is None:
-        raise ValueError("tau is required for algorithms 2-4")
+        raise ValueError("tau is required for algorithms 2-5")
     if not (1 <= normalized["threads"] <= 32):
         raise ValueError("threads must be in [1, 32]")
     if normalized["timeout_seconds"] <= 0:
@@ -190,7 +190,8 @@ def build_key(task: dict[str, Any]) -> tuple[int, str, tuple[tuple[str, Any], ..
 
 def build_executable(task: dict[str, Any]) -> tuple[Path, dict[str, Any]]:
     algorithm, mode, defines_tuple = build_key(task)
-    source = SOURCE_DIR / f"alg{algorithm}-{mode}.cpp"
+    source_name = "alg5-unified.cpp" if algorithm == 5 else f"alg{algorithm}-{mode}.cpp"
+    source = SOURCE_DIR / source_name
     if not source.exists():
         raise FileNotFoundError(source)
     defines = [f"-D{name}={value}" for name, value in defines_tuple]
@@ -491,6 +492,12 @@ def execute_task(
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--plan", type=Path, required=True)
+    parser.add_argument(
+        "--output-root",
+        type=Path,
+        default=OUTPUT_ROOT,
+        help="Root for run artifacts; pilot runs can be kept outside formal paper-data.",
+    )
     parser.add_argument("--batch-size", type=int, default=4)
     parser.add_argument("--resume", action="store_true")
     parser.add_argument(
@@ -518,7 +525,8 @@ def main() -> None:
     plan = json.loads(plan_path.read_text(encoding="utf-8"))
     tasks = expand_plan(plan)
     run_name = plan.get("name", plan_path.stem)
-    task_dir = OUTPUT_ROOT / run_name
+    output_root = args.output_root.resolve()
+    task_dir = output_root / run_name
     task_dir.mkdir(parents=True, exist_ok=True)
 
     if args.skip_attempted and not args.resume:
