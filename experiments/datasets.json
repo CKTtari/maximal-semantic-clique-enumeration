@@ -90,6 +90,21 @@
       "name": "AMiner-534K",
       "graph": "dataset/dataset/AMiner-534K_edges.txt",
       "vectors": "dataset/vectors/AMiner-534K_vectors.index"
+    },
+    "21": {
+      "name": "Cora",
+      "graph": "dataset/Processed/Cora/graph.txt",
+      "vectors": "dataset/Processed/Cora/vectors.bin"
+    },
+    "22": {
+      "name": "CiteSeer",
+      "graph": "dataset/Processed/CiteSeer/graph.txt",
+      "vectors": "dataset/Processed/CiteSeer/vectors.bin"
+    },
+    "23": {
+      "name": "PubMed",
+      "graph": "dataset/Processed/PubMed/graph.txt",
+      "vectors": "dataset/Processed/PubMed/vectors.bin"
     }
   }
 }

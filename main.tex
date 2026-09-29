@@ -104,11 +104,11 @@
 %% The abstract is a short summary of the work to be presented in the
 %% article.
 \begin{abstract}
-Large language model applications increasingly use GraphRAG to answer global
-questions over corpora whose evidence spans many documents. A typical pipeline
-constructs an entity--relation graph, organizes it through hierarchical
-community detection, and summarizes the resulting groups; group quality thus
-affects evidence coverage and coherence. Existing primitives capture the two
+Retrieval-augmented agents increasingly need compact evidence groups that can
+be inspected, cited, and reused across related questions. A graph built from
+document links, entity relations, or co-occurrence records supplies explicit
+connections, while vector attributes supply a semantic signal for deciding
+whether a connected group is coherent. Existing primitives capture these two
 requirements separately: community partitions allow missing links and suppress
 overlap, maximal cliques ignore vectors, and pairwise semantic thresholds can
 fragment groups because of atypical pairs. We formulate \emph{maximal semantic clique} (MSC) enumeration,
@@ -140,22 +140,19 @@ recall, quantifying the group fragmentation avoided by the average constraint.
 \section{Introduction}
 \label{sec:intro}
 
-Large language models increasingly answer questions over private, scientific,
-and enterprise corpora whose relevant evidence is distributed across many
-documents. Conventional vector retrieval is effective for local questions, but
-global questions require a system to identify recurring themes, connect
-multi-hop evidence, and summarize relationships at corpus scale. GraphRAG makes
-this group-discovery step explicit: it constructs an entity--relation graph,
-applies hierarchical community detection to organize closely related entities,
-and generates community summaries at multiple levels for global
-reasoning~\cite{edge2024graphrag}. Related graph-based RAG systems expand and
-organize retrieved evidence through knowledge-graph
-relations~\cite{zhu2025kg2rag}. Group quality therefore becomes an indexing concern, not
-merely a graph-analytics detail. An overly loose group produces an incoherent
-summary, an overly fragmented group misses distributed evidence, and a
-non-overlapping partition can hide entities that participate in multiple
-contexts. Modern AI applications consequently need compact, interpretable
-groups supported by both explicit relations and semantic signals.
+Retrieval-augmented agents increasingly answer questions whose evidence is
+distributed across documents, entities, or events. Local vector retrieval can
+find relevant items, but corpus-level reasoning also needs reusable evidence
+groups that preserve explicit relations and can be inspected by a user or an
+agent. GraphRAG is one representative setting: it constructs an
+entity--relation graph and organizes evidence into communities for global
+reasoning~\cite{edge2024graphrag}; related graph-based RAG systems likewise
+expand retrieved evidence through knowledge-graph relations~\cite{zhu2025kg2rag}.
+In these settings, an overly loose group weakens coherence, an overly
+fragmented group loses distributed evidence, and a non-overlapping partition
+can hide entities that participate in multiple contexts. This motivates an
+enumeration primitive that exposes overlapping groups supported by both
+explicit relations and semantic attributes.
 
 Existing community and dense-pattern primitives capture subsets of these
 requirements. Hierarchical community detection is well suited to scalable,
@@ -179,7 +176,11 @@ least a threshold $\tau$. An MSC is an inclusion-wise maximal feasible clique:
 no feasible clique strictly contains it. The task is to enumerate all MSCs.
 Averaging captures collective semantic compatibility and tolerates a limited
 number of atypical pairs, while complete connectivity retains an unambiguous
-relation-level guarantee. Exact enumeration also preserves overlapping groups,
+relation-level guarantee. It is a group-level aggregation choice: a minimum
+similarity rule enforces the weakest pair, whereas density- or variance-aware
+objectives introduce additional application parameters. The average gives a
+single interpretable budget for atypical pairs and is therefore a useful exact
+enumeration target. Exact enumeration also preserves overlapping groups,
 allowing the same entity to support multiple retrieval or summarization
 contexts.
 
@@ -1080,6 +1081,10 @@ real publication case study (RQ8).
 \label{sec:exp-setup}
 
 We compare against the following representative algorithms:
+The comparison retains three definition-aligned references (StructBK, SemBK,
+and PairSim-MCE) and reproduces two established relaxed-family enumerators
+(FastQC and FaPlex); the latter are interpreted as cross-contract references
+where their output families differ from MSCs.
 \begin{itemize}[leftmargin=1.25em,itemsep=0.25ex,topsep=0.4ex,parsep=0pt]
   \item \StructBK\ implements Bron--Kerbosch search with Tomita pivoting and
   degeneracy-ordered roots~\cite{bron1973,tomita2006,eppstein2010,eppstein2013}.
@@ -1119,12 +1124,12 @@ graphs with reproducibly generated attributes. Flickr uses its official
 official 4,005-dimensional developer features; and ogbn-arxiv retains its
 official 128-dimensional node features~\cite{rozemberczki2021musae,wang2020ogb}. For email-Enron and the four
 SuiteSparse graphs~\cite{leskovec2014snap,davis2011uf}, the PCG64 pseudorandom
-generator draws 256
-coordinates independently from $U[-1,1)$ under fixed dataset seeds, followed
-by $\ell_2$ normalization. Every graph topology is extracted directly from its
-public source dataset. Generated vectors provide controlled inputs for runtime,
-scale, and mechanism experiments; the semantic-output analyses in RQ7 use only
-the three graphs with official natural attributes.
+generator draws 256 coordinates independently from $U[-1,1)$ under fixed
+dataset seeds, followed by $\ell_2$ normalization. Every graph topology is
+extracted directly from its public source dataset. Generated vectors provide
+controlled inputs for runtime, scale, and mechanism experiments; the
+semantic-output analyses in RQ7 use only the three graphs with official natural
+attributes.
 Unless stated otherwise, subsequent multi-dataset analyses use the fixed panel
 of GitHub-Social, ogbn-arxiv, sc-nasasrb, and sc-ldoor. RQ3 instead uses nested
 subgraphs of ogbn-arxiv for controlled size scaling, and RQ7 uses all three
@@ -1502,13 +1507,16 @@ evaluated alternative matches the MSC cover on both axes.
 
 
 \subsection{RQ8: Case Study}
-We examine the largest $q_{80}$ MSC whose vertices share one OGB subject label
-and that contains a below-threshold pair on ogbn-arxiv. The OGB mapping resolves its 18 vertices to
-2016--2019 \texttt{cs.IT} publications forming a structural clique
-~\cite{wang2020ogb}. Their titles connect PIR capacity, coded and cache-aided
-storage, side information, colluding and wiretapped databases, asymmetric
-traffic, and private set intersection. Table~\ref{tab:pir-case} gives one
-representative publication per thematic strand in Figure~\ref{fig:pir-case}.
+We use a predeclared selection rule to make the case study reproducible. From
+all $q_{80}$ MSCs on ogbn-arxiv, we retain candidates whose vertices share one
+official OGB subject label and that contain at least one below-threshold pair;
+we then select the largest candidate, breaking ties by lexicographic vertex ID.
+The resulting group has 18 vertices mapped to 2016--2019
+\texttt{cs.IT} publications forming a structural clique~\cite{wang2020ogb}.
+Their titles connect PIR capacity, coded and cache-aided storage, side
+information, colluding and wiretapped databases, asymmetric traffic, and
+private set intersection. Table~\ref{tab:pir-case} gives one representative
+publication per thematic strand in Figure~\ref{fig:pir-case}.
 
 \begin{figure}[t]
 \centering
@@ -1539,11 +1547,12 @@ PSI extension & P17: \emph{Private Set Intersection: A Multi-Message Symmetric P
 
 At $\tau=0.8888$, the group has $\avgsim=0.9185$, although 20 of 153 pairs
 fall below $\tau$ (minimum 0.8214). Among 820 intersecting PairSim outputs, the
-best retains only 12 papers. MSC instead returns the complete citation-connected
-lineage as one reviewable unit. It links foundational PIR capacity results to
-later work on caching, side information, security, asymmetric traffic, and set
-intersection, allowing literature exploration to expose the topic's evolution
-and identify experts without reconciling hundreds of overlapping fragments.
+best retains only 12 papers. The comparison is at the result-family level:
+MSC provides one complete, citation-connected lineage, whereas PairSim reports
+the maximal groups that survive its endpoint-wise threshold. The case therefore
+illustrates how the two definitions expose different evidence units; it does
+not assume that either family is a substitute for downstream ranking or answer
+generation.
 
 
 \section{Related Work}
@@ -1588,6 +1597,14 @@ gunnemann2010}, directed truss search~\cite{liu2020directedtruss}, and directed
 densest-subgraph discovery~\cite{ma2020directeddense} likewise relax
 completeness or return partition/query/optimization results rather than all
 maximal complete groups under an aggregate threshold.
+
+These methods have different output contracts from MSC. FastQC and FaPlex
+return maximal relaxed dense families, whereas StructBK returns structural
+maximal cliques and PairSim returns maximal cliques after an endpoint-wise
+similarity filter. We therefore use the latter methods as structural or
+result-family references, and interpret runtime comparisons with the relaxed
+families as cross-contract measurements rather than as claims of dominance
+under a common output definition.
 
 \stitle{Vector Attributes.}
 Representation models~\cite{bordes2013,sun2019,perozzi2014deepwalk,kipf2017}

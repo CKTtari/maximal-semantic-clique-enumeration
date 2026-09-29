@@ -148,6 +148,18 @@ inline void select_dataset(int id, std::string& graph_file,
             graph_file = "dataset/dataset/AMiner-534K_edges.txt";
             vector_file = "dataset/vectors/AMiner-534K_vectors.index";
             break;
+        case 21:
+            graph_file = "dataset/Processed/Cora/graph.txt";
+            vector_file = "dataset/Processed/Cora/vectors.bin";
+            break;
+        case 22:
+            graph_file = "dataset/Processed/CiteSeer/graph.txt";
+            vector_file = "dataset/Processed/CiteSeer/vectors.bin";
+            break;
+        case 23:
+            graph_file = "dataset/Processed/PubMed/graph.txt";
+            vector_file = "dataset/Processed/PubMed/vectors.bin";
+            break;
         default:
             select_dataset(2, graph_file, vector_file);
             break;
