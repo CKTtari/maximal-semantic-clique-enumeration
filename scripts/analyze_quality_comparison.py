@@ -75,12 +75,12 @@ def load_outputs(module, dataset_slug: str) -> dict[str, tuple[Path, str]]:
         name: (path, "plain") for name, (path, _result) in captured.items()
     }
     outputs["FastQC"] = (
-        ROOT / "experiment-output" / "external-baselines" / dataset_slug
+        ROOT / "experiments" / "output" / "external-baselines" / dataset_slug
         / "fastqc-g090-u10-mapped" / "maximal-output.txt",
         "size-prefix",
     )
     outputs["FaPlex"] = (
-        ROOT / "experiment-output" / "external-baselines" / dataset_slug
+        ROOT / "experiments" / "output" / "external-baselines" / dataset_slug
         / "faplex-k2-u10" / "run.stdout.txt",
         "solution-prefix",
     )

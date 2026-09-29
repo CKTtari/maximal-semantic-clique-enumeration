@@ -20,6 +20,11 @@ Regenerate from the repository root with:
 python tex-data/fig/plot_paper_figures.py
 ```
 
+The local SciPilot helper code used by this generator is kept under
+`scripts/vendor/scipilot-figure-skill/`. The running-example graph's editable
+source is `msc-draw.drawio`; its PDF is kept here with the figures included by
+`main.tex`.
+
 `strsub_workflow.tex` and `monosem_workflow.tex` are conceptual algorithm
 diagrams synchronized with the current Alg3 and Alg4 implementations. Their
 compiled PDFs are included directly by `main.tex`.

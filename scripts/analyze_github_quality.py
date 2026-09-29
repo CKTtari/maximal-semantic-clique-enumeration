@@ -13,8 +13,8 @@ from typing import Any
 
 
 ROOT = Path(__file__).resolve().parents[1]
-RUN_DIR = ROOT / "experiment-output" / "github-social-quality-capture"
-FASTQC_DIR = ROOT / "experiment-output" / "external-baselines" / "github-social" / "fastqc-g090-u10-mapped"
+RUN_DIR = ROOT / "experiments" / "output" / "github-social-quality-capture"
+FASTQC_DIR = ROOT / "experiments" / "output" / "external-baselines" / "github-social" / "fastqc-g090-u10-mapped"
 LABELS = ROOT / "dataset" / "metadata" / "github-social_labels.csv"
 SOURCE = ROOT / "dataset" / "downloads" / "github-social.zip"
 OUTPUT_CSV = ROOT / "tex-data" / "data" / "github-social-quality.csv"

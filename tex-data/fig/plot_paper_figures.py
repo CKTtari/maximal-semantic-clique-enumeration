@@ -25,11 +25,11 @@ HERE = Path(__file__).resolve().parent
 DATA = HERE.parent / "data"
 ROOT = HERE.parents[1]
 QUALITY = ROOT / "experiments" / "quality"
-QA_DIR = ROOT / "tmp" / "figure-qa"
+QA_DIR = ROOT / "no-use" / "figure-qa"
 
 # SciPilot helpers provide deterministic PDF/SVG/PNG output and layout audits.
 SCIPILOT_CANDIDATES = (
-    ROOT / "tmp" / "scipilot-figure-skill" / "scripts",
+    ROOT / "scripts" / "vendor" / "scipilot-figure-skill" / "scripts",
     Path.home() / ".codex" / "skills" / "scipilot-figure-skill" / "scripts",
 )
 SCIPILOT_SCRIPTS = next((path for path in SCIPILOT_CANDIDATES if path.is_dir()), None)
@@ -44,7 +44,7 @@ try:
 except ImportError as exc:  # pragma: no cover - only used without the local skill
     raise RuntimeError(
         "SciPilot figure helpers are required. Clone scipilot-figure-skill "
-        "under tmp/scipilot-figure-skill before regenerating figures."
+        "under scripts/vendor/scipilot-figure-skill before regenerating figures."
     ) from exc
 
 
@@ -187,7 +187,8 @@ def threshold_panel(dataset: str, stem: str, show_ylabel: bool) -> None:
     panel_size = (HALF_COLUMN_WIDTH, PANEL_HEIGHT)
     fig, ax = plt.subplots(figsize=panel_size)
 
-    for method in ("StrSub", "MonoSemMCE"):
+    methods = ("SemBK", "StrSub", "MonoSemMCE") if dataset in {"GitHub-Social", "ogbn-arxiv"} else ("StrSub", "MonoSemMCE")
+    for method in methods:
         by_quantile = {int(row["quantile"]): row for row in rows if row["algorithm"] == method}
         y = [
             float(by_quantile[q]["seconds"])
@@ -195,9 +196,15 @@ def threshold_panel(dataset: str, stem: str, show_ylabel: bool) -> None:
             else np.nan
             for q in quantiles
         ]
+        plot_x = np.arange(len(quantiles))
+        plot_y = y
+        if method == "SemBK":
+            completed = [(positions[q], float(row["seconds"])) for q, row in by_quantile.items() if row["status"] == "completed"]
+            plot_x = [point[0] for point in sorted(completed)]
+            plot_y = [point[1] for point in sorted(completed)]
         ax.plot(
-            np.arange(len(quantiles)),
-            y,
+            plot_x,
+            plot_y,
             color=COLORS[method],
             marker=MARKERS[method],
             linestyle=LINESTYLES[method],
@@ -235,12 +242,12 @@ def threshold_runtime() -> None:
         Line2D([0], [0], color=COLORS[method], marker=MARKERS[method],
                linestyle=LINESTYLES[method], markerfacecolor="white",
                label=DISPLAY_NAMES[method])
-        for method in ("StrSub", "MonoSemMCE")
+        for method in ("SemBK", "StrSub", "MonoSemMCE")
     ]
     legend_fig, legend_ax = plt.subplots(figsize=(COLUMN_WIDTH, LEGEND_HEIGHT))
     legend_ax.axis("off")
-    legend_ax.legend(handles=handles, loc="center", ncol=2, frameon=False,
-                     handlelength=1.35, columnspacing=0.75, handletextpad=0.35)
+    legend_ax.legend(handles=handles, loc="center", ncol=3, frameon=False,
+                     handlelength=1.35, columnspacing=0.65, handletextpad=0.35)
     save(legend_fig, "threshold_runtime_legend", (COLUMN_WIDTH, LEGEND_HEIGHT))
     threshold_panel("GitHub-Social", "threshold_runtime_github", show_ylabel=True)
     threshold_panel("ogbn-arxiv", "threshold_runtime_arxiv", show_ylabel=False)

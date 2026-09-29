@@ -146,7 +146,7 @@ def run_single_experiment(ssh, exe_name, dataset_id, tau, log_prefix, variant_la
     else:
         input_text = f'mine {tau}\nquit\n'
 
-    cmd = f'./build/{exe_name}.exe dataset {dataset_id} log {log_file}'
+    cmd = f'./no-use/build/{exe_name}.exe dataset {dataset_id} log {log_file}'
 
     print(f"\n  📊 执行: {exe_name} | DS={dataset_id} | τ={tau:.4f} | Variant: {variant_label}")
     print(f"  日志: {log_file}")
@@ -249,7 +249,7 @@ def run_exp6a(ssh):
                 f"alg4-{exe_name}",
                 ds_id,
                 ds_tau,
-                f"logs/exp6a_alg4_{exe_name}_ds{ds_id}",
+                f"experiments/output/legacy-logs/exp6a_alg4_{exe_name}_ds{ds_id}",
                 label
             )
             results.append(result)
@@ -294,7 +294,7 @@ def run_exp6b(ssh):
                     f"alg3-{exe_name}",
                     ds_id,
                     ds_tau,
-                    f"logs/exp6b_alg3_{exe_name}_ds{ds_id}_tau{pct}",
+                    f"experiments/output/legacy-logs/exp6b_alg3_{exe_name}_ds{ds_id}_tau{pct}",
                     label
                 )
                 result['tau_percentile'] = pct
@@ -337,7 +337,7 @@ def run_exp7(ssh):
                 f"alg4-{exe_name}",
                 ds_id,
                 ds_tau,
-                f"logs/exp7_alg4_{exe_name}_ds{ds_id}",
+                    f"experiments/output/legacy-logs/exp7_alg4_{exe_name}_ds{ds_id}",
                 label
             )
             results.append(result)
@@ -396,7 +396,7 @@ def main():
         ssh.connect()
 
         # 确保远程目录存在
-        ssh.exec_command(f'mkdir -p {WORKSPACE_DIR}/build {WORKSPACE_DIR}/logs {WORKSPACE_DIR}/results')
+        ssh.exec_command(f'mkdir -p {WORKSPACE_DIR}/no-use/build {WORKSPACE_DIR}/experiments/output/legacy-logs')
 
         # 上传构建脚本并编译变体
         print("\n🔨 编译消融变体...")

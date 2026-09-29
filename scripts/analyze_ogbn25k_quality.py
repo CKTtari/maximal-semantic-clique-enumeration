@@ -15,8 +15,8 @@ from typing import Any
 
 
 ROOT = Path(__file__).resolve().parents[1]
-RUN_DIR = ROOT / "experiment-output" / "ogbn-arxiv-25k-quality-capture"
-FASTQC_DIR = ROOT / "experiment-output" / "external-baselines" / "ogbn-arxiv-25k" / "fastqc-g090-u10-mapped"
+RUN_DIR = ROOT / "experiments" / "output" / "ogbn-arxiv-25k-quality-capture"
+FASTQC_DIR = ROOT / "experiments" / "output" / "external-baselines" / "ogbn-arxiv-25k" / "fastqc-g090-u10-mapped"
 SOURCE = ROOT / "dataset" / "downloads" / "ogbn-arxiv" / "arxiv.zip"
 MAPPING = ROOT / "dataset" / "scale_datasets" / "ogbn-arxiv-degree-prefix" / "provenance.json"
 OUTPUT_CSV = ROOT / "tex-data" / "data" / "ogbn-arxiv-25k-quality.csv"

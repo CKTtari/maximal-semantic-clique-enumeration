@@ -8,7 +8,7 @@ param(
 
 $ErrorActionPreference = 'Stop'
 $RepoRoot = Split-Path -Parent $PSScriptRoot
-$BuildDir = Join-Path $RepoRoot 'build'
+$BuildDir = Join-Path $RepoRoot 'no-use/build'
 $ResultDir = Join-Path $BuildDir 'alg4-validation'
 $CanonicalExe = Join-Path $BuildDir 'alg4-canonical.exe'
 $LayeredExe = Join-Path $BuildDir 'alg4-layered-limited.exe'
@@ -31,12 +31,12 @@ if ($Build) {
         Invoke-Compiler @(
             '-std=c++17', '-fopenmp', '-mavx2', '-O3',
             'src/alg4-raw.cpp', 'src/semantic_graph.cpp',
-            '-o', 'build/alg4-canonical.exe'
+            '-o', 'no-use/build/alg4-canonical.exe'
         )
         Invoke-Compiler @(
             '-std=c++17', '-fopenmp', '-mavx2', '-O3', '-Isrc',
             'tests/alg4_layered_limited.cpp', 'src/semantic_graph.cpp',
-            '-o', 'build/alg4-layered-limited.exe'
+            '-o', 'no-use/build/alg4-layered-limited.exe'
         )
     }
     finally {
@@ -61,7 +61,7 @@ function Invoke-Miner {
     $TauText = $Tau.ToString('0.################',
         [System.Globalization.CultureInfo]::InvariantCulture)
     $Prefix = "ds${Dataset}_tau$($TauText.Replace('.', '_'))_$Name"
-    $SinkRelative = "build/alg4-validation/$Prefix.cliques"
+    $SinkRelative = "no-use/build/alg4-validation/$Prefix.cliques"
     $SinkAbsolute = Join-Path $RepoRoot $SinkRelative
     $LogAbsolute = Join-Path $ResultDir "$Prefix.log"
 

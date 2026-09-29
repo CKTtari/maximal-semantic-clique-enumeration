@@ -38,6 +38,7 @@
 #include <cassert>
 #include <cstdarg>
 #include <limits>
+#include <functional>
 
 #ifndef ALG3_VERTEX_BOUND_MIN_M
 #define ALG3_VERTEX_BOUND_MIN_M 12
@@ -45,6 +46,30 @@
 
 #ifndef ACMSC_ENABLE_STATS
 #define ACMSC_ENABLE_STATS 0
+#endif
+#ifndef ACMSC_ALG3_HOST_CANONICAL
+#define ACMSC_ALG3_HOST_CANONICAL 0
+#endif
+#ifndef ACMSC_ALG3_HOST_FRONTIER_BOUND
+#define ACMSC_ALG3_HOST_FRONTIER_BOUND 1
+#endif
+#ifndef ACMSC_ALG3_HOST_CANONICAL_OWNERSHIP
+#define ACMSC_ALG3_HOST_CANONICAL_OWNERSHIP 1
+#endif
+#ifndef ACMSC_ALG3_HOST_PARALLEL
+#define ACMSC_ALG3_HOST_PARALLEL 0
+#endif
+#ifndef ACMSC_HOST_EDGE_ENVELOPE_LIMIT
+#define ACMSC_HOST_EDGE_ENVELOPE_LIMIT 24
+#endif
+#ifndef ACMSC_HOST_ENVELOPE_SURPLUS_LIMIT
+#define ACMSC_HOST_ENVELOPE_SURPLUS_LIMIT 0.05
+#endif
+#ifndef ACMSC_HOST_DIRECT_LIMIT
+#define ACMSC_HOST_DIRECT_LIMIT 7
+#endif
+#ifndef ACMSC_ALG3_HOST_CANONICAL_MASK
+#define ACMSC_ALG3_HOST_CANONICAL_MASK 0
 #endif
 #ifndef ACMSC_STRSUB_TOP_EDGE
 #define ACMSC_STRSUB_TOP_EDGE 1
@@ -60,6 +85,39 @@
 #endif
 #ifndef ACMSC_ENGINE_BITMAP
 #define ACMSC_ENGINE_BITMAP 1
+#endif
+#ifndef ACMSC_HOST_CLOSURE_CANONICAL
+#define ACMSC_HOST_CLOSURE_CANONICAL 0
+#endif
+#ifndef ACMSC_HOST_ROOT_CERT
+#define ACMSC_HOST_ROOT_CERT 0
+#endif
+#ifndef ACMSC_ALG3_SUPPORT_ROOT_CERT
+#define ACMSC_ALG3_SUPPORT_ROOT_CERT 0
+#endif
+#ifndef ACMSC_ALG3_MONOTONE_BREAK
+#define ACMSC_ALG3_MONOTONE_BREAK 0
+#endif
+#ifndef ACMSC_ALG3_MONO_SORT_MIN_CANDIDATES
+#define ACMSC_ALG3_MONO_SORT_MIN_CANDIDATES 8
+#endif
+#ifndef ACMSC_HOST_EXACT_FRONTIER_LIMIT
+#define ACMSC_HOST_EXACT_FRONTIER_LIMIT 0
+#endif
+#ifndef ACMSC_HOST_VERTEX_FRONTIER_LIMIT
+#define ACMSC_HOST_VERTEX_FRONTIER_LIMIT 0
+#endif
+#ifndef ACMSC_SUPPORT_EDGE_OWNERSHIP
+#define ACMSC_SUPPORT_EDGE_OWNERSHIP 0
+#endif
+#ifndef ACMSC_HOST_SEM_SCHEDULE_GUIDED
+#define ACMSC_HOST_SEM_SCHEDULE_GUIDED 0
+#endif
+#ifndef ACMSC_HOST_TOPEDGE_FRONTIER_LIMIT
+#define ACMSC_HOST_TOPEDGE_FRONTIER_LIMIT 0
+#endif
+#ifndef ACMSC_HOST_VERTEX_DEPTH_BOUND
+#define ACMSC_HOST_VERTEX_DEPTH_BOUND 0
 #endif
 
 using namespace std;
@@ -233,10 +291,27 @@ private:
 
     vector<vector<pair<int,float>>> nb_;
     vector<unordered_map<int,float>> sim_map_;
+#if ACMSC_HOST_CLOSURE_CANONICAL || ACMSC_ALG3_HOST_CANONICAL
+    vector<float>          vertex_max_similarity_;
+#endif
 
     BlockedSparseBitmap* bitmap_ = nullptr;
     vector<int>          ordering_;
     vector<vector<int>>  candidates_;
+#if ACMSC_HOST_CLOSURE_CANONICAL
+    // Structural maximal cliques are used as a read-only candidate index.
+    // The semantic search itself remains one canonical reverse search over
+    // the closure of all hosts; hosts are never searched independently.
+    vector<vector<int>> structural_hosts_;
+    vector<vector<int>> hosts_by_vertex_;
+#endif
+#if ACMSC_ALG3_HOST_CANONICAL
+    atomic<uint64_t> host_seen_{0};
+    atomic<uint64_t> host_supported_{0};
+    atomic<uint64_t> host_size2_{0};
+    atomic<uint64_t> host_size3_5_{0};
+    atomic<uint64_t> host_size6p_{0};
+#endif
     double               phase1_ratio_ = 0.0;
     double               phase2_ratio_ = 0.0;
     int                  timeout_seconds_ = acmsc_runtime::kDefaultTimeoutSeconds;
@@ -415,11 +490,754 @@ private:
     //
     // Every representation enumerates the same subsets in descending size.
     // --------------------------------------------------------
+#if ACMSC_ALG3_HOST_CANONICAL
+    void process_host_canonical_mask(
+        const vector<int>& M,
+        vector<vector<int>>& local_cands,
+        long long& phase2_ns_local
+    ) {
+        const auto t0 = chrono::high_resolution_clock::now();
+        const int m = static_cast<int>(M.size());
+        if (m < 2 || m > 63) return;
+        vector<int> H = M;
+        sort(H.begin(), H.end());
+        vector<float> sim(static_cast<size_t>(m) * m, 0.0f);
+        float top1 = -numeric_limits<float>::infinity();
+        float top2 = -numeric_limits<float>::infinity();
+        float top3 = -numeric_limits<float>::infinity();
+        double full_sum = 0.0;
+        for (int i = 0; i < m; ++i) {
+            for (int j = i + 1; j < m; ++j) {
+                const float s = lookup_sim(H[i], H[j]);
+                sim[static_cast<size_t>(i) * m + j] = s;
+                sim[static_cast<size_t>(j) * m + i] = s;
+                full_sum += static_cast<double>(s);
+                if (s > top1) { top3 = top2; top2 = top1; top1 = s; }
+                else if (s > top2) { top3 = top2; top2 = s; }
+                else if (s > top3) top3 = s;
+            }
+        }
+        const double full_pairs = static_cast<double>(m) * (m - 1) / 2.0;
+        auto emit_mask = [&](uint64_t mask) {
+            vector<int> out;
+            out.reserve(__builtin_popcountll(mask));
+            while (mask) {
+                const int i = __builtin_ctzll(mask);
+                mask &= mask - 1;
+                out.push_back(H[i]);
+            }
+            local_cands.push_back(move(out));
+        };
+        if (full_sum >= static_cast<double>(tau_) * full_pairs) {
+            emit_mask(m == 64 ? ~0ULL : ((1ULL << m) - 1));
+            phase2_ns_local += chrono::duration_cast<chrono::nanoseconds>(
+                chrono::high_resolution_clock::now() - t0).count();
+            return;
+        }
+        if (m >= 3 && (static_cast<double>(top1) + top2 + top3) / 3.0 <
+                         static_cast<double>(tau_)) {
+            for (int i = 0; i < m; ++i)
+                for (int j = i + 1; j < m; ++j)
+                    if (sim[static_cast<size_t>(i) * m + j] >= tau_)
+                        emit_mask((1ULL << i) | (1ULL << j));
+            phase2_ns_local += chrono::duration_cast<chrono::nanoseconds>(
+                chrono::high_resolution_clock::now() - t0).count();
+            return;
+        }
+
+#if ACMSC_HOST_VERTEX_DEPTH_BOUND
+        int host_depth_limit = m;
+        if (m >= 12) {
+            vector<vector<float>> incident_sorted(m);
+            for (int v = 0; v < m; ++v) {
+                auto& row = incident_sorted[v];
+                row.reserve(m - 1);
+                for (int u = 0; u < m; ++u)
+                    if (u != v) row.push_back(sim[static_cast<size_t>(v) * m + u]);
+                sort(row.rbegin(), row.rend());
+            }
+            for (int k = 3; k <= m; ++k) {
+                vector<double> caps;
+                caps.reserve(m);
+                for (const auto& row : incident_sorted) {
+                    double s = 0.0;
+                    for (int j = 0; j < k - 1; ++j) s += row[j];
+                    caps.push_back(s);
+                }
+                if (k < m)
+                    nth_element(caps.begin(), caps.begin() + k, caps.end(),
+                                greater<double>());
+                double cap_sum = 0.0;
+                for (int i = 0; i < k; ++i) cap_sum += caps[i];
+                if (cap_sum / (static_cast<double>(k) * (k - 1)) <
+                    static_cast<double>(tau_) - 1e-12) {
+                    host_depth_limit = k - 1;
+                    break;
+                }
+            }
+        }
+#endif
+
+        if (m <= ACMSC_HOST_DIRECT_LIMIT) {
+            const uint64_t limit = 1ULL << m;
+            vector<float> edge_values;
+            edge_values.reserve(static_cast<size_t>(m) * (m - 1) / 2);
+            for (int i = 0; i < m; ++i)
+                for (int j = i + 1; j < m; ++j)
+                    edge_values.push_back(sim[static_cast<size_t>(i) * m + j]);
+            sort(edge_values.rbegin(), edge_values.rend());
+            vector<char> layer_possible(m + 1, 0);
+            double prefix = 0.0;
+            for (int k = 2; k <= m; ++k) {
+                const int pairs = k * (k - 1) / 2;
+                if (pairs > static_cast<int>(edge_values.size())) break;
+                prefix = 0.0;
+                for (int e = 0; e < pairs; ++e) prefix += edge_values[e];
+                layer_possible[k] = prefix / pairs + 1e-12 >= tau_;
+            }
+            vector<uint64_t> feasible;
+            feasible.reserve(limit);
+            for (uint64_t mask = 0; mask < limit; ++mask) {
+                const int k = __builtin_popcountll(mask);
+                if (k < 2) continue;
+                if (!layer_possible[k]) continue;
+                double total = 0.0;
+                uint64_t bi = mask;
+                while (bi) {
+                    const int i = __builtin_ctzll(bi);
+                    bi &= bi - 1;
+                    uint64_t bj = bi;
+                    while (bj) {
+                        const int j = __builtin_ctzll(bj);
+                        bj &= bj - 1;
+                        total += static_cast<double>(
+                            sim[static_cast<size_t>(i) * m + j]);
+                    }
+                }
+                if (total + 1e-12 >= static_cast<double>(tau_) *
+                    (static_cast<double>(k) * (k - 1) / 2.0))
+                    feasible.push_back(mask);
+            }
+            sort(feasible.begin(), feasible.end(), [](uint64_t a, uint64_t b) {
+                const int pa = __builtin_popcountll(a), pb = __builtin_popcountll(b);
+                return pa != pb ? pa > pb : a < b;
+            });
+            vector<uint64_t> maximal;
+            for (uint64_t mask : feasible) {
+                bool covered = false;
+                for (uint64_t sup : maximal)
+                    if ((mask & sup) == mask) { covered = true; break; }
+                if (!covered) { maximal.push_back(mask); emit_mask(mask); }
+            }
+            phase2_ns_local += chrono::duration_cast<chrono::nanoseconds>(
+                chrono::high_resolution_clock::now() - t0).count();
+            return;
+        }
+
+        uint64_t root_support_key = numeric_limits<uint64_t>::max();
+        auto support_key = [](int a, int b) {
+            const uint32_t x = static_cast<uint32_t>(min(a, b));
+            const uint32_t y = static_cast<uint32_t>(max(a, b));
+            return (static_cast<uint64_t>(x) << 32) | y;
+        };
+        function<void(uint64_t, uint64_t, double, vector<long double>&,
+                      vector<double>&)> dfs;
+        dfs = [&](uint64_t mask, uint64_t candidates, double sim_sum,
+                  vector<long double>& incident, vector<double>& acc) {
+            const int k = __builtin_popcountll(mask);
+#if ACMSC_HOST_VERTEX_DEPTH_BOUND
+            if (k >= host_depth_limit) {
+                if (sim_sum >= static_cast<double>(tau_) *
+                               (static_cast<double>(k) * (k - 1) / 2.0))
+                    emit_mask(mask);
+                return;
+            }
+#endif
+            const double surplus = sim_sum - static_cast<double>(tau_) *
+                (static_cast<double>(k) * (k - 1) / 2.0);
+            bool has_valid_extension = false;
+#if ACMSC_ALG3_MONOTONE_BREAK
+            vector<int> ordered;
+            ordered.reserve(__builtin_popcountll(candidates));
+            uint64_t order_bits = candidates;
+            while (order_bits) {
+                const int v = __builtin_ctzll(order_bits);
+                order_bits &= order_bits - 1;
+                ordered.push_back(v);
+            }
+            const long double old_pairs =
+                static_cast<long double>(k) * (k - 1) / 2.0L;
+            const long double mono_limit = k >= 2
+                ? (static_cast<long double>(sim_sum) / old_pairs) *
+                  (old_pairs + k) - static_cast<long double>(sim_sum)
+                : numeric_limits<long double>::infinity();
+            const bool mono_sorted = true;
+            sort(ordered.begin(), ordered.end(), [&](int a, int b) {
+                return acc[a] != acc[b] ? acc[a] < acc[b] : H[a] < H[b];
+            });
+            for (const int v : ordered) {
+#else
+            uint64_t bits = candidates;
+            while (bits) {
+                const int v = __builtin_ctzll(bits);
+                bits &= bits - 1;
+#endif
+                const double delta = acc[v];
+                if (surplus + delta - static_cast<double>(tau_) * k < 0.0)
+                    continue;
+                has_valid_extension = true;
+#if ACMSC_SUPPORT_EDGE_OWNERSHIP
+                bool has_lower_support_edge = false;
+                uint64_t members_for_support = mask;
+                while (members_for_support) {
+                    const int u = __builtin_ctzll(members_for_support);
+                    members_for_support &= members_for_support - 1;
+                    if (sim[static_cast<size_t>(u) * m + v] >= tau_ &&
+                        support_key(H[u], H[v]) < root_support_key) {
+                        has_lower_support_edge = true;
+                        break;
+                    }
+                }
+                if (has_lower_support_edge) continue;
+#endif
+#if ACMSC_ALG3_MONOTONE_BREAK
+                // Canonical children are exactly the insertions whose
+                // average does not exceed that of their parent.  Since the
+                // candidates are ordered by marginal contribution, the
+                // remaining suffix cannot contain a canonical child.
+                if (mono_sorted && static_cast<long double>(delta) >
+                              mono_limit + 1e-12L)
+                    break;
+#endif
+                long double min_inc = static_cast<long double>(delta);
+                int min_vertex = H[v];
+                uint64_t members = mask;
+                while (members) {
+                    const int u = __builtin_ctzll(members);
+                    members &= members - 1;
+                    const long double ci = incident[u] +
+                        static_cast<long double>(sim[static_cast<size_t>(u) * m + v]);
+                    if (ci < min_inc || (ci == min_inc && H[u] < min_vertex)) {
+                        min_inc = ci;
+                        min_vertex = H[u];
+                    }
+                }
+                if (min_vertex != H[v]) continue;
+
+                vector<long double> old_inc = incident;
+                vector<double> old_acc = acc;
+                members = candidates & ~(1ULL << v);
+                while (members) {
+                    const int w = __builtin_ctzll(members);
+                    members &= members - 1;
+                    acc[w] += static_cast<double>(
+                        sim[static_cast<size_t>(w) * m + v]);
+                }
+                incident.resize(m, 0.0L);
+                uint64_t old_members = mask;
+                while (old_members) {
+                    const int u = __builtin_ctzll(old_members);
+                    old_members &= old_members - 1;
+                    incident[u] = old_inc[u] + static_cast<long double>(
+                        sim[static_cast<size_t>(u) * m + v]);
+                }
+                incident[v] = static_cast<long double>(delta);
+                dfs(mask | (1ULL << v), candidates & ~(1ULL << v),
+                    sim_sum + delta, incident, acc);
+                incident.swap(old_inc);
+                acc.swap(old_acc);
+            }
+            if (!has_valid_extension && surplus >= 0.0)
+                emit_mask(mask);
+        };
+
+        const uint64_t all = (1ULL << m) - 1;
+        vector<long double> incident(m, 0.0L);
+        vector<double> acc(m, 0.0);
+        for (int u = 0; u < m; ++u) {
+            for (int v = u + 1; v < m; ++v) {
+                const float s = sim[static_cast<size_t>(u) * m + v];
+                if (s < tau_) continue;
+                root_support_key = support_key(H[u], H[v]);
+                fill(incident.begin(), incident.end(), 0.0L);
+                fill(acc.begin(), acc.end(), 0.0);
+                const uint64_t root = (1ULL << u) | (1ULL << v);
+                const uint64_t cand = all & ~root;
+                uint64_t bits = cand;
+                while (bits) {
+                    const int w = __builtin_ctzll(bits);
+                    bits &= bits - 1;
+                    acc[w] = static_cast<double>(sim[static_cast<size_t>(w) * m + u]) +
+                             static_cast<double>(sim[static_cast<size_t>(w) * m + v]);
+                }
+                incident[u] = incident[v] = static_cast<long double>(s);
+                dfs(root, cand, static_cast<double>(s), incident, acc);
+            }
+        }
+        phase2_ns_local += chrono::duration_cast<chrono::nanoseconds>(
+            chrono::high_resolution_clock::now() - t0).count();
+    }
+
+    // Canonical reverse search restricted to one structural host.  The host
+    // is already a clique, so the only dynamic operation is semantic
+    // feasibility; global reconciliation below removes candidates repeated
+    // by overlapping hosts.
+    void process_host_canonical(
+        const vector<int>& M,
+        vector<vector<int>>& local_cands,
+        long long& phase2_ns_local
+    ) {
+        const auto t0 = chrono::high_resolution_clock::now();
+        const int m = static_cast<int>(M.size());
+        if (m < 2) return;
+#if ACMSC_ALG3_HOST_CANONICAL_MASK
+        if (m <= 63) {
+            process_host_canonical_mask(M, local_cands, phase2_ns_local);
+            return;
+        }
+#endif
+#if ACMSC_ALG3_HOST_CANONICAL
+        host_seen_.fetch_add(1, memory_order_relaxed);
+        if (m == 2) host_size2_.fetch_add(1, memory_order_relaxed);
+        else if (m <= 5) host_size3_5_.fetch_add(1, memory_order_relaxed);
+        else host_size6p_.fetch_add(1, memory_order_relaxed);
+#endif
+
+        // Most high-selectivity structural hosts are just edges.  Handle
+        // this common case without allocating a host-local matrix or
+        // entering the general reverse search.
+        if (m == 2) {
+            if (lookup_sim(M[0], M[1]) >= tau_)
+                local_cands.push_back(M);
+#if ACMSC_ALG3_HOST_CANONICAL
+            if (lookup_sim(M[0], M[1]) >= tau_)
+                host_supported_.fetch_add(1, memory_order_relaxed);
+#endif
+            return;
+        }
+
+        // Necessary support-edge certificate: an average-feasible clique of
+        // size at least two must contain at least one pair with similarity at
+        // least tau.  Hosts without such an edge cannot contain an MSC, so
+        // avoid materializing their local similarity matrix entirely.
+        bool has_support_edge = false;
+        for (int i = 0; i < m && !has_support_edge; ++i)
+            for (int j = i + 1; j < m; ++j)
+                if (lookup_sim(M[i], M[j]) >= tau_) {
+                    has_support_edge = true;
+                    break;
+                }
+        if (!has_support_edge) return;
+#if ACMSC_ALG3_HOST_CANONICAL
+        host_supported_.fetch_add(1, memory_order_relaxed);
+#endif
+
+        vector<vector<float>> sim(m, vector<float>(m, 0.0f));
+        float top1 = -numeric_limits<float>::infinity();
+        float top2 = -numeric_limits<float>::infinity();
+        float top3 = -numeric_limits<float>::infinity();
+        for (int i = 0; i < m; ++i)
+            for (int j = i + 1; j < m; ++j)
+            {
+                const float s = lookup_sim(M[i], M[j]);
+                sim[i][j] = sim[j][i] = s;
+                if (s > top1) { top3 = top2; top2 = top1; top1 = s; }
+                else if (s > top2) { top3 = top2; top2 = s; }
+                else if (s > top3) top3 = s;
+            }
+
+        auto emit_local = [&](const vector<int>& local) {
+            vector<int> out;
+            out.reserve(local.size());
+            for (int v : local) out.push_back(M[v]);
+            sort(out.begin(), out.end());
+            local_cands.push_back(move(out));
+        };
+
+        double full_sum = 0.0;
+        for (int i = 0; i < m; ++i)
+            for (int j = i + 1; j < m; ++j)
+                full_sum += static_cast<double>(sim[i][j]);
+        const double full_pairs = static_cast<double>(m) * (m - 1) / 2.0;
+        if (full_sum >= static_cast<double>(tau_) * full_pairs) {
+            vector<int> all(m);
+            iota(all.begin(), all.end(), 0);
+            emit_local(all);
+            phase2_ns_local += chrono::duration_cast<chrono::nanoseconds>(
+                chrono::high_resolution_clock::now() - t0).count();
+            return;
+        }
+
+        // If even the three strongest internal edges cannot reach the
+        // threshold, no feasible subset of size at least three exists:
+        // every such subset contains at least three edges and its average is
+        // bounded by the global top-three average.  The host can therefore
+        // contribute only feasible pairs, which are emitted directly.
+        if (m >= 3 && (static_cast<double>(top1) + top2 + top3) / 3.0 <
+                         static_cast<double>(tau_)) {
+            for (int i = 0; i < m; ++i)
+                for (int j = i + 1; j < m; ++j)
+                    if (sim[i][j] >= tau_)
+                        emit_local(vector<int>{i, j});
+            phase2_ns_local += chrono::duration_cast<chrono::nanoseconds>(
+                chrono::high_resolution_clock::now() - t0).count();
+            return;
+        }
+
+#if ACMSC_HOST_VERTEX_DEPTH_BOUND
+        int host_depth_limit = m;
+        if (m >= 12) {
+            vector<vector<float>> incident_sorted(m);
+            for (int v = 0; v < m; ++v) {
+                auto& row = incident_sorted[v];
+                row.reserve(m - 1);
+                for (int u = 0; u < m; ++u)
+                    if (u != v) row.push_back(sim[v][u]);
+                sort(row.rbegin(), row.rend());
+            }
+            for (int k = 3; k <= m; ++k) {
+                vector<double> caps;
+                caps.reserve(m);
+                for (const auto& row : incident_sorted) {
+                    double s = 0.0;
+                    for (int j = 0; j < k - 1; ++j) s += row[j];
+                    caps.push_back(s);
+                }
+                if (k < m)
+                    nth_element(caps.begin(), caps.begin() + k, caps.end(),
+                                greater<double>());
+                double cap_sum = 0.0;
+                for (int i = 0; i < k; ++i) cap_sum += caps[i];
+                if (cap_sum / (static_cast<double>(k) * (k - 1)) <
+                    static_cast<double>(tau_) - 1e-12) {
+                    host_depth_limit = k - 1;
+                    break;
+                }
+            }
+        }
+#endif
+
+        // Small infeasible hosts are common at intermediate selectivity.
+        // Enumerating their bounded subset lattice directly avoids the
+        // per-root allocations and recursive bookkeeping of the general
+        // reverse search.  The global containment filter below keeps only
+        // maximal candidates, so emitting every feasible subset here is
+        // exact and does not alter the result family.
+        if (m <= ACMSC_HOST_DIRECT_LIMIT) {
+            const uint64_t limit = 1ULL << m;
+            vector<uint64_t> feasible_masks;
+            feasible_masks.reserve(limit);
+            for (uint64_t mask = 0; mask < limit; ++mask) {
+                const int k = __builtin_popcountll(mask);
+                if (k < 2) continue;
+                double sum = 0.0;
+                for (int i = 0; i < m; ++i) if (mask & (1ULL << i))
+                    for (int j = i + 1; j < m; ++j)
+                        if (mask & (1ULL << j)) sum += sim[i][j];
+                if (sum + 1e-12 >= static_cast<double>(tau_) *
+                                     (static_cast<double>(k) * (k - 1) / 2.0)) {
+                    feasible_masks.push_back(mask);
+                }
+            }
+            sort(feasible_masks.begin(), feasible_masks.end(),
+                 [](uint64_t a, uint64_t b) {
+                     const int pa = __builtin_popcountll(a);
+                     const int pb = __builtin_popcountll(b);
+                     return pa != pb ? pa > pb : a < b;
+                 });
+            vector<uint64_t> maximal_masks;
+            for (uint64_t mask : feasible_masks) {
+                bool contained = false;
+                for (uint64_t sup : maximal_masks)
+                    if ((mask & sup) == mask) { contained = true; break; }
+                if (contained) continue;
+                maximal_masks.push_back(mask);
+                vector<int> local;
+                local.reserve(__builtin_popcountll(mask));
+                for (int i = 0; i < m; ++i)
+                    if (mask & (1ULL << i)) local.push_back(i);
+                emit_local(local);
+            }
+            phase2_ns_local += chrono::duration_cast<chrono::nanoseconds>(
+                chrono::high_resolution_clock::now() - t0).count();
+            return;
+        }
+
+        auto frontier_upper_bound = [&](const vector<int>& clique,
+                                        const vector<int>& candidates,
+                                        const vector<double>& acc,
+                                        double surplus) {
+            if (candidates.empty())
+                return -numeric_limits<double>::infinity();
+            vector<double> margins;
+            margins.reserve(candidates.size());
+            const double tau_k = static_cast<double>(tau_) * clique.size();
+            for (int v : candidates) margins.push_back(acc[v] - tau_k);
+            sort(margins.begin(), margins.end(), greater<double>());
+#if ACMSC_HOST_TOPEDGE_FRONTIER_LIMIT > 0
+            if (candidates.size() <= ACMSC_HOST_TOPEDGE_FRONTIER_LIMIT) {
+                vector<double> pair_surplus;
+                pair_surplus.reserve(candidates.size() *
+                                     (candidates.size() - 1) / 2);
+                for (size_t i = 0; i < candidates.size(); ++i)
+                    for (size_t j = i + 1; j < candidates.size(); ++j)
+                        pair_surplus.push_back(
+                            static_cast<double>(sim[candidates[i]][candidates[j]]) -
+                            static_cast<double>(tau_));
+                sort(pair_surplus.begin(), pair_surplus.end(), greater<double>());
+                double margin_prefix = 0.0;
+                double pair_prefix = 0.0;
+                double best = -numeric_limits<double>::infinity();
+                for (int r = 1; r <= static_cast<int>(margins.size()); ++r) {
+                    margin_prefix += margins[r - 1];
+                    const int need = r * (r - 1) / 2;
+                    if (need > 0) pair_prefix += pair_surplus[need - 1];
+                    best = max(best, surplus + margin_prefix + pair_prefix);
+                }
+                return best;
+            }
+#endif
+#if ACMSC_HOST_VERTEX_FRONTIER_LIMIT > 0
+            if (candidates.size() <= ACMSC_HOST_VERTEX_FRONTIER_LIMIT) {
+                vector<vector<double>> incident_caps(candidates.size());
+                for (size_t i = 0; i < candidates.size(); ++i) {
+                    auto& row = incident_caps[i];
+                    row.reserve(candidates.size() - 1);
+                    for (size_t j = 0; j < candidates.size(); ++j) {
+                        if (i == j) continue;
+                        row.push_back(static_cast<double>(
+                            sim[candidates[i]][candidates[j]]) -
+                            static_cast<double>(tau_));
+                    }
+                    sort(row.begin(), row.end(), greater<double>());
+                    for (size_t j = 1; j < row.size(); ++j)
+                        row[j] += row[j - 1];
+                }
+                double margin_prefix = 0.0;
+                double best = -numeric_limits<double>::infinity();
+                for (int r = 1; r <= static_cast<int>(margins.size()); ++r) {
+                    margin_prefix += margins[r - 1];
+                    vector<double> caps;
+                    caps.reserve(candidates.size());
+                    for (const auto& row : incident_caps) {
+                        const size_t idx = std::min<size_t>(
+                            static_cast<size_t>(r - 1), row.size() - 1);
+                        caps.push_back(row.empty() ? 0.0 : row[idx]);
+                    }
+                    if (r < static_cast<int>(caps.size()))
+                        nth_element(caps.begin(), caps.begin() + r, caps.end(),
+                                    greater<double>());
+                    double cap_sum = 0.0;
+                    for (int i = 0; i < r; ++i) cap_sum += caps[i];
+                    best = max(best, surplus + margin_prefix + 0.5 * cap_sum);
+                }
+                return best;
+            }
+#endif
+#if ACMSC_HOST_EXACT_FRONTIER_LIMIT > 0
+            // For small candidate sets, retain the individual internal-edge
+            // surpluses instead of replacing all of them by one global
+            // maximum.  The sum of the largest C(r,2) values is a valid
+            // upper bound for every r-vertex extension and is substantially
+            // tighter in the intermediate-selectivity regime.
+            if (candidates.size() <= ACMSC_HOST_EXACT_FRONTIER_LIMIT) {
+                vector<double> pair_surpluses;
+                pair_surpluses.reserve(candidates.size() * (candidates.size() - 1) / 2);
+                for (size_t i = 0; i < candidates.size(); ++i)
+                    for (size_t j = i + 1; j < candidates.size(); ++j)
+                        pair_surpluses.push_back(
+                            static_cast<double>(sim[candidates[i]][candidates[j]]) -
+                            static_cast<double>(tau_));
+                sort(pair_surpluses.begin(), pair_surpluses.end(), greater<double>());
+                double margin_prefix = 0.0;
+                double pair_prefix = 0.0;
+                double best = -numeric_limits<double>::infinity();
+                for (int r = 1; r <= static_cast<int>(margins.size()); ++r) {
+                    margin_prefix += margins[r - 1];
+                    const int need = r * (r - 1) / 2;
+                    if (need > 0) pair_prefix += pair_surpluses[need - 1];
+                    best = max(best, surplus + margin_prefix + pair_prefix);
+                }
+                return best;
+            }
+#endif
+            double pair_surplus = max(0.0, 1.0 - static_cast<double>(tau_));
+#if ACMSC_HOST_EDGE_ENVELOPE_LIMIT > 0
+            if (candidates.size() <= ACMSC_HOST_EDGE_ENVELOPE_LIMIT) {
+                double max_internal = -numeric_limits<double>::infinity();
+                for (size_t i = 0; i < candidates.size(); ++i)
+                    for (size_t j = i + 1; j < candidates.size(); ++j)
+                        max_internal = max(max_internal,
+                            static_cast<double>(sim[candidates[i]][candidates[j]]));
+                pair_surplus = max_internal - static_cast<double>(tau_);
+            } else {
+                double max_internal = -numeric_limits<double>::infinity();
+                for (int v : candidates)
+                    max_internal = max(max_internal,
+                        static_cast<double>(vertex_max_similarity_[v]));
+                pair_surplus = max_internal - static_cast<double>(tau_);
+            }
+#endif
+            double best = -numeric_limits<double>::infinity();
+            double prefix = 0.0;
+            for (int r = 1; r <= static_cast<int>(margins.size()); ++r) {
+                prefix += margins[r - 1];
+                const double pairs = static_cast<double>(r) * (r - 1) / 2.0;
+                best = max(best, surplus + prefix + pair_surplus * pairs);
+            }
+            return best;
+        };
+
+        uint64_t root_support_key = numeric_limits<uint64_t>::max();
+        auto support_key = [](int a, int b) {
+            const uint32_t x = static_cast<uint32_t>(min(a, b));
+            const uint32_t y = static_cast<uint32_t>(max(a, b));
+            return (static_cast<uint64_t>(x) << 32) | y;
+        };
+        function<void(vector<int>&, vector<long double>&, vector<double>&, double,
+                      vector<int>&)> dfs;
+        dfs = [&](vector<int>& clique, vector<long double>& incident,
+                  vector<double>& acc, double sim_sum,
+                  vector<int>& candidates) {
+            const int k = static_cast<int>(clique.size());
+#if ACMSC_HOST_VERTEX_DEPTH_BOUND
+            if (k >= host_depth_limit) {
+                if (sim_sum >= static_cast<double>(tau_) *
+                               (static_cast<double>(k) * (k - 1) / 2.0))
+                    emit_local(clique);
+                return;
+            }
+#endif
+            const double pairs = static_cast<double>(k) * (k - 1) / 2.0;
+            const double surplus = sim_sum - static_cast<double>(tau_) * pairs;
+            if (ACMSC_ALG3_HOST_FRONTIER_BOUND &&
+                frontier_upper_bound(clique, candidates, acc, surplus) < -1e-12) {
+                if (surplus >= 0.0) emit_local(clique);
+                return;
+            }
+
+            bool has_valid_extension = false;
+#if ACMSC_ALG3_MONOTONE_BREAK
+            vector<int> ordered = candidates;
+            sort(ordered.begin(), ordered.end(), [&](int a, int b) {
+                return acc[a] != acc[b] ? acc[a] < acc[b] : M[a] < M[b];
+            });
+            const long double old_pairs =
+                static_cast<long double>(k) * (k - 1) / 2.0L;
+            const long double mono_limit = k >= 2
+                ? (static_cast<long double>(sim_sum) / old_pairs) *
+                  (old_pairs + k) - static_cast<long double>(sim_sum)
+                : numeric_limits<long double>::infinity();
+            for (int v : ordered) {
+#else
+            for (int v : candidates) {
+#endif
+                const double delta = acc[v];
+                if (surplus + delta - static_cast<double>(tau_) * k < 0.0)
+                    continue;
+                has_valid_extension = true;
+#if ACMSC_SUPPORT_EDGE_OWNERSHIP
+                bool has_lower_support_edge = false;
+                for (int i = 0; i < k; ++i) {
+                    if (sim[clique[i]][v] >= tau_ &&
+                        support_key(M[clique[i]], M[v]) < root_support_key) {
+                        has_lower_support_edge = true;
+                        break;
+                    }
+                }
+                if (has_lower_support_edge) continue;
+#endif
+#if ACMSC_ALG3_MONOTONE_BREAK
+                if (k >= 2 && static_cast<long double>(delta) >
+                              mono_limit + 1e-12L)
+                    break;
+#endif
+
+                vector<long double> child_incident(k + 1, 0.0L);
+                int minimum_vertex = M[v];
+                long double minimum_incident = 0.0L;
+                for (int i = 0; i < k; ++i) {
+                    child_incident[i] = incident[i] +
+                        static_cast<long double>(sim[clique[i]][v]);
+                    if (i == 0 || child_incident[i] < minimum_incident ||
+                        (child_incident[i] == minimum_incident &&
+                         M[clique[i]] < minimum_vertex)) {
+                        minimum_incident = child_incident[i];
+                        minimum_vertex = M[clique[i]];
+                    }
+                }
+                child_incident[k] = static_cast<long double>(delta);
+                if (child_incident[k] < minimum_incident ||
+                    (child_incident[k] == minimum_incident && M[v] < minimum_vertex)) {
+                    minimum_incident = child_incident[k];
+                    minimum_vertex = M[v];
+                }
+#if ACMSC_ALG3_HOST_CANONICAL_OWNERSHIP
+                if (minimum_vertex != M[v]) continue;
+#endif
+
+                vector<int> child_candidates;
+                child_candidates.reserve(candidates.size() - 1);
+                vector<double> old_acc;
+                old_acc.reserve(candidates.size() - 1);
+                for (int w : candidates) {
+                    if (w == v) continue;
+                    child_candidates.push_back(w);
+                    old_acc.push_back(acc[w]);
+                    acc[w] += sim[w][v];
+                }
+                vector<long double> old_incident = incident;
+                for (int i = 0; i < k; ++i)
+                    incident[i] = child_incident[i];
+                clique.push_back(v);
+                incident.push_back(child_incident[k]);
+                dfs(clique, incident, acc, sim_sum + delta, child_candidates);
+                incident.pop_back();
+                clique.pop_back();
+                incident.swap(old_incident);
+                for (size_t i = 0; i < child_candidates.size(); ++i)
+                    acc[child_candidates[i]] = old_acc[i];
+            }
+
+            if (!has_valid_extension && surplus >= 0.0) {
+                emit_local(clique);
+            }
+        };
+
+        for (int u = 0; u < m; ++u) {
+            for (int v = u + 1; v < m; ++v) {
+                if (sim[u][v] < tau_) continue;
+                root_support_key = support_key(M[u], M[v]);
+                vector<int> clique{u, v};
+                vector<long double> incident{
+                    static_cast<long double>(sim[u][v]),
+                    static_cast<long double>(sim[u][v])};
+                vector<int> candidates;
+                candidates.reserve(m - 2);
+                vector<double> acc(m, 0.0);
+                for (int w = 0; w < m; ++w) {
+                    if (w == u || w == v) continue;
+                    candidates.push_back(w);
+                    acc[w] = static_cast<double>(sim[w][u]) +
+                             static_cast<double>(sim[w][v]);
+                }
+                dfs(clique, incident, acc, sim[u][v], candidates);
+            }
+        }
+        phase2_ns_local += chrono::duration_cast<chrono::nanoseconds>(
+            chrono::high_resolution_clock::now() - t0).count();
+    }
+#endif
+
     void process_structural_clique(
         const vector<int>& M,
         vector<vector<int>>& local_cands,
         long long& phase2_ns_local
     ) {
+#if ACMSC_ALG3_HOST_CANONICAL
+        process_host_canonical(M, local_cands, phase2_ns_local);
+        return;
+#endif
 #if ACMSC_ENABLE_STATS
         structural_cliques_.fetch_add(1, memory_order_relaxed);
 #endif
@@ -919,7 +1737,283 @@ private:
         inline void sub(int w, float s) {
             if (gen[w] == cur) val[w] -= s;
         }
+#if ACMSC_HOST_CLOSURE_CANONICAL
+        inline void set(int w, double s) {
+            val[w] = static_cast<float>(s);
+            gen[w] = cur;
+        }
+#endif
     };
+
+#if ACMSC_HOST_CLOSURE_CANONICAL
+    static vector<int> intersect_sorted_ids(const vector<int>& a,
+                                             const vector<int>& b) {
+        vector<int> out;
+        out.reserve(min(a.size(), b.size()));
+        size_t i = 0, j = 0;
+        while (i < a.size() && j < b.size()) {
+            if (a[i] == b[j]) { out.push_back(a[i]); ++i; ++j; }
+            else if (a[i] < b[j]) ++i;
+            else ++j;
+        }
+        return out;
+    }
+
+    // Enumerate the semantic search space once over all structural hosts.
+    // A state carries the hosts that contain it.  Its candidate domain is the
+    // union of those hosts, and a child carries the corresponding host
+    // intersection.  Thus the structural phase is an index for canonical
+    // search rather than a collection of independent semantic searches.
+    void run_host_closure(vector<vector<int>>& output) {
+        structural_hosts_ = move(candidates_);
+        candidates_.clear();
+        for (auto& host : structural_hosts_) {
+            sort(host.begin(), host.end());
+            host.erase(unique(host.begin(), host.end()), host.end());
+        }
+        hosts_by_vertex_.assign(g_.V, {});
+        for (int hid = 0; hid < static_cast<int>(structural_hosts_.size()); ++hid)
+            for (int v : structural_hosts_[hid]) hosts_by_vertex_[v].push_back(hid);
+
+        vector<unsigned char> host_feasible(structural_hosts_.size(), 0);
+        vector<vector<int>> feasible_hosts;
+        feasible_hosts.reserve(structural_hosts_.size());
+        for (int hid = 0; hid < static_cast<int>(structural_hosts_.size()); ++hid) {
+            const auto& host = structural_hosts_[hid];
+            double total = 0.0;
+            for (size_t i = 0; i < host.size(); ++i)
+                for (size_t j = i + 1; j < host.size(); ++j)
+                    total += static_cast<double>(lookup_sim(host[i], host[j]));
+            const double pairs = static_cast<double>(host.size()) *
+                                 static_cast<double>(host.size() - 1) / 2.0;
+            if (pairs > 0 && total >= static_cast<double>(tau_) * pairs) {
+                host_feasible[hid] = 1;
+                feasible_hosts.push_back(host);
+            }
+        }
+
+        // Only structurally maximal hosts that are themselves infeasible can
+        // contain a non-maximal intermediate state.  Feasible hosts are
+        // emitted once below and never need to participate in the reverse
+        // search.  Keeping a filtered incidence index avoids scanning the
+        // same large set of already-feasible hosts at every state.
+        vector<vector<int>> bad_hosts_by_vertex(g_.V);
+        for (int hid = 0; hid < static_cast<int>(structural_hosts_.size()); ++hid) {
+            if (host_feasible[hid]) continue;
+            for (int v : structural_hosts_[hid])
+                bad_hosts_by_vertex[v].push_back(hid);
+        }
+
+        struct ClosureAcc {
+            vector<double> value;
+            vector<uint32_t> generation;
+            uint32_t current = 1;
+            void init(int n) { value.assign(n, 0.0); generation.assign(n, 0); }
+            void next_generation() {
+                if (++current == 0) {
+                    fill(generation.begin(), generation.end(), 0);
+                    current = 1;
+                }
+            }
+            double get(int v) const {
+                return generation[v] == current ? value[v] : 0.0;
+            }
+            void add(int v, double s) {
+                if (generation[v] != current) {
+                    generation[v] = current; value[v] = 0.0;
+                }
+                value[v] += s;
+            }
+            void set(int v, double s) {
+                generation[v] = current; value[v] = s;
+            }
+        };
+        const int nthreads = omp_get_max_threads();
+        vector<vector<vector<int>>> per_thread(nthreads);
+        vector<ClosureAcc> stores(nthreads);
+        for (auto& s : stores) s.init(g_.V);
+        const auto t0 = chrono::high_resolution_clock::now();
+        atomic<bool> timed_out{false};
+        atomic<long long> states{0};
+
+        vector<pair<int, int>> roots;
+        for (int u = 0; u < g_.V; ++u) {
+            for (const auto& edge : nb_[u]) {
+                const int v = edge.first;
+                if (v > u && edge.second >= tau_)
+                    roots.push_back({u, v});
+            }
+        }
+
+#pragma omp parallel
+        {
+            const int tid = omp_get_thread_num();
+            ClosureAcc& acc = stores[tid];
+            vector<int> marks(g_.V, 0), in_clique(g_.V, 0);
+            int mark_token = 0;
+            uint32_t tick = 0;
+            function<void(vector<int>&, vector<long double>&, double,
+                          vector<int>&, vector<int>&)> dfs;
+            dfs = [&](vector<int>& clique, vector<long double>& incident,
+                      double sim_sum, vector<int>& active_hosts,
+                      vector<int>& candidates) {
+                if (timed_out.load()) return;
+                if (timeout_seconds_ > 0 && ((++tick & 4095U) == 0)) {
+                    const auto elapsed = chrono::duration_cast<chrono::seconds>(
+                        chrono::high_resolution_clock::now() - t0).count();
+                    if (elapsed >= timeout_seconds_) {
+                        timed_out.store(true); return;
+                    }
+                }
+                states.fetch_add(1, memory_order_relaxed);
+                const int k = static_cast<int>(clique.size());
+                const double surplus = sim_sum -
+                    static_cast<double>(tau_) * (static_cast<double>(k) * (k - 1) / 2.0);
+                const double tau_k = static_cast<double>(tau_) * k;
+
+#if ACMSC_HOST_EDGE_ENVELOPE_LIMIT > 0
+                if (surplus <= ACMSC_HOST_ENVELOPE_SURPLUS_LIMIT &&
+                    !candidates.empty()) {
+                    vector<double> margins;
+                    margins.reserve(candidates.size());
+                    for (int w : candidates)
+                        margins.push_back(acc.get(w) - tau_k);
+                    sort(margins.begin(), margins.end(), greater<double>());
+                    double max_internal = -numeric_limits<double>::infinity();
+                    if (candidates.size() <= ACMSC_HOST_EDGE_ENVELOPE_LIMIT) {
+                        for (size_t i = 0; i < candidates.size(); ++i)
+                            for (size_t j = i + 1; j < candidates.size(); ++j)
+                                max_internal = max(max_internal,
+                                    static_cast<double>(lookup_sim(candidates[i], candidates[j])));
+                    } else {
+                        for (int v : candidates)
+                            max_internal = max(max_internal,
+                                static_cast<double>(vertex_max_similarity_[v]));
+                    }
+                    const double pair_surplus = max_internal - static_cast<double>(tau_);
+                    double best = -numeric_limits<double>::infinity();
+                    double prefix = 0.0;
+                    for (int r = 1; r <= static_cast<int>(margins.size()); ++r) {
+                        prefix += margins[r - 1];
+                        const double pairs = static_cast<double>(r) * (r - 1) / 2.0;
+                        best = max(best, surplus + prefix +
+                            (r == 1 ? 0.0 : pair_surplus * pairs));
+                    }
+                    if (best < -1e-12) {
+                        if (k >= 2 && surplus >= 0.0) {
+                            vector<int> out = clique;
+                            sort(out.begin(), out.end());
+                            per_thread[tid].push_back(move(out));
+                        }
+                        return;
+                    }
+                }
+#endif
+                bool has_valid_extension = false;
+                for (int v : candidates) {
+                    if (timed_out.load()) return;
+                    const double delta = static_cast<double>(acc.get(v));
+                    if (surplus + delta - tau_k < 0.0) continue;
+                    has_valid_extension = true;
+
+                    vector<float> deltas(k);
+                    long double added_incident = 0.0L;
+                    for (int i = 0; i < k; ++i) {
+                        deltas[i] = lookup_sim(clique[i], v);
+                        added_incident += static_cast<long double>(deltas[i]);
+                    }
+                    int minimum_vertex = v;
+                    long double minimum_incident = added_incident;
+                    for (int i = 0; i < k; ++i) {
+                        const long double child_incident =
+                            incident[i] + static_cast<long double>(deltas[i]);
+                        if (child_incident < minimum_incident ||
+                            (child_incident == minimum_incident &&
+                             clique[i] < minimum_vertex)) {
+                            minimum_incident = child_incident;
+                            minimum_vertex = clique[i];
+                        }
+                    }
+                    if (minimum_vertex != v) continue;
+
+#if ACMSC_HOST_ROOT_CERT
+                    vector<int> child_hosts = active_hosts;
+#else
+                    vector<int> child_hosts = intersect_sorted_ids(
+                        active_hosts, bad_hosts_by_vertex[v]);
+                    if (child_hosts.empty()) continue;
+#endif
+                    vector<int> child_candidates;
+                    child_candidates.reserve(candidates.size());
+                    for (int w : candidates)
+                        if (w != v && adjacent(v, w)) child_candidates.push_back(w);
+                    vector<pair<int, double>> undo;
+                    undo.reserve(child_candidates.size());
+                    for (int w : child_candidates) {
+                        const double old = acc.get(w);
+                        undo.push_back({w, old});
+                        acc.add(w, lookup_sim(w, v));
+                    }
+                    for (int i = 0; i < k; ++i)
+                        incident[i] += static_cast<long double>(deltas[i]);
+                    incident.push_back(added_incident);
+                    clique.push_back(v); in_clique[v] = 1;
+                    dfs(clique, incident, sim_sum + delta, child_hosts,
+                        child_candidates);
+                    in_clique[v] = 0; clique.pop_back(); incident.pop_back();
+                    for (int i = 0; i < k; ++i)
+                        incident[i] -= static_cast<long double>(deltas[i]);
+                    for (const auto& e : undo) acc.set(e.first, e.second);
+                }
+                if (!timed_out.load() && !has_valid_extension &&
+                    k >= 2 && surplus >= 0.0) {
+                    vector<int> out = clique;
+                    sort(out.begin(), out.end());
+                    per_thread[tid].push_back(move(out));
+                }
+            };
+
+#pragma omp for schedule(dynamic, 1)
+            for (long long ri = 0; ri < static_cast<long long>(roots.size()); ++ri) {
+                if (timed_out.load()) continue;
+                const int u = roots[ri].first, v = roots[ri].second;
+                vector<int> active = intersect_sorted_ids(
+                    bad_hosts_by_vertex[u], bad_hosts_by_vertex[v]);
+                if (active.empty()) continue;
+#if ACMSC_HOST_ROOT_CERT
+                bool all_hosts_feasible = true;
+                for (int hid : active)
+                    if (!host_feasible[hid]) { all_hosts_feasible = false; break; }
+                if (all_hosts_feasible) continue;
+#endif
+                vector<int> cand;
+                cand.reserve(nb_[u].size());
+                for (const auto& edge : nb_[u])
+                    if (edge.first != v && adjacent(v, edge.first))
+                        cand.push_back(edge.first);
+                acc.next_generation();
+                for (int w : cand)
+                    acc.add(w, lookup_sim(w, u) + lookup_sim(w, v));
+                vector<int> clique{u, v};
+                in_clique[u] = in_clique[v] = 1;
+                vector<long double> incident{
+                    static_cast<long double>(lookup_sim(u, v)),
+                    static_cast<long double>(lookup_sim(u, v))};
+                dfs(clique, incident, static_cast<double>(lookup_sim(u, v)),
+                    active, cand);
+                in_clique[u] = in_clique[v] = 0;
+            }
+        }
+        size_t count = feasible_hosts.size();
+        for (const auto& local : per_thread) count += local.size();
+        candidates_.reserve(count);
+        for (auto& host : feasible_hosts) candidates_.push_back(move(host));
+        for (auto& local : per_thread)
+            for (auto& c : local) candidates_.push_back(move(c));
+        logger.print("  Host-closure canonical states: %lld; hosts=%zu; roots=%zu\n",
+                     states.load(), structural_hosts_.size(), roots.size());
+    }
+#endif
 
     void bk_search(
         vector<int>&         C,
@@ -933,7 +2027,11 @@ private:
         if (timed_out.load()) return;
 
         if (cands.empty() && excl.empty()) {
+#if ACMSC_HOST_CLOSURE_CANONICAL || ACMSC_ALG3_HOST_PARALLEL
+            local_cands.push_back(C);
+#else
             process_structural_clique(C, local_cands, phase2_ns_local);
+#endif
             return;
         }
 
@@ -1017,6 +2115,12 @@ private:
             sim_map_[u].reserve(nb_[u].size());
             for (auto& [v, s] : nb_[u]) sim_map_[u][v] = s;
         }
+#if ACMSC_HOST_CLOSURE_CANONICAL || ACMSC_ALG3_HOST_CANONICAL
+        vertex_max_similarity_.assign(n, 0.0f);
+        for (int u = 0; u < n; ++u)
+            for (const auto& edge : nb_[u])
+                vertex_max_similarity_[u] = max(vertex_max_similarity_[u], edge.second);
+#endif
 
 #if ACMSC_ENGINE_BITMAP
         bitmap_ = new BlockedSparseBitmap(n);
@@ -1128,8 +2232,16 @@ private:
             long long phase1_ns_local = 0;
 #endif
             long long phase2_ns_local = 0;
+#if ACMSC_ALG3_SUPPORT_ROOT_CERT
+            vector<int> support_mark(n, 0);
+            int support_token = 0;
+#endif
 
+#if ACMSC_ALG3_HOST_CANONICAL
+            #pragma omp for schedule(guided, 32)
+#else
             #pragma omp for schedule(dynamic, 1)
+#endif
             for (int i = 0; i < total; i++) {
                 if (timed_out.load()) continue;
 
@@ -1153,6 +2265,41 @@ private:
                     else if (order_pos[u] < i) excl.push_back(u);
                 }
                 for (auto& [u, s] : nb_[v]) acc.add(u, s);
+
+#if ACMSC_ALG3_SUPPORT_ROOT_CERT
+                // Necessary certificate: every feasible MSC contains a pair
+                // whose similarity is at least tau.  The degeneracy root v
+                // can only generate a host from {v} union cands; if that
+                // induced set has no supported edge, the host cannot contain
+                // any feasible semantic subset.
+                if (++support_token == numeric_limits<int>::max()) {
+                    fill(support_mark.begin(), support_mark.end(), 0);
+                    support_token = 1;
+                }
+                support_mark[v] = support_token;
+                for (int u : cands) support_mark[u] = support_token;
+                bool has_support_edge = false;
+                for (int x : cands) {
+                    for (const auto& edge : nb_[x]) {
+                        if (edge.second >= tau_ &&
+                            support_mark[edge.first] == support_token) {
+                            has_support_edge = true;
+                            break;
+                        }
+                    }
+                    if (has_support_edge) break;
+                }
+                if (!has_support_edge) {
+                    for (const auto& edge : nb_[v]) {
+                        if (edge.second >= tau_ &&
+                            support_mark[edge.first] == support_token) {
+                            has_support_edge = true;
+                            break;
+                        }
+                    }
+                }
+                if (!has_support_edge) continue;
+#endif
 
                 vector<int> C = {v};
 #if ACMSC_ENABLE_STATS
@@ -1221,6 +2368,37 @@ private:
         candidates_.reserve(total_cands);
         for (auto& tc : per_thread_cands)
             for (auto& c : tc) candidates_.push_back(move(c));
+
+#if ACMSC_ALG3_HOST_PARALLEL
+        vector<vector<int>> hosts = move(candidates_);
+        candidates_.clear();
+        vector<vector<vector<int>>> semantic_outputs(nthreads);
+#pragma omp parallel
+        {
+            const int tid = omp_get_thread_num();
+#if ACMSC_HOST_SEM_SCHEDULE_GUIDED
+#pragma omp for schedule(guided, 8)
+#else
+#pragma omp for schedule(dynamic, 1)
+#endif
+            for (long long hi = 0; hi < static_cast<long long>(hosts.size()); ++hi) {
+                long long phase2_ns_local = 0;
+                process_host_canonical(hosts[static_cast<size_t>(hi)],
+                                       semantic_outputs[tid], phase2_ns_local);
+            }
+        }
+        size_t semantic_count = 0;
+        for (const auto& local : semantic_outputs) semantic_count += local.size();
+        candidates_.reserve(semantic_count);
+        for (auto& local : semantic_outputs)
+            for (auto& c : local) candidates_.push_back(move(c));
+#endif
+
+#if ACMSC_HOST_CLOSURE_CANONICAL
+        // Replace structural hosts by the globally owned semantic states
+        // before the common containment filter runs.
+        run_host_closure(candidates_);
+#endif
 
         long long wall_all = chrono::duration_cast<chrono::milliseconds>(
             chrono::high_resolution_clock::now() - t_all).count();
@@ -1349,10 +2527,23 @@ public:
         clique_count_.store(0);
         size_hist_.clear();
         candidates_.clear();
+#if ACMSC_ALG3_HOST_CANONICAL
+        host_seen_.store(0, memory_order_relaxed);
+        host_supported_.store(0, memory_order_relaxed);
+        host_size2_.store(0, memory_order_relaxed);
+        host_size3_5_.store(0, memory_order_relaxed);
+        host_size6p_.store(0, memory_order_relaxed);
+#endif
         delete bitmap_; bitmap_ = nullptr;
         nb_.clear(); sim_map_.clear(); ordering_.clear();
 
+#if ACMSC_HOST_CLOSURE_CANONICAL
+        logger.print("\n=== ALG5 MSC-HostClosure canonical  tau=%.3f ===\n", tau);
+#elif ACMSC_ALG3_HOST_CANONICAL
+        logger.print("\n=== ALG5 MSC-HostFrontier  tau=%.3f ===\n", tau);
+#else
         logger.print("\n=== ALG3 StrSub  tau=%.3f ===\n", tau);
+#endif
         auto t0 = chrono::high_resolution_clock::now();
 
         build_graph();
@@ -1395,6 +2586,15 @@ public:
         logger.print("  Subset ratio in Phase1+2:     %6.2f%%\n", phase2_ratio_);
 #endif
         logger.print("  Phase3 dedup:                 %6lld ms\n", phase3_ms);
+#if ACMSC_ALG3_HOST_CANONICAL
+        logger.print("  Supported structural hosts:   %llu / %llu\n",
+                     static_cast<unsigned long long>(host_supported_.load()),
+                     static_cast<unsigned long long>(host_seen_.load()));
+        logger.print("  Host sizes: 2=%llu 3--5=%llu 6+=%llu\n",
+                     static_cast<unsigned long long>(host_size2_.load()),
+                     static_cast<unsigned long long>(host_size3_5_.load()),
+                     static_cast<unsigned long long>(host_size6p_.load()));
+#endif
         logger.print("----------------------------\n");
 
         // 团 size 分布
@@ -1450,7 +2650,13 @@ int main(int argc, char* argv[]) {
     if (!log_path.empty()) logger.open(log_path);
 
     logger.print("============================================\n");
+#if ACMSC_HOST_CLOSURE_CANONICAL
+    logger.print("  ALG5 MSC-HostClosure canonical\n");
+#elif ACMSC_ALG3_HOST_CANONICAL
+    logger.print("  ALG5 MSC-HostFrontier\n");
+#else
     logger.print("  ALG3 standard (StrSub)\n");
+#endif
     logger.print("  mine <tau> | sink <file> | log <file> | quit\n");
     logger.print("============================================\n");
     logger.print("Dataset: %s (ID=%d)\n", graph_file.c_str(), dataset_id);

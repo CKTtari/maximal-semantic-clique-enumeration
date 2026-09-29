@@ -13,7 +13,7 @@ The exporter reads the archived JSON summaries listed in
 `tex-data/data/provenance.json` and rewrites the canonical CSV files in
 `tex-data/data`. Pilot summaries contribute execution status only; numeric
 paper results come from the formal summaries. Temporary output from future
-standard runs belongs in `src/experiments/standard/tmp-output`.
+standard runs belongs in `experiments/output/`.
 
 The engineering-ablation export is run with:
 

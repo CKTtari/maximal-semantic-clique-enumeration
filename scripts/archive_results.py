@@ -15,7 +15,7 @@ from run_experiments import expand_plan, fingerprint_inputs, resolve_inputs
 
 
 ROOT = Path(__file__).resolve().parents[1]
-OUTPUT_ROOT = ROOT / "experiment-output"
+OUTPUT_ROOT = ROOT / "experiments" / "output"
 ARCHIVE_ROOT = ROOT / "experiments" / "archive"
 SOURCE_DIR = ROOT / "src"
 
@@ -263,7 +263,7 @@ def archive_run(
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("run_names", nargs="+", help="Directories under experiment-output")
+    parser.add_argument("run_names", nargs="+", help="Directories under experiments/output")
     parser.add_argument(
         "--allow-source-mismatch",
         metavar="REASON",

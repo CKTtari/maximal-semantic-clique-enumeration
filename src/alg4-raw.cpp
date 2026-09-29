@@ -31,6 +31,33 @@
 #ifndef ACMSC_ENGINE_INCREMENTAL_ACC
 #define ACMSC_ENGINE_INCREMENTAL_ACC 1
 #endif
+#ifndef ACMSC_EDGE_ENVELOPE
+#define ACMSC_EDGE_ENVELOPE 0
+#endif
+#ifndef ACMSC_EDGE_ENVELOPE_LIMIT
+#define ACMSC_EDGE_ENVELOPE_LIMIT 256
+#endif
+#ifndef ACMSC_EDGE_ENVELOPE_SURPLUS_LIMIT
+#define ACMSC_EDGE_ENVELOPE_SURPLUS_LIMIT 0.05
+#endif
+#ifndef ACMSC_EDGE_ENVELOPE_COARSE_LIMIT
+#define ACMSC_EDGE_ENVELOPE_COARSE_LIMIT 128
+#endif
+#ifndef ACMSC_SAFE_SEM_PIVOT
+#define ACMSC_SAFE_SEM_PIVOT 0
+#endif
+#ifndef ACMSC_SAFE_SEM_PIVOT_VISITED
+#define ACMSC_SAFE_SEM_PIVOT_VISITED 0
+#endif
+#ifndef ACMSC_SAFE_PIVOT_REBUILD
+#define ACMSC_SAFE_PIVOT_REBUILD 0
+#endif
+#ifndef ACMSC_SAFE_PIVOT_MIN_CANDIDATES
+#define ACMSC_SAFE_PIVOT_MIN_CANDIDATES 32
+#endif
+#ifndef ACMSC_MONO_BREAK
+#define ACMSC_MONO_BREAK 0
+#endif
 
 static_assert(ACMSC_ALG4_GENERATION >= 0 && ACMSC_ALG4_GENERATION <= 2,
               "ACMSC_ALG4_GENERATION must be 0, 1, or 2");
@@ -432,8 +459,13 @@ public:
         const auto all_start = chrono::steady_clock::now();
         if (timeout_seconds_ > 0)
             deadline_ = all_start + chrono::seconds(timeout_seconds_);
+#if ACMSC_EDGE_ENVELOPE
+        logger.print("\n=== MSC-EdgeEnvelope AvgSim MCE tau=%.3f ===\n",
+                     tau_);
+#else
         logger.print("\n=== %s AvgSim MCE tau=%.3f ===\n",
                      generation_label(), tau_);
+#endif
 
         build_similarity_graph();
         if (deadline_reached()) return report_timeout(all_start);
@@ -477,6 +509,7 @@ private:
     float tau_ = 0.0f;
     int timeout_seconds_ = acmsc_runtime::kDefaultTimeoutSeconds;
     vector<vector<pair<int, float>>> neighbors_;
+    vector<float> vertex_max_similarity_;
     unique_ptr<BlockedSparseBitmap> bitmap_;
     vector<vector<int>> collected_;
     FILE* sink_ = nullptr;
@@ -562,6 +595,25 @@ private:
 #endif
     }
 
+#if ACMSC_SAFE_PIVOT_REBUILD
+    void common_neighbors_after_add(const vector<int>& clique, int added,
+                                    vector<int>& output) const {
+        output.clear();
+        int anchor = added;
+        for (int u : clique)
+            if (neighbors_[u].size() < neighbors_[anchor].size()) anchor = u;
+        for (const auto& edge : neighbors_[anchor]) {
+            const int w = edge.first;
+            if (w == added || find(clique.begin(), clique.end(), w) != clique.end())
+                continue;
+            bool ok = true;
+            for (int u : clique)
+                if (!adjacent(u, w)) { ok = false; break; }
+            if (ok && adjacent(added, w)) output.push_back(w);
+        }
+    }
+#endif
+
     double candidate_delta(const vector<int>& clique, int candidate,
                            const AccStore& accumulator) const {
 #if ACMSC_ENGINE_INCREMENTAL_ACC
@@ -609,6 +661,10 @@ private:
 #pragma omp parallel for schedule(dynamic, 200)
         for (int u = 0; u < n; ++u)
             sort(neighbors_[u].begin(), neighbors_[u].end());
+        vertex_max_similarity_.assign(n, 0.0f);
+        for (int u = 0; u < n; ++u)
+            for (const auto& edge : neighbors_[u])
+                vertex_max_similarity_[u] = max(vertex_max_similarity_[u], edge.second);
 
         const long long elapsed = chrono::duration_cast<chrono::milliseconds>(
                                       chrono::steady_clock::now() - start)
@@ -650,6 +706,74 @@ private:
         output.push_back(move(sorted));
     }
 
+#if ACMSC_EDGE_ENVELOPE
+    double edge_envelope(const vector<int>& clique,
+                         const vector<int>& candidates,
+                         const AccStore& accumulator,
+                         double surplus) const {
+        if (candidates.empty()) return -numeric_limits<double>::infinity();
+#if ACMSC_EDGE_ENVELOPE_LIMIT > 0
+        if (candidates.size() > ACMSC_EDGE_ENVELOPE_LIMIT) {
+#if ACMSC_EDGE_ENVELOPE_COARSE_LIMIT > 0
+            if (candidates.size() > ACMSC_EDGE_ENVELOPE_COARSE_LIMIT)
+                return numeric_limits<double>::infinity();
+            double max_margin = -numeric_limits<double>::infinity();
+            double max_internal = -numeric_limits<double>::infinity();
+            for (int v : candidates) {
+                max_margin = max(max_margin,
+                    candidate_delta(clique, v, accumulator) -
+                    static_cast<double>(tau_) * clique.size());
+                max_internal = max(max_internal,
+                    static_cast<double>(vertex_max_similarity_[v]));
+            }
+            const double pair_surplus = max_internal - static_cast<double>(tau_);
+            double best = -numeric_limits<double>::infinity();
+            const int p = static_cast<int>(candidates.size());
+            for (int r = 1; r <= p; ++r) {
+                const double pairs = static_cast<double>(r) * (r - 1) / 2.0;
+                best = max(best, surplus + r * max_margin +
+                           (r == 1 ? 0.0 : pair_surplus * pairs));
+            }
+            return best;
+#else
+            return numeric_limits<double>::infinity();
+#endif
+        }
+#endif
+        const int k = static_cast<int>(clique.size());
+        vector<double> margins;
+        margins.reserve(candidates.size());
+        for (int v : candidates)
+            margins.push_back(candidate_delta(clique, v, accumulator) -
+                             static_cast<double>(tau_) * k);
+        sort(margins.begin(), margins.end(), greater<double>());
+
+        double pair_surplus = 1.0 - static_cast<double>(tau_);
+        if (candidates.size() <= ACMSC_EDGE_ENVELOPE_LIMIT) {
+            double max_internal = -numeric_limits<double>::infinity();
+            for (size_t i = 0; i < candidates.size(); ++i)
+                for (size_t j = i + 1; j < candidates.size(); ++j)
+                    max_internal = max(
+                        max_internal,
+                        static_cast<double>(lookup_similarity(
+                            candidates[i], candidates[j])));
+            pair_surplus = max_internal - static_cast<double>(tau_);
+        }
+
+        double best = -numeric_limits<double>::infinity();
+        double prefix = 0.0;
+        for (int r = 1; r <= static_cast<int>(margins.size()); ++r) {
+            prefix += margins[r - 1];
+            if (r == 1 || isfinite(pair_surplus)) {
+            const double pairs = static_cast<double>(r) * (r - 1) / 2.0;
+            const double pair_term = r == 1 ? 0.0 : pair_surplus * pairs;
+                best = max(best, surplus + prefix + pair_term);
+            }
+        }
+        return best;
+    }
+#endif
+
     void search(vector<int>& clique,
                 vector<long double>& member_incident,
                 double sim_sum,
@@ -673,7 +797,81 @@ private:
         const double tau_k = static_cast<double>(tau_) * k;
         bool has_valid_extension = false;
 
-        for (int v : candidates) {
+#if ACMSC_EDGE_ENVELOPE
+        const double envelope = surplus <= ACMSC_EDGE_ENVELOPE_SURPLUS_LIMIT
+            ? edge_envelope(clique, candidates, accumulator, surplus)
+            : numeric_limits<double>::infinity();
+        if (envelope < -1e-12) {
+            if (k >= 2 && surplus >= 0.0)
+                emit_candidate(clique, output);
+            return;
+        }
+#endif
+
+        vector<int> branch_candidates;
+#if ACMSC_SAFE_SEM_PIVOT
+        // A pivot is safe only when adding it preserves feasibility for every
+        // clique that its structural neighborhood could cover.  Pairwise
+        // similarity at least tau to the current clique and to all covered
+        // candidates is sufficient because each new edge contributes at
+        // least tau to the average constraint.
+        int pivot = -1;
+        int best_cover = -1;
+        for (int p : candidates) {
+            bool safe = true;
+            for (int c : clique)
+                if (lookup_similarity(p, c) < tau_) { safe = false; break; }
+            if (!safe) continue;
+            int cover = 0;
+            for (int w : candidates) {
+                if (w == p || !adjacent(p, w)) continue;
+                if (lookup_similarity(p, w) < tau_) { safe = false; break; }
+                ++cover;
+            }
+            if (safe && cover > best_cover) {
+                best_cover = cover;
+                pivot = p;
+            }
+        }
+        if (pivot >= 0) {
+            branch_candidates.reserve(candidates.size());
+            for (int v : candidates)
+                if (v == pivot || !adjacent(pivot, v))
+                    branch_candidates.push_back(v);
+        } else {
+            branch_candidates = candidates;
+        }
+#else
+        branch_candidates = candidates;
+#endif
+
+#if ACMSC_MONO_BREAK
+        // Canonical children are exactly the feasible insertions whose
+        // resulting average does not exceed the parent's average.  Sorting by
+        // marginal contribution turns this necessary condition into a safe
+        // suffix break; feasibility is checked before the break so a feasible
+        // noncanonical extension still prevents terminal emission.
+        const long double old_pairs =
+            static_cast<long double>(k) * (k - 1) / 2.0L;
+        const long double mono_limit = k >= 2
+            ? (static_cast<long double>(sim_sum) / old_pairs) *
+              (old_pairs + k) - static_cast<long double>(sim_sum)
+            : numeric_limits<long double>::infinity();
+        double max_delta = -numeric_limits<double>::infinity();
+        for (int v : branch_candidates)
+            max_delta = max(max_delta, candidate_delta(clique, v, accumulator));
+        const bool mono_sorted = k >= 2 &&
+            static_cast<long double>(max_delta) > mono_limit + 1e-12L;
+        if (mono_sorted)
+            sort(branch_candidates.begin(), branch_candidates.end(),
+                 [&](int a, int b) {
+                     const double da = candidate_delta(clique, a, accumulator);
+                     const double db = candidate_delta(clique, b, accumulator);
+                     return da != db ? da < db : a < b;
+                 });
+#endif
+
+        for (int v : branch_candidates) {
             if (timed_out_.load()) return;
             stats.record_candidate();
             if (timeout_seconds_ > 0 && ((++deadline_tick & 16383U) == 0) &&
@@ -686,6 +884,11 @@ private:
                 continue;
             }
             has_valid_extension = true;
+#if ACMSC_MONO_BREAK
+            if (mono_sorted && static_cast<long double>(delta) >
+                          mono_limit + 1e-12L)
+                break;
+#endif
 
             vector<float>& member_deltas = scratch.delta_buffer(depth);
             if (!is_canonical_child(clique, member_incident, v, member_deltas)) {
@@ -742,6 +945,7 @@ private:
                         AccStore& accumulator,
                         SearchScratch& scratch,
                         unordered_set<vector<int>, VectorHash>& visited,
+                        vector<int>& excluded,
                         vector<vector<int>>& output,
                         LocalStats& stats,
                         int depth,
@@ -759,7 +963,41 @@ private:
         const double tau_k = static_cast<double>(tau_) * k;
         bool has_valid_extension = false;
 
-        for (int v : candidates) {
+        vector<int> branch_candidates;
+#if ACMSC_SAFE_SEM_PIVOT_VISITED
+        int pivot = -1;
+        int best_cover = -1;
+        if (surplus >= 0.0 &&
+            static_cast<int>(candidates.size()) >= ACMSC_SAFE_PIVOT_MIN_CANDIDATES)
+        for (int p : candidates) {
+            bool safe = true;
+            for (int c : clique)
+                if (lookup_similarity(p, c) < tau_) { safe = false; break; }
+            if (!safe) continue;
+            int cover = 0;
+            for (int w : candidates) {
+                if (w == p || !adjacent(p, w)) continue;
+                if (lookup_similarity(p, w) < tau_) { safe = false; break; }
+                ++cover;
+            }
+            if (safe && cover > best_cover) {
+                best_cover = cover;
+                pivot = p;
+            }
+        }
+        if (pivot >= 0) {
+            branch_candidates.reserve(candidates.size());
+            for (int v : candidates)
+                if (v == pivot || !adjacent(pivot, v))
+                    branch_candidates.push_back(v);
+        } else {
+            branch_candidates = candidates;
+        }
+#else
+        branch_candidates = candidates;
+#endif
+
+        for (int v : branch_candidates) {
             if (timed_out_.load()) return;
             stats.record_candidate();
             if (timeout_seconds_ > 0 && ((++deadline_tick & 16383U) == 0) &&
@@ -782,9 +1020,25 @@ private:
             }
 
             vector<int>& child_candidates = scratch.candidate_buffer(depth);
+#if ACMSC_SAFE_PIVOT_REBUILD
+            common_neighbors_after_add(clique, v, child_candidates);
+#else
             child_candidates.reserve(candidates.size());
             for (int w : candidates)
                 if (w != v && adjacent(v, w)) child_candidates.push_back(w);
+#endif
+
+#if ACMSC_SAFE_SEM_PIVOT_VISITED
+            vector<int> child_excluded;
+            child_excluded.reserve(excluded.size() + candidates.size());
+            for (int w : excluded)
+                if (adjacent(v, w)) child_excluded.push_back(w);
+            for (int w : candidates)
+                if (w != v && adjacent(v, w)) child_excluded.push_back(w);
+            sort(child_excluded.begin(), child_excluded.end());
+            child_excluded.erase(unique(child_excluded.begin(), child_excluded.end()),
+                                 child_excluded.end());
+#endif
 
 #if ACMSC_ENGINE_INCREMENTAL_ACC
             vector<pair<int, double>>& undo = scratch.undo_buffer(depth);
@@ -798,7 +1052,13 @@ private:
 
             clique.push_back(v);
             search_visited(clique, sim_sum + delta, child_candidates,
-                           accumulator, scratch, visited, output, stats,
+                           accumulator, scratch, visited,
+#if ACMSC_SAFE_SEM_PIVOT_VISITED
+                           child_excluded,
+#else
+                           excluded,
+#endif
+                           output, stats,
                            depth + 1, deadline_tick);
             clique.pop_back();
 #if ACMSC_ENGINE_INCREMENTAL_ACC
@@ -943,8 +1203,10 @@ private:
             unordered_set<vector<int>, VectorHash> visited;
             visited.reserve(1024);
             visited.insert(clique);
+            vector<int> root_excluded;
             search_visited(clique, root.similarity, root_candidates,
-                           accumulator, scratch[tid], visited, output[tid],
+                           accumulator, scratch[tid], visited, root_excluded,
+                           output[tid],
                            stats[tid], 0, deadline_ticks[tid]);
         }
 
@@ -1246,7 +1508,11 @@ int main(int argc, char* argv[]) {
     if (!graph_override.empty()) graph_file = graph_override;
     if (!vector_override.empty()) vector_file = vector_override;
     logger.print("============================================\n");
+#if ACMSC_EDGE_ENVELOPE
+    logger.print("  Alg5 MSC-EdgeEnvelope\n");
+#else
     logger.print("  Alg4 Canonical-Parent DFS\n");
+#endif
     logger.print("  mine <tau> | sink <file> | log <file> | quit\n");
     logger.print("============================================\n");
     logger.print("Dataset: %s (ID=%d)\n", graph_file.c_str(), dataset_id);

@@ -34,7 +34,7 @@ else
     exit 1
 fi
 
-BUILD="$WORKSPACE/build"
+BUILD="$WORKSPACE/no-use/build"
 mkdir -p "$BUILD"
 
 echo "📂 工作目录: $WORKSPACE"
@@ -43,7 +43,7 @@ echo "📦 输出目录: $BUILD"
 
 # Standard compilation flags
 FLAGS="-O3 -march=native -fopenmp -std=c++17"
-INCLUDE_FLAGS="-I$SRC"  # 头文件搜索路径（临时 .cpp 文件在 build/ 下需要此路径）
+INCLUDE_FLAGS="-I$SRC"  # 头文件搜索路径（临时 .cpp 文件在 no-use/build/ 下需要此路径）
 
 MODE="${1:-all}"
 echo "=== Building mode: $MODE ==="

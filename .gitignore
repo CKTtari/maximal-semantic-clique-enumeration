@@ -1,12 +1,15 @@
 # Local datasets and raw source archives
-/dataset/
-/rawDatasets/
+/dataset/*
+!/dataset/data_processing/
 
 # Compiled binaries and build output
 *.exe
 /build/
 /no-use/
+/experiments/output/
+# Compatibility junction for archived run records that contain the old path.
 /experiment-output/
+/scripts/vendor/
 /tmp/
 
 # LaTeX intermediate files
@@ -38,3 +41,8 @@ __pycache__/
 /tex-data/fig/quality_threshold_sweep.*
 /tex-data/fig/*.svg
 /main - *.pdf
+
+# Local review plans and compressed manuscript backups
+/review_revision_plan_*.md
+/experiments/plans/emergency-*.json
+/*.zip

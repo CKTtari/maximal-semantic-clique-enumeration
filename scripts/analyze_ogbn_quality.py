@@ -18,10 +18,10 @@ from zipfile import ZipFile
 
 
 ROOT = Path(__file__).resolve().parents[1]
-BASE_RUN = ROOT / "experiment-output" / "batch18-ogbn-quality-capture"
-ACMSC_SWEEP_RUN = ROOT / "experiment-output" / "batch20-ogbn-quality-sweep-acmsc"
-PAIRSIM_Q80_RUN = ROOT / "experiment-output" / "batch19-ogbn-pairsim-quality-capture"
-PAIRSIM_SWEEP_RUN = ROOT / "experiment-output" / "batch21-ogbn-pairsim-quality-sweep"
+BASE_RUN = ROOT / "experiments" / "output" / "batch18-ogbn-quality-capture"
+ACMSC_SWEEP_RUN = ROOT / "experiments" / "output" / "batch20-ogbn-quality-sweep-acmsc"
+PAIRSIM_Q80_RUN = ROOT / "experiments" / "output" / "batch19-ogbn-pairsim-quality-capture"
+PAIRSIM_SWEEP_RUN = ROOT / "experiments" / "output" / "batch21-ogbn-pairsim-quality-sweep"
 ARCHIVE = ROOT / "dataset" / "downloads" / "ogbn-arxiv" / "arxiv.zip"
 VECTOR_FILE = ROOT / "dataset" / "vectors" / "ogbn-arxiv_vectors.bin"
 DATA_DIR = ROOT / "tex-data" / "data"

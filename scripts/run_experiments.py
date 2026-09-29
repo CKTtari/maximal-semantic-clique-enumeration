@@ -20,7 +20,7 @@ from typing import Any
 ROOT = Path(__file__).resolve().parents[1]
 SOURCE_DIR = ROOT / "src"
 BUILD_DIR = ROOT / "no-use" / "compiled" / "experiment-runner"
-OUTPUT_ROOT = ROOT / "experiment-output"
+OUTPUT_ROOT = ROOT / "experiments" / "output"
 DATASET_CATALOG = ROOT / "experiments" / "datasets.json"
 MAX_BATCH_SIZE = 8
 

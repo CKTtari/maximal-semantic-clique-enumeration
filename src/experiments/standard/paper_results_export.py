@@ -64,36 +64,36 @@ ALGORITHM_NAMES = {1: "StructBK", 2: "SemBK", 3: "StrSub", 4: "MonoSemMCE"}
 
 EXTERNAL_RUNTIME_RUNS = {
     7: {
-        "fastqc": "experiment-output/external-baselines/challenge-grid/fb15k-237/fastqc-g095-u10/run.json",
-        "faplex": "experiment-output/external-baselines/challenge-grid-calibration/fb15k-237/faplex-k2-u20/run.json",
+        "fastqc": "experiments/output/external-baselines/challenge-grid/fb15k-237/fastqc-g095-u10/run.json",
+        "faplex": "experiments/output/external-baselines/challenge-grid-calibration/fb15k-237/faplex-k2-u20/run.json",
     },
     17: {
-        "fastqc": "experiment-output/external-baselines/github-social/fastqc-g095-u10-mapped/run.json",
-        "faplex": "experiment-output/external-baselines/challenge-grid-final/github-social/faplex-k2-u20/run.json",
+        "fastqc": "experiments/output/external-baselines/github-social/fastqc-g095-u10-mapped/run.json",
+        "faplex": "experiments/output/external-baselines/challenge-grid-final/github-social/faplex-k2-u20/run.json",
     },
     11: {
-        "fastqc": "experiment-output/external-baselines/challenge-grid/ogbn-arxiv/fastqc-g095-u10/run.json",
-        "faplex": "experiment-output/external-baselines/challenge-grid-final/ogbn-arxiv/faplex-k2-u20/run.json",
+        "fastqc": "experiments/output/external-baselines/challenge-grid/ogbn-arxiv/fastqc-g095-u10/run.json",
+        "faplex": "experiments/output/external-baselines/challenge-grid-final/ogbn-arxiv/faplex-k2-u20/run.json",
     },
     16: {
-        "fastqc": "experiment-output/external-baselines/challenge-grid/email-enron/fastqc-g095-u10/run.json",
-        "faplex": "experiment-output/external-baselines/challenge-grid-final/email-enron/faplex-k2-u20/run.json",
+        "fastqc": "experiments/output/external-baselines/challenge-grid/email-enron/fastqc-g095-u10/run.json",
+        "faplex": "experiments/output/external-baselines/challenge-grid-final/email-enron/faplex-k2-u20/run.json",
     },
     2: {
-        "fastqc": "experiment-output/external-baselines/challenge-grid/sc-nasasrb/fastqc-g095-u10/run.json",
-        "faplex": "experiment-output/external-baselines/challenge-grid-final/sc-nasasrb/faplex-k2-u20/run.json",
+        "fastqc": "experiments/output/external-baselines/challenge-grid/sc-nasasrb/fastqc-g095-u10/run.json",
+        "faplex": "experiments/output/external-baselines/challenge-grid-final/sc-nasasrb/faplex-k2-u20/run.json",
     },
     3: {
-        "fastqc": "experiment-output/external-baselines/challenge-grid/sc-pkustk11/fastqc-g095-u10/run.json",
-        "faplex": "experiment-output/external-baselines/challenge-grid-calibration/sc-pkustk11/faplex-k2-u20/run.json",
+        "fastqc": "experiments/output/external-baselines/challenge-grid/sc-pkustk11/fastqc-g095-u10/run.json",
+        "faplex": "experiments/output/external-baselines/challenge-grid-calibration/sc-pkustk11/faplex-k2-u20/run.json",
     },
     14: {
-        "fastqc": "experiment-output/external-baselines/challenge-grid/sc-pwtk/fastqc-g095-u10/run.json",
-        "faplex": "experiment-output/external-baselines/challenge-grid-final/sc-pwtk/faplex-k2-u20/run.json",
+        "fastqc": "experiments/output/external-baselines/challenge-grid/sc-pwtk/fastqc-g095-u10/run.json",
+        "faplex": "experiments/output/external-baselines/challenge-grid-final/sc-pwtk/faplex-k2-u20/run.json",
     },
     1: {
-        "fastqc": "experiment-output/external-baselines/challenge-grid/sc-ldoor/fastqc-g095-u10/run.json",
-        "faplex": "experiment-output/external-baselines/challenge-grid-final/sc-ldoor/faplex-k2-u20/run.json",
+        "fastqc": "experiments/output/external-baselines/challenge-grid/sc-ldoor/fastqc-g095-u10/run.json",
+        "faplex": "experiments/output/external-baselines/challenge-grid-final/sc-ldoor/faplex-k2-u20/run.json",
     },
 }
 

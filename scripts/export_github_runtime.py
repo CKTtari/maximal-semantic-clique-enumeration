@@ -13,7 +13,7 @@ from typing import Any
 
 
 ROOT = Path(__file__).resolve().parents[1]
-RUN_DIR = ROOT / "experiment-output" / "github-social-formal"
+RUN_DIR = ROOT / "experiments" / "output" / "github-social-formal"
 MAIN_CSV = ROOT / "tex-data" / "data" / "main_runtime.csv"
 TRIAL_CSV = ROOT / "tex-data" / "data" / "github_social_runtime_trials.csv"
 PROVENANCE = ROOT / "experiments" / "provenance" / "github-social-runtime.json"

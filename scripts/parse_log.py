@@ -3,8 +3,8 @@
 解析算法日志，提取关键指标。
 
 用法:
-  python scripts/parse_log.py logs/exp1_alg2_ds2_r0.log
-  python scripts/parse_log.py --batch logs/exp1_*.log --output results/parsed.csv
+  python scripts/parse_log.py experiments/output/legacy-logs/exp1_alg2_ds2_r0.log
+  python scripts/parse_log.py --batch experiments/output/legacy-logs/exp1_*.log --output experiments/output/parsed.csv
 """
 
 import argparse
@@ -88,7 +88,7 @@ def main():
     parser = argparse.ArgumentParser(description='Parse algorithm logs')
     parser.add_argument('log_file', nargs='?', help='Single log file to parse')
     parser.add_argument('--batch', type=str, help='Glob pattern for batch parsing')
-    parser.add_argument('--output', type=str, default='results/parsed.csv', help='Output CSV path')
+    parser.add_argument('--output', type=str, default='experiments/output/parsed.csv', help='Output CSV path')
     args = parser.parse_args()
 
     os.chdir('E:/projects/semanticCliqueMining-writing')

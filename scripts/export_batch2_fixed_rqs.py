@@ -15,9 +15,9 @@ TAUS = json.loads((ROOT / "scripts" / "tau_values.json").read_text(encoding="utf
 THRESHOLD_CSV = ROOT / "tex-data" / "data" / "threshold_sensitivity.csv"
 OUTPUT_CSV = ROOT / "tex-data" / "data" / "result_distribution.csv"
 MAIN_CSV = ROOT / "tex-data" / "data" / "main_runtime.csv"
-ADMISSION = ROOT / "experiment-output" / "batch-rq2-github-nasasrb-admission-once"
-LONG = ROOT / "experiment-output" / "batch-rq2-longpoints-once"
-GITHUB_FORMAL = ROOT / "experiment-output" / "github-social-formal"
+ADMISSION = ROOT / "experiments" / "output" / "batch-rq2-github-nasasrb-admission-once"
+LONG = ROOT / "experiments" / "output" / "batch-rq2-longpoints-once"
+GITHUB_FORMAL = ROOT / "experiments" / "output" / "github-social-formal"
 PROVENANCE = ROOT / "experiments" / "quality" / "batch2-fixed-rq-data.json"
 QUANTILES = (5, 20, 50, 70, 80, 90, 95, 97, 99)
 

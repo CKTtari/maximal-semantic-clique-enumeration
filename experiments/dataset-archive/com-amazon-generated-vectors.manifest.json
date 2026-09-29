@@ -31,7 +31,7 @@
     "created_utc": "2026-07-23T18:14:08.904949+00:00",
     "public_graph_import": {
       "source_url": "https://snap.stanford.edu/data/com-Amazon.html",
-      "archive_path": "rawDatasets/com-amazon.ungraph.txt.gz",
+      "archive_path": "dataset/rawDatasets/com-amazon.ungraph.txt.gz",
       "archive_bytes": 4501435,
       "archive_sha256": "bb4b9fcf549c9174049e885e9a0a4057c9724846e7297c4a1ea299b8e92eec34",
       "conversion": "undirected deduplication, self-loop removal, ascending source identifiers remapped to contiguous zero-based identifiers",

@@ -1,5 +1,0 @@
-variant,subset_tests,covered_subsets,feasible_local,exact_duplicates,output
-Full,12950731,3138,38639,25334,12742
-No Top-Edge,16496599,3138,38639,25334,12742
-No Vertex-Bound,80278402,3138,38639,25334,12742
-No Local-Max,12953869,0,40434,26695,12742

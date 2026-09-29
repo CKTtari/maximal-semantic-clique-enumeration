@@ -108,17 +108,16 @@ Large language model applications increasingly use GraphRAG to answer global
 questions over corpora whose evidence spans many documents. A typical pipeline
 constructs an entity--relation graph, organizes it through hierarchical
 community detection, and summarizes the resulting groups; group quality thus
-directly affects evidence coverage and coherence. Yet existing primitives do
-not yield groups that are both relation-complete and collectively coherent:
-community partitions allow missing links and suppress overlap, maximal cliques
-ignore vectors, and pairwise semantic thresholds fragment groups because of
-atypical pairs. We formulate \emph{maximal semantic clique} (MSC) enumeration,
+affects evidence coverage and coherence. Existing primitives capture the two
+requirements separately: community partitions allow missing links and suppress
+overlap, maximal cliques ignore vectors, and pairwise semantic thresholds can
+fragment groups because of atypical pairs. We formulate \emph{maximal semantic clique} (MSC) enumeration,
 which requires complete connectivity, constrains average pairwise vector
 similarity, and reports every inclusion-wise maximal qualifying clique. This
 aggregate constraint is non-monotone: an infeasible clique may have a feasible
 strict superset. Consequently, filtering only structural maximal cliques is
-incomplete, while standard Bron--Kerbosch pivoting and infeasibility pruning are
-unsound. We develop two complementary exact algorithms. \subEnum\ combines
+incomplete, while standard Bron--Kerbosch pivoting and infeasibility pruning
+cannot be applied directly while preserving completeness. We develop two complementary exact algorithms. \subEnum\ combines
 structural maximal-clique enumeration with bounded semantic subset search. We
 prove that deterministically deleting a minimum-contribution vertex from a
 feasible clique of size at least three preserves feasibility. The theorem
@@ -128,7 +127,7 @@ eight vector-attributed graphs and 24 workloads, at least one proposed method
 completes every workload, whereas the direct semantic Bron--Kerbosch baseline
 times out on 12. At $q_{99}$, \monoSemMCE\ is
 $1.69\times$--$6.24\times$ faster than \subEnum. On three naturally attributed
-graphs, pairwise-threshold MCE attains only 0.156--0.556 Extended B$^3$ member
+graphs, pairwise-threshold MCE attains 0.156--0.556 Extended B$^3$ member
 recall, quantifying the group fragmentation avoided by the average constraint.
 \end{abstract}
 \maketitle
@@ -158,8 +157,8 @@ non-overlapping partition can hide entities that participate in multiple
 contexts. Modern AI applications consequently need compact, interpretable
 groups supported by both explicit relations and semantic signals.
 
-Existing community and dense-pattern primitives do not provide such groups
-exactly. Hierarchical community detection is well suited to scalable,
+Existing community and dense-pattern primitives capture subsets of these
+requirements. Hierarchical community detection is well suited to scalable,
 coarse-grained organization, but its communities may contain missing edges and
 its partition-oriented output can assign an entity to only one group at a given
 resolution. Query-oriented attributed-community search returns a community
@@ -330,7 +329,7 @@ test is still required for MSC output.
 
 \begin{figure}[t]
   \centering
-  \includegraphics[width=0.85\linewidth]{fig/msc-draw-example1-legacy.pdf}
+  \includegraphics[width=0.85\linewidth]{tex-data/fig/msc-draw-example1-legacy.pdf}
   \vspace{-3mm}
   \caption{Running example with vector attributes and edge similarities.}
   \Description{Two overlapping four-vertex cliques with six vector-labeled vertices and pairwise similarity labels.}
@@ -1095,8 +1094,8 @@ We compare against the following representative algorithms:
 
   \item FaPlex enumerates maximal $2$-plexes, in which each vertex may be
   nonadjacent to at most one other vertex~\cite{zhou2020faplex}. It provides a
-  second relaxed structural family for evaluating recovery, fidelity, density,
-  and semantic coherence of the returned patterns.
+  second relaxed structural family for the overlap-aware group-preservation
+  comparison in RQ7.
   
   \item \semBK\ is the direct exact baseline developed in
   Section~\ref{sec:framework}. It uses the same MSC definition, threshold,
@@ -1128,7 +1127,7 @@ scale, and mechanism experiments; the semantic-output analyses in RQ7 use only
 the three graphs with official natural attributes.
 Unless stated otherwise, subsequent multi-dataset analyses use the fixed panel
 of GitHub-Social, ogbn-arxiv, sc-nasasrb, and sc-ldoor. RQ3 instead uses nested
-subgraphs of ogbn-arxiv for controlled size scaling, and RQ7 uses the three
+subgraphs of ogbn-arxiv for controlled size scaling, and RQ7 uses all three
 graphs with observed attributes.
 
 \begin{table}[t]
@@ -1191,12 +1190,11 @@ For the threshold-independent runtime references, FastQC uses
 $\gamma=0.95$ with minimum size 10, while FaPlex uses $k=2$ with minimum
 size 20; each parameterization is fixed across all eight graphs.
 
-\begin{figure}[!t]
-\refstepcounter{table}
+\begin{table}[!t]
 \footnotesize
 \centering
+\caption{[RQ1] Median end-to-end runtime (s) for structural, external, and exact MSC methods. TLE means all three runs exceed the 1,200-second limit.}
 \label{tab:main-runtime}
-\caption*{\textbf{Table~\thetable:} [RQ1] Median end-to-end runtime (s) for structural, external, and exact MSC methods. TLE means all three runs exceed the 1,200-second limit.}
 \vspace{-3mm}
 \setlength{\tabcolsep}{1.55pt}
 \renewcommand{\arraystretch}{1.02}
@@ -1239,7 +1237,7 @@ sc-ldoor & \multirow{3}{*}{1.679} & \multirow{3}{*}{267.83} & \multirow{3}{*}{TL
  & & & & 99 & TLE & 4.845 & \cellcolor{bestgreen}\textbf{1.658} \\
 \bottomrule
 \end{tabular*}
-\end{figure}
+\end{table}
 
 \begin{figure}[!t]
 \centering
@@ -1272,17 +1270,14 @@ FastQC and FaPlex enumerate different relaxed pattern families, so their fixed
 parameter columns provide runtime context rather than same-output speedups.
 
 \subsection{RQ2: Threshold Sensitivity}
-Figure~\ref{fig:threshold-runtime} applies a nine-point quantile grid to the
-fixed four graphs. \subEnum\ leads at low and intermediate thresholds, whereas
-\monoSemMCE\ takes over at $q_{90}$ on GitHub-Social and $q_{80}$ on Flickr.
-The generated graphs exhibit a larger intermediate output region: at $q_{70}$,
-sc-nasasrb and sc-ldoor produce 4.38 and 66.6 million MSCs. As $q$ rises,
-infeasible insertions contract the canonical forest, reducing \monoSemMCE\ to
-0.079 and 1.658 seconds at $q_{99}$. \semBK\ is shown on the two
-natural-attribute graphs with complete curves; the specialized method remains
-faster in its favorable regime. These trajectories reflect the search designs:
-\subEnum\ amortizes decisions within structural hosts, whereas \monoSemMCE\
-visits feasible states with canonical ownership.
+Figure~\ref{fig:threshold-runtime} applies a nine-point quantile grid to
+the fixed four-graph panel. \subEnum\ leads at low and intermediate thresholds,
+whereas \monoSemMCE\ takes over at $q_{90}$ on GitHub-Social and $q_{95}$ on
+ogbn-arxiv; both natural-attribute panels include \semBK\ as the same-definition
+reference. At $q_{70}$, sc-nasasrb and sc-ldoor produce 4.38 and 66.6 million
+MSCs, while increasing selectivity contracts the canonical forest and reduces
+\monoSemMCE\ to 0.079 and 1.658 seconds at $q_{99}$. The crossover reflects
+\subEnum's host-level amortization and \monoSemMCE's canonical feasible-state traversal.
 
 \begin{figure}[t]
 \centering
@@ -1295,8 +1290,8 @@ visits feasible states with canonical ownership.
 \end{subfigure}\hfill
 \begin{subfigure}[t]{0.495\linewidth}
 \centering
-\includegraphics[width=\linewidth]{tex-data/fig/threshold_runtime_flickr.pdf}
-\caption{Flickr}
+\includegraphics[width=\linewidth]{tex-data/fig/threshold_runtime_arxiv.pdf}
+\caption{ogbn-arxiv}
 \end{subfigure}
 \begin{subfigure}[t]{0.495\linewidth}
 \centering
@@ -1310,7 +1305,7 @@ visits feasible states with canonical ownership.
 \end{subfigure}
 \vspace{-3mm}
 \caption{[RQ2] Increasing semantic selectivity reverses the runtime ordering of the exact search organizations.}
-\Description{Runtime over fixed threshold quantiles on GitHub-Social, Flickr, sc-nasasrb, and sc-ldoor.}
+\Description{Runtime over fixed threshold quantiles on GitHub-Social, ogbn-arxiv, sc-nasasrb, and sc-ldoor.}
 \label{fig:threshold-runtime}
 \end{figure}
 
@@ -1391,8 +1386,8 @@ $1.27\times$--$6.20\times$ on three graphs; on sc-ldoor, the full method takes
 canonical ownership reduces candidate tests by $1.50\times$ and avoids 18,942
 layered duplicate states. Against Visited DFS and Layered traversal at $q_{90}$,
 it is $4.38\times$ and $3.64\times$ faster and uses $1.73\times$ and
-$1.53\times$ less peak memory. The memory difference is largest when
-duplicate-state storage grows beyond the shared graph and vector representation.
+$1.53\times$ less peak memory. These paired results attribute the reduction to
+avoiding duplicate-state storage beyond the shared graph and vector representation.
 
 Sparse rows and direct marginal sums improve \semBK\ by $1.12\times$ and
 $1.39\times$; local containment improves \subEnum\ by $1.19\times$.
@@ -1467,7 +1462,7 @@ Because this experiment evaluates semantic group preservation, it uses the
 three graphs with observed vector attributes: GitHub-Social, ogbn-arxiv, and
 Flickr. The reference cover contains all size-at-least-ten $q_{80}$ MSCs.
 PairSim uses the same threshold, FastQC uses $\gamma=0.95$ and minimum size 10,
-and FaPlex uses $k=2$ and minimum size 20. We evaluate every baseline with
+and FaPlex uses $k=2$; all result families are filtered to size at least 10. We evaluate every baseline with
 Extended B$^3$, an overlap-aware entity-level measure~\cite{amigo2009bcubed}.
 For each vertex, it measures how many reference co-members remain grouped with
 that vertex (recall) and how many reported co-members are supported by the
@@ -1481,9 +1476,9 @@ but recall is only 0.156 and 0.169 because one weak pair fragments a
 collectively feasible group. StructBK and FastQC recover more MSC
 co-memberships, reaching recall 0.988 on ogbn-arxiv, while their precision on
 that graph is 0.626 and 0.598 because structural or relaxed maximality admits
-additional group relations. FaPlex is highly precise but, under the fixed
-minimum-size-20 protocol, recalls only 0.041--0.379. Thus none of the four
-alternative result families preserves both aspects of the MSC cover.
+additional group relations. FaPlex is highly precise but recalls only
+0.041--0.379. Thus none of the four
+evaluated alternative matches the MSC cover on both axes.
 
 \begin{figure}[t]
 \centering
@@ -1507,8 +1502,8 @@ alternative result families preserves both aspects of the MSC cover.
 
 
 \subsection{RQ8: Case Study}
-We examine the largest label-consistent $q_{80}$ MSC containing a
-below-threshold pair on ogbn-arxiv. The OGB mapping resolves its 18 vertices to
+We examine the largest $q_{80}$ MSC whose vertices share one OGB subject label
+and that contains a below-threshold pair on ogbn-arxiv. The OGB mapping resolves its 18 vertices to
 2016--2019 \texttt{cs.IT} publications forming a structural clique
 ~\cite{wang2020ogb}. Their titles connect PIR capacity, coded and cache-aided
 storage, side information, colluding and wiretapped databases, asymmetric
@@ -1544,8 +1539,11 @@ PSI extension & P17: \emph{Private Set Intersection: A Multi-Message Symmetric P
 
 At $\tau=0.8888$, the group has $\avgsim=0.9185$, although 20 of 153 pairs
 fall below $\tau$ (minimum 0.8214). Among 820 intersecting PairSim outputs, the
-best retains only 12 papers. MSC instead yields one reviewable PIR lineage for
-topic overview and expert discovery.
+best retains only 12 papers. MSC instead returns the complete citation-connected
+lineage as one reviewable unit. It links foundational PIR capacity results to
+later work on caching, side information, security, asymmetric traffic, and set
+intersection, allowing literature exploration to expose the topic's evolution
+and identify experts without reconciling hundreds of overlapping fragments.
 
 
 \section{Related Work}
@@ -1573,9 +1571,9 @@ short-text cliques use different semantic contracts~\cite{fang2013network,
 hua2015shorttext}; fairness-aware methods constrain categorical
 balance~\cite{pan2022fairclique,zhang2025fairclique}. Similar and similar-weight
 bicliques impose hereditary pairwise or edge-weight conditions in bipartite
-graphs~\cite{yao2022similarbiclique,yang2025similarweight}. In contrast, MSC
-retains a complete general graph, enumerates every inclusion-wise maximal
-solution, and applies a non-hereditary average over real-valued vectors.
+graphs~\cite{yao2022similarbiclique,yang2025similarweight}. MSC instead requires
+complete connectivity in a general graph, enumerates inclusion-wise maximal
+solutions, and applies a non-hereditary average over real-valued vectors.
 
 \stitle{Attributed Community Search.}
 Classical community models motivate cohesive grouping through minimum-degree

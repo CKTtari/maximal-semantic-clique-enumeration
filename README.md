@@ -14,6 +14,21 @@ algorithm entry points are:
 `src/algN-stats.cpp` is a thin instrumentation build of the corresponding raw
 source.  Raw binaries are the only binaries used for runtime comparisons.
 
+## Repository layout
+
+`src/` contains algorithm and graph-runtime C++ sources; `scripts/` contains
+experiment runners, data conversion, analysis, and export utilities.  The
+`dataset/` tree is the single dataset workspace: processed graph/vector files
+remain in its existing subdirectories, raw source archives are under
+`dataset/rawDatasets/`, and conversion/generation programs are under
+`dataset/data_processing/`.  Versioned plans, provenance, summaries, manifests,
+and ignored raw run output are grouped under `experiments/`; the run output is
+specifically `experiments/output/`.  The root `experiment-output` name is only
+a compatibility junction for historical run records.  `tex-data/` is the
+paper-facing source of truth for figures and numeric data.  Superseded files
+and temporary products are retained, without deletion, under the dated
+`no-use/archive-*` folders.
+
 ## Build and run
 
 The compiler must support C++17, OpenMP, and AVX2.  A direct build is:
@@ -46,7 +61,7 @@ keeps the algorithm-internal deadline disabled.
 Experiment plans are versioned under `experiments/plans/`.  The runner builds
 source-fingerprinted executables under `no-use/compiled/`, executes at most
 four tasks by default, and writes independent logs and JSON records under the
-ignored `experiment-output/` directory.
+ignored `experiments/output/` directory.
 
 ```powershell
 python scripts/run_experiments.py --plan experiments/plans/batch0-correctness.json --batch-size 3
@@ -57,7 +72,7 @@ recorded TLE/OOM/crash should remain censored while later tasks continue.
 Reattempting a failed task instead requires `--rerun-reason`.  Correctness
 plans capture full clique sets and stop when normalized outputs differ.
 
-Raw artifacts remain under the ignored `experiment-output/` tree.  After a
+Raw artifacts remain under the ignored `experiments/output/` tree.  After a
 batch is complete, verify and index it with:
 
 ```powershell
